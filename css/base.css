@@ -1,0 +1,118 @@
+/* =====================================================
+   RESET BÁSICO
+===================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    border: none;
+    background: none;
+}
+
+/* =====================================================
+   VARIÁVEIS GLOBAIS
+===================================================== */
+:root {
+    --bg-primary: #0b1a13;
+    --bg-secondary: #11241b;
+    --bg-tertiary: #183126;
+
+    --primary: #1b5e20;
+    --secondary: #2e7d32;
+    --accent: #81c784;
+    --highlight: #a5d6a7;
+
+    --text-primary: #e8f5e9;
+    --text-secondary: #bfd8c3;
+
+    --border-soft: rgba(129, 199, 132, 0.18);
+    --shadow-dark: rgba(0, 0, 0, 0.35);
+}
+
+/* =====================================================
+   BASE GLOBAL
+===================================================== */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(180deg, var(--bg-primary) 0%, #07100c 100%);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =====================================================
+   CONTAINER PADRÃO
+===================================================== */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* =====================================================
+   TIPOGRAFIA BASE
+===================================================== */
+h1, h2, h3, h4 {
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+p {
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+/* =====================================================
+   UTILIDADES REUTILIZÁVEIS
+===================================================== */
+
+/* Tag de seção (usada em várias áreas) */
+.section-tag {
+    display: inline-block;
+    margin-bottom: 14px;
+    color: var(--accent);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Botões padrão (base) */
+.button {
+    padding: 12px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+/* Scroll invisível padrão */
+.no-scrollbar {
+    scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Centralização rápida */
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

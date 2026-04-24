@@ -1,0 +1,200 @@
+/* =====================================================
+   PÁGINA MITOLOGIAS - TIMELINE
+===================================================== */
+.timeline-section {
+    padding: 140px 0;
+
+    background:
+        radial-gradient(circle at center, rgba(129, 199, 132, 0.05), transparent 60%),
+        linear-gradient(180deg, #050d09 0%, #020705 100%);
+}
+
+/* =====================================================
+   HEADER DA TIMELINE
+===================================================== */
+.timeline-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 80px;
+}
+
+.timeline-header h2 {
+    font-size: 2.8rem;
+    color: #e8d9b5;
+    margin-bottom: 16px;
+}
+
+.timeline-header p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* =====================================================
+   ESTRUTURA DA LINHA DO TEMPO
+===================================================== */
+.timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+}
+
+/* Linha central */
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: rgba(232, 217, 181, 0.2);
+    transform: translateX(-50%);
+}
+
+/* =====================================================
+   ITEM DA TIMELINE
+===================================================== */
+.timeline-item {
+    display: grid;
+    grid-template-columns: 1fr 260px 1fr;
+    gap: 0;
+    align-items: center;
+}
+
+/* =====================================================
+   DATA
+===================================================== */
+.timeline-date {
+    text-align: right;
+    font-size: 1.2rem;
+    color: #d4c59c;
+    padding-right: 24px;
+}
+
+/* =====================================================
+   CENTRO (IMAGEM)
+===================================================== */
+.timeline-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 🔥 BOLINHA GRANDE (DESTAQUE) */
+.timeline-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    border: 6px solid rgba(212, 197, 156, 0.6);
+
+    box-shadow:
+        0 0 25px rgba(212, 197, 156, 0.35),
+        0 0 60px rgba(212, 197, 156, 0.2);
+
+    background: #0f2118;
+    z-index: 2;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.timeline-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =====================================================
+   CARD DE CONTEÚDO
+===================================================== */
+.timeline-content {
+    margin-left: -50px; /* 🔥 cola na bolinha */
+    position: relative;
+    z-index: 1;
+
+    max-width: 520px;
+    padding: 28px 30px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(15, 45, 32, 0.88),
+        rgba(10, 30, 22, 0.82)
+    );
+
+    border: 1px solid rgba(212, 197, 156, 0.22);
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 0 1px rgba(212, 197, 156, 0.05),
+        0 10px 30px rgba(0, 0, 0, 0.18);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+.timeline-content h3 {
+    margin: 0 0 14px;
+    color: #f1ddb2;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.3px;
+}
+
+/* Linha decorativa */
+.timeline-content h3::after {
+    content: "";
+    display: block;
+    width: 72px;
+    height: 2px;
+    margin-top: 12px;
+
+    background: linear-gradient(
+        to right,
+        rgba(212, 197, 156, 0.95),
+        rgba(212, 197, 156, 0.15)
+    );
+
+    border-radius: 999px;
+}
+
+/* =====================================================
+   TEXTO
+===================================================== */
+.timeline-content p {
+    margin: 0;
+    max-width: 440px;
+    color: #f3ecd8;
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+/* =====================================================
+   HOVER UNIFICADO (IMAGEM + CARD)
+===================================================== */
+.timeline-item:hover .timeline-image {
+    transform: translateY(-6px) scale(1.03);
+    border-color: rgba(212, 197, 156, 0.85);
+
+    box-shadow:
+        0 0 35px rgba(212, 197, 156, 0.55),
+        0 0 80px rgba(212, 197, 156, 0.25);
+}
+
+.timeline-item:hover .timeline-content {
+    transform: translateY(-6px);
+    border-color: rgba(212, 197, 156, 0.45);
+
+    box-shadow:
+        0 0 0 1px rgba(212, 197, 156, 0.18),
+        0 0 24px rgba(212, 197, 156, 0.12);
+}

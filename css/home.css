@@ -1,0 +1,691 @@
+/* =====================================================
+   SOBRE MITOLOGIA
+===================================================== */
+.about-mythology {
+    padding: 120px 0;
+}
+
+.about-mythology-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 42px;
+    border-radius: 24px;
+    background:
+        linear-gradient(135deg, rgba(17, 36, 27, 0.92), rgba(9, 23, 16, 0.88));
+    border: 1px solid rgba(129, 199, 132, 0.14);
+    box-shadow:
+        0 0 0 1px rgba(129, 199, 132, 0.04),
+        0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+.about-mythology h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.about-highlight {
+    max-width: 850px;
+    margin-bottom: 34px;
+    padding-left: 18px;
+    border-left: 3px solid var(--accent);
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: var(--text-primary);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.about-block {
+    padding: 26px 24px;
+    border-radius: 18px;
+    background: rgba(22, 45, 34, 0.62);
+    border: 1px solid rgba(129, 199, 132, 0.12);
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.about-block:hover {
+    transform: translateY(-4px);
+    border-color: rgba(129, 199, 132, 0.28);
+    box-shadow:
+        0 0 0 1px rgba(129, 199, 132, 0.08),
+        0 0 20px rgba(129, 199, 132, 0.08);
+}
+
+.about-block h3 {
+    margin-bottom: 14px;
+    font-size: 1.35rem;
+    color: var(--accent);
+}
+
+.about-block p {
+    margin-bottom: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.about-block p:last-child {
+    margin-bottom: 0;
+}
+
+.about-conclusion {
+    max-width: 850px;
+    margin-top: 10px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(129, 199, 132, 0.12);
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .about-mythology {
+        padding: 80px 0;
+    }
+
+    .about-mythology-card {
+        padding: 28px 22px;
+        border-radius: 20px;
+    }
+
+    .about-mythology h2 {
+        font-size: 2.1rem;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-highlight {
+        font-size: 1.02rem;
+    }
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+.hero {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
+
+    background:
+        radial-gradient(circle at 30% 20%, rgba(46, 125, 50, 0.2), transparent 40%),
+        radial-gradient(circle at 80% 40%, rgba(129, 199, 132, 0.08), transparent 35%),
+        linear-gradient(180deg, #05100b 0%, #020705 100%);
+}
+
+.hero-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 580px;
+}
+
+.hero-tag {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.8;
+}
+
+.hero h1 {
+    font-size: 4.2rem;
+    font-weight: 800;
+    line-height: 1.05;
+
+    background: linear-gradient(to bottom,
+            #ffffff,
+            #b7d7c0);
+
+    background-clip: text;
+    /* padrão */
+    -webkit-background-clip: text;
+    /* compatibilidade */
+
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    margin-bottom: 30px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+.hero-button {
+    padding: 16px 32px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    background: linear-gradient(135deg,
+            #2e7d32,
+            #43a047);
+
+    box-shadow:
+        0 0 20px rgba(129, 199, 132, 0.2);
+}
+
+.hero-button:hover {
+    transform: translateY(-4px) scale(1.02);
+
+    box-shadow:
+        0 0 30px rgba(129, 199, 132, 0.35);
+}
+
+.hero-visual {
+    position: relative;
+}
+
+
+
+.hero-image {
+    display: block;
+    width: 420px;
+    max-width: 100%;
+    transition: transform 0.4s ease;
+}
+
+
+
+/* =====================================================
+   LINHA DOS CARDS
+===================================================== */
+.myth-line {
+    height: 2px;
+    background: rgba(129, 199, 132, 0.2);
+    position: relative;
+}
+
+.myth-line-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+}
+
+/* =====================================================
+   VOZES DO MUNDO ANTIGO
+===================================================== */
+.ancient-knowledge {
+    position: relative;
+    z-index: 2;
+    padding: 110px 0;
+    margin-top: 40px;
+    overflow: hidden;
+}
+
+/* brilho sutil no fundo */
+.ancient-knowledge::before {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle,
+            rgba(129, 199, 132, 0.08),
+            transparent 70%);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.ancient-knowledge-content {
+    text-align: center;
+}
+
+.ancient-knowledge h2 {
+    font-size: 2.7rem;
+    margin-bottom: 18px;
+    color: var(--text-primary);
+}
+
+.ancient-intro {
+    max-width: 760px;
+    margin: 0 auto 42px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.quotes-carousel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.quotes-carousel {
+    overflow: hidden;
+    width: 100%;
+    padding-top: 12px;
+}
+
+.ancient-quotes {
+    display: flex;
+    gap: 24px;
+    transition: transform 0.45s ease-in-out;
+}
+
+/* =====================================================
+   QUOTE VISUAL PREMIUM
+===================================================== */
+.quote-card {
+    position: relative;
+    overflow: hidden;
+
+    min-width: calc((100% - 48px) / 3);
+    flex: 0 0 calc((100% - 48px) / 3);
+    min-height: 300px;
+    padding: 36px 30px 28px;
+    border-radius: 20px;
+
+    background: linear-gradient(135deg,
+            rgba(22, 45, 34, 0.78),
+            rgba(13, 31, 23, 0.88));
+
+    border: 1px solid rgba(129, 199, 132, 0.18);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow:
+        0 0 0 1px rgba(129, 199, 132, 0.03),
+        0 12px 28px rgba(0, 0, 0, 0.16);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        opacity 0.35s ease;
+}
+
+/* aspas grandes no fundo */
+.quote-card::before {
+    content: "“";
+    position: absolute;
+    top: 18px;
+    left: 22px;
+    font-size: 4.2rem;
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(129, 199, 132, 0.1);
+    pointer-events: none;
+    transition:
+        transform 0.35s ease,
+        opacity 0.35s ease;
+}
+
+.quote-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(129, 199, 132, 0.42);
+    box-shadow:
+        0 0 0 1px rgba(129, 199, 132, 0.14),
+        0 0 28px rgba(129, 199, 132, 0.12),
+        0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+.quote-card:hover::before {
+    transform: scale(1.06);
+    opacity: 1;
+}
+
+/* TEXTO */
+.quote-text {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    max-width: 280px;
+    padding-top: 10px;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.9;
+    letter-spacing: 0.1px;
+    color: var(--text-primary);
+    font-size: 1.02rem;
+}
+
+/* AUTOR */
+.quote-author {
+    display: block;
+    position: relative;
+    z-index: 1;
+    margin-top: 26px;
+    padding-top: 18px;
+    font-weight: 700;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+    opacity: 0.95;
+}
+
+/* linha decorativa acima do autor */
+.quote-author::before {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 2px;
+    margin: 0 auto 12px;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0.08),
+            currentColor,
+            rgba(255, 255, 255, 0.08));
+    border-radius: 999px;
+    opacity: 0.9;
+}
+
+/* Cores por mitologia nas citações */
+.quote-card.druid .quote-author {
+    color: #81c784;
+}
+
+.quote-card.nordic .quote-author {
+    color: #9fbcd3;
+}
+
+.quote-card.greek .quote-author {
+    color: #d4af37;
+}
+
+.quote-card.egyptian .quote-author {
+    color: #d8b64b;
+}
+
+.quote-card.mesopotamian .quote-author {
+    color: #c78b52;
+}
+
+.quote-card.hindu .quote-author {
+    color: #ffb07a;
+}
+
+.quote-card.yoruba .quote-author {
+    color: #f0a35a;
+}
+
+.quote-card.chinese .quote-author {
+    color: #8ecaff;
+}
+
+.quote-card.biblical .quote-author {
+    color: #d6d6a8;
+}
+
+/* =====================================================
+   MITOLOGIAS DO MUNDO
+===================================================== */
+.mythologies-showcase {
+    padding: 120px 0;
+}
+
+.showcase-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.showcase-header h2 {
+    font-size: 2.5rem;
+    color: var(--highlight);
+}
+
+.showcase-controls {
+    display: flex;
+    gap: 12px;
+}
+
+.showcase-button {
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(129, 199, 132, 0.25);
+    border-radius: 50%;
+    background: rgba(17, 36, 27, 0.85);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.showcase-button:hover {
+    background: rgba(27, 94, 32, 0.95);
+    box-shadow: 0 0 14px rgba(129, 199, 132, 0.18);
+    transform: translateY(-2px);
+}
+
+/* =====================================================
+   LINHA ACIMA DOS CARDS
+===================================================== */
+.myth-line {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 280px);
+    gap: 20px;
+    justify-content: start;
+}
+
+.myth-line::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: calc(280px * 4 + 20px * 3);
+    height: 2px;
+    background: linear-gradient(to right,
+            transparent,
+            rgba(129, 199, 132, 0.6),
+            transparent);
+    transform: translateY(-50%);
+}
+
+.myth-line span {
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    justify-self: center;
+    box-shadow:
+        0 0 8px rgba(129, 199, 132, 0.6),
+        0 0 18px rgba(129, 199, 132, 0.3);
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.myth-line span:hover {
+    transform: scale(1.25);
+}
+
+
+
+/* =====================================================
+   ÁREA HORIZONTAL
+===================================================== */
+.showcase-track-wrapper {
+    overflow: visible;
+    width: 100%;
+}
+
+.showcase-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-behavior: smooth;
+    padding: 40px 0 30px;
+    scrollbar-width: none;
+}
+
+.showcase-track::-webkit-scrollbar {
+    display: none;
+}
+
+/* =====================================================
+   CARD
+===================================================== */
+.myth-card {
+    position: relative;
+    flex: 0 0 280px;
+    min-height: 460px;
+    padding: 0;
+    border-radius: 18px;
+    background: linear-gradient(180deg,
+            rgba(22, 45, 34, 0.08) 0%,
+            rgba(22, 45, 34, 0.28) 100%);
+    border: 1px solid rgba(129, 199, 132, 0.16);
+    overflow: visible;
+    z-index: 1;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.myth-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 60%,
+        rgba(5, 16, 11, 0.42) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.4s ease;
+}
+
+.myth-card:hover::after {
+    opacity: 0.85;
+}
+
+.myth-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(129, 199, 132, 0.45);
+    box-shadow:
+        0 0 0 1px rgba(129, 199, 132, 0.22),
+        0 0 35px rgba(129, 199, 132, 0.18),
+        0 20px 50px rgba(0, 0, 0, 0.35);
+    z-index: 20;
+}
+
+/* =====================================================
+   IMAGEM DO CARD
+===================================================== */
+.myth-card-image {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    display: block;
+    border-radius: 18px;
+    transition:
+        transform 0.7s ease,
+        filter 0.5s ease,
+        box-shadow 0.5s ease;
+    transform-origin: center center;
+    will-change: transform;
+    position: relative;
+    z-index: 2;
+}
+
+.myth-card:hover .myth-card-image {
+    transform: scale(1.22);
+    filter:
+        brightness(1.08)
+        contrast(1.08)
+        saturate(1.1);
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.38),
+        0 0 24px rgba(129, 199, 132, 0.12);
+    z-index: 999;
+}
+
+/* =====================================================
+   ÁREA DE TEXTO
+===================================================== */
+.myth-card h3,
+.myth-card p {
+    position: relative;
+    z-index: 2;
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
+.myth-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.28rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.myth-card p {
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    font-size: 0.96rem;
+    text-align: left;
+}
+
+/* =====================================================
+   CORES POR MITOLOGIA
+===================================================== */
+.myth-card.egyptian h3 {
+    color: #d8b64b;
+}
+
+.myth-card.greek h3 {
+    color: #d4af37;
+}
+
+.myth-card.nordic h3 {
+    color: #9fbcd3;
+}
+
+.myth-card.hindu h3 {
+    color: #ffb07a;
+}
+
+.myth-card.druid h3 {
+    color: #81c784;
+}
+
+.myth-card.yoruba h3 {
+    color: #f0a35a;
+}
+
+.myth-card.mesopotamian h3 {
+    color: #c78b52;
+}
+
+.myth-card.chinese h3 {
+    color: #8ecaff;
+}
+
+.myth-card.biblical h3 {
+    color: #d6d6a8;
+}

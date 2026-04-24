@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- =====================================================
+         CONFIGURAÇÕES BÁSICAS
+    ====================================================== -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Bestiário</title>
+
+    <!-- =====================================================
+         ESTILOS
+    ====================================================== -->
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+    <link rel="stylesheet" href="./css/netflix-sections.css" />
+    <link rel="stylesheet" href="./css/responsive.css" />
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER / MENU PRINCIPAL
+    ====================================================== -->
+    <header class="topbar">
+        <div class="container topbar-content">
+            <div class="logo">Bestiário</div>
+
+            <nav class="menu" aria-label="Menu principal">
+                <a href="#home">Home</a>
+                <a href="./mitologias.html">Mitologias</a>
+                <a href="#lendas">Lendas</a>
+                <a href="#simbolos">Símbolos</a>
+                <a href="#objetos">Objetos</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- =====================================================
+             HERO / DESTAQUE PRINCIPAL
+        ====================================================== -->
+        <section class="hero" id="home">
+            <div class="container hero-layout">
+
+                <!-- Texto principal do hero -->
+                <div class="hero-content">
+                    <span class="hero-tag">Conhecimento antigo • magia • mitologia</span>
+
+                    <h1>
+                        Adentre os Mistérios<br />
+                        do Mundo Antigo
+                    </h1>
+
+                    <p>
+                        Lendas esquecidas, símbolos sagrados e conhecimentos ancestrais
+                        aguardam por aqueles que ousam olhar além do visível.
+                    </p>
+
+                    <button class="hero-button" type="button">Explorar agora</button>
+                </div>
+
+                <!-- Imagem principal do hero -->
+                <div class="hero-visual">
+                    <img src="./assets/images/mao_mistica_com_simbolos.png" alt="Mão mística com símbolos ancestrais"
+                        class="hero-image" />
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================================
+             SEÇÃO: O QUE É MITOLOGIA
+        ====================================================== -->
+        <section class="about-mythology" id="sobre-mitologia">
+            <div class="container">
+                <div class="about-mythology-card">
+
+                    <span class="section-tag">Conhecimento Essencial</span>
+
+                    <h2>O que é Mitologia?</h2>
+
+                    <p class="about-highlight">
+                        A mitologia é o conjunto de histórias, símbolos e narrativas criadas por diferentes culturas
+                        para explicar o mundo, a natureza e a existência humana.
+                    </p>
+
+                    <div class="about-grid">
+
+                        <!-- Bloco: definição -->
+                        <div class="about-block">
+                            <h3>Mitologia</h3>
+                            <p>
+                                Muito além de simples contos, os mitos carregam valores, crenças e ensinamentos
+                                profundos. Deuses, criaturas e forças naturais representam ideias simbólicas que
+                                ajudavam a responder perguntas fundamentais sobre a vida, a morte, o destino e o
+                                universo.
+                            </p>
+                        </div>
+
+                        <!-- Bloco: mito x realidade -->
+                        <div class="about-block">
+                            <h3>Mito x Realidade</h3>
+                            <p>
+                                Diferente do senso comum, um mito não é necessariamente uma mentira. Ele representa
+                                uma verdade simbólica, construída a partir da percepção e da experiência de um povo.
+                            </p>
+                            <p>
+                                Enquanto a realidade busca explicações baseadas em fatos e evidências, o mito interpreta
+                                o mundo através de símbolos, arquétipos e significados mais profundos.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <p class="about-conclusion">
+                        Assim, mitologia e realidade não são opostos — são formas diferentes de compreender a
+                        existência: uma através da razão, outra através do significado.
+                    </p>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             SEÇÃO: VOZES DO MUNDO ANTIGO
+        ====================================================== -->
+        <section class="ancient-knowledge" id="vozes-antigas">
+            <div class="container ancient-knowledge-content">
+
+                <!-- Cabeçalho -->
+                <span class="section-tag">Conhecimento Antigo</span>
+                <h2>Vozes do Mundo Antigo</h2>
+
+                <p class="ancient-intro">
+                    Sabedorias que atravessaram eras, ecoando através de diferentes culturas,
+                    tradições e visões sobre o mundo.
+                </p>
+
+                <!-- Carrossel de citações -->
+                <div class="quotes-carousel-wrapper">
+
+                    <!-- Botão voltar -->
+                    <button class="carousel-button prev" id="prevBtn" aria-label="Voltar" type="button">
+                        &#10094;
+                    </button>
+
+                    <!-- Trilha dos cards -->
+                    <div class="quotes-carousel">
+                        <div class="ancient-quotes" id="quotesTrack">
+
+                            <article class="quote-card druid">
+                                <p class="quote-text">
+                                    A sabedoria cresce como as raízes: em silêncio, no escuro, sustentando tudo.
+                                </p>
+                                <span class="quote-author">— Celta Druida</span>
+                            </article>
+
+                            <article class="quote-card nordic">
+                                <p class="quote-text">
+                                    Aquele que teme o destino já foi derrotado por ele.
+                                </p>
+                                <span class="quote-author">— Nórdica</span>
+                            </article>
+
+                            <article class="quote-card greek">
+                                <p class="quote-text">
+                                    O destino pode ser escrito, mas a jornada é sempre escolhida.
+                                </p>
+                                <span class="quote-author">— Grega</span>
+                            </article>
+
+                            <article class="quote-card egyptian">
+                                <p class="quote-text">
+                                    A alma que conhece seu caminho não teme a escuridão.
+                                </p>
+                                <span class="quote-author">— Egípcia</span>
+                            </article>
+
+                            <article class="quote-card mesopotamian">
+                                <p class="quote-text">
+                                    O caos não é o oposto da ordem, mas sua origem.
+                                </p>
+                                <span class="quote-author">— Mesopotâmica</span>
+                            </article>
+
+                            <article class="quote-card hindu">
+                                <p class="quote-text">
+                                    A mente inquieta cria sofrimento, a mente consciente cria liberdade.
+                                </p>
+                                <span class="quote-author">— Hindu</span>
+                            </article>
+
+                            <article class="quote-card yoruba">
+                                <p class="quote-text">
+                                    Nada acontece sem propósito, mesmo aquilo que não compreendemos.
+                                </p>
+                                <span class="quote-author">— Africana (Yorubá / Orixás)</span>
+                            </article>
+
+                            <article class="quote-card chinese">
+                                <p class="quote-text">
+                                    A água vence não pela força, mas pela persistência.
+                                </p>
+                                <span class="quote-author">— Chinesa</span>
+                            </article>
+
+                            <article class="quote-card biblical">
+                                <p class="quote-text">
+                                    Aquele que anda com sabedoria encontra a vida.
+                                </p>
+                                <span class="quote-author">— Bíblia (Provérbios)</span>
+                            </article>
+
+                        </div>
+                    </div>
+
+                    <!-- Botão avançar -->
+                    <button class="carousel-button next" id="nextBtn" aria-label="Avançar" type="button">
+                        &#10095;
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             SEÇÃO: MITOLOGIAS DO MUNDO
+        ====================================================== -->
+        <section class="mythologies-showcase" id="mitologias-home">
+            <div class="container">
+
+                <!-- Cabeçalho -->
+                <div class="showcase-header">
+                    <div>
+                        <span class="section-tag">Civilizações e Tradições</span>
+                        <h2>Mitologias do Mundo</h2>
+                    </div>
+
+                    <!-- Controles -->
+                    <div class="showcase-controls">
+                        <button class="showcase-button" id="mythPrevBtn" aria-label="Voltar" type="button">
+                            &#10094;
+                        </button>
+                        <button class="showcase-button" id="mythNextBtn" aria-label="Avançar" type="button">
+                            &#10095;
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Linha decorativa -->
+                <div class="myth-line" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- Cards -->
+                <div class="showcase-track-wrapper">
+                    <div class="showcase-track" id="mythologiesTrack">
+
+                        <!-- MITOLOGIAS DO MUNDO - ORDEM ALFABÉTICA COMPLETA -->
+
+                        <article class="myth-card"><img src="assets/images/mitologia-abenaki-em-cores.png"
+                                alt="Mitologia Abenaki" class="myth-card-image" />
+                            <h3>Abenaki</h3>
+                            <p>Tradições e narrativas do povo Abenaki.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-aborigene-em-cores.png"
+                                alt="Mitologia Aborígene" class="myth-card-image" />
+                            <h3>Aborígene</h3>
+                            <p>Espiritualidade ancestral dos povos da Austrália.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-africana-em-cores.png"
+                                alt="Mitologia Africana" class="myth-card-image" />
+                            <h3>Africana</h3>
+                            <p>Forças espirituais e tradições do continente africano.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-alema-em-cores.png"
+                                alt="Mitologia Alemã" class="myth-card-image" />
+                            <h3>Alemã</h3>
+                            <p>Lendas e criaturas do folclore germânico.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-americana-em-cores.png"
+                                alt="Mitologia Americana" class="myth-card-image" />
+                            <h3>Americana</h3>
+                            <p>Histórias e tradições das culturas americanas.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-arabe-em-cores.png"
+                                alt="Mitologia Árabe" class="myth-card-image" />
+                            <h3>Árabe</h3>
+                            <p>Contos místicos e entidades do deserto.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-argentina-em-cores.png"
+                                alt="Mitologia Argentina" class="myth-card-image" />
+                            <h3>Argentina</h3>
+                            <p>Lendas e mitos populares da Argentina.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-asteca-em-cores.png"
+                                alt="Mitologia Asteca" class="myth-card-image" />
+                            <h3>Asteca</h3>
+                            <p>Deuses e rituais da civilização asteca.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-basca-em-cores.png"
+                                alt="Mitologia Basca" class="myth-card-image" />
+                            <h3>Basca</h3>
+                            <p>Tradições antigas da cultura basca.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-brasileira-em-cores.png"
+                                alt="Mitologia Brasileira" class="myth-card-image" />
+                            <h3>Brasileira</h3>
+                            <p>Lendas e entidades do folclore nacional.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-budista-em-cores.png"
+                                alt="Mitologia Budista" class="myth-card-image" />
+                            <h3>Budista</h3>
+                            <p>Símbolos e ensinamentos espirituais do budismo.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-caribenha-em-cores.png"
+                                alt="Mitologia Caribenha" class="myth-card-image" />
+                            <h3>Caribenha</h3>
+                            <p>Tradições espirituais das ilhas do Caribe.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-catalana-em-cores.png"
+                                alt="Mitologia Catalana" class="myth-card-image" />
+                            <h3>Catalana</h3>
+                            <p>Lendas e tradições da Catalunha.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-celta-em-cores.png"
+                                alt="Mitologia Celta" class="myth-card-image" />
+                            <h3>Celta</h3>
+                            <p>Druidas e forças espirituais da natureza.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-chilena-em-cores.png"
+                                alt="Mitologia Chilena" class="myth-card-image" />
+                            <h3>Chilena</h3>
+                            <p>Lendas e histórias do Chile.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-chinesa-em-cores.png"
+                                alt="Mitologia Chinesa" class="myth-card-image" />
+                            <h3>Chinesa</h3>
+                            <p>Dragões, equilíbrio e sabedoria ancestral.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-colombiana-em-cores.png"
+                                alt="Mitologia Colombiana" class="myth-card-image" />
+                            <h3>Colombiana</h3>
+                            <p>Lendas e tradições da Colômbia.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-crista-em-cores.png"
+                                alt="Mitologia Cristã" class="myth-card-image" />
+                            <h3>Cristã</h3>
+                            <p>Simbolismos e narrativas bíblicas.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-dinamarquesa-em-cores.png"
+                                alt="Mitologia Dinamarquesa" class="myth-card-image" />
+                            <h3>Dinamarquesa</h3>
+                            <p>Tradições nórdicas e histórias antigas.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-dominicana-em-cores.png"
+                                alt="Mitologia Dominicana" class="myth-card-image" />
+                            <h3>Dominicana</h3>
+                            <p>Lendas e crenças da República Dominicana.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-egipcia-em-cores.png"
+                                alt="Mitologia Egípcia" class="myth-card-image" />
+                            <h3>Egípcia</h3>
+                            <p>Deuses e vida após a morte no Egito Antigo.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-escandinava-em-cores.png"
+                                alt="Mitologia Escandinava" class="myth-card-image" />
+                            <h3>Escandinava</h3>
+                            <p>Deuses e mitos do norte europeu.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-escocesa-em-cores.png"
+                                alt="Mitologia Escocesa" class="myth-card-image" />
+                            <h3>Escocesa</h3>
+                            <p>Lendas e criaturas das terras altas.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-eslava-em-cores.png"
+                                alt="Mitologia Eslava" class="myth-card-image" />
+                            <h3>Eslava</h3>
+                            <p>Tradições e deuses da Europa Oriental.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-europeia-em-cores.png"
+                                alt="Mitologia Europeia" class="myth-card-image" />
+                            <h3>Europeia</h3>
+                            <p>Conjunto de mitos do continente europeu.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-filipina-em-cores.png"
+                                alt="Mitologia Filipina" class="myth-card-image" />
+                            <h3>Filipina</h3>
+                            <p>Lendas e espíritos das Filipinas.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-finlandesa-em-cores.png"
+                                alt="Mitologia Finlandesa" class="myth-card-image" />
+                            <h3>Finlandesa</h3>
+                            <p>Mitologia e épicos do norte europeu.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-francesa-em-cores.png"
+                                alt="Mitologia Francesa" class="myth-card-image" />
+                            <h3>Francesa</h3>
+                            <p>Lendas e tradições da França.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-gaelica-em-cores.png"
+                                alt="Mitologia Gaélica" class="myth-card-image" />
+                            <h3>Gaélica</h3>
+                            <p>Tradições celtas da Irlanda e Escócia.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-grega-em-cores.png"
+                                alt="Mitologia Grega" class="myth-card-image" />
+                            <h3>Grega</h3>
+                            <p>Zeus, Atena e os deuses do Olimpo.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-haitiana-em-cores.png"
+                                alt="Mitologia Haitiana" class="myth-card-image" />
+                            <h3>Haitiana</h3>
+                            <p>Tradições espirituais e vodu.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-havaiana-em-cores.png"
+                                alt="Mitologia Havaiana" class="myth-card-image" />
+                            <h3>Havaiana</h3>
+                            <p>Deuses e forças naturais do Pacífico.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-heraldica-europeia-em-cores.png"
+                                alt="Mitologia Heráldica Europeia" class="myth-card-image" />
+                            <h3>Heráldica Europeia</h3>
+                            <p>Brasões e símbolos de poder.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-hindu-em-cores.png"
+                                alt="Mitologia Hindu" class="myth-card-image" />
+                            <h3>Hindu</h3>
+                            <p>Divindades e ciclos cósmicos.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-holandesa-em-cores.png"
+                                alt="Mitologia Holandesa" class="myth-card-image" />
+                            <h3>Holandesa</h3>
+                            <p>Lendas e folclore dos Países Baixos.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-hungara-em-cores.png"
+                                alt="Mitologia Húngara" class="myth-card-image" />
+                            <h3>Húngara</h3>
+                            <p>Tradições e mitos da Hungria.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-inca-em-cores.png"
+                                alt="Mitologia Inca" class="myth-card-image" />
+                            <h3>Inca</h3>
+                            <p>Deuses e rituais dos Andes.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-indiana-em-cores.png"
+                                alt="Mitologia Indiana" class="myth-card-image" />
+                            <h3>Indiana</h3>
+                            <p>Tradições espirituais do subcontinente indiano.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-indonesia-em-cores.png"
+                                alt="Mitologia Indonésia" class="myth-card-image" />
+                            <h3>Indonésia</h3>
+                            <p>Lendas e tradições do sudeste asiático.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-inglesa-em-cores.png"
+                                alt="Mitologia Inglesa" class="myth-card-image" />
+                            <h3>Inglesa</h3>
+                            <p>Lendas e contos do folclore britânico.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-inuit-em-cores.png"
+                                alt="Mitologia Inuit" class="myth-card-image" />
+                            <h3>Inuit</h3>
+                            <p>Espiritualidade dos povos do Ártico.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-ioruba-em-cores.png"
+                                alt="Mitologia Iorubá" class="myth-card-image" />
+                            <h3>Iorubá</h3>
+                            <p>Orixás e forças espirituais africanas.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-irlandesa-em-cores.png"
+                                alt="Mitologia Irlandesa" class="myth-card-image" />
+                            <h3>Irlandesa</h3>
+                            <p>Lendas celtas da Irlanda.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-japonesa-em-cores.png"
+                                alt="Mitologia Japonesa" class="myth-card-image" />
+                            <h3>Japonesa</h3>
+                            <p>Yokais, espíritos e deuses japoneses.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-judaica-em-cores.png"
+                                alt="Mitologia Judaica" class="myth-card-image" />
+                            <h3>Judaica</h3>
+                            <p>Tradições e textos sagrados antigos.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-lituana-em-cores.png"
+                                alt="Mitologia Lituana" class="myth-card-image" />
+                            <h3>Lituana</h3>
+                            <p>Tradições bálticas e espirituais.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-maia-em-cores.png"
+                                alt="Mitologia Maia" class="myth-card-image" />
+                            <h3>Maia</h3>
+                            <p>Cosmologia e deuses da civilização maia.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-malaio-em-cores.png"
+                                alt="Mitologia Malaio" class="myth-card-image" />
+                            <h3>Malaio</h3>
+                            <p>Lendas e crenças do sudeste asiático.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-maori-em-cores.png"
+                                alt="Mitologia Maori" class="myth-card-image" />
+                            <h3>Maori</h3>
+                            <p>Tradições espirituais da Nova Zelândia.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-mesopotamia-em-cores.png"
+                                alt="Mitologia Mesopotâmica" class="myth-card-image" />
+                            <h3>Mesopotâmica</h3>
+                            <p>Primeiras histórias da humanidade.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-mexico-em-cores.png"
+                                alt="Mitologia Mexicana" class="myth-card-image" />
+                            <h3>Mexicana</h3>
+                            <p>Lendas e tradições do México.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-nordica-em-cores.png"
+                                alt="Mitologia Nórdica" class="myth-card-image" />
+                            <h3>Nórdica</h3>
+                            <p>Odin, Thor e o Ragnarok.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-persa-em-cores.png"
+                                alt="Mitologia Persa" class="myth-card-image" />
+                            <h3>Persa</h3>
+                            <p>Mitologia e espiritualidade do Irã antigo.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-portuguesa-em-cores.png"
+                                alt="Mitologia Portuguesa" class="myth-card-image" />
+                            <h3>Portuguesa</h3>
+                            <p>Lendas e tradições de Portugal.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-romana-em-cores.png"
+                                alt="Mitologia Romana" class="myth-card-image" />
+                            <h3>Romana</h3>
+                            <p>Deuses e mitos da Roma Antiga.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-romenia-em-cores.png"
+                                alt="Mitologia Romena" class="myth-card-image" />
+                            <h3>Romena</h3>
+                            <p>Lendas e folclore da Romênia.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-tibetana-em-cores.png"
+                                alt="Mitologia Tibetana" class="myth-card-image" />
+                            <h3>Tibetana</h3>
+                            <p>Espiritualidade e símbolos do Tibete.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-tupi-guarani-em-cores.png"
+                                alt="Mitologia Tupi-Guarani" class="myth-card-image" />
+                            <h3>Tupi-Guarani</h3>
+                            <p>Lendas indígenas do Brasil.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-turca-em-cores.png"
+                                alt="Mitologia Turca" class="myth-card-image" />
+                            <h3>Turca</h3>
+                            <p>Lendas e tradições da Turquia.</p>
+                        </article>
+
+                        <article class="myth-card"><img src="assets/images/mitologia-umbanda-em-cores.png"
+                                alt="Mitologia Umbanda" class="myth-card-image" />
+                            <h3>Umbanda</h3>
+                            <p>Espiritualidade e entidades da Umbanda.</p>
+                        </article>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================================
+             SEÇÃO: CRIATURAS
+        ====================================================== -->
+        <section class="creatures" id="criaturas">
+            <div class="container">
+
+                <!-- Cabeçalho -->
+                <div class="creatures-header">
+                    <span class="section-tag">Bestiário</span>
+                    <h2>Criaturas do Mundo Antigo</h2>
+                </div>
+
+                <!-- Carrossel -->
+                <div class="creatures-wrapper">
+
+                    <button class="creature-btn left" id="creaturePrevBtn" aria-label="Voltar" type="button">
+                        &#10094;
+                    </button>
+
+                    <div class="creatures-track" id="creaturesTrack">
+
+                        <article class="creature-card">
+                            <img src="assets/images/minimalista/dragao-medieval-minimalista.png" alt="Dragão" />
+                            <div class="creature-overlay">
+                                <h3>Dragão</h3>
+                            </div>
+                        </article>
+
+                        <article class="creature-card">
+                            <img src="assets/images/minimalista/fenix-medieval-minimalista.png" alt="Fênix" />
+                            <div class="creature-overlay">
+                                <h3>Fênix</h3>
+                            </div>
+                        </article>
+
+                        <article class="creature-card">
+                            <img src="assets/images/minimalista/minotauro-medieval-minimalista.png" alt="Minotauro" />
+                            <div class="creature-overlay">
+                                <h3>Minotauro</h3>
+                            </div>
+                        </article>
+
+                        <article class="creature-card">
+                            <img src="assets/images/minimalista/medusa-medieval-minimalista.png" alt="Medusa" />
+                            <div class="creature-overlay">
+                                <h3>Medusa</h3>
+                            </div>
+                        </article>
+
+                        <article class="creature-card">
+                            <img src="assets/images/minimalista/pegasus-medieval-minimalista.png" alt="Pégaso" />
+                            <div class="creature-overlay">
+                                <h3>Pégaso</h3>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <button class="creature-btn right" id="creatureNextBtn" aria-label="Avançar" type="button">
+                        &#10095;
+                    </button>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================================
+             SEÇÃO: SÍMBOLOS
+        ====================================================== -->
+        <section class="symbols-section" id="simbolos">
+            <div class="container">
+
+                <!-- Cabeçalho -->
+                <div class="symbols-header">
+                    <span class="section-tag">Símbolos e Significados</span>
+                    <h2>Símbolos do Mundo Antigo</h2>
+                </div>
+
+                <!-- Carrossel -->
+                <div class="symbols-wrapper">
+
+                    <button class="symbol-btn left" id="symbolPrev" aria-label="Voltar" type="button">
+                        &#10094;
+                    </button>
+
+                    <div class="symbols-track" id="symbolsTrack">
+
+                        <article class="symbol-card">
+                            <img src="./assets/images/simbolos-minimalista/ankh-simbolo-egipcio.png" alt="Ankh" />
+                            <div class="symbol-overlay">
+                                <h3>Ankh</h3>
+                            </div>
+                        </article>
+
+                        <article class="symbol-card">
+                            <img src="./assets/images/simbolos-minimalista/chi-rho-simbolo-egipcio.png" alt="Chi Rho" />
+                            <div class="symbol-overlay">
+                                <h3>Chi Rho</h3>
+                            </div>
+                        </article>
+
+                        <article class="symbol-card">
+                            <img src="./assets/images/simbolos-minimalista/triskelion-simbolo-egipcio.png"
+                                alt="Triskelion" />
+                            <div class="symbol-overlay">
+                                <h3>Triskelion</h3>
+                            </div>
+                        </article>
+
+                        <article class="symbol-card">
+                            <img src="./assets/images/simbolos-minimalista/yin-yang-simbolo-egipcio.png"
+                                alt="Yin Yang" />
+                            <div class="symbol-overlay">
+                                <h3>Yin Yang</h3>
+                            </div>
+                        </article>
+
+                        <article class="symbol-card">
+                            <img src="./assets/images/simbolos-minimalista/pentagrama-simbolo-egipcio.png"
+                                alt="Pentagrama" />
+                            <div class="symbol-overlay">
+                                <h3>Pentagrama</h3>
+                            </div>
+                        </article>
+
+                        <article class="symbol-card">
+                            <img src="./assets/images/simbolos-minimalista/olho-de-horus-simbolo-egipcio.png"
+                                alt="Olho de Hórus" />
+                            <div class="symbol-overlay">
+                                <h3>Olho de Hórus</h3>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <button class="symbol-btn right" id="symbolNext" aria-label="Avançar" type="button">
+                        &#10095;
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             SEÇÃO: LENDAS
+        ====================================================== -->
+        <section class="legends-section" id="lendas">
+            <div class="container">
+
+                <!-- Cabeçalho -->
+                <div class="legends-header">
+                    <span class="section-tag">Narrativas e Tradições</span>
+                    <h2>Lendas do Mundo Antigo</h2>
+                </div>
+
+                <!-- Carrossel -->
+                <div class="legends-wrapper">
+
+                    <button class="legend-btn left" id="legendPrev" aria-label="Voltar" type="button">
+                        &#10094;
+                    </button>
+
+                    <div class="legends-track" id="legendsTrack">
+
+                        <article class="legend-card">
+                            <img src="./assets/images/lendas-minimalista/loira-do-banheiro-home.png"
+                                alt="A Loira do Banheiro" />
+                            <div class="legend-overlay">
+                                <h3>A Loira do Banheiro</h3>
+                            </div>
+                        </article>
+
+                        <article class="legend-card">
+                            <img src="./assets/images/lendas-minimalista/teke-teke-home.png" alt="Teke Teke" />
+                            <div class="legend-overlay">
+                                <h3>Teke Teke</h3>
+                            </div>
+                        </article>
+
+                        <article class="legend-card">
+                            <img src="./assets/images/lendas-minimalista/kuchisake-onna-home.png"
+                                alt="Kuchisake-onna" />
+                            <div class="legend-overlay">
+                                <h3>Kuchisake-onna</h3>
+                            </div>
+                        </article>
+
+                        <article class="legend-card">
+                            <img src="./assets/images/lendas-minimalista/aka-manto-home.png" alt="Aka Manto" />
+                            <div class="legend-overlay">
+                                <h3>Aka Manto</h3>
+                            </div>
+                        </article>
+
+                        <article class="legend-card">
+                            <img src="./assets/images/lendas-minimalista/jack-the-killer-home.png"
+                                alt="Jack the Killer" />
+                            <div class="legend-overlay">
+                                <h3>Jack the Killer</h3>
+                            </div>
+                        </article>
+
+                        <article class="legend-card">
+                            <img src="./assets/images/lendas-minimalista/cabra-cabriola-home.png"
+                                alt="Cabra Cabriola" />
+                            <div class="legend-overlay">
+                                <h3>Cabra Cabriola</h3>
+                            </div>
+                        </article>
+
+                        <article class="legend-card">
+                            <img src="./assets/images/lendas-minimalista/pisadeira-home.png" alt="Pisadeira" />
+                            <div class="legend-overlay">
+                                <h3>Pisadeira</h3>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <button class="legend-btn right" id="legendNext" aria-label="Avançar" type="button">
+                        &#10095;
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             SEÇÃO: RELÍQUIAS OCULTAS
+        ====================================================== -->
+        <section class="artifacts-section" id="objetos">
+            <div class="container">
+
+                <!-- Cabeçalho -->
+                <div class="artifacts-header">
+                    <span class="section-tag">Objetos de Poder</span>
+                    <h2>Relíquias Ocultas</h2>
+                </div>
+
+                <!-- Carrossel -->
+                <div class="artifacts-wrapper">
+
+                    <button class="artifact-btn left" id="artifactPrev" aria-label="Voltar" type="button">
+                        &#10094;
+                    </button>
+
+                    <div class="artifacts-track" id="artifactsTrack">
+
+                        <article class="artifact-card">
+                            <img src="./assets/images/reliquias/espada-exacalibur.png" alt="Excalibur" />
+                            <div class="artifact-overlay">
+                                <h3>Excalibur</h3>
+                            </div>
+                        </article>
+
+                        <article class="artifact-card">
+                            <img src="./assets/images/reliquias/mjölnir.png" alt="Mjölnir" />
+                            <div class="artifact-overlay">
+                                <h3>Mjölnir</h3>
+                            </div>
+                        </article>
+
+                        <article class="artifact-card">
+                            <img src="./assets/images/reliquias/tridente-de-poseidon.png" alt="Tridente de Poseidon" />
+                            <div class="artifact-overlay">
+                                <h3>Tridente de Poseidon</h3>
+                            </div>
+                        </article>
+
+                        <article class="artifact-card">
+                            <img src="./assets/images/reliquias/pata-de-macaco.png" alt="Pata de Macaco" />
+                            <div class="artifact-overlay">
+                                <h3>Pata de Macaco</h3>
+                            </div>
+                        </article>
+
+                        <article class="artifact-card">
+                            <img src="./assets/images/reliquias/caixa-de-pandora.png" alt="Caixa de Pandora" />
+                            <div class="artifact-overlay">
+                                <h3>Caixa de Pandora</h3>
+                            </div>
+                        </article>
+
+                        <article class="artifact-card">
+                            <img src="./assets/images/reliquias/santo-graal.png" alt="Santo Graal" />
+                            <div class="artifact-overlay">
+                                <h3>Santo Graal</h3>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <button class="artifact-btn right" id="artifactNext" aria-label="Avançar" type="button">
+                        &#10095;
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =====================================================
+         SCRIPT PRINCIPAL
+    ====================================================== -->
+    <script src="./js/main.js"></script>
+
+</body>
+
+</html>
