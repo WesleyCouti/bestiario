@@ -1,0 +1,172 @@
+/* =====================================================
+   INFINITE CAROUSEL SECTION
+===================================================== */
+
+/*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ARQUIVO: infinite-carousel.css
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Controla a seção de carrossel infinito do site Bestiário.
+
+Objetivo:
+- exibir cards mitológicos em movimento contínuo
+- criar sensação de fluxo, descoberta e exploração
+- reforçar o visual cinematográfico da página
+- permitir interação com cards em formato flip
+- proteger a seção contra quebras visuais
+
+Este arquivo controla:
+1. Estrutura principal da seção
+2. Cabeçalho do carrossel
+3. Área rolável/arrastável
+4. Fades laterais
+5. Track horizontal dos cards
+6. Estado de arraste
+7. Responsividade
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+*/
+
+/* =====================================================
+   SEÇÃO PRINCIPAL
+===================================================== */
+.infinite-carousel-section {
+    position: relative;
+    padding: 160px 0;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(129, 199, 132, 0.06), transparent 35%),
+        linear-gradient(180deg, transparent, rgba(5, 16, 11, 0.42));
+}
+
+/* =====================================================
+   CABEÇALHO
+===================================================== */
+.carousel-header {
+    position: relative;
+    z-index: 3;
+    margin-bottom: 60px;
+}
+
+.carousel-header h2 {
+    margin-top: 12px;
+    color: var(--highlight);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1;
+}
+
+/* =====================================================
+   ÁREA DO CARROSSEL
+===================================================== */
+.infinite-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    cursor: grab;
+    user-select: none;
+}
+
+.infinite-carousel.dragging {
+    cursor: grabbing;
+}
+
+
+/* Evita clique/flip acidental enquanto arrasta */
+.infinite-carousel.dragging .myth-flip-inner {
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   FADES LATERAIS
+===================================================== */
+.infinite-carousel::before,
+.infinite-carousel::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 180px;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.infinite-carousel::before {
+    left: 0;
+    background:
+        linear-gradient(
+            to right,
+            rgba(1, 12, 8, 1),
+            rgba(1, 12, 8, 0.75),
+            transparent
+        );
+}
+
+.infinite-carousel::after {
+    right: 0;
+    background:
+        linear-gradient(
+            to left,
+            rgba(1, 12, 8, 1),
+            rgba(1, 12, 8, 0.75),
+            transparent
+        );
+}
+
+/* =====================================================
+   TRACK DOS CARDS
+===================================================== */
+.carousel-track {
+    display: flex;
+    align-items: stretch;
+    gap: 28px;
+    width: max-content;
+    transform: translateX(0);
+    will-change: transform;
+}
+
+/* =====================================================
+   RESPONSIVO — TABLET
+===================================================== */
+@media (max-width: 900px) {
+    .infinite-carousel-section {
+        padding: 120px 0;
+    }
+
+    .carousel-header {
+        margin-bottom: 44px;
+    }
+
+    .infinite-carousel::before,
+    .infinite-carousel::after {
+        width: 90px;
+    }
+
+    .carousel-track {
+        gap: 22px;
+    }
+}
+
+/* =====================================================
+   RESPONSIVO — MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+    .infinite-carousel-section {
+        padding: 90px 0;
+    }
+
+    .carousel-header {
+        margin-bottom: 34px;
+    }
+
+    .infinite-carousel::before,
+    .infinite-carousel::after {
+        width: 42px;
+    }
+
+    .carousel-track {
+        gap: 18px;
+    }
+}

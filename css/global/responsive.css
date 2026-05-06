@@ -1,0 +1,210 @@
+/* =====================================================
+   RESPONSIVE.CSS
+   -----------------------------------------------------
+   Arquivo responsável apenas pela responsividade global.
+
+   Importante:
+   A responsividade específica das seções deve ficar nos
+   próprios arquivos CSS, como:
+   - hero.css
+   - symbols.css
+   - relics.css
+   - legends.css
+   - creatures.css
+
+   Este arquivo controla:
+   1. Proteção global contra overflow
+   2. Container
+   3. Header/menu
+   4. Ajustes gerais de página
+   5. Responsividade para tablet
+   6. Responsividade para mobile
+   7. Responsividade para telas pequenas
+   8. Acessibilidade
+===================================================== */
+
+
+/* =====================================================
+   1. PROTEÇÃO GLOBAL
+===================================================== */
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    min-width: 320px;
+}
+
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+}
+
+
+/* =====================================================
+   2. AJUSTES GERAIS
+===================================================== */
+
+/* 
+   Evita que o conteúdo fique escondido atrás do header fixo.
+   Ajuste este valor caso a altura do menu mude.
+*/
+main {
+    padding-top: 78px;
+}
+
+
+/* =====================================================
+   3. TABLET
+===================================================== */
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 1200px;
+        padding-inline: 24px;
+    }
+
+    .topbar {
+        height: auto;
+        min-height: 72px;
+        padding: 12px 0;
+    }
+
+    .topbar-content {
+        gap: 24px;
+    }
+
+    .logo {
+        font-size: 1.7rem;
+    }
+
+    .logo-icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .menu {
+        gap: 22px;
+    }
+}
+
+
+/* =====================================================
+   4. MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+    main {
+        padding-top: 130px;
+    }
+
+    .container {
+        padding-inline: 18px;
+    }
+
+    .topbar-content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 14px;
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        gap: 14px 20px;
+    }
+
+    .menu a {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* =====================================================
+   5. MOBILE PEQUENO
+===================================================== */
+
+@media (max-width: 480px) {
+    main {
+        padding-top: 125px;
+    }
+
+    .container {
+        padding-inline: 14px;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+    }
+
+    .logo-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .menu {
+        gap: 12px 16px;
+    }
+
+    .menu a {
+        font-size: 0.82rem;
+    }
+}
+
+
+/* =====================================================
+   6. TELAS MUITO PEQUENAS
+===================================================== */
+
+@media (max-width: 360px) {
+    main {
+        padding-top: 140px;
+    }
+
+    .container {
+        padding-inline: 12px;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    .logo-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .menu a {
+        font-size: 0.78rem;
+    }
+}
+
+
+/* =====================================================
+   7. ACESSIBILIDADE
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

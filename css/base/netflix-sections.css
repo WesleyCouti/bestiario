@@ -1,0 +1,453 @@
+/* =====================================================
+   NETFLIX-SECTIONS.CSS
+   -----------------------------------------------------
+   Arquivo responsável pelas seções em formato de fileira
+   horizontal, inspiradas no estilo Netflix.
+
+   Objetivo visual:
+   - Exibir cards em trilhas horizontais.
+   - Permitir navegação lateral.
+   - Criar efeito cinematográfico nos cards.
+   - Manter padrão reutilizável entre criaturas, símbolos,
+     lendas e artefatos.
+
+   Atenção:
+   - Algumas classes também aparecem em arquivos específicos,
+     como symbols.css.
+   - Caso alguma seção tenha estilo próprio, o CSS específico
+     deve ser carregado depois deste arquivo.
+
+   Estrutura:
+   1. Espaçamento das seções
+   2. Cabeçalhos
+   3. Wrappers
+   4. Trilhas horizontais
+   5. Cards
+   6. Imagens
+   7. Overlays
+   8. Hover
+   9. Botões laterais
+   10. Responsividade
+   11. Acessibilidade
+===================================================== */
+
+
+/* =====================================================
+   1. ESPAÇAMENTO DAS SEÇÕES
+===================================================== */
+
+.creatures,
+.symbols-section,
+.legends-section,
+.artifacts-section {
+    padding: 120px 0;
+}
+
+
+/* =====================================================
+   2. CABEÇALHOS DAS SEÇÕES
+===================================================== */
+
+.creatures-header,
+.symbols-header,
+.legends-header,
+.artifacts-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-bottom: 30px;
+}
+
+.creatures-header h2,
+.symbols-header h2,
+.legends-header h2,
+.artifacts-header h2 {
+    margin-top: 8px;
+
+    color: var(--highlight);
+
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    line-height: 1.1;
+    letter-spacing: 0.3px;
+}
+
+
+/* =====================================================
+   3. WRAPPERS
+===================================================== */
+
+.creatures-wrapper,
+.symbols-wrapper,
+.legends-wrapper,
+.artifacts-wrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+}
+
+
+/* =====================================================
+   4. TRILHAS HORIZONTAIS
+===================================================== */
+
+.creatures-track,
+.symbols-track,
+.legends-track,
+.artifacts-track {
+    display: flex;
+    gap: 20px;
+
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding: 20px 0;
+
+    scroll-behavior: smooth;
+    scroll-padding-inline: 8px;
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+}
+
+.creatures-track::-webkit-scrollbar,
+.symbols-track::-webkit-scrollbar,
+.legends-track::-webkit-scrollbar,
+.artifacts-track::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =====================================================
+   5. CARDS
+===================================================== */
+
+.creature-card,
+.symbol-card,
+.legend-card,
+.artifact-card {
+    position: relative;
+
+    flex: 0 0 260px;
+    height: 360px;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+    scroll-snap-align: start;
+
+    background: rgba(5, 16, 11, 0.92);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+/* Camada cinematográfica inferior */
+.creature-card::after,
+.symbol-card::after,
+.legend-card::after,
+.artifact-card::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 55%,
+            rgba(5, 16, 11, 0.9) 100%
+        );
+
+    pointer-events: none;
+
+    transition: background 0.4s ease;
+}
+
+
+/* =====================================================
+   6. IMAGENS DOS CARDS
+===================================================== */
+
+.creature-card img,
+.symbol-card img,
+.legend-card img,
+.artifact-card img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition:
+        transform 0.55s ease,
+        filter 0.55s ease;
+}
+
+
+/* =====================================================
+   7. OVERLAY DOS CARDS
+===================================================== */
+
+.creature-overlay,
+.symbol-overlay,
+.legend-overlay,
+.artifact-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 2;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    padding: 18px 18px 20px;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.88),
+            transparent
+        );
+}
+
+.creature-overlay h3,
+.symbol-overlay h3,
+.legend-overlay h3,
+.artifact-overlay h3 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 1.18rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.4px;
+    text-align: center;
+
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
+}
+
+
+/* =====================================================
+   8. HOVER DOS CARDS
+===================================================== */
+
+.creature-card:hover,
+.symbol-card:hover,
+.legend-card:hover,
+.artifact-card:hover {
+    z-index: 5;
+
+    transform: translateY(-8px) scale(1.02);
+
+    box-shadow:
+        0 0 0 1px rgba(129, 199, 132, 0.2),
+        0 0 30px rgba(129, 199, 132, 0.15),
+        0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+.creature-card:hover img,
+.symbol-card:hover img,
+.legend-card:hover img,
+.artifact-card:hover img {
+    transform: scale(1.06);
+    filter: brightness(1.05) contrast(1.04);
+}
+
+.creature-card:hover::after,
+.symbol-card:hover::after,
+.legend-card:hover::after,
+.artifact-card:hover::after {
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 48%,
+            rgba(129, 199, 132, 0.14) 100%
+        );
+}
+
+
+/* =====================================================
+   9. BOTÕES LATERAIS
+===================================================== */
+
+.creature-btn,
+.symbol-btn,
+.legend-btn,
+.artifact-btn {
+    position: absolute;
+    z-index: 10;
+
+    width: 48px;
+    height: 48px;
+
+    border: 1px solid rgba(129, 199, 132, 0.3);
+    border-radius: 50%;
+
+    background: rgba(17, 36, 27, 0.9);
+    color: #ffffff;
+
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.creature-btn:hover,
+.symbol-btn:hover,
+.legend-btn:hover,
+.artifact-btn:hover {
+    background: var(--primary);
+    border-color: rgba(129, 199, 132, 0.55);
+
+    box-shadow: 0 0 15px rgba(129, 199, 132, 0.3);
+
+    transform: scale(1.05);
+}
+
+.creature-btn.left,
+.symbol-btn.left,
+.legend-btn.left,
+.artifact-btn.left {
+    left: -20px;
+}
+
+.creature-btn.right,
+.symbol-btn.right,
+.legend-btn.right,
+.artifact-btn.right {
+    right: -20px;
+}
+
+
+/* =====================================================
+   10. RESPONSIVIDADE
+===================================================== */
+
+@media (max-width: 900px) {
+    .creatures,
+    .symbols-section,
+    .legends-section,
+    .artifacts-section {
+        padding: 90px 0;
+    }
+
+    .creature-card,
+    .symbol-card,
+    .legend-card,
+    .artifact-card {
+        flex-basis: 230px;
+        height: 330px;
+    }
+
+    .creature-btn,
+    .symbol-btn,
+    .legend-btn,
+    .artifact-btn {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .creatures,
+    .symbols-section,
+    .legends-section,
+    .artifacts-section {
+        padding: 70px 0;
+    }
+
+    .creatures-track,
+    .symbols-track,
+    .legends-track,
+    .artifacts-track {
+        gap: 16px;
+        padding: 16px 0;
+    }
+
+    .creature-card,
+    .symbol-card,
+    .legend-card,
+    .artifact-card {
+        flex-basis: 210px;
+        height: 310px;
+    }
+
+    .creature-overlay h3,
+    .symbol-overlay h3,
+    .legend-overlay h3,
+    .artifact-overlay h3 {
+        font-size: 1rem;
+    }
+}
+
+
+/* =====================================================
+   11. ACESSIBILIDADE
+===================================================== */
+
+.creature-btn:focus-visible,
+.symbol-btn:focus-visible,
+.legend-btn:focus-visible,
+.artifact-btn:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .creatures-track,
+    .symbols-track,
+    .legends-track,
+    .artifacts-track {
+        scroll-behavior: auto;
+    }
+
+    .creature-card,
+    .symbol-card,
+    .legend-card,
+    .artifact-card,
+    .creature-card img,
+    .symbol-card img,
+    .legend-card img,
+    .artifact-card img,
+    .creature-card::after,
+    .symbol-card::after,
+    .legend-card::after,
+    .artifact-card::after,
+    .creature-btn,
+    .symbol-btn,
+    .legend-btn,
+    .artifact-btn {
+        transition: none;
+    }
+
+    .creature-card:hover,
+    .symbol-card:hover,
+    .legend-card:hover,
+    .artifact-card:hover,
+    .creature-card:hover img,
+    .symbol-card:hover img,
+    .legend-card:hover img,
+    .artifact-card:hover img {
+        transform: none;
+    }
+}

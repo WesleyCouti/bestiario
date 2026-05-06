@@ -1,0 +1,70 @@
+/* =====================================================
+   HOME ADJUSTMENTS
+===================================================== */
+
+/*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ARQUIVO: home-adjustments.css
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Esse arquivo contém ajustes finais globais
+e sobrescritas visuais da home.
+
+Objetivo:
+- padronizar títulos
+- equilibrar espaçamentos
+- aplicar refinamentos finais
+- evitar duplicação nos arquivos principais
+
+IMPORTANTE:
+Esse arquivo deve ser carregado por último.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+*/
+
+
+/* =====================================================
+   PADRONIZAÇÃO DOS TÍTULOS
+===================================================== */
+
+.about-mythology h2,
+.ancient-knowledge h2,
+.carousel-header h2,
+.creatures-header h2,
+.symbols-header h2,
+.legends-header h2,
+.relics-header h2 {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(2rem, 4vw, 3.4rem);
+
+    line-height: 1;
+
+    color:
+        var(--gold-highlight);
+
+}
+
+
+/* =====================================================
+   AJUSTE DE ESPAÇAMENTO ENTRE SEÇÕES
+===================================================== */
+
+.about-mythology,
+.mythologies-showcase {
+
+    padding: 90px 0;
+
+}
+
+
+.infinite-carousel-section {
+
+    padding: 120px 0;
+
+}

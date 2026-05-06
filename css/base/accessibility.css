@@ -1,0 +1,30 @@
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+/*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ARQUIVO: accessibility.css
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Esse arquivo controla melhorias de acessibilidade
+e navegação por teclado.
+
+Objetivo:
+- melhorar navegação via TAB
+- destacar elementos focados
+- aumentar acessibilidade do site
+- melhorar usabilidade para teclado
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+*/
+
+
+button:focus-visible,
+a:focus-visible {
+
+    outline: 2px solid var(--accent);
+
+    outline-offset: 4px;
+
+}

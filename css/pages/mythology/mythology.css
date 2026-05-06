@@ -1,0 +1,450 @@
+/* =====================================================
+   MITOLOGIAS.CSS
+   -----------------------------------------------------
+   Arquivo responsável pela página/seção de Mitologias.
+
+   Objetivo visual:
+   - Criar uma linha do tempo mística e cinematográfica.
+   - Exibir mitologias em ordem histórica.
+   - Destacar imagem circular no centro da timeline.
+   - Exibir data e descrição de cada mitologia.
+   - Manter boa leitura em desktop, tablet e mobile.
+
+   Estrutura:
+   1. Seção principal
+   2. Header da timeline
+   3. Estrutura da linha do tempo
+   4. Item da timeline
+   5. Data
+   6. Imagem central
+   7. Card de conteúdo
+   8. Hover
+   9. Responsividade
+   10. Acessibilidade
+===================================================== */
+
+
+/* =====================================================
+   1. SEÇÃO PRINCIPAL
+===================================================== */
+
+.timeline-section {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    padding: 140px 0;
+
+    background:
+        radial-gradient(circle at center, rgba(129, 199, 132, 0.05), transparent 60%),
+        linear-gradient(180deg, #050d09 0%, #020705 100%);
+}
+
+/* Brilho sutil ao fundo para dar profundidade */
+.timeline-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(212, 197, 156, 0.05), transparent 28%),
+        radial-gradient(circle at 80% 70%, rgba(55, 145, 74, 0.07), transparent 32%);
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   2. HEADER DA TIMELINE
+===================================================== */
+
+.timeline-header {
+    max-width: 800px;
+    margin: 0 auto 80px;
+
+    text-align: center;
+}
+
+.timeline-header h2 {
+    margin: 0 0 16px;
+
+    color: #e8d9b5;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.1;
+
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.timeline-header p {
+    margin: 0 auto;
+
+    max-width: 640px;
+
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   3. ESTRUTURA DA LINHA DO TEMPO
+===================================================== */
+
+.timeline {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+}
+
+/* Linha vertical central */
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    width: 2px;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(232, 217, 181, 0.22) 8%,
+            rgba(232, 217, 181, 0.22) 92%,
+            transparent
+        );
+
+    transform: translateX(-50%);
+}
+
+
+/* =====================================================
+   4. ITEM DA TIMELINE
+===================================================== */
+
+.timeline-item {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 260px minmax(0, 1fr);
+    align-items: center;
+}
+
+
+/* =====================================================
+   5. DATA
+===================================================== */
+
+.timeline-date {
+    padding-right: 24px;
+
+    color: #d4c59c;
+
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: right;
+    letter-spacing: 0.5px;
+}
+
+
+/* =====================================================
+   6. IMAGEM CENTRAL
+===================================================== */
+
+.timeline-center {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Círculo principal da mitologia */
+.timeline-image {
+    position: relative;
+    z-index: 2;
+
+    width: 200px;
+    height: 200px;
+
+    overflow: hidden;
+
+    border: 6px solid rgba(212, 197, 156, 0.6);
+    border-radius: 50%;
+
+    background: #0f2118;
+
+    box-shadow:
+        0 0 25px rgba(212, 197, 156, 0.35),
+        0 0 60px rgba(212, 197, 156, 0.2);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+/* Imagem dentro do círculo */
+.timeline-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+}
+
+
+/* =====================================================
+   7. CARD DE CONTEÚDO
+===================================================== */
+
+.timeline-content {
+    position: relative;
+    z-index: 1;
+
+    max-width: 520px;
+    margin-left: -50px;
+
+    padding: 28px 30px;
+
+    border: 1px solid rgba(212, 197, 156, 0.22);
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(15, 45, 32, 0.88),
+            rgba(10, 30, 22, 0.82)
+        );
+
+    box-shadow:
+        0 0 0 1px rgba(212, 197, 156, 0.05),
+        0 10px 30px rgba(0, 0, 0, 0.18);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Título do card */
+.timeline-content h3 {
+    margin: 0 0 14px;
+
+    color: #f1ddb2;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.6rem, 2.4vw, 2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.3px;
+}
+
+/* Linha decorativa abaixo do título */
+.timeline-content h3::after {
+    content: "";
+    display: block;
+
+    width: 72px;
+    height: 2px;
+
+    margin-top: 12px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            to right,
+            rgba(212, 197, 156, 0.95),
+            rgba(212, 197, 156, 0.15)
+        );
+}
+
+/* Texto do card */
+.timeline-content p {
+    max-width: 440px;
+    margin: 0;
+
+    color: #f3ecd8;
+
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+
+/* =====================================================
+   8. HOVER
+===================================================== */
+
+.timeline-item:hover .timeline-image {
+    transform: translateY(-6px) scale(1.03);
+
+    border-color: rgba(212, 197, 156, 0.85);
+
+    box-shadow:
+        0 0 35px rgba(212, 197, 156, 0.55),
+        0 0 80px rgba(212, 197, 156, 0.25);
+}
+
+.timeline-item:hover .timeline-image img {
+    transform: scale(1.06);
+    filter: brightness(1.05) contrast(1.05);
+}
+
+.timeline-item:hover .timeline-content {
+    transform: translateY(-6px);
+
+    border-color: rgba(212, 197, 156, 0.45);
+
+    box-shadow:
+        0 0 0 1px rgba(212, 197, 156, 0.18),
+        0 0 24px rgba(212, 197, 156, 0.12),
+        0 18px 40px rgba(0, 0, 0, 0.24);
+}
+
+
+/* =====================================================
+   9. RESPONSIVIDADE
+===================================================== */
+
+@media (max-width: 1000px) {
+    .timeline-item {
+        grid-template-columns: 180px 220px minmax(0, 1fr);
+    }
+
+    .timeline-image {
+        width: 170px;
+        height: 170px;
+    }
+
+    .timeline-content {
+        margin-left: -35px;
+    }
+}
+
+@media (max-width: 760px) {
+    .timeline-section {
+        padding: 100px 0;
+    }
+
+    .timeline-header {
+        margin-bottom: 60px;
+    }
+
+    .timeline {
+        gap: 70px;
+    }
+
+    .timeline::before {
+        left: 36px;
+    }
+
+    .timeline-item {
+        grid-template-columns: 72px minmax(0, 1fr);
+        gap: 18px;
+        align-items: flex-start;
+    }
+
+    .timeline-date {
+        grid-column: 2;
+        grid-row: 1;
+
+        padding-right: 0;
+
+        text-align: left;
+        font-size: 1rem;
+    }
+
+    .timeline-center {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+
+        justify-content: flex-start;
+    }
+
+    .timeline-image {
+        width: 72px;
+        height: 72px;
+
+        border-width: 3px;
+
+        box-shadow:
+            0 0 18px rgba(212, 197, 156, 0.32),
+            0 0 38px rgba(212, 197, 156, 0.14);
+    }
+
+    .timeline-content {
+        grid-column: 2;
+        grid-row: 2;
+
+        max-width: none;
+        margin-left: 0;
+
+        padding: 22px;
+    }
+
+    .timeline-content p {
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline-section {
+        padding: 80px 0;
+    }
+
+    .timeline-header h2 {
+        font-size: 2rem;
+    }
+
+    .timeline-header p {
+        font-size: 0.92rem;
+    }
+
+    .timeline {
+        gap: 58px;
+    }
+
+    .timeline-content {
+        padding: 20px;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .timeline-content p {
+        font-size: 0.94rem;
+    }
+}
+
+
+/* =====================================================
+   10. ACESSIBILIDADE
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .timeline-image,
+    .timeline-image img,
+    .timeline-content {
+        transition: none;
+    }
+
+    .timeline-item:hover .timeline-image,
+    .timeline-item:hover .timeline-image img,
+    .timeline-item:hover .timeline-content {
+        transform: none;
+    }
+}

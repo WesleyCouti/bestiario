@@ -1,0 +1,194 @@
+/* =====================================================
+   RESET.CSS
+   -----------------------------------------------------
+   Reset global moderno do projeto Bestiário.
+
+   Objetivo:
+   - Remover estilos padrões inconsistentes dos navegadores.
+   - Padronizar box model, imagens, formulários e textos.
+   - Criar uma base limpa para os demais arquivos CSS.
+   - Melhorar acessibilidade e previsibilidade visual.
+
+   Estrutura:
+   1. Box sizing
+   2. Reset de margens e paddings
+   3. HTML e body
+   4. Mídias
+   5. Tipografia e textos
+   6. Links
+   7. Listas
+   8. Botões e formulários
+   9. Tabelas
+   10. Acessibilidade
+===================================================== */
+
+
+/* =====================================================
+   1. BOX SIZING
+===================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   2. RESET DE MARGENS E PADDINGS
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =====================================================
+   3. HTML E BODY
+===================================================== */
+
+html,
+body {
+    min-height: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+
+/* =====================================================
+   4. MÍDIAS
+===================================================== */
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+img,
+picture,
+video,
+canvas {
+    height: auto;
+}
+
+
+/* =====================================================
+   5. TIPOGRAFIA E TEXTOS
+===================================================== */
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+strong,
+b {
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   6. LINKS
+===================================================== */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =====================================================
+   7. LISTAS
+===================================================== */
+
+ul,
+ol {
+    list-style: none;
+}
+
+
+/* =====================================================
+   8. BOTÕES E FORMULÁRIOS
+===================================================== */
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+input,
+textarea,
+select {
+    color: inherit;
+}
+
+textarea {
+    resize: vertical;
+}
+
+fieldset {
+    border: 0;
+}
+
+legend {
+    padding: 0;
+}
+
+
+/* =====================================================
+   9. TABELAS
+===================================================== */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* =====================================================
+   10. ACESSIBILIDADE
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
