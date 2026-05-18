@@ -1,5 +1,5 @@
 /* =====================================================
-   PÁGINA MITOLOGIAS
+   PÁGINA RELIGIÕES
 ===================================================== */
 
 body {
@@ -9,7 +9,7 @@ body {
 
 /* HERO */
 
-.mythology-hero {
+.religion-hero {
     position: relative;
 
     min-height: 430px;
@@ -21,12 +21,12 @@ body {
 
     background:
         linear-gradient(to bottom, rgba(0, 0, 0, 0.25), #050706 95%),
-        url("../../../assets/images/mitologias/background-mitologias.png") center / cover no-repeat;
+        url("../../../assets/images/religions/background-religions.png") center / cover no-repeat;
 
     overflow: hidden;
 }
 
-.mythology-hero-overlay {
+.religion-hero-overlay {
     position: absolute;
     inset: 0;
 
@@ -35,7 +35,7 @@ body {
         rgba(0, 0, 0, 0.58);
 }
 
-.mythology-hero-content {
+.religion-hero-content {
     position: relative;
     z-index: 2;
 
@@ -51,7 +51,7 @@ body {
     letter-spacing: 14px;
 }
 
-.mythology-hero h1 {
+.religion-hero h1 {
     margin-bottom: 24px;
 
     color: #e8dcc0;
@@ -76,7 +76,7 @@ body {
     text-transform: uppercase;
 }
 
-.mythology-hero p {
+.religion-hero p {
     max-width: 560px;
     margin: 0 auto;
 
@@ -87,13 +87,13 @@ body {
 
 /* CATÁLOGO */
 
-.mythology-catalog {
+.religion-catalog {
     width: min(1180px, 92%);
     margin: 0 auto;
     padding: 60px 0 90px;
 }
 
-.mythology-grid {
+.religion-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 18px;
@@ -101,7 +101,7 @@ body {
 
 /* CARD */
 
-.mythology-card {
+.religion-card {
     position: relative;
 
     overflow: hidden;
@@ -123,7 +123,7 @@ body {
         box-shadow 0.35s ease;
 }
 
-.mythology-card::before {
+.religion-card::before {
     content: "";
     position: absolute;
     inset: 8px;
@@ -135,7 +135,7 @@ body {
     pointer-events: none;
 }
 
-.mythology-card img {
+.religion-card img {
     width: 100%;
     height: 275px;
 
@@ -149,7 +149,7 @@ body {
         filter 0.55s ease;
 }
 
-.mythology-card-content {
+.religion-card-content {
     position: relative;
 
     padding: 0 24px 30px;
@@ -157,7 +157,7 @@ body {
     text-align: center;
 }
 
-.mythology-icon {
+.religion-icon {
     width: 76px;
     height: 76px;
 
@@ -178,7 +178,7 @@ body {
     box-shadow: 0 0 18px rgba(201, 162, 74, 0.15);
 }
 
-.mythology-card h2 {
+.religion-card h2 {
     margin-bottom: 16px;
 
     color: #e8dcc0;
@@ -190,7 +190,7 @@ body {
     text-transform: uppercase;
 }
 
-.mythology-card p {
+.religion-card p {
     min-height: 96px;
 
     color: rgba(232, 220, 192, 0.78);
@@ -199,7 +199,7 @@ body {
     line-height: 1.7;
 }
 
-.mythology-card a {
+.religion-card a {
     display: inline-block;
 
     margin-top: 24px;
@@ -214,7 +214,7 @@ body {
     transition: color 0.3s ease;
 }
 
-.mythology-card:hover {
+.religion-card:hover {
     transform: translateY(-8px);
 
     border-color: rgba(201, 162, 74, 0.75);
@@ -224,13 +224,18 @@ body {
         0 0 26px rgba(201, 162, 74, 0.12);
 }
 
-.mythology-card:hover a {
+.religion-card:hover img {
+    transform: scale(1.06);
+    filter: brightness(0.95) contrast(1.08);
+}
+
+.religion-card:hover a {
     color: #f3e8bd;
 }
 
 /* MENSAGEM FINAL */
 
-.mythology-message {
+.religion-message {
     margin-top: 28px;
     padding: 24px 36px;
 
@@ -249,7 +254,7 @@ body {
         );
 }
 
-.mythology-message span {
+.religion-message span {
     width: 72px;
     height: 72px;
 
@@ -263,7 +268,7 @@ body {
     font-size: 2rem;
 }
 
-.mythology-message h3 {
+.religion-message h3 {
     margin-bottom: 8px;
 
     color: #c9a24a;
@@ -274,36 +279,36 @@ body {
     text-transform: uppercase;
 }
 
-.mythology-message p {
+.religion-message p {
     color: rgba(232, 220, 192, 0.78);
 }
 
 /* RESPONSIVO */
 
 @media (max-width: 1100px) {
-    .mythology-grid {
+    .religion-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 700px) {
-    .mythology-hero {
+    .religion-hero {
         padding-top: 130px;
     }
 
-    .mythology-hero h1 {
+    .religion-hero h1 {
         letter-spacing: 6px;
     }
 
-    .mythology-grid {
+    .religion-grid {
         grid-template-columns: 1fr;
     }
 
-    .mythology-card {
+    .religion-card {
         min-height: auto;
     }
 
-    .mythology-message {
+    .religion-message {
         flex-direction: column;
         text-align: center;
     }

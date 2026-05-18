@@ -4,850 +4,744 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Mitologias | Bestiário</title>
 
-    <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/layout.css" />
-    <link rel="stylesheet" href="./css/mitologias.css" />
-    <link rel="stylesheet" href="./css/responsive.css" />
+    <link rel="stylesheet" href="./css/global/reset.css" />
+    <link rel="stylesheet" href="./css/global/variables.css" />
+    <link rel="stylesheet" href="./css/global/base.css" />
+    <link rel="stylesheet" href="./css/layout/menu.css" />
+    <link rel="stylesheet" href="./css/pages/mythology/mythology.css" />
 </head>
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+    <!-- =====================================================
+     HEADER / MENU PRINCIPAL
+===================================================== -->
     <header class="topbar">
-        <div class="container topbar-content">
-            <div class="logo">Bestiário</div>
 
-            <nav class="menu">
-                <a href="./index.html">Home</a>
-                <a href="./mitologias.html">Mitologias</a>
-                <a href="#">Lendas</a>
-                <a href="#">Símbolos</a>
-                <a href="#">Objetos</a>
+        <div class="container topbar-content">
+
+            <!-- =====================================================
+             LOGO
+        ====================================================== -->
+            <a href="./index.html#home" class="logo">
+                <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" class="logo-icon" />
+
+                <span>Bestiário</span>
+            </a>
+
+            <!-- =====================================================
+             MENU
+        ====================================================== -->
+            <nav class="menu" aria-label="Menu principal">
+
+                <a href="./index.html#home">
+                    Home
+                </a>
+
+                <a href="./mitologias.html" class="active">
+                    Mitologias
+                </a>
+
+                <a href="./religion.html">
+                    Religiões
+                </a>
+
+                <a href="./index.html#lendas">
+                    Lendas
+                </a>
+
+                <a href="./index.html#simbolos">
+                    Símbolos
+                </a>
+
+                <a href="./index.html#reliquias">
+                    Relíquias
+                </a>
+
             </nav>
+
         </div>
+
     </header>
 
     <main>
 
-        <!-- ================= HERO DA PÁGINA ================= -->
-        <section class="page-hero">
-            <div class="container page-hero-content">
-                <span class="section-tag">Civilizações • Religiões • Tradições</span>
-                <h1>Linha do Tempo das Tradições</h1>
+        <section class="mythology-hero">
+
+            <div class="mythology-hero-overlay"></div>
+
+            <div class="mythology-hero-content">
+
+                <div class="hero-ornament">
+                    ✦ ⊹ ✦
+                </div>
+
+                <h1>Mitologias</h1>
+
+                <span class="hero-subtitle">
+                    Histórias que explicam o mundo.
+                </span>
+
                 <p>
-                    Uma visão cronológica do surgimento, consolidação e expansão de mitologias,
-                    tradições religiosas e imaginários culturais ao redor do mundo.
+                    Deuses, heróis, criaturas e mitos que atravessam gerações.
+                    Explore as principais mitologias do mundo e descubra a sabedoria de cada cultura.
                 </p>
+
             </div>
+
         </section>
 
-        <!-- ================= TIMELINE ================= -->
-        <section class="timeline-section">
-            <div class="container">
+        <section class="mythology-catalog">
 
-                <div class="timeline-header">
-                    <h2>Mitologias ao Longo da História</h2>
-                    <p>
-                        As datas abaixo são aproximadas e servem como referência histórica para
-                        organizar tradições antigas, religiosas, regionais e culturais.
-                    </p>
-                </div>
+            <div class="mythology-grid">
 
-                <div class="timeline">
-
-                    <!-- ANTIGUIDADE MAIS ANTIGA -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 3500 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-mesopotamicos-e-criaturas-miticas.png"
-                                    alt="Mitologia Mesopotâmia" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Mesopotâmia</h3>
-                            <p>As primeiras narrativas e cosmologias da Suméria, Acádia, Assíria e Babilônia.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-abenaki.png" alt="Mitologia Abenaki">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🌲</div>
+                        <h2>Abenaki</h2>
+                        <p>Tradições ancestrais ligadas à natureza, aos espíritos e às forças criadoras do mundo.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 3000 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-egipcios-e-criaturas-miticas.png"
-                                    alt="Mitologia Egípcia" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Egípcia</h3>
-                            <p>Os deuses do Antigo Egito, os rituais funerários e a ordem cósmica do Nilo.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-aborígene.png"
+                        alt="Mitologia Aborígene">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">☀</div>
+                        <h2>Aborígene</h2>
+                        <p>Cosmovisão marcada pelo Tempo do Sonho, espíritos criadores e conexão profunda com a terra.
+                        </p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 2000 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-persa-e-criaturas-miticas.png"
-                                    alt="Mitologia Persa" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Persa</h3>
-                            <p>Tradições iranianas antigas, forças cósmicas e dualidades espirituais.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-africana.png"
+                        alt="Mitologia Africana">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">☥</div>
+                        <h2>Africana</h2>
+                        <p>Riqueza de tradições orais, espíritos da natureza, ancestralidade e forças sagradas.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1800 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-judaicos-e-criaturas-miticas.png"
-                                    alt="Mitologia Judaica" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Judaica</h3>
-                            <p>Imaginário religioso, anjos, narrativas patriarcais e tradições do Antigo Testamento.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-alemã.png" alt="Mitologia Alemã">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🌑</div>
+                        <h2>Alemã</h2>
+                        <p>Lendas sombrias, florestas antigas, criaturas fantásticas e tradições populares germânicas.
+                        </p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1500 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-hindus-e-criaturas-miticas.png"
-                                    alt="Mitologia Hindu" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Hindu</h3>
-                            <p>Vedas, divindades do subcontinente indiano e os grandes ciclos do cosmos.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-Americana.png"
+                        alt="Mitologia Americana">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">★</div>
+                        <h2>Americana</h2>
+                        <p>Histórias lendárias, heróis populares, assombrações e criaturas do imaginário
+                            norte-americano.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1500 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-indianos-e-criaturas-miticas.png"
-                                    alt="Mitologia Indiana" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Indiana</h3>
-                            <p>Termo amplo para o conjunto de tradições míticas formadas na antiga Índia.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-Árabe.png" alt="Mitologia Árabe">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">☾</div>
+                        <h2>Árabe</h2>
+                        <p>Gênios, desertos encantados, seres invisíveis e contos espirituais do mundo antigo.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1500 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-chinesa-e-criaturas-miticas.png"
-                                    alt="Mitologia Chinesa" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Chinesa</h3>
-                            <p>Dragões, imortais, heróis culturais e a ordem do céu e da terra.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-argentina.png"
+                        alt="Mitologia Argentina">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🌙</div>
+                        <h2>Argentina</h2>
+                        <p>Lendas populares com espíritos, entidades rurais e criaturas tradicionais do sul.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <!-- MUNDO CLÁSSICO -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1200 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-gregos-e-criaturas-miticas.png"
-                                    alt="Mitologia Grega" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Grega</h3>
-                            <p>Os deuses do Olimpo, os heróis trágicos e os ciclos épicos da Antiguidade.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-asteca.png" alt="Mitologia Asteca">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">☀</div>
+                        <h2>Asteca</h2>
+                        <p>Deuses solares, serpentes emplumadas e forças cósmicas ligadas ao equilíbrio universal.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1000 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-romanos-e-criaturas-miticas.png"
-                                    alt="Mitologia Romana" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Romana</h3>
-                            <p>Adaptação latina de deuses, símbolos e narrativas do mundo clássico.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-basca.png" alt="Mitologia Basca">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">⛰</div>
+                        <h2>Basca</h2>
+                        <p>Deusas da terra, espíritos das cavernas, gigantes e entidades das montanhas sagradas.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 900 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-abenaki-e-criaturas-miticas.png"
-                                    alt="Mitologia Abenaki" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Abenaki</h3>
-                            <p>Tradições orais dos povos indígenas do nordeste da América do Norte.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-brasileira.png"
+                        alt="Mitologia Brasileira">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">✥</div>
+                        <h2>Brasileira</h2>
+                        <p>Mitos indígenas, encantados e lendas das florestas, rios e povos do Brasil.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 900 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-inuit-e-criaturas-miticas.png"
-                                    alt="Mitologia Inuit" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Inuit</h3>
-                            <p>Mitos do Ártico ligados à caça, espíritos da natureza e sobrevivência extrema.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-budismo.png" alt="Mitologia Budista">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">☸</div>
+                        <h2>Budista</h2>
+                        <p>Seres celestiais, guardiões espirituais e símbolos ligados à sabedoria e iluminação.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 800 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-celta-e-criaturas-miticas.png"
-                                    alt="Mitologia Celta" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Celta</h3>
-                            <p>Druidas, deuses tribais e o imaginário sagrado das florestas e colinas.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-caribenha.png"
+                        alt="Mitologia Caribenha">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🌊</div>
+                        <h2>Caribenha</h2>
+                        <p>Lendas insulares com entidades marítimas, espíritos e tradições populares místicas.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 800 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-gaelica-e-criaturas-miticas.png"
-                                    alt="Mitologia Gaélica" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Gaélica</h3>
-                            <p>Ramo insular das tradições célticas, com heróis e ciclos lendários próprios.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-catalana.png"
+                        alt="Mitologia Catalana">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🐉</div>
+                        <h2>Catalana</h2>
+                        <p>Dragões, gigantes, bruxas e seres encantados do imaginário mítico da Catalunha.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 800 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-irlandesa-e-criaturas-miticas.png"
-                                    alt="Mitologia Irlandesa" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Irlandesa</h3>
-                            <p>Tuatha Dé Danann, reis míticos e ciclos heroicos preservados em manuscritos medievais.
-                            </p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-celta.png" alt="Mitologia Celta">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">☘</div>
+                        <h2>Celta</h2>
+                        <p>Deuses da natureza, magia, druidas e lendas das terras da névoa.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 700 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-basca-e-criaturas-miticas.png"
-                                    alt="Mitologia Basca" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Basca</h3>
-                            <p>Tradições montanhosas antigas, seres subterrâneos e cultos regionais do País Basco.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-chilena.png" alt="Mitologia Chilena">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">⛰</div>
+                        <h2>Chilena</h2>
+                        <p>Criaturas marítimas, espíritos da terra, lendas mapuches e mistérios das montanhas.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 600 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-asteca-e-criaturas-miticas.png"
-                                    alt="Mitologia Asteca" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Asteca</h3>
-                            <p>Cosmos ritual, sacrifício, sol e guerra na Mesoamérica central.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-chinesa.png" alt="Mitologia Chinesa">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">龍</div>
+                        <h2>Chinesa</h2>
+                        <p>Dragões celestiais, imortais, espíritos guardiões e forças da harmonia universal.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 500 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-maia-e-criaturas-miticas.png"
-                                    alt="Mitologia Maia" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Maia</h3>
-                            <p>Calendários sagrados, heróis gêmeos e cosmogonias do mundo maia.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-colombiana.png"
+                        alt="Mitologia Colombiana">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🌿</div>
+                        <h2>Colombiana</h2>
+                        <p>Entidades populares, espíritos da natureza e narrativas ligadas às florestas e montanhas.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 500 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-budista-e-criaturas-miticas.png"
-                                    alt="Mitologia Budista" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Budista</h3>
-                            <p>Cosmologias, reinos espirituais e narrativas simbólicas do budismo antigo.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-crista.png" alt="Mitologia Cristã">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">✟</div>
+                        <h2>Cristã</h2>
+                        <p>Anjos, demônios, milagres, visões apocalípticas e narrativas espirituais simbólicas.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <!-- ANTIGUIDADE TARDIA / INÍCIO MEDIEVAL -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 200 a.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-americana-e-criaturas-miticas.png"
-                                    alt="Mitologia Americana" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Americana</h3>
-                            <p>Categoria ampla para tradições do continente americano em diferentes povos e épocas.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-dinamarquesa.png"
+                        alt="Mitologia Dinamarquesa">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">ᛟ</div>
+                        <h2>Dinamarquesa</h2>
+                        <p>Lendas do norte europeu com seres das florestas, guerreiros e espíritos antigos.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 30 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-crista-e-criaturas-miticas.png"
-                                    alt="Mitologia Cristã" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Cristã</h3>
-                            <p>Imaginário cristão, santos, anjos, demônios e narrativas sagradas.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-dominicana.png"
+                        alt="Mitologia Dominicana">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🌴</div>
+                        <h2>Dominicana</h2>
+                        <p>Espíritos, assombrações, lendas rurais e seres sobrenaturais do imaginário caribenho.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 200 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-yoruba-e-criaturas-miticas.png"
-                                    alt="Mitologia Iorubá" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Iorubá</h3>
-                            <p>Orixás, ancestralidade e cosmologia da África Ocidental.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-egipcia.png" alt="Mitologia Egípcia">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">☥</div>
+                        <h2>Egípcia</h2>
+                        <p>Deuses ancestrais, vida após a morte e a ordem cósmica que sustenta o universo.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 300 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-tupi-guarani-e-criaturas-miticas.png"
-                                    alt="Mitologia Tupi Guarani" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Tupi Guarani</h3>
-                            <p>Criação do mundo, espíritos da mata e entidades indígenas do Brasil.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-escandinava.png"
+                        alt="Mitologia Escandinava">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">ᚱ</div>
+                        <h2>Escandinava</h2>
+                        <p>Deuses, gigantes, valquírias e mundos conectados por uma cosmologia épica.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 500 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-nordico-e-criaturas-miticas.png"
-                                    alt="Mitologia Nordica" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Nordica</h3>
-                            <p>Os vikings, Odin, Thor, Loki e o destino conduzido ao Ragnarok.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-escocesa.png"
+                        alt="Mitologia Escocesa">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🏰</div>
+                        <h2>Escocesa</h2>
+                        <p>Fadas, espíritos das terras altas, criaturas misteriosas e antigas tradições celtas.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 500 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-escandinava-e-criaturas-miticas.png"
-                                    alt="Mitologia Escandinava" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Escandinava</h3>
-                            <p>Recorte regional das tradições nórdicas do norte europeu.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-eslava.png" alt="Mitologia Eslava">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">❄</div>
+                        <h2>Eslava</h2>
+                        <p>Deuses da tempestade, espíritos domésticos, bruxas e entidades das florestas sombrias.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 600 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-eslava-e-criaturas-miticas.png"
-                                    alt="Mitologia Eslava" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Eslava</h3>
-                            <p>Divindades, espíritos domésticos e forças da natureza do leste europeu.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-europeia.png"
+                        alt="Mitologia Europeia">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">♜</div>
+                        <h2>Europeia</h2>
+                        <p>Lendas, criaturas medievais, tradições pagãs e símbolos do imaginário antigo europeu.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 600 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-arabe-e-criaturas-miticas.png"
-                                    alt="Mitologia Árabe" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Árabe</h3>
-                            <p>Tradições pré-islâmicas, jinns, desertos sagrados e imaginários do mundo árabe.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-filipina.png"
+                        alt="Mitologia Filipina">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🌺</div>
+                        <h2>Filipina</h2>
+                        <p>Divindades, espíritos da natureza e criaturas noturnas das tradições orais filipinas.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 600 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-tibetana-e-criaturas-miticas.png" alt="Mitologia Tibetana" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Tibetana</h3>
-                            <p>Síntese entre budismo, montanhas sagradas e entidades protetoras.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-finlandesa.png"
+                        alt="Mitologia Finlandesa">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">❄</div>
+                        <h2>Finlandesa</h2>
+                        <p>Heróis mágicos, cantos sagrados, espíritos da floresta e forças da criação.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 700 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-japonesa-e-criaturas-miticas.png" alt="Mitologia Japonesa" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Japonesa</h3>
-                            <p>Kamis, yokais e tradições xintoístas e budistas do arquipélago japonês.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-francesa.png"
+                        alt="Mitologia Francesa">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">⚜</div>
+                        <h2>Francesa</h2>
+                        <p>Contos de fadas, cavaleiros, dragões e tradições populares da França antiga.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 700 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-filipinos-e-criaturas-miticas.png" alt="Mitologia Filipina" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Filipina</h3>
-                            <p>Entidades insulares, ancestrais e mitos de criação do arquipélago filipino.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-gaelica.png" alt="Mitologia Gaélica">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">☘</div>
+                        <h2>Gaélica</h2>
+                        <p>Heróis lendários, fadas, deuses antigos e reinos encantados dos povos gaélicos.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 700 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-indonesia-e-criaturas-miticas.png" alt="Mitologia Indonesia" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Indonesia</h3>
-                            <p>Tradições do sudeste asiático moldadas por mitos locais, hinduísmo e islamização.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-grega.png" alt="Mitologia Grega">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🏛</div>
+                        <h2>Grega</h2>
+                        <p>Deuses do Olimpo, heróis lendários e mitos que moldaram a civilização ocidental.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 700 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-malaio-e-criaturas-miticas.png" alt="Mitologia Malaio" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Malaio</h3>
-                            <p>Seres da floresta, espíritos e heranças culturais do mundo malaio.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-haitiana.png"
+                        alt="Mitologia Haitiana">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🔥</div>
+                        <h2>Haitiana</h2>
+                        <p>Entidades ancestrais, ritos simbólicos e forças sagradas do universo cultural haitiano.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 700 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-turca-e-criaturas-miticas.png" alt="Mitologia Turca" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Turca</h3>
-                            <p>Céu, lobos sagrados, espíritos e tradição mítica da Ásia Central e Anatólia.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-havaiana.png"
+                        alt="Mitologia Havaiana">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🌋</div>
+                        <h2>Havaiana</h2>
+                        <p>Deuses vulcânicos, espíritos do oceano e forças naturais ligadas ao fogo e ao mar.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <!-- EUROPA MEDIEVAL / MODERNA -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 800 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-escocesa-e-criaturas-miticas.png" alt="Mitologia Escocesa" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Escocesa</h3>
-                            <p>Fadas, espíritos das Highlands e lendas regionais da Escócia.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-heraldica-europeia.png"
+                        alt="Mitologia Heráldica Europeia">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🛡</div>
+                        <h2>Heráldica Europeia</h2>
+                        <p>Dragões, grifos, unicórnios e criaturas simbólicas presentes em brasões e reinos.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 800 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-finlandesa-e-criaturas-miticas.png" alt="Mitologia Finlandesa" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Finlandesa</h3>
-                            <p>Runos, xamanismo e tradições épicas que ecoam no Kalevala.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-hindu.png" alt="Mitologia Hindu">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">ॐ</div>
+                        <h2>Hindu</h2>
+                        <p>Deuses, reencarnação, karma, avatares e ensinamentos espirituais milenares.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 900 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-inglesa-e-criaturas-miticas.png" alt="Mitologia Inglesa" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Inglesa</h3>
-                            <p>Lendas insulares, elementos arturianos e tradições locais da Inglaterra.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-holandesa.png"
+                        alt="Mitologia Holandesa">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🌊</div>
+                        <h2>Holandesa</h2>
+                        <p>Lendas de águas, espíritos, figuras populares e tradições antigas dos Países Baixos.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 900 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-alema-e-criaturas-miticas.png" alt="Mitologia Alemã" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Alemã</h3>
-                            <p>Ramo germânico continental com heróis, florestas e espíritos do norte europeu.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-hungara.png" alt="Mitologia Húngara">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🦅</div>
+                        <h2>Húngara</h2>
+                        <p>Aves sagradas, heróis lendários, espíritos e narrativas antigas do povo magiar.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1000 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-dinamarquesa-e-criaturas-miticas.png" alt="Mitologia Dinamarquesa" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Dinamarquesa</h3>
-                            <p>Tradição nórdica regional associada à Dinamarca medieval.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-inca.png" alt="Mitologia Inca">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">☀</div>
+                        <h2>Inca</h2>
+                        <p>Deuses solares, montanhas sagradas e forças naturais ligadas ao império andino.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1000 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-lituanos-e-criaturas-miticas.png" alt="Mitologia Lituana" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Lituana</h3>
-                            <p>Uma das últimas tradições pagãs vivas da Europa pré-cristã.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-indiana.png" alt="Mitologia Indiana">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🪷</div>
+                        <h2>Indiana</h2>
+                        <p>Deuses, semideuses, ciclos cósmicos, avatares e narrativas épicas espirituais.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1100 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-hungaro-e-criaturas-miticas.png" alt="Mitologia Húngara" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Húngara</h3>
-                            <p>Heranças nômades, xamânicas e cristianizadas da Europa Central.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-indonesia.png"
+                        alt="Mitologia Indonésia">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🐉</div>
+                        <h2>Indonésia</h2>
+                        <p>Espíritos ancestrais, dragões, seres protetores e lendas do arquipélago indonésio.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1100 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-romenia-e-criaturas-miticas.png" alt="Mitologia Romenia" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Romenia</h3>
-                            <p>Folclore e seres sobrenaturais da tradição balcânica e carpática.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-inglesa.png" alt="Mitologia Inglesa">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">⚔</div>
+                        <h2>Inglesa</h2>
+                        <p>Cavaleiros, reis míticos, florestas encantadas e criaturas lendárias da tradição inglesa.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1200 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-francesa-e-criaturas-miticas.png" alt="Mitologia Francesa" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Francesa</h3>
-                            <p>Lendas regionais, santos populares e imaginário medieval francês.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-inuit.png" alt="Mitologia Inuit">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">❄</div>
+                        <h2>Inuit</h2>
+                        <p>Espíritos do gelo, animais sagrados e histórias moldadas pela natureza extrema.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1200 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-holandesa-e-criaturas-miticas.png" alt="Mitologia Holandesa" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Holandesa</h3>
-                            <p>Folclore dos Países Baixos com seres aquáticos, espíritos e lendas marítimas.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-ioruba.png" alt="Mitologia Iorubá">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">⚚</div>
+                        <h2>Iorubá</h2>
+                        <p>Orixás, forças da natureza, ancestralidade, destino e rituais sagrados.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1200 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-portuguesa-e-criaturas-miticas.png" alt="Mitologia Portuguesa" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Portuguesa</h3>
-                            <p>Lendas, mouras encantadas e tradições populares da Península Ibérica.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-irlandesa.png"
+                        alt="Mitologia Irlandesa">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">☘</div>
+                        <h2>Irlandesa</h2>
+                        <p>Tuatha Dé Danann, fadas, reinos invisíveis e histórias celtas de magia e destino.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <!-- OCEANIA E MUNDOS INSULARES -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1200 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-maori-e-criaturas-miticas.png" alt="Mitologia Maori" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Maori</h3>
-                            <p>Cosmogonia, ancestrais e oceanos sagrados do povo maori.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-japonesa.png"
+                        alt="Mitologia Japonesa">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">⛩</div>
+                        <h2>Japonesa</h2>
+                        <p>Kami, espíritos e yokais onde o sagrado e o natural se encontram.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1300 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-havaiana-e-criaturas-miticas.png" alt="Mitologia Havaiana" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Havaiana</h3>
-                            <p>Deuses vulcânicos, oceano, criação insular e linhagens divinas.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-judaica.png" alt="Mitologia Judaica">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">✡</div>
+                        <h2>Judaica</h2>
+                        <p>Anjos, golems, demônios, sabedoria mística e tradições simbólicas antigas.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1500 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-aborigene-e-criaturas-miticas.png" alt="Mitologia Aborigene" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Aborigene</h3>
-                            <p>Tempo do Sonho, ancestrais criadores e paisagens sagradas da Austrália.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-lituana.png" alt="Mitologia Lituana">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🌩</div>
+                        <h2>Lituana</h2>
+                        <p>Deuses do trovão, serpentes sagradas, espíritos da terra e tradições bálticas.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <!-- AMÉRICAS COLONIAIS / MODERNAS -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1700 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-brasileira-e-criaturas-miticas.png" alt="Mitologia Brasileira" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Brasileira</h3>
-                            <p>Fusão entre matrizes indígenas, africanas e europeias no imaginário do Brasil.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-maia.png" alt="Mitologia Maia">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">▣</div>
+                        <h2>Maia</h2>
+                        <p>Deuses criadores, jaguares sagrados, calendários cósmicos e mundos subterrâneos.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1700 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-umbanda-e-criaturas-miticas.png" alt="Mitologia Umbanda" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Umbanda</h3>
-                            <p>Cosmologia religiosa brasileira com orixás, entidades e sincretismo espiritual.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-malaio.png" alt="Mitologia Malaio">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🌙</div>
+                        <h2>Malaio</h2>
+                        <p>Espíritos da selva, criaturas noturnas e entidades protetoras do sudeste asiático.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1700 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-africanos-e-criaturas-miticas.png" alt="Mitologia Africana" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Africana</h3>
-                            <p>Categoria ampla para tradições orais e espirituais de diferentes povos africanos.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-maori.png" alt="Mitologia Maori">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🌊</div>
+                        <h2>Maori</h2>
+                        <p>Deuses criadores, heróis navegadores e forças naturais ligadas ao mar, céu e terra.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1700 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-caribenha-e-criaturas-miticas.png" alt="Mitologia Caribenha" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Caribenha</h3>
-                            <p>Tradições sincréticas formadas por matrizes africanas, indígenas e europeias.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-mesopotamica.png"
+                        alt="Mitologia Mesopotâmica">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">𒀭</div>
+                        <h2>Mesopotâmica</h2>
+                        <p>Deuses antigos, monstros primordiais, reis lendários e narrativas das primeiras civilizações.
+                        </p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1800 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-haitiana-e-criaturas-miticas.png" alt="Mitologia Haitiana" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Haitiana</h3>
-                            <p>Heranças espirituais afro-caribenhas, vodu e entidades de forte simbolismo.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-mexicana.png"
+                        alt="Mitologia Mexicana">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">☀</div>
+                        <h2>Mexicana</h2>
+                        <p>Serpentes sagradas, deuses solares, lendas populares e tradições ancestrais mexicanas.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1800 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-dominicana-e-criaturas-miticas.png" alt="Mitologia Dominicana" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Dominicana</h3>
-                            <p>Folclore e tradições espirituais formadas na experiência caribenha colonial.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-nordica.png" alt="Mitologia Nórdica">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">ᛟ</div>
+                        <h2>Nórdica</h2>
+                        <p>Deuses poderosos, gigantes e o destino do mundo em Ragnarok.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <!-- IDENTIDADES NACIONAIS MODERNAS -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1700 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-catalana-e-criaturas-miticas.png" alt="Mitologia Catalana" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Catalana</h3>
-                            <p>Lendas e seres regionais articulados como patrimônio cultural da Catalunha.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-persa.png" alt="Mitologia Persa">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">☼</div>
+                        <h2>Persa</h2>
+                        <p>Forças do bem e do caos, seres celestiais e batalhas cósmicas entre luz e sombra.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1700 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-europeia-e-criaturas-miticas.png" alt="Mitologia Europeia" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Europeia</h3>
-                            <p>Categoria ampla para tradições cruzadas do imaginário do continente europeu.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-portuguesa.png"
+                        alt="Mitologia Portuguesa">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">⚓</div>
+                        <h2>Portuguesa</h2>
+                        <p>Mouras encantadas, monstros marítimos, castelos e tradições mágicas lusitanas.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1800 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-argentina-e-criaturas-miticas.png" alt="Mitologia Argentina" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Argentina</h3>
-                            <p>Lendas, assombrações e tradições regionais consolidadas na cultura argentina.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-romana.png" alt="Mitologia Romana">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🏛</div>
+                        <h2>Romana</h2>
+                        <p>Deuses imperiais, heróis fundadores, rituais públicos e símbolos de ordem e destino.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1800 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-chilena-e-criaturas-miticas.png" alt="Mitologia Chilena" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Chilena</h3>
-                            <p>Narrativas folclóricas, marítimas e andinas da formação cultural chilena.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-romena.png" alt="Mitologia Romena">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🦇</div>
+                        <h2>Romena</h2>
+                        <p>Lendas sombrias, espíritos, vampiros folclóricos e criaturas das montanhas dos Cárpatos.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1800 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-colombiana-e-criaturas-miticas.png" alt="Mitologia Colombiana" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia Colombiana</h3>
-                            <p>Heranças indígenas, coloniais e regionais do folclore colombiano.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-tibetana.png"
+                        alt="Mitologia Tibetana">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">☸</div>
+                        <h2>Tibetana</h2>
+                        <p>Guardiões espirituais, divindades simbólicas, montanhas sagradas e tradições místicas.</p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">c. 1800 d.C.</div>
-                        <div class="timeline-center">
-                            <div class="timeline-image">
-                                <img src="./assets/images/imagens-page-mitologia/deuses-mexico-e-criaturas-miticas.png" alt="Mitologia México" />
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Mitologia México</h3>
-                            <p>Categoria moderna que reúne tradições indígenas, coloniais e populares mexicanas.</p>
-                        </div>
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-tupi-guarani.png"
+                        alt="Mitologia Tupi-Guarani">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🌿</div>
+                        <h2>Tupi-Guarani</h2>
+                        <p>Deuses criadores, espíritos da floresta, animais sagrados e narrativas indígenas brasileiras.
+                        </p>
+                        <a href="#">Explorar ›</a>
                     </div>
+                </article>
 
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-turca.png" alt="Mitologia Turca">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">🐺</div>
+                        <h2>Turca</h2>
+                        <p>Lobos sagrados, espíritos celestes, xamanismo e tradições míticas dos povos túrquicos.</p>
+                        <a href="#">Explorar ›</a>
+                    </div>
+                </article>
+
+                <article class="mythology-card">
+                    <img src="./assets/images/Mitologias_page_mitologia/mitologia-umbanda.png" alt="Mitologia Umbanda">
+                    <div class="mythology-card-content">
+                        <div class="mythology-icon">⚚</div>
+                        <h2>Umbanda</h2>
+                        <p>Orixás, guias espirituais, ancestralidade e forças sagradas da espiritualidade brasileira.
+                        </p>
+                        <a href="#">Explorar ›</a>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="mythology-message">
+                <span>🌎</span>
+                <div>
+                    <h3>Cada mitologia é uma porta para o conhecimento.</h3>
+                    <p>Explore. Aprenda. Conecte-se com histórias que nunca deixaram de viver.</p>
                 </div>
             </div>
+
         </section>
 
     </main>
