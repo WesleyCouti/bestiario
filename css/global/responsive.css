@@ -1,26 +1,18 @@
 /* =====================================================
    RESPONSIVE.CSS
    -----------------------------------------------------
-   Arquivo responsável apenas pela responsividade global.
+   Responsividade global do site Bestiário.
 
-   Importante:
-   A responsividade específica das seções deve ficar nos
-   próprios arquivos CSS, como:
-   - hero.css
-   - symbols.css
-   - relics.css
-   - legends.css
-   - creatures.css
-
-   Este arquivo controla:
+   Controla:
    1. Proteção global contra overflow
-   2. Container
+   2. Ajustes base
    3. Header/menu
-   4. Ajustes gerais de página
-   5. Responsividade para tablet
-   6. Responsividade para mobile
-   7. Responsividade para telas pequenas
-   8. Acessibilidade
+   4. Tablet
+   5. Mobile
+   6. Mobile pequeno
+   7. Telas muito pequenas
+   8. Hero mobile
+   9. Acessibilidade
 ===================================================== */
 
 
@@ -28,10 +20,21 @@
    1. PROTEÇÃO GLOBAL
 ===================================================== */
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 html,
 body {
+    width: 100%;
     max-width: 100%;
     overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -42,37 +45,70 @@ img,
 video,
 canvas,
 svg {
+    display: block;
     max-width: 100%;
+    height: auto;
 }
 
 
 /* =====================================================
-   2. AJUSTES GERAIS
+   2. AJUSTES BASE
 ===================================================== */
 
-/* 
-   Evita que o conteúdo fique escondido atrás do header fixo.
-   Ajuste este valor caso a altura do menu mude.
-*/
 main {
     padding-top: 78px;
 }
 
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 32px;
+}
+
 
 /* =====================================================
-   3. TABLET
+   3. HEADER / MENU
+===================================================== */
+
+.topbar {
+    width: 100%;
+}
+
+.topbar-content {
+    width: 100%;
+}
+
+.logo {
+    flex-shrink: 0;
+}
+
+.logo-icon {
+    flex-shrink: 0;
+}
+
+.menu {
+    max-width: 100%;
+}
+
+.menu a {
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   4. TABLET
 ===================================================== */
 
 @media (max-width: 992px) {
     .container {
-        max-width: 1200px;
         padding-inline: 24px;
     }
 
     .topbar {
         height: auto;
         min-height: 72px;
-        padding: 12px 0;
+        padding-block: 12px;
     }
 
     .topbar-content {
@@ -95,47 +131,56 @@ main {
 
 
 /* =====================================================
-   4. MOBILE
+   5. MOBILE
 ===================================================== */
 
 @media (max-width: 768px) {
     main {
-        padding-top: 130px;
+        padding-top: 132px;
     }
 
     .container {
         padding-inline: 18px;
     }
 
+    .topbar {
+        height: auto;
+        padding-block: 10px;
+    }
+
     .topbar-content {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 12px;
+    }
 
-        gap: 14px;
+    .logo {
+        text-align: center;
     }
 
     .menu {
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-
-        gap: 14px 20px;
+        gap: 12px 18px;
     }
 
     .menu a {
         font-size: 0.9rem;
+        line-height: 1.2;
     }
 }
 
 
 /* =====================================================
-   5. MOBILE PEQUENO
+   6. MOBILE PEQUENO
 ===================================================== */
 
 @media (max-width: 480px) {
     main {
-        padding-top: 125px;
+        padding-top: 128px;
     }
 
     .container {
@@ -153,22 +198,22 @@ main {
     }
 
     .menu {
-        gap: 12px 16px;
+        gap: 10px 14px;
     }
 
     .menu a {
-        font-size: 0.82rem;
+        font-size: 0.8rem;
     }
 }
 
 
 /* =====================================================
-   6. TELAS MUITO PEQUENAS
+   7. TELAS MUITO PEQUENAS
 ===================================================== */
 
 @media (max-width: 360px) {
     main {
-        padding-top: 140px;
+        padding-top: 138px;
     }
 
     .container {
@@ -184,27 +229,203 @@ main {
         height: 42px;
     }
 
+    .menu {
+        gap: 8px 12px;
+    }
+
     .menu a {
-        font-size: 0.78rem;
+        font-size: 0.76rem;
     }
 }
 
 
 /* =====================================================
-   7. ACESSIBILIDADE
+   8. HERO - MOBILE
 ===================================================== */
 
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
+@media (max-width: 768px) {
+
+    .hero {
+        width: 100%;
+        min-height: auto;
+        padding: 64px 0 72px;
+        overflow: hidden;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
     }
 
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+    .hero .container {
+        width: 100%;
+        max-width: 430px;
+
+        margin: 0 auto;
+        padding-inline: 18px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-layout {
+        width: 100%;
+        max-width: 360px;
+
+        margin: 0 auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 360px;
+
+        margin: 0 auto;
+        padding: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+    }
+
+    .hero-visual,
+    .hero-image {
+        display: none !important;
+    }
+
+    .hero-tag {
+        max-width: 300px;
+        margin: 0 auto 22px;
+
+        font-size: 0.72rem;
+        line-height: 1.5;
+        letter-spacing: 1.6px;
+
+        text-align: center;
+        white-space: normal;
+    }
+
+    .hero h1 {
+        width: 100%;
+        max-width: 330px;
+
+        margin: 0 auto 24px;
+
+        font-size: clamp(2.1rem, 9vw, 2.8rem);
+        line-height: 1.08;
+
+        text-align: center;
+        word-break: normal;
+        overflow-wrap: normal;
+    }
+
+    .hero p {
+        width: 100%;
+        max-width: 310px;
+
+        margin: 0 auto;
+
+        font-size: 0.95rem;
+        line-height: 1.7;
+
+        text-align: center;
+    }
+
+    .hero-actions {
+        width: 100%;
+        max-width: 260px;
+
+        margin: 32px auto 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 14px;
+    }
+
+    .hero-button,
+    .hero-secondary-button {
+        width: 100%;
+        max-width: 260px;
+        min-height: 52px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+    }
+
+    .hero-shortcuts {
+        width: 100%;
+        max-width: 300px;
+
+        margin: 52px auto 0;
+
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+
+        justify-items: center;
+        align-items: start;
+
+        gap: 34px 28px;
+    }
+
+    .hero-shortcut {
+        width: 120px;
+        min-height: 128px;
+
+        margin: 0 auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        text-align: center;
+    }
+
+    .shortcut-icon {
+        width: 56px;
+        height: 56px;
+
+        margin: 0 auto 14px;
+
+        font-size: 1.2rem;
+    }
+
+    .hero-shortcut strong {
+        display: block;
+
+        margin-bottom: 8px;
+
+        font-size: 0.7rem;
+        letter-spacing: 1.4px;
+
+        text-align: center;
+    }
+
+    .hero-shortcut small {
+        display: block;
+
+        max-width: 115px;
+
+        font-size: 0.72rem;
+        line-height: 1.35;
+
+        text-align: center;
     }
 }
