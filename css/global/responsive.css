@@ -429,3 +429,125 @@ main {
         text-align: center;
     }
 }
+
+/* =====================================================
+   9. RESPONSIVIDADE GLOBAL DE TEXTOS
+===================================================== */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: clamp(2rem, 10vw, 3rem);
+        line-height: 1.08;
+    }
+
+    h2 {
+        font-size: clamp(1.7rem, 8vw, 2.4rem);
+        line-height: 1.15;
+    }
+
+    p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+}
+
+
+/* =====================================================
+   10. GRID GLOBAL RESPONSIVO
+===================================================== */
+
+@media (max-width: 992px) {
+    .grid,
+    .cards-grid,
+    .section-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .grid,
+    .cards-grid,
+    .section-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =====================================================
+   11. ESPAÇAMENTO GLOBAL DE SEÇÕES
+===================================================== */
+
+@media (max-width: 768px) {
+    section {
+        padding-block: 64px;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding-block: 52px;
+    }
+}
+
+
+/* =====================================================
+   12. BOTÕES NO MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+    a,
+    button {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn,
+    .button,
+    .primary-button,
+    .secondary-button {
+        width: 100%;
+        max-width: 280px;
+        min-height: 48px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+    }
+}
+
+
+/* =====================================================
+   13. IMAGENS EM CARDS
+===================================================== */
+
+@media (max-width: 768px) {
+    .card img,
+    .mythology-card img,
+    .religion-card img {
+        height: auto;
+        max-height: 320px;
+        object-fit: cover;
+        object-position: center top;
+    }
+}
+
+
+/* =====================================================
+   14. ACESSIBILIDADE
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
