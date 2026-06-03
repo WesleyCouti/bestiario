@@ -4,15 +4,15 @@
    Responsividade global do site Bestiário.
 
    Controla:
-   1. Proteção global contra overflow
-   2. Ajustes base
-   3. Header/menu
-   4. Tablet
-   5. Mobile
-   6. Mobile pequeno
-   7. Telas muito pequenas
-   8. Hero mobile
-   9. Acessibilidade
+    1. Proteção global contra overflow
+    2. Ajustes base
+    3. Hero mobile
+    4. Responsividade global de textos
+    5. Grid global responsivo
+    6. Espaçamento global de seções
+    7. Botões no mobile
+    8. Imagens em cards
+    9. Acessibilidade
 ===================================================== */
 
 
@@ -68,179 +68,7 @@ main {
 
 
 /* =====================================================
-   3. HEADER / MENU
-===================================================== */
-
-.topbar {
-    width: 100%;
-}
-
-.topbar-content {
-    width: 100%;
-}
-
-.logo {
-    flex-shrink: 0;
-}
-
-.logo-icon {
-    flex-shrink: 0;
-}
-
-.menu {
-    max-width: 100%;
-}
-
-.menu a {
-    white-space: nowrap;
-}
-
-
-/* =====================================================
-   4. TABLET
-===================================================== */
-
-@media (max-width: 992px) {
-    .container {
-        padding-inline: 24px;
-    }
-
-    .topbar {
-        height: auto;
-        min-height: 72px;
-        padding-block: 12px;
-    }
-
-    .topbar-content {
-        gap: 24px;
-    }
-
-    .logo {
-        font-size: 1.7rem;
-    }
-
-    .logo-icon {
-        width: 56px;
-        height: 56px;
-    }
-
-    .menu {
-        gap: 22px;
-    }
-}
-
-
-/* =====================================================
-   5. MOBILE
-===================================================== */
-
-@media (max-width: 768px) {
-    main {
-        padding-top: 132px;
-    }
-
-    .container {
-        padding-inline: 18px;
-    }
-
-    .topbar {
-        height: auto;
-        padding-block: 10px;
-    }
-
-    .topbar-content {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-    }
-
-    .logo {
-        text-align: center;
-    }
-
-    .menu {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px 18px;
-    }
-
-    .menu a {
-        font-size: 0.9rem;
-        line-height: 1.2;
-    }
-}
-
-
-/* =====================================================
-   6. MOBILE PEQUENO
-===================================================== */
-
-@media (max-width: 480px) {
-    main {
-        padding-top: 128px;
-    }
-
-    .container {
-        padding-inline: 14px;
-    }
-
-    .logo {
-        font-size: 1.4rem;
-        letter-spacing: 1px;
-    }
-
-    .logo-icon {
-        width: 48px;
-        height: 48px;
-    }
-
-    .menu {
-        gap: 10px 14px;
-    }
-
-    .menu a {
-        font-size: 0.8rem;
-    }
-}
-
-
-/* =====================================================
-   7. TELAS MUITO PEQUENAS
-===================================================== */
-
-@media (max-width: 360px) {
-    main {
-        padding-top: 138px;
-    }
-
-    .container {
-        padding-inline: 12px;
-    }
-
-    .logo {
-        font-size: 1.25rem;
-    }
-
-    .logo-icon {
-        width: 42px;
-        height: 42px;
-    }
-
-    .menu {
-        gap: 8px 12px;
-    }
-
-    .menu a {
-        font-size: 0.76rem;
-    }
-}
-
-
-/* =====================================================
-   8. HERO - MOBILE
+   9. HERO - MOBILE
 ===================================================== */
 
 @media (max-width: 768px) {
@@ -430,8 +258,9 @@ main {
     }
 }
 
+
 /* =====================================================
-   9. RESPONSIVIDADE GLOBAL DE TEXTOS
+   10. RESPONSIVIDADE GLOBAL DE TEXTOS
 ===================================================== */
 
 @media (max-width: 768px) {
@@ -453,10 +282,11 @@ main {
 
 
 /* =====================================================
-   10. GRID GLOBAL RESPONSIVO
+   11. GRID GLOBAL RESPONSIVO
 ===================================================== */
 
 @media (max-width: 992px) {
+
     .grid,
     .cards-grid,
     .section-grid {
@@ -465,6 +295,7 @@ main {
 }
 
 @media (max-width: 700px) {
+
     .grid,
     .cards-grid,
     .section-grid {
@@ -474,7 +305,7 @@ main {
 
 
 /* =====================================================
-   11. ESPAÇAMENTO GLOBAL DE SEÇÕES
+   12. ESPAÇAMENTO GLOBAL DE SEÇÕES
 ===================================================== */
 
 @media (max-width: 768px) {
@@ -491,10 +322,11 @@ main {
 
 
 /* =====================================================
-   12. BOTÕES NO MOBILE
+   13. BOTÕES NO MOBILE
 ===================================================== */
 
 @media (max-width: 768px) {
+
     a,
     button {
         -webkit-tap-highlight-color: transparent;
@@ -518,10 +350,11 @@ main {
 
 
 /* =====================================================
-   13. IMAGENS EM CARDS
+   14. IMAGENS EM CARDS
 ===================================================== */
 
 @media (max-width: 768px) {
+
     .card img,
     .mythology-card img,
     .religion-card img {
@@ -534,7 +367,7 @@ main {
 
 
 /* =====================================================
-   14. ACESSIBILIDADE
+   15. ACESSIBILIDADE
 ===================================================== */
 
 @media (prefers-reduced-motion: reduce) {

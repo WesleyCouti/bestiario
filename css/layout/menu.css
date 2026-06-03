@@ -18,6 +18,9 @@
    6. Acessibilidade
 ===================================================== */
 
+/* =====================================================
+   MENU.CSS
+===================================================== */
 
 /* =====================================================
    1. HEADER FIXO
@@ -40,34 +43,25 @@
         );
 
     border-bottom: 1px solid rgba(216, 201, 163, 0.08);
-
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
 
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-
-    transition:
-        background 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
 }
-
 
 /* =====================================================
    2. CONTAINER DO MENU
 ===================================================== */
 
 .topbar-content {
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    width: min(92%, 1400px);
     height: 100%;
-
-    margin: 0 auto;
 }
-
 
 /* =====================================================
    3. LOGO
@@ -77,6 +71,8 @@
     display: flex;
     align-items: center;
     gap: 14px;
+
+    flex-shrink: 0;
 
     color: #d8c9a3;
 
@@ -89,38 +85,37 @@
 
     transition:
         color 0.3s ease,
-        text-shadow 0.3s ease,
-        transform 0.3s ease;
+        text-shadow 0.3s ease;
 }
 
 .logo:hover {
     color: #f3e8bd;
-
     text-shadow: 0 0 18px rgba(216, 201, 163, 0.35);
 }
 
-/* Ícone da logo */
 .logo-icon {
     width: 72px;
     height: 72px;
+
+    flex-shrink: 0;
 
     object-fit: contain;
 
     filter: drop-shadow(0 0 14px rgba(216, 201, 163, 0.22));
 }
 
-
 /* =====================================================
-   4. MENU DE NAVEGAÇÃO
+   4. MENU DESKTOP
 ===================================================== */
 
 .menu {
     display: flex;
     align-items: center;
     gap: clamp(22px, 3vw, 42px);
+
+    max-width: 100%;
 }
 
-/* Link do menu */
 .menu a {
     position: relative;
 
@@ -129,20 +124,19 @@
     font-size: 0.96rem;
     font-weight: 500;
     letter-spacing: 0.3px;
+    white-space: nowrap;
 
     transition:
         color 0.3s ease,
         text-shadow 0.3s ease;
 }
 
-/* Hover dos links */
-.menu a:hover {
+.menu a:hover,
+.menu a.active {
     color: #ffffff;
-
     text-shadow: 0 0 12px rgba(129, 199, 132, 0.35);
 }
 
-/* Linha decorativa animada */
 .menu a::after {
     content: "";
 
@@ -165,28 +159,65 @@
     transition: width 0.3s ease;
 }
 
-/* Exibe a linha no hover */
-.menu a:hover::after {
+.menu a:hover::after,
+.menu a.active::after {
     width: 100%;
 }
 
-
 /* =====================================================
-   5. RESPONSIVIDADE
+   5. BOTÃO HAMBÚRGUER
 ===================================================== */
 
-@media (max-width: 900px) {
-    .topbar {
-        height: 72px;
+.menu-toggle {
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: 1px solid rgba(201, 162, 74, 0.35);
+    border-radius: 10px;
+
+    background: rgba(0, 0, 0, 0.35);
+    color: #e8dcc0;
+
+    font-size: 1.5rem;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background: rgba(201, 162, 74, 0.12);
+    border-color: rgba(201, 162, 74, 0.65);
+    box-shadow: 0 0 14px rgba(201, 162, 74, 0.16);
+}
+
+/* =====================================================
+   6. TABLET
+===================================================== */
+
+@media (max-width: 992px) {
+    .logo {
+        font-size: 1.7rem;
     }
 
     .logo-icon {
-        width: 60px;
-        height: 60px;
+        width: 56px;
+        height: 56px;
     }
 
     .menu {
-        gap: 20px;
+        gap: 22px;
     }
 
     .menu a {
@@ -194,43 +225,28 @@
     }
 }
 
-@media (max-width: 700px) {
+/* =====================================================
+   7. MOBILE / MENU HAMBÚRGUER
+===================================================== */
+
+@media (max-width: 768px) {
     .topbar {
-        height: auto;
-        min-height: 72px;
-        padding: 10px 0;
+        height: 78px;
+        padding: 0;
     }
 
     .topbar-content {
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        min-height: 78px;
+        gap: 16px;
     }
 
-    .logo-icon {
-        width: 54px;
-        height: 54px;
-    }
-
-    .menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        row-gap: 10px;
-        column-gap: 18px;
-    }
-
-    .menu a {
-        font-size: 0.84rem;
-    }
-
-    .menu a::after {
-        bottom: -5px;
-    }
-}
-
-@media (max-width: 420px) {
     .logo {
         font-size: 1.45rem;
+        text-align: left;
     }
 
     .logo-icon {
@@ -238,24 +254,128 @@
         height: 48px;
     }
 
+    .menu-toggle {
+        display: flex;
+    }
+
     .menu {
-        column-gap: 14px;
+        position: absolute;
+        top: calc(100% + 12px);
+        right: 0;
+        z-index: 999;
+
+        width: min(260px, calc(100vw - 36px));
+
+        display: none !important;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        padding: 16px;
+
+        border: 1px solid rgba(201, 162, 74, 0.28);
+        border-radius: 14px;
+
+        background: rgba(5, 10, 7, 0.98);
+
+        box-shadow:
+            0 18px 40px rgba(0, 0, 0, 0.45),
+            inset 0 0 18px rgba(201, 162, 74, 0.04);
+    }
+
+    .topbar.menu-open .menu {
+        display: flex !important;
     }
 
     .menu a {
-        font-size: 0.78rem;
+        width: 100%;
+        padding: 12px 14px;
+
+        border-radius: 10px;
+
+        font-size: 0.9rem;
+        line-height: 1.2;
+        text-align: left;
+    }
+
+    .menu a:hover,
+    .menu a.active {
+        background: rgba(201, 162, 74, 0.1);
+    }
+
+    .menu a::after {
+        display: none;
     }
 }
 
+/* =====================================================
+   8. MOBILE PEQUENO
+===================================================== */
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.35rem;
+        letter-spacing: 1px;
+    }
+
+    .logo-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .menu-toggle {
+        width: 42px;
+        height: 42px;
+        font-size: 1.4rem;
+    }
+
+    .menu {
+        width: min(250px, calc(100vw - 28px));
+    }
+
+    .menu a {
+        font-size: 0.86rem;
+    }
+}
 
 /* =====================================================
-   6. ACESSIBILIDADE
+   9. TELAS MUITO PEQUENAS
+===================================================== */
+
+@media (max-width: 360px) {
+    .logo {
+        font-size: 1.22rem;
+    }
+
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .menu-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+    }
+
+    .menu {
+        width: min(240px, calc(100vw - 24px));
+    }
+
+    .menu a {
+        font-size: 0.82rem;
+    }
+}
+
+/* =====================================================
+   10. ACESSIBILIDADE
 ===================================================== */
 
 .logo:focus-visible,
-.menu a:focus-visible {
+.menu a:focus-visible,
+.menu-toggle:focus-visible {
     outline: 2px solid #d8c9a3;
-    outline-offset: 6px;
+    outline-offset: 4px;
     border-radius: 6px;
 }
 
@@ -263,7 +383,8 @@
     .topbar,
     .logo,
     .menu a,
-    .menu a::after {
+    .menu a::after,
+    .menu-toggle {
         transition: none;
     }
 }

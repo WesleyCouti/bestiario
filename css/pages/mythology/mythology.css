@@ -7,7 +7,9 @@ body {
     color: #e8dcc0;
 }
 
-/* HERO */
+/* =====================================================
+   HERO
+===================================================== */
 
 .mythology-hero {
     position: relative;
@@ -33,6 +35,8 @@ body {
     background:
         radial-gradient(circle at center, rgba(201, 162, 74, 0.12), transparent 40%),
         rgba(0, 0, 0, 0.58);
+
+    pointer-events: none;
 }
 
 .mythology-hero-content {
@@ -40,6 +44,8 @@ body {
     z-index: 2;
 
     max-width: 760px;
+    margin: 0 auto;
+
     text-align: center;
 }
 
@@ -85,31 +91,39 @@ body {
     line-height: 1.7;
 }
 
-/* CATÁLOGO */
+/* =====================================================
+   CATÁLOGO
+===================================================== */
 
 .mythology-catalog {
-    width: min(1180px, 92%);
-    margin: 0 auto;
-    padding: 60px 0 90px;
+    padding: 70px 0 100px;
+
+    background:
+        radial-gradient(circle at 20% 0%, rgba(201, 162, 74, 0.06), transparent 32%),
+        linear-gradient(180deg, #050706 0%, #080a08 50%, #050706 100%);
 }
 
 .mythology-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
 }
 
-/* CARD */
+/* =====================================================
+   CARD
+===================================================== */
 
 .mythology-card {
     position: relative;
 
+    display: flex;
+    flex-direction: column;
+
+    min-height: 540px;
     overflow: hidden;
 
-    min-height: 520px;
-
     border: 1px solid rgba(201, 162, 74, 0.38);
-    border-radius: 10px;
+    border-radius: 12px;
 
     background: #0b0e0c;
 
@@ -125,12 +139,13 @@ body {
 
 .mythology-card::before {
     content: "";
+
     position: absolute;
     inset: 8px;
     z-index: 3;
 
     border: 1px solid rgba(201, 162, 74, 0.12);
-    border-radius: 8px;
+    border-radius: 9px;
 
     pointer-events: none;
 }
@@ -151,6 +166,12 @@ body {
 
 .mythology-card-content {
     position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
 
     padding: 0 24px 30px;
 
@@ -184,18 +205,18 @@ body {
     color: #e8dcc0;
 
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 1.65rem;
+    font-size: 1.45rem;
     font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
 }
 
 .mythology-card p {
-    min-height: 96px;
+    flex: 1;
 
     color: rgba(232, 220, 192, 0.78);
 
-    font-size: 0.94rem;
+    font-size: 0.92rem;
     line-height: 1.7;
 }
 
@@ -206,19 +227,20 @@ body {
 
     color: #c9a24a;
 
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
 
-    transition: color 0.3s ease;
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
 }
 
 .mythology-card:hover {
-    transform:
-        translateY(-10px) scale(1.03);
-
     z-index: 20;
+
+    transform: translateY(-10px) scale(1.03);
 
     border-color: rgba(201, 162, 74, 0.75);
 
@@ -231,33 +253,46 @@ body {
     transform: scale(1.06);
 
     filter:
-        brightness(1) contrast(1.08) saturate(1.08);
+        brightness(1)
+        contrast(1.08)
+        saturate(1.08);
 }
 
 .mythology-card:hover a {
     color: #f3e8bd;
+    transform: translateX(4px);
 }
 
-/* MENSAGEM FINAL */
+/* =====================================================
+   MENSAGEM FINAL
+===================================================== */
 
 .mythology-message {
-    margin-top: 28px;
-    padding: 24px 36px;
+    margin-top: 34px;
+    padding: 28px 36px;
 
     display: flex;
     align-items: center;
     gap: 28px;
 
-    border: 1px solid rgba(201, 162, 74, 0.25);
-    border-radius: 6px;
+    border: 1px solid rgba(201, 162, 74, 0.28);
+    border-radius: 10px;
 
     background:
-        linear-gradient(90deg,
-            rgba(8, 16, 14, 0.95),
-            rgba(13, 22, 18, 0.88));
+        linear-gradient(
+            90deg,
+            rgba(8, 16, 14, 0.96),
+            rgba(13, 22, 18, 0.88)
+        );
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.36),
+        inset 0 0 22px rgba(201, 162, 74, 0.035);
 }
 
 .mythology-message span {
+    flex: 0 0 72px;
+
     width: 72px;
     height: 72px;
 
@@ -286,21 +321,29 @@ body {
     color: rgba(232, 220, 192, 0.78);
 }
 
-/* RESPONSIVO */
+/* =====================================================
+   RESPONSIVO
+===================================================== */
 
 @media (max-width: 1100px) {
     .mythology-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 700px) {
     .mythology-hero {
-        padding-top: 130px;
+        min-height: 420px;
+        padding: 130px 18px 80px;
     }
 
     .mythology-hero h1 {
         letter-spacing: 6px;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        letter-spacing: 4px;
     }
 
     .mythology-grid {
@@ -311,8 +354,23 @@ body {
         min-height: auto;
     }
 
+    .mythology-card img {
+        height: 300px;
+    }
+
     .mythology-message {
         flex-direction: column;
         text-align: center;
+    }
+}
+
+@media (max-width: 420px) {
+    .mythology-hero h1 {
+        font-size: 2.5rem;
+        letter-spacing: 4px;
+    }
+
+    .mythology-card img {
+        height: 260px;
     }
 }

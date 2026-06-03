@@ -9,17 +9,16 @@
 
     <title>Religiões | Bestiário</title>
 
-    <!-- =====================================================
-         CSS GLOBAL
-    ====================================================== -->
+    <!-- CSS GLOBAL -->
     <link rel="stylesheet" href="./css/global/reset.css" />
     <link rel="stylesheet" href="./css/global/variables.css" />
     <link rel="stylesheet" href="./css/global/base.css" />
+    <link rel="stylesheet" href="./css/global/responsive.css" />
+
+    <!-- CSS LAYOUT -->
     <link rel="stylesheet" href="./css/layout/menu.css" />
 
-    <!-- =====================================================
-         CSS DA PÁGINA
-    ====================================================== -->
+    <!-- CSS DA PÁGINA -->
     <link rel="stylesheet" href="./css/pages/religion/religion.css" />
 
 </head>
@@ -27,62 +26,34 @@
 <body>
 
     <!-- =====================================================
-         HEADER
+         HEADER / MENU PRINCIPAL
     ====================================================== -->
-    <!-- =====================================================
-     HEADER / MENU PRINCIPAL
-===================================================== -->
     <header class="topbar">
 
         <div class="container topbar-content">
 
-            <!-- =====================================================
-             LOGO
-        ====================================================== -->
             <a href="./index.html#home" class="logo">
                 <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" class="logo-icon" />
-
                 <span>Bestiário</span>
             </a>
 
-            <!-- =====================================================
-             MENU
-        ====================================================== -->
+            <button class="menu-toggle" type="button" aria-label="Abrir menu">
+                ☰
+            </button>
+
             <nav class="menu" aria-label="Menu principal">
-
-                <a href="./index.html#home">
-                    Home
-                </a>
-
-                <a href="./mitologias.html" class="active">
-                    Mitologias
-                </a>
-
-                <a href="./religion.html">
-                    Religiões
-                </a>
-
-                <a href="./index.html#lendas">
-                    Lendas
-                </a>
-
-                <a href="./index.html#simbolos">
-                    Símbolos
-                </a>
-
-                <a href="./index.html#reliquias">
-                    Relíquias
-                </a>
-
+                <a href="./index.html#home">Home</a>
+                <a href="./mitologias.html">Mitologias</a>
+                <a href="./religion.html" class="active">Religiões</a>
+                <a href="./index.html#lendas">Lendas</a>
+                <a href="./index.html#simbolos">Símbolos</a>
+                <a href="./index.html#reliquias">Relíquias</a>
             </nav>
 
         </div>
 
     </header>
 
-    <!-- =====================================================
-         CONTEÚDO PRINCIPAL
-    ====================================================== -->
     <main>
 
         <!-- =====================================================
@@ -98,9 +69,7 @@
                     ✦ ⊹ ✦
                 </div>
 
-                <h1>
-                    Religiões
-                </h1>
+                <h1>Religiões</h1>
 
                 <span class="hero-subtitle">
                     Fé, espiritualidade e conexão com o divino.
@@ -123,247 +92,467 @@
 
             <div class="container">
 
-                <div class="religion-grid">
+                <!-- =====================================================
+                     BLOCO: RELIGIÕES ABRAÂMICAS
+                ====================================================== -->
+                <div class="religion-group">
 
-                    <!-- =====================================================
-                         CRISTIANISMO
-                    ====================================================== -->
-                    <article class="religion-card">
+                    <div class="religion-group-header">
+                        <span>Tradições Religiosas</span>
+                        <h2>Religiões Abraâmicas</h2>
+                        <p>
+                            Religiões originadas do tronco espiritual ligado a Abraão,
+                            com forte presença histórica no Ocidente, no Oriente Médio
+                            e em diversas partes do mundo.
+                        </p>
+                    </div>
 
-                        <img src="./assets/images/religions/religion-cristianismo.png" alt="Cristianismo" />
+                    <div class="religion-grid">
 
-                        <div class="religion-card-content">
-
-                            <div class="religion-icon">
-                                ✟
+                        <article class="religion-card">
+                            <img src="./assets/images/religiao/religiao-imagens/catolicismo.png" alt="Catolicismo" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">✟</div>
+                                <h2>Catolicismo</h2>
+                                <p>Tradição cristã ligada à Igreja Católica, aos sacramentos, santos, liturgia e
+                                    devoção.</p>
+                                <a href="#">Explorar ›</a>
                             </div>
+                        </article>
 
-                            <h2>
-                                Cristianismo
-                            </h2>
-
-                            <p>
-                                Religião baseada nos ensinamentos de Jesus Cristo,
-                                marcada por fé, salvação, milagres e espiritualidade.
-                            </p>
-
-                            <a href="#">
-                                Explorar ›
-                            </a>
-
-                        </div>
-
-                    </article>
-
-                    <!-- =====================================================
-                         UMBANDA
-                    ====================================================== -->
-                    <article class="religion-card">
-
-                        <img src="./assets/images/religions/religion-umbanda.png" alt="Umbanda" />
-
-                        <div class="religion-card-content">
-
-                            <div class="religion-icon">
-                                ⚚
+                        <article class="religion-card">
+                            <img src="./assets/images/religiao/religiao-imagens/protestantismo.png"
+                                alt="Protestantismo" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">✝</div>
+                                <h2>Protestantismo</h2>
+                                <p>Conjunto de denominações cristãs com foco na Bíblia, fé, graça e tradições
+                                    reformadas.</p>
+                                <a href="#">Explorar ›</a>
                             </div>
+                        </article>
 
-                            <h2>
-                                Umbanda
-                            </h2>
-
-                            <p>
-                                Religião brasileira marcada pela mediunidade,
-                                guias espirituais, ancestralidade e conexão energética.
-                            </p>
-
-                            <a href="#">
-                                Explorar ›
-                            </a>
-
-                        </div>
-
-                    </article>
-
-                    <!-- =====================================================
-                         CANDOMBLÉ
-                    ====================================================== -->
-                    <article class="religion-card">
-
-                        <img src="./assets/images/religions/religion-candomble.png" alt="Candomblé" />
-
-                        <div class="religion-card-content">
-
-                            <div class="religion-icon">
-                                ☥
+                        <article class="religion-card">
+                            <img src="./assets/images/religiao/religiao-imagens/pentecostais-neopentecostais.png"
+                                alt="Pentecostais e Neopentecostais" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">🔥</div>
+                                <h2>Pentecostais</h2>
+                                <p>Vertentes cristãs marcadas por dons espirituais, oração, cura, louvor e
+                                    evangelização.</p>
+                                <a href="#">Explorar ›</a>
                             </div>
+                        </article>
 
-                            <h2>
-                                Candomblé
-                            </h2>
-
-                            <p>
-                                Religião afro-brasileira baseada nos Orixás,
-                                na força da natureza e nos rituais ancestrais.
-                            </p>
-
-                            <a href="#">
-                                Explorar ›
-                            </a>
-
-                        </div>
-
-                    </article>
-
-                    <!-- =====================================================
-                         JUDAÍSMO
-                    ====================================================== -->
-                    <article class="religion-card">
-
-                        <img src="./assets/images/religions/religion-judaismo.png" alt="Judaísmo" />
-
-                        <div class="religion-card-content">
-
-                            <div class="religion-icon">
-                                ✡
+                        <article class="religion-card">
+                            <img src="./assets/images/religiao/religiao-imagens/judaismo.png" alt="Judaísmo" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">✡</div>
+                                <h2>Judaísmo</h2>
+                                <p>Religião ancestral do povo judeu, baseada na Torá, tradição, aliança e memória
+                                    sagrada.</p>
+                                <a href="#">Explorar ›</a>
                             </div>
+                        </article>
 
-                            <h2>
-                                Judaísmo
-                            </h2>
-
-                            <p>
-                                Uma das religiões mais antigas do mundo,
-                                baseada na Torá e nas tradições do povo hebreu.
-                            </p>
-
-                            <a href="#">
-                                Explorar ›
-                            </a>
-
-                        </div>
-
-                    </article>
-
-                    <!-- =====================================================
-                         ISLAMISMO
-                    ====================================================== -->
-                    <article class="religion-card">
-
-                        <img src="./assets/images/religions/religion-islamismo.png" alt="Islamismo" />
-
-                        <div class="religion-card-content">
-
-                            <div class="religion-icon">
-                                ☾
+                        <article class="religion-card">
+                            <img src="./assets/images/religiao/religiao-imagens/islamismo.png" alt="Islamismo" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">☾</div>
+                                <h2>Islamismo</h2>
+                                <p>Religião abraâmica baseada no Alcorão, na submissão a Allah, oração e comunidade.</p>
+                                <a href="#">Explorar ›</a>
                             </div>
+                        </article>
 
-                            <h2>
-                                Islamismo
-                            </h2>
-
-                            <p>
-                                Fé baseada nos ensinamentos do Alcorão,
-                                espiritualidade, disciplina e devoção a Allah.
-                            </p>
-
-                            <a href="#">
-                                Explorar ›
-                            </a>
-
-                        </div>
-
-                    </article>
-
-                    <!-- =====================================================
-                         HINDUÍSMO
-                    ====================================================== -->
-                    <article class="religion-card">
-
-                        <img src="./assets/images/religions/religion-hinduismo.png" alt="Hinduísmo" />
-
-                        <div class="religion-card-content">
-
-                            <div class="religion-icon">
-                                ॐ
+                        <article class="religion-card">
+                            <img src="./assets/images/religiao/religiao-imagens/igrejas-ortodoxas.png" alt="Igrejas Ortodoxas" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">☦</div>
+                                <h2>Igrejas Ortodoxas</h2>
+                                <p>Tradições cristãs orientais marcadas por liturgia antiga, ícones, santos e
+                                    continuidade apostólica.</p>
+                                <a href="#">Explorar ›</a>
                             </div>
+                        </article>
 
-                            <h2>
-                                Hinduísmo
-                            </h2>
-
-                            <p>
-                                Religião milenar baseada em karma, reencarnação,
-                                espiritualidade e múltiplas divindades.
-                            </p>
-
-                            <a href="#">
-                                Explorar ›
-                            </a>
-
-                        </div>
-
-                    </article>
-
-                    <!-- =====================================================
-                         BUDISMO
-                    ====================================================== -->
-                    <article class="religion-card">
-
-                        <img src="./assets/images/religions/religion-budismo.png" alt="Budismo" />
-
-                        <div class="religion-card-content">
-
-                            <div class="religion-icon">
-                                ☸
+                        <article class="religion-card">
+                            <img src="./assets/images/religiao/religiao-imagens/santos-dos-ultimos-dias.png" alt="Santos dos Últimos Dias" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">✝</div>
+                                <h2>Santos dos Últimos Dias</h2>
+                                <p>Tradição cristã restauracionista ligada ao Livro de Mórmon, família, missão e
+                                    revelação moderna.</p>
+                                <a href="#">Explorar ›</a>
                             </div>
+                        </article>
 
-                            <h2>
-                                Budismo
-                            </h2>
-
-                            <p>
-                                Filosofia espiritual baseada na iluminação,
-                                equilíbrio interior e libertação do sofrimento.
-                            </p>
-
-                            <a href="#">
-                                Explorar ›
-                            </a>
-
-                        </div>
-
-                    </article>
-
-                    <!-- =====================================================
-                         XINTOÍSMO
-                    ====================================================== -->
-                    <article class="religion-card">
-
-                        <img src="./assets/images/religions/religion-xintoismo.png" alt="Xintoísmo" />
-
-                        <div class="religion-card-content">
-
-                            <div class="religion-icon">
-                                ⛩
+                        <article class="religion-card">
+                            <img src="./assets/images/religiao/religiao-imagens/testemunhas-jeova.png"
+                                alt="Testemunhas de Jeová" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">📖</div>
+                                <h2>Testemunhas de Jeová</h2>
+                                <p>Grupo cristão conhecido pelo estudo bíblico, evangelização e organização comunitária.
+                                </p>
+                                <a href="#">Explorar ›</a>
                             </div>
+                        </article>
 
-                            <h2>
-                                Xintoísmo
-                            </h2>
+                        <article class="religion-card">
+                            <img src="./assets/images/religiao/religiao-imagens/adventistas.png"
+                                alt="Adventistas do Sétimo Dia" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">✦</div>
+                                <h2>Adventistas</h2>
+                                <p>Denominação cristã com ênfase no sábado, saúde, profecia bíblica e segunda vinda de Cristo.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
 
-                            <p>
-                                Religião tradicional japonesa baseada nos Kami,
-                                espíritos da natureza e ancestralidade.
-                            </p>
+                        <article class="religion-card">
+                            <img src="./assets/images/religiao/religiao-imagens/bahai.png" alt="Fé Bahá’í" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">✦</div>
+                                <h2>Bahá’í</h2>
+                                <p>Religião voltada à unidade da humanidade, paz, igualdade, espiritualidade e progresso
+                                    coletivo.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
 
-                            <a href="#">
-                                Explorar ›
-                            </a>
+                    </div>
 
-                        </div>
+                </div>
 
-                    </article>
+                <!-- =====================================================
+                     BLOCO: RELIGIÕES AFRO-BRASILEIRAS E AFRICANAS
+                ====================================================== -->
+                <div class="religion-group">
+
+                    <div class="religion-group-header">
+                        <span>Ancestralidade e Natureza</span>
+                        <h2>Religiões Afro-brasileiras e Africanas</h2>
+                        <p>
+                            Tradições marcadas por ancestralidade, forças da natureza,
+                            Orixás, entidades espirituais e rituais preservados pela
+                            memória cultural africana e brasileira.
+                        </p>
+                    </div>
+
+                    <div class="religion-grid">
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religiao/religiao-imagens/umbanda.png" alt="Umbanda" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">⚚</div>
+                                <h2>Umbanda</h2>
+                                <p>Religião brasileira com guias espirituais, Orixás, ancestralidade, caridade e
+                                    mediunidade.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religiao/religiao-imagens/candomble.png" alt="Candomblé" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">☥</div>
+                                <h2>Candomblé</h2>
+                                <p>Religião afro-brasileira ligada aos Orixás, aos ancestrais, à natureza e aos rituais
+                                    sagrados.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religiao/religiao-imagens/quimbanda.png" alt="Quimbanda" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">☾</div>
+                                <h2>Quimbanda</h2>
+                                <p>Tradição espiritual brasileira associada a Exus, Pombagiras e forças de
+                                    transformação.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-ioruba.png"
+                                alt="Religião Tradicional Iorubá" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">⚚</div>
+                                <h2>Iorubá</h2>
+                                <p>Tradição africana ligada aos Orixás, destino, ancestralidade, natureza e equilíbrio
+                                    espiritual.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </div>
+
+                <!-- =====================================================
+                     BLOCO: RELIGIÕES INDIANAS / DHÁRMICAS
+                ====================================================== -->
+                <div class="religion-group">
+
+                    <div class="religion-group-header">
+                        <span>Sabedoria Oriental</span>
+                        <h2>Religiões Indianas e Dhármicas</h2>
+                        <p>
+                            Tradições espirituais ligadas ao dharma, karma,
+                            meditação, libertação, devoção e ciclos de existência.
+                        </p>
+                    </div>
+
+                    <div class="religion-grid">
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-hinduismo.png" alt="Hinduísmo" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">ॐ</div>
+                                <h2>Hinduísmo</h2>
+                                <p>Tradição milenar com múltiplas divindades, karma, dharma, reencarnação e busca
+                                    espiritual.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-budismo.png" alt="Budismo" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">☸</div>
+                                <h2>Budismo</h2>
+                                <p>Caminho espiritual voltado à iluminação, compaixão, meditação e libertação do
+                                    sofrimento.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-hare-krishna.png"
+                                alt="Movimento Hare Krishna" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">🪷</div>
+                                <h2>Hare Krishna</h2>
+                                <p>Movimento devocional ligado a Krishna, mantras, bhakti yoga e espiritualidade hindu.
+                                </p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </div>
+
+                <!-- =====================================================
+                     BLOCO: RELIGIÕES DO LESTE ASIÁTICO
+                ====================================================== -->
+                <div class="religion-group">
+
+                    <div class="religion-group-header">
+                        <span>Harmonia e Caminho</span>
+                        <h2>Religiões do Leste Asiático</h2>
+                        <p>
+                            Tradições espirituais marcadas por harmonia,
+                            natureza, ancestrais, purificação, equilíbrio e
+                            caminhos de aperfeiçoamento interior.
+                        </p>
+                    </div>
+
+                    <div class="religion-grid">
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-xintoismo.png" alt="Xintoísmo" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">⛩</div>
+                                <h2>Xintoísmo</h2>
+                                <p>Religião japonesa ligada aos Kami, à natureza, aos ancestrais e aos rituais de
+                                    purificação.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-taoismo.png" alt="Taoísmo" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">☯</div>
+                                <h2>Taoísmo</h2>
+                                <p>Tradição chinesa baseada no Tao, equilíbrio, naturalidade, harmonia e sabedoria
+                                    interior.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-seicho-no-ie.png" alt="Seicho-no-Ie" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">☀</div>
+                                <h2>Seicho-no-Ie</h2>
+                                <p>Movimento espiritual japonês com foco em gratidão, pensamento positivo e harmonia
+                                    entre religiões.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-messianica.png"
+                                alt="Igreja Messiânica Mundial" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">光</div>
+                                <h2>Igreja Messiânica</h2>
+                                <p>Movimento espiritual japonês com foco em Johrei, beleza, gratidão e construção de um
+                                    mundo melhor.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-tenrikyo.png" alt="Tenrikyo" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">☀</div>
+                                <h2>Tenrikyo</h2>
+                                <p>Religião japonesa com foco na vida alegre, gratidão, serviço ao próximo e harmonia
+                                    espiritual.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-cao-dai.png" alt="Cao Dai" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">👁</div>
+                                <h2>Cao Dai</h2>
+                                <p>Religião vietnamita sincrética que reúne elementos budistas, taoístas, confucionistas
+                                    e cristãos.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </div>
+
+                <!-- =====================================================
+                     BLOCO: ESPIRITUALIDADES INDÍGENAS E XAMÂNICAS
+                ====================================================== -->
+                <div class="religion-group">
+
+                    <div class="religion-group-header">
+                        <span>Terra, Cura e Ancestrais</span>
+                        <h2>Espiritualidades Indígenas e Xamânicas</h2>
+                        <p>
+                            Caminhos espirituais ligados à terra, à floresta,
+                            aos encantados, à cura, aos ancestrais e aos rituais
+                            de conexão com a natureza.
+                        </p>
+                    </div>
+
+                    <div class="religion-grid">
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-indigena-brasileira.png"
+                                alt="Religiões Indígenas Brasileiras" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">🌿</div>
+                                <h2>Indígenas Brasileiras</h2>
+                                <p>Espiritualidades ligadas à terra, aos encantados, à pajelança, ao xamanismo e aos
+                                    ancestrais.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-santo-daime.png" alt="Santo Daime" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">🌿</div>
+                                <h2>Santo Daime</h2>
+                                <p>Religião brasileira ayahuasqueira com cânticos, rituais, espiritualidade cristã e
+                                    elementos amazônicos.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-udv.png" alt="União do Vegetal" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">🍃</div>
+                                <h2>UDV</h2>
+                                <p>Tradição religiosa ayahuasqueira brasileira com foco em evolução espiritual, doutrina
+                                    e comunhão ritual.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-xamanismo-ayahuasqueiro.png"
+                                alt="Xamanismo Ayahuasqueiro" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">🌀</div>
+                                <h2>Xamanismo Ayahuasqueiro</h2>
+                                <p>Vertentes espirituais com uso ritual da ayahuasca, cura simbólica, natureza e conexão
+                                    ancestral.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </div>
+
+                <!-- =====================================================
+                     BLOCO: ESPIRITUALISMO E NOVOS MOVIMENTOS
+                ====================================================== -->
+                <div class="religion-group">
+
+                    <div class="religion-group-header">
+                        <span>Novas Buscas Espirituais</span>
+                        <h2>Espiritualismo e Novos Movimentos Religiosos</h2>
+                        <p>
+                            Correntes religiosas e espiritualistas marcadas por
+                            sincretismo, mediunidade, simbolismo, práticas rituais
+                            e novas formas de compreender o sagrado.
+                        </p>
+                    </div>
+
+                    <div class="religion-grid">
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-espiritismo.png"
+                                alt="Espiritismo Kardecista" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">🕯</div>
+                                <h2>Espiritismo</h2>
+                                <p>Doutrina espiritualista baseada na comunicação espiritual, reencarnação e evolução
+                                    moral.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-vale-do-amanhecer.png"
+                                alt="Vale do Amanhecer" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">🌅</div>
+                                <h2>Vale do Amanhecer</h2>
+                                <p>Movimento espiritual brasileiro com rituais próprios, mediunidade, símbolos e
+                                    cosmologia sincrética.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                        <article class="religion-card">
+                            <img src="./assets/images/religions/religion-wicca.png" alt="Wicca e Neopaganismo" />
+                            <div class="religion-card-content">
+                                <div class="religion-icon">☽</div>
+                                <h2>Wicca</h2>
+                                <p>Religião neopagã ligada à natureza, ciclos lunares, rituais, magia simbólica e
+                                    divindades antigas.</p>
+                                <a href="#">Explorar ›</a>
+                            </div>
+                        </article>
+
+                    </div>
 
                 </div>
 
@@ -372,21 +561,14 @@
                 ====================================================== -->
                 <div class="religion-message">
 
-                    <span>
-                        🌎
-                    </span>
+                    <span>🌎</span>
 
                     <div>
-
-                        <h3>
-                            Cada religião guarda uma visão única do universo.
-                        </h3>
-
+                        <h3>Cada religião guarda uma visão única do universo.</h3>
                         <p>
                             Conheça crenças, símbolos, rituais e tradições
                             que atravessaram séculos da humanidade.
                         </p>
-
                     </div>
 
                 </div>
@@ -396,7 +578,7 @@
         </section>
 
     </main>
-
+    <script src="./js/main.js"></script>
 </body>
 
 </html>

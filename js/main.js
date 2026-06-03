@@ -5,22 +5,20 @@
 
    Responsável por:
    1. Utilitários globais
-   2. Carrossel de citações
-   3. Carrosséis horizontais simples
-   4. Carrossel de criaturas
-   5. Carrossel infinito de mitologias
-   6. Inicialização geral
+   2. Menu hambúrguer mobile
+   3. Carrossel de citações
+   4. Carrosséis horizontais simples
+   5. Carrossel de criaturas
+   6. Carrossel infinito de mitologias
+   7. Inicialização geral
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
+
     /* =====================================================
        1. UTILITÁRIOS GLOBAIS
     ===================================================== */
 
-    /*
-       Calcula o tamanho do deslocamento do carrossel.
-       Usa a largura do primeiro card + o gap da track.
-    */
     function getTrackStep(track, cardSelector, fallback = 300) {
         const firstCard = track?.querySelector(cardSelector);
 
@@ -34,18 +32,69 @@ document.addEventListener("DOMContentLoaded", () => {
         return firstCard.offsetWidth + gap;
     }
 
-    /*
-       Faz scroll horizontal suave em uma track.
-    */
     function scrollTrack(track, distance) {
+        if (!track) {
+            return;
+        }
+
         track.scrollBy({
             left: distance,
             behavior: "smooth",
         });
     }
 
+
     /* =====================================================
-       2. CARROSSEL - VOZES DO MUNDO ANTIGO
+       2. MENU HAMBÚRGUER MOBILE
+    ===================================================== */
+
+    function setupMobileMenu() {
+        const topbar = document.querySelector(".topbar");
+        const menuToggle = document.querySelector(".menu-toggle");
+        const menuLinks = document.querySelectorAll(".menu a");
+
+        if (!topbar || !menuToggle) {
+            return;
+        }
+
+        menuToggle.addEventListener("click", () => {
+            topbar.classList.toggle("menu-open");
+
+            const isOpen = topbar.classList.contains("menu-open");
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Fechar menu" : "Abrir menu"
+            );
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
+            );
+        });
+
+        menuLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                topbar.classList.remove("menu-open");
+
+                menuToggle.setAttribute("aria-label", "Abrir menu");
+                menuToggle.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 768) {
+                topbar.classList.remove("menu-open");
+
+                menuToggle.setAttribute("aria-label", "Abrir menu");
+                menuToggle.setAttribute("aria-expanded", "false");
+            }
+        });
+    }
+
+
+    /* =====================================================
+       3. CARROSSEL - VOZES DO MUNDO ANTIGO
     ===================================================== */
 
     function setupQuotesCarousel() {
@@ -102,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
             updateCarousel();
         }
 
-        function handleResize() {
+        window.addEventListener("resize", () => {
             const cardsPerView = getCardsPerView();
             const maxIndex = Math.max(0, quoteCards.length - cardsPerView);
 
@@ -111,27 +160,19 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             updateCarousel();
-        }
+        });
 
         nextBtn.addEventListener("click", goToNext);
         prevBtn.addEventListener("click", goToPrev);
-        window.addEventListener("resize", handleResize);
 
         updateCarousel();
     }
 
+
     /* =====================================================
-       3. FUNÇÃO GENÉRICA PARA CARROSSÉIS HORIZONTAIS
+       4. CARROSSÉIS HORIZONTAIS SIMPLES
     ===================================================== */
 
-    /*
-       Essa função serve para qualquer carrossel simples:
-       - símbolos
-       - lendas
-       - relíquias
-       - artefatos
-       - mitologias
-    */
     function setupSimpleHorizontalCarousel({
         trackSelector,
         prevBtnSelector,
@@ -202,8 +243,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+
     /* =====================================================
-       4. CARROSSEL - CRIATURAS
+       5. CARROSSEL - CRIATURAS
     ===================================================== */
 
     function setupCreaturesCarousel() {
@@ -238,8 +280,9 @@ document.addEventListener("DOMContentLoaded", () => {
         updateButtons();
     }
 
+
     /* =====================================================
-       5. CARROSSEL INFINITO - MITOLOGIAS
+       6. CARROSSEL INFINITO - MITOLOGIAS
     ===================================================== */
 
     function setupInfiniteMythologyCarousel() {
@@ -356,12 +399,15 @@ document.addEventListener("DOMContentLoaded", () => {
         animateCarousel();
     }
 
+
     /* =====================================================
-       6. INICIALIZAÇÃO GERAL
+       7. INICIALIZAÇÃO GERAL
     ===================================================== */
 
+    setupMobileMenu();
     setupQuotesCarousel();
     setupHorizontalCarousels();
     setupCreaturesCarousel();
     setupInfiniteMythologyCarousel();
+
 });
