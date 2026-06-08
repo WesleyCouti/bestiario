@@ -384,3 +384,33 @@ main {
         scroll-behavior: auto !important;
     }
 }
+
+/* =====================================================
+   AJUSTE HERO MITOLOGIAS - MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .mythology-hero h1,
+    .mythology-page h1,
+    .mitologias-hero h1 {
+        max-width: 100%;
+        font-size: clamp(2.6rem, 13vw, 4rem);
+        line-height: 1;
+        letter-spacing: 4px;
+        word-break: normal;
+        overflow-wrap: normal;
+        white-space: normal;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .mythology-hero h1,
+    .mythology-page h1,
+    .mitologias-hero h1 {
+        font-size: clamp(2.4rem, 14vw, 3.4rem);
+        letter-spacing: 2px;
+    }
+}
