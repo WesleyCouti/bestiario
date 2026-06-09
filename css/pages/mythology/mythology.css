@@ -901,7 +901,13 @@ body {
 
     .mythology-globe-instructions {
         position: static;
+        margin-top: 20px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
         text-align: center;
-        margin-top: 12px;
+        color: #d8a84f;
     }
 }

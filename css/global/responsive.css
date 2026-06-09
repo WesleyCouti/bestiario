@@ -414,3 +414,101 @@ main {
         letter-spacing: 2px;
     }
 }
+
+
+@media (max-width: 768px) {
+    .mythology-globe-section {
+        min-height: auto;
+        padding: 56px 20px 64px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        overflow: hidden;
+    }
+
+    .mythology-globe-text {
+        width: 100%;
+        max-width: 100%;
+        order: 1;
+    }
+
+    .mythology-globe-text h2 {
+        max-width: 100%;
+        font-size: clamp(2rem, 11vw, 3rem);
+        line-height: 1.12;
+        letter-spacing: 0.5px;
+        overflow-wrap: anywhere;
+    }
+
+    .mythology-globe-text p {
+        max-width: 100%;
+        font-size: 0.98rem;
+        line-height: 1.7;
+    }
+
+    .mythology-globe-legend,
+    .mythology-globe-tip {
+        width: 100%;
+        padding: 18px;
+        margin-top: 24px;
+    }
+
+    .mythology-globe-area {
+        order: 2;
+        width: 100%;
+        height: auto;
+        padding-right: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #mythologyGlobe {
+        width: 100%;
+        height: 340px;
+    }
+
+    .mythology-globe-instructions {
+        position: static;
+
+        margin-top: 18px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+
+        width: 100%;
+
+        color: #d8a84f;
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    .mythology-globe-instructions span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 420px) {
+    .mythology-globe-section {
+        padding: 48px 16px 56px;
+    }
+
+    .mythology-globe-text h2 {
+        font-size: clamp(1.85rem, 10vw, 2.45rem);
+    }
+
+    .mythology-globe-legend li {
+        font-size: 0.9rem;
+    }
+
+    .mythology-globe-area,
+    #mythologyGlobe {
+        height: 320px;
+    }
+}
