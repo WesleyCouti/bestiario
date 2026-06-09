@@ -502,6 +502,18 @@ document.addEventListener("DOMContentLoaded", () => {
         { nome: "Mitologia Umbanda", regiao: "Brasil", lat: -22.9, lng: -43.2, cor: cores.indigena }
     ];
 
+    function getGlobeHeight() {
+        if (window.innerWidth <= 420) {
+            return 320;
+        }
+
+        if (window.innerWidth <= 768) {
+            return 360;
+        }
+
+        return 520;
+    }
+
     const globe = Globe()(globeContainer)
         .width(globeContainer.offsetWidth)
         .height(getGlobeHeight())
@@ -519,8 +531,8 @@ document.addEventListener("DOMContentLoaded", () => {
             <span>${d.regiao}</span>
         </div>
     `)
-        .onPointClick(() => {
-            return false;
+        .onPointClick(d => {
+            console.log(`${d.nome} - ${d.regiao}`);
         });
 
     globe.controls().autoRotate = false;
@@ -529,6 +541,8 @@ document.addEventListener("DOMContentLoaded", () => {
     globe.controls().dampingFactor = 0.08;
 
     window.addEventListener("resize", () => {
-        globe.width(globeContainer.offsetWidth);
+        globe
+            .width(globeContainer.offsetWidth)
+            .height(getGlobeHeight());
     });
 });
