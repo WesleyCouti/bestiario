@@ -411,3 +411,123 @@ document.addEventListener("DOMContentLoaded", () => {
     setupInfiniteMythologyCarousel();
 
 });
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const globeContainer = document.getElementById("mythologyGlobe");
+
+    if (!globeContainer) {
+        console.error("Elemento #mythologyGlobe não encontrado");
+        return;
+    }
+
+    const cores = {
+        europeia: "#4b8dff",
+        asiatica: "#b15cff",
+        africana: "#ff7b2c",
+        indigena: "#7cc957",
+        oceanica: "#4fd1c5",
+        mediterranea: "#f2b84b",
+        religiosa: "#ffffff"
+    };
+
+    const mitologias = [
+        { nome: "Mitologia Abenaki", regiao: "Povos Abenaki - Nordeste da América do Norte", lat: 45.0, lng: -72.7, cor: cores.indigena, link: "mitologia-abenaki.html" },
+        { nome: "Mitologia Aborígene", regiao: "Austrália", lat: -25.2, lng: 133.7, cor: cores.oceanica, link: "mitologia-aborigene.html" },
+        { nome: "Mitologia Africana", regiao: "África Subsaariana", lat: 1.6, lng: 17.8, cor: cores.africana, link: "mitologia-africana.html" },
+        { nome: "Mitologia Alemã", regiao: "Alemanha", lat: 51.1, lng: 10.4, cor: cores.europeia, link: "mitologia-alema.html" },
+        { nome: "Mitologia Americana", regiao: "Estados Unidos", lat: 39.8, lng: -98.5, cor: cores.indigena, link: "mitologia-americana.html" },
+        { nome: "Mitologia Árabe", regiao: "Península Arábica", lat: 23.8, lng: 45.0, cor: cores.asiatica, link: "mitologia-arabe.html" },
+        { nome: "Mitologia Argentina", regiao: "Argentina", lat: -38.4, lng: -63.6, cor: cores.indigena, link: "mitologia-argentina.html" },
+        { nome: "Mitologia Asteca", regiao: "México Central", lat: 19.4, lng: -99.1, cor: cores.indigena, link: "mitologia-asteca.html" },
+        { nome: "Mitologia Basca", regiao: "País Basco", lat: 43.0, lng: -2.6, cor: cores.europeia, link: "mitologia-basca.html" },
+        { nome: "Mitologia Brasileira", regiao: "Brasil", lat: -14.2, lng: -51.9, cor: cores.indigena, link: "mitologia-brasileira.html" },
+        { nome: "Mitologia Budista", regiao: "Índia e Ásia", lat: 24.7, lng: 84.9, cor: cores.asiatica, link: "mitologia-budista.html" },
+        { nome: "Mitologia Caribenha", regiao: "Caribe", lat: 18.2, lng: -66.5, cor: cores.indigena, link: "mitologia-caribenha.html" },
+        { nome: "Mitologia Catalã", regiao: "Catalunha", lat: 41.6, lng: 1.5, cor: cores.europeia, link: "mitologia-catala.html" },
+        { nome: "Mitologia Celta", regiao: "Europa Ocidental", lat: 53.4, lng: -7.8, cor: cores.europeia, link: "mitologia-celta.html" },
+        { nome: "Mitologia Chilena", regiao: "Chile", lat: -35.6, lng: -71.5, cor: cores.indigena, link: "mitologia-chilena.html" },
+        { nome: "Mitologia Chinesa", regiao: "China Antiga", lat: 35.8, lng: 104.1, cor: cores.asiatica, link: "mitologia-chinesa.html" },
+        { nome: "Mitologia Colombiana", regiao: "Colômbia", lat: 4.5, lng: -74.3, cor: cores.indigena, link: "mitologia-colombiana.html" },
+        { nome: "Mitologia Cristã", regiao: "Oriente Médio e Mediterrâneo", lat: 31.8, lng: 35.2, cor: cores.religiosa, link: "mitologia-crista.html" },
+        { nome: "Mitologia Dinamarquesa", regiao: "Dinamarca", lat: 56.2, lng: 9.5, cor: cores.europeia, link: "mitologia-dinamarquesa.html" },
+        { nome: "Mitologia Dominicana", regiao: "República Dominicana", lat: 18.7, lng: -70.1, cor: cores.indigena, link: "mitologia-dominicana.html" },
+        { nome: "Mitologia Egípcia", regiao: "Egito Antigo", lat: 26.8, lng: 30.8, cor: cores.africana, link: "mitologia-egipcia.html" },
+        { nome: "Mitologia Escandinava", regiao: "Escandinávia", lat: 60.1, lng: 18.6, cor: cores.europeia, link: "mitologia-escandinava.html" },
+        { nome: "Mitologia Escocesa", regiao: "Escócia", lat: 56.4, lng: -4.2, cor: cores.europeia, link: "mitologia-escocesa.html" },
+        { nome: "Mitologia Eslava", regiao: "Leste Europeu", lat: 50.4, lng: 30.5, cor: cores.europeia, link: "mitologia-eslava.html" },
+        { nome: "Mitologia Europeia", regiao: "Europa", lat: 48.8, lng: 10.0, cor: cores.europeia, link: "mitologia-europeia.html" },
+        { nome: "Mitologia Filipina", regiao: "Filipinas", lat: 12.8, lng: 121.7, cor: cores.asiatica, link: "mitologia-filipina.html" },
+        { nome: "Mitologia Finlandesa", regiao: "Finlândia", lat: 61.9, lng: 25.7, cor: cores.europeia, link: "mitologia-finlandesa.html" },
+        { nome: "Mitologia Francesa", regiao: "França", lat: 46.2, lng: 2.2, cor: cores.europeia, link: "mitologia-francesa.html" },
+        { nome: "Mitologia Gaélica", regiao: "Irlanda e Escócia", lat: 53.4, lng: -8.2, cor: cores.europeia, link: "mitologia-gaelica.html" },
+        { nome: "Mitologia Grega", regiao: "Grécia Antiga", lat: 39.0, lng: 21.8, cor: cores.mediterranea, link: "mitologia-grega.html" },
+        { nome: "Mitologia Haitiana", regiao: "Haiti", lat: 18.9, lng: -72.3, cor: cores.indigena, link: "mitologia-haitiana.html" },
+        { nome: "Mitologia Havaiana", regiao: "Havaí", lat: 19.8, lng: -155.5, cor: cores.oceanica, link: "mitologia-havaiana.html" },
+        { nome: "Mitologia Heráldica Europeia", regiao: "Europa Medieval", lat: 47.0, lng: 8.0, cor: cores.europeia, link: "mitologia-heraldica-europeia.html" },
+        { nome: "Mitologia Hindu", regiao: "Índia", lat: 22.9, lng: 78.9, cor: cores.asiatica, link: "mitologia-hindu.html" },
+        { nome: "Mitologia Holandesa", regiao: "Países Baixos", lat: 52.1, lng: 5.3, cor: cores.europeia, link: "mitologia-holandesa.html" },
+        { nome: "Mitologia Húngara", regiao: "Hungria", lat: 47.1, lng: 19.5, cor: cores.europeia, link: "mitologia-hungara.html" },
+        { nome: "Mitologia Inca", regiao: "Andes", lat: -13.5, lng: -71.9, cor: cores.indigena, link: "mitologia-inca.html" },
+        { nome: "Mitologia Indiana", regiao: "Índia", lat: 20.5, lng: 78.9, cor: cores.asiatica, link: "mitologia-indiana.html" },
+        { nome: "Mitologia Indonésia", regiao: "Indonésia", lat: -2.5, lng: 118.0, cor: cores.asiatica, link: "mitologia-indonesia.html" },
+        { nome: "Mitologia Inglesa", regiao: "Inglaterra", lat: 52.3, lng: -1.5, cor: cores.europeia, link: "mitologia-inglesa.html" },
+        { nome: "Mitologia Inuit", regiao: "Ártico", lat: 69.0, lng: -105.0, cor: cores.indigena, link: "mitologia-inuit.html" },
+        { nome: "Mitologia Iorubá", regiao: "Nigéria e Benim", lat: 7.4, lng: 3.9, cor: cores.africana, link: "mitologia-ioruba.html" },
+        { nome: "Mitologia Irlandesa", regiao: "Irlanda", lat: 53.4, lng: -8.2, cor: cores.europeia, link: "mitologia-irlandesa.html" },
+        { nome: "Mitologia Japonesa", regiao: "Japão", lat: 36.2, lng: 138.2, cor: cores.asiatica, link: "mitologia-japonesa.html" },
+        { nome: "Mitologia Judaica", regiao: "Levante", lat: 31.8, lng: 35.2, cor: cores.religiosa, link: "mitologia-judaica.html" },
+        { nome: "Mitologia Lituana", regiao: "Lituânia", lat: 55.1, lng: 23.9, cor: cores.europeia, link: "mitologia-lituana.html" },
+        { nome: "Mitologia Maia", regiao: "Mesoamérica", lat: 17.2, lng: -89.1, cor: cores.indigena, link: "mitologia-maia.html" },
+        { nome: "Mitologia Malaia", regiao: "Península Malaia", lat: 4.2, lng: 102.0, cor: cores.asiatica, link: "mitologia-malaia.html" },
+        { nome: "Mitologia Maori", regiao: "Nova Zelândia", lat: -40.9, lng: 174.8, cor: cores.oceanica, link: "mitologia-maori.html" },
+        { nome: "Mitologia Mesopotâmica", regiao: "Mesopotâmia", lat: 33.2, lng: 44.3, cor: cores.mediterranea, link: "mitologia-mesopotamica.html" },
+        { nome: "Mitologia Mexicana", regiao: "México", lat: 23.6, lng: -102.5, cor: cores.indigena, link: "mitologia-mexicana.html" },
+        { nome: "Mitologia Nórdica", regiao: "Escandinávia", lat: 60.1, lng: 18.6, cor: cores.europeia, link: "mitologia-nordica.html" },
+        { nome: "Mitologia Persa", regiao: "Pérsia", lat: 32.4, lng: 53.7, cor: cores.asiatica, link: "mitologia-persa.html" },
+        { nome: "Mitologia Portuguesa", regiao: "Portugal", lat: 39.4, lng: -8.2, cor: cores.europeia, link: "mitologia-portuguesa.html" },
+        { nome: "Mitologia Romana", regiao: "Roma Antiga", lat: 41.9, lng: 12.5, cor: cores.mediterranea, link: "mitologia-romana.html" },
+        { nome: "Mitologia Romena", regiao: "Romênia", lat: 45.9, lng: 24.9, cor: cores.europeia, link: "mitologia-romena.html" },
+        { nome: "Mitologia Tibetana", regiao: "Tibete", lat: 31.6, lng: 88.0, cor: cores.asiatica, link: "mitologia-tibetana.html" },
+        { nome: "Mitologia Tupi-Guarani", regiao: "Brasil e América do Sul", lat: -15.8, lng: -47.9, cor: cores.indigena, link: "mitologia-tupi-guarani.html" },
+        { nome: "Mitologia Turca", regiao: "Anatólia e Ásia Central", lat: 39.0, lng: 35.2, cor: cores.asiatica, link: "mitologia-turca.html" },
+        { nome: "Mitologia Umbanda", regiao: "Brasil", lat: -22.9, lng: -43.2, cor: cores.indigena, link: "mitologia-umbanda.html" }
+    ];
+
+    const globe = Globe()(globeContainer)
+        .width(globeContainer.offsetWidth)
+        .height(520)
+        .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-night.jpg")
+        .backgroundColor("rgba(0,0,0,0)")
+        .pointsData(mitologias)
+        .pointLat("lat")
+        .pointLng("lng")
+        .pointColor("cor")
+        .pointAltitude(0.06)
+        .pointRadius(0.45)
+        .pointLabel(d => `
+            <div class="globe-tooltip">
+                ${d.nome} - ${d.regiao}
+            </div>
+        `)
+        .onPointClick(d => {
+            window.location.href = d.link;
+        });
+
+    globe.controls().autoRotate = false;
+    globe.controls().enableZoom = true;
+    globe.controls().enableDamping = true;
+    globe.controls().dampingFactor = 0.08;
+
+    window.addEventListener("resize", () => {
+        globe.width(globeContainer.offsetWidth);
+    });
+});

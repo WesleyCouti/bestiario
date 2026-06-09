@@ -8,6 +8,332 @@ body {
 }
 
 /* =====================================================
+   INTRODUÇÃO — O QUE SÃO MITOLOGIAS
+===================================================== */
+
+.mythology-intro-section {
+    padding: 95px 0 80px;
+    background:
+        radial-gradient(circle at 50% 35%, rgba(201, 162, 74, 0.08), transparent 42%),
+        linear-gradient(180deg, #050706 0%, #07100c 100%);
+}
+
+.mythology-intro-section .container {
+    max-width: 1500px;
+}
+
+.mythology-intro-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.mythology-intro-text {
+    max-width: 650px;
+}
+
+.mythology-intro-tag {
+    display: inline-block;
+    margin-bottom: 22px;
+
+    color: #c9a24a;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+}
+
+.mythology-intro-text h2 {
+    margin-bottom: 24px;
+
+    color: #e8dcc0;
+    font-family: var(--font-title);
+    font-size: clamp(2.4rem, 4vw, 4.1rem);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.mythology-intro-divider {
+    position: relative;
+
+    width: 75%;
+    height: 18px;
+    margin: 0 0 36px;
+}
+
+.mythology-intro-divider::before,
+.mythology-intro-divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+
+    width: 45%;
+    height: 1px;
+
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(201, 162, 74, 0.7));
+}
+
+.mythology-intro-divider::before {
+    left: 0;
+}
+
+.mythology-intro-divider::after {
+    right: 0;
+    transform: rotate(180deg);
+}
+
+.mythology-intro-divider span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 11px;
+    height: 11px;
+
+    border: 1px solid #c9a24a;
+
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.mythology-intro-text p {
+    margin-bottom: 20px;
+
+    color: rgba(232, 220, 192, 0.82);
+    font-size: 1.02rem;
+    line-height: 1.75;
+}
+
+.mythology-intro-highlight {
+    position: relative;
+
+    margin-top: 34px;
+    padding: 22px 28px;
+
+    border: 1px solid rgba(201, 162, 74, 0.35);
+    border-radius: 6px;
+
+    color: #f4d27a;
+    font-family: var(--font-title);
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.7;
+
+    background:
+        linear-gradient(90deg, rgba(201, 162, 74, 0.08), transparent);
+}
+
+.mythology-intro-highlight::before {
+    content: "✦";
+
+    position: absolute;
+    top: -14px;
+    left: 18px;
+
+    color: #c9a24a;
+    background: #060806;
+    padding: 0 8px;
+}
+
+.mythology-intro-image {
+    position: relative;
+
+    padding: 12px;
+
+    border: 1px solid rgba(201, 162, 74, 0.35);
+    border-radius: 12px;
+
+    background:
+        linear-gradient(135deg, rgba(201, 162, 74, 0.06), rgba(0, 0, 0, 0.15));
+}
+
+.mythology-intro-image::before,
+.mythology-intro-image::after {
+    content: "";
+
+    position: absolute;
+
+    width: 42px;
+    height: 42px;
+
+    border-color: #c9a24a;
+    border-style: solid;
+
+    pointer-events: none;
+}
+
+.mythology-intro-image::before {
+    top: 10px;
+    left: 10px;
+
+    border-width: 1px 0 0 1px;
+}
+
+.mythology-intro-image::after {
+    right: 10px;
+    bottom: 10px;
+
+    border-width: 0 1px 1px 0;
+}
+
+.mythology-intro-image img {
+    width: 100%;
+    display: block;
+
+    border-radius: 8px;
+
+    filter:
+        brightness(0.9) contrast(1.08) drop-shadow(0 0 28px rgba(201, 162, 74, 0.18));
+}
+
+/* =====================================================
+   MITOLOGIAS AJUDAM A EXPLICAR
+===================================================== */
+
+.mythology-explains {
+    margin-top: 70px;
+    padding: 42px 34px;
+
+    border: 1px solid rgba(201, 162, 74, 0.28);
+    border-radius: 14px;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(201, 162, 74, 0.05),
+            transparent 60%),
+        linear-gradient(180deg,
+            rgba(9, 14, 11, 0.96),
+            rgba(4, 6, 5, 0.96));
+}
+
+.mythology-explains-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+
+    margin-bottom: 28px;
+
+    color: #c9a24a;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.mythology-explains-title::before,
+.mythology-explains-title::after {
+    content: "";
+    width: 160px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201, 162, 74, 0.55));
+}
+
+.mythology-explains-title::after {
+    transform: rotate(180deg);
+}
+
+.mythology-explains-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+}
+
+.mythology-explain-card {
+    min-height: 280px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 28px;
+    padding: 25px 15px;
+}
+
+.mythology-explain-card img {
+    width: 170px;
+    height: 170px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 0 18px rgba(212, 167, 64, 0.7)) drop-shadow(0 0 35px rgba(212, 167, 64, 0.35));
+
+    transition: all 0.3s ease;
+}
+
+.mythology-explain-card strong {
+    margin: 0;
+
+    color: #f2e3b0;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.mythology-explain-card span {
+    color: #c9a24a;
+    font-size: 2rem;
+}
+
+/* =====================================================
+   RESPONSIVO — INTRO MITOLOGIAS
+===================================================== */
+
+@media (max-width: 1100px) {
+    .mythology-intro-grid {
+        grid-template-columns: 1fr;
+        gap: 44px;
+    }
+
+    .mythology-intro-text {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .mythology-intro-divider {
+        margin-inline: auto;
+    }
+
+    .mythology-explains-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .mythology-intro-section {
+        padding: 70px 0;
+    }
+
+    .mythology-intro-text h2 {
+        font-size: clamp(2rem, 9vw, 2.8rem);
+        letter-spacing: 2px;
+    }
+
+    .mythology-intro-tag,
+    .mythology-explains-title {
+        letter-spacing: 3px;
+    }
+
+    .mythology-explains-title::before,
+    .mythology-explains-title::after {
+        width: 50px;
+    }
+
+    .mythology-explains-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =====================================================
    HERO
 ===================================================== */
 
@@ -253,9 +579,7 @@ body {
     transform: scale(1.06);
 
     filter:
-        brightness(1)
-        contrast(1.08)
-        saturate(1.08);
+        brightness(1) contrast(1.08) saturate(1.08);
 }
 
 .mythology-card:hover a {
@@ -279,11 +603,9 @@ body {
     border-radius: 10px;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             rgba(8, 16, 14, 0.96),
-            rgba(13, 22, 18, 0.88)
-        );
+            rgba(13, 22, 18, 0.88));
 
     box-shadow:
         0 18px 45px rgba(0, 0, 0, 0.36),
@@ -372,5 +694,214 @@ body {
 
     .mythology-card img {
         height: 260px;
+    }
+}
+
+
+
+
+
+
+
+
+
+.mythology-globe-section {
+    min-height: 760px;
+    padding: 90px 7%;
+    display: grid;
+    grid-template-columns: 0.9fr 500px;
+    align-items: center;
+    gap: 70px;
+    background:
+        radial-gradient(circle at 32% 50%, rgba(201, 155, 60, 0.18), transparent 38%),
+        linear-gradient(180deg, #050505 0%, #0b0703 50%, #050505 100%);
+    border-top: 1px solid rgba(201, 155, 60, 0.25);
+    border-bottom: 1px solid rgba(201, 155, 60, 0.25);
+    overflow: hidden;
+}
+
+.mythology-globe-text {
+    grid-column: 2;
+    grid-row: 1;
+    max-width: 500px;
+}
+
+.mythology-globe-text .section-label {
+    display: block;
+    margin-bottom: 12px;
+    color: #d8a84f;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.mythology-globe-text h2 {
+    margin-bottom: 24px;
+    color: #f2e2bd;
+    font-size: clamp(2.4rem, 3.5vw, 3.8rem);
+    line-height: 1.15;
+    font-family: "Cinzel", serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mythology-globe-text p {
+    max-width: 480px;
+    color: #d9c7a0;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.mythology-globe-legend,
+.mythology-globe-tip {
+    margin-top: 26px;
+    padding: 20px;
+    list-style: none;
+    border: 1px solid rgba(201, 155, 60, 0.35);
+    background: rgba(0, 0, 0, 0.38);
+    border-radius: 10px;
+}
+
+.mythology-globe-legend {
+    display: grid;
+    gap: 12px;
+}
+
+.mythology-globe-legend li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 0;
+    color: #f2d58a;
+    font-size: 0.98rem;
+}
+
+.legend-dot {
+    width: 13px;
+    height: 13px;
+    min-width: 13px;
+    display: inline-block;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor;
+}
+
+.legend-dot.europeia {
+    background: #4b8dff;
+    color: #4b8dff;
+}
+
+.legend-dot.asiatica {
+    background: #b15cff;
+    color: #b15cff;
+}
+
+.legend-dot.africana {
+    background: #ff7b2c;
+    color: #ff7b2c;
+}
+
+.legend-dot.indigena {
+    background: #7cc957;
+    color: #7cc957;
+}
+
+.legend-dot.oceanica {
+    background: #4fd1c5;
+    color: #4fd1c5;
+}
+
+.legend-dot.mediterranea {
+    background: #f2b84b;
+    color: #f2b84b;
+}
+
+.legend-dot.religiosa {
+    background: #ffffff;
+    color: #ffffff;
+}
+
+.mythology-globe-tip strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #d8a84f;
+    text-transform: uppercase;
+}
+
+.mythology-globe-tip p {
+    margin: 0;
+    color: #d9c7a0;
+    line-height: 1.6;
+}
+
+.mythology-globe-area {
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    width: 100%;
+    height: 520px;
+    padding-right: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#mythologyGlobe {
+    width: 100%;
+    height: 520px;
+}
+
+.mythology-globe-instructions {
+    position: absolute;
+    left: 40px;
+    bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: #d8a84f;
+    font-size: 0.9rem;
+}
+
+.globe-tooltip {
+    padding: 8px 12px;
+    background: rgba(5, 5, 5, 0.92);
+    border: 1px solid rgba(216, 168, 79, 0.75);
+    border-radius: 8px;
+    color: #f2e2bd;
+    font-size: 0.85rem;
+    text-align: center;
+    box-shadow: 0 0 18px rgba(216, 168, 79, 0.25);
+}
+
+@media (max-width: 900px) {
+    .mythology-globe-section {
+        grid-template-columns: 1fr;
+        padding: 60px 24px;
+        gap: 30px;
+    }
+
+    .mythology-globe-area,
+    .mythology-globe-text {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .mythology-globe-text {
+        max-width: 100%;
+    }
+
+    .mythology-globe-text h2 {
+        font-size: clamp(2.2rem, 10vw, 3.2rem);
+    }
+
+    .mythology-globe-area,
+    #mythologyGlobe {
+        height: 460px;
+        padding-right: 0;
+    }
+
+    .mythology-globe-instructions {
+        position: static;
+        text-align: center;
+        margin-top: 12px;
     }
 }
