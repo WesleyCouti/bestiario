@@ -523,8 +523,9 @@ document.addEventListener("DOMContentLoaded", () => {
         .pointLat("lat")
         .pointLng("lng")
         .pointColor("cor")
-        .pointAltitude(0.06)
-        .pointRadius(0.45)
+        .pointAltitude(0.01)
+        .pointRadius(0.35)
+        .pointsMerge(false)
         .pointLabel(d => `
         <div class="globe-tooltip">
             <strong>${d.nome}</strong>
