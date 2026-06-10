@@ -1084,24 +1084,20 @@ body {
 .mythology-timeline-track::before {
     content: "";
     position: absolute;
-
-    top: 174px; /* centro das bolinhas */
-
-    left: 30px;
-    right: 30px;
-
+    top: 174px;
+    left: 0;
+    right: 0;
     height: 2px;
-
     background: linear-gradient(
         90deg,
-        rgba(201, 162, 74, 0.15),
-        #c9a24a 20%,
-        #f2d58a 50%,
-        #c9a24a 80%,
-        rgba(201, 162, 74, 0.15)
+        transparent,
+        rgba(201, 162, 74, 0.42),
+        #c9a24a,
+        rgba(201, 162, 74, 0.42),
+        transparent
     );
-
     z-index: 1;
+    pointer-events: none;
 }
 
 .mythology-timeline-item {
@@ -1160,7 +1156,7 @@ body {
 
 .timeline-symbol {
     position: relative;
-    z-index: 4;
+    z-index: 3;
     width: 100px;
     height: 100px;
     margin: 0 auto 28px;
@@ -1197,8 +1193,6 @@ body {
     font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
-    position: relative;
-    z-index: 4;
 }
 
 /* RESPONSIVO — LINHA DO TEMPO */

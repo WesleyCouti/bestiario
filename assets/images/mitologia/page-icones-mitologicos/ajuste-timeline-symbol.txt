@@ -1,0 +1,39 @@
+
+/* SUBSTITUA APENAS A CLASSE .timeline-symbol PELA ABAIXO */
+
+.timeline-symbol {
+    width: 100px;
+    height: 100px;
+
+    margin: 0 auto 28px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    object-fit: cover;
+
+    border: 1px solid rgba(201, 162, 74, 0.65);
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(201, 162, 74, 0.08),
+            rgba(0, 0, 0, 0.45)
+        );
+
+    box-shadow:
+        0 0 30px rgba(201, 162, 74, 0.15),
+        inset 0 0 18px rgba(201, 162, 74, 0.08);
+
+    transition: all 0.35s ease;
+}
+
+.timeline-symbol:hover {
+    transform: scale(1.08);
+    box-shadow:
+        0 0 60px rgba(201, 162, 74, 0.35),
+        inset 0 0 30px rgba(201, 162, 74, 0.15);
+}
