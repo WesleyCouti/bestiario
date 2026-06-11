@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Explore mitologias do mundo, suas origens, deuses, criaturas, símbolos e tradições antigas no Bestiário." />
 
     <title>Mitologias | Bestiário</title>
 
@@ -17,23 +19,22 @@
 
 <body>
 
-    <!-- =====================================================
-     HEADER / MENU PRINCIPAL
-===================================================== -->
+    <!-- ================= HEADER / MENU PRINCIPAL ================= -->
     <header class="topbar">
 
         <div class="container topbar-content">
 
             <a href="./index.html#home" class="logo">
-                <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" class="logo-icon" />
+                <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" class="logo-icon" loading="lazy" />
                 <span>Bestiário</span>
             </a>
 
-            <button class="menu-toggle" type="button" aria-label="Abrir menu">
+            <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"
+                aria-controls="mainMenu">
                 ☰
             </button>
 
-            <nav class="menu" aria-label="Menu principal">
+            <nav class="menu" id="mainMenu" aria-label="Menu principal">
                 <a href="./index.html#home">Home</a>
                 <a href="./mitologias.html" class="active">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
@@ -46,8 +47,10 @@
 
     </header>
 
+    <!-- ================= CONTEÚDO PRINCIPAL ================= -->
     <main>
 
+        <!-- ================= HERO / CAPA DA PÁGINA ================= -->
         <section class="mythology-hero">
 
             <div class="mythology-hero-overlay"></div>
@@ -73,18 +76,7 @@
 
         </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
+        <!-- ================= LINHA DO TEMPO DAS MITOLOGIAS ================= -->
         <section class="mythology-timeline-section" aria-labelledby="mythology-timeline-title">
             <div class="mythology-timeline-header">
                 <span>Linha do Tempo</span>
@@ -117,7 +109,7 @@
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol"
                             src="./assets/images/mitologia/page-icones-mitologicos/aborigene.png"
-                            alt="Símbolo da Mitologia Aborígene">
+                            alt="Símbolo da Mitologia Aborígene" loading="lazy">
                         <h3>Aborígene</h3>
                     </article>
 
@@ -125,8 +117,9 @@
                         <span class="timeline-date">12.000 a.C.</span>
                         <span class="timeline-era">Povos Originários das Américas</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/americana.png"
-                            alt="Símbolo da Mitologia Americana">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/americana.png"
+                            alt="Símbolo da Mitologia Americana" loading="lazy">
                         <h3>Americana</h3>
                     </article>
 
@@ -134,8 +127,9 @@
                         <span class="timeline-date">10.000 a.C.</span>
                         <span class="timeline-era">África Ancestral</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/africana.png"
-                            alt="Símbolo da Mitologia Africana">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/africana.png"
+                            alt="Símbolo da Mitologia Africana" loading="lazy">
                         <h3>Africana</h3>
                     </article>
 
@@ -143,8 +137,9 @@
                         <span class="timeline-date">4000 a.C.</span>
                         <span class="timeline-era">Primeiras Civilizações</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/mesopotamica.png"
-                            alt="Símbolo da Mitologia Mesopotâmica">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/mesopotamica.png"
+                            alt="Símbolo da Mitologia Mesopotâmica" loading="lazy">
                         <h3>Mesopotâmica</h3>
                     </article>
 
@@ -153,7 +148,7 @@
                         <span class="timeline-era">Era Antiga</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/egipcia.png"
-                            alt="Símbolo da Mitologia Egípcia">
+                            alt="Símbolo da Mitologia Egípcia" loading="lazy">
                         <h3>Egípcia</h3>
                     </article>
 
@@ -161,8 +156,9 @@
                         <span class="timeline-date">3000 a.C.</span>
                         <span class="timeline-era">América do Sul</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/tupi-guarani.png"
-                            alt="Símbolo da Mitologia Tupi-Guarani">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/tupi-guarani.png"
+                            alt="Símbolo da Mitologia Tupi-Guarani" loading="lazy">
                         <h3>Tupi-Guarani</h3>
                     </article>
 
@@ -171,7 +167,7 @@
                         <span class="timeline-era">Ásia Antiga</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/indiana.png"
-                            alt="Símbolo da Mitologia Indiana">
+                            alt="Símbolo da Mitologia Indiana" loading="lazy">
                         <h3>Indiana</h3>
                     </article>
 
@@ -180,7 +176,7 @@
                         <span class="timeline-era">Ártico</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/inuit.png"
-                            alt="Símbolo da Mitologia Inuit">
+                            alt="Símbolo da Mitologia Inuit" loading="lazy">
                         <h3>Inuit</h3>
                     </article>
 
@@ -189,7 +185,7 @@
                         <span class="timeline-era">Ásia Antiga</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/hindu.png"
-                            alt="Símbolo da Mitologia Hindu">
+                            alt="Símbolo da Mitologia Hindu" loading="lazy">
                         <h3>Hindu</h3>
                     </article>
 
@@ -198,7 +194,7 @@
                         <span class="timeline-era">Oriente Antigo</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/persa.png"
-                            alt="Símbolo da Mitologia Persa">
+                            alt="Símbolo da Mitologia Persa" loading="lazy">
                         <h3>Persa</h3>
                     </article>
 
@@ -207,7 +203,7 @@
                         <span class="timeline-era">Ásia Antiga</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/chinesa.png"
-                            alt="Símbolo da Mitologia Chinesa">
+                            alt="Símbolo da Mitologia Chinesa" loading="lazy">
                         <h3>Chinesa</h3>
                     </article>
 
@@ -216,7 +212,7 @@
                         <span class="timeline-era">Tradições Abraâmicas</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/judaica.png"
-                            alt="Símbolo da Mitologia Judaica">
+                            alt="Símbolo da Mitologia Judaica" loading="lazy">
                         <h3>Judaica</h3>
                     </article>
 
@@ -225,7 +221,7 @@
                         <span class="timeline-era">Mediterrâneo</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/grega.png"
-                            alt="Símbolo da Mitologia Grega">
+                            alt="Símbolo da Mitologia Grega" loading="lazy">
                         <h3>Grega</h3>
                     </article>
 
@@ -233,8 +229,9 @@
                         <span class="timeline-date">1200 a.C.</span>
                         <span class="timeline-era">Ásia Oriental</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/japonesa.png"
-                            alt="Símbolo da Mitologia Japonesa">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/japonesa.png"
+                            alt="Símbolo da Mitologia Japonesa" loading="lazy">
                         <h3>Japonesa</h3>
                     </article>
 
@@ -243,7 +240,7 @@
                         <span class="timeline-era">Europa Antiga</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/celta.png"
-                            alt="Símbolo da Mitologia Celta">
+                            alt="Símbolo da Mitologia Celta" loading="lazy">
                         <h3>Celta</h3>
                     </article>
 
@@ -252,7 +249,7 @@
                         <span class="timeline-era">Mediterrâneo</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/romana.png"
-                            alt="Símbolo da Mitologia Romana">
+                            alt="Símbolo da Mitologia Romana" loading="lazy">
                         <h3>Romana</h3>
                     </article>
 
@@ -261,7 +258,7 @@
                         <span class="timeline-era">Oriente Médio</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/arabe.png"
-                            alt="Símbolo da Mitologia Árabe">
+                            alt="Símbolo da Mitologia Árabe" loading="lazy">
                         <h3>Árabe</h3>
                     </article>
 
@@ -269,8 +266,9 @@
                         <span class="timeline-date">700 a.C.</span>
                         <span class="timeline-era">Ásia</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/tibetana.png"
-                            alt="Símbolo da Mitologia Tibetana">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/tibetana.png"
+                            alt="Símbolo da Mitologia Tibetana" loading="lazy">
                         <h3>Tibetana</h3>
                     </article>
 
@@ -279,7 +277,7 @@
                         <span class="timeline-era">Ásia</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/budista.png"
-                            alt="Símbolo da Mitologia Budista">
+                            alt="Símbolo da Mitologia Budista" loading="lazy">
                         <h3>Budista</h3>
                     </article>
 
@@ -288,7 +286,7 @@
                         <span class="timeline-era">Europa</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/basca.png"
-                            alt="Símbolo da Mitologia Basca">
+                            alt="Símbolo da Mitologia Basca" loading="lazy">
                         <h3>Basca</h3>
                     </article>
 
@@ -297,7 +295,7 @@
                         <span class="timeline-era">África Ocidental</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/ioruba.png"
-                            alt="Símbolo da Mitologia Iorubá">
+                            alt="Símbolo da Mitologia Iorubá" loading="lazy">
                         <h3>Iorubá</h3>
                     </article>
 
@@ -306,7 +304,7 @@
                         <span class="timeline-era">Civilizações Americanas</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/maia.png"
-                            alt="Símbolo da Mitologia Maia">
+                            alt="Símbolo da Mitologia Maia" loading="lazy">
                         <h3>Maia</h3>
                     </article>
 
@@ -315,7 +313,7 @@
                         <span class="timeline-era">Europa Celta</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/gaelica.png"
-                            alt="Símbolo da Mitologia Gaélica">
+                            alt="Símbolo da Mitologia Gaélica" loading="lazy">
                         <h3>Gaélica</h3>
                     </article>
 
@@ -323,8 +321,9 @@
                         <span class="timeline-date">300 a.C.</span>
                         <span class="timeline-era">Europa do Norte</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/escandinava.png"
-                            alt="Símbolo da Mitologia Escandinava">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/escandinava.png"
+                            alt="Símbolo da Mitologia Escandinava" loading="lazy">
                         <h3>Escandinava</h3>
                     </article>
 
@@ -332,8 +331,9 @@
                         <span class="timeline-date">300 a.C.</span>
                         <span class="timeline-era">Europa Celta</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/escocesa.png"
-                            alt="Símbolo da Mitologia Escocesa">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/escocesa.png"
+                            alt="Símbolo da Mitologia Escocesa" loading="lazy">
                         <h3>Escocesa</h3>
                     </article>
 
@@ -342,7 +342,7 @@
                         <span class="timeline-era">Europa Oriental</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/eslava.png"
-                            alt="Símbolo da Mitologia Eslava">
+                            alt="Símbolo da Mitologia Eslava" loading="lazy">
                         <h3>Eslava</h3>
                     </article>
 
@@ -350,8 +350,9 @@
                         <span class="timeline-date">300 a.C.</span>
                         <span class="timeline-era">Europa Celta</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/irlandesa.png"
-                            alt="Símbolo da Mitologia Irlandesa">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/irlandesa.png"
+                            alt="Símbolo da Mitologia Irlandesa" loading="lazy">
                         <h3>Irlandesa</h3>
                     </article>
 
@@ -360,7 +361,7 @@
                         <span class="timeline-era">Europa do Norte</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/nordica.png"
-                            alt="Símbolo da Mitologia Nórdica">
+                            alt="Símbolo da Mitologia Nórdica" loading="lazy">
                         <h3>Nórdica</h3>
                     </article>
 
@@ -368,8 +369,9 @@
                         <span class="timeline-date">200 a.C.</span>
                         <span class="timeline-era">Europa do Norte</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/dinamarquesa.png"
-                            alt="Símbolo da Mitologia Dinamarquesa">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/dinamarquesa.png"
+                            alt="Símbolo da Mitologia Dinamarquesa" loading="lazy">
                         <h3>Dinamarquesa</h3>
                     </article>
 
@@ -377,8 +379,9 @@
                         <span class="timeline-date">200 a.C.</span>
                         <span class="timeline-era">Europa do Norte</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/finlandesa.png"
-                            alt="Símbolo da Mitologia Finlandesa">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/finlandesa.png"
+                            alt="Símbolo da Mitologia Finlandesa" loading="lazy">
                         <h3>Finlandesa</h3>
                     </article>
 
@@ -387,7 +390,7 @@
                         <span class="timeline-era">Europa Báltica</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/lituana.png"
-                            alt="Símbolo da Mitologia Lituana">
+                            alt="Símbolo da Mitologia Lituana" loading="lazy">
                         <h3>Lituana</h3>
                     </article>
 
@@ -396,7 +399,7 @@
                         <span class="timeline-era">Cristianismo</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/crista.png"
-                            alt="Símbolo da Mitologia Cristã">
+                            alt="Símbolo da Mitologia Cristã" loading="lazy">
                         <h3>Cristã</h3>
                     </article>
 
@@ -405,7 +408,7 @@
                         <span class="timeline-era">América do Norte</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/abenaki.png"
-                            alt="Símbolo da Mitologia Abenaki">
+                            alt="Símbolo da Mitologia Abenaki" loading="lazy">
                         <h3>Abenaki</h3>
                     </article>
 
@@ -414,7 +417,7 @@
                         <span class="timeline-era">Mesoamérica</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/asteca.png"
-                            alt="Símbolo da Mitologia Asteca">
+                            alt="Símbolo da Mitologia Asteca" loading="lazy">
                         <h3>Asteca</h3>
                     </article>
 
@@ -423,7 +426,7 @@
                         <span class="timeline-era">Andes</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/inca.png"
-                            alt="Símbolo da Mitologia Inca">
+                            alt="Símbolo da Mitologia Inca" loading="lazy">
                         <h3>Inca</h3>
                     </article>
 
@@ -431,8 +434,9 @@
                         <span class="timeline-date">400 d.C.</span>
                         <span class="timeline-era">Polinésia</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/havaiana.png"
-                            alt="Símbolo da Mitologia Havaiana">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/havaiana.png"
+                            alt="Símbolo da Mitologia Havaiana" loading="lazy">
                         <h3>Havaiana</h3>
                     </article>
 
@@ -441,7 +445,7 @@
                         <span class="timeline-era">Ásia Central</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/turca.png"
-                            alt="Símbolo da Mitologia Turca">
+                            alt="Símbolo da Mitologia Turca" loading="lazy">
                         <h3>Turca</h3>
                     </article>
 
@@ -449,8 +453,9 @@
                         <span class="timeline-date">600 d.C.</span>
                         <span class="timeline-era">Ásia-Pacífico</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/filipina.png"
-                            alt="Símbolo da Mitologia Filipina">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/filipina.png"
+                            alt="Símbolo da Mitologia Filipina" loading="lazy">
                         <h3>Filipina</h3>
                     </article>
 
@@ -458,8 +463,9 @@
                         <span class="timeline-date">700 d.C.</span>
                         <span class="timeline-era">Ásia-Pacífico</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/indonesia.png"
-                            alt="Símbolo da Mitologia Indonésia">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/indonesia.png"
+                            alt="Símbolo da Mitologia Indonésia" loading="lazy">
                         <h3>Indonésia</h3>
                     </article>
 
@@ -468,7 +474,7 @@
                         <span class="timeline-era">Ásia-Pacífico</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/malaia.png"
-                            alt="Símbolo da Mitologia Malaia">
+                            alt="Símbolo da Mitologia Malaia" loading="lazy">
                         <h3>Malaia</h3>
                     </article>
 
@@ -477,7 +483,7 @@
                         <span class="timeline-era">Europa</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/hungara.png"
-                            alt="Símbolo da Mitologia Húngara">
+                            alt="Símbolo da Mitologia Húngara" loading="lazy">
                         <h3>Húngara</h3>
                     </article>
 
@@ -486,7 +492,7 @@
                         <span class="timeline-era">Europa</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/alema.png"
-                            alt="Símbolo da Mitologia Alemã">
+                            alt="Símbolo da Mitologia Alemã" loading="lazy">
                         <h3>Alemã</h3>
                     </article>
 
@@ -494,8 +500,9 @@
                         <span class="timeline-date">1000 d.C.</span>
                         <span class="timeline-era">Europa</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/europeia.png"
-                            alt="Símbolo da Mitologia Europeia">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/europeia.png"
+                            alt="Símbolo da Mitologia Europeia" loading="lazy">
                         <h3>Europeia</h3>
                     </article>
 
@@ -503,8 +510,9 @@
                         <span class="timeline-date">1000 d.C.</span>
                         <span class="timeline-era">Europa</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/francesa.png"
-                            alt="Símbolo da Mitologia Francesa">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/francesa.png"
+                            alt="Símbolo da Mitologia Francesa" loading="lazy">
                         <h3>Francesa</h3>
                     </article>
 
@@ -512,8 +520,9 @@
                         <span class="timeline-date">1000 d.C.</span>
                         <span class="timeline-era">Europa</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/holandesa.png"
-                            alt="Símbolo da Mitologia Holandesa">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/holandesa.png"
+                            alt="Símbolo da Mitologia Holandesa" loading="lazy">
                         <h3>Holandesa</h3>
                     </article>
 
@@ -522,7 +531,7 @@
                         <span class="timeline-era">Europa</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/inglesa.png"
-                            alt="Símbolo da Mitologia Inglesa">
+                            alt="Símbolo da Mitologia Inglesa" loading="lazy">
                         <h3>Inglesa</h3>
                     </article>
 
@@ -530,8 +539,9 @@
                         <span class="timeline-date">1000 d.C.</span>
                         <span class="timeline-era">Europa</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/portuguesa.png"
-                            alt="Símbolo da Mitologia Portuguesa">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/portuguesa.png"
+                            alt="Símbolo da Mitologia Portuguesa" loading="lazy">
                         <h3>Portuguesa</h3>
                     </article>
 
@@ -540,8 +550,8 @@
                         <span class="timeline-era">Europa Medieval</span>
                         <div class="timeline-point"></div>
                         <img class="timeline-symbol"
-                            src="./assets/images/mitologias/timeline/simbolo-heraldica-europeia.png"
-                            alt="Símbolo da Mitologia Heráldica Europeia">
+                            src="./assets/images/mitologia/page-icones-mitologicos/heraldica-europeia.png"
+                            alt="Símbolo da Mitologia Heráldica Europeia" loading="lazy">
                         <h3>Heráldica Europeia</h3>
                     </article>
 
@@ -549,8 +559,9 @@
                         <span class="timeline-date">1200 d.C.</span>
                         <span class="timeline-era">Américas</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologias/timeline/simbolo-argentina.png"
-                            alt="Símbolo da Mitologia Argentina">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/argentina.png"
+                            alt="Símbolo da Mitologia Argentina" loading="lazy">
                         <h3>Argentina</h3>
                     </article>
 
@@ -558,8 +569,9 @@
                         <span class="timeline-date">1200 d.C.</span>
                         <span class="timeline-era">Caribe</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologias/timeline/simbolo-caribenha.png"
-                            alt="Símbolo da Mitologia Caribenha">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/caribenha.png"
+                            alt="Símbolo da Mitologia Caribenha" loading="lazy">
                         <h3>Caribenha</h3>
                     </article>
 
@@ -567,8 +579,8 @@
                         <span class="timeline-date">1200 d.C.</span>
                         <span class="timeline-era">Europa</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologias/timeline/simbolo-catala.png"
-                            alt="Símbolo da Mitologia Catalã">
+                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/catala.png"
+                            alt="Símbolo da Mitologia Catalã" loading="lazy">
                         <h3>Catalã</h3>
                     </article>
 
@@ -576,8 +588,8 @@
                         <span class="timeline-date">1200 d.C.</span>
                         <span class="timeline-era">Américas</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologias/timeline/simbolo-chilena.png"
-                            alt="Símbolo da Mitologia Chilena">
+                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/chilena.png"
+                            alt="Símbolo da Mitologia Chilena" loading="lazy">
                         <h3>Chilena</h3>
                     </article>
 
@@ -585,8 +597,9 @@
                         <span class="timeline-date">1200 d.C.</span>
                         <span class="timeline-era">Américas</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologias/timeline/simbolo-colombiana.png"
-                            alt="Símbolo da Mitologia Colombiana">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/colombiana.png"
+                            alt="Símbolo da Mitologia Colombiana" loading="lazy">
                         <h3>Colombiana</h3>
                     </article>
 
@@ -594,8 +607,9 @@
                         <span class="timeline-date">1200 d.C.</span>
                         <span class="timeline-era">Caribe</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologias/timeline/simbolo-dominicana.png"
-                            alt="Símbolo da Mitologia Dominicana">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/dominicana.png"
+                            alt="Símbolo da Mitologia Dominicana" loading="lazy">
                         <h3>Dominicana</h3>
                     </article>
 
@@ -603,8 +617,9 @@
                         <span class="timeline-date">1200 d.C.</span>
                         <span class="timeline-era">Caribe</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologias/timeline/simbolo-haitiana.png"
-                            alt="Símbolo da Mitologia Haitiana">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/haitiana.png"
+                            alt="Símbolo da Mitologia Haitiana" loading="lazy">
                         <h3>Haitiana</h3>
                     </article>
 
@@ -612,8 +627,9 @@
                         <span class="timeline-date">1200 d.C.</span>
                         <span class="timeline-era">Américas</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologias/timeline/simbolo-mexicana.png"
-                            alt="Símbolo da Mitologia Mexicana">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/mexicana.png"
+                            alt="Símbolo da Mitologia Mexicana" loading="lazy">
                         <h3>Mexicana</h3>
                     </article>
 
@@ -621,8 +637,8 @@
                         <span class="timeline-date">1200 d.C.</span>
                         <span class="timeline-era">Europa Oriental</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologias/timeline/simbolo-romena.png"
-                            alt="Símbolo da Mitologia Romena">
+                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/romena.png"
+                            alt="Símbolo da Mitologia Romena" loading="lazy">
                         <h3>Romena</h3>
                     </article>
 
@@ -630,8 +646,8 @@
                         <span class="timeline-date">1250 d.C.</span>
                         <span class="timeline-era">Polinésia</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologias/timeline/simbolo-maori.png"
-                            alt="Símbolo da Mitologia Maori">
+                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/maori.png"
+                            alt="Símbolo da Mitologia Maori" loading="lazy">
                         <h3>Maori</h3>
                     </article>
 
@@ -639,8 +655,9 @@
                         <span class="timeline-date">1500 d.C.</span>
                         <span class="timeline-era">Brasil Colonial e Popular</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologias/timeline/simbolo-brasileira.png"
-                            alt="Símbolo da Mitologia Brasileira">
+                        <img class="timeline-symbol"
+                            src="./assets/images/mitologia/page-icones-mitologicos/brasileira.png"
+                            alt="Símbolo da Mitologia Brasileira" loading="lazy">
                         <h3>Brasileira</h3>
                     </article>
 
@@ -648,8 +665,8 @@
                         <span class="timeline-date">1908 d.C.</span>
                         <span class="timeline-era">Brasil</span>
                         <div class="timeline-point"></div>
-                        <img class="timeline-symbol" src="./assets/images/mitologias/timeline/simbolo-umbanda.png"
-                            alt="Símbolo da Mitologia Umbanda">
+                        <img class="timeline-symbol" src="./assets/images/mitologia/page-icones-mitologicos/umbanda.png"
+                            alt="Símbolo da Mitologia Umbanda" loading="lazy">
                         <h3>Umbanda</h3>
                     </article>
 
@@ -657,21 +674,7 @@
             </div>
         </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <!-- ================= INTRODUÇÃO: O QUE SÃO MITOLOGIAS ================= -->
         <section class="mythology-intro-section" id="o-que-sao-mitologias">
 
             <div class="container">
@@ -715,7 +718,7 @@
 
                     <div class="mythology-intro-image">
                         <img src="./assets/images/mitologia/o-que-sao-mitologias.png"
-                            alt="Livro aberto com árvore mitológica dourada">
+                            alt="Livro aberto com árvore mitológica dourada" loading="lazy">
                     </div>
 
                 </div>
@@ -730,31 +733,31 @@
 
                         <div class="mythology-explain-card">
                             <img src="./assets/images/mitologia/page-mitologia-icones/icone-mundo.png"
-                                alt="Origem do mundo">
+                                alt="Origem do mundo" loading="lazy">
                             <strong>A origem<br>do mundo</strong>
                         </div>
 
                         <div class="mythology-explain-card">
                             <img src="./assets/images/mitologia/page-mitologia-icones/icone-natureza.png"
-                                alt="Fenômenos da natureza">
+                                alt="Fenômenos da natureza" loading="lazy">
                             <strong>Fenômenos<br>da natureza</strong>
                         </div>
 
                         <div class="mythology-explain-card">
                             <img src="./assets/images/mitologia/page-mitologia-icones/icone-heroi.png"
-                                alt="Deuses e heróis">
+                                alt="Deuses e heróis" loading="lazy">
                             <strong>Deuses<br>e heróis</strong>
                         </div>
 
                         <div class="mythology-explain-card">
                             <img src="./assets/images/mitologia/page-mitologia-icones/icone-dragao.png"
-                                alt="Criaturas lendárias">
+                                alt="Criaturas lendárias" loading="lazy">
                             <strong>Criaturas<br>lendárias</strong>
                         </div>
 
                         <div class="mythology-explain-card">
                             <img src="./assets/images/mitologia/page-mitologia-icones/icone-pergaminho.png"
-                                alt="Sabedoria ancestral">
+                                alt="Sabedoria ancestral" loading="lazy">
                             <strong>Sabedoria<br>ancestral</strong>
                         </div>
 
@@ -766,6 +769,7 @@
 
         </section>
 
+        <!-- ================= MAPA DAS ORIGENS / GLOBO INTERATIVO ================= -->
         <section class="mythology-globe-section" aria-labelledby="mythology-globe-title">
 
             <div class="mythology-globe-text">
@@ -847,22 +851,14 @@
 
         </section>
 
+        <!-- ================= CATÁLOGO DE MITOLOGIAS ================= -->
+        <section class="mythology-catalog" id="catalogo-mitologias">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <section class="mythology-catalog">
+            <div class="mythology-catalog-header">
+                <span>Catálogo</span>
+                <h2>Explore as mitologias</h2>
+                <p>Conheça tradições, criaturas, deuses e símbolos de diferentes culturas.</p>
+            </div>
 
             <div class="container">
 
@@ -870,7 +866,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-abenaki.png"
-                            alt="Mitologia Abenaki">
+                            alt="Mitologia Abenaki" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🌲</div>
                             <h2>Abenaki</h2>
@@ -882,7 +878,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-aborigene.png"
-                            alt="Mitologia Aborígene">
+                            alt="Mitologia Aborígene" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">☀</div>
                             <h2>Aborígene</h2>
@@ -895,7 +891,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-africana.png"
-                            alt="Mitologia Africana">
+                            alt="Mitologia Africana" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">☥</div>
                             <h2>Africana</h2>
@@ -906,7 +902,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-alema.png"
-                            alt="Mitologia Alemã">
+                            alt="Mitologia Alemã" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🌑</div>
                             <h2>Alemã</h2>
@@ -919,7 +915,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-americana.png"
-                            alt="Mitologia Americana">
+                            alt="Mitologia Americana" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">★</div>
                             <h2>Americana</h2>
@@ -931,7 +927,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-arabe.png"
-                            alt="Mitologia Árabe">
+                            alt="Mitologia Árabe" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">☾</div>
                             <h2>Árabe</h2>
@@ -942,7 +938,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-argentina.png"
-                            alt="Mitologia Argentina">
+                            alt="Mitologia Argentina" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🌙</div>
                             <h2>Argentina</h2>
@@ -953,7 +949,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-asteca.png"
-                            alt="Mitologia Asteca">
+                            alt="Mitologia Asteca" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">☀</div>
                             <h2>Asteca</h2>
@@ -965,7 +961,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-basca.png"
-                            alt="Mitologia Basca">
+                            alt="Mitologia Basca" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">⛰</div>
                             <h2>Basca</h2>
@@ -976,7 +972,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-brasileira.png"
-                            alt="Mitologia Brasileira">
+                            alt="Mitologia Brasileira" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">✥</div>
                             <h2>Brasileira</h2>
@@ -987,7 +983,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-budismo.png"
-                            alt="Mitologia Budista">
+                            alt="Mitologia Budista" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">☸</div>
                             <h2>Budista</h2>
@@ -998,7 +994,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-caribenha.png"
-                            alt="Mitologia Caribenha">
+                            alt="Mitologia Caribenha" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🌊</div>
                             <h2>Caribenha</h2>
@@ -1009,10 +1005,10 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-catalana.png"
-                            alt="Mitologia Catalana">
+                            alt="Mitologia Catalã" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🐉</div>
-                            <h2>Catalana</h2>
+                            <h2>Catalã</h2>
                             <p>Dragões, gigantes, bruxas e seres encantados do imaginário mítico da Catalunha.</p>
                             <a href="#">Explorar ›</a>
                         </div>
@@ -1020,7 +1016,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-celta.png"
-                            alt="Mitologia Celta">
+                            alt="Mitologia Celta" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">☘</div>
                             <h2>Celta</h2>
@@ -1031,7 +1027,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-chilena.png"
-                            alt="Mitologia Chilena">
+                            alt="Mitologia Chilena" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">⛰</div>
                             <h2>Chilena</h2>
@@ -1042,7 +1038,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-chinesa.png"
-                            alt="Mitologia Chinesa">
+                            alt="Mitologia Chinesa" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">龍</div>
                             <h2>Chinesa</h2>
@@ -1053,7 +1049,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-colombiana.png"
-                            alt="Mitologia Colombiana">
+                            alt="Mitologia Colombiana" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🌿</div>
                             <h2>Colombiana</h2>
@@ -1065,7 +1061,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-crista.png"
-                            alt="Mitologia Cristã">
+                            alt="Mitologia Cristã" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">✟</div>
                             <h2>Cristã</h2>
@@ -1076,7 +1072,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-dinamarquesa.png"
-                            alt="Mitologia Dinamarquesa">
+                            alt="Mitologia Dinamarquesa" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">ᛟ</div>
                             <h2>Dinamarquesa</h2>
@@ -1087,7 +1083,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-dominicana.png"
-                            alt="Mitologia Dominicana">
+                            alt="Mitologia Dominicana" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🌴</div>
                             <h2>Dominicana</h2>
@@ -1098,7 +1094,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-egipcia.png"
-                            alt="Mitologia Egípcia">
+                            alt="Mitologia Egípcia" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">☥</div>
                             <h2>Egípcia</h2>
@@ -1109,7 +1105,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-escandinava.png"
-                            alt="Mitologia Escandinava">
+                            alt="Mitologia Escandinava" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">ᚱ</div>
                             <h2>Escandinava</h2>
@@ -1120,7 +1116,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-escocesa.png"
-                            alt="Mitologia Escocesa">
+                            alt="Mitologia Escocesa" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🏰</div>
                             <h2>Escocesa</h2>
@@ -1131,7 +1127,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-eslava.png"
-                            alt="Mitologia Eslava">
+                            alt="Mitologia Eslava" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">❄</div>
                             <h2>Eslava</h2>
@@ -1143,7 +1139,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-europeia.png"
-                            alt="Mitologia Europeia">
+                            alt="Mitologia Europeia" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">♜</div>
                             <h2>Europeia</h2>
@@ -1154,7 +1150,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-filipina.png"
-                            alt="Mitologia Filipina">
+                            alt="Mitologia Filipina" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🌺</div>
                             <h2>Filipina</h2>
@@ -1165,7 +1161,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-finlandesa.png"
-                            alt="Mitologia Finlandesa">
+                            alt="Mitologia Finlandesa" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">❄</div>
                             <h2>Finlandesa</h2>
@@ -1176,7 +1172,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-francesa.png"
-                            alt="Mitologia Francesa">
+                            alt="Mitologia Francesa" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">⚜</div>
                             <h2>Francesa</h2>
@@ -1187,7 +1183,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-gaelica.png"
-                            alt="Mitologia Gaélica">
+                            alt="Mitologia Gaélica" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">☘</div>
                             <h2>Gaélica</h2>
@@ -1198,7 +1194,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-grega.png"
-                            alt="Mitologia Grega">
+                            alt="Mitologia Grega" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🏛</div>
                             <h2>Grega</h2>
@@ -1209,7 +1205,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-haitiana.png"
-                            alt="Mitologia Haitiana">
+                            alt="Mitologia Haitiana" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🔥</div>
                             <h2>Haitiana</h2>
@@ -1221,7 +1217,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-havaiana.png"
-                            alt="Mitologia Havaiana">
+                            alt="Mitologia Havaiana" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🌋</div>
                             <h2>Havaiana</h2>
@@ -1232,7 +1228,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-heraldica-europeia.png"
-                            alt="Mitologia Heráldica Europeia">
+                            alt="Mitologia Heráldica Europeia" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🛡</div>
                             <h2>Heráldica Europeia</h2>
@@ -1243,7 +1239,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-hindu.png"
-                            alt="Mitologia Hindu">
+                            alt="Mitologia Hindu" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">ॐ</div>
                             <h2>Hindu</h2>
@@ -1254,7 +1250,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-holandesa.png"
-                            alt="Mitologia Holandesa">
+                            alt="Mitologia Holandesa" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🌊</div>
                             <h2>Holandesa</h2>
@@ -1265,7 +1261,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-hungara.png"
-                            alt="Mitologia Húngara">
+                            alt="Mitologia Húngara" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🦅</div>
                             <h2>Húngara</h2>
@@ -1276,7 +1272,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-inca.png"
-                            alt="Mitologia Inca">
+                            alt="Mitologia Inca" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">☀</div>
                             <h2>Inca</h2>
@@ -1287,7 +1283,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-indiana.png"
-                            alt="Mitologia Indiana">
+                            alt="Mitologia Indiana" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🪷</div>
                             <h2>Indiana</h2>
@@ -1298,7 +1294,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-indonesia.png"
-                            alt="Mitologia Indonésia">
+                            alt="Mitologia Indonésia" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🐉</div>
                             <h2>Indonésia</h2>
@@ -1309,7 +1305,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-inglesa.png"
-                            alt="Mitologia Inglesa">
+                            alt="Mitologia Inglesa" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">⚔</div>
                             <h2>Inglesa</h2>
@@ -1321,7 +1317,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-inuit.png"
-                            alt="Mitologia Inuit">
+                            alt="Mitologia Inuit" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">❄</div>
                             <h2>Inuit</h2>
@@ -1332,7 +1328,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-ioruba.png"
-                            alt="Mitologia Iorubá">
+                            alt="Mitologia Iorubá" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">⚚</div>
                             <h2>Iorubá</h2>
@@ -1343,7 +1339,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-irlandesa.png"
-                            alt="Mitologia Irlandesa">
+                            alt="Mitologia Irlandesa" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">☘</div>
                             <h2>Irlandesa</h2>
@@ -1354,7 +1350,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-japonesa.png"
-                            alt="Mitologia Japonesa">
+                            alt="Mitologia Japonesa" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">⛩</div>
                             <h2>Japonesa</h2>
@@ -1365,7 +1361,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-judaica.png"
-                            alt="Mitologia Judaica">
+                            alt="Mitologia Judaica" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">✡</div>
                             <h2>Judaica</h2>
@@ -1376,7 +1372,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-lituana.png"
-                            alt="Mitologia Lituana">
+                            alt="Mitologia Lituana" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🌩</div>
                             <h2>Lituana</h2>
@@ -1387,7 +1383,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-maia.png"
-                            alt="Mitologia Maia">
+                            alt="Mitologia Maia" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">▣</div>
                             <h2>Maia</h2>
@@ -1398,10 +1394,10 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-malaio.png"
-                            alt="Mitologia Malaio">
+                            alt="Mitologia Malaia" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🌙</div>
-                            <h2>Malaio</h2>
+                            <h2>Malaia</h2>
                             <p>Espíritos da selva, criaturas noturnas e entidades protetoras do sudeste asiático.</p>
                             <a href="#">Explorar ›</a>
                         </div>
@@ -1409,7 +1405,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-maori.png"
-                            alt="Mitologia Maori">
+                            alt="Mitologia Maori" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🌊</div>
                             <h2>Maori</h2>
@@ -1420,7 +1416,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-mesopotamica.png"
-                            alt="Mitologia Mesopotâmica">
+                            alt="Mitologia Mesopotâmica" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">𒀭</div>
                             <h2>Mesopotâmica</h2>
@@ -1433,7 +1429,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-mexicana.png"
-                            alt="Mitologia Mexicana">
+                            alt="Mitologia Mexicana" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">☀</div>
                             <h2>Mexicana</h2>
@@ -1445,7 +1441,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-nordica.png"
-                            alt="Mitologia Nórdica">
+                            alt="Mitologia Nórdica" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">ᛟ</div>
                             <h2>Nórdica</h2>
@@ -1456,7 +1452,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-persa.png"
-                            alt="Mitologia Persa">
+                            alt="Mitologia Persa" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">☼</div>
                             <h2>Persa</h2>
@@ -1467,7 +1463,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-portuguesa.png"
-                            alt="Mitologia Portuguesa">
+                            alt="Mitologia Portuguesa" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">⚓</div>
                             <h2>Portuguesa</h2>
@@ -1478,7 +1474,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-romana.png"
-                            alt="Mitologia Romana">
+                            alt="Mitologia Romana" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🏛</div>
                             <h2>Romana</h2>
@@ -1489,7 +1485,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-romena.png"
-                            alt="Mitologia Romena">
+                            alt="Mitologia Romena" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🦇</div>
                             <h2>Romena</h2>
@@ -1501,7 +1497,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-tibetana.png"
-                            alt="Mitologia Tibetana">
+                            alt="Mitologia Tibetana" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">☸</div>
                             <h2>Tibetana</h2>
@@ -1513,7 +1509,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-tupi-guarani.png"
-                            alt="Mitologia Tupi-Guarani">
+                            alt="Mitologia Tupi-Guarani" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🌿</div>
                             <h2>Tupi-Guarani</h2>
@@ -1526,7 +1522,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-turca.png"
-                            alt="Mitologia Turca">
+                            alt="Mitologia Turca" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">🐺</div>
                             <h2>Turca</h2>
@@ -1538,7 +1534,7 @@
 
                     <article class="mythology-card">
                         <img src="./assets/images/mitologia/page-mitologia-personagens/mitologia-umbanda.png"
-                            alt="Mitologia Umbanda">
+                            alt="Mitologia Umbanda" loading="lazy">
                         <div class="mythology-card-content">
                             <div class="mythology-icon">⚚</div>
                             <h2>Umbanda</h2>
@@ -1551,6 +1547,7 @@
 
                 </div>
 
+                <!-- ================= MENSAGEM FINAL ================= -->
                 <div class="mythology-message">
                     <span>🌎</span>
                     <div>
@@ -1563,10 +1560,12 @@
 
     </main>
 
-    <script src="./js/main.js"></script>
+    <!-- ================= SCRIPTS DA PÁGINA ================= -->
+    <script src="./js/main.js" defer></script>
+    <script src="./assets/js/mythology-globe.js" defer></script>
     <script src="https://unpkg.com/three"></script>
     <script src="https://unpkg.com/globe.gl"></script>
-    <script src="./assets/js/mythology-globe.js"></script>
+
 </body>
 
 </html>
