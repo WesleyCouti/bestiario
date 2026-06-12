@@ -421,7 +421,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         carousel.addEventListener("click", preventClickAfterDrag, true);
 
-        window.addEventListener("resize", debounce(updateHalfWidth));
+        window.addEventListener("resize", debounce(() => {
+            updateHalfWidth();
+            normalizePosition();
+            applyTransform();
+        }));
         window.addEventListener("load", updateHalfWidth);
 
         animateCarousel();
@@ -435,41 +439,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setupMobileMenu();
     setupQuotesCarousel();
+
+    if (typeof createCreatureCards === "function") {
+        createCreatureCards();
+    }
+
+    if (typeof createSymbolCards === "function") {
+        createSymbolCards();
+    }
+
+    if (typeof createLegendCards === "function") {
+        createLegendCards();
+    }
+
+    if (typeof createRelicCards === "function") {
+        createRelicCards();
+    }
+
     setupHorizontalCarousels();
-    setupCreaturesCarousel();
+
+    if (typeof createMythologyCarouselCards === "function") {
+        createMythologyCarouselCards();
+    }
+
     setupInfiniteMythologyCarousel();
-    setupMythologyGlobe();
-    setupMythologyTimeline();
-
 });
-
-
-
-
-function setupMythologyTimeline() {
-    const timelineWrapper = document.querySelector(".mythology-timeline-wrapper");
-    const prevBtn = document.querySelector(".timeline-prev");
-    const nextBtn = document.querySelector(".timeline-next");
-
-    if (!timelineWrapper || !prevBtn || !nextBtn) {
-        return;
-    }
-
-    function getTimelineStep() {
-        return window.innerWidth <= 768 ? 260 : 360;
-    }
-
-    prevBtn.addEventListener("click", () => {
-        timelineWrapper.scrollBy({
-            left: -getTimelineStep(),
-            behavior: "smooth",
-        });
-    });
-
-    nextBtn.addEventListener("click", () => {
-        timelineWrapper.scrollBy({
-            left: getTimelineStep(),
-            behavior: "smooth",
-        });
-    });
-}

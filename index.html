@@ -7,41 +7,65 @@
     ====================================================== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Explore mitologias, religiões, lendas, criaturas, símbolos e relíquias do mundo antigo no Bestiário." />
+    <meta name="theme-color" content="#0d0d0d" />
+    <meta property="og:title" content="Bestiário" />
+    <meta property="og:description"
+        content="Explore mitologias, religiões, lendas, criaturas, símbolos e relíquias do mundo antigo." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="./assets/images/preview.png" />
 
     <title>Bestiário</title>
 
+    <link rel="icon" href="./assets/images/favicon.png" />
+    <link rel="canonical" href="https://seu-dominio.com/" />
+
     <!-- =====================================================
-         ESTILOS
+        ESTILOS GLOBAIS
     ====================================================== -->
     <link rel="stylesheet" href="./css/global/reset.css" />
-    <link rel="stylesheet" href="./css/global/base.css" />
-    <link rel="stylesheet" href="./css/global/responsive.css" />
     <link rel="stylesheet" href="./css/global/variables.css" />
+    <link rel="stylesheet" href="./css/global/base.css" />
 
+    <!-- =====================================================
+        LAYOUT
+    ====================================================== -->
     <link rel="stylesheet" href="./css/layout/menu.css" />
+    <link rel="stylesheet" href="./css/layout/footer.css" />
 
+    <!-- =====================================================
+        BASE / COMPONENTES GERAIS
+    ====================================================== -->
     <link rel="stylesheet" href="./css/base/netflix-sections.css" />
     <link rel="stylesheet" href="./css/base/accessibility.css" />
     <link rel="stylesheet" href="./css/base/style.css" />
 
-    <link rel="stylesheet" href="./css/overrides/home-adjustments.css" />
-
+    <!-- =====================================================
+        HOME
+    ====================================================== -->
+    <link rel="stylesheet" href="./css/pages/home/hero.css" />
+    <link rel="stylesheet" href="./css/pages/home/about-bestiario.css" />
     <link rel="stylesheet" href="./css/pages/home/about-mythology.css" />
     <link rel="stylesheet" href="./css/pages/home/ancient-knowledge.css" />
-    <link rel="stylesheet" href="./css/pages/home/creatures.css" />
     <link rel="stylesheet" href="./css/pages/home/flip-card.css" />
-    <link rel="stylesheet" href="./css/pages/home/hero.css" />
     <link rel="stylesheet" href="./css/pages/home/infinite-carousel.css" />
-    <link rel="stylesheet" href="./css/pages/home/legends.css" />
     <link rel="stylesheet" href="./css/pages/home/mythologies-showcase.css" />
-    <link rel="stylesheet" href="./css/pages/home/relics.css" />
+    <link rel="stylesheet" href="./css/pages/home/creatures.css" />
     <link rel="stylesheet" href="./css/pages/home/symbols.css" />
+    <link rel="stylesheet" href="./css/pages/home/legends.css" />
+    <link rel="stylesheet" href="./css/pages/home/why-study.css" />
+    <link rel="stylesheet" href="./css/pages/home/relics.css" />
 
-    <link rel="stylesheet" href="./css/pages/mythology/mythology.css" />
+    <!-- =====================================================
+        AJUSTES FINAIS DA HOME
+    ====================================================== -->
+    <link rel="stylesheet" href="./css/overrides/home-adjustments.css" />
 
-    <link rel="stylesheet" href="./css/pages/religion/religion.css" />
-
-
+    <!-- =====================================================
+        RESPONSIVIDADE GLOBAL
+    ====================================================== -->
+    <link rel="stylesheet" href="./css/global/responsive.css" />
 
 </head>
 
@@ -50,30 +74,28 @@
     <!-- =====================================================
          HEADER / MENU PRINCIPAL
     ====================================================== -->
-    <!-- =====================================================
-     HEADER / MENU PRINCIPAL
-===================================================== -->
     <header class="topbar">
 
         <div class="container topbar-content">
 
             <!-- =====================================================
-             LOGO
-        ====================================================== -->
+                LOGO
+            ====================================================== -->
             <a href="./index.html#home" class="logo">
                 <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" class="logo-icon" />
 
                 <span>Bestiário</span>
             </a>
 
-            <button class="menu-toggle" type="button" aria-label="Abrir menu">
+            <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"
+                aria-controls="menu-principal">
                 ☰
             </button>
 
             <!-- =====================================================
-             MENU
-        ====================================================== -->
-            <nav class="menu" aria-label="Menu principal">
+                MENU
+            ====================================================== -->
+            <nav class="menu" id="menu-principal" aria-label="Menu principal">
                 <a href="./index.html#home" class="active">Home</a>
                 <a href="./mitologias.html">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
@@ -89,13 +111,13 @@
     <main>
 
         <!-- =====================================================
-     HERO / DESTAQUE PRINCIPAL
-    ===================================================== -->
+             HERO / DESTAQUE PRINCIPAL
+        ====================================================== -->
         <section class="hero" id="home">
 
             <div class="container hero-layout">
 
-                <!-- TEXTO -->
+                <!-- Conteúdo textual -->
                 <div class="hero-content">
 
                     <span class="hero-tag">
@@ -107,17 +129,21 @@
                         do Mundo Antigo
                     </h1>
 
+                    <p class="hero-institutional">
+                        Mitologias • Religiões • Símbolos • Lendas • Relíquias
+                    </p>
+
                     <p>
                         Lendas esquecidas, símbolos sagrados e conhecimentos ancestrais
                         aguardam por aqueles que ousam olhar além do visível.
                     </p>
 
-                    <!-- BOTÕES -->
+                    <!-- Ações principais -->
                     <div class="hero-actions">
 
-                        <button class="hero-button" type="button">
+                        <a href="#mitologias" class="hero-button">
                             Explorar agora
-                        </button>
+                        </a>
 
                         <a href="#sobre-mitologia" class="hero-secondary-button">
 
@@ -127,7 +153,7 @@
 
                     </div>
 
-                    <!-- ATALHOS -->
+                    <!-- Atalhos de navegação -->
                     <div class="hero-shortcuts">
 
                         <a href="#mitologias" class="hero-shortcut">
@@ -182,7 +208,7 @@
 
                 </div>
 
-                <!-- IMAGEM -->
+                <!-- Imagem principal -->
                 <div class="hero-visual">
 
                     <img src="./assets/images/mao_mistica_com_simbolos.png" alt="Mão mística com símbolos ancestrais"
@@ -190,6 +216,31 @@
 
                 </div>
 
+            </div>
+
+        </section>
+
+        <!-- =====================================================
+            SEÇÃO: O QUE É O BESTIÁRIO
+        ====================================================== -->
+
+        <section class="about-bestiario" id="sobre-bestiario">
+            <div class="container">
+                <span class="section-tag">Sobre o projeto</span>
+
+                <h2>O que é o Bestiário?</h2>
+
+                <p>
+                    O Bestiário é uma biblioteca digital dedicada às mitologias,
+                    religiões, lendas, criaturas, símbolos e relíquias que marcaram
+                    a história da humanidade.
+                </p>
+
+                <p>
+                    Nosso objetivo é apresentar esse patrimônio cultural de forma
+                    acessível, visual e respeitosa, conectando conhecimento antigo
+                    com a curiosidade do mundo moderno.
+                </p>
             </div>
 
         </section>
@@ -206,8 +257,8 @@
                     <h2>O que é Mitologia?</h2>
 
                     <p class="about-highlight">
-                        A mitologia é o conjunto de histórias, símbolos e narrativas criadas por diferentes culturas
-                        para explicar o mundo, a natureza e a existência humana.
+                        A mitologia reúne histórias, símbolos e personagens que ajudaram diferentes povos a compreender
+                        o mundo e transmitir seus valores através das gerações.
                     </p>
 
                     <div class="about-grid">
@@ -239,7 +290,7 @@
                     </div>
 
                     <p class="about-conclusion">
-                        Assim, mitologia e realidade não são opostos — são formas diferentes de compreender a
+                        Assim, mitologia e realidade não são opostos, são formas diferentes de compreender a
                         existência: uma através da razão, outra através do significado.
                     </p>
 
@@ -253,24 +304,25 @@
         <section class="ancient-knowledge" id="vozes-antigas">
             <div class="container ancient-knowledge-content">
 
-                <!-- Cabeçalho -->
+                <!-- Cabeçalho da seção -->
                 <span class="section-tag">Conhecimento Antigo</span>
                 <h2>Vozes do Mundo Antigo</h2>
 
                 <p class="ancient-intro">
-                    Sabedorias que atravessaram eras, ecoando através de diferentes culturas,
-                    tradições e visões sobre o mundo.
+                    Ao longo da história, diferentes povos registraram sua visão do mundo por meio de provérbios,
+                    ensinamentos e tradições orais. Essas vozes antigas continuam inspirando gerações e revelam como
+                    diferentes culturas compreenderam a existência.
                 </p>
 
                 <!-- Carrossel de citações -->
-                <div class="quotes-carousel-wrapper">
+                <div class="quotes-carousel-wrapper" aria-label="Carrossel de citações antigas">
 
                     <!-- Botão voltar -->
                     <button class="carousel-button prev" id="prevBtn" aria-label="Voltar" type="button">
                         &#10094;
                     </button>
 
-                    <!-- Trilha dos cards -->
+                    <!-- Trilha de cards -->
                     <div class="quotes-carousel">
                         <div class="ancient-quotes" id="quotesTrack">
 
@@ -350,10 +402,9 @@
         </section>
 
         <!-- =====================================================
-         CARROSSEL INFINITO - MITOLOGIAS
+            CARROSSEL INFINITO - MITOLOGIAS
         ===================================================== -->
         <section class="infinite-carousel-section" id="mitologias">
-
             <div class="container">
 
                 <div class="carousel-header">
@@ -361,1405 +412,20 @@
                     <h2>Visões do Mundo Antigo</h2>
                 </div>
 
-                <div class="infinite-carousel">
-
-                    <div class="carousel-track">
-
-                        <!-- MITOLOGIA ABENAKI -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/abenaki.png"
-                                            alt="Mitologia Abenaki">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Abenaki</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Povos Originários</span>
-                                        <h3>Mitologia Abenaki</h3>
-                                        <p>Tradição espiritual ligada à natureza, aos animais sagrados, aos espíritos
-                                            ancestrais e às forças criadoras do mundo.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA ABORÍGENE -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/aborigene.png"
-                                            alt="Mitologia Aborígene">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Aborígene</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Tempo do Sonho</span>
-                                        <h3>Mitologia Aborígene</h3>
-                                        <p>Cosmovisão ancestral marcada pelo Tempo do Sonho, espíritos criadores,
-                                            paisagens sagradas e conexão profunda com a terra.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA AFRICANA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/africana.png"
-                                            alt="Mitologia Africana">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Africana</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Ancestralidade</span>
-                                        <h3>Mitologia Africana</h3>
-                                        <p>Conjunto rico de divindades, espíritos, heróis culturais, animais simbólicos
-                                            e forças ligadas à criação e à ancestralidade.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA ALEMÃ -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/alema.png"
-                                            alt="Mitologia Alemã">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Alemã</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Folclore Europeu</span>
-                                        <h3>Mitologia Alemã</h3>
-                                        <p>Lendas sombrias, florestas antigas, espíritos, criaturas fantásticas e
-                                            histórias populares preservadas no imaginário germânico.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA AMERICANA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/americana.png"
-                                            alt="Mitologia Americana">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Americana</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Lendas Populares</span>
-                                        <h3>Mitologia Americana</h3>
-                                        <p>Histórias lendárias formadas por criaturas misteriosas, heróis populares,
-                                            assombrações e mitos do imaginário norte-americano.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA ÁRABE -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/arabe.png"
-                                            alt="Mitologia Árabe">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Árabe</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Desertos e Gênios</span>
-                                        <h3>Mitologia Árabe</h3>
-                                        <p>Universo de gênios, seres invisíveis, desertos encantados, contos
-                                            maravilhosos e forças espirituais antigas.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA ARGENTINA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/argentina.png"
-                                            alt="Mitologia Argentina">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Argentina</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Lendas do Sul</span>
-                                        <h3>Mitologia Argentina</h3>
-                                        <p>Lendas populares marcadas por espíritos, entidades rurais, criaturas noturnas
-                                            e narrativas tradicionais das regiões argentinas.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA ASTECA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/asteca.png"
-                                            alt="Mitologia Asteca">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Asteca</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Império Solar</span>
-                                        <h3>Mitologia Asteca</h3>
-                                        <p>Deuses solares, serpentes emplumadas, sacrifícios sagrados e forças cósmicas
-                                            ligadas ao equilíbrio do universo.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA BASCA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/basca.png"
-                                            alt="Mitologia Basca">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Basca</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Montanhas Sagradas</span>
-                                        <h3>Mitologia Basca</h3>
-                                        <p>Mitologia antiga com deusas da terra, espíritos das cavernas, gigantes e
-                                            entidades ligadas às montanhas e tempestades.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA BRASILEIRA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/brasileira.png"
-                                            alt="Mitologia Brasileira">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Brasileira</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Folclore Nacional</span>
-                                        <h3>Mitologia Brasileira</h3>
-                                        <p>Seres encantados, protetores das matas, lendas indígenas, influências
-                                            africanas e criaturas populares do imaginário brasileiro.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA BUDISTA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/budista.png"
-                                            alt="Mitologia Budista">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Budista</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Iluminação</span>
-                                        <h3>Mitologia Budista</h3>
-                                        <p>Seres celestiais, guardiões espirituais, ciclos de renascimento e símbolos
-                                            ligados à sabedoria, compaixão e iluminação.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA CARIBENHA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/caribenha.png"
-                                            alt="Mitologia Caribenha">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Caribenha</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Ilhas Místicas</span>
-                                        <h3>Mitologia Caribenha</h3>
-                                        <p>Lendas insulares com espíritos, entidades marítimas, forças ancestrais e
-                                            tradições populares marcadas por mistério e magia.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA CATALANA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/catalana.png"
-                                            alt="Mitologia Catalana">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Catalana</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Lendas Ibéricas</span>
-                                        <h3>Mitologia Catalana</h3>
-                                        <p>Dragões, gigantes, bruxas, seres encantados e tradições populares presentes
-                                            no imaginário mítico da Catalunha.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA CELTA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/celta.png"
-                                            alt="Mitologia Celta">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Celta</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Druidas Antigos</span>
-                                        <h3>Mitologia Celta</h3>
-                                        <p>Florestas sagradas, povos feéricos, deuses guerreiros, druidas e forças
-                                            espirituais conectadas à natureza ancestral.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA CHILENA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/chilena.png"
-                                            alt="Mitologia Chilena">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Chilena</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Lendas Andinas</span>
-                                        <h3>Mitologia Chilena</h3>
-                                        <p>Tradições marcadas por criaturas marítimas, espíritos da terra, lendas
-                                            mapuches e mistérios das montanhas e ilhas.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA CHINESA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/chinesa.png"
-                                            alt="Mitologia Chinesa">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Chinesa</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Dragões Celestiais</span>
-                                        <h3>Mitologia Chinesa</h3>
-                                        <p>Dragões, imortais, imperadores celestiais, espíritos guardiões e forças
-                                            cósmicas ligadas à harmonia universal.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA COLOMBIANA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/colombiana.png"
-                                            alt="Mitologia Colombiana">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Colombiana</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Lendas da Terra</span>
-                                        <h3>Mitologia Colombiana</h3>
-                                        <p>Entidades populares, espíritos da natureza, assombrações tradicionais e
-                                            narrativas ligadas às florestas e montanhas.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA CRISTÃ -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/crista.png"
-                                            alt="Mitologia Cristã">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Cristã</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Anjos e Mistérios</span>
-                                        <h3>Mitologia Cristã</h3>
-                                        <p>Tradições simbólicas com anjos, demônios, milagres, visões apocalípticas e
-                                            narrativas espirituais de salvação e queda.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA DINAMARQUESA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/dinamarquesa.png"
-                                            alt="Mitologia Dinamarquesa">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Dinamarquesa</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Norte Europeu</span>
-                                        <h3>Mitologia Dinamarquesa</h3>
-                                        <p>Lendas nórdicas e folclóricas com seres das florestas, espíritos antigos,
-                                            guerreiros e criaturas do imaginário escandinavo.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA DOMINICANA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/dominicana.png"
-                                            alt="Mitologia Dominicana">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Dominicana</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Caribe Místico</span>
-                                        <h3>Mitologia Dominicana</h3>
-                                        <p>Tradições populares com espíritos, assombrações, lendas rurais e seres
-                                            sobrenaturais ligados ao imaginário caribenho.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA EGÍPCIA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/egipcia.png"
-                                            alt="Mitologia Egípcia">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Egípcia</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Civilização Antiga</span>
-                                        <h3>Mitologia Egípcia</h3>
-                                        <p>Deuses ancestrais, rituais funerários, entidades cósmicas e forças ligadas à
-                                            eternidade, morte e renascimento.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA ESCANDINAVA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/escandinava.png"
-                                            alt="Mitologia Escandinava">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Escandinava</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Reinos do Norte</span>
-                                        <h3>Mitologia Escandinava</h3>
-                                        <p>Deuses, gigantes, valquírias, monstros e mundos conectados por uma cosmologia
-                                            épica de gelo, fogo e destino.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA ESCOCESA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/escocesa.png"
-                                            alt="Mitologia Escocesa">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Escocesa</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Terras Altas</span>
-                                        <h3>Mitologia Escocesa</h3>
-                                        <p>Lendas de lagos profundos, fadas, espíritos das terras altas, criaturas
-                                            misteriosas e tradições celtas preservadas.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA ESLAVA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/eslava.png"
-                                            alt="Mitologia Eslava">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Eslava</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Florestas Antigas</span>
-                                        <h3>Mitologia Eslava</h3>
-                                        <p>Deuses da tempestade, espíritos domésticos, bruxas, florestas sombrias e
-                                            entidades ligadas ao inverno e à fertilidade.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA EUROPEIA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/europeia.png"
-                                            alt="Mitologia Europeia">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Europeia</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Velho Mundo</span>
-                                        <h3>Mitologia Europeia</h3>
-                                        <p>Conjunto de lendas, seres mágicos, tradições pagãs, criaturas medievais e
-                                            símbolos do imaginário antigo europeu.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA FILIPINA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/filipina.png"
-                                            alt="Mitologia Filipina">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Filipina</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Ilhas Ancestrais</span>
-                                        <h3>Mitologia Filipina</h3>
-                                        <p>Divindades, espíritos da natureza, criaturas noturnas e tradições orais
-                                            vindas das ilhas e povos filipinos.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA FINLANDESA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/finlandesa.png"
-                                            alt="Mitologia Finlandesa">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Finlandesa</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Kalevala</span>
-                                        <h3>Mitologia Finlandesa</h3>
-                                        <p>Heróis mágicos, cantos sagrados, espíritos da floresta, criaturas antigas e
-                                            forças ligadas à palavra e à criação.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA FRANCESA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/francesa.png"
-                                            alt="Mitologia Francesa">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Francesa</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Lendas Medievais</span>
-                                        <h3>Mitologia Francesa</h3>
-                                        <p>Contos de fadas, criaturas mágicas, cavaleiros, dragões, santos lendários e
-                                            tradições populares da França antiga.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA GAÉLICA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/gaelica.png"
-                                            alt="Mitologia Gaélica">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Gaélica</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Povos Celtas</span>
-                                        <h3>Mitologia Gaélica</h3>
-                                        <p>Heróis lendários, fadas, deuses antigos, reinos encantados e tradições
-                                            espirituais dos povos gaélicos.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA GREGA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/grega.png"
-                                            alt="Mitologia Grega">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Grega</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Olimpianos</span>
-                                        <h3>Mitologia Grega</h3>
-                                        <p>Deuses olímpicos, titãs, heróis lendários, monstros colossais e narrativas
-                                            que moldaram o imaginário ocidental.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA HAITIANA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/haitiana.png"
-                                            alt="Mitologia Haitiana">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Haitiana</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Espiritualidade</span>
-                                        <h3>Mitologia Haitiana</h3>
-                                        <p>Tradições espirituais, entidades ancestrais, ritos simbólicos e forças
-                                            sagradas ligadas ao universo cultural haitiano.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA HAVAIANA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/havaiana.png"
-                                            alt="Mitologia Havaiana">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Havaiana</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Ilhas Sagradas</span>
-                                        <h3>Mitologia Havaiana</h3>
-                                        <p>Deuses vulcânicos, espíritos do oceano, heróis navegadores e forças naturais
-                                            ligadas ao fogo, mar e criação.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA HERÁLDICA EUROPEIA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/heraldica-europeia.png"
-                                            alt="Mitologia Heráldica Europeia">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Heráldica Europeia</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Brasões e Feras</span>
-                                        <h3>Mitologia Heráldica Europeia</h3>
-                                        <p>Dragões, grifos, unicórnios, leões míticos e criaturas simbólicas presentes
-                                            em brasões, reinos e linhagens nobres.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA HINDU -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/hindu.png"
-                                            alt="Mitologia Hindu">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Hindu</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Cosmos Sagrado</span>
-                                        <h3>Mitologia Hindu</h3>
-                                        <p>Divindades cósmicas, avatares, demônios, ciclos de criação e destruição,
-                                            sabedoria espiritual e epopeias sagradas.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA HOLANDESA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/holandesa.png"
-                                            alt="Mitologia Holandesa">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Holandesa</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Folclore Europeu</span>
-                                        <h3>Mitologia Holandesa</h3>
-                                        <p>Lendas de águas, espíritos, figuras populares, seres misteriosos e tradições
-                                            antigas dos Países Baixos.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA HÚNGARA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/hungara.png"
-                                            alt="Mitologia Húngara">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Húngara</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Lendas Magiares</span>
-                                        <h3>Mitologia Húngara</h3>
-                                        <p>Tradições antigas com aves sagradas, heróis lendários, espíritos, xamanismo e
-                                            narrativas do povo magiar.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA INCA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/inca.png"
-                                            alt="Mitologia Inca">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Inca</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Filhos do Sol</span>
-                                        <h3>Mitologia Inca</h3>
-                                        <p>Deuses solares, montanhas sagradas, ancestrais divinizados e forças naturais
-                                            ligadas ao império andino.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA INDIANA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/indiana.png"
-                                            alt="Mitologia Indiana">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Indiana</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Épicos Sagrados</span>
-                                        <h3>Mitologia Indiana</h3>
-                                        <p>Deuses, semideuses, demônios, ciclos cósmicos, avatares e narrativas épicas
-                                            de grande profundidade espiritual.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA INDONÉSIA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/indonesia.png"
-                                            alt="Mitologia Indonésia">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Indonésia</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Arquipélago Místico</span>
-                                        <h3>Mitologia Indonésia</h3>
-                                        <p>Espíritos ancestrais, dragões, seres protetores, lendas insulares e tradições
-                                            sagradas do arquipélago indonésio.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA INGLESA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/inglesa.png"
-                                            alt="Mitologia Inglesa">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Inglesa</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Lendas Medievais</span>
-                                        <h3>Mitologia Inglesa</h3>
-                                        <p>Cavaleiros, criaturas lendárias, florestas encantadas, reis míticos e
-                                            narrativas populares da tradição inglesa.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA INUIT -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/inuit.png"
-                                            alt="Mitologia Inuit">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Inuit</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Gelo Ancestral</span>
-                                        <h3>Mitologia Inuit</h3>
-                                        <p>Espíritos do gelo, animais sagrados, entidades marítimas e histórias moldadas
-                                            pelo frio, sobrevivência e natureza extrema.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA IORUBÁ -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/ioruba.png"
-                                            alt="Mitologia Iorubá">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Iorubá</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Orixás</span>
-                                        <h3>Mitologia Iorubá</h3>
-                                        <p>Orixás, forças da natureza, ancestralidade, destino, rituais sagrados e
-                                            entidades que representam aspectos da vida humana.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA IRLANDESA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/irlandesa.png"
-                                            alt="Mitologia Irlandesa">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Irlandesa</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Ilha Encantada</span>
-                                        <h3>Mitologia Irlandesa</h3>
-                                        <p>Tuatha Dé Danann, heróis, fadas, reinos invisíveis e histórias celtas cheias
-                                            de magia, guerra e destino.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA JAPONESA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/japonesa.png"
-                                            alt="Mitologia Japonesa">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Japonesa</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Yokais e Kami</span>
-                                        <h3>Mitologia Japonesa</h3>
-                                        <p>Yokais, kami, dragões celestiais, espíritos da natureza e entidades ligadas
-                                            ao equilíbrio entre mundo humano e espiritual.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA JUDAICA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/judaica.png"
-                                            alt="Mitologia Judaica">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Judaica</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Mistérios Antigos</span>
-                                        <h3>Mitologia Judaica</h3>
-                                        <p>Anjos, golems, demônios, sabedoria mística, tradições simbólicas e narrativas
-                                            espirituais de origem antiga.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA LITUANA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/lituana.png"
-                                            alt="Mitologia Lituana">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Lituana</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Báltica</span>
-                                        <h3>Mitologia Lituana</h3>
-                                        <p>Deuses do trovão, espíritos da terra, serpentes sagradas, florestas antigas e
-                                            tradições pagãs bálticas.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA MAIA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/maia.png"
-                                            alt="Mitologia Maia">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Maia</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Cosmos Mesoamericano</span>
-                                        <h3>Mitologia Maia</h3>
-                                        <p>Deuses criadores, jaguares sagrados, mundos subterrâneos, calendários
-                                            cósmicos e narrativas de criação e destruição.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA MALAIO -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/malaio.png"
-                                            alt="Mitologia Malaio">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Malaio</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Sudeste Asiático</span>
-                                        <h3>Mitologia Malaio</h3>
-                                        <p>Espíritos da selva, criaturas noturnas, entidades protetoras e narrativas
-                                            tradicionais do mundo malaio.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA MAORI -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/maori.png"
-                                            alt="Mitologia Maori">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Maori</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Polinésia</span>
-                                        <h3>Mitologia Maori</h3>
-                                        <p>Deuses criadores, heróis navegadores, espíritos ancestrais e forças naturais
-                                            ligadas ao mar, céu e terra.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA MESOPOTÂMICA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/mesopotamica.png"
-                                            alt="Mitologia Mesopotâmica">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Mesopotâmica</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Berço dos Mitos</span>
-                                        <h3>Mitologia Mesopotâmica</h3>
-                                        <p>Deuses antigos, monstros primordiais, reis lendários, dilúvios sagrados e
-                                            narrativas das primeiras civilizações.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA MEXICANA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/mexicana.png"
-                                            alt="Mitologia Mexicana">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Mexicana</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Mesoamérica</span>
-                                        <h3>Mitologia Mexicana</h3>
-                                        <p>Serpentes sagradas, deuses solares, lendas populares, espíritos e tradições
-                                            ancestrais do México antigo e moderno.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA NÓRDICA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/nordica.png"
-                                            alt="Mitologia Nórdica">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Nórdica</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Ragnarok</span>
-                                        <h3>Mitologia Nórdica</h3>
-                                        <p>Deuses guerreiros, gigantes, valquírias, lobos cósmicos e o destino final dos
-                                            nove mundos no Ragnarok.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA PERSA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/persa.png"
-                                            alt="Mitologia Persa">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Persa</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Luz e Sombra</span>
-                                        <h3>Mitologia Persa</h3>
-                                        <p>Forças do bem e do caos, seres celestiais, criaturas demoníacas e batalhas
-                                            cósmicas entre luz e escuridão.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA PORTUGUESA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/portuguesa.png"
-                                            alt="Mitologia Portuguesa">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Portuguesa</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Lendas Lusitanas</span>
-                                        <h3>Mitologia Portuguesa</h3>
-                                        <p>Mouras encantadas, monstros marítimos, lendas de castelos, santos populares e
-                                            tradições mágicas lusitanas.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA ROMANA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/romana.png"
-                                            alt="Mitologia Romana">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Romana</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Império e Deuses</span>
-                                        <h3>Mitologia Romana</h3>
-                                        <p>Deuses adaptados ao poder imperial, heróis fundadores, rituais públicos e
-                                            símbolos de guerra, ordem e destino.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA ROMENA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/romena.png"
-                                            alt="Mitologia Romena">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Romena</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Cárpatos</span>
-                                        <h3>Mitologia Romena</h3>
-                                        <p>Lendas sombrias, espíritos, vampiros folclóricos, criaturas das montanhas e
-                                            tradições populares dos Cárpatos.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA TIBETANA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/tibetana.png"
-                                            alt="Mitologia Tibetana">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Tibetana</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Montanhas Sagradas</span>
-                                        <h3>Mitologia Tibetana</h3>
-                                        <p>Guardião espirituais, divindades iradas, símbolos de iluminação, montanhas
-                                            sagradas e tradições místicas profundas.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA TUPI-GUARANI -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/tupi-guarani.png"
-                                            alt="Mitologia Tupi-Guarani">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Tupi-Guarani</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Brasil Ancestral</span>
-                                        <h3>Mitologia Tupi-Guarani</h3>
-                                        <p>Deuses criadores, espíritos da floresta, animais sagrados e narrativas
-                                            indígenas ligadas à origem do mundo.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA TURCA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/turca.png"
-                                            alt="Mitologia Turca">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Turca</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Lobos e Céu</span>
-                                        <h3>Mitologia Turca</h3>
-                                        <p>Lobos sagrados, espíritos celestes, xamanismo, mundos superiores e tradições
-                                            míticas dos povos túrquicos.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MITOLOGIA UMBANDA -->
-                        <div class="carousel-item">
-                            <div class="myth-flip-card">
-                                <div class="myth-flip-inner">
-                                    <div class="myth-flip-front">
-                                        <img src="assets/images/home/home-secao-mitologias/umbanda.png"
-                                            alt="Mitologia Umbanda">
-                                        <div class="myth-front-overlay">
-                                            <span>Mitologia</span>
-                                            <h3>Umbanda</h3>
-                                        </div>
-                                    </div>
-                                    <div class="myth-flip-back">
-                                        <span class="myth-category">Espiritualidade Brasileira</span>
-                                        <h3>Mitologia Umbanda</h3>
-                                        <p>Orixás, guias espirituais, linhas de trabalho, ancestralidade e forças
-                                            sagradas presentes na espiritualidade brasileira.</p>
-                                        <a href="#" class="myth-button">Explorar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
+                <div class="infinite-carousel" aria-label="Carrossel de mitologias">
+                    <div class="carousel-track" id="mythologyCarouselTrack"></div>
                 </div>
 
             </div>
-
         </section>
 
         <!-- =====================================================
-        SEÇÃO: CRIATURAS DO MUNDO ANTIGO
+             SEÇÃO: CRIATURAS DO MUNDO ANTIGO
         ====================================================== -->
         <section class="creatures-section" id="criaturas">
             <div class="creatures-container">
 
-                <!-- TOPO -->
+                <!-- Cabeçalho e chamada -->
                 <div class="creatures-top">
 
                     <div class="creatures-header">
@@ -1772,14 +438,14 @@
                         </div>
 
                         <p>
-                            Seres lendários que habitam mitos, lendas e histórias transmitidas
-                            ao longo de civilizações. Cada criatura carrega poderes, símbolos
-                            e significados que atravessam o tempo.
+                            Presentes em mitos, religiões e tradições populares, essas criaturas simbolizam medos,
+                            virtudes, forças da natureza e mistérios que acompanharam a humanidade ao longo dos séculos.
                         </p>
                     </div>
 
                     <div class="creatures-symbol">
-                        <img src="assets/images/sua-imagem-dragao.png" alt="Símbolo de dragão">
+                        <img src="assets/images/sua-imagem-dragao.png" alt="Símbolo de dragão" loading="lazy"
+                            decoding="async">
                     </div>
 
                     <a href="#" class="creatures-main-button">
@@ -1794,113 +460,16 @@
 
                 </div>
 
-                <!-- GRID DE CRIATURAS -->
-                <div class="creatures-grid">
-
-                    <!-- CARD DRAGÃO -->
-                    <article class="creature-card">
-                        <div class="creature-card-inner">
-
-                            <div class="creature-card-front">
-                                <img src="assets/images/home/home-secao-criaturas/dragao-home.png" alt="Dragão">
-                            </div>
-
-                            <div class="creature-card-back">
-                                <span class="creature-icon">🔥</span>
-                                <h3>Dragão</h3>
-                                <p>
-                                    Símbolo de força, sabedoria e poder ancestral.
-                                    Guardião de tesouros e segredos antigos.
-                                </p>
-                                <div class="creature-card-divider"></div>
-                                <a href="#" class="creature-card-link">
-                                    Saiba Mais <span>›</span>
-                                </a>
-                            </div>
-
-                        </div>
-                    </article>
-
-                    <!-- CARD FÊNIX -->
-                    <article class="creature-card">
-                        <div class="creature-card-inner">
-
-                            <div class="creature-card-front">
-                                <img src="assets/images/home/home-secao-criaturas/fenix-home.png" alt="Fênix">
-                            </div>
-
-                            <div class="creature-card-back">
-                                <span class="creature-icon">☀</span>
-                                <h3>Fênix</h3>
-                                <p>
-                                    Renascida das próprias cinzas, representa renovação,
-                                    esperança e o ciclo eterno da vida.
-                                </p>
-                                <div class="creature-card-divider"></div>
-                                <a href="#" class="creature-card-link">
-                                    Saiba Mais <span>›</span>
-                                </a>
-                            </div>
-
-                        </div>
-                    </article>
-
-                    <!-- CARD MINOTAURO -->
-                    <article class="creature-card">
-                        <div class="creature-card-inner">
-
-                            <div class="creature-card-front">
-                                <img src="assets/images/home/home-secao-criaturas/minotauro-home.png" alt="Minotauro">
-                            </div>
-
-                            <div class="creature-card-back">
-                                <span class="creature-icon">♉</span>
-                                <h3>Minotauro</h3>
-                                <p>
-                                    Guardião do labirinto, criatura de força colossal
-                                    e espírito indomável.
-                                </p>
-                                <div class="creature-card-divider"></div>
-                                <a href="#" class="creature-card-link">
-                                    Saiba Mais <span>›</span>
-                                </a>
-                            </div>
-
-                        </div>
-                    </article>
-
-                    <!-- CARD MEDUSA -->
-                    <article class="creature-card">
-                        <div class="creature-card-inner">
-
-                            <div class="creature-card-front">
-                                <img src="assets/images/home/home-secao-criaturas/medusa-home.png" alt="Medusa">
-                            </div>
-
-                            <div class="creature-card-back">
-                                <span class="creature-icon">🐍</span>
-                                <h3>Medusa</h3>
-                                <p>
-                                    Seu olhar transforma em pedra, mas sua história
-                                    vai muito além do que os olhos veem.
-                                </p>
-                                <div class="creature-card-divider"></div>
-                                <a href="#" class="creature-card-link">
-                                    Saiba Mais <span>›</span>
-                                </a>
-                            </div>
-
-                        </div>
-                    </article>
-
-                </div>
+                <!-- Lista de criaturas gerada pelo JavaScript -->
+                <div class="creatures-grid" id="creaturesGrid"></div>
 
             </div>
         </section>
 
+
         <!-- =====================================================
-SEÇÃO: SÍMBOLOS DO MUNDO ANTIGO
-====================================================== -->
+             SEÇÃO: SÍMBOLOS DO MUNDO ANTIGO
+        ====================================================== -->
         <section class="symbols-section" id="simbolos">
 
             <div class="symbols-container">
@@ -1917,9 +486,9 @@ SEÇÃO: SÍMBOLOS DO MUNDO ANTIGO
                         <h2>Símbolos do Mundo Antigo</h2>
 
                         <p>
-                            Cada símbolo carrega um significado profundo,
-                            representando forças, crenças e ensinamentos
-                            transmitidos ao longo de civilizações e lendas.
+                            Muitas culturas separadas por oceanos e séculos criaram símbolos
+                            para representar proteção, vida, equilíbrio, poder e transcendência.
+                            Cada marca carrega uma memória antiga e um significado profundo.
                         </p>
                     </div>
 
@@ -1946,58 +515,13 @@ SEÇÃO: SÍMBOLOS DO MUNDO ANTIGO
 
                 </div>
 
-                <div class="symbols-wrapper">
+                <div class="symbols-wrapper" aria-label="Carrossel de símbolos">
 
                     <button class="symbol-btn left" id="symbolPrev" type="button" aria-label="Voltar símbolos">
                         &#10094;
                     </button>
 
-                    <div class="symbols-track" id="symbolsTrack">
-
-                        <article class="symbol-card">
-                            <img src="./assets/images/home/home-secao-simbolos/ankh-simbolo.png" alt="Ankh">
-                            <div class="symbol-overlay">
-                                <h3>Ankh</h3>
-                            </div>
-                        </article>
-
-                        <article class="symbol-card">
-                            <img src="./assets/images/home/home-secao-simbolos/chi-rho-simbolo.png" alt="Chi Rho">
-                            <div class="symbol-overlay">
-                                <h3>Chi Rho</h3>
-                            </div>
-                        </article>
-
-                        <article class="symbol-card">
-                            <img src="./assets/images/home/home-secao-simbolos/triskelion-simbolo.png" alt="Triskelion">
-                            <div class="symbol-overlay">
-                                <h3>Triskelion</h3>
-                            </div>
-                        </article>
-
-                        <article class="symbol-card">
-                            <img src="./assets/images/home/home-secao-simbolos/yin-yang-simbolo.png" alt="Yin Yang">
-                            <div class="symbol-overlay">
-                                <h3>Yin Yang</h3>
-                            </div>
-                        </article>
-
-                        <article class="symbol-card">
-                            <img src="./assets/images/home/home-secao-simbolos/pentagrama-simbolo.png" alt="Pentagrama">
-                            <div class="symbol-overlay">
-                                <h3>Pentagrama</h3>
-                            </div>
-                        </article>
-
-                        <article class="symbol-card">
-                            <img src="./assets/images/home/home-secao-simbolos/olho-de-horus-simbolo.png"
-                                alt="Olho de Hórus">
-                            <div class="symbol-overlay">
-                                <h3>Olho de Hórus</h3>
-                            </div>
-                        </article>
-
-                    </div>
+                    <div class="symbols-track" id="symbolsTrack"></div>
 
                     <button class="symbol-btn right" id="symbolNext" type="button" aria-label="Avançar símbolos">
                         &#10095;
@@ -2015,74 +539,20 @@ SEÇÃO: SÍMBOLOS DO MUNDO ANTIGO
         <section class="legends-section" id="lendas">
             <div class="container">
 
-                <!-- Cabeçalho -->
+                <!-- Cabeçalho da seção -->
                 <div class="legends-header">
                     <span class="section-tag">Narrativas e Tradições</span>
                     <h2>Lendas do Mundo Antigo</h2>
                 </div>
 
-                <!-- Carrossel -->
-                <div class="legends-wrapper">
+                <!-- Carrossel de cards -->
+                <div class="legends-wrapper" aria-label="Carrossel de lendas">
 
                     <button class="legend-btn left" id="legendPrev" aria-label="Voltar" type="button">
                         &#10094;
                     </button>
 
                     <div class="legends-track" id="legendsTrack">
-
-                        <article class="legend-card">
-                            <img src="./assets/images/home/home-secao-lendas/loira-do-banheiro-home.png"
-                                alt="A Loira do Banheiro" />
-                            <div class="legend-overlay">
-                                <h3>A Loira do Banheiro</h3>
-                            </div>
-                        </article>
-
-                        <article class="legend-card">
-                            <img src="./assets/images/home/home-secao-lendas/teke-teke-home.png" alt="Teke Teke" />
-                            <div class="legend-overlay">
-                                <h3>Teke Teke</h3>
-                            </div>
-                        </article>
-
-                        <article class="legend-card">
-                            <img src="./assets/images/home/home-secao-lendas/kuchisake-onna-home.png"
-                                alt="Kuchisake-onna" />
-                            <div class="legend-overlay">
-                                <h3>Kuchisake-onna</h3>
-                            </div>
-                        </article>
-
-                        <article class="legend-card">
-                            <img src="./assets/images/home/home-secao-lendas/aka-manto-home.png" alt="Aka Manto" />
-                            <div class="legend-overlay">
-                                <h3>Aka Manto</h3>
-                            </div>
-                        </article>
-
-                        <article class="legend-card">
-                            <img src="./assets/images/home/home-secao-lendas/jack-the-killer-home.png"
-                                alt="Jack the Killer" />
-                            <div class="legend-overlay">
-                                <h3>Jack the Killer</h3>
-                            </div>
-                        </article>
-
-                        <article class="legend-card">
-                            <img src="./assets/images/home/home-secao-lendas/cabra-cabriola-home.png"
-                                alt="Cabra Cabriola" />
-                            <div class="legend-overlay">
-                                <h3>Cabra Cabriola</h3>
-                            </div>
-                        </article>
-
-                        <article class="legend-card">
-                            <img src="./assets/images/home/home-secao-lendas/pisadeira-home.png" alt="Pisadeira" />
-                            <div class="legend-overlay">
-                                <h3>Pisadeira</h3>
-                            </div>
-                        </article>
-
                     </div>
 
                     <button class="legend-btn right" id="legendNext" aria-label="Avançar" type="button">
@@ -2094,8 +564,33 @@ SEÇÃO: SÍMBOLOS DO MUNDO ANTIGO
         </section>
 
         <!-- =====================================================
-        SEÇÃO: RELÍQUIAS PROIBIDAS
-        ===================================================== -->
+             SEÇÃO: POR QUE ESTUDAR MITOLOGIAS, RELIGIÕES E LENDAS
+        ====================================================== -->
+        <section class="why-study-section" id="por-que-estudar">
+            <div class="container">
+
+                <span class="section-tag">Por que explorar?</span>
+
+                <h2>Por que estudar mitologias, religiões e lendas?</h2>
+
+                <p>
+                    Estudar essas tradições é compreender como diferentes povos
+                    enxergavam o mundo, explicavam seus medos, celebravam seus
+                    mistérios e transmitiam seus valores.
+                </p>
+
+                <p>
+                    Essas narrativas influenciaram a arte, a literatura, a filosofia,
+                    a arquitetura, os costumes e continuam presentes na cultura
+                    contemporânea.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- =====================================================
+             SEÇÃO: RELÍQUIAS PROIBIDAS
+        ====================================================== -->
 
         <section class="relics-section" id="reliquias">
 
@@ -2103,7 +598,7 @@ SEÇÃO: SÍMBOLOS DO MUNDO ANTIGO
 
             <div class="relics-container">
 
-                <!-- HEADER -->
+                <!-- Cabeçalho da seção -->
 
                 <div class="relics-header">
 
@@ -2117,157 +612,21 @@ SEÇÃO: SÍMBOLOS DO MUNDO ANTIGO
                     </h2>
 
                     <p>
-                        Artefatos capazes de alterar destinos,
-                        desafiar deuses e corromper almas.
+                        Entre a história e a lenda, muitas culturas preservaram relatos sobre objetos dotados de poder
+                        extraordinário. Alguns representam autoridade, outros proteção, sabedoria ou destruição.
                     </p>
 
                 </div>
 
-                <!-- CARROSSEL -->
+                <!-- Carrossel de relíquias -->
 
-                <div class="relics-carousel-wrapper">
+                <div class="relics-carousel-wrapper" aria-label="Carrossel de relíquias">
 
                     <button class="relic-arrow left" type="button" aria-label="Voltar">
                         &#10094;
                     </button>
 
-                    <div class="relics-carousel">
-
-                        <!-- EXCALIBUR -->
-
-                        <article class="relic-card excalibur">
-
-                            <div class="relic-symbol">☼</div>
-
-                            <img src="assets/images/home/home-secao-reliquias/exacalibur-home.png" alt="Excalibur">
-
-                            <div class="relic-gradient"></div>
-
-                            <div class="relic-content">
-
-                                <h3>EXCALIBUR</h3>
-
-                                <p>
-                                    Somente o digno pode empunhá-la.
-                                </p>
-
-                            </div>
-
-                        </article>
-
-                        <!-- MJOLNIR -->
-
-                        <article class="relic-card mjolnir">
-
-                            <div class="relic-symbol">ᛞ</div>
-
-                            <img src="assets/images/home/home-secao-reliquias/mjolnir-home.png" alt="Mjolnir">
-
-                            <div class="relic-gradient"></div>
-
-                            <div class="relic-content">
-
-                                <h3>MJÖLNIR</h3>
-
-                                <p>
-                                    O trovão responde ao chamado.
-                                </p>
-
-                            </div>
-
-                        </article>
-
-                        <!-- TRIDENTE -->
-
-                        <article class="relic-card trident">
-
-                            <div class="relic-symbol">♆</div>
-
-                            <img src="assets/images/home/home-secao-reliquias/tridente-de-poseidon-home.png"
-                                alt="Tridente">
-
-                            <div class="relic-gradient"></div>
-
-                            <div class="relic-content">
-
-                                <h3>TRIDENTE DE POSEIDON</h3>
-
-                                <p>
-                                    Domina as águas dos abismos.
-                                </p>
-
-                            </div>
-
-                        </article>
-
-                        <!-- PATA -->
-
-                        <article class="relic-card monkey">
-
-                            <div class="relic-symbol">✦</div>
-
-                            <img src="assets/images/home/home-secao-reliquias/pata-de-macaco-home.png"
-                                alt="Pata de Macaco">
-
-                            <div class="relic-gradient"></div>
-
-                            <div class="relic-content">
-
-                                <h3>PATA DE MACACO</h3>
-
-                                <p>
-                                    Todo desejo exige um preço.
-                                </p>
-
-                            </div>
-
-                        </article>
-
-                        <!-- SANTO GRAAL -->
-
-                        <article class="relic-card grail">
-
-                            <div class="relic-symbol">✟</div>
-
-                            <img src="assets/images/home/home-secao-reliquias/santo-graal-home.png" alt="Santo Graal">
-
-                            <div class="relic-gradient"></div>
-
-                            <div class="relic-content">
-
-                                <h3>SANTO GRAAL</h3>
-
-                                <p>
-                                    Dizem que concede vida eterna.
-                                </p>
-
-                            </div>
-
-                        </article>
-
-                        <!-- CAIXA DE PANDORA -->
-
-                        <article class="relic-card pandora">
-
-                            <div class="relic-symbol">☠</div>
-
-                            <img src="assets/images/home/home-secao-reliquias/caixa-de-pandora-home.png"
-                                alt="Caixa de Pandora">
-
-                            <div class="relic-gradient"></div>
-
-                            <div class="relic-content">
-
-                                <h3>CAIXA DE PANDORA</h3>
-
-                                <p>
-                                    O mal do mundo nasceu aqui.
-                                </p>
-
-                            </div>
-
-                        </article>
-                    </div>
+                    <div class="relics-carousel" id="relicsTrack"></div>
 
                     <button class="relic-arrow right" type="button" aria-label="Avançar">
                         &#10095;
@@ -2280,9 +639,52 @@ SEÇÃO: SÍMBOLOS DO MUNDO ANTIGO
     </main>
 
     <!-- =====================================================
+         FOOTER / RODAPÉ
+    ====================================================== -->
+    <footer class="footer">
+        <div class="container footer-content">
+
+            <!-- Identidade -->
+            <div class="footer-brand">
+                <a href="./index.html#home" class="footer-logo">
+                    <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" loading="lazy"
+                        decoding="async" />
+                    <span>Bestiário</span>
+                </a>
+
+                <p>
+                    Uma biblioteca digital dedicada às mitologias, religiões,
+                    lendas, criaturas, símbolos e relíquias do mundo antigo.
+                </p>
+            </div>
+
+            <!-- Navegação rápida -->
+            <nav class="footer-nav" aria-label="Navegação do rodapé">
+                <a href="./index.html#home">Home</a>
+                <a href="./mitologias.html">Mitologias</a>
+                <a href="./religion.html">Religiões</a>
+                <a href="./index.html#lendas">Lendas</a>
+                <a href="./index.html#simbolos">Símbolos</a>
+                <a href="./index.html#reliquias">Relíquias</a>
+            </nav>
+
+            <!-- Direitos -->
+            <p class="footer-copy">
+                © 2026 Bestiário. Todos os direitos reservados.
+            </p>
+
+        </div>
+    </footer>
+
+    <!-- =====================================================
          SCRIPT PRINCIPAL
     ====================================================== -->
-    <script src="./js/main.js"></script>
+    <script src="./js/home-mythology-carousel-data.js" defer></script>
+    <script src="./js/home-creatures-data.js" defer></script>
+    <script src="./js/home-symbols-data.js" defer></script>
+    <script src="./js/home-legends-data.js" defer></script>
+    <script src="./js/home-relics-data.js" defer></script>
+    <script src="./js/main.js" defer></script>
 
 </body>
 

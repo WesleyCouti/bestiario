@@ -1,0 +1,61 @@
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer {
+    padding: 70px 20px 40px;
+    border-top: 1px solid rgba(201, 154, 43, 0.15);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.footer-logo img {
+    width: 42px;
+}
+
+.footer-logo span {
+    color: var(--text-primary);
+    font-size: 1.6rem;
+    font-family: var(--font-title);
+}
+
+.footer-brand p {
+    max-width: 700px;
+    margin: 0 auto 35px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-bottom: 35px;
+}
+
+.footer-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    color: var(--myth-gold-soft);
+}
+
+.footer-copy {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}

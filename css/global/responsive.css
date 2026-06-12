@@ -1027,3 +1027,23 @@ main {
         scroll-behavior: auto !important;
     }
 }
+
+
+/* =====================================================
+   6. FOOTER
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .footer {
+        padding: 56px 18px 32px;
+    }
+
+    .footer-nav {
+        gap: 16px;
+    }
+
+    .footer-brand p {
+        font-size: 0.95rem;
+    }
+}
