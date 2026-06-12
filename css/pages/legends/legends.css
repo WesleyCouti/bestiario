@@ -1,0 +1,274 @@
+/* =====================================================
+   LEGENDS.CSS
+   Página: Lendas
+   Seção: Hero
+   Estilo alinhado com Mitologias / Religiões
+===================================================== */
+
+.legends-hero {
+    min-height: 72vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 20px 90px;
+    background:
+        radial-gradient(circle at center, rgba(200, 154, 43, 0.08), transparent 35%),
+        linear-gradient(180deg, #020807 0%, #020504 100%);
+    text-align: center;
+}
+
+.legends-hero-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.legends-hero-ornament {
+    color: #c89a2b;
+    font-size: 1.7rem;
+    letter-spacing: 28px;
+    margin-bottom: 25px;
+}
+
+.legends-hero h1 {
+    font-family: "Cinzel", serif;
+    font-size: clamp(3.2rem, 7vw, 5.8rem);
+    font-weight: 700;
+    letter-spacing: 14px;
+    text-transform: uppercase;
+    color: #efe2c2;
+    margin-bottom: 30px;
+}
+
+.legends-hero h2 {
+    font-family: "Cinzel", serif;
+    font-size: clamp(1rem, 1.8vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: #c89a2b;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.legends-hero p {
+    max-width: 760px;
+    margin: 0 auto;
+    color: #f1ead8;
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+/* =====================================================
+   CATEGORIAS DE LENDAS
+===================================================== */
+
+.legends-categories {
+    padding: 80px 20px;
+    background:
+        radial-gradient(circle at center, rgba(200, 154, 43, 0.05), transparent 45%),
+        linear-gradient(180deg, #040807 0%, #07100f 100%);
+    border-top: 1px solid rgba(200, 154, 43, 0.12);
+    border-bottom: 1px solid rgba(200, 154, 43, 0.12);
+}
+
+.legends-categories .container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/*======================================
+  TÍTULO
+======================================*/
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 45px;
+}
+
+.section-header h2 {
+    font-family: "Cinzel", serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #e8d8b4;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.section-line {
+    width: 90px;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #c89a2b,
+        transparent
+    );
+}
+
+/*======================================
+  GRID
+======================================*/
+
+.legends-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+}
+
+/*======================================
+  CARD
+======================================*/
+
+.legend-category-card {
+    height: 180px;
+    padding: 18px 12px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background: rgba(10, 15, 14, 0.65);
+    border: 1px solid rgba(200, 154, 43, 0.18);
+    border-radius: 14px;
+
+    transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+
+.legend-category-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(200, 154, 43, 0.6);
+    background: rgba(16, 22, 20, 0.88);
+}
+
+/*======================================
+  ÍCONE
+======================================*/
+
+.legend-category-icon {
+    width: 92px;
+    height: 92px;
+    margin: 0 auto 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.legend-category-icon img {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.legend-category-card:hover .legend-category-icon img {
+    transform: scale(1.05);
+}
+
+/*======================================
+  TEXTO
+======================================*/
+
+.legend-category-card h3 {
+    font-family: "Cinzel", serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #e8d8b4;
+    line-height: 1.35;
+    margin: 0;
+}
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+
+@media (max-width: 1200px) {
+    .legends-categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .legend-category-card {
+        height: 185px;
+    }
+}
+
+@media (max-width: 768px) {
+    .legends-hero {
+        min-height: 65vh;
+        padding: 100px 18px 70px;
+    }
+
+    .legends-hero-ornament {
+        letter-spacing: 16px;
+        font-size: 1.3rem;
+    }
+
+    .legends-hero h1 {
+        letter-spacing: 8px;
+        margin-bottom: 30px;
+    }
+
+    .legends-hero h2 {
+        letter-spacing: 5px;
+        font-size: 1rem;
+    }
+
+    .legends-hero p {
+        font-size: 1rem;
+    }
+
+    .legends-categories {
+        padding: 70px 20px;
+    }
+
+    .section-header {
+        gap: 12px;
+        margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+
+    .section-line {
+        width: 50px;
+    }
+
+    .legends-categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    .legend-category-card {
+        height: 170px;
+    }
+
+    .legend-category-icon {
+        width: 86px;
+        height: 86px;
+    }
+
+    .legend-category-icon img {
+        width: 82px;
+        height: 82px;
+    }
+}
+
+@media (max-width: 520px) {
+    .legends-categories-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .legend-category-card {
+        height: 165px;
+    }
+}

@@ -4,32 +4,57 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO básico -->
     <meta name="description"
         content="Explore mitologias do mundo, seus deuses, criaturas lendárias, símbolos sagrados e histórias ancestrais no Bestiário." />
-    <meta property="og:title" content="Mitologias | Bestiário">
+
+    <!-- Compartilhamento / Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mitologias | Bestiário" />
     <meta property="og:description"
-        content="Explore mitologias do mundo, seus deuses, criaturas e símbolos ancestrais.">
-    <meta property="og:image" content="./assets/images/compartilhamento.png">
+        content="Explore mitologias do mundo, seus deuses, criaturas e símbolos ancestrais." />
+    <meta property="og:image" content="./assets/images/compartilhamento.png" />
+    <meta property="og:url" content="./mitologias.html" />
+
+    <!-- Compartilhamento / Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mitologias | Bestiário" />
+    <meta name="twitter:description"
+        content="Explore mitologias do mundo, seus deuses, criaturas e símbolos ancestrais." />
+    <meta name="twitter:image" content="./assets/images/compartilhamento.png" />
 
     <title>Mitologias | Bestiário</title>
 
+    <!-- CSS global -->
     <link rel="stylesheet" href="./css/global/reset.css" />
     <link rel="stylesheet" href="./css/global/variables.css" />
     <link rel="stylesheet" href="./css/global/base.css" />
+
+    <!-- CSS de layout -->
     <link rel="stylesheet" href="./css/layout/menu.css" />
+    <link rel="stylesheet" href="./css/layout/footer.css" />
+
+    <!-- CSS responsivo e da página -->
     <link rel="stylesheet" href="./css/global/responsive.css" />
     <link rel="stylesheet" href="./css/pages/mythology/mythology.css" />
 </head>
 
 <body>
 
+    <!-- Link de acessibilidade -->
+    <a href="#conteudo-principal" class="skip-link">
+        Pular para o conteúdo
+    </a>
+
     <!-- ================= HEADER / MENU PRINCIPAL ================= -->
     <header class="topbar">
 
         <div class="container topbar-content">
 
-            <a href="./index.html#home" class="logo">
-                <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" class="logo-icon" loading="lazy" />
+            <a href="./index.html#home" class="logo" aria-label="Ir para a página inicial do Bestiário">
+                <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" class="logo-icon" loading="eager"
+                    decoding="async" />
                 <span>Bestiário</span>
             </a>
 
@@ -40,9 +65,9 @@
 
             <nav class="menu" id="mainMenu" aria-label="Menu principal">
                 <a href="./index.html#home">Home</a>
-                <a href="./mitologias.html" class="active">Mitologias</a>
+                <a href="./mitologias.html" class="active" aria-current="page">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
-                <a href="./index.html#lendas">Lendas</a>
+                <a href="./lendas.html">Lendas</a>
                 <a href="./index.html#simbolos">Símbolos</a>
                 <a href="./index.html#reliquias">Relíquias</a>
             </nav>
@@ -52,34 +77,30 @@
     </header>
 
     <!-- ================= CONTEÚDO PRINCIPAL ================= -->
-    <main>
+    <main id="conteudo-principal">
 
         <!-- ================= HERO / CAPA DA PÁGINA ================= -->
-        <section class="mythology-hero">
+        <section class="mythology-hero" aria-labelledby="mythology-hero-title">
 
-            <div class="mythology-hero-overlay"></div>
+            <div class="mythology-hero-overlay" aria-hidden="true"></div>
 
             <div class="container mythology-hero-content">
 
-                <div class="mythology-hero-content">
-
-                    <div class="hero-ornament">
-                        ✦ ─ ✦ ─ ✦
-                    </div>
-
-                    <h1>Mitologias</h1>
-
-                    <span class="hero-subtitle">
-                        Histórias que moldaram civilizações
-                    </span>
-
-                    <p>
-                        Deuses, heróis, criaturas lendárias e mitos que atravessam gerações.
-                        Explore as principais mitologias do mundo e descubra a sabedoria de
-                        cada cultura.
-                    </p>
-
+                <div class="hero-ornament" aria-hidden="true">
+                    ✦ ─ ✦ ─ ✦
                 </div>
+
+                <h1 id="mythology-hero-title">Mitologias</h1>
+
+                <span class="hero-subtitle">
+                    Histórias que moldaram civilizações
+                </span>
+
+                <p>
+                    Deuses, heróis, criaturas lendárias e mitos que atravessam gerações.
+                    Explore as principais mitologias do mundo e descubra a sabedoria de
+                    cada cultura.
+                </p>
 
             </div>
 
@@ -87,6 +108,7 @@
 
         <!-- ================= LINHA DO TEMPO DAS MITOLOGIAS ================= -->
         <section class="mythology-timeline-section" aria-labelledby="mythology-timeline-title">
+
             <div class="mythology-timeline-header">
                 <span>Linha do Tempo</span>
 
@@ -99,7 +121,7 @@
                 </p>
             </div>
 
-            <div class="mythology-timeline-controls">
+            <div class="mythology-timeline-controls" aria-label="Controles da linha do tempo">
                 <button class="timeline-arrow timeline-prev" type="button" aria-label="Voltar linha do tempo">
                     ‹
                 </button>
@@ -110,12 +132,13 @@
             </div>
 
             <div class="mythology-timeline-wrapper">
-                <div class="mythology-timeline-track" id="mythologyTimelineTrack"></div>
+                <div class="mythology-timeline-track" id="mythologyTimelineTrack" aria-live="polite"></div>
             </div>
+
         </section>
 
         <!-- ================= INTRODUÇÃO: O QUE SÃO MITOLOGIAS ================= -->
-        <section class="mythology-intro-section" id="o-que-sao-mitologias">
+        <section class="mythology-intro-section" id="o-que-sao-mitologias" aria-labelledby="mythology-intro-title">
 
             <div class="container">
 
@@ -127,9 +150,9 @@
                             Antes de explorar
                         </span>
 
-                        <h2>O que são mitologias?</h2>
+                        <h2 id="mythology-intro-title">O que são mitologias?</h2>
 
-                        <div class="mythology-intro-divider">
+                        <div class="mythology-intro-divider" aria-hidden="true">
                             <span></span>
                         </div>
 
@@ -157,14 +180,14 @@
 
                     <div class="mythology-intro-image">
                         <img src="./assets/images/mitologia/o-que-sao-mitologias.png"
-                            alt="Livro aberto com árvore mitológica dourada" loading="lazy">
+                            alt="Livro aberto com árvore mitológica dourada" loading="lazy" decoding="async" />
                     </div>
 
                 </div>
 
-                <div class="mythology-explains">
+                <div class="mythology-explains" aria-labelledby="mythology-explains-title">
 
-                    <div class="mythology-explains-title">
+                    <div class="mythology-explains-title" id="mythology-explains-title">
                         As mitologias ajudam a explicar:
                     </div>
 
@@ -172,31 +195,31 @@
 
                         <div class="mythology-explain-card">
                             <img src="./assets/images/mitologia/page-mitologia-icones/icone-mundo.png"
-                                alt="Origem do mundo" loading="lazy">
+                                alt="Origem do mundo" loading="lazy" decoding="async" />
                             <strong>A origem<br>do mundo</strong>
                         </div>
 
                         <div class="mythology-explain-card">
                             <img src="./assets/images/mitologia/page-mitologia-icones/icone-natureza.png"
-                                alt="Fenômenos da natureza" loading="lazy">
+                                alt="Fenômenos da natureza" loading="lazy" decoding="async" />
                             <strong>Fenômenos<br>da natureza</strong>
                         </div>
 
                         <div class="mythology-explain-card">
                             <img src="./assets/images/mitologia/page-mitologia-icones/icone-heroi.png"
-                                alt="Deuses e heróis" loading="lazy">
+                                alt="Deuses e heróis" loading="lazy" decoding="async" />
                             <strong>Deuses<br>e heróis</strong>
                         </div>
 
                         <div class="mythology-explain-card">
                             <img src="./assets/images/mitologia/page-mitologia-icones/icone-dragao.png"
-                                alt="Criaturas lendárias" loading="lazy">
+                                alt="Criaturas lendárias" loading="lazy" decoding="async" />
                             <strong>Criaturas<br>lendárias</strong>
                         </div>
 
                         <div class="mythology-explain-card">
                             <img src="./assets/images/mitologia/page-mitologia-icones/icone-pergaminho.png"
-                                alt="Sabedoria ancestral" loading="lazy">
+                                alt="Sabedoria ancestral" loading="lazy" decoding="async" />
                             <strong>Sabedoria<br>ancestral</strong>
                         </div>
 
@@ -229,46 +252,46 @@
                 <ul class="mythology-globe-legend" aria-label="Legenda das famílias mitológicas">
 
                     <li>
-                        <span class="legend-dot europeia"></span>
+                        <span class="legend-dot europeia" aria-hidden="true"></span>
                         Mitologias Europeias
                     </li>
 
                     <li>
-                        <span class="legend-dot asiatica"></span>
+                        <span class="legend-dot asiatica" aria-hidden="true"></span>
                         Mitologias Asiáticas
                     </li>
 
                     <li>
-                        <span class="legend-dot africana"></span>
+                        <span class="legend-dot africana" aria-hidden="true"></span>
                         Mitologias Africanas
                     </li>
 
                     <li>
-                        <span class="legend-dot indigena"></span>
+                        <span class="legend-dot indigena" aria-hidden="true"></span>
                         Povos Indígenas das Américas
                     </li>
 
                     <li>
-                        <span class="legend-dot oceanica"></span>
+                        <span class="legend-dot oceanica" aria-hidden="true"></span>
                         Mitologias Oceânicas
                     </li>
 
                     <li>
-                        <span class="legend-dot mediterranea"></span>
+                        <span class="legend-dot mediterranea" aria-hidden="true"></span>
                         Civilizações Mediterrâneas
                     </li>
 
                     <li>
-                        <span class="legend-dot religiosa"></span>
+                        <span class="legend-dot religiosa" aria-hidden="true"></span>
                         Tradições Religiosas
                     </li>
 
                 </ul>
 
-                <div class="mythology-globe-tip">
+                <div class="mythology-globe-tip" id="mythology-globe-tip">
                     <strong>Dica</strong>
                     <p>
-                        Passe o mouse sobre os pontos para descobrir a origem de cada mitologia.
+                        Toque ou passe o mouse sobre os pontos para descobrir a origem de cada mitologia.
                     </p>
                 </div>
 
@@ -276,11 +299,12 @@
 
             <div class="mythology-globe-area">
 
-                <div id="mythologyGlobe" class="mythology-globe"
-                    aria-label="Globo interativo com as origens das mitologias">
+                <div id="mythologyGlobe" class="mythology-globe" role="img"
+                    aria-label="Globo interativo com pontos de origem das mitologias"
+                    aria-describedby="mythology-globe-tip">
                 </div>
 
-                <div class="mythology-globe-instructions">
+                <div class="mythology-globe-instructions" aria-label="Instruções do globo interativo">
                     <span>🖱️ Arraste para girar</span>
                     <span>🔍 Role para aproximar</span>
                 </div>
@@ -290,38 +314,90 @@
         </section>
 
         <!-- ================= CATÁLOGO DE MITOLOGIAS ================= -->
-        <section class="mythology-catalog" id="catalogo-mitologias">
+        <section class="mythology-catalog" id="catalogo-mitologias" aria-labelledby="mythology-catalog-title">
 
             <div class="mythology-catalog-header">
                 <span>Catálogo</span>
-                <h2>Explore as mitologias</h2>
-                <p>Viaje por tradições antigas, deuses, heróis, criaturas lendárias e símbolos sagrados de diferentes
-                    povos do mundo.</p>
+
+                <h2 id="mythology-catalog-title">
+                    Explore as mitologias
+                </h2>
+
+                <p>
+                    Viaje por tradições antigas, deuses, heróis, criaturas lendárias e símbolos sagrados de diferentes
+                    povos do mundo.
+                </p>
             </div>
 
             <div class="container">
-                <div class="mythology-grid" id="mythologyGrid"></div>
+
+                <div class="mythology-grid" id="mythologyGrid" aria-live="polite"></div>
 
                 <!-- ================= MENSAGEM FINAL ================= -->
                 <div class="mythology-message">
-                    <span>🌎</span>
+                    <span aria-hidden="true">🌎</span>
+
                     <div>
-                        <h3>Conhecer uma mitologia é compreender a visão de mundo de um povo e preservar parte da memória da humanidade.</h3>
-                        <p>Explore. Aprenda. Conecte-se com histórias que nunca deixaram de viver.</p>
+                        <h3>A memória da humanidade vive nas mitologias.</h3>
+
+                        <p>
+                            Conhecer uma mitologia é compreender a visão de mundo de um povo e preservar histórias que
+                            nunca deixaram de viver.
+                        </p>
                     </div>
                 </div>
+
             </div>
+
         </section>
 
     </main>
 
+    <!-- =====================================================
+         FOOTER / RODAPÉ
+    ====================================================== -->
+    <footer class="footer">
+        <div class="container footer-content">
+
+            <!-- Identidade -->
+            <div class="footer-brand">
+                <a href="./index.html#home" class="footer-logo">
+                    <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" loading="lazy"
+                        decoding="async" />
+                    <span>Bestiário</span>
+                </a>
+
+                <p>
+                    Uma biblioteca digital dedicada às mitologias, religiões,
+                    lendas, criaturas, símbolos e relíquias do mundo antigo.
+                </p>
+            </div>
+
+            <!-- Navegação rápida -->
+            <nav class="footer-nav" aria-label="Navegação do rodapé">
+                <a href="./index.html#home">Home</a>
+                <a href="./mitologias.html">Mitologias</a>
+                <a href="./religion.html">Religiões</a>
+                <a href="./index.html#lendas">Lendas</a>
+                <a href="./index.html#simbolos">Símbolos</a>
+                <a href="./index.html#reliquias">Relíquias</a>
+            </nav>
+
+            <!-- Direitos -->
+            <p class="footer-copy">
+                © 2026 Bestiário. Todos os direitos reservados.
+            </p>
+
+        </div>
+    </footer>
+
     <!-- ================= SCRIPTS DA PÁGINA ================= -->
-    <script src="https://unpkg.com/three" defer></script>
-    <script src="https://unpkg.com/globe.gl" defer></script>
-    <script src="./js/main.js" defer></script>
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js" defer></script>
+    <script src="https://unpkg.com/globe.gl@2.32.1/dist/globe.gl.min.js" defer></script>
     <script src="./js/mythology-catalog.js" defer></script>
     <script src="./js/mythology-timeline.js" defer></script>
     <script src="./js/mythology-globe.js" defer></script>
+    <script src="./js/main.js" defer></script>
 
 </body>
 

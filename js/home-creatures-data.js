@@ -15,12 +15,14 @@
 
    2. Importe este arquivo antes do main.js:
 
-   <script src="./js/home-mythology-carousel-data.js" defer></script>
    <script src="./js/home-creatures-data.js" defer></script>
    <script src="./js/main.js" defer></script>
 
-   3. No main.js, chame createCreatureCards()
-      antes ou depois dos outros setups.
+   3. Caso seu main.js já chame createCreatureCards(),
+      pode manter normalmente.
+
+   4. Caso não chame, este arquivo também faz a renderização
+      automaticamente quando o HTML estiver carregado.
 ===================================================== */
 
 const homeCreaturesData = [
@@ -60,6 +62,22 @@ const homeCreaturesData = [
 
 
 /* =====================================================
+   FUNÇÃO DE SEGURANÇA PARA EVITAR HTML QUEBRADO
+   -----------------------------------------------------
+   Protege textos antes de inserir no innerHTML.
+===================================================== */
+
+function escapeHTML(value) {
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+/* =====================================================
    GERADOR DOS CARDS DE CRIATURAS
 ===================================================== */
 
@@ -70,33 +88,60 @@ function createCreatureCards() {
         return;
     }
 
-    creaturesGrid.innerHTML = homeCreaturesData.map((creature) => `
-        <article class="creature-card">
-            <div class="creature-card-inner">
+    if (homeCreaturesData.length === 0) {
+        creaturesGrid.innerHTML = "";
+        return;
+    }
 
-                <div class="creature-card-front">
-                    <img
-                        src="${creature.image}"
-                        alt="${creature.alt}"
-                        loading="lazy"
-                        decoding="async">
+    creaturesGrid.innerHTML = homeCreaturesData.map((creature) => {
+        const name = escapeHTML(creature.name || "Criatura");
+        const icon = escapeHTML(creature.icon || "✦");
+        const image = escapeHTML(creature.image || "");
+        const alt = escapeHTML(creature.alt || creature.name || "Imagem da criatura");
+        const description = escapeHTML(creature.description || "Mistério ancestral ainda não revelado.");
+        const url = escapeHTML(creature.url || "#");
+
+        return `
+            <article class="creature-card">
+                <div class="creature-card-inner">
+
+                    <div class="creature-card-front">
+                        <img
+                            src="${image}"
+                            alt="${alt}"
+                            loading="lazy"
+                            decoding="async">
+                    </div>
+
+                    <div class="creature-card-back">
+                        <span class="creature-icon" aria-hidden="true">${icon}</span>
+
+                        <h3>${name}</h3>
+
+                        <p>${description}</p>
+
+                        <div class="creature-card-divider" aria-hidden="true"></div>
+
+                        <a href="${url}" class="creature-card-link" aria-label="Saiba mais sobre ${name}">
+                            Saiba Mais <span aria-hidden="true">›</span>
+                        </a>
+                    </div>
+
                 </div>
+            </article>
+        `;
+    }).join("");
+}
 
-                <div class="creature-card-back">
-                    <span class="creature-icon">${creature.icon}</span>
 
-                    <h3>${creature.name}</h3>
+/* =====================================================
+   INICIALIZAÇÃO AUTOMÁTICA
+   -----------------------------------------------------
+   Evita erro caso o JS carregue antes do HTML.
+===================================================== */
 
-                    <p>${creature.description}</p>
-
-                    <div class="creature-card-divider"></div>
-
-                    <a href="${creature.url}" class="creature-card-link">
-                        Saiba Mais <span>›</span>
-                    </a>
-                </div>
-
-            </div>
-        </article>
-    `).join("");
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", createCreatureCards);
+} else {
+    createCreatureCards();
 }

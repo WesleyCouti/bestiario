@@ -7,16 +7,16 @@
    1. Utilitários globais
    2. Menu hambúrguer mobile
    3. Carrossel de citações
-   4. Carrosséis horizontais simples
-   5. Carrossel de criaturas
+   4. Renderização dos dados externos da Home
+   5. Carrosséis horizontais simples
    6. Carrossel infinito de mitologias
-   7. Globo interativo das mitologias
-   8. Inicialização geral
+   7. Inicialização geral
 
    Observação:
    - Este arquivo foi organizado para ter apenas um DOMContentLoaded.
    - Cada comportamento do site está isolado em uma função própria.
-   - O globo não redireciona o usuário ao clicar nos marcadores.
+   - Os cards de mitologias, criaturas, símbolos, lendas e relíquias
+     podem ser populados por arquivos JS separados.
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -25,10 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
        1. UTILITÁRIOS GLOBAIS
     ===================================================== */
 
-    /**
-     * Retorna a distância de rolagem de um carrossel com base
-     * no tamanho do primeiro card + gap entre os itens.
-     */
     function getTrackStep(track, cardSelector, fallback = 300) {
         const firstCard = track?.querySelector(cardSelector);
 
@@ -37,14 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const trackStyles = window.getComputedStyle(track);
-        const gap = parseFloat(trackStyles.gap || trackStyles.columnGap || "20");
+        const gapValue = trackStyles.gap || trackStyles.columnGap || "20";
+        const gap = Number.parseFloat(gapValue);
 
-        return firstCard.offsetWidth + gap;
+        return firstCard.offsetWidth + (Number.isNaN(gap) ? 20 : gap);
     }
 
-    /**
-     * Faz a rolagem horizontal suave de um container.
-     */
     function scrollTrack(track, distance) {
         if (!track) {
             return;
@@ -56,10 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /**
-     * Debounce simples para evitar executar uma função muitas vezes
-     * em eventos como resize.
-     */
     function debounce(callback, delay = 150) {
         let timeoutId;
 
@@ -194,7 +184,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       4. CARROSSÉIS HORIZONTAIS SIMPLES
+       4. RENDERIZAÇÃO DOS DADOS EXTERNOS DA HOME
+    ===================================================== */
+
+    function setupDynamicHomeContent() {
+        if (typeof createCreatureCards === "function") {
+            createCreatureCards();
+        }
+
+        if (typeof createSymbolCards === "function") {
+            createSymbolCards();
+        }
+
+        if (typeof createLegendCards === "function") {
+            createLegendCards();
+        }
+
+        if (typeof createRelicCards === "function") {
+            createRelicCards();
+        }
+
+        if (typeof createMythologyCarouselCards === "function") {
+            createMythologyCarouselCards();
+        }
+    }
+
+
+    /* =====================================================
+       5. CARROSSÉIS HORIZONTAIS SIMPLES
     ===================================================== */
 
     function setupSimpleHorizontalCarousel({
@@ -209,6 +226,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const nextBtn = document.querySelector(nextBtnSelector);
 
         if (!track || !prevBtn || !nextBtn) {
+            return;
+        }
+
+        if (!track.querySelector(cardSelector)) {
             return;
         }
 
@@ -242,24 +263,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 stepFallback: 320,
             },
             {
-                trackSelector: ".relics-carousel",
+                trackSelector: "#relicsTrack",
                 prevBtnSelector: ".relic-arrow.left",
                 nextBtnSelector: ".relic-arrow.right",
                 cardSelector: ".relic-card",
-                stepFallback: 320,
-            },
-            {
-                trackSelector: "#artifactsTrack",
-                prevBtnSelector: "#artifactPrev",
-                nextBtnSelector: "#artifactNext",
-                cardSelector: ".artifact-card",
-                stepFallback: 320,
-            },
-            {
-                trackSelector: "#mythologiesTrack",
-                prevBtnSelector: "#mythPrevBtn",
-                nextBtnSelector: "#mythNextBtn",
-                cardSelector: ".myth-card",
                 stepFallback: 320,
             },
         ];
@@ -269,51 +276,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       5. CARROSSEL - CRIATURAS
-    ===================================================== */
-
-    function setupCreaturesCarousel() {
-        const creaturesTrack = document.getElementById("creaturesTrack");
-        const creaturePrevBtn = document.getElementById("creaturePrevBtn");
-        const creatureNextBtn = document.getElementById("creatureNextBtn");
-
-        if (!creaturesTrack || !creaturePrevBtn || !creatureNextBtn) {
-            return;
-        }
-
-        function getCreatureStep() {
-            return getTrackStep(creaturesTrack, ".creature-card", 300);
-        }
-
-        function updateButtons() {
-            creaturePrevBtn.disabled = creaturesTrack.scrollLeft <= 5;
-        }
-
-        creaturePrevBtn.addEventListener("click", () => {
-            scrollTrack(creaturesTrack, -getCreatureStep());
-        });
-
-        creatureNextBtn.addEventListener("click", () => {
-            scrollTrack(creaturesTrack, getCreatureStep());
-        });
-
-        creaturesTrack.addEventListener("scroll", updateButtons);
-        window.addEventListener("resize", debounce(updateButtons));
-        window.addEventListener("load", updateButtons);
-
-        updateButtons();
-    }
-
-
-    /* =====================================================
        6. CARROSSEL INFINITO - MITOLOGIAS
     ===================================================== */
 
     function setupInfiniteMythologyCarousel() {
         const carousel = document.querySelector(".infinite-carousel");
-        const track = document.querySelector(".carousel-track");
+        const track = document.getElementById("mythologyCarouselTrack");
 
         if (!carousel || !track) {
+            return;
+        }
+
+        if (!track.querySelector(".carousel-item")) {
             return;
         }
 
@@ -426,11 +400,15 @@ document.addEventListener("DOMContentLoaded", () => {
             normalizePosition();
             applyTransform();
         }));
-        window.addEventListener("load", updateHalfWidth);
+
+        window.addEventListener("load", () => {
+            updateHalfWidth();
+            normalizePosition();
+            applyTransform();
+        });
 
         animateCarousel();
     }
-
 
 
     /* =====================================================
@@ -440,27 +418,12 @@ document.addEventListener("DOMContentLoaded", () => {
     setupMobileMenu();
     setupQuotesCarousel();
 
-    if (typeof createCreatureCards === "function") {
-        createCreatureCards();
-    }
-
-    if (typeof createSymbolCards === "function") {
-        createSymbolCards();
-    }
-
-    if (typeof createLegendCards === "function") {
-        createLegendCards();
-    }
-
-    if (typeof createRelicCards === "function") {
-        createRelicCards();
-    }
+    /*
+       Primeiro os cards dinâmicos são criados.
+       Depois os carrosséis são inicializados.
+    */
+    setupDynamicHomeContent();
 
     setupHorizontalCarousels();
-
-    if (typeof createMythologyCarouselCards === "function") {
-        createMythologyCarouselCards();
-    }
-
     setupInfiniteMythologyCarousel();
 });
