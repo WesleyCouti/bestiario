@@ -295,44 +295,150 @@ Objetivo:
         );
     opacity: 0.9;
 }
-
 /* =====================================================
-   CORES DAS CITAÇÕES
+   CORES DAS CITAÇÕES DAS MITOLOGIAS UTILIZADAS
+   Classes presentes em homeAncientQuotesData
 ===================================================== */
-.quote-card.druid .quote-author {
-    color: #81c784;
+
+
+/* OCEANIA */
+.quote-card.aboriginal .quote-author {
+    color: #D27D2D; /* Ocre ancestral */
 }
 
-.quote-card.nordic .quote-author {
-    color: #9fbcd3;
+.quote-card.maori .quote-author {
+    color: #009688; /* Verde jade */
+}
+
+.quote-card.hawaiian .quote-author {
+    color: #29B6F6; /* Azul oceano */
+}
+
+/* AMÉRICAS */
+.quote-card.aztec .quote-author {
+    color: #E65100; /* Laranja vulcânico */
+}
+
+.quote-card.brazilian .quote-author {
+    color: #43A047; /* Verde floresta */
+}
+
+.quote-card.caribbean .quote-author {
+    color: #00ACC1; /* Turquesa */
+}
+
+.quote-card.chilean .quote-author {
+    color: #C62828; /* Vermelho andino */
+}
+
+.quote-card.inca .quote-author {
+    color: #FBC02D; /* Ouro do Sol */
+}
+
+.quote-card.maya .quote-author {
+    color: #8D6E63; /* Pedra antiga */
+}
+
+.quote-card.tupi .quote-author {
+    color: #7CB342; /* Verde mata */
+}
+
+/* EUROPA */
+.quote-card.basque .quote-author {
+    color: #2E7D32; /* Verde montanhas */
+}
+
+.quote-card.celtic .quote-author,
+.quote-card.druid .quote-author {
+    color: #66BB6A; /* Verde druídico */
+}
+
+.quote-card.scandinavian .quote-author {
+    color: #90CAF9; /* Azul gelo */
+}
+
+.quote-card.slavic .quote-author {
+    color: #7E57C2; /* Roxo místico */
+}
+
+.quote-card.gaelic .quote-author {
+    color: #26A69A; /* Verde esmeralda */
 }
 
 .quote-card.greek .quote-author {
-    color: #d4af37;
+    color: #FFD54F; /* Ouro olímpico */
 }
 
-.quote-card.egyptian .quote-author {
-    color: #d8b64b;
+.quote-card.irish .quote-author {
+    color: #00C853; /* Verde irlandês */
 }
 
-.quote-card.mesopotamian .quote-author {
-    color: #c78b52;
+.quote-card.nordic .quote-author {
+    color: #B0BEC5; /* Prata nórdica */
 }
 
-.quote-card.hindu .quote-author {
-    color: #ffb07a;
+.quote-card.roman .quote-author {
+    color: #BF360C; /* Vermelho imperial */
 }
 
-.quote-card.yoruba .quote-author {
-    color: #f0a35a;
+/* ÁSIA */
+.quote-card.arabic .quote-author {
+    color: #C0A040; /* Dourado do deserto */
+}
+
+.quote-card.buddhist .quote-author {
+    color: #FB8C00; /* Açafrão */
 }
 
 .quote-card.chinese .quote-author {
-    color: #8ecaff;
+    color: #42A5F5; /* Azul celeste */
 }
 
-.quote-card.biblical .quote-author {
-    color: #d6d6a8;
+.quote-card.hindu .quote-author {
+    color: #FF7043; /* Laranja espiritual */
+}
+
+.quote-card.indian .quote-author {
+    color: #FF8F00; /* Âmbar */
+}
+
+.quote-card.japanese .quote-author {
+    color: #EC407A; /* Sakura */
+}
+
+.quote-card.jewish .quote-author {
+    color: #5C6BC0; /* Azul safira */
+}
+
+.quote-card.mesopotamian .quote-author {
+    color: #A1887F; /* Argila antiga */
+}
+
+.quote-card.persian .quote-author {
+    color: #AB47BC; /* Ametista persa */
+}
+
+.quote-card.tibetan .quote-author {
+    color: #EF6C00; /* Laranja tibetano */
+}
+
+/* ÁFRICA */
+.quote-card.african .quote-author {
+    color: #8D5524; /* Terra africana */
+}
+
+.quote-card.egyptian .quote-author {
+    color: #D4AF37; /* Ouro egípcio */
+}
+
+.quote-card.yoruba .quote-author {
+    color: #FF9800; /* Cobre ritual */
+}
+
+/* TRADIÇÕES RELIGIOSAS */
+.quote-card.biblical .quote-author,
+.quote-card.christian .quote-author {
+    color: #E8EAF6; /* Branco azulado */
 }
 
 /* =====================================================

@@ -6,130 +6,420 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <title>Lendas | Bestiário</title>
 
-<title>Lendas | Bestiário</title>
-
-<link rel="stylesheet" href="./css/global/reset.css" />
-<link rel="stylesheet" href="./css/global/variables.css" />
-<link rel="stylesheet" href="./css/global/base.css" />
-<link rel="stylesheet" href="./css/layout/menu.css" />
-<link rel="stylesheet" href="./css/global/responsive.css" />
-<link rel="stylesheet" href="./css/pages/legends/legends.css" />
+    <link rel="stylesheet" href="./css/global/reset.css" />
+    <link rel="stylesheet" href="./css/global/variables.css" />
+    <link rel="stylesheet" href="./css/global/base.css" />
+    <link rel="stylesheet" href="./css/layout/menu.css" />
+    <link rel="stylesheet" href="./css/global/responsive.css" />
+    <link rel="stylesheet" href="./css/pages/legends/legends.css" />
 
 </head>
 
 <body>
 
-<!-- HEADER / MENU PRINCIPAL -->
-<header class="topbar">
-    <div class="container topbar-content">
+    <!-- HEADER / MENU PRINCIPAL -->
+    <header class="topbar">
+        <div class="container topbar-content">
 
-        <a href="./index.html#home" class="logo" aria-label="Voltar para a página inicial do Bestiário">
-            <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" class="logo-icon" />
-            <span>Bestiário</span>
-        </a>
+            <a href="./index.html#home" class="logo" aria-label="Voltar para a página inicial do Bestiário">
+                <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" class="logo-icon" />
+                <span>Bestiário</span>
+            </a>
 
-        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
-            ☰
-        </button>
+            <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+                ☰
+            </button>
 
-        <nav class="menu" aria-label="Menu principal">
-            <a href="./index.html#home">Home</a>
-            <a href="./mitologias.html">Mitologias</a>
-            <a href="./religion.html">Religiões</a>
-            <a href="./lendas.html" class="active" aria-current="page">Lendas</a>
-            <a href="./index.html#simbolos">Símbolos</a>
-            <a href="./index.html#reliquias">Relíquias</a>
-        </nav>
-
-    </div>
-</header>
-
-<main>
-
-    <!-- HERO / LENDAS -->
-    <section class="legends-hero">
-        <div class="container legends-hero-content">
-
-            <div class="legends-hero-ornament">
-                ✦ ⊹ ✦
-            </div>
-
-            <h1>Lendas</h1>
-
-            <h2>Histórias, mistérios e memórias da humanidade.</h2>
-
-            <p>
-                Explore lendas antigas e modernas, conheça criaturas lendárias,
-                heróis imortais e mistérios que atravessaram gerações,
-                preservando a cultura e a imaginação dos povos.
-            </p>
+            <nav class="menu" aria-label="Menu principal">
+                <a href="./index.html#home">Home</a>
+                <a href="./mitologias.html">Mitologias</a>
+                <a href="./religion.html">Religiões</a>
+                <a href="./lendas.html" class="active" aria-current="page">Lendas</a>
+                <a href="./index.html#simbolos">Símbolos</a>
+                <a href="./index.html#reliquias">Relíquias</a>
+            </nav>
 
         </div>
-    </section>
+    </header>
 
-    <!-- CATEGORIAS DE LENDAS -->
-    <section class="legends-categories" id="categorias-lendas">
-        <div class="container">
+    <main>
 
-            <div class="section-header">
-                <span class="section-line"></span>
-                <h2>Categorias de Lendas</h2>
-                <span class="section-line"></span>
-            </div>
+        <!-- HERO / LENDAS -->
+        <section class="legends-hero">
+            <div class="container legends-hero-content">
 
-            <div class="legends-categories-grid">
+                <div class="legends-hero-ornament">
+                    ✦ ⊹ ✦
+                </div>
 
-                <article class="legend-category-card">
-                    <div class="legend-category-icon">
-                        <img src="./assets/images/legends/legends-section-icone/section-icon-fantasma.png" alt="Ícone de Fantasmas" loading="lazy">
-                    </div>
-                    <h3>Fantasmas</h3>
-                </article>
+                <h1>Lendas</h1>
 
-                <article class="legend-category-card">
-                    <div class="legend-category-icon">
-                        <img src="./assets/images/legends/legends-section-icone/section-icon-criatura.png" alt="Ícone de Criaturas Lendárias" loading="lazy">
-                    </div>
-                    <h3>Criaturas<br>Lendárias</h3>
-                </article>
+                <h2>Histórias, mistérios e memórias da humanidade.</h2>
 
-                <article class="legend-category-card">
-                    <div class="legend-category-icon">
-                        <img src="./assets/images/legends/legends-section-icone/section-icon-lenda-urbana.png" alt="Ícone de Lendas Urbanas" loading="lazy">
-                    </div>
-                    <h3>Lendas<br>Urbanas</h3>
-                </article>
-
-                <article class="legend-category-card">
-                    <div class="legend-category-icon">
-                        <img src="./assets/images/legends/legends-section-icone/section-icon-lenda-regional.png" alt="Ícone de Lendas Regionais" loading="lazy">
-                    </div>
-                    <h3>Lendas<br>Regionais</h3>
-                </article>
-
-                <article class="legend-category-card">
-                    <div class="legend-category-icon">
-                        <img src="./assets/images/legends/legends-section-icone/section-icon-lugares-assombrados.png" alt="Ícone de Lugares Assombrados" loading="lazy">
-                    </div>
-                    <h3>Lugares<br>Assombrados</h3>
-                </article>
-
-                <article class="legend-category-card">
-                    <div class="legend-category-icon">
-                        <img src="./assets/images/legends/legends-section-icone/section-icon-rito-tradicoes.png" alt="Ícone de Ritos e Tradições" loading="lazy">
-                    </div>
-                    <h3>Ritos e<br>Tradições</h3>
-                </article>
+                <p>
+                    Explore lendas antigas e modernas, conheça criaturas lendárias,
+                    heróis imortais e mistérios que atravessaram gerações,
+                    preservando a cultura e a imaginação dos povos.
+                </p>
 
             </div>
+        </section>
 
-        </div>
-    </section>
+        <!-- CATEGORIAS DE LENDAS -->
+        <section class="legends-categories" id="categorias-lendas">
+            <div class="container">
 
-</main>
+                <div class="section-header">
+                    <span class="section-line"></span>
+                    <h2>Categorias de Lendas</h2>
+                    <span class="section-line"></span>
+                </div>
 
-<script src="./js/main.js"></script>
+                <div class="legends-categories-grid">
+
+                    <article class="legend-category-card">
+                        <div class="legend-category-icon">
+                            <img src="./assets/images/legends/legends-section-icone/section-icon-fantasma.png"
+                                alt="Ícone de Fantasmas" loading="lazy">
+                        </div>
+                        <h3>Fantasmas</h3>
+                    </article>
+
+                    <article class="legend-category-card">
+                        <div class="legend-category-icon">
+                            <img src="./assets/images/legends/legends-section-icone/section-icon-criatura.png"
+                                alt="Ícone de Criaturas Lendárias" loading="lazy">
+                        </div>
+                        <h3>Criaturas<br>Lendárias</h3>
+                    </article>
+
+                    <article class="legend-category-card">
+                        <div class="legend-category-icon">
+                            <img src="./assets/images/legends/legends-section-icone/section-icon-lenda-urbana.png"
+                                alt="Ícone de Lendas Urbanas" loading="lazy">
+                        </div>
+                        <h3>Lendas<br>Urbanas</h3>
+                    </article>
+
+                    <article class="legend-category-card">
+                        <div class="legend-category-icon">
+                            <img src="./assets/images/legends/legends-section-icone/section-icon-lenda-regional.png"
+                                alt="Ícone de Lendas Regionais" loading="lazy">
+                        </div>
+                        <h3>Lendas<br>Regionais</h3>
+                    </article>
+
+                    <article class="legend-category-card">
+                        <div class="legend-category-icon">
+                            <img src="./assets/images/legends/legends-section-icone/section-icon-lugares-assombrados.png"
+                                alt="Ícone de Lugares Assombrados" loading="lazy">
+                        </div>
+                        <h3>Lugares<br>Assombrados</h3>
+                    </article>
+
+                    <article class="legend-category-card">
+                        <div class="legend-category-icon">
+                            <img src="./assets/images/legends/legends-section-icone/section-icon-rito-tradicoes.png"
+                                alt="Ícone de Ritos e Tradições" loading="lazy">
+                        </div>
+                        <h3>Ritos e<br>Tradições</h3>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="legends-featured-section" id="lendas-destaque">
+            <div class="container">
+
+                <div class="legends-section-title">
+                    <span></span>
+                    <h2>Lendas em Destaque</h2>
+                    <span></span>
+                </div>
+
+                <div class="legends-featured-wrapper">
+
+                    <button class="legends-arrow legends-arrow-left" type="button" aria-label="Voltar">
+                        ‹
+                    </button>
+
+                    <div class="legends-featured-grid" id="legendsFeaturedGrid"></div>
+
+                    <button class="legends-arrow legends-arrow-right" type="button" aria-label="Avançar">
+                        ›
+                    </button>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================================
+            MAPA DAS LENDAS
+            Botões aproximam o mapa por continente; bolinhas representam países.
+        ===================================================== -->
+        <section class="legends-map-section" id="legends-map">
+            <div class="legends-map-container">
+
+                <div class="legends-section-header">
+                    <span class="section-ornament">✦</span>
+                    <h2>Mapa das Lendas</h2>
+                    <span class="section-ornament">✦</span>
+                </div>
+
+                <p class="legends-map-subtitle">
+                    Explore lendas de diferentes culturas ao redor do mundo.
+                </p>
+
+                <!-- Botões: aproximam o mapa por continente -->
+                <div class="legends-map-zoom-controls" aria-label="Controles de aproximação do mapa">
+                    <button type="button" data-region="world" class="active" aria-label="Mostrar mapa completo">Mundo</button>
+                    <button type="button" data-region="america" aria-label="Aproximar mapa nas Américas">Américas</button>
+                    <button type="button" data-region="europe" aria-label="Aproximar mapa na Europa">Europa</button>
+                    <button type="button" data-region="asia" aria-label="Aproximar mapa na Ásia">Ásia</button>
+                    <button type="button" data-region="africa" aria-label="Aproximar mapa na África">África</button>
+                    <button type="button" data-region="oceania" aria-label="Aproximar mapa na Oceania">Oceania</button>
+                </div>
+
+                <div class="legends-map-layout">
+
+                    <div class="legends-map-wrapper" id="legendsMapWrapper">
+
+                        <!-- Camada que recebe o zoom junto com a imagem e os marcadores -->
+                        <div class="legends-map-stage">
+
+                            <img
+                                src="./assets/images/legends/mapa-lendas.png"
+                                alt="Mapa das lendas do mundo"
+                                class="legends-map-image"
+                                decoding="async"
+                            >
+
+                            <!-- BRASIL / AMÉRICAS -->
+                            <button
+                                type="button"
+                                class="legend-marker legend-cluster marker-brasil"
+                                data-country="brasil"
+                                data-region="america"
+                                aria-label="Ver lendas do Brasil"
+                            >
+                                <span>Brasil</span>
+                            </button>
+
+                            <!-- MÉXICO / AMÉRICAS -->
+                            <button
+                                type="button"
+                                class="legend-marker legend-cluster marker-mexico"
+                                data-country="mexico"
+                                data-region="america"
+                                aria-label="Ver lendas do México"
+                            >
+                                <span>México</span>
+                            </button>
+
+                            <!-- ESTADOS UNIDOS / AMÉRICAS -->
+                            <button
+                                type="button"
+                                class="legend-marker legend-cluster marker-estados-unidos"
+                                data-country="estadosUnidos"
+                                data-region="america"
+                                aria-label="Ver lendas dos Estados Unidos"
+                            >
+                                <span>Estados Unidos</span>
+                            </button>
+
+                            <!-- CANADÁ / AMÉRICAS -->
+                            <button
+                                type="button"
+                                class="legend-marker legend-cluster marker-canada"
+                                data-country="canada"
+                                data-region="america"
+                                aria-label="Ver lendas do Canadá"
+                            >
+                                <span>Canadá</span>
+                            </button>
+
+                            <!-- PERU / AMÉRICAS -->
+                            <button
+                                type="button"
+                                class="legend-marker legend-cluster marker-peru"
+                                data-country="peru"
+                                data-region="america"
+                                aria-label="Ver lendas do Peru"
+                            >
+                                <span>Peru</span>
+                            </button>
+
+                            <!-- IRLANDA / EUROPA -->
+                            <button
+                                type="button"
+                                class="legend-marker legend-cluster marker-irlanda"
+                                data-country="irlanda"
+                                data-region="europe"
+                                aria-label="Ver lendas da Irlanda"
+                            >
+                                <span>Irlanda</span>
+                            </button>
+
+                            <!-- NORUEGA / EUROPA -->
+                            <button
+                                type="button"
+                                class="legend-marker legend-cluster marker-noruega"
+                                data-country="noruega"
+                                data-region="europe"
+                                aria-label="Ver lendas da Noruega"
+                            >
+                                <span>Noruega</span>
+                            </button>
+
+                            <!-- RÚSSIA / EUROPA -->
+                            <button
+                                type="button"
+                                class="legend-marker legend-cluster marker-russia"
+                                data-country="russia"
+                                data-region="europe"
+                                aria-label="Ver lendas da Rússia"
+                            >
+                                <span>Rússia</span>
+                            </button>
+
+                            <!-- CHINA / ÁSIA -->
+                            <button
+                                type="button"
+                                class="legend-marker legend-cluster marker-china"
+                                data-country="china"
+                                data-region="asia"
+                                aria-label="Ver lendas da China"
+                            >
+                                <span>China</span>
+                            </button>
+
+                            <!-- ÍNDIA / ÁSIA -->
+                            <button
+                                type="button"
+                                class="legend-marker legend-cluster marker-india"
+                                data-country="india"
+                                data-region="asia"
+                                aria-label="Ver lendas da Índia"
+                            >
+                                <span>Índia</span>
+                            </button>
+
+                            <!-- EGITO / ÁFRICA -->
+                            <button
+                                type="button"
+                                class="legend-marker legend-cluster marker-egito"
+                                data-country="egito"
+                                data-region="africa"
+                                aria-label="Ver lendas do Egito"
+                            >
+                                <span>Egito</span>
+                            </button>
+
+                            <!-- REINO UNIDO / EUROPA -->
+                            <button
+                                type="button"
+                                class="legend-marker legend-cluster marker-reino-unido"
+                                data-country="reinoUnido"
+                                data-region="europe"
+                                aria-label="Ver lendas do Reino Unido"
+                            >
+                                <span>Reino Unido</span>
+                            </button>
+
+                            <!-- GRÉCIA / EUROPA -->
+                            <button
+                                type="button"
+                                class="legend-marker legend-cluster marker-grecia"
+                                data-country="grecia"
+                                data-region="europe"
+                                aria-label="Ver lendas da Grécia"
+                            >
+                                <span>Grécia</span>
+                            </button>
+
+                            <!-- JAPÃO / ÁSIA -->
+                            <button
+                                type="button"
+                                class="legend-marker legend-cluster marker-japao"
+                                data-country="japao"
+                                data-region="asia"
+                                aria-label="Ver lendas do Japão"
+                            >
+                                <span>Japão</span>
+                            </button>
+
+                            <!-- ÁFRICA DO SUL / ÁFRICA -->
+                            <button
+                                type="button"
+                                class="legend-marker legend-cluster marker-africa-sul"
+                                data-country="africaSul"
+                                data-region="africa"
+                                aria-label="Ver lendas da África do Sul"
+                            >
+                                <span>África do Sul</span>
+                            </button>
+
+                            <!-- AUSTRÁLIA / OCEANIA -->
+                            <button
+                                type="button"
+                                class="legend-marker legend-cluster marker-australia"
+                                data-country="australia"
+                                data-region="oceania"
+                                aria-label="Ver lendas da Austrália"
+                            >
+                                <span>Austrália</span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <aside class="legend-map-card" id="legendMapCard" aria-live="polite">
+                        <button
+                            type="button"
+                            class="legend-map-card-close"
+                            id="legendMapCardClose"
+                            aria-label="Fechar card do mapa"
+                        >
+                            ×
+                        </button>
+
+                        <img
+                            src="./assets/images/legends/legends-section-map/default-legend.png"
+                            alt="Lenda selecionada"
+                            id="legendMapCardImage"
+                            loading="lazy"
+                            decoding="async"
+                        >
+
+                        <div class="legend-map-card-content">
+                            <span id="legendMapCardRegion">Selecione uma região</span>
+
+                            <h3 id="legendMapCardTitle">Atlas das Lendas</h3>
+
+                            <p id="legendMapCardDescription">
+                                Clique em um país no mapa para visualizar as lendas daquela região.
+                            </p>
+
+                            <ul id="legendMapCardList"></ul>
+                        </div>
+                    </aside>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="./js/legends-featured-data.js" defer></script>
+    <script src="./js/legends-map.js" defer></script>
+    <script src="./js/main.js" defer></script>
 
 
 </body>

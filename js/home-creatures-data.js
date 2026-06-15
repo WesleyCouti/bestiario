@@ -57,6 +57,70 @@ const homeCreaturesData = [
         alt: "Medusa",
         description: "Seu olhar transforma em pedra, mas sua história vai muito além do que os olhos veem.",
         url: "#"
+    },
+    {
+        name: "Fenrir",
+        icon: "🐺",
+        image: "./assets/images/home/home-secao-criaturas/fenrir-home.png",
+        alt: "Fenrir",
+        description: "Lobo colossal da mitologia nórdica, associado ao destino, à força indomável e ao Ragnarök.",
+        url: "#"
+    },
+    {
+        name: "Quimera",
+        icon: "🔥",
+        image: "./assets/images/home/home-secao-criaturas/quimera-home.png",
+        alt: "Quimera",
+        description: "Criatura da mitologia grega formada por partes de diferentes animais, símbolo do caos e do medo ancestral.",
+        url: "#"
+    },
+    {
+        name: "Tengu",
+        icon: "⛩",
+        image: "./assets/images/home/home-secao-criaturas/tengu-home.png",
+        alt: "Tengu",
+        description: "Ser sobrenatural japonês ligado às montanhas, aos ventos e à sabedoria dos guerreiros.",
+        url: "#"
+    },
+    {
+        name: "Wendigo",
+        icon: "❄",
+        image: "./assets/images/home/home-secao-criaturas/wendigo-home.png",
+        alt: "Wendigo",
+        description: "Espírito sombrio das tradições indígenas norte-americanas, associado ao inverno, à fome e à ganância.",
+        url: "#"
+    },
+    {
+        name: "Basilisco",
+        icon: "👁",
+        image: "./assets/images/home/home-secao-criaturas/basilisco-home.png",
+        alt: "Basilisco",
+        description: "Ser lendário europeu temido por seu olhar mortal e por sua presença venenosa.",
+        url: "#"
+    },
+    {
+        name: "Kitsune",
+        icon: "🦊",
+        image: "./assets/images/home/home-secao-criaturas/kitsune-home.png",
+        alt: "Kitsune",
+        description: "Raposa espiritual da mitologia japonesa, conhecida por sua inteligência, magia e capacidade de transformação.",
+        url: "#"
+    },
+    {
+        name: "Kelpie",
+        icon: "🌊",
+        image: "./assets/images/home/home-secao-criaturas/kelpie-home.png",
+        alt: "Kelpie",
+        description: "Espírito aquático das lendas gaélicas, muitas vezes visto como um cavalo misterioso ligado aos rios e lagos.",
+        url: "#"
+    },
+    {
+        name: "Jörmungandr",
+        icon: "🐍",
+        image: "./assets/images/home/home-secao-criaturas/jormungandr-home.png",
+        alt: "Jörmungandr",
+        description: "A serpente do mundo da mitologia nórdica, tão imensa que envolve a Terra com seu próprio corpo.",
+        url: "#"
     }
 ];
 
@@ -78,6 +142,23 @@ function escapeHTML(value) {
 
 
 /* =====================================================
+   SORTEIO DAS CRIATURAS
+   -----------------------------------------------------
+   Retorna apenas 4 criaturas aleatórias por carregamento.
+===================================================== */
+
+function getRandomCreatures(quantity = 4) {
+    if (!Array.isArray(homeCreaturesData)) {
+        return [];
+    }
+
+    return [...homeCreaturesData]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, quantity);
+}
+
+
+/* =====================================================
    GERADOR DOS CARDS DE CRIATURAS
 ===================================================== */
 
@@ -93,7 +174,9 @@ function createCreatureCards() {
         return;
     }
 
-    creaturesGrid.innerHTML = homeCreaturesData.map((creature) => {
+    const selectedCreatures = getRandomCreatures(4);
+
+    creaturesGrid.innerHTML = selectedCreatures.map((creature) => {
         const name = escapeHTML(creature.name || "Criatura");
         const icon = escapeHTML(creature.icon || "✦");
         const image = escapeHTML(creature.image || "");
