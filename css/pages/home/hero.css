@@ -17,36 +17,6 @@ Objetivo do HERO:
 - criar atmosfera cinematográfica e misteriosa
 - direcionar o usuário para ações principais
 
-O arquivo controla:
-
-1. Estrutura principal do HERO
-   - altura da tela
-   - alinhamento do conteúdo
-   - grid de duas colunas
-
-2. Fundo cinematográfico
-   - gradientes verdes
-   - iluminação mágica
-   - profundidade visual
-
-3. Conteúdo textual
-   - título principal
-   - subtítulo
-   - descrição
-
-4. Botões principais
-   - CTA principal
-   - botão secundário
-
-5. Atalhos rápidos
-   - cards pequenos de navegação
-
-6. Área visual
-   - imagem principal
-   - posicionamento da mão/criatura
-   - glow
-   - efeitos visuais
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 */
 
@@ -70,7 +40,6 @@ O arquivo controla:
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 8px;
-
 }
 
 .hero-content {
@@ -140,7 +109,7 @@ O arquivo controla:
 }
 
 /* =====================================================
-   ATALHOS IGUAIS À REFERÊNCIA
+   ATALHOS DO HERO
 ===================================================== */
 
 .hero-shortcuts {
@@ -161,16 +130,33 @@ O arquivo controla:
     width: 58px;
     height: 58px;
     margin: 0 auto 14px;
-    border-radius: 50%;
-    border: 1px solid rgba(216, 201, 163, 0.22);
-    background: rgba(5, 16, 11, 0.55);
+
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #d8c9a3;
-    font-size: 1.35rem;
+
+    border-radius: 50%;
+    border: 1px solid rgba(216, 201, 163, 0.22);
+
+    background: rgba(5, 16, 11, 0.55);
+
     box-shadow: 0 0 18px rgba(129, 199, 132, 0.08);
-    transition: 0.3s ease;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.shortcut-icon img {
+    width: 44px;
+    height: 44px;
+    display: block;
+    object-fit: contain;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
 }
 
 .hero-shortcut strong {
@@ -195,22 +181,25 @@ O arquivo controla:
     box-shadow: 0 0 26px rgba(129, 199, 132, 0.2);
 }
 
+.hero-shortcut:hover .shortcut-icon img {
+    transform: scale(1.08);
+    filter: brightness(1.08);
+}
+
+/* =====================================================
+   ÁREA VISUAL DO HERO
+===================================================== */
+
 .hero-visual {
-
     position: relative;
-
     display: flex;
-
     justify-content: flex-end;
-
     align-items: center;
     overflow: visible;
     min-height: 950px;
-
 }
 
 .hero-image {
-
     width: 860px;
     max-width: none;
     height: auto;
@@ -219,18 +208,21 @@ O arquivo controla:
     right: 1px;
     top: -45px;
     opacity: 0.95;
-    filter:
-        drop-shadow(0 0 60px rgba(129, 199, 132, 0.18));
+    filter: drop-shadow(0 0 60px rgba(129, 199, 132, 0.18));
 
     mask-image:
-        radial-gradient(circle at center,
+        radial-gradient(
+            circle at center,
             black 68%,
-            transparent 100%);
+            transparent 100%
+        );
 
     -webkit-mask-image:
-        radial-gradient(circle at center,
+        radial-gradient(
+            circle at center,
             black 68%,
-            transparent 100%);
+            transparent 100%
+        );
 }
 
 /* =====================================================
