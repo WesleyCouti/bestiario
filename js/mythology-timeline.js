@@ -441,3 +441,31 @@ if (mythologyTimelineTrack) {
         `;
     });
 }
+
+/* =====================================================
+   CONTROLES DA TIMELINE
+===================================================== */
+
+const timelineWrapper = document.querySelector(".mythology-timeline-wrapper");
+const timelinePrev = document.querySelector(".timeline-prev");
+const timelineNext = document.querySelector(".timeline-next");
+
+if (timelineWrapper && timelinePrev && timelineNext) {
+
+    const scrollAmount = 1400;
+
+    timelineNext.addEventListener("click", () => {
+        timelineWrapper.scrollBy({
+            left: scrollAmount,
+            behavior: "smooth"
+        });
+    });
+
+    timelinePrev.addEventListener("click", () => {
+        timelineWrapper.scrollBy({
+            left: -scrollAmount,
+            behavior: "smooth"
+        });
+    });
+
+}
