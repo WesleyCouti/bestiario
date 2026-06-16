@@ -62,13 +62,7 @@ const mythologies = [
         description: "Deusas da terra, espíritos das cavernas, gigantes e entidades das montanhas sagradas.",
         url: "#"
     },
-    {
-        title: "Brasileira",
-        image: "./assets/images/mitologia/page-mitologia-personagens/mitologia-brasileira.png",
-        icon: "✥",
-        description: "Mitos indígenas, encantados e lendas das florestas, rios e povos do Brasil.",
-        url: "#"
-    },
+
     {
         title: "Budista",
         image: "./assets/images/mitologia/page-mitologia-personagens/mitologia-budismo.png",
@@ -119,7 +113,7 @@ const mythologies = [
         url: "#"
     },
     {
-        title: "Cristã",
+        title: "Cosmologia Bíblica",
         image: "./assets/images/mitologia/page-mitologia-personagens/mitologia-crista.png",
         icon: "✟",
         description: "Anjos, demônios, milagres, visões apocalípticas e narrativas espirituais simbólicas.",
@@ -410,13 +404,6 @@ const mythologies = [
         image: "./assets/images/mitologia/page-mitologia-personagens/mitologia-turca.png",
         icon: "🐺",
         description: "Lobos sagrados, espíritos celestes, xamanismo e tradições míticas dos povos túrquicos.",
-        url: "#"
-    },
-    {
-        title: "Umbanda",
-        image: "./assets/images/mitologia/page-mitologia-personagens/mitologia-umbanda.png",
-        icon: "⚚",
-        description: "Orixás, guias espirituais, ancestralidade e forças sagradas da espiritualidade brasileira.",
         url: "#"
     }
 ];

@@ -43,7 +43,6 @@ function setupMythologyGlobe() {
         { nome: "Mitologia Americana", regiao: "Estados Unidos", lat: 39.8, lng: -98.5, cor: cores.indigena },
         { nome: "Mitologia Argentina", regiao: "Argentina", lat: -38.4, lng: -63.6, cor: cores.indigena },
         { nome: "Mitologia Asteca", regiao: "México Central", lat: 19.4, lng: -99.1, cor: cores.indigena },
-        { nome: "Mitologia Brasileira", regiao: "Brasil", lat: -14.2, lng: -51.9, cor: cores.indigena },
         { nome: "Mitologia Caribenha", regiao: "Caribe", lat: 18.2, lng: -66.5, cor: cores.indigena },
         { nome: "Mitologia Chilena", regiao: "Chile", lat: -35.6, lng: -71.5, cor: cores.indigena },
         { nome: "Mitologia Colombiana", regiao: "Colômbia", lat: 4.5, lng: -74.3, cor: cores.indigena },
@@ -54,7 +53,6 @@ function setupMythologyGlobe() {
         { nome: "Mitologia Maia", regiao: "Mesoamérica", lat: 17.2, lng: -89.1, cor: cores.indigena },
         { nome: "Mitologia Mexicana", regiao: "México", lat: 23.6, lng: -102.5, cor: cores.indigena },
         { nome: "Mitologia Tupi-Guarani", regiao: "Brasil e América do Sul", lat: -15.8, lng: -47.9, cor: cores.indigena },
-        { nome: "Mitologia Umbanda", regiao: "Brasil", lat: -22.9, lng: -43.2, cor: cores.indigena },
 
         { nome: "Mitologia Alemã", regiao: "Alemanha", lat: 51.1, lng: 10.4, cor: cores.europeia },
         { nome: "Mitologia Basca", regiao: "País Basco", lat: 43.0, lng: -2.6, cor: cores.europeia },
@@ -103,7 +101,7 @@ function setupMythologyGlobe() {
         { nome: "Mitologia Havaiana", regiao: "Havaí", lat: 19.8, lng: -155.5, cor: cores.oceanica },
         { nome: "Mitologia Maori", regiao: "Nova Zelândia", lat: -40.9, lng: 174.8, cor: cores.oceanica },
 
-        { nome: "Mitologia Cristã", regiao: "Oriente Médio e Mediterrâneo", lat: 31.8, lng: 35.2, cor: cores.religiosa },
+        { nome: "Cosmologia Bíblica", regiao: "Oriente Médio e Mediterrâneo", lat: 31.8, lng: 35.2, cor: cores.religiosa },
         { nome: "Mitologia Judaica", regiao: "Levante", lat: 31.8, lng: 35.2, cor: cores.religiosa },
     ];
 

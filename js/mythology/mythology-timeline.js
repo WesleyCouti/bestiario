@@ -220,7 +220,7 @@ const mythologyTimelineItems = [
         date: "1 d.C.",
         era: "Cristianismo",
         icon: "./assets/images/mitologia/page-icones-mitologicos/crista.png",
-        alt: "Símbolo da Mitologia Cristã",
+        alt: "Símbolo da Cosmologia Bíblica",
         title: "Cristã"
     },
     {
@@ -404,21 +404,8 @@ const mythologyTimelineItems = [
         icon: "./assets/images/mitologia/page-icones-mitologicos/maori.png",
         alt: "Símbolo da Mitologia Maori",
         title: "Maori"
-    },
-    {
-        date: "1500 d.C.",
-        era: "Brasil Colonial e Popular",
-        icon: "./assets/images/mitologia/page-icones-mitologicos/brasileira.png",
-        alt: "Símbolo da Mitologia Brasileira",
-        title: "Brasileira"
-    },
-    {
-        date: "1908 d.C.",
-        era: "Brasil",
-        icon: "./assets/images/mitologia/page-icones-mitologicos/umbanda.png",
-        alt: "Símbolo da Mitologia Umbanda",
-        title: "Umbanda"
     }
+
 ];
 
 const mythologyTimelineTrack = document.getElementById("mythologyTimelineTrack");
