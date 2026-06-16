@@ -14,6 +14,7 @@
       4.5 Marcadores
       4.6 Card Lateral
       4.7 Responsivo
+   5. Acessibilidade
 
    Convenções:
    - JS controla as classes zoom-*
@@ -21,6 +22,30 @@
    - Marcadores usam data-country e data-region
 ===================================================== */
 
+ /* =====================================================
+   ACESSIBILIDADE E AJUSTES GERAIS
+   - Mantém foco visível para navegação por teclado
+   - Melhora a experiência de usuários com redução de movimento
+===================================================== */
+
+.legend-category-card:focus-visible,
+.legend-featured-content a:focus-visible,
+.legends-arrow:focus-visible,
+.legend-marker:focus-visible,
+.legends-map-zoom-controls button:focus-visible,
+.legend-map-card-close:focus-visible {
+    outline: 2px solid #c89a2b;
+    outline-offset: 4px;
+}
+
+/* Dica exibida apenas no mobile, quando o mapa tem rolagem horizontal */
+.legends-map-wrapper::after {
+    display: none;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
 
 
 .legends-hero {
@@ -286,6 +311,21 @@
 
     .legend-category-card {
         height: 165px;
+    }
+}
+
+@media (max-width: 420px) {
+    .legends-hero h1 {
+        font-size: 2.6rem;
+        letter-spacing: 5px;
+    }
+
+    .legends-hero h2 {
+        letter-spacing: 3px;
+    }
+
+    .legends-hero-ornament {
+        letter-spacing: 10px;
     }
 }
 
@@ -1016,32 +1056,6 @@
     --marker-color: #ff4f45;
 }
 
-/* Compatibilidade caso ainda existam marcadores antigos no HTML */
-
-.marker-europa {
-    left: 51%;
-    top: 35%;
-    --marker-color: #4b8dff;
-}
-
-.marker-asia {
-    left: 76%;
-    top: 42%;
-    --marker-color: #f2c94c;
-}
-
-.marker-africa {
-    left: 54%;
-    top: 62%;
-    --marker-color: #ff4f45;
-}
-
-.marker-oceania {
-    left: 83%;
-    top: 76%;
-    --marker-color: #a855f7;
-}
-
 /* ==============================
    Card lateral
 ============================== */
@@ -1238,6 +1252,33 @@
         overflow-x: auto;
     }
 
+    .legends-map-wrapper::after {
+        content: "Arraste para explorar o mapa";
+        position: absolute;
+        left: 50%;
+        bottom: 12px;
+        transform: translateX(-50%);
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 7px 12px;
+        border-radius: 999px;
+
+        background: rgba(5, 5, 5, 0.82);
+        border: 1px solid rgba(200, 154, 43, 0.35);
+
+        color: #f5e6b8;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+
+        pointer-events: none;
+        z-index: 30;
+    }
+
     .legends-map-stage,
     .legends-map-image {
         min-width: 760px;
@@ -1263,5 +1304,21 @@
 
     .legend-map-card img {
         height: 160px;
+    }
+}
+
+
+/* =====================================================
+   ACESSIBILIDADE: REDUÇÃO DE MOVIMENTO
+   Remove animações e transições para usuários que preferem menos movimento.
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
     }
 }

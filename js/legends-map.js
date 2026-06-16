@@ -31,7 +31,7 @@ const legendsMapData = {
     mexico: {
         region: "Américas",
         title: "Lendas do México",
-        image: "./assets/images/legends/cards/mexico-lendas.png",
+        image: "./assets/images/legends/legends-section-map/mexico-lendas.png",
         description: "Histórias misteriosas e criaturas sobrenaturais do folclore mexicano.",
         legends: [
             "La Llorona",
@@ -44,7 +44,7 @@ const legendsMapData = {
     estadosUnidos: {
         region: "Américas",
         title: "Lendas dos Estados Unidos",
-        image: "./assets/images/legends/cards/eua-lendas.png",
+        image: "./assets/images/legends/legends-section-map/eua-lendas.png",
         description: "Criaturas misteriosas e lendas urbanas famosas pelo mundo.",
         legends: [
             "Pé-Grande",
@@ -57,7 +57,7 @@ const legendsMapData = {
     canada: {
         region: "Américas",
         title: "Lendas do Canadá",
-        image: "./assets/images/legends/cards/canada-lendas.png",
+        image: "./assets/images/legends/legends-section-map/canada-lendas.png",
         description: "Seres ancestrais ligados às florestas e montanhas do norte.",
         legends: [
             "Wendigo",
@@ -69,7 +69,7 @@ const legendsMapData = {
     peru: {
         region: "Américas",
         title: "Lendas do Peru",
-        image: "./assets/images/legends/cards/peru-lendas.png",
+        image: "./assets/images/legends/legends-section-map/peru-lendas.png",
         description: "Mistérios e espíritos das antigas tradições andinas.",
         legends: [
             "Amaru",
@@ -85,7 +85,7 @@ const legendsMapData = {
     reinoUnido: {
         region: "Europa",
         title: "Lendas do Reino Unido",
-        image: "./assets/images/legends/cards/reino-unido-lendas.png",
+        image: "./assets/images/legends/legends-section-map/reino-unido-lendas.png",
         description: "Histórias lendárias ligadas a reis, espadas sagradas e antigos mistérios europeus.",
         legends: [
             "Rei Artur",
@@ -97,7 +97,7 @@ const legendsMapData = {
     grecia: {
         region: "Europa",
         title: "Lendas da Grécia",
-        image: "./assets/images/legends/cards/grecia-lendas.png",
+        image: "./assets/images/legends/legends-section-map/grecia-lendas.png",
         description: "Narrativas antigas sobre monstros, heróis e criaturas míticas.",
         legends: [
             "Medusa",
@@ -110,7 +110,7 @@ const legendsMapData = {
     irlanda: {
         region: "Europa",
         title: "Lendas da Irlanda",
-        image: "./assets/images/legends/cards/irlanda-lendas.png",
+        image: "./assets/images/legends/legends-section-map/irlanda-lendas.png",
         description: "Antigas histórias celtas sobre espíritos e seres mágicos.",
         legends: [
             "Leprechaun",
@@ -122,7 +122,7 @@ const legendsMapData = {
     noruega: {
         region: "Europa",
         title: "Lendas da Noruega",
-        image: "./assets/images/legends/cards/noruega-lendas.png",
+        image: "./assets/images/legends/legends-section-map/noruega-lendas.png",
         description: "Criaturas gigantes e monstros das terras nórdicas.",
         legends: [
             "Kraken",
@@ -134,7 +134,7 @@ const legendsMapData = {
     russia: {
         region: "Europa",
         title: "Lendas da Rússia",
-        image: "./assets/images/legends/cards/russia-lendas.png",
+        image: "./assets/images/legends/legends-section-map/russia-lendas.png",
         description: "Lendas eslavas sobre bruxas e espíritos ancestrais.",
         legends: [
             "Baba Yaga",
@@ -150,7 +150,7 @@ const legendsMapData = {
     japao: {
         region: "Ásia",
         title: "Lendas do Japão",
-        image: "./assets/images/legends/cards/japao-lendas.png",
+        image: "./assets/images/legends/legends-section-map/japao-lendas.png",
         description: "Lendas sobre espíritos, aparições e criaturas sobrenaturais do imaginário japonês.",
         legends: [
             "Kitsune",
@@ -163,7 +163,7 @@ const legendsMapData = {
     china: {
         region: "Ásia",
         title: "Lendas da China",
-        image: "./assets/images/legends/cards/china-lendas.png",
+        image: "./assets/images/legends/legends-section-map/china-lendas.png",
         description: "Dragões, espíritos e criaturas lendárias orientais.",
         legends: [
             "Dragão Chinês",
@@ -175,7 +175,7 @@ const legendsMapData = {
     india: {
         region: "Ásia",
         title: "Lendas da Índia",
-        image: "./assets/images/legends/cards/india-lendas.png",
+        image: "./assets/images/legends/legends-section-map/india-lendas.png",
         description: "Criaturas espirituais e seres sobrenaturais da tradição indiana.",
         legends: [
             "Naga",
@@ -191,7 +191,7 @@ const legendsMapData = {
     africaSul: {
         region: "África",
         title: "Lendas da África do Sul",
-        image: "./assets/images/legends/cards/africa-sul-lendas.png",
+        image: "./assets/images/legends/legends-section-map/africa-sul-lendas.png",
         description: "Lendas envolvendo criaturas misteriosas e seres do folclore africano.",
         legends: [
             "Tokoloshe",
@@ -203,7 +203,7 @@ const legendsMapData = {
     egito: {
         region: "África",
         title: "Lendas do Egito",
-        image: "./assets/images/legends/cards/egito-lendas.png",
+        image: "./assets/images/legends/legends-section-map/egito-lendas.png",
         description: "Mistérios antigos ligados às pirâmides e aos deuses do deserto.",
         legends: [
             "Esfinge",
@@ -219,7 +219,7 @@ const legendsMapData = {
     australia: {
         region: "Oceania",
         title: "Lendas da Austrália",
-        image: "./assets/images/legends/cards/australia-lendas.png",
+        image: "./assets/images/legends/legends-section-map/australia-lendas.png",
         description: "Seres lendários ligados à natureza, rios e tradições antigas.",
         legends: [
             "Bunyip",
