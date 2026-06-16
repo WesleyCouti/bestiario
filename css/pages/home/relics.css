@@ -3,24 +3,15 @@
    -----------------------------------------------------
    Arquivo responsável pela seção de Relíquias.
 
-   Objetivo visual:
-   - Criar uma área sombria, mística e cinematográfica.
-   - Exibir relíquias lendárias em cards verticais.
-   - Aplicar brilhos, névoa, profundidade e efeitos por item.
-   - Permitir navegação horizontal por carrossel.
-
-   Estrutura controlada neste arquivo:
-   1. Seção principal e camadas de fundo
-   2. Container e cabeçalho
-   3. Carrossel horizontal
-   4. Cards das relíquias
-   5. Conteúdo interno dos cards
-   6. Cores e efeitos individuais
-   7. Botões de navegação
-   8. Animações
-   9. Responsividade
+   Ajustes aplicados:
+   - melhor responsividade
+   - scroll horizontal mais suave no mobile
+   - acessibilidade com focus-visible
+   - melhoria de performance com will-change
+   - proteção contra overflow horizontal
+   - suporte a prefers-reduced-motion
+   - hover/focus nos cards
 ===================================================== */
-
 
 /* =====================================================
    1. SEÇÃO PRINCIPAL
@@ -30,34 +21,27 @@
     position: relative;
     isolation: isolate;
     overflow: hidden;
-
     padding: 90px 0 80px;
-
     background:
         radial-gradient(circle at top, rgba(24, 58, 38, 0.25), transparent 30%),
         linear-gradient(to bottom, #020806, #010403);
 }
 
-/* Camada de névoa sutil sobre toda a seção */
 .relics-section::before {
     content: "";
     position: absolute;
     inset: 0;
-
     background: url("img/effects/fog.png");
     background-size: cover;
     opacity: 0.08;
-
     animation: fogMove 40s linear infinite;
     pointer-events: none;
     z-index: -1;
 }
 
-/* Overlay escuro e mágico para dar profundidade à seção */
 .relics-overlay {
     position: absolute;
     inset: 0;
-
     background:
         radial-gradient(circle at center, rgba(255, 180, 0, 0.06), transparent 35%),
         radial-gradient(circle at 80% 20%, rgba(255, 0, 0, 0.05), transparent 25%),
@@ -68,11 +52,9 @@
             transparent 80%,
             rgba(0, 0, 0, 0.85)
         );
-
     pointer-events: none;
     z-index: 1;
 }
-
 
 /* =====================================================
    2. CONTAINER E CABEÇALHO
@@ -81,7 +63,6 @@
 .relics-container {
     position: relative;
     z-index: 2;
-
     width: min(1400px, 92%);
     margin: 0 auto;
 }
@@ -90,12 +71,9 @@
     margin-bottom: 36px;
 }
 
-/* Tag superior da seção */
 .relics-tag {
     display: inline-block;
-
     margin-bottom: 20px;
-
     color: #59d47b;
     font-size: 0.85rem;
     font-weight: 700;
@@ -103,10 +81,8 @@
     text-transform: uppercase;
 }
 
-/* Título principal da seção */
 .relics-header h2 {
     max-width: 640px;
-
     color: var(--gold-soft);
     font-size: clamp(2rem, 3.2vw, 2.9rem);
     font-weight: 900;
@@ -115,16 +91,13 @@
     text-transform: uppercase;
 }
 
-/* Texto descritivo abaixo do título */
 .relics-header p {
     max-width: 500px;
     margin-top: 16px;
-
     color: #b6b1a1;
     font-size: 0.92rem;
     line-height: 1.5;
 }
-
 
 /* =====================================================
    3. CARROSSEL HORIZONTAL
@@ -134,28 +107,22 @@
     position: relative;
 }
 
-/* Lista horizontal de cards */
 .relics-carousel {
     position: relative;
-
     display: flex;
     gap: 18px;
-
     overflow-x: auto;
     overflow-y: hidden;
-
     padding: 10px 0 22px;
-
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* Remove scrollbar no Chrome, Edge e Safari */
 .relics-carousel::-webkit-scrollbar {
     display: none;
 }
-
 
 /* =====================================================
    4. CARD DA RELÍQUIA
@@ -163,33 +130,29 @@
 
 .relic-card {
     position: relative;
-
     flex: 0 0 240px;
     height: 500px;
-
     overflow: hidden;
     border-radius: 20px;
-
     background: #050505;
     border: 1px solid rgba(255, 255, 255, 0.08);
-
     scroll-snap-align: start;
-
+    transform: translateZ(0);
+    will-change:
+        transform,
+        box-shadow;
     transition:
         transform 0.45s ease,
         box-shadow 0.45s ease,
         border-color 0.45s ease;
 }
 
-/* Borda luminosa interna do card */
 .relic-card::before {
     content: "";
     position: absolute;
     inset: 0;
-
     padding: 1px;
     border-radius: inherit;
-
     background:
         linear-gradient(
             180deg,
@@ -197,71 +160,62 @@
             transparent,
             rgba(255, 255, 255, 0.2)
         );
-
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
-
     pointer-events: none;
     z-index: 5;
 }
 
-/* Brilho mágico individual ativado no hover */
 .relic-card::after {
     content: "";
     position: absolute;
     inset: -30%;
-
     opacity: 0;
     pointer-events: none;
-
     transition: opacity 0.5s ease;
 }
 
-/* Efeito de elevação do card */
-.relic-card:hover {
+.relic-card:hover,
+.relic-card:focus-within {
     transform: translateY(-12px) scale(1.025);
     border-color: rgba(255, 255, 255, 0.16);
 }
 
-.relic-card:hover::after {
+.relic-card:hover::after,
+.relic-card:focus-within::after {
     opacity: 1;
 }
 
-/* Imagem principal da relíquia */
 .relic-card img {
     display: block;
-
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
+    will-change:
+        transform,
+        filter;
     filter: brightness(0.7) contrast(1.1);
-
     transition:
         transform 0.7s ease,
         filter 0.7s ease;
 }
 
-/* Zoom e realce da imagem no hover */
-.relic-card:hover img {
+.relic-card:hover img,
+.relic-card:focus-within img {
     transform: scale(1.08);
     filter: brightness(0.78) contrast(1.15) saturate(1.08);
 }
 
-/* Gradiente que melhora a leitura do texto sobre a imagem */
 .relic-gradient {
     position: absolute;
     inset: 0;
     z-index: 2;
-
     background:
         linear-gradient(to top, rgba(0, 0, 0, 0.98), transparent 50%),
         radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.4));
 }
-
 
 /* =====================================================
    5. CONTEÚDO INTERNO DO CARD
@@ -273,18 +227,15 @@
     bottom: 24px;
     left: 20px;
     z-index: 4;
-
     text-align: center;
 }
 
 .relic-content h3 {
     margin-bottom: 10px;
-
     color: #ffffff;
     font-size: 1.05rem;
     letter-spacing: 0.8px;
     text-transform: uppercase;
-
     text-shadow:
         0 0 10px rgba(255, 255, 255, 0.2),
         0 4px 15px rgba(0, 0, 0, 0.8);
@@ -296,15 +247,12 @@
     line-height: 1.4;
 }
 
-/* Linha decorativa acima da descrição */
 .relic-content p::before {
     content: "";
     display: block;
-
     width: 80px;
     height: 1px;
     margin: 0 auto 18px;
-
     background:
         linear-gradient(
             to right,
@@ -312,45 +260,30 @@
             currentColor,
             transparent
         );
-
     opacity: 0.7;
 }
 
-/* Ícone/símbolo no topo do card */
 .relic-symbol {
     position: absolute;
     top: 14px;
     left: 50%;
     z-index: 5;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 48px;
     height: 48px;
-
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.15);
-
     font-size: 1.25rem;
-
     transform: translateX(-50%);
     backdrop-filter: blur(10px);
 }
 
-
 /* =====================================================
    6. CORES INDIVIDUAIS DAS RELÍQUIAS
-   -----------------------------------------------------
-   Cada classe define:
-   - cor do texto secundário
-   - cor do símbolo
-   - brilho externo
-   - aura exibida no hover
 ===================================================== */
 
-/* Excalibur — brilho dourado */
 .excalibur {
     box-shadow: 0 0 40px rgba(255, 200, 0, 0.15);
     animation: goldPulse 4s infinite;
@@ -366,7 +299,6 @@
         radial-gradient(circle, rgba(255, 215, 0, 0.35), transparent 60%);
 }
 
-/* Mjolnir — brilho azul elétrico */
 .mjolnir {
     box-shadow: 0 0 40px rgba(61, 130, 255, 0.15);
     animation: bluePulse 4s infinite;
@@ -382,7 +314,6 @@
         radial-gradient(circle, rgba(0, 140, 255, 0.35), transparent 60%);
 }
 
-/* Tridente — brilho aquático */
 .trident {
     box-shadow: 0 0 40px rgba(56, 201, 184, 0.15);
     animation: aquaPulse 4s infinite;
@@ -398,7 +329,6 @@
         radial-gradient(circle, rgba(0, 255, 200, 0.35), transparent 60%);
 }
 
-/* Bastão do Rei Macaco — brilho vermelho */
 .monkey {
     box-shadow: 0 0 40px rgba(255, 61, 61, 0.18);
     animation: redPulse 4s infinite;
@@ -414,7 +344,6 @@
         radial-gradient(circle, rgba(255, 0, 0, 0.35), transparent 60%);
 }
 
-/* Santo Graal — brilho dourado suave */
 .grail {
     box-shadow: 0 0 40px rgba(255, 215, 120, 0.18);
 }
@@ -429,7 +358,6 @@
         radial-gradient(circle, rgba(255, 215, 120, 0.35), transparent 60%);
 }
 
-/* Caixa de Pandora — brilho roxo místico */
 .pandora {
     box-shadow: 0 0 40px rgba(140, 0, 255, 0.18);
 }
@@ -444,7 +372,6 @@
         radial-gradient(circle, rgba(170, 0, 255, 0.35), transparent 60%);
 }
 
-
 /* =====================================================
    7. BOTÕES DE NAVEGAÇÃO
 ===================================================== */
@@ -453,22 +380,16 @@
     position: absolute;
     top: 50%;
     z-index: 80;
-
     width: 56px;
     height: 56px;
-
     border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 50%;
-
     background: rgba(0, 0, 0, 0.78);
     color: #ffffff;
-
     font-size: 1.8rem;
     cursor: pointer;
-
     transform: translateY(-50%);
     backdrop-filter: blur(10px);
-
     transition:
         transform 0.3s ease,
         background 0.3s ease,
@@ -484,25 +405,23 @@
     right: -68px;
 }
 
-.relic-arrow:hover {
+.relic-arrow:hover,
+.relic-arrow:focus-visible {
     background: rgba(0, 0, 0, 0.95);
     box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
     transform: translateY(-50%) scale(1.08);
 }
 
-/* Estado de foco para navegação por teclado */
 .relic-arrow:focus-visible {
     outline: 2px solid var(--gold-soft);
     outline-offset: 4px;
     border-color: var(--gold-soft);
 }
 
-
 /* =====================================================
    8. ANIMAÇÕES
 ===================================================== */
 
-/* Movimento lento da névoa de fundo */
 @keyframes fogMove {
     from {
         transform: translateX(0);
@@ -513,7 +432,6 @@
     }
 }
 
-/* Pulso dourado */
 @keyframes goldPulse {
     0%,
     100% {
@@ -525,7 +443,6 @@
     }
 }
 
-/* Pulso azul */
 @keyframes bluePulse {
     0%,
     100% {
@@ -537,7 +454,6 @@
     }
 }
 
-/* Pulso aquático */
 @keyframes aquaPulse {
     0%,
     100% {
@@ -549,7 +465,6 @@
     }
 }
 
-/* Pulso vermelho */
 @keyframes redPulse {
     0%,
     100% {
@@ -561,12 +476,12 @@
     }
 }
 
-
 /* =====================================================
    9. RESPONSIVIDADE
 ===================================================== */
 
 @media (max-width: 900px) {
+
     .relic-arrow {
         display: none;
     }
@@ -582,8 +497,13 @@
 }
 
 @media (max-width: 600px) {
+
     .relics-section {
         padding: 70px 0;
+    }
+
+    .relics-container {
+        width: min(100% - 32px, 1400px);
     }
 
     .relic-card {
@@ -600,12 +520,44 @@
     }
 }
 
+@media (max-width: 420px) {
+
+    .relics-section {
+        padding: 62px 0;
+    }
+
+    .relic-card {
+        flex-basis: 205px;
+        height: 410px;
+    }
+
+    .relic-content {
+        left: 16px;
+        right: 16px;
+        bottom: 20px;
+    }
+
+    .relic-content h3 {
+        font-size: 0.95rem;
+    }
+
+    .relic-content p {
+        font-size: 0.74rem;
+    }
+
+    .relic-symbol {
+        width: 44px;
+        height: 44px;
+        font-size: 1.15rem;
+    }
+}
 
 /* =====================================================
    10. ACESSIBILIDADE — REDUÇÃO DE MOVIMENTO
 ===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
     .relics-section::before,
     .excalibur,
     .mjolnir,
@@ -623,5 +575,20 @@
     .relic-card::after,
     .relic-arrow {
         transition: none;
+    }
+
+    .relic-card:hover,
+    .relic-card:focus-within {
+        transform: none;
+    }
+
+    .relic-card:hover img,
+    .relic-card:focus-within img {
+        transform: none;
+    }
+
+    .relic-arrow:hover,
+    .relic-arrow:focus-visible {
+        transform: translateY(-50%);
     }
 }

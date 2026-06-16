@@ -11,32 +11,20 @@ Controla a seção:
 
 "LENDAS"
 
-Objetivo da seção:
-- apresentar lendas sombrias e misteriosas
-- criar atmosfera de terror elegante
-- transmitir sensação de perigo e mistério
-- destacar criaturas e entidades folclóricas
-- permitir navegação horizontal pelos cards
-
-Este arquivo controla:
-
-1. Estrutura principal da seção
-2. Fundo atmosférico sombrio
-3. Cabeçalho da seção
-4. Área do carrossel horizontal
-5. Cards das lendas
-6. Overlay cinematográfico
-7. Hover dos cards
-8. Botões laterais
-9. Scrollbar personalizada
-10. Responsividade
-
+Ajustes aplicados:
+- melhor responsividade
+- melhor scroll horizontal no mobile
+- acessibilidade com focus-visible
+- proteção contra overflow
+- melhoria de performance com will-change
+- suporte a prefers-reduced-motion
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 */
 
 /* =====================================================
    SEÇÃO PRINCIPAL
 ===================================================== */
+
 .legends-section {
     position: relative;
     padding: 120px 0;
@@ -58,6 +46,7 @@ Este arquivo controla:
 /* =====================================================
    SOMBRA ATMOSFÉRICA
 ===================================================== */
+
 .legends-section::before {
     content: "";
     position: absolute;
@@ -80,6 +69,7 @@ Este arquivo controla:
 /* =====================================================
    EFEITO DE NÉVOA
 ===================================================== */
+
 .legends-section::after {
     content: "";
     position: absolute;
@@ -107,6 +97,7 @@ Este arquivo controla:
 /* =====================================================
    CONTAINER INTERNO
 ===================================================== */
+
 .legends-container {
     position: relative;
     z-index: 2;
@@ -117,6 +108,7 @@ Este arquivo controla:
 /* =====================================================
    CABEÇALHO
 ===================================================== */
+
 .legends-header {
     margin-bottom: 50px;
 }
@@ -138,8 +130,7 @@ Este arquivo controla:
     font-size: clamp(2.6rem, 6vw, 5rem);
     line-height: 0.95;
     text-transform: uppercase;
-    text-shadow:
-        0 0 25px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
 }
 
 .legends-header p {
@@ -153,6 +144,7 @@ Este arquivo controla:
 /* =====================================================
    ÁREA DO CARROSSEL
 ===================================================== */
+
 .legends-carousel {
     position: relative;
     display: flex;
@@ -161,6 +153,7 @@ Este arquivo controla:
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
     padding: 10px 8px 30px;
     scrollbar-width: thin;
     scrollbar-color:
@@ -171,6 +164,7 @@ Este arquivo controla:
 /* =====================================================
    SCROLLBAR CUSTOMIZADA
 ===================================================== */
+
 .legends-carousel::-webkit-scrollbar {
     height: 8px;
 }
@@ -190,9 +184,19 @@ Este arquivo controla:
     border-radius: 999px;
 }
 
+.legends-carousel::-webkit-scrollbar-thumb:hover {
+    background:
+        linear-gradient(
+            90deg,
+            #6df18c,
+            #b91c1c
+        );
+}
+
 /* =====================================================
    CARD DAS LENDAS
 ===================================================== */
+
 .legend-card {
     position: relative;
     flex: 0 0 270px;
@@ -201,6 +205,10 @@ Este arquivo controla:
     border-radius: 16px;
     background: #050806;
     border: 1px solid rgba(156, 38, 38, 0.28);
+    will-change:
+        transform,
+        box-shadow;
+    transform: translateZ(0);
     box-shadow:
         0 20px 60px rgba(0, 0, 0, 0.75),
         inset 0 0 30px rgba(120, 20, 20, 0.18);
@@ -213,7 +221,9 @@ Este arquivo controla:
 /* =====================================================
    HOVER DO CARD
 ===================================================== */
-.legend-card:hover {
+
+.legend-card:hover,
+.legend-card:focus-within {
     transform:
         translateY(-10px)
         scale(1.02);
@@ -227,10 +237,15 @@ Este arquivo controla:
 /* =====================================================
    IMAGEM DO CARD
 ===================================================== */
+
 .legend-card img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    will-change:
+        transform,
+        filter;
     filter:
         contrast(1.08)
         brightness(0.74)
@@ -240,7 +255,8 @@ Este arquivo controla:
         filter 0.5s ease;
 }
 
-.legend-card:hover img {
+.legend-card:hover img,
+.legend-card:focus-within img {
     transform: scale(1.05);
     filter:
         contrast(1.18)
@@ -251,10 +267,12 @@ Este arquivo controla:
 /* =====================================================
    OVERLAY ESCURO
 ===================================================== */
+
 .legend-card::after {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 1;
     background:
         linear-gradient(
             to top,
@@ -266,11 +284,13 @@ Este arquivo controla:
             transparent 30%,
             rgba(0, 0, 0, 0.65)
         );
+    pointer-events: none;
 }
 
 /* =====================================================
    TEXTURA ANTIGA
 ===================================================== */
+
 .legend-card::before {
     content: "";
     position: absolute;
@@ -289,7 +309,6 @@ Este arquivo controla:
             transparent 1px,
             transparent 5px
         );
-
     mix-blend-mode: overlay;
     opacity: 0.25;
     pointer-events: none;
@@ -298,6 +317,7 @@ Este arquivo controla:
 /* =====================================================
    CONTEÚDO DO CARD
 ===================================================== */
+
 .legend-content {
     position: absolute;
     z-index: 3;
@@ -311,8 +331,7 @@ Este arquivo controla:
     color: #f3ead2;
     font-size: 1.2rem;
     text-transform: uppercase;
-    text-shadow:
-        0 2px 8px #000;
+    text-shadow: 0 2px 8px #000;
 }
 
 .legend-content p {
@@ -325,6 +344,7 @@ Este arquivo controla:
 /* =====================================================
    LINHA DECORATIVA
 ===================================================== */
+
 .legend-content::after {
     content: "";
     display: block;
@@ -338,14 +358,15 @@ Este arquivo controla:
             #b91c1c,
             transparent
         );
-    box-shadow:
-        0 0 10px rgba(185, 28, 28, 0.8);
+    box-shadow: 0 0 10px rgba(185, 28, 28, 0.8);
 }
 
 /* =====================================================
    HOVER NO TEXTO
 ===================================================== */
-.legend-card:hover .legend-content h3 {
+
+.legend-card:hover .legend-content h3,
+.legend-card:focus-within .legend-content h3 {
     color: #fff6df;
     text-shadow:
         0 0 8px rgba(185, 28, 28, 0.8),
@@ -355,6 +376,7 @@ Este arquivo controla:
 /* =====================================================
    BOTÕES LATERAIS
 ===================================================== */
+
 .legend-arrow {
     position: absolute;
     top: 50%;
@@ -364,8 +386,7 @@ Este arquivo controla:
     height: 52px;
     border-radius: 50%;
     border: 1px solid rgba(73, 185, 103, 0.4);
-    background:
-        rgba(4, 24, 16, 0.9);
+    background: rgba(4, 24, 16, 0.9);
     color: #ffffff;
     font-size: 2rem;
     cursor: pointer;
@@ -378,6 +399,7 @@ Este arquivo controla:
 /* =====================================================
    POSIÇÃO DOS BOTÕES
 ===================================================== */
+
 .legend-arrow.left {
     left: -26px;
 }
@@ -389,19 +411,25 @@ Este arquivo controla:
 /* =====================================================
    HOVER DOS BOTÕES
 ===================================================== */
-.legend-arrow:hover {
-    background:
-        rgba(20, 55, 35, 1);
+
+.legend-arrow:hover,
+.legend-arrow:focus-visible {
+    background: rgba(20, 55, 35, 1);
     transform:
         translateY(-50%)
         scale(1.08);
-    box-shadow:
-        0 0 35px rgba(160, 0, 0, 0.5);
+    box-shadow: 0 0 35px rgba(160, 0, 0, 0.5);
+}
+
+.legend-arrow:focus-visible {
+    outline: 2px solid #4ed36d;
+    outline-offset: 4px;
 }
 
 /* =====================================================
    AURA DOS BOTÕES
 ===================================================== */
+
 .legend-arrow::before {
     content: "";
     position: absolute;
@@ -418,14 +446,48 @@ Este arquivo controla:
     transition: opacity 0.3s ease;
 }
 
-.legend-arrow:hover::before {
+.legend-arrow:hover::before,
+.legend-arrow:focus-visible::before {
     opacity: 1;
 }
 
+/* =====================================================
+   ACESSIBILIDADE — REDUZIR MOVIMENTO
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .legends-carousel {
+        scroll-behavior: auto;
+    }
+
+    .legend-card,
+    .legend-card img,
+    .legend-arrow,
+    .legend-arrow::before {
+        transition: none;
+    }
+
+    .legend-card:hover,
+    .legend-card:focus-within {
+        transform: none;
+    }
+
+    .legend-card:hover img,
+    .legend-card:focus-within img {
+        transform: none;
+    }
+
+    .legend-arrow:hover,
+    .legend-arrow:focus-visible {
+        transform: translateY(-50%);
+    }
+}
 
 /* =====================================================
    RESPONSIVO — TABLET
 ===================================================== */
+
 @media (max-width: 900px) {
 
     .legends-section {
@@ -449,6 +511,7 @@ Este arquivo controla:
 /* =====================================================
    RESPONSIVO — MOBILE
 ===================================================== */
+
 @media (max-width: 600px) {
 
     .legends-container {
@@ -457,16 +520,21 @@ Este arquivo controla:
 
     .legends-header span {
         font-size: 0.72rem;
-
         letter-spacing: 4px;
     }
 
     .legends-header h2 {
         font-size: 2.3rem;
+        line-height: 1.05;
     }
 
     .legends-header p {
         font-size: 0.95rem;
+    }
+
+    .legends-carousel {
+        gap: 18px;
+        padding: 8px 4px 26px;
     }
 
     .legend-card {
@@ -480,5 +548,63 @@ Este arquivo controla:
 
     .legend-content p {
         font-size: 0.8rem;
+    }
+}
+
+/* =====================================================
+   RESPONSIVO — MOBILE PEQUENO
+===================================================== */
+
+@media (max-width: 480px) {
+
+    .legends-section {
+        padding: 75px 0;
+    }
+
+    .legends-header {
+        margin-bottom: 30px;
+    }
+
+    .legends-header span {
+        font-size: 0.68rem;
+        letter-spacing: 3px;
+    }
+
+    .legends-header h2 {
+        font-size: 2rem;
+        line-height: 1.05;
+    }
+
+    .legends-header p {
+        font-size: 0.9rem;
+    }
+
+    .legends-carousel {
+        gap: 16px;
+        padding-bottom: 24px;
+    }
+
+    .legend-card {
+        flex-basis: 200px;
+        height: 300px;
+    }
+
+    .legend-content {
+        left: 16px;
+        right: 16px;
+        bottom: 18px;
+    }
+
+    .legend-content h3 {
+        font-size: 0.95rem;
+    }
+
+    .legend-content p {
+        font-size: 0.75rem;
+    }
+
+    .legend-content::after {
+        width: 70px;
+        margin-top: 14px;
     }
 }

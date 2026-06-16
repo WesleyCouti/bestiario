@@ -1,26 +1,9 @@
 /* =====================================================
    ANCIENT KNOWLEDGE SECTION
+   -----------------------------------------------------
+   Seção: Vozes do Mundo Antigo
 ===================================================== */
 
-/*
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ARQUIVO: ancient-knowledge.css
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Controla a seção:
-
-"VOZES DO MUNDO ANTIGO"
-
-Objetivo:
-- apresentar citações antigas
-- reforçar sabedoria ancestral
-- criar uma pausa narrativa após "Sobre Mitologia"
-- trazer profundidade visual ao Bestiário
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-*/
-
-/* =====================================================
-   SEÇÃO PRINCIPAL
-===================================================== */
 .ancient-knowledge {
     position: relative;
     z-index: 2;
@@ -32,10 +15,10 @@ Objetivo:
         radial-gradient(circle at 20% 80%, rgba(201, 162, 74, 0.04), transparent 26%);
 }
 
-/* brilho central */
 .ancient-knowledge::before {
     content: "";
     position: absolute;
+    z-index: -1;
     width: 520px;
     height: 520px;
     top: 8%;
@@ -45,10 +28,7 @@ Objetivo:
         radial-gradient(circle, rgba(129, 199, 132, 0.1), transparent 70%);
     filter: blur(55px);
     pointer-events: none;
-    z-index: -1;
 }
-
-/* textura sutil */
 
 .ancient-knowledge::after {
     content: "";
@@ -68,6 +48,7 @@ Objetivo:
 /* =====================================================
    CONTEÚDO
 ===================================================== */
+
 .ancient-knowledge-content {
     position: relative;
     z-index: 2;
@@ -76,12 +57,11 @@ Objetivo:
 
 .ancient-knowledge h2 {
     margin-bottom: 18px;
+    color: var(--text-primary);
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(2.1rem, 5vw, 3rem);
-    line-height: 1;
-    color: var(--text-primary);
-    text-shadow:
-        0 0 18px rgba(0, 0, 0, 0.45);
+    line-height: 1.08;
+    text-shadow: 0 0 18px rgba(0, 0, 0, 0.45);
 }
 
 .ancient-intro {
@@ -93,8 +73,9 @@ Objetivo:
 }
 
 /* =====================================================
-   CARROSSEL DE CITAÇÕES
+   CARROSSEL
 ===================================================== */
+
 .quotes-carousel-wrapper {
     position: relative;
     display: flex;
@@ -112,13 +93,13 @@ Objetivo:
 .ancient-quotes {
     display: flex;
     gap: 24px;
-    transition: transform 0.45s ease-in-out;
-    will-change: transform;
+    scroll-behavior: smooth;
 }
 
 /* =====================================================
-   BOTÕES DO CARROSSEL
+   BOTÕES
 ===================================================== */
+
 .carousel-button {
     width: 54px;
     height: 54px;
@@ -126,8 +107,8 @@ Objetivo:
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
     border: 1px solid rgba(129, 199, 132, 0.24);
+    border-radius: 50%;
     background:
         linear-gradient(
             135deg,
@@ -163,6 +144,11 @@ Objetivo:
         0 18px 36px rgba(0, 0, 0, 0.26);
 }
 
+.carousel-button:focus-visible {
+    outline: 2px solid var(--myth-gold-soft);
+    outline-offset: 4px;
+}
+
 .carousel-button:disabled {
     opacity: 0.35;
     cursor: not-allowed;
@@ -171,16 +157,17 @@ Objetivo:
 }
 
 /* =====================================================
-   CARDS DE CITAÇÕES
+   CARDS
 ===================================================== */
+
 .quote-card {
     position: relative;
     flex: 0 0 calc((100% - 48px) / 3);
     min-height: 310px;
     padding: 38px 30px 30px;
     overflow: hidden;
-    border-radius: 22px;
     border: 1px solid rgba(129, 199, 132, 0.18);
+    border-radius: 22px;
     background:
         radial-gradient(circle at top, rgba(129, 199, 132, 0.08), transparent 48%),
         linear-gradient(
@@ -200,29 +187,27 @@ Objetivo:
         box-shadow 0.35s ease;
 }
 
-/* aspas decorativas */
 .quote-card::before {
     content: "“";
     position: absolute;
     top: 14px;
     left: 22px;
+    color: rgba(129, 199, 132, 0.1);
     font-size: 4.6rem;
     font-weight: 700;
     line-height: 1;
-    color: rgba(129, 199, 132, 0.1);
     pointer-events: none;
     transition:
         transform 0.35s ease,
         opacity 0.35s ease;
 }
 
-/* borda interna */
 .quote-card::after {
     content: "";
     position: absolute;
     inset: 10px;
-    border-radius: 16px;
     border: 1px solid rgba(129, 199, 132, 0.055);
+    border-radius: 16px;
     pointer-events: none;
 }
 
@@ -241,8 +226,9 @@ Objetivo:
 }
 
 /* =====================================================
-   TEXTO DA CITAÇÃO
+   TEXTO
 ===================================================== */
+
 .quote-text {
     position: relative;
     z-index: 1;
@@ -261,9 +247,6 @@ Objetivo:
     text-align: center;
 }
 
-/* =====================================================
-   AUTOR
-===================================================== */
 .quote-author {
     position: relative;
     z-index: 1;
@@ -295,155 +278,62 @@ Objetivo:
         );
     opacity: 0.9;
 }
+
 /* =====================================================
-   CORES DAS CITAÇÕES DAS MITOLOGIAS UTILIZADAS
-   Classes presentes em homeAncientQuotesData
+   CORES DAS CITAÇÕES
 ===================================================== */
 
-
 /* OCEANIA */
-.quote-card.aboriginal .quote-author {
-    color: #D27D2D; /* Ocre ancestral */
-}
-
-.quote-card.maori .quote-author {
-    color: #009688; /* Verde jade */
-}
-
-.quote-card.hawaiian .quote-author {
-    color: #29B6F6; /* Azul oceano */
-}
+.quote-card.aboriginal .quote-author { color: #D27D2D; }
+.quote-card.maori .quote-author { color: #009688; }
+.quote-card.hawaiian .quote-author { color: #29B6F6; }
 
 /* AMÉRICAS */
-.quote-card.aztec .quote-author {
-    color: #E65100; /* Laranja vulcânico */
-}
-
-.quote-card.brazilian .quote-author {
-    color: #43A047; /* Verde floresta */
-}
-
-.quote-card.caribbean .quote-author {
-    color: #00ACC1; /* Turquesa */
-}
-
-.quote-card.chilean .quote-author {
-    color: #C62828; /* Vermelho andino */
-}
-
-.quote-card.inca .quote-author {
-    color: #FBC02D; /* Ouro do Sol */
-}
-
-.quote-card.maya .quote-author {
-    color: #8D6E63; /* Pedra antiga */
-}
-
-.quote-card.tupi .quote-author {
-    color: #7CB342; /* Verde mata */
-}
+.quote-card.aztec .quote-author { color: #E65100; }
+.quote-card.brazilian .quote-author { color: #43A047; }
+.quote-card.caribbean .quote-author { color: #00ACC1; }
+.quote-card.chilean .quote-author { color: #C62828; }
+.quote-card.inca .quote-author { color: #FBC02D; }
+.quote-card.maya .quote-author { color: #8D6E63; }
+.quote-card.tupi .quote-author { color: #7CB342; }
 
 /* EUROPA */
-.quote-card.basque .quote-author {
-    color: #2E7D32; /* Verde montanhas */
-}
-
+.quote-card.basque .quote-author { color: #2E7D32; }
 .quote-card.celtic .quote-author,
-.quote-card.druid .quote-author {
-    color: #66BB6A; /* Verde druídico */
-}
-
-.quote-card.scandinavian .quote-author {
-    color: #90CAF9; /* Azul gelo */
-}
-
-.quote-card.slavic .quote-author {
-    color: #7E57C2; /* Roxo místico */
-}
-
-.quote-card.gaelic .quote-author {
-    color: #26A69A; /* Verde esmeralda */
-}
-
-.quote-card.greek .quote-author {
-    color: #FFD54F; /* Ouro olímpico */
-}
-
-.quote-card.irish .quote-author {
-    color: #00C853; /* Verde irlandês */
-}
-
-.quote-card.nordic .quote-author {
-    color: #B0BEC5; /* Prata nórdica */
-}
-
-.quote-card.roman .quote-author {
-    color: #BF360C; /* Vermelho imperial */
-}
+.quote-card.druid .quote-author { color: #66BB6A; }
+.quote-card.scandinavian .quote-author { color: #90CAF9; }
+.quote-card.slavic .quote-author { color: #7E57C2; }
+.quote-card.gaelic .quote-author { color: #26A69A; }
+.quote-card.greek .quote-author { color: #FFD54F; }
+.quote-card.irish .quote-author { color: #00C853; }
+.quote-card.nordic .quote-author { color: #B0BEC5; }
+.quote-card.roman .quote-author { color: #BF360C; }
 
 /* ÁSIA */
-.quote-card.arabic .quote-author {
-    color: #C0A040; /* Dourado do deserto */
-}
-
-.quote-card.buddhist .quote-author {
-    color: #FB8C00; /* Açafrão */
-}
-
-.quote-card.chinese .quote-author {
-    color: #42A5F5; /* Azul celeste */
-}
-
-.quote-card.hindu .quote-author {
-    color: #FF7043; /* Laranja espiritual */
-}
-
-.quote-card.indian .quote-author {
-    color: #FF8F00; /* Âmbar */
-}
-
-.quote-card.japanese .quote-author {
-    color: #EC407A; /* Sakura */
-}
-
-.quote-card.jewish .quote-author {
-    color: #5C6BC0; /* Azul safira */
-}
-
-.quote-card.mesopotamian .quote-author {
-    color: #A1887F; /* Argila antiga */
-}
-
-.quote-card.persian .quote-author {
-    color: #AB47BC; /* Ametista persa */
-}
-
-.quote-card.tibetan .quote-author {
-    color: #EF6C00; /* Laranja tibetano */
-}
+.quote-card.arabic .quote-author { color: #C0A040; }
+.quote-card.buddhist .quote-author { color: #FB8C00; }
+.quote-card.chinese .quote-author { color: #42A5F5; }
+.quote-card.hindu .quote-author { color: #FF7043; }
+.quote-card.indian .quote-author { color: #FF8F00; }
+.quote-card.japanese .quote-author { color: #EC407A; }
+.quote-card.jewish .quote-author { color: #5C6BC0; }
+.quote-card.mesopotamian .quote-author { color: #A1887F; }
+.quote-card.persian .quote-author { color: #AB47BC; }
+.quote-card.tibetan .quote-author { color: #EF6C00; }
 
 /* ÁFRICA */
-.quote-card.african .quote-author {
-    color: #8D5524; /* Terra africana */
-}
-
-.quote-card.egyptian .quote-author {
-    color: #D4AF37; /* Ouro egípcio */
-}
-
-.quote-card.yoruba .quote-author {
-    color: #FF9800; /* Cobre ritual */
-}
+.quote-card.african .quote-author { color: #8D5524; }
+.quote-card.egyptian .quote-author { color: #D4AF37; }
+.quote-card.yoruba .quote-author { color: #FF9800; }
 
 /* TRADIÇÕES RELIGIOSAS */
 .quote-card.biblical .quote-author,
-.quote-card.christian .quote-author {
-    color: #E8EAF6; /* Branco azulado */
-}
+.quote-card.christian .quote-author { color: #E8EAF6; }
 
 /* =====================================================
    RESPONSIVO
 ===================================================== */
+
 @media (max-width: 1100px) {
     .quote-card {
         flex: 0 0 calc((100% - 24px) / 2);
@@ -454,6 +344,10 @@ Objetivo:
     .ancient-knowledge {
         padding: 80px 0;
         margin-top: 0;
+    }
+
+    .ancient-knowledge h2 {
+        line-height: 1.12;
     }
 
     .ancient-intro {
@@ -492,13 +386,53 @@ Objetivo:
     .quotes-carousel {
         overflow-x: auto;
         scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .quotes-carousel::-webkit-scrollbar {
+        display: none;
     }
 
     .ancient-quotes {
         gap: 16px;
+        padding-inline: 6px;
     }
 
     .quote-card {
         scroll-snap-align: center;
+    }
+}
+
+/* =====================================================
+   DISPOSITIVOS SEM HOVER
+===================================================== */
+
+@media (hover: none) {
+    .quote-card:hover {
+        transform: none;
+    }
+
+    .carousel-button:hover {
+        transform: none;
+    }
+}
+
+/* =====================================================
+   REDUÇÃO DE MOVIMENTO
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .ancient-quotes,
+    .carousel-button,
+    .quote-card,
+    .quote-card::before {
+        transition: none;
+        scroll-behavior: auto;
+    }
+
+    .quote-card:hover,
+    .carousel-button:hover {
+        transform: none;
     }
 }

@@ -9,21 +9,17 @@ ARQUIVO: flip-card.css
 
 Esse arquivo controla os cards com efeito FLIP 3D.
 
-Ele possui dois usos principais:
+Usos:
+1. Flip Card Genérico
+2. Flip Card do Carrossel Mitológico
 
-1. FLIP CARD GENÉRICO
-   Usado para cards individuais com frente e verso.
-
-2. FLIP CARD DO CARROSSEL MITOLÓGICO
-   Usado dentro do carrossel infinito de mitologias.
-
-Objetivo:
-- criar interação visual imersiva
-- revelar informações no verso do card
-- manter estética mística e cinematográfica
-- melhorar responsividade dos cards
-- evitar falhas visuais no efeito 3D
-
+Ajustes aplicados:
+- suporte a hover
+- suporte a focus-within
+- suporte à classe .is-flipped para mobile/JS
+- melhoria de performance com will-change
+- proteção contra texto estourando no verso
+- melhor comportamento em telas pequenas
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 */
 
@@ -78,6 +74,7 @@ Objetivo:
     height: 530px;
     cursor: pointer;
     perspective: 1200px;
+    outline: none;
 }
 
 .flip-card-inner {
@@ -85,10 +82,14 @@ Objetivo:
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
+    will-change: transform;
     transition: transform 0.8s ease-in-out;
 }
 
-.flip-card:hover .flip-card-inner {
+/* Hover, foco e classe para JS/mobile */
+.flip-card:hover .flip-card-inner,
+.flip-card:focus-within .flip-card-inner,
+.flip-card.is-flipped .flip-card-inner {
     transform: rotateY(180deg);
 }
 
@@ -120,7 +121,9 @@ Objetivo:
     transition: transform 0.8s ease;
 }
 
-.flip-card:hover .flip-card-front img {
+.flip-card:hover .flip-card-front img,
+.flip-card:focus-within .flip-card-front img,
+.flip-card.is-flipped .flip-card-front img {
     transform: scale(1.08);
 }
 
@@ -167,6 +170,7 @@ Objetivo:
     align-items: flex-start;
     justify-content: center;
     padding: 42px 34px;
+    overflow-y: auto;
     transform: rotateY(180deg);
     background:
         radial-gradient(circle at top, rgba(129, 199, 132, 0.12), transparent 45%),
@@ -189,38 +193,25 @@ Objetivo:
     justify-content: center;
     padding: 13px 24px;
     border-radius: 999px;
-    background:
-        linear-gradient(135deg, #2e7d32, #43a047);
+    background: linear-gradient(135deg, #2e7d32, #43a047);
     color: #ffffff;
     font-weight: 700;
     text-decoration: none;
-    box-shadow:
-        0 0 20px rgba(129, 199, 132, 0.22);
+    box-shadow: 0 0 20px rgba(129, 199, 132, 0.22);
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease;
 }
 
-.flip-card-button:hover {
+.flip-card-button:hover,
+.flip-card-button:focus-visible {
     transform: translateY(-3px);
-    box-shadow:
-        0 0 30px rgba(129, 199, 132, 0.38);
+    box-shadow: 0 0 30px rgba(129, 199, 132, 0.38);
 }
 
 /* =====================================================
    FLIP CARD — CARROSSEL MITOLÓGICO
 ===================================================== */
-
-/*
-Estrutura usada no carrossel infinito:
-
-.carousel-item
-    .myth-flip-card
-        .myth-flip-inner
-            .myth-flip-front
-            .myth-flip-back
-*/
-
 .carousel-item {
     flex: 0 0 auto;
     width: 340px;
@@ -229,12 +220,15 @@ Estrutura usada no carrossel infinito:
     border: none;
     background: transparent;
     perspective: 1400px;
+    outline: none;
     transition:
         transform 0.35s ease,
         z-index 0.35s ease;
 }
 
-.carousel-item:hover {
+.carousel-item:hover,
+.carousel-item:focus-within,
+.carousel-item.is-flipped {
     z-index: 10;
 }
 
@@ -255,7 +249,9 @@ Estrutura usada no carrossel infinito:
 /* =====================================================
    ROTAÇÃO DO CARD MITOLÓGICO
 ===================================================== */
-.carousel-item:hover .myth-flip-inner {
+.carousel-item:hover .myth-flip-inner,
+.carousel-item:focus-within .myth-flip-inner,
+.carousel-item.is-flipped .myth-flip-inner {
     transform: rotateY(180deg);
 }
 
@@ -280,7 +276,11 @@ Estrutura usada no carrossel infinito:
 }
 
 .carousel-item:hover .myth-flip-front,
-.carousel-item:hover .myth-flip-back {
+.carousel-item:hover .myth-flip-back,
+.carousel-item:focus-within .myth-flip-front,
+.carousel-item:focus-within .myth-flip-back,
+.carousel-item.is-flipped .myth-flip-front,
+.carousel-item.is-flipped .myth-flip-back {
     border-color: rgba(129, 199, 132, 0.36);
     box-shadow:
         0 0 0 1px rgba(129, 199, 132, 0.12),
@@ -305,7 +305,9 @@ Estrutura usada no carrossel infinito:
         filter 0.5s ease;
 }
 
-.carousel-item:hover .myth-flip-front img {
+.carousel-item:hover .myth-flip-front img,
+.carousel-item:focus-within .myth-flip-front img,
+.carousel-item.is-flipped .myth-flip-front img {
     transform: scale(1.08);
     filter:
         brightness(1.05)
@@ -352,18 +354,11 @@ Estrutura usada no carrossel infinito:
     flex-direction: column;
     justify-content: center;
     padding: 36px;
+    overflow-y: auto;
     transform: rotateY(180deg);
     background:
-        radial-gradient(
-            circle at top,
-            rgba(129, 199, 132, 0.12),
-            transparent 40%
-        ),
-        linear-gradient(
-            135deg,
-            rgba(17, 36, 27, 0.98),
-            rgba(5, 16, 11, 1)
-        );
+        radial-gradient(circle at top, rgba(129, 199, 132, 0.12), transparent 40%),
+        linear-gradient(135deg, rgba(17, 36, 27, 0.98), rgba(5, 16, 11, 1));
 }
 
 .myth-category {
@@ -403,17 +398,31 @@ Estrutura usada no carrossel infinito:
     color: #ffffff;
     font-weight: 700;
     text-decoration: none;
-    box-shadow:
-        0 0 20px rgba(129, 199, 132, 0.22);
+    box-shadow: 0 0 20px rgba(129, 199, 132, 0.22);
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease;
 }
 
-.myth-button:hover {
+.myth-button:hover,
+.myth-button:focus-visible {
     transform: translateY(-3px);
-    box-shadow:
-        0 0 28px rgba(129, 199, 132, 0.35);
+    box-shadow: 0 0 28px rgba(129, 199, 132, 0.35);
+}
+
+/* =====================================================
+   ACESSIBILIDADE — REDUZIR MOVIMENTO
+===================================================== */
+@media (prefers-reduced-motion: reduce) {
+
+    .flip-card-inner,
+    .myth-flip-inner,
+    .flip-card-front img,
+    .myth-flip-front img,
+    .flip-card-button,
+    .myth-button {
+        transition: none;
+    }
 }
 
 /* =====================================================
@@ -425,8 +434,18 @@ Estrutura usada no carrossel infinito:
         padding: 100px 0;
     }
 
+    .flip-card-header {
+        margin-bottom: 44px;
+        padding: 0 20px;
+    }
+
     .flip-card-header h2 {
         font-size: 2.1rem;
+    }
+
+    .flip-card-header p {
+        font-size: 1rem;
+        line-height: 1.7;
     }
 
     .flip-card {
@@ -435,7 +454,12 @@ Estrutura usada no carrossel infinito:
     }
 
     .flip-card-back {
+        justify-content: flex-start;
         padding: 34px 26px;
+    }
+
+    .flip-card-overlay {
+        padding: 26px 24px;
     }
 
     .flip-card-overlay h3,
@@ -458,6 +482,7 @@ Estrutura usada no carrossel infinito:
     }
 
     .myth-flip-back {
+        justify-content: flex-start;
         padding: 28px;
     }
 
@@ -466,7 +491,6 @@ Estrutura usada no carrossel infinito:
         line-height: 1.65;
     }
 }
-
 
 /* =====================================================
    RESPONSIVO — MOBILE PEQUENO
@@ -477,18 +501,57 @@ Estrutura usada no carrossel infinito:
         padding: 80px 0;
     }
 
+    .flip-card-header {
+        margin-bottom: 36px;
+    }
+
+    .flip-card-header h2 {
+        font-size: 1.85rem;
+    }
+
     .flip-card {
-        width: 260px;
+        width: min(86vw, 280px);
         height: 410px;
     }
 
+    .flip-card-overlay {
+        padding: 22px 20px;
+    }
+
+    .flip-card-overlay span,
+    .flip-card-category {
+        font-size: 0.68rem;
+        letter-spacing: 1.6px;
+    }
+
+    .flip-card-overlay h3,
+    .flip-card-back h3 {
+        font-size: 1.35rem;
+    }
+
+    .flip-card-back {
+        padding: 24px;
+    }
+
+    .flip-card-back p {
+        margin-bottom: 22px;
+        font-size: 0.88rem;
+        line-height: 1.6;
+    }
+
     .carousel-item {
-        width: 250px;
+        width: min(82vw, 260px);
         height: 390px;
     }
 
     .myth-front-overlay {
         padding: 20px;
+    }
+
+    .myth-front-overlay span,
+    .myth-category {
+        font-size: 0.66rem;
+        letter-spacing: 1.6px;
     }
 
     .myth-front-overlay h3,
@@ -506,9 +569,9 @@ Estrutura usada no carrossel infinito:
         line-height: 1.6;
     }
 
-    .myth-button {
+    .myth-button,
+    .flip-card-button {
         padding: 12px 20px;
         font-size: 0.85rem;
     }
-
 }

@@ -9,28 +9,21 @@ ARQUIVO: infinite-carousel.css
 
 Controla a seção de carrossel infinito do site Bestiário.
 
-Objetivo:
-- exibir cards mitológicos em movimento contínuo
-- criar sensação de fluxo, descoberta e exploração
-- reforçar o visual cinematográfico da página
-- permitir interação com cards em formato flip
-- proteger a seção contra quebras visuais
-
-Este arquivo controla:
-1. Estrutura principal da seção
-2. Cabeçalho do carrossel
-3. Área rolável/arrastável
-4. Fades laterais
-5. Track horizontal dos cards
-6. Estado de arraste
-7. Responsividade
-
+Ajustes aplicados:
+- melhor organização visual
+- proteção contra overflow horizontal
+- melhor comportamento durante arraste
+- suporte a touch/mobile
+- fades laterais responsivos
+- melhoria de performance com will-change
+- acessibilidade com redução de movimento
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 */
 
 /* =====================================================
    SEÇÃO PRINCIPAL
 ===================================================== */
+
 .infinite-carousel-section {
     position: relative;
     padding: 160px 0;
@@ -43,6 +36,7 @@ Este arquivo controla:
 /* =====================================================
    CABEÇALHO
 ===================================================== */
+
 .carousel-header {
     position: relative;
     z-index: 3;
@@ -59,28 +53,32 @@ Este arquivo controla:
 /* =====================================================
    ÁREA DO CARROSSEL
 ===================================================== */
+
 .infinite-carousel {
     position: relative;
     width: 100%;
+    max-width: 100%;
     overflow: hidden;
     cursor: grab;
     user-select: none;
+    touch-action: pan-y;
 }
 
 .infinite-carousel.dragging {
     cursor: grabbing;
 }
 
-
 /* Evita clique/flip acidental enquanto arrasta */
-.infinite-carousel.dragging .myth-flip-inner {
+.infinite-carousel.dragging .myth-flip-inner,
+.infinite-carousel.dragging a,
+.infinite-carousel.dragging button {
     pointer-events: none;
 }
-
 
 /* =====================================================
    FADES LATERAIS
 ===================================================== */
+
 .infinite-carousel::before,
 .infinite-carousel::after {
     content: "";
@@ -117,19 +115,52 @@ Este arquivo controla:
 /* =====================================================
    TRACK DOS CARDS
 ===================================================== */
+
 .carousel-track {
     display: flex;
     align-items: stretch;
     gap: 28px;
     width: max-content;
-    transform: translateX(0);
+    max-width: none;
+    transform: translate3d(0, 0, 0);
     will-change: transform;
+}
+
+/* =====================================================
+   ESTADO DE ARRASTE
+===================================================== */
+
+.infinite-carousel.dragging .carousel-track {
+    transition: none;
+}
+
+.infinite-carousel.dragging,
+.infinite-carousel.dragging * {
+    user-select: none;
+}
+
+/* =====================================================
+   ACESSIBILIDADE — REDUZIR MOVIMENTO
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .carousel-track {
+        transform: none;
+        will-change: auto;
+    }
+
+    .infinite-carousel {
+        cursor: default;
+    }
 }
 
 /* =====================================================
    RESPONSIVO — TABLET
 ===================================================== */
+
 @media (max-width: 900px) {
+
     .infinite-carousel-section {
         padding: 120px 0;
     }
@@ -153,12 +184,22 @@ Este arquivo controla:
 ===================================================== */
 
 @media (max-width: 600px) {
+
     .infinite-carousel-section {
         padding: 90px 0;
     }
 
     .carousel-header {
         margin-bottom: 34px;
+    }
+
+    .carousel-header h2 {
+        line-height: 1.12;
+    }
+
+    .infinite-carousel {
+        cursor: default;
+        touch-action: pan-y;
     }
 
     .infinite-carousel::before,
@@ -168,5 +209,29 @@ Este arquivo controla:
 
     .carousel-track {
         gap: 18px;
+    }
+}
+
+/* =====================================================
+   RESPONSIVO — MOBILE PEQUENO
+===================================================== */
+
+@media (max-width: 420px) {
+
+    .infinite-carousel-section {
+        padding: 78px 0;
+    }
+
+    .carousel-header {
+        margin-bottom: 28px;
+    }
+
+    .infinite-carousel::before,
+    .infinite-carousel::after {
+        width: 28px;
+    }
+
+    .carousel-track {
+        gap: 14px;
     }
 }

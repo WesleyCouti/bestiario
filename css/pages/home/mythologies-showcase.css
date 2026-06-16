@@ -11,29 +11,31 @@ Controla a seção:
 
 "MITOLOGIAS DO MUNDO"
 
-Objetivo:
-- exibir mitologias em cards horizontais
-- permitir navegação visual entre culturas
-- criar sensação de linha histórica/ancestral
-- destacar imagens, títulos e descrições
-- manter o layout seguro em diferentes telas
-
+Ajustes aplicados:
+- melhor responsividade
+- scroll horizontal mais suave no mobile
+- acessibilidade com focus-visible
+- melhoria de performance com will-change
+- proteção contra overflow horizontal
+- suporte a prefers-reduced-motion
+- botões com estados hover/focus
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 */
 
 /* =====================================================
    SEÇÃO PRINCIPAL
 ===================================================== */
+
 .mythologies-showcase {
     position: relative;
     padding: 110px 0;
     overflow: hidden;
 }
 
-
 /* =====================================================
    CABEÇALHO
 ===================================================== */
+
 .showcase-header {
     display: flex;
     align-items: flex-end;
@@ -52,6 +54,7 @@ Objetivo:
 /* =====================================================
    BOTÕES DE CONTROLE
 ===================================================== */
+
 .showcase-controls {
     display: flex;
     gap: 12px;
@@ -68,19 +71,27 @@ Objetivo:
     transition:
         background 0.3s ease,
         box-shadow 0.3s ease,
+        border-color 0.3s ease,
         transform 0.3s ease;
 }
 
-.showcase-button:hover {
+.showcase-button:hover,
+.showcase-button:focus-visible {
     transform: translateY(-2px);
+    border-color: rgba(129, 199, 132, 0.45);
     background: rgba(27, 94, 32, 0.95);
     box-shadow: 0 0 14px rgba(129, 199, 132, 0.18);
 }
 
+.showcase-button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
 
 /* =====================================================
    LINHA DECORATIVA
 ===================================================== */
+
 .myth-line {
     position: relative;
     width: 100%;
@@ -121,15 +132,18 @@ Objetivo:
     transition: transform 0.3s ease;
 }
 
-.myth-line span:hover {
+.myth-line span:hover,
+.myth-line span:focus-visible {
     transform: scale(1.25);
 }
 
 /* =====================================================
    TRACK DOS CARDS
 ===================================================== */
+
 .showcase-track-wrapper {
     width: 100%;
+    max-width: 100%;
     overflow: hidden;
 }
 
@@ -139,6 +153,7 @@ Objetivo:
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding: 36px 0 30px;
 }
@@ -150,6 +165,7 @@ Objetivo:
 /* =====================================================
    CARD DE MITOLOGIA
 ===================================================== */
+
 .myth-card {
     position: relative;
     flex: 0 0 280px;
@@ -164,6 +180,10 @@ Objetivo:
             rgba(22, 45, 34, 0.28) 100%
         );
     z-index: 1;
+    transform: translateZ(0);
+    will-change:
+        transform,
+        box-shadow;
     transition:
         transform 0.3s ease,
         border-color 0.3s ease,
@@ -185,7 +205,8 @@ Objetivo:
     transition: opacity 0.4s ease;
 }
 
-.myth-card:hover {
+.myth-card:hover,
+.myth-card:focus-within {
     transform: translateY(-10px);
     border-color: rgba(129, 199, 132, 0.45);
     box-shadow:
@@ -198,6 +219,7 @@ Objetivo:
 /* =====================================================
    IMAGEM DO CARD
 ===================================================== */
+
 .myth-card-image {
     position: relative;
     z-index: 2;
@@ -207,13 +229,16 @@ Objetivo:
     object-fit: cover;
     border-radius: 18px 18px 0 0;
     transform-origin: center center;
-    will-change: transform;
+    will-change:
+        transform,
+        filter;
     transition:
         transform 0.7s ease,
         filter 0.5s ease;
 }
 
-.myth-card:hover .myth-card-image {
+.myth-card:hover .myth-card-image,
+.myth-card:focus-within .myth-card-image {
     transform: scale(1.08);
     filter:
         brightness(1.08)
@@ -290,10 +315,41 @@ Objetivo:
 }
 
 /* =====================================================
-   RESPONSIVO
+   ACESSIBILIDADE — REDUZIR MOVIMENTO
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .showcase-track {
+        scroll-behavior: auto;
+    }
+
+    .showcase-button,
+    .myth-line span,
+    .myth-card,
+    .myth-card::after,
+    .myth-card-image {
+        transition: none;
+    }
+
+    .showcase-button:hover,
+    .showcase-button:focus-visible,
+    .myth-line span:hover,
+    .myth-line span:focus-visible,
+    .myth-card:hover,
+    .myth-card:focus-within,
+    .myth-card:hover .myth-card-image,
+    .myth-card:focus-within .myth-card-image {
+        transform: none;
+    }
+}
+
+/* =====================================================
+   RESPONSIVO — TABLET
 ===================================================== */
 
 @media (max-width: 900px) {
+
     .mythologies-showcase {
         padding: 90px 0;
     }
@@ -301,6 +357,11 @@ Objetivo:
     .showcase-header {
         flex-direction: column;
         align-items: flex-start;
+        gap: 18px;
+    }
+
+    .showcase-controls {
+        align-self: flex-end;
     }
 
     .myth-line {
@@ -312,9 +373,31 @@ Objetivo:
     }
 }
 
+/* =====================================================
+   RESPONSIVO — MOBILE
+===================================================== */
+
 @media (max-width: 600px) {
+
     .mythologies-showcase {
         padding: 70px 0;
+    }
+
+    .showcase-header {
+        margin-bottom: 20px;
+    }
+
+    .showcase-header h2 {
+        line-height: 1.1;
+    }
+
+    .showcase-controls {
+        display: none;
+    }
+
+    .showcase-track {
+        gap: 18px;
+        padding: 22px 0 24px;
     }
 
     .myth-card {
@@ -326,7 +409,51 @@ Objetivo:
         height: 300px;
     }
 
-    .showcase-controls {
-        display: none;
+    .myth-card h3,
+    .myth-card p {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .myth-card h3 {
+        font-size: 1.16rem;
+    }
+
+    .myth-card p {
+        font-size: 0.9rem;
+        line-height: 1.55;
+    }
+}
+
+/* =====================================================
+   RESPONSIVO — MOBILE PEQUENO
+===================================================== */
+
+@media (max-width: 420px) {
+
+    .mythologies-showcase {
+        padding: 62px 0;
+    }
+
+    .showcase-track {
+        gap: 16px;
+    }
+
+    .myth-card {
+        flex: 0 0 225px;
+        min-height: 405px;
+    }
+
+    .myth-card-image {
+        height: 275px;
+    }
+
+    .myth-card h3 {
+        margin-top: 16px;
+        font-size: 1.08rem;
+    }
+
+    .myth-card p {
+        font-size: 0.86rem;
     }
 }
