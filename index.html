@@ -71,6 +71,10 @@
 
 <body>
 
+    <a href="#conteudo-principal" class="skip-link">
+        Pular para o conteúdo
+    </a>
+
     <!-- =====================================================
          HEADER / MENU PRINCIPAL
     ====================================================== -->
@@ -78,10 +82,8 @@
 
         <div class="container topbar-content">
 
-            <!-- =====================================================
-                LOGO
-            ====================================================== -->
-            <a href="./index.html#home" class="logo">
+            <!-- Logo -->
+            <a href="./index.html#home" class="logo" aria-label="Ir para a página inicial do Bestiário">
                 <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" class="logo-icon" />
 
                 <span>Bestiário</span>
@@ -92,11 +94,9 @@
                 ☰
             </button>
 
-            <!-- =====================================================
-                MENU
-            ====================================================== -->
+            <!-- Menu principal -->
             <nav class="menu" id="menu-principal" aria-label="Menu principal">
-                <a href="./index.html#home" class="active">Home</a>
+                <a href="./index.html#home" class="active" aria-current="page">Home</a>
                 <a href="./mitologias.html">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
                 <a href="./lendas.html">Lendas</a>
@@ -108,12 +108,12 @@
 
     </header>
 
-    <main>
+    <main id="conteudo-principal">
 
         <!-- =====================================================
              HERO / DESTAQUE PRINCIPAL
         ====================================================== -->
-        <section class="hero" id="home">
+        <section class="hero" id="home" aria-labelledby="home-title">
 
             <div class="container hero-layout">
 
@@ -124,7 +124,7 @@
                         Conhecimento antigo • magia • mitologia
                     </span>
 
-                    <h1>
+                    <h1 id="home-title">
                         Adentre os Mistérios<br />
                         do Mundo Antigo
                     </h1>
@@ -134,8 +134,8 @@
                     </p>
 
                     <p>
-                        Lendas esquecidas, símbolos sagrados e conhecimentos ancestrais
-                        aguardam por aqueles que ousam olhar além do visível.
+                        Lendas esquecidas, símbolos sagrados, criaturas lendárias e conhecimentos ancestrais aguardam
+                        aqueles que ousam olhar além do visível.
                     </p>
 
                     <!-- Ações principais -->
@@ -212,7 +212,7 @@
                 <div class="hero-visual">
 
                     <img src="./assets/images/mao_mistica_com_simbolos.png" alt="Mão mística com símbolos ancestrais"
-                        class="hero-image" />
+                        class="hero-image" loading="eager" decoding="async" />
 
                 </div>
 
@@ -224,11 +224,12 @@
             SEÇÃO: O QUE É O BESTIÁRIO
         ====================================================== -->
 
-        <section class="about-bestiario" id="sobre-bestiario">
+        <section class="about-bestiario" id="sobre-bestiario" aria-labelledby="sobre-bestiario-title">
+
             <div class="container">
                 <span class="section-tag">Sobre o projeto</span>
 
-                <h2>O que é o Bestiário?</h2>
+                <h2 id="sobre-bestiario-title">O que é o Bestiário?</h2>
 
                 <p>
                     O Bestiário é uma biblioteca digital dedicada às mitologias,
@@ -248,13 +249,13 @@
         <!-- =====================================================
              SEÇÃO: O QUE É MITOLOGIA
         ====================================================== -->
-        <section class="about-mythology" id="sobre-mitologia">
+        <section class="about-mythology" id="sobre-mitologia" aria-labelledby="sobre-mitologia-title">
             <div class="container">
                 <div class="about-mythology-card">
 
                     <span class="section-tag">Conhecimento Essencial</span>
 
-                    <h2>O que é Mitologia?</h2>
+                    <h2 id="sobre-mitologia-title">O que é Mitologia?</h2>
 
                     <p class="about-highlight">
                         A mitologia reúne histórias, símbolos e personagens que ajudaram diferentes povos a compreender
@@ -339,12 +340,12 @@
         <!-- =====================================================
             CARROSSEL INFINITO - MITOLOGIAS
         ===================================================== -->
-        <section class="infinite-carousel-section" id="mitologias">
+        <section class="infinite-carousel-section" id="mitologias" aria-labelledby="mitologias-title">
             <div class="container">
 
                 <div class="carousel-header">
                     <span class="section-tag">Exploração Visual</span>
-                    <h2>Visões do Mundo Antigo</h2>
+                    <h2 id="mitologias-title">Visões do Mundo Antigo</h2>
                 </div>
 
                 <div class="infinite-carousel" aria-label="Carrossel de mitologias">
@@ -357,7 +358,7 @@
         <!-- =====================================================
              SEÇÃO: CRIATURAS DO MUNDO ANTIGO
         ====================================================== -->
-        <section class="creatures-section" id="criaturas">
+        <section class="creatures-section" id="criaturas" aria-labelledby="criaturas-title">
             <div class="creatures-container">
 
                 <!-- Cabeçalho e chamada -->
@@ -366,7 +367,7 @@
                     <div class="creatures-header">
                         <span class="section-tag">BESTIÁRIO</span>
 
-                        <h2>Criaturas do Mundo Antigo</h2>
+                        <h2 id="criaturas-title">Criaturas do Mundo Antigo</h2>
 
                         <div class="title-divider">
                             <span></span>
@@ -379,11 +380,11 @@
                     </div>
 
                     <div class="creatures-symbol">
-                        <img src="assets/images/sua-imagem-dragao.png" alt="Símbolo de dragão" loading="lazy"
+                        <img src="./assets/images/sua-imagem-dragao.png" alt="Símbolo de dragão" loading="lazy"
                             decoding="async">
                     </div>
 
-                    <a href="#" class="creatures-main-button">
+                    <a href="./criaturas.html" class="creatures-main-button">
                         <span class="button-text">
                             Ver todas as criaturas
                         </span>
@@ -405,7 +406,7 @@
         <!-- =====================================================
              SEÇÃO: SÍMBOLOS DO MUNDO ANTIGO
         ====================================================== -->
-        <section class="symbols-section" id="simbolos">
+        <section class="symbols-section" id="simbolos" aria-labelledby="simbolos-title">
 
             <div class="symbols-container">
 
@@ -418,7 +419,7 @@
                             <span></span>
                         </div>
 
-                        <h2>Símbolos do Mundo Antigo</h2>
+                        <h2 id="simbolos-title">Símbolos do Mundo Antigo</h2>
 
                         <p>
                             Muitas culturas separadas por oceanos e séculos criaram símbolos
@@ -471,13 +472,13 @@
         <!-- =====================================================
              SEÇÃO: LENDAS
         ====================================================== -->
-        <section class="legends-section" id="lendas">
+        <section class="legends-section" id="lendas" aria-labelledby="lendas-title">
             <div class="container">
 
                 <!-- Cabeçalho da seção -->
                 <div class="legends-header">
                     <span class="section-tag">Narrativas e Tradições</span>
-                    <h2>Lendas do Mundo Antigo</h2>
+                    <h2 id="lendas-title">Lendas do Mundo</h2>
                 </div>
 
                 <!-- Carrossel de cards -->
@@ -501,12 +502,12 @@
         <!-- =====================================================
              SEÇÃO: POR QUE ESTUDAR MITOLOGIAS, RELIGIÕES E LENDAS
         ====================================================== -->
-        <section class="why-study-section" id="por-que-estudar">
+        <section class="why-study-section" id="por-que-estudar" aria-labelledby="por-que-estudar-title">
             <div class="container">
 
                 <span class="section-tag">Por que explorar?</span>
 
-                <h2>Por que estudar mitologias, religiões e lendas?</h2>
+                <h2 id="por-que-estudar-title">Por que estudar mitologias, religiões e lendas?</h2>
 
                 <p>
                     Estudar essas tradições é compreender como diferentes povos
@@ -524,10 +525,10 @@
         </section>
 
         <!-- =====================================================
-             SEÇÃO: RELÍQUIAS PROIBIDAS
+             SEÇÃO: Relíquias Lendárias do Mundo Antigo
         ====================================================== -->
 
-        <section class="relics-section" id="reliquias">
+        <section class="relics-section" id="reliquias" aria-labelledby="reliquias-title">
 
             <div class="relics-overlay"></div>
 
@@ -541,9 +542,8 @@
                         ✧ OBJETOS DE PODER ✧
                     </span>
 
-                    <h2>
-                        RELÍQUIAS PROIBIDAS <br>
-                        DO MUNDO ANTIGO
+                    <h2 id="reliquias-title">
+                        Relíquias Lendárias do Mundo Antigo
                     </h2>
 
                     <p>
@@ -614,12 +614,12 @@
     <!-- =====================================================
          SCRIPT PRINCIPAL
     ====================================================== -->
-    <script src="./js/home-mythology-carousel-data.js" defer></script>
-    <script src="./js/home-creatures-data.js" defer></script>
-    <script src="./js/home-legends-data.js" defer></script>
-    <script src="./js/home-symbols-data.js" defer></script>
-    <script src="./js/home-relics-data.js" defer></script>
-    <script src="./js/home-ancient-quotes-data.js" defer></script>
+    <script src="./js/home/home-mythology-carousel-data.js" defer></script>
+    <script src="./js/home/home-creatures-data.js" defer></script>
+    <script src="./js/home/home-legends-data.js" defer></script>
+    <script src="./js/home/home-symbols-data.js" defer></script>
+    <script src="./js/home/home-relics-data.js" defer></script>
+    <script src="./js/home/home-ancient-quotes-data.js" defer></script>
     <script src="./js/main.js" defer></script>
 
 </body>

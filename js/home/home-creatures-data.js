@@ -15,7 +15,7 @@
 
    2. Importe este arquivo antes do main.js:
 
-   <script src="./js/home-creatures-data.js" defer></script>
+   <script src="./js/home/home-creatures-data.js" defer></script>
    <script src="./js/main.js" defer></script>
 
    3. Caso seu main.js já chame createCreatureCards(),
@@ -23,7 +23,13 @@
 
    4. Caso não chame, este arquivo também faz a renderização
       automaticamente quando o HTML estiver carregado.
+
+   Observação mobile:
+   - No mobile, tocar no card vira para o verso.
+   - Tocar novamente no mesmo card volta para a imagem.
 ===================================================== */
+
+const DEFAULT_CREATURE_IMAGE = "./assets/images/home/home-secao-criaturas/default-creature.png";
 
 const homeCreaturesData = [
     {
@@ -145,6 +151,7 @@ function escapeHTML(value) {
    SORTEIO DAS CRIATURAS
    -----------------------------------------------------
    Retorna apenas 4 criaturas aleatórias por carregamento.
+   Usa Fisher-Yates para um sorteio mais equilibrado.
 ===================================================== */
 
 function getRandomCreatures(quantity = 4) {
@@ -152,9 +159,20 @@ function getRandomCreatures(quantity = 4) {
         return [];
     }
 
-    return [...homeCreaturesData]
-        .sort(() => Math.random() - 0.5)
-        .slice(0, quantity);
+    const creatures = [...homeCreaturesData];
+
+    for (let index = creatures.length - 1; index > 0; index--) {
+        const randomIndex = Math.floor(Math.random() * (index + 1));
+
+        [creatures[index], creatures[randomIndex]] = [
+            creatures[randomIndex],
+            creatures[index]
+        ];
+    }
+
+    const safeQuantity = Math.min(quantity, creatures.length);
+
+    return creatures.slice(0, safeQuantity);
 }
 
 
@@ -179,13 +197,18 @@ function createCreatureCards() {
     creaturesGrid.innerHTML = selectedCreatures.map((creature) => {
         const name = escapeHTML(creature.name || "Criatura");
         const icon = escapeHTML(creature.icon || "✦");
-        const image = escapeHTML(creature.image || "");
+        const image = escapeHTML(creature.image || DEFAULT_CREATURE_IMAGE);
         const alt = escapeHTML(creature.alt || creature.name || "Imagem da criatura");
         const description = escapeHTML(creature.description || "Mistério ancestral ainda não revelado.");
         const url = escapeHTML(creature.url || "#");
+        const defaultImage = escapeHTML(DEFAULT_CREATURE_IMAGE);
 
         return `
-            <article class="creature-card">
+            <article
+                class="creature-card"
+                aria-label="Criatura mitológica: ${name}"
+                data-flipped="false">
+
                 <div class="creature-card-inner">
 
                     <div class="creature-card-front">
@@ -193,7 +216,8 @@ function createCreatureCards() {
                             src="${image}"
                             alt="${alt}"
                             loading="lazy"
-                            decoding="async">
+                            decoding="async"
+                            onerror="this.onerror=null; this.src='${defaultImage}';">
                     </div>
 
                     <div class="creature-card-back">
@@ -218,13 +242,87 @@ function createCreatureCards() {
 
 
 /* =====================================================
+   CONTROLE DO FLIP NO MOBILE
+   -----------------------------------------------------
+   Permite tocar no card para virar e tocar novamente
+   para voltar a exibir a imagem.
+===================================================== */
+
+function setupCreatureMobileFlip() {
+    const creaturesGrid = document.getElementById("creaturesGrid");
+
+    if (!creaturesGrid) {
+        return;
+    }
+
+    function isMobileView() {
+        return window.matchMedia("(max-width: 768px)").matches;
+    }
+
+    function resetCreatureCards() {
+        const cards = creaturesGrid.querySelectorAll(".creature-card");
+
+        cards.forEach((card) => {
+            const inner = card.querySelector(".creature-card-inner");
+
+            card.dataset.flipped = "false";
+
+            if (inner) {
+                inner.style.transform = "";
+            }
+        });
+    }
+
+    creaturesGrid.addEventListener("click", (event) => {
+        if (!isMobileView()) {
+            return;
+        }
+
+        const clickedLink = event.target.closest("a");
+
+        if (clickedLink) {
+            return;
+        }
+
+        const card = event.target.closest(".creature-card");
+
+        if (!card || !creaturesGrid.contains(card)) {
+            return;
+        }
+
+        const inner = card.querySelector(".creature-card-inner");
+
+        if (!inner) {
+            return;
+        }
+
+        const isFlipped = card.dataset.flipped === "true";
+
+        card.dataset.flipped = String(!isFlipped);
+        inner.style.transform = isFlipped ? "rotateY(0deg)" : "rotateY(180deg)";
+    });
+
+    window.addEventListener("resize", () => {
+        if (!isMobileView()) {
+            resetCreatureCards();
+        }
+    });
+}
+
+
+/* =====================================================
    INICIALIZAÇÃO AUTOMÁTICA
    -----------------------------------------------------
    Evita erro caso o JS carregue antes do HTML.
 ===================================================== */
 
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", createCreatureCards);
-} else {
+function initCreatureCards() {
     createCreatureCards();
+    setupCreatureMobileFlip();
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCreatureCards);
+} else {
+    initCreatureCards();
 }

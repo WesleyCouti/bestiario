@@ -41,7 +41,7 @@ const mythologyCarouselData = [
     {
         name: "Africana",
         title: "Mitologia Africana",
-        category: "Ancestralidade",
+        category: "Reinos Ancestrais",
         image: "./assets/images/home/home-secao-mitologias/africana.png",
         alt: "Mitologia Africana",
         description: "Conjunto rico de divindades, espíritos, heróis culturais, animais simbólicos e forças ligadas à criação e à ancestralidade.",
@@ -62,7 +62,7 @@ const mythologyCarouselData = [
         category: "Lendas Populares",
         image: "./assets/images/home/home-secao-mitologias/americana.png",
         alt: "Mitologia Americana",
-        description: "Histórias lendárias formadas por criaturas misteriosas, heróis populares, assombrações e mitos do imaginário norte-americano.",
+        description: "Criaturas misteriosas, lendas urbanas, heróis populares e relatos que moldaram o imaginário dos Estados Unidos.",
         url: "#"
     },
     {
@@ -176,10 +176,10 @@ const mythologyCarouselData = [
     {
         name: "Cristã",
         title: "Mitologia Cristã",
-        category: "Anjos e Mistérios",
+        category: "Anjos e Profecias",
         image: "./assets/images/home/home-secao-mitologias/crista.png",
         alt: "Mitologia Cristã",
-        description: "Tradições simbólicas com anjos, demônios, milagres, visões apocalípticas e narrativas espirituais de salvação e queda.",
+        description: "Anjos, demônios, milagres, profecias e narrativas sagradas que influenciaram séculos de cultura, fé e simbolismo.",
         url: "#"
     },
     {
@@ -197,13 +197,13 @@ const mythologyCarouselData = [
         category: "Caribe Místico",
         image: "./assets/images/home/home-secao-mitologias/dominicana.png",
         alt: "Mitologia Dominicana",
-        description: "Tradições populares com espíritos, assombrações, lendas rurais e seres sobrenaturais ligados ao imaginário caribenho.",
+        description: "Lendas populares marcadas por assombrações, entidades misteriosas e histórias transmitidas pelas comunidades do Caribe.",
         url: "#"
     },
     {
         name: "Egípcia",
         title: "Mitologia Egípcia",
-        category: "Civilização Antiga",
+        category: "Nilo Sagrado",
         image: "./assets/images/home/home-secao-mitologias/egipcia.png",
         alt: "Mitologia Egípcia",
         description: "Deuses ancestrais, rituais funerários, entidades cósmicas e forças ligadas à eternidade, morte e renascimento.",
@@ -239,7 +239,7 @@ const mythologyCarouselData = [
     {
         name: "Europeia",
         title: "Mitologia Europeia",
-        category: "Velho Mundo",
+        category: "Lendas do Velho Mundo",
         image: "./assets/images/home/home-secao-mitologias/europeia.png",
         alt: "Mitologia Europeia",
         description: "Conjunto de lendas, seres mágicos, tradições pagãs, criaturas medievais e símbolos do imaginário antigo europeu.",
@@ -293,7 +293,7 @@ const mythologyCarouselData = [
     {
         name: "Haitiana",
         title: "Mitologia Haitiana",
-        category: "Espiritualidade",
+        category: "Loas e Mistérios",
         image: "./assets/images/home/home-secao-mitologias/haitiana.png",
         alt: "Mitologia Haitiana",
         description: "Tradições espirituais, entidades ancestrais, ritos simbólicos e forças sagradas ligadas ao universo cultural haitiano.",
@@ -305,7 +305,7 @@ const mythologyCarouselData = [
         category: "Ilhas Sagradas",
         image: "./assets/images/home/home-secao-mitologias/havaiana.png",
         alt: "Mitologia Havaiana",
-        description: "Deuses vulcânicos, espíritos do oceano, heróis navegadores e forças naturais ligadas ao fogo, mar e criação.",
+        description: "Heróis navegadores, espíritos ancestrais e forças naturais associadas ao oceano, aos vulcões e à criação das ilhas.",
         url: "#"
     },
     {
@@ -332,7 +332,7 @@ const mythologyCarouselData = [
         category: "Folclore Europeu",
         image: "./assets/images/home/home-secao-mitologias/holandesa.png",
         alt: "Mitologia Holandesa",
-        description: "Lendas de águas, espíritos, figuras populares, seres misteriosos e tradições antigas dos Países Baixos.",
+        description: "Seres das águas, espíritos ancestrais, figuras folclóricas e histórias preservadas nas tradições dos Países Baixos.",
         url: "#"
     },
     {
@@ -359,7 +359,7 @@ const mythologyCarouselData = [
         category: "Épicos Sagrados",
         image: "./assets/images/home/home-secao-mitologias/indiana.png",
         alt: "Mitologia Indiana",
-        description: "Deuses, semideuses, demônios, ciclos cósmicos, avatares e narrativas épicas de grande profundidade espiritual.",
+        description: "Lendas ancestrais, heróis épicos, seres sobrenaturais e narrativas que atravessam diferentes tradições culturais da Índia.",
         url: "#"
     },
     {
@@ -530,7 +530,7 @@ const mythologyCarouselData = [
         category: "Montanhas Sagradas",
         image: "./assets/images/home/home-secao-mitologias/tibetana.png",
         alt: "Mitologia Tibetana",
-        description: "Guardião espirituais, divindades iradas, símbolos de iluminação, montanhas sagradas e tradições místicas profundas.",
+        description: "Guardiões espirituais, divindades iradas, símbolos de iluminação, montanhas sagradas e tradições místicas profundas.",
         url: "#"
     },
     {
@@ -554,10 +554,10 @@ const mythologyCarouselData = [
     {
         name: "Umbanda",
         title: "Mitologia Umbanda",
-        category: "Espiritualidade Brasileira",
+        category: "Guias e Ancestralidade",
         image: "./assets/images/home/home-secao-mitologias/umbanda.png",
         alt: "Mitologia Umbanda",
-        description: "Orixás, guias espirituais, linhas de trabalho, ancestralidade e forças sagradas presentes na espiritualidade brasileira.",
+        description: "Guias espirituais, ancestralidade, entidades de luz e tradições que compõem uma das expressões religiosas mais marcantes do Brasil.",
         url: "#"
     }
 ];
@@ -578,40 +578,72 @@ function createMythologyCarouselCards() {
         return;
     }
 
-    track.innerHTML = mythologyCarouselData.map((mythology) => `
-        <div class="carousel-item">
-            <div class="myth-flip-card">
-                <div class="myth-flip-inner">
+    if (mythologyCarouselData.length === 0) {
+        track.innerHTML = "";
+        return;
+    }
 
-                    <div class="myth-flip-front">
-                        <img
-                            src="${mythology.image}"
-                            alt="${mythology.alt}"
-                            loading="lazy"
-                            decoding="async">
+    track.innerHTML = mythologyCarouselData.map((mythology) => {
+        const name = escapeHTML(mythology.name || "Mitologia");
+        const title = escapeHTML(mythology.title || name);
+        const category = escapeHTML(
+            mythology.category || "Tradição Ancestral"
+        );
+        const image = escapeHTML(mythology.image || "");
+        const alt = escapeHTML(mythology.alt || title);
+        const description = escapeHTML(
+            mythology.description || "Descrição não disponível."
+        );
+        const url = escapeHTML(mythology.url || "#");
 
-                        <div class="myth-front-overlay">
-                            <span>Mitologia</span>
-                            <h3>${mythology.name}</h3>
+        return `
+            <div class="carousel-item">
+                <div class="myth-flip-card">
+                    <div class="myth-flip-inner">
+
+                        <div class="myth-flip-front">
+                            <img
+                                src="${image}"
+                                alt="${alt}"
+                                loading="lazy"
+                                decoding="async">
+
+                            <div class="myth-front-overlay">
+                                <span>Mitologia</span>
+                                <h3>${name}</h3>
+                            </div>
                         </div>
+
+                        <div class="myth-flip-back">
+                            <span class="myth-category">${category}</span>
+
+                            <h3>${title}</h3>
+
+                            <p>${description}</p>
+
+                            <a href="${url}" class="myth-button">
+                                Explorar
+                            </a>
+                        </div>
+
                     </div>
-
-                    <div class="myth-flip-back">
-                        <span class="myth-category">${mythology.category}</span>
-
-                        <h3>${mythology.title}</h3>
-
-                        <p>${mythology.description}</p>
-
-                        <a href="${mythology.url}" class="myth-button">
-                            Explorar
-                        </a>
-                    </div>
-
                 </div>
             </div>
-        </div>
-    `).join("");
+        `;
+    }).join("");
 
     track.dataset.rendered = "true";
+}
+
+/* =====================================================
+   FUNÇÃO DE SEGURANÇA
+===================================================== */
+
+function escapeHTML(value) {
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }

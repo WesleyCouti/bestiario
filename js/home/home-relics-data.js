@@ -7,11 +7,15 @@
    Ajustes aplicados:
    - Renderização automática após o carregamento do DOM.
    - Validação do elemento #relicsTrack.
-   - Criação dos cards com createElement, evitando innerHTML direto.
-   - Menor risco de erro caso algum dado esteja vazio.
-   - Acessibilidade melhorada com aria-label nos cards.
-   - Imagens com loading lazy e decoding async.
+   - Criação dos cards com createElement.
+   - Proteção contra renderização duplicada.
+   - Imagem padrão caso alguma imagem falhe.
+   - Melhor acessibilidade.
+   - Limpeza automática se não houver relíquias.
 ===================================================== */
+
+const DEFAULT_RELIC_IMAGE =
+    "./assets/images/home/home-secao-reliquias/default-relic-home.png";
 
 const homeRelicsData = [
     {
@@ -87,23 +91,49 @@ function createElement(tag, className, textContent) {
 ===================================================== */
 
 function createRelicCard(relic) {
-    const card = createElement("article", `relic-card ${relic.className || ""}`.trim());
-    card.setAttribute("aria-label", relic.name || "Relíquia");
+    const card = createElement(
+        "article",
+        `relic-card ${relic.className || ""}`.trim()
+    );
 
-    const symbol = createElement("div", "relic-symbol", relic.symbol || "✦");
+    card.setAttribute(
+        "aria-label",
+        `Relíquia: ${relic.name || "Relíquia desconhecida"}`
+    );
+
+    const symbol = createElement(
+        "div",
+        "relic-symbol",
+        relic.symbol || "✦"
+    );
 
     const image = document.createElement("img");
-    image.src = relic.image || "";
+
+    image.src = relic.image || DEFAULT_RELIC_IMAGE;
     image.alt = relic.alt || relic.name || "Relíquia";
     image.loading = "lazy";
     image.decoding = "async";
+
+    image.onerror = () => {
+        image.onerror = null;
+        image.src = DEFAULT_RELIC_IMAGE;
+    };
 
     const gradient = createElement("div", "relic-gradient");
 
     const content = createElement("div", "relic-content");
 
-    const title = createElement("h3", null, relic.name || "RELÍQUIA");
-    const description = createElement("p", null, relic.description || "Mistério perdido no tempo.");
+    const title = createElement(
+        "h3",
+        null,
+        relic.name || "RELÍQUIA"
+    );
+
+    const description = createElement(
+        "p",
+        null,
+        relic.description || "Mistério perdido no tempo."
+    );
 
     content.appendChild(title);
     content.appendChild(description);
@@ -128,8 +158,13 @@ function createRelicCards() {
         return;
     }
 
+    if (relicsTrack.dataset.rendered === "true") {
+        return;
+    }
+
     if (!Array.isArray(homeRelicsData) || homeRelicsData.length === 0) {
         console.warn("Nenhuma relíquia cadastrada em homeRelicsData.");
+        relicsTrack.innerHTML = "";
         return;
     }
 
@@ -140,6 +175,8 @@ function createRelicCards() {
     });
 
     relicsTrack.replaceChildren(fragment);
+
+    relicsTrack.dataset.rendered = "true";
 }
 
 /* =====================================================
@@ -151,3 +188,4 @@ if (document.readyState === "loading") {
 } else {
     createRelicCards();
 }
+

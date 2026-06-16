@@ -266,11 +266,20 @@ function createAncientQuoteCards() {
 
 function setupAncientQuotesCarousel() {
     const track = document.getElementById("quotesTrack");
+    const mobileScrollContainer = document.querySelector(".quotes-carousel");
     const prevButton = document.getElementById("prevBtn");
     const nextButton = document.getElementById("nextBtn");
 
     if (!track || !prevButton || !nextButton) {
         return;
+    }
+
+    function getScrollTarget() {
+        if (window.innerWidth <= 768 && mobileScrollContainer) {
+            return mobileScrollContainer;
+        }
+
+        return track;
     }
 
     function getScrollAmount() {
@@ -285,14 +294,14 @@ function setupAncientQuotesCarousel() {
     }
 
     nextButton.addEventListener("click", () => {
-        track.scrollBy({
+        getScrollTarget().scrollBy({
             left: getScrollAmount(),
             behavior: "smooth"
         });
     });
 
     prevButton.addEventListener("click", () => {
-        track.scrollBy({
+        getScrollTarget().scrollBy({
             left: -getScrollAmount(),
             behavior: "smooth"
         });

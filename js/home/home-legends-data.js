@@ -52,6 +52,22 @@ const homeLegendsData = [
 
 
 /* =====================================================
+   FUNÇÃO DE SEGURANÇA
+   -----------------------------------------------------
+   Protege textos antes de inserir no innerHTML.
+===================================================== */
+
+function escapeHTML(value) {
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+/* =====================================================
    GERADOR DOS CARDS DE LENDAS
 ===================================================== */
 
@@ -66,19 +82,50 @@ function createLegendCards() {
         return;
     }
 
-    legendsTrack.innerHTML = homeLegendsData.map((legend) => `
-        <article class="legend-card">
-            <img
-                src="${legend.image}"
-                alt="${legend.alt}"
-                loading="lazy"
-                decoding="async">
+    /* =================================================
+       CASO NÃO EXISTAM LENDAS CADASTRADAS
+    ================================================= */
 
-            <div class="legend-overlay">
-                <h3>${legend.name}</h3>
-            </div>
-        </article>
-    `).join("");
+    if (homeLegendsData.length === 0) {
+        legendsTrack.innerHTML = "";
+        return;
+    }
+
+    legendsTrack.innerHTML = homeLegendsData.map((legend) => {
+        const name = escapeHTML(legend.name || "Lenda");
+        const image = escapeHTML(legend.image || "");
+        const alt = escapeHTML(
+            legend.alt || legend.name || "Imagem da lenda"
+        );
+
+        return `
+            <article class="legend-card">
+                <img
+                    src="${image}"
+                    alt="${alt}"
+                    loading="lazy"
+                    decoding="async">
+
+                <div class="legend-overlay">
+                    <h3>${name}</h3>
+                </div>
+            </article>
+        `;
+    }).join("");
 
     legendsTrack.dataset.rendered = "true";
 }
+
+
+/* =====================================================
+   INICIALIZAÇÃO AUTOMÁTICA
+   -----------------------------------------------------
+   Evita erro caso o JS carregue antes do HTML.
+===================================================== */
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", createLegendCards);
+} else {
+    createLegendCards();
+}
+
