@@ -7,7 +7,7 @@
 const legendsFeaturedData = [
     {
         name: "Iara",
-        image: "./assets/images/legends/legends-cards-page/iara.png",
+        image: "./assets/images/legends/legends-cards-page/sereia-iara.png",
         alt: "Iara",
         description: "A bela criatura das águas que encanta e protege os rios da Amazônia.",
         url: "#"
@@ -42,7 +42,7 @@ const legendsFeaturedData = [
     },
     {
         name: "Lobisomem",
-        image: "./assets/images/legends/legends-cards-page//lobisomem.png",
+        image: "./assets/images/legends/legends-cards-page/lobisomem.png",
         alt: "Lobisomem",
         description: "Criatura que assume a forma de um lobo nas noites de lua cheia.",
         url: "#"

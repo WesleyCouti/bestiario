@@ -439,20 +439,35 @@ const timelineNext = document.querySelector(".timeline-next");
 
 if (timelineWrapper && timelinePrev && timelineNext) {
 
-    const scrollAmount = 1400;
+    const getScrollAmount = () => {
+
+        const firstItem = document.querySelector(".mythology-timeline-item");
+
+        if (!firstItem) return 300;
+
+        const itemWidth = firstItem.offsetWidth;
+
+        const gap = 24;
+
+        return itemWidth + gap;
+    };
 
     timelineNext.addEventListener("click", () => {
+
         timelineWrapper.scrollBy({
-            left: scrollAmount,
+            left: getScrollAmount(),
             behavior: "smooth"
         });
+
     });
 
     timelinePrev.addEventListener("click", () => {
+
         timelineWrapper.scrollBy({
-            left: -scrollAmount,
+            left: -getScrollAmount(),
             behavior: "smooth"
         });
+
     });
 
 }
