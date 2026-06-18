@@ -27,13 +27,6 @@ const legendsFeaturedData = [
         url: "#"
     },
     {
-        name: "Medusa",
-        image: "./assets/images/legends/legends-cards-page/medusa.png",
-        alt: "Medusa",
-        description: "A temida Górgona cujo olhar transformava tudo em pedra.",
-        url: "#"
-    },
-    {
         name: "Curupira",
         image: "./assets/images/legends/legends-cards-page/curupira.png",
         alt: "Curupira",

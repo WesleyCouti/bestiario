@@ -1,78 +1,61 @@
 /* =====================================================
    HOME-SYMBOLS-DATA.JS
-   -----------------------------------------------------
-   Dados e renderização da seção:
-   "Símbolos do Mundo Antigo"
-
-   Ajustes aplicados:
-   - Validação do container antes de renderizar.
-   - Escape de textos para evitar problemas com caracteres especiais.
-   - Renderização protegida contra duplicidade.
-   - Limpeza do container caso não existam símbolos.
-   - Criação dos cards com createElement.
-   - Acessibilidade melhorada com aria-label.
-   - Overlay visual mantido com aria-hidden para evitar leitura duplicada.
-   - Preparado para URLs futuras em cada símbolo.
-   - Carregamento automático após o DOM estar pronto.
-   - Mantida compatibilidade com o ID: symbolsTrack.
+   Seção: Símbolos do Mundo Antigo
 ===================================================== */
 
 const homeSymbolsData = [
     {
         name: "Ankh",
+        icon: "☥",
         image: "./assets/images/home/home-secao-simbolos/ankh-simbolo.png",
         alt: "Símbolo Ankh",
+        description: "Símbolo egípcio da vida, da eternidade e da força espiritual.",
         url: "./simbologia.html#ankh"
     },
     {
         name: "Chi Rho",
+        icon: "☧",
         image: "./assets/images/home/home-secao-simbolos/chi-rho-simbolo.png",
         alt: "Símbolo Chi Rho",
+        description: "Símbolo cristão antigo ligado ao nome de Cristo e à fé primitiva.",
         url: "./simbologia.html#chi-rho"
     },
     {
         name: "Triskelion",
+        icon: "☘",
         image: "./assets/images/home/home-secao-simbolos/triskelion-simbolo.png",
         alt: "Símbolo Triskelion",
+        description: "Símbolo celta associado ao movimento, aos ciclos e à transformação.",
         url: "./simbologia.html#triskelion"
     },
     {
         name: "Yin Yang",
+        icon: "☯",
         image: "./assets/images/home/home-secao-simbolos/yin-yang-simbolo.png",
         alt: "Símbolo Yin Yang",
+        description: "Representa o equilíbrio entre forças opostas e complementares.",
         url: "./simbologia.html#yin-yang"
     },
     {
         name: "Pentagrama",
+        icon: "★",
         image: "./assets/images/home/home-secao-simbolos/pentagrama-simbolo.png",
         alt: "Símbolo Pentagrama",
+        description: "Símbolo ligado aos cinco elementos, proteção e espiritualidade.",
         url: "./simbologia.html#pentagrama"
     },
     {
         name: "Olho de Hórus",
+        icon: "𓂀",
         image: "./assets/images/home/home-secao-simbolos/olho-de-horus-simbolo.png",
         alt: "Símbolo Olho de Hórus",
+        description: "Símbolo egípcio de proteção, cura, poder e visão espiritual.",
         url: "./simbologia.html#olho-de-horus"
     }
 ];
 
-
 /* =====================================================
-   FUNÇÃO AUXILIAR PARA EVITAR PROBLEMAS COM TEXTOS
-===================================================== */
-
-function escapeHTML(value) {
-    return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
-
-/* =====================================================
-   FUNÇÃO AUXILIAR PARA CRIAR ELEMENTOS
+   FUNÇÃO AUXILIAR
 ===================================================== */
 
 function createElement(tag, className, textContent) {
@@ -89,16 +72,15 @@ function createElement(tag, className, textContent) {
     return element;
 }
 
-
 /* =====================================================
-   GERADOR DOS CARDS DE SÍMBOLOS
+   GERADOR DOS CARDS
 ===================================================== */
 
 function createSymbolCards() {
     const symbolsTrack = document.getElementById("symbolsTrack");
 
     if (!symbolsTrack) {
-        console.warn("Container #symbolsTrack não encontrado no HTML.");
+        console.warn("Container #symbolsTrack não encontrado.");
         return;
     }
 
@@ -106,51 +88,81 @@ function createSymbolCards() {
         return;
     }
 
-    if (!Array.isArray(homeSymbolsData) || homeSymbolsData.length === 0) {
-        console.warn("Nenhum símbolo encontrado em homeSymbolsData.");
-        symbolsTrack.innerHTML = "";
-        return;
-    }
-
     const fragment = document.createDocumentFragment();
 
-    homeSymbolsData
-        .filter((symbol) => symbol && symbol.name && symbol.image)
-        .forEach((symbol) => {
-            const name = escapeHTML(symbol.name);
-            const imageSrc = escapeHTML(symbol.image);
-            const alt = escapeHTML(symbol.alt || symbol.name);
-            const url = escapeHTML(symbol.url || "#");
+    homeSymbolsData.forEach((symbol) => {
+        const card = createElement("article", "symbol-card");
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-label", `Virar card do símbolo ${symbol.name}`);
 
-            const card = createElement("a", "symbol-card");
-            card.href = url;
-            card.setAttribute("aria-label", `Símbolo antigo: ${name}`);
+        const inner = createElement("div", "symbol-card-inner");
 
-            const image = document.createElement("img");
-            image.src = imageSrc;
-            image.alt = alt;
-            image.loading = "lazy";
-            image.decoding = "async";
+        /* Frente */
+        const front = createElement("div", "symbol-card-front");
 
-            const overlay = createElement("div", "symbol-overlay");
-            overlay.setAttribute("aria-hidden", "true");
+        const image = document.createElement("img");
+        image.src = symbol.image;
+        image.alt = symbol.alt || symbol.name;
+        image.loading = "lazy";
+        image.decoding = "async";
 
-            const title = createElement("h3", null, name);
+        const overlay = createElement("div", "symbol-overlay");
+        overlay.setAttribute("aria-hidden", "true");
 
-            overlay.appendChild(title);
-            card.appendChild(image);
-            card.appendChild(overlay);
+        const frontTitle = createElement("h3", null, symbol.name);
 
-            fragment.appendChild(card);
+        overlay.appendChild(frontTitle);
+        front.appendChild(image);
+        front.appendChild(overlay);
+
+        /* Verso */
+        const back = createElement("div", "symbol-card-back");
+
+        const iconBox = createElement("div", "symbol-back-icon", symbol.icon || "✧");
+        const backTitle = createElement("h3", null, symbol.name);
+        const description = createElement("p", null, symbol.description);
+
+        const divider = createElement("span", "symbol-back-divider");
+
+        const link = createElement("a", "symbol-card-link", "Saiba mais");
+        link.href = symbol.url || "#";
+        link.setAttribute("aria-label", `Saiba mais sobre ${symbol.name}`);
+
+        link.addEventListener("click", (event) => {
+            event.stopPropagation();
         });
+
+        back.appendChild(iconBox);
+        back.appendChild(backTitle);
+        back.appendChild(description);
+        back.appendChild(divider);
+        back.appendChild(link);
+
+        inner.appendChild(front);
+        inner.appendChild(back);
+        card.appendChild(inner);
+
+        card.addEventListener("click", () => {
+            card.classList.toggle("is-flipped");
+        });
+
+        card.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                card.classList.toggle("is-flipped");
+            }
+        });
+
+        fragment.appendChild(card);
+    });
 
     symbolsTrack.replaceChildren(fragment);
     symbolsTrack.dataset.rendered = "true";
 }
 
-
 /* =====================================================
-   INICIALIZAÇÃO AUTOMÁTICA
+   INICIALIZAÇÃO
 ===================================================== */
 
 if (document.readyState === "loading") {
@@ -158,4 +170,3 @@ if (document.readyState === "loading") {
 } else {
     createSymbolCards();
 }
-
