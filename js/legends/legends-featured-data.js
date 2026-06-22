@@ -2,7 +2,16 @@
    LEGENDS-FEATURED-DATA.JS
    Seção: Lendas em Destaque
    Cards dinâmicos + carrossel horizontal
+
+   Funções:
+   - Mantém os dados das lendas em destaque.
+   - Renderiza cards dinamicamente.
+   - Embaralha os cards a cada reload.
+   - Corta descrições sem quebrar palavras.
+   - Protege textos contra quebra de HTML.
 ===================================================== */
+
+const FEATURED_DESCRIPTION_LIMIT = 95;
 
 const legendsFeaturedData = [
     {
@@ -98,9 +107,8 @@ const legendsFeaturedData = [
     }
 ];
 
-
 /* =====================================================
-   FUNÇÃO DE SEGURANÇA PARA EVITAR QUEBRA NO HTML
+   FUNÇÕES AUXILIARES
 ===================================================== */
 
 function escapeLegendText(value) {
@@ -112,6 +120,35 @@ function escapeLegendText(value) {
         .replaceAll("'", "&#039;");
 }
 
+function truncateLegendText(text, maxLength = FEATURED_DESCRIPTION_LIMIT) {
+    const safeText = String(text ?? "").trim();
+
+    if (safeText.length <= maxLength) {
+        return safeText;
+    }
+
+    const slicedText = safeText.slice(0, maxLength);
+    const lastSpace = slicedText.lastIndexOf(" ");
+
+    if (lastSpace <= 0) {
+        return slicedText.trim() + "...";
+    }
+
+    return slicedText.slice(0, lastSpace).trim() + "...";
+}
+
+function shuffleLegendsFeaturedCards(items) {
+    const shuffledItems = [...items];
+
+    for (let index = shuffledItems.length - 1; index > 0; index--) {
+        const randomIndex = Math.floor(Math.random() * (index + 1));
+
+        [shuffledItems[index], shuffledItems[randomIndex]] =
+            [shuffledItems[randomIndex], shuffledItems[index]];
+    }
+
+    return shuffledItems;
+}
 
 /* =====================================================
    GERADOR DOS CARDS
@@ -124,11 +161,15 @@ function createLegendsFeaturedCards() {
         return;
     }
 
-    legendsFeaturedGrid.innerHTML = legendsFeaturedData.map((legend) => {
+    const shuffledLegends = shuffleLegendsFeaturedCards(legendsFeaturedData);
+
+    legendsFeaturedGrid.innerHTML = shuffledLegends.map((legend) => {
         const name = escapeLegendText(legend.name);
         const image = escapeLegendText(legend.image);
         const alt = escapeLegendText(legend.alt || legend.name);
-        const description = escapeLegendText(legend.description);
+        const description = escapeLegendText(
+            truncateLegendText(legend.description, FEATURED_DESCRIPTION_LIMIT)
+        );
         const url = escapeLegendText(legend.url || "#");
 
         return `
@@ -145,14 +186,13 @@ function createLegendsFeaturedCards() {
                     <p>${description}</p>
 
                     <a href="${url}" aria-label="Ler mais sobre ${name}">
-                        Ler mais <span aria-hidden="true">→</span>
+                        Ler mais
                     </a>
                 </div>
             </article>
         `;
     }).join("");
 }
-
 
 /* =====================================================
    CARROSSEL DOS CARDS
@@ -218,7 +258,6 @@ function setupLegendsFeaturedCarousel() {
 
     updateButtonsState();
 }
-
 
 /* =====================================================
    INICIALIZAÇÃO

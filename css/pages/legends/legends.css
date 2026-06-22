@@ -3,26 +3,30 @@
    Página: Lendas
 
    ÍNDICE
-   1. Hero
-   2. Categorias de Lendas
-   3. Lendas em Destaque
-   4. Mapa das Lendas
-      4.1 Cabeçalho
-      4.2 Controles de Zoom
-      4.3 Layout
-      4.4 Mapa e Zoom
-      4.5 Marcadores
-      4.6 Card Lateral
-      4.7 Responsivo
-   5. Acessibilidade
+   1. Acessibilidade e ajustes gerais
+   2. Hero
+   3. Categorias de Lendas
+   4. Origem das Lendas
+   5. Lendas em Destaque
+   6. Mapa das Lendas
+      6.1 Cabeçalho
+      6.2 Controles de Zoom
+      6.3 Layout
+      6.4 Mapa e Zoom
+      6.5 Marcadores
+      6.6 Card Lateral
+      6.7 Responsivo
+   7. Lugares Assombrados Populares
+   8. Acessibilidade: redução de movimento
 
    Convenções:
-   - JS controla as classes zoom-*
+   - JS controla as classes zoom-* do mapa
    - JS atualiza data-count dos marcadores
    - Marcadores usam data-country e data-region
+   - A seção de Lugares Assombrados é renderizada via JS
 ===================================================== */
 
- /* =====================================================
+/* =====================================================
    ACESSIBILIDADE E AJUSTES GERAIS
    - Mantém foco visível para navegação por teclado
    - Melhora a experiência de usuários com redução de movimento
@@ -33,7 +37,11 @@
 .legends-arrow:focus-visible,
 .legend-marker:focus-visible,
 .legends-map-zoom-controls button:focus-visible,
-.legend-map-card-close:focus-visible {
+.legend-map-card-close:focus-visible,
+.haunted-place-card:focus-within,
+.haunted-place-back a:focus-visible,
+.haunted-places-button:focus-visible,
+.legends-origin-card:focus-within {
     outline: 2px solid #c89a2b;
     outline-offset: 4px;
 }
@@ -330,33 +338,689 @@
 }
 
 
+
 /* =====================================================
-   LENDAS EM DESTAQUE
-   Carrossel horizontal com 4 cards por vez
+   ORIGEM DAS LENDAS
+   Nova seção explicativa:
+   - Cabeçalho centralizado
+   - Imagem antiga à esquerda
+   - Texto explicativo e citação à direita
+   - Cards horizontais para Lenda, Mito e Conto Popular
+   - Rodapé com tradição oral
 ===================================================== */
 
-.legends-featured-section {
-    padding: 90px 20px;
-    background: #050505;
+.legends-origin-section {
     position: relative;
+    isolation: isolate;
+    padding: 96px 20px 88px;
     overflow: hidden;
+    scroll-margin-top: 110px;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(200, 154, 43, 0.12), transparent 34%),
+        radial-gradient(circle at 10% 38%, rgba(200, 154, 43, 0.08), transparent 24%),
+        radial-gradient(circle at 90% 42%, rgba(200, 154, 43, 0.08), transparent 24%),
+        linear-gradient(180deg, #020806 0%, #040b08 48%, #020504 100%);
+    border-top: 1px solid rgba(200, 154, 43, 0.15);
+    border-bottom: 1px solid rgba(200, 154, 43, 0.12);
 }
 
-.legends-featured-section .container {
+.legends-origin-section::before,
+.legends-origin-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.legends-origin-section::before {
+    z-index: -2;
+    background:
+        linear-gradient(90deg,
+            rgba(0, 0, 0, 0.76),
+            transparent 20%,
+            transparent 80%,
+            rgba(0, 0, 0, 0.76)),
+        radial-gradient(circle at 0% 50%, rgba(200, 154, 43, 0.13), transparent 20%),
+        radial-gradient(circle at 100% 50%, rgba(200, 154, 43, 0.13), transparent 20%);
+}
+
+.legends-origin-section::after {
+    z-index: -1;
+    opacity: 0.14;
+    background-image:
+        radial-gradient(circle, rgba(200, 154, 43, 0.24) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(circle at center, black 0%, transparent 74%);
+}
+
+.legends-origin-section .container {
+    position: relative;
+    z-index: 1;
     max-width: 1500px;
     margin: 0 auto;
 }
 
+.legends-origin-panel {
+    position: relative;
+    overflow: hidden;
+    padding: 44px 64px 46px;
+    border: 1px solid rgba(200, 154, 43, 0.30);
+    border-radius: 10px;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(200, 154, 43, 0.08), transparent 34%),
+        linear-gradient(180deg, rgba(3, 12, 9, 0.96), rgba(1, 5, 4, 0.985));
+    box-shadow:
+        inset 0 0 70px rgba(200, 154, 43, 0.035),
+        inset 0 0 110px rgba(0, 0, 0, 0.62),
+        0 28px 64px rgba(0, 0, 0, 0.56);
+}
+
+.legends-origin-panel::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px solid rgba(200, 154, 43, 0.13);
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.legends-origin-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(135deg, rgba(200, 154, 43, 0.45) 0 1px, transparent 1px) 18px 18px / 46px 46px no-repeat,
+        linear-gradient(225deg, rgba(200, 154, 43, 0.45) 0 1px, transparent 1px) calc(100% - 18px) 18px / 46px 46px no-repeat,
+        linear-gradient(45deg, rgba(200, 154, 43, 0.45) 0 1px, transparent 1px) 18px calc(100% - 18px) / 46px 46px no-repeat,
+        linear-gradient(315deg, rgba(200, 154, 43, 0.45) 0 1px, transparent 1px) calc(100% - 18px) calc(100% - 18px) / 46px 46px no-repeat;
+}
+
+/* Cabeçalho */
+
+.legends-origin-heading {
+    position: relative;
+    z-index: 1;
+    max-width: 1160px;
+    margin: 0 auto 34px;
+    text-align: center;
+}
+
+.legends-origin-heading span {
+    display: block;
+    margin-bottom: 14px;
+    font-family: "Cinzel", serif;
+    color: rgba(200, 154, 43, 0.88);
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+
+.legends-origin-heading h2 {
+    position: relative;
+    margin: 0;
+    padding-bottom: 28px;
+    font-family: "Cinzel", serif;
+    color: #e8d8b4;
+    font-size: clamp(2.9rem, 5.5vw, 5rem);
+    font-weight: 700;
+    letter-spacing: clamp(5px, 1.15vw, 14px);
+    line-height: 1.06;
+    text-transform: uppercase;
+    text-shadow:
+        0 0 22px rgba(200, 154, 43, 0.18),
+        0 6px 18px rgba(0, 0, 0, 0.62);
+}
+
+.legends-origin-heading h2::after {
+    content: "✦";
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    transform: translateX(-50%);
+    color: #dca64a;
+    font-size: 0.78rem;
+    text-shadow: 0 0 12px rgba(220, 166, 74, 0.38);
+}
+
+/* Bloco principal: imagem + texto */
+
+.legends-origin-about {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.03fr) minmax(360px, 0.97fr);
+    gap: 46px;
+    align-items: center;
+    margin-bottom: 44px;
+}
+
+.legends-origin-about-image {
+    position: relative;
+    min-height: 360px;
+    overflow: hidden;
+    border-radius: 8px;
+    background:
+        radial-gradient(circle at center, rgba(200, 154, 43, 0.10), transparent 58%),
+        rgba(0, 0, 0, 0.24);
+    box-shadow:
+        inset 0 0 36px rgba(0, 0, 0, 0.72),
+        0 18px 34px rgba(0, 0, 0, 0.38);
+}
+
+.legends-origin-about-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(2, 8, 6, 0.18), transparent 28%, transparent 72%, rgba(2, 8, 6, 0.92)),
+        linear-gradient(180deg, rgba(2, 8, 6, 0.08), transparent 55%, rgba(2, 8, 6, 0.38));
+}
+
+.legends-origin-about-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.78) contrast(1.12) saturate(0.86);
+}
+
+.legends-origin-about-content {
+    position: relative;
+    padding: 8px 0;
+}
+
+.legends-origin-about-content p {
+    margin: 0 0 24px;
+    color: rgba(245, 238, 220, 0.84);
+    font-size: clamp(1rem, 1.3vw, 1.12rem);
+    line-height: 1.72;
+}
+
+.legends-origin-about-content p+p {
+    padding-top: 22px;
+    border-top: 1px solid rgba(200, 154, 43, 0.34);
+}
+
+.legends-origin-about-content blockquote {
+    position: relative;
+    margin: 30px 0 0;
+    padding: 24px 70px;
+    border: 1px solid rgba(200, 154, 43, 0.28);
+    border-radius: 10px;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(200, 154, 43, 0.09), transparent 58%),
+        rgba(0, 0, 0, 0.16);
+    color: #dcb76a;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1rem, 1.35vw, 1.18rem);
+    font-style: italic;
+    line-height: 1.58;
+    text-align: center;
+    box-shadow: inset 0 0 20px rgba(200, 154, 43, 0.035);
+}
+
+.legends-origin-about-content blockquote::before,
+.legends-origin-about-content blockquote::after {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(220, 166, 74, 0.92);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.legends-origin-about-content blockquote::before {
+    content: "“";
+    left: 28px;
+}
+
+.legends-origin-about-content blockquote::after {
+    content: "”";
+    right: 28px;
+}
+
+/* Tipos de narrativa */
+
+.legends-origin-types {
+    position: relative;
+    z-index: 1;
+    margin-top: 26px;
+    padding-top: 0;
+    border-top: 0;
+}
+
+.legends-origin-types::before {
+    display: none;
+}
+
+.legends-origin-subtitle {
+    position: relative;
+    max-width: 1040px;
+    margin: 0 auto 30px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.legends-origin-subtitle::after {
+    content: "✦";
+    position: absolute;
+    left: 50%;
+    bottom: -18px;
+    transform: translateX(-50%);
+    color: #dca64a;
+    font-size: 0.72rem;
+    text-shadow: 0 0 10px rgba(220, 166, 74, 0.35);
+}
+
+.legends-origin-subtitle h3 {
+    margin: 0;
+    font-family: "Cinzel", serif;
+    color: #dcb76a;
+    font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+    font-weight: 700;
+    letter-spacing: clamp(3px, 0.8vw, 9px);
+    line-height: 1.25;
+    text-transform: uppercase;
+}
+
+.legends-origin-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    margin-top: 38px;
+}
+
+.legends-origin-card {
+    position: relative;
+    min-height: 150px;
+    padding: 26px 26px 26px 108px;
+    display: flex;
+    align-items: flex-start;
+    border: 1px solid rgba(200, 154, 43, 0.32);
+    border-radius: 10px;
+    background:
+        radial-gradient(circle at 16% 50%, rgba(200, 154, 43, 0.12), transparent 34%),
+        linear-gradient(180deg, rgba(5, 14, 12, 0.72), rgba(2, 7, 6, 0.92));
+    text-align: left;
+    box-shadow:
+        inset 0 0 20px rgba(200, 154, 43, 0.025),
+        0 16px 28px rgba(0, 0, 0, 0.24);
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.legends-origin-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(200, 154, 43, 0.66);
+    background:
+        radial-gradient(circle at 16% 50%, rgba(200, 154, 43, 0.17), transparent 36%),
+        linear-gradient(180deg, rgba(7, 17, 15, 0.88), rgba(2, 7, 6, 0.96));
+    box-shadow:
+        inset 0 0 24px rgba(200, 154, 43, 0.04),
+        0 20px 34px rgba(0, 0, 0, 0.32);
+}
+
+.legends-origin-card::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(200, 154, 43, 0.09);
+    border-radius: 7px;
+    pointer-events: none;
+}
+
+.legends-origin-card::after {
+    content: "✦";
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    color: rgba(220, 166, 74, 0.88);
+    font-size: 0.70rem;
+    text-shadow: 0 0 10px rgba(220, 166, 74, 0.3);
+}
+
+.legends-origin-card-icon {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #dca64a;
+    font-size: 2.3rem;
+    line-height: 1;
+    text-shadow: 0 0 15px rgba(200, 154, 43, 0.24);
+}
+
+.legends-origin-card-content h4 {
+    margin: 0 0 12px;
+    font-family: "Cinzel", serif;
+    color: #dca64a;
+    font-size: 1.12rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.legends-origin-card-content h4::after {
+    display: none;
+}
+
+.legends-origin-card-content p {
+    margin: 0;
+    color: rgba(245, 238, 220, 0.84);
+    font-size: 0.94rem;
+    line-height: 1.58;
+}
+
+.legends-origin-card-content strong {
+    display: none;
+}
+
+/* Rodapé */
+
+.legends-origin-footer {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-top: 28px;
+}
+
+.legends-origin-footer-full {
+    width: 100%;
+}
+
+.legends-origin-note {
+    position: relative;
+    min-height: 112px;
+    padding: 24px 34px 24px 132px;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(200, 154, 43, 0.30);
+    border-radius: 10px;
+    background:
+        radial-gradient(circle at 7% 50%, rgba(200, 154, 43, 0.14), transparent 25%),
+        linear-gradient(90deg, rgba(200, 154, 43, 0.06), rgba(0, 0, 0, 0.16));
+    box-shadow: inset 0 0 18px rgba(200, 154, 43, 0.025);
+}
+
+.legends-origin-note::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(200, 154, 43, 0.09);
+    border-radius: 7px;
+    pointer-events: none;
+}
+
+.legends-origin-note-icon {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #dca64a;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    font-size: 2.35rem;
+    line-height: 1;
+    text-shadow: 0 0 15px rgba(200, 154, 43, 0.24);
+}
+
+.legends-origin-note h4 {
+    margin: 0 0 8px;
+    font-family: "Cinzel", serif;
+    color: #dca64a;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1.9px;
+    text-transform: uppercase;
+}
+
+.legends-origin-note p {
+    margin: 0;
+    color: rgba(245, 238, 220, 0.82);
+    font-size: 0.95rem;
+    line-height: 1.58;
+}
+
+/* Responsivo */
+
+@media (max-width: 1200px) {
+    .legends-origin-panel {
+        padding: 40px 36px;
+    }
+
+    .legends-origin-about {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .legends-origin-about-image,
+    .legends-origin-about-image img {
+        min-height: 330px;
+    }
+
+    .legends-origin-about-content {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .legends-origin-cards {
+        gap: 20px;
+    }
+
+    .legends-origin-card {
+        padding: 24px 22px 28px 96px;
+    }
+
+    .legends-origin-card-icon {
+        left: 26px;
+    }
+}
+
+@media (max-width: 900px) {
+    .legends-origin-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .legends-origin-card {
+        min-height: 132px;
+    }
+}
+
+@media (max-width: 768px) {
+    .legends-origin-section {
+        padding: 78px 15px 72px;
+        scroll-margin-top: 90px;
+    }
+
+    .legends-origin-panel {
+        padding: 34px 20px;
+    }
+
+    .legends-origin-panel::before {
+        inset: 9px;
+    }
+
+    .legends-origin-heading {
+        margin-bottom: 30px;
+    }
+
+    .legends-origin-heading span {
+        font-size: 0.72rem;
+        letter-spacing: 4px;
+        line-height: 1.6;
+    }
+
+    .legends-origin-heading h2 {
+        font-size: clamp(2rem, 12vw, 3.1rem);
+        letter-spacing: 4px;
+    }
+
+    .legends-origin-about {
+        gap: 26px;
+        margin-bottom: 36px;
+    }
+
+    .legends-origin-about-image,
+    .legends-origin-about-image img {
+        min-height: 260px;
+    }
+
+    .legends-origin-about-content p {
+        font-size: 0.95rem;
+        line-height: 1.68;
+    }
+
+    .legends-origin-about-content blockquote {
+        padding: 22px 34px;
+        font-size: 0.98rem;
+    }
+
+    .legends-origin-about-content blockquote::before,
+    .legends-origin-about-content blockquote::after {
+        font-size: 2.25rem;
+    }
+
+    .legends-origin-about-content blockquote::before {
+        left: 12px;
+    }
+
+    .legends-origin-about-content blockquote::after {
+        right: 12px;
+    }
+
+    .legends-origin-subtitle h3 {
+        font-size: 1.45rem;
+        letter-spacing: 3px;
+    }
+
+    .legends-origin-card {
+        min-height: auto;
+        padding: 26px 22px 34px;
+        display: block;
+        text-align: center;
+    }
+
+    .legends-origin-card-icon {
+        position: static;
+        width: 58px;
+        height: 58px;
+        margin: 0 auto 10px;
+        font-size: 2.35rem;
+    }
+
+    .legends-origin-note {
+        min-height: auto;
+        padding: 28px 22px;
+        display: block;
+        text-align: center;
+    }
+
+    .legends-origin-note-icon {
+        position: static;
+        transform: none;
+        margin: 0 auto 12px;
+    }
+
+    .legends-origin-note p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .legends-origin-panel {
+        padding: 30px 16px;
+    }
+
+    .legends-origin-heading h2 {
+        font-size: 1.82rem;
+        letter-spacing: 3px;
+    }
+
+    .legends-origin-about-image,
+    .legends-origin-about-image img {
+        min-height: 220px;
+    }
+
+    .legends-origin-about-content blockquote {
+        padding: 20px 28px;
+    }
+
+    .legends-origin-card-content p,
+    .legends-origin-note p {
+        font-size: 0.88rem;
+    }
+}
+
+
 /* =====================================================
-   TÍTULO DA SEÇÃO
+   LENDAS EM DESTAQUE
+   Carrossel horizontal com cards em estilo tarot.
+   Ajustes visuais:
+   - Área de descrição mais elegante e centralizada.
+   - Botão "Ler mais" ornamentado.
+   - Cards mais próximos do layout da imagem de referência.
 ===================================================== */
+
+.legends-featured-section {
+    position: relative;
+    padding: 90px 20px 105px;
+    background:
+        radial-gradient(circle at center, rgba(201, 161, 74, 0.045), transparent 42%),
+        linear-gradient(180deg, #030303 0%, #050505 50%, #020202 100%);
+    overflow: hidden;
+}
+
+.legends-featured-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg,
+            rgba(0, 0, 0, 0.65),
+            transparent 22%,
+            transparent 78%,
+            rgba(0, 0, 0, 0.65));
+    pointer-events: none;
+}
+
+.legends-featured-section .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+/* ==============================
+   Título da seção
+============================== */
 
 .legends-section-title {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 18px;
-    margin-bottom: 50px;
+    margin-bottom: 58px;
     text-align: center;
 }
 
@@ -381,16 +1045,17 @@
 
 .legends-section-title h2 {
     color: #d7b46a;
-    font-size: 2rem;
+    font-size: clamp(1.65rem, 3vw, 2.15rem);
     font-family: "Cinzel", serif;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 5px;
     margin: 0;
 }
 
-/* =====================================================
-   ÁREA DO CARROSSEL
-===================================================== */
+/* ==============================
+   Área do carrossel
+============================== */
 
 .legends-featured-wrapper {
     display: flex;
@@ -407,10 +1072,9 @@
     overflow-y: visible;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    padding: 8px 0 14px;
+    padding: 8px 0 18px;
 }
 
-/* remove barra de rolagem */
 .legends-featured-grid::-webkit-scrollbar {
     display: none;
 }
@@ -419,31 +1083,58 @@
     scrollbar-width: none;
 }
 
-/* =====================================================
-   CARD
-===================================================== */
+/* ==============================
+   Card em destaque
+============================== */
 
 .legend-featured-card {
-    background: #0b0b0b;
-    border: 1px solid rgba(201, 161, 74, 0.25);
-    border-radius: 20px;
-    overflow: hidden;
-    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
     position: relative;
-
-    /* 4 cards por visualização no desktop */
     flex: 0 0 calc((100% - 66px) / 4);
     min-width: calc((100% - 66px) / 4);
     max-width: calc((100% - 66px) / 4);
 
+    display: flex;
+    flex-direction: column;
+
+    background:
+        linear-gradient(180deg, #090806 0%, #050505 100%);
+    border: 1px solid rgba(201, 161, 74, 0.35);
+    border-radius: 20px;
+    overflow: hidden;
+
     scroll-snap-align: start;
+
+    box-shadow:
+        inset 0 0 18px rgba(201, 161, 74, 0.04),
+        0 18px 38px rgba(0, 0, 0, 0.46);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.legend-featured-card::before {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(201, 161, 74, 0.10);
+    border-radius: 14px;
+    pointer-events: none;
+    z-index: 3;
 }
 
 .legend-featured-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(201, 161, 74, 0.7);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, .45);
+    transform: translateY(-8px);
+    border-color: rgba(201, 161, 74, 0.82);
+    box-shadow:
+        inset 0 0 24px rgba(201, 161, 74, 0.06),
+        0 24px 48px rgba(0, 0, 0, 0.6);
 }
+
+/* ==============================
+   Imagem do card
+============================== */
 
 .legend-featured-card img {
     width: 100%;
@@ -451,91 +1142,216 @@
     object-fit: cover;
     object-position: center;
     display: block;
+
+    filter:
+        brightness(0.86) contrast(1.08) saturate(0.92);
+
+    transition:
+        transform 0.45s ease,
+        filter 0.45s ease;
 }
 
+.legend-featured-card:hover img {
+    transform: scale(1.025);
+    filter:
+        brightness(0.94) contrast(1.12) saturate(1);
+}
+
+/* ==============================
+   Conteúdo / descrição
+============================== */
+
 .legend-featured-content {
-    padding: 14px 18px 16px;
+    position: relative;
+    min-height: 220px;
+    padding: 28px 24px 24px;
+
     display: flex;
     flex-direction: column;
-    min-height: 105px;
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(circle at center top, rgba(201, 161, 74, 0.08), transparent 45%),
+        linear-gradient(180deg, rgba(12, 10, 7, 0.98), rgba(4, 4, 4, 0.98));
+
+    border-top: 1px solid rgba(201, 161, 74, 0.22);
+}
+
+.legend-featured-content::before {
+    content: "✦";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 28px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #d7b46a;
+    font-size: 0.82rem;
+
+    background: #050505;
+    border: 1px solid rgba(201, 161, 74, 0.28);
+    border-radius: 999px;
 }
 
 .legend-featured-content h3 {
-    color: #e4c27a;
     font-family: "Cinzel", serif;
-    font-size: 1.3rem;
+    color: #f0cf82;
+    font-size: 1.18rem;
+    font-weight: 700;
+    line-height: 1.25;
     text-align: center;
-    margin: 0 0 8px;
+    margin: 0 0 12px;
+
+    text-shadow: 0 0 12px rgba(201, 161, 74, 0.16);
 }
 
 .legend-featured-content p {
-    color: rgba(255, 255, 255, .82);
-    font-size: .88rem;
-    line-height: 1.4;
-    flex: 1;
-    margin: 0 0 10px;
+    max-width: 245px;
+    margin: 0 auto 18px;
+
+    color: rgba(245, 232, 198, 0.88);
+    font-size: 1rem;
+    line-height: 1.65;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
 
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
+.legend-featured-content p::after {
+    content: "";
+    display: block;
+    width: 74px;
+    height: 1px;
+    margin: 18px auto 0;
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(201, 161, 74, 0.75),
+            transparent);
+}
+
+/* ==============================
+   Botão "Ler mais"
+============================== */
+
 .legend-featured-content a {
     margin-top: auto;
-    color: #d4ab57;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+
+    width: 100%;
+    max-width: 320px;
+    padding: 18px 24px;
+
+    border-radius: 999px;
+    border: 1px solid rgba(201, 161, 74, .28);
+
+    background:
+        linear-gradient(180deg,
+            rgba(18, 14, 8, .92),
+            rgba(8, 8, 8, .96));
+
+    color: #ddb766;
     text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: .82rem;
+
+    font-family: "Cinzel", serif;
+    font-size: .95rem;
     font-weight: 700;
-    transition: color .3s ease;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    transition: .35s ease;
+}
+
+.legend-featured-content a::before {
+    content: "✦";
+    font-size: .9rem;
+    color: #e2c06f;
+}
+
+.legend-featured-content a::after {
+    content: "→";
+    font-size: 1.2rem;
+    transition: .3s;
 }
 
 .legend-featured-content a:hover {
-    color: #f0cd88;
+    color: #fff3ca;
+    border-color: rgba(201, 161, 74, .75);
+
+    box-shadow:
+        0 0 20px rgba(201, 161, 74, .15),
+        inset 0 0 15px rgba(201, 161, 74, .08);
+
+    transform: translateY(-3px);
 }
 
-.legend-featured-content a span {
-    margin-left: 6px;
+.legend-featured-content a:hover::after {
+    transform: translateX(6px);
 }
 
-/* =====================================================
-   BOTÕES LATERAIS
-===================================================== */
+/* ==============================
+   Botões laterais
+============================== */
 
 .legends-arrow {
     width: 58px;
     height: 58px;
     border-radius: 50%;
     border: 1px solid rgba(201, 161, 74, .35);
-    background: rgba(10, 10, 10, .95);
+    background:
+        radial-gradient(circle, rgba(201, 161, 74, 0.08), transparent 60%),
+        rgba(5, 5, 5, .95);
+
     color: #d7b46a;
     font-size: 2rem;
     cursor: pointer;
-    transition: transform .3s ease, background .3s ease, border-color .3s ease, opacity .3s ease;
     flex-shrink: 0;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        border-color .3s ease,
+        opacity .3s ease,
+        box-shadow .3s ease;
 }
 
 .legends-arrow:hover {
-    background: #151515;
+    background: rgba(18, 14, 8, .95);
     border-color: #d7b46a;
     transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(201, 161, 74, 0.15);
 }
 
 .legends-arrow:disabled {
     opacity: .35;
     cursor: not-allowed;
     transform: none;
+    box-shadow: none;
 }
 
-/* =====================================================
-   RESPONSIVO DO CARROSSEL
-===================================================== */
+/* ==============================
+   Responsivo do carrossel
+============================== */
 
 @media (max-width: 1200px) {
     .legends-featured-section {
@@ -543,32 +1359,38 @@
     }
 
     .legend-featured-card {
-        /* 3 cards por visualização */
         flex-basis: calc((100% - 44px) / 3);
         min-width: calc((100% - 44px) / 3);
         max-width: calc((100% - 44px) / 3);
     }
 
     .legend-featured-card img {
-        height: 350px;
+        height: 360px;
+    }
+
+    .legend-featured-content {
+        min-height: 210px;
     }
 }
 
 @media (max-width: 900px) {
     .legend-featured-card {
-        /* 2 cards por visualização */
         flex-basis: calc((100% - 22px) / 2);
         min-width: calc((100% - 22px) / 2);
         max-width: calc((100% - 22px) / 2);
     }
 
-    .legends-section-title h2 {
-        font-size: 1.6rem;
-        letter-spacing: 2px;
+    .legend-featured-card img {
+        height: 340px;
     }
 
-    .legend-featured-card img {
-        height: 330px;
+    .legend-featured-content {
+        min-height: 205px;
+        padding: 26px 20px 22px;
+    }
+
+    .legend-featured-content p {
+        max-width: 280px;
     }
 }
 
@@ -589,11 +1411,15 @@
 
     .legends-section-title {
         gap: 12px;
-        margin-bottom: 38px;
+        margin-bottom: 42px;
     }
 
     .legends-section-title span {
         width: 45px;
+    }
+
+    .legend-featured-content p {
+        font-size: 0.95rem;
     }
 }
 
@@ -607,19 +1433,18 @@
     }
 
     .legend-featured-card {
-        /* 1 card por visualização no celular */
         flex-basis: 100%;
         min-width: 100%;
         max-width: 100%;
     }
 
     .legend-featured-card img {
-        height: 330px;
+        height: 360px;
     }
 
     .legend-featured-content {
-        min-height: 105px;
-        padding: 14px 16px 16px;
+        min-height: 205px;
+        padding: 26px 22px 24px;
     }
 
     .legend-featured-content h3 {
@@ -627,9 +1452,12 @@
     }
 
     .legend-featured-content p {
-        -webkit-line-clamp: 2;
+        max-width: 300px;
+        -webkit-line-clamp: 4;
     }
 }
+
+
 
 /* =====================================================
    MAPA DAS LENDAS
@@ -1308,12 +2136,944 @@
 }
 
 
+
+/* =====================================================
+   LUGARES ASSOMBRADOS POPULARES
+   Cards renderizados via JS em #hauntedPlacesGrid.
+   Estrutura esperada:
+   .haunted-place-card
+      .haunted-place-inner
+         .haunted-place-front
+         .haunted-place-back
+===================================================== */
+
+/* ==============================
+   Seção
+============================== */
+
+.haunted-places-section {
+    position: relative;
+    padding: 95px 20px;
+    background:
+        radial-gradient(circle at center, rgba(200, 154, 43, 0.045), transparent 45%),
+        linear-gradient(180deg, #050505 0%, #07100f 50%, #050505 100%);
+    border-top: 1px solid rgba(200, 154, 43, 0.1);
+    overflow: hidden;
+}
+
+.haunted-places-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg,
+            rgba(0, 0, 0, 0.35),
+            transparent 25%,
+            transparent 75%,
+            rgba(0, 0, 0, 0.35));
+    pointer-events: none;
+}
+
+.haunted-places-section .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1450px;
+    margin: 0 auto;
+}
+
+/* ==============================
+   Cabeçalho
+============================== */
+
+.haunted-places-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 42px;
+    text-align: center;
+}
+
+.haunted-places-header h2 {
+    font-family: "Cinzel", serif;
+    color: #d7b46a;
+    font-size: clamp(1.45rem, 2.8vw, 2rem);
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* ==============================
+   Botão "Ver todos"
+============================== */
+
+.haunted-places-button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-height: 40px;
+    padding: 10px 18px;
+
+    border: 1px solid rgba(201, 161, 74, 0.45);
+    border-radius: 999px;
+
+    background:
+        linear-gradient(180deg,
+            rgba(25, 22, 15, 0.98),
+            rgba(8, 8, 6, 0.98));
+
+    color: #d7b46a;
+    text-decoration: none;
+
+    font-family: "Cinzel", serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+
+    box-shadow:
+        inset 0 0 12px rgba(201, 161, 74, 0.06),
+        0 0 18px rgba(201, 161, 74, 0.12);
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.haunted-places-button::before {
+    content: "✦";
+    color: #c89a2b;
+    font-size: 0.82rem;
+    line-height: 1;
+}
+
+.haunted-places-button::after {
+    content: "→";
+    color: #c89a2b;
+    font-size: 0.95rem;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+.haunted-places-button:hover {
+    color: #fff1c4;
+    border-color: rgba(201, 161, 74, 0.85);
+    background:
+        linear-gradient(180deg,
+            rgba(45, 35, 15, 0.98),
+            rgba(14, 11, 6, 0.98));
+
+    box-shadow:
+        inset 0 0 14px rgba(201, 161, 74, 0.09),
+        0 0 26px rgba(201, 161, 74, 0.2);
+
+    transform: translateY(-50%) translateY(-2px);
+}
+
+.haunted-places-button:hover::after {
+    transform: translateX(5px);
+}
+
+/* ==============================
+   Grid
+============================== */
+
+.haunted-places-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 20px;
+}
+
+/* ==============================
+   Card flip
+============================== */
+
+.haunted-place-card {
+    position: relative;
+    height: 300px;
+    perspective: 1200px;
+
+    background: transparent;
+    border: 0;
+    border-radius: 14px;
+    box-shadow: none;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.haunted-place-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+    transition: transform 0.7s ease;
+}
+
+.haunted-place-card:hover .haunted-place-inner,
+.haunted-place-card:focus-within .haunted-place-inner,
+.haunted-place-card.is-flipped .haunted-place-inner {
+    transform: rotateY(180deg);
+}
+
+.haunted-place-face {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    border: 1px solid rgba(201, 161, 74, 0.28);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(180deg, rgba(13, 17, 15, 0.9), rgba(5, 5, 5, 0.98));
+
+    box-shadow:
+        inset 0 0 26px rgba(0, 0, 0, 0.55),
+        0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Frente do card */
+
+.haunted-place-front::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(201, 161, 74, 0.08);
+    border-radius: 10px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.haunted-place-front img {
+    width: 100%;
+    height: 215px;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.78) contrast(1.08) saturate(0.9);
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.haunted-place-card:hover .haunted-place-front img {
+    transform: scale(1.04);
+    filter: brightness(0.9) contrast(1.12) saturate(1);
+}
+
+.haunted-place-content {
+    position: relative;
+    z-index: 1;
+    padding: 14px 12px 16px;
+    text-align: center;
+}
+
+.haunted-place-content h3 {
+    font-family: "Cinzel", serif;
+    color: #e4c27a;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 0 5px;
+}
+
+.haunted-place-content p {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.82rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Verso do card */
+
+.haunted-place-back {
+    transform: rotateY(180deg);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 22px 16px;
+    text-align: center;
+}
+
+.haunted-place-back::before {
+    content: "✦";
+    display: block;
+    margin-bottom: 10px;
+    color: rgba(201, 161, 74, 0.9);
+    font-size: 1rem;
+}
+
+.haunted-place-back span {
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
+
+.haunted-place-back h3 {
+    font-family: "Cinzel", serif;
+    color: #e4c27a;
+    font-size: 1rem;
+    line-height: 1.35;
+    margin: 8px 0 10px;
+}
+
+.haunted-place-back p {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.84rem;
+    line-height: 1.6;
+    margin: 0 0 16px;
+}
+
+.haunted-place-back a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px 12px;
+    border: 1px solid rgba(201, 161, 74, 0.35);
+    border-radius: 999px;
+
+    color: #d7b46a;
+    text-decoration: none;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.haunted-place-back a:hover {
+    color: #fff1c4;
+    border-color: rgba(201, 161, 74, 0.85);
+    background: rgba(201, 161, 74, 0.12);
+}
+
+/* =====================================================
+   FRASES E PROVÉRBIOS DO FOLCLORE
+===================================================== */
+
+.legends-quotes-section {
+    position: relative;
+    padding: 90px 20px;
+    background:
+        radial-gradient(circle at center, rgba(200, 154, 43, .05), transparent 40%),
+        linear-gradient(180deg, #030504 0%, #060908 100%);
+    overflow: hidden;
+}
+
+.legends-quotes-wrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+
+    max-width: 1400px;
+    margin: 0 auto;
+
+    padding: 45px;
+
+    border: 1px solid rgba(200, 154, 43, .18);
+    border-radius: 18px;
+
+    background:
+        radial-gradient(circle at center, rgba(200, 154, 43, .03), transparent 55%),
+        rgba(5, 8, 7, .85);
+
+    box-shadow:
+        inset 0 0 40px rgba(0, 0, 0, .6),
+        0 0 40px rgba(0, 0, 0, .35);
+}
+
+.legends-quotes-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(200, 154, 43, .08);
+    border-radius: 14px;
+    pointer-events: none;
+}
+
+.legends-quotes-grid {
+    flex: 1;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+}
+
+.legends-quote-card {
+    position: relative;
+
+    min-height: 170px;
+
+    padding: 35px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border: 1px solid rgba(200, 154, 43, .22);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(180deg,
+            rgba(10, 13, 12, .96),
+            rgba(5, 7, 6, .98));
+
+    box-shadow:
+        inset 0 0 18px rgba(200, 154, 43, .03);
+}
+
+.quote-mark {
+    position: absolute;
+    top: 18px;
+    left: 20px;
+
+    color: rgba(220, 166, 74, .85);
+
+    font-size: 2rem;
+    font-family: Georgia, serif;
+}
+
+.quote-mark-end {
+    left: auto;
+    right: 20px;
+    bottom: 18px;
+    top: auto;
+}
+
+.legends-quote-card p {
+    margin: 0;
+
+    color: #dcb76a;
+
+    font-family: Georgia, serif;
+    font-style: italic;
+
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+.legends-quotes-arrow {
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    border: 1px solid rgba(200, 154, 43, .28);
+
+    background:
+        radial-gradient(circle, rgba(200, 154, 43, .06), transparent 60%),
+        rgba(5, 5, 5, .95);
+
+    color: #dca64a;
+    font-size: 1.8rem;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.legends-quotes-arrow:hover {
+    transform: scale(1.08);
+    border-color: rgba(200, 154, 43, .75);
+
+    box-shadow:
+        0 0 18px rgba(200, 154, 43, .15);
+}
+
+.legends-quotes-dots {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+
+    margin-top: 30px;
+}
+
+.legends-quotes-dots span {
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(200, 154, 43, .55);
+}
+
+.legends-quotes-dots span.active {
+    background: #dca64a;
+
+    box-shadow:
+        0 0 12px rgba(220, 166, 74, .35);
+}
+
+.legends-quotes-grid {
+    will-change: transform, opacity;
+}
+
+.legends-quotes-grid.slide-out-left {
+    animation: quotesSlideOutLeft 0.26s ease forwards;
+}
+
+.legends-quotes-grid.slide-out-right {
+    animation: quotesSlideOutRight 0.26s ease forwards;
+}
+
+.legends-quotes-grid.slide-in-right {
+    animation: quotesSlideInRight 0.36s ease forwards;
+}
+
+.legends-quotes-grid.slide-in-left {
+    animation: quotesSlideInLeft 0.36s ease forwards;
+}
+
+@keyframes quotesSlideOutLeft {
+    from {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-38px) scale(0.98);
+    }
+}
+
+@keyframes quotesSlideOutRight {
+    from {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(38px) scale(0.98);
+    }
+}
+
+@keyframes quotesSlideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(38px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes quotesSlideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-38px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+/* =====================================================
+   LENDAS POR CATEGORIA + LUGARES MISTERIOSOS
+===================================================== */
+
+.legends-category-mystery-section {
+    position: relative;
+    padding: 90px 20px;
+    background:
+        radial-gradient(circle at center, rgba(200, 154, 43, 0.05), transparent 42%),
+        linear-gradient(180deg, #030504 0%, #060908 100%);
+    overflow: hidden;
+}
+
+.legends-category-mystery-grid {
+    max-width: 1450px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 28px;
+}
+
+.legends-category-panel,
+.legends-mystery-panel {
+    position: relative;
+    padding: 24px;
+    border: 1px solid rgba(200, 154, 43, 0.28);
+    border-radius: 12px;
+    background:
+        radial-gradient(circle at center, rgba(200, 154, 43, 0.045), transparent 58%),
+        linear-gradient(180deg, rgba(5, 12, 10, 0.88), rgba(2, 5, 4, 0.96));
+    box-shadow:
+        inset 0 0 30px rgba(200, 154, 43, 0.025),
+        0 18px 34px rgba(0, 0, 0, 0.36);
+}
+
+.legends-category-panel::before,
+.legends-mystery-panel::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(200, 154, 43, 0.08);
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.legends-section-title.small {
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.legends-section-title.small span {
+    width: 38px;
+}
+
+.legends-section-title.small h2 {
+    font-size: 1rem;
+    letter-spacing: 2.5px;
+}
+
+/* Abas */
+
+.legends-category-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.legends-category-tabs button {
+    min-height: 40px;
+    padding: 0 18px;
+    border: 1px solid rgba(200, 154, 43, 0.32);
+    border-radius: 999px;
+    background: rgba(5, 8, 7, 0.95);
+    color: #d7b46a;
+    font-family: "Cinzel", serif;
+    font-size: 0.70rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+        background .3s ease,
+        border-color .3s ease,
+        color .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.legends-category-tabs button:hover,
+.legends-category-tabs button.active {
+    background: rgba(200, 154, 43, 0.14);
+    border-color: rgba(200, 154, 43, 0.8);
+    color: #fff3ca;
+
+    box-shadow:
+        inset 0 0 10px rgba(200, 154, 43, .08),
+        0 0 18px rgba(200, 154, 43, .12);
+
+    transform: translateY(-2px);
+}
+
+/* Lista de categorias */
+
+.legends-category-list {
+    display: grid;
+    gap: 12px;
+}
+
+.legends-category-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 18px;
+    align-items: center;
+    min-height: 118px;
+    padding: 12px;
+    border: 1px solid rgba(200, 154, 43, 0.22);
+    border-radius: 8px;
+    background:
+        linear-gradient(180deg, rgba(8, 14, 12, 0.92), rgba(3, 7, 6, 0.96));
+}
+
+.legends-category-item img {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid rgba(200, 154, 43, 0.22);
+    filter: brightness(0.78) contrast(1.08);
+}
+
+.legends-category-item h3 {
+    margin: 0 0 6px;
+    font-family: "Cinzel", serif;
+    color: #dca64a;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.legends-category-item p {
+    margin: 0 0 8px;
+    color: rgba(245, 238, 220, 0.78);
+    font-size: 0.86rem;
+    line-height: 1.45;
+}
+
+.legends-category-item a {
+    color: #dca64a;
+    text-decoration: none;
+    font-family: "Cinzel", serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Lugares misteriosos */
+
+.legends-mystery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.legends-mystery-card {
+    position: relative;
+    min-height: 142px;
+    overflow: hidden;
+    border: 1px solid rgba(200, 154, 43, 0.28);
+    border-radius: 8px;
+    background: #020504;
+}
+
+.legends-mystery-card img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.76) contrast(1.1) saturate(0.85);
+    transition: 0.35s ease;
+}
+
+.legends-mystery-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.9) contrast(1.12) saturate(1);
+}
+
+.legends-mystery-card h3 {
+    min-height: 42px;
+    margin: 0;
+    padding: 8px 8px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #dca64a;
+    font-family: "Cinzel", serif;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    line-height: 1.25;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Responsivo */
+
+@media (max-width: 1050px) {
+    .legends-category-mystery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 680px) {
+    .legends-category-mystery-section {
+        padding: 70px 15px;
+    }
+
+    .legends-category-tabs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .legends-category-item {
+        grid-template-columns: 82px 1fr;
+    }
+
+    .legends-category-item img {
+        width: 82px;
+        height: 82px;
+    }
+
+    .legends-mystery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 460px) {
+    .legends-category-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .legends-category-item img {
+        margin: 0 auto;
+    }
+
+    .legends-mystery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================
+   RESPONSIVO
+========================== */
+
+@media (max-width: 900px) {
+
+    .legends-quotes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .legends-quotes-wrapper {
+        padding: 30px 20px;
+    }
+
+    .legends-quotes-arrow {
+        display: none;
+    }
+
+    .legends-quote-card {
+        min-height: 140px;
+    }
+
+    .legends-quote-card p {
+        font-size: 1rem;
+    }
+}
+
+
+/* ==============================
+   Responsivo da seção
+============================== */
+
+@media (max-width: 1200px) {
+    .haunted-places-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .haunted-place-card {
+        height: 320px;
+    }
+
+    .haunted-place-front img {
+        height: 225px;
+    }
+}
+
+@media (max-width: 768px) {
+    .haunted-places-section {
+        padding: 75px 16px;
+    }
+
+    .haunted-places-header {
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 35px;
+    }
+
+    .haunted-places-header h2 {
+        width: 100%;
+        order: 1;
+        letter-spacing: 2px;
+    }
+
+    .haunted-places-header .section-line {
+        width: 55px;
+        order: 0;
+    }
+
+    .haunted-places-button {
+        position: static;
+        order: 2;
+        transform: none;
+        margin-top: 4px;
+    }
+
+    .haunted-places-button:hover {
+        transform: translateY(-2px);
+    }
+
+    .haunted-places-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .haunted-place-card {
+        height: 310px;
+    }
+
+    .haunted-place-front img {
+        height: 205px;
+    }
+}
+
+@media (max-width: 520px) {
+    .haunted-places-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .haunted-place-card {
+        height: 330px;
+    }
+
+    .haunted-place-front img {
+        height: 230px;
+    }
+}
+
+
+
 /* =====================================================
    ACESSIBILIDADE: REDUÇÃO DE MOVIMENTO
    Remove animações e transições para usuários que preferem menos movimento.
 ===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
