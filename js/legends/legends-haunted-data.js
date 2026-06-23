@@ -305,18 +305,14 @@ function createHauntedPlaceCard(place) {
     inner.appendChild(back);
     card.appendChild(inner);
 
-    card.addEventListener("click", () => {
-        card.classList.toggle("is-flipped");
+    card.addEventListener("click", function () {
+        this.classList.toggle("is-flipped");
     });
 
     card.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
             card.classList.toggle("is-flipped");
-        }
-
-        if (event.key === "Escape") {
-            card.classList.remove("is-flipped");
         }
     });
 

@@ -142,6 +142,35 @@ function initLegendsQuotes() {
     prevButton.addEventListener("click", goToPreviousPage);
 
     renderQuotes("next", false);
+    syncQuotesDotsWithMobileScroll();
+}
+
+function syncQuotesDotsWithMobileScroll() {
+    const quotesGrid = document.querySelector("#legendsQuotesGrid");
+    const dotsContainer = document.querySelector("#legendsQuotesDots");
+
+    if (!quotesGrid || !dotsContainer) return;
+
+    function updateActiveDot() {
+        const cards = quotesGrid.querySelectorAll(".legends-quote-card");
+        const dots = dotsContainer.querySelectorAll("span");
+
+        if (!cards.length || !dots.length) return;
+
+        const cardWidth = cards[0].offsetWidth;
+        const gap = 18;
+        const activeIndex = Math.round(quotesGrid.scrollLeft / (cardWidth + gap));
+
+        dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === activeIndex);
+        });
+    }
+
+    quotesGrid.addEventListener("scroll", () => {
+        window.requestAnimationFrame(updateActiveDot);
+    });
+
+    updateActiveDot();
 }
 
 document.addEventListener("DOMContentLoaded", initLegendsQuotes);

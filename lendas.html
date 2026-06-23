@@ -9,9 +9,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Lendas | Bestiário</title>
+    <title>Lendas, Criaturas e Mistérios do Mundo | Bestiário</title>
     <meta name="description"
-        content="Explore lendas, criaturas, mistérios e histórias populares de diferentes culturas no Bestiário." />
+        content="Explore lendas, criaturas lendárias, lugares misteriosos, frases populares e histórias de diferentes culturas no Bestiário." />
+    <meta name="robots" content="index, follow" />
 
     <!-- =====================================================
          CSS GLOBAL
@@ -38,6 +39,8 @@
 
 <body>
 
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
     <!-- =====================================================
          HEADER / MENU PRINCIPAL
          Contém logo, botão mobile e navegação principal.
@@ -47,17 +50,17 @@
 
             <!-- Logo do Bestiário -->
             <a href="./index.html#home" class="logo" aria-label="Voltar para a página inicial do Bestiário">
-                <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" class="logo-icon" />
+                <img src="./assets/images/home/icone-login.png" alt="" class="logo-icon" aria-hidden="true" />
                 <span>Bestiário</span>
             </a>
 
             <!-- Botão do menu mobile -->
-            <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+            <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">
                 ☰
             </button>
 
             <!-- Navegação principal -->
-            <nav class="menu" aria-label="Menu principal">
+            <nav class="menu" id="menu-principal" aria-label="Menu principal">
                 <a href="./index.html#home">Home</a>
                 <a href="./mitologias.html">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
@@ -69,20 +72,20 @@
         </div>
     </header>
 
-    <main>
+    <main id="conteudo-principal">
 
         <!-- =====================================================
              HERO / LENDAS
              Primeira seção da página, usada para apresentar o tema.
         ====================================================== -->
-        <section class="legends-hero" id="topo-lendas">
+        <section class="legends-hero" id="topo-lendas" aria-labelledby="titulo-lendas">
             <div class="container legends-hero-content">
 
                 <div class="legends-hero-ornament" aria-hidden="true">
                     ✦ ⊹ ✦
                 </div>
 
-                <h1>Lendas</h1>
+                <h1 id="titulo-lendas">Lendas</h1>
 
                 <h2>Histórias, mistérios e memórias da humanidade.</h2>
 
@@ -100,61 +103,61 @@
              Cards visuais com os principais tipos de lendas.
              Cada card pode futuramente virar link para uma categoria.
         ====================================================== -->
-        <section class="legends-categories" id="categorias-lendas">
+        <section class="legends-categories" id="categorias-lendas" aria-labelledby="titulo-categorias-lendas">
             <div class="container">
 
                 <div class="section-header">
                     <span class="section-line" aria-hidden="true"></span>
-                    <h2>Categorias de Lendas</h2>
+                    <h2 id="titulo-categorias-lendas">Categorias de Lendas</h2>
                     <span class="section-line" aria-hidden="true"></span>
                 </div>
 
-                <div class="legends-categories-grid">
+                <div class="legends-categories-grid" role="list">
 
-                    <article class="legend-category-card">
+                    <article class="legend-category-card" role="listitem">
                         <div class="legend-category-icon">
                             <img src="./assets/images/legends/legends-section-icone/section-icon-fantasma.png"
-                                alt="Ícone de Fantasmas" loading="lazy" decoding="async">
+                                alt="" aria-hidden="true" loading="lazy" decoding="async">
                         </div>
                         <h3>Fantasmas</h3>
                     </article>
 
-                    <article class="legend-category-card">
+                    <article class="legend-category-card" role="listitem">
                         <div class="legend-category-icon">
                             <img src="./assets/images/legends/legends-section-icone/section-icon-criatura.png"
-                                alt="Ícone de Criaturas Lendárias" loading="lazy" decoding="async">
+                                alt="" aria-hidden="true" loading="lazy" decoding="async">
                         </div>
                         <h3>Criaturas<br>Lendárias</h3>
                     </article>
 
-                    <article class="legend-category-card">
+                    <article class="legend-category-card" role="listitem">
                         <div class="legend-category-icon">
                             <img src="./assets/images/legends/legends-section-icone/section-icon-lenda-urbana.png"
-                                alt="Ícone de Lendas Urbanas" loading="lazy" decoding="async">
+                                alt="" aria-hidden="true" loading="lazy" decoding="async">
                         </div>
                         <h3>Lendas<br>Urbanas</h3>
                     </article>
 
-                    <article class="legend-category-card">
+                    <article class="legend-category-card" role="listitem">
                         <div class="legend-category-icon">
                             <img src="./assets/images/legends/legends-section-icone/section-icon-lenda-regional.png"
-                                alt="Ícone de Lendas Regionais" loading="lazy" decoding="async">
+                                alt="" aria-hidden="true" loading="lazy" decoding="async">
                         </div>
                         <h3>Lendas<br>Regionais</h3>
                     </article>
 
-                    <article class="legend-category-card">
+                    <article class="legend-category-card" role="listitem">
                         <div class="legend-category-icon">
                             <img src="./assets/images/legends/legends-section-icone/section-icon-lugares-assombrados.png"
-                                alt="Ícone de Lugares Assombrados" loading="lazy" decoding="async">
+                                alt="" aria-hidden="true" loading="lazy" decoding="async">
                         </div>
                         <h3>Lugares<br>Assombrados</h3>
                     </article>
 
-                    <article class="legend-category-card">
+                    <article class="legend-category-card" role="listitem">
                         <div class="legend-category-icon">
                             <img src="./assets/images/legends/legends-section-icone/section-icon-rito-tradicoes.png"
-                                alt="Ícone de Ritos e Tradições" loading="lazy" decoding="async">
+                                alt="" aria-hidden="true" loading="lazy" decoding="async">
                         </div>
                         <h3>Ritos e<br>Tradições</h3>
                     </article>
@@ -169,7 +172,7 @@
              Seção didática com imagem, explicação e cards comparativos.
              Mostra o que são lendas e diferencia lenda, mito e conto popular.
         ====================================================== -->
-        <section class="legends-origin-section" id="origem-das-lendas">
+        <section class="legends-origin-section" id="origem-das-lendas" aria-labelledby="titulo-origem-lendas">
             <div class="container">
 
                 <div class="legends-origin-panel legends-origin-panel-about">
@@ -177,7 +180,7 @@
                     <!-- Título da seção -->
                     <div class="legends-origin-heading">
                         <span>✧ A Origem das Lendas ✧</span>
-                        <h2>O que são as lendas?</h2>
+                        <h2 id="titulo-origem-lendas">O que são as lendas?</h2>
                     </div>
 
                     <!-- Bloco principal: imagem + texto -->
@@ -203,8 +206,10 @@
                             </p>
 
                             <blockquote>
-                                As lendas não são apenas histórias do passado,
-                                elas continuam vivas enquanto forem lembradas.
+                                <p>
+                                    As lendas não são apenas histórias do passado,
+                                    elas continuam vivas enquanto forem lembradas.
+                                </p>
                             </blockquote>
                         </div>
 
@@ -297,24 +302,24 @@
              Carrossel renderizado via JS em #legendsFeaturedGrid.
              Arquivo responsável: ./js/legends/legends-featured-data.js
         ====================================================== -->
-        <section class="legends-featured-section" id="lendas-destaque">
+        <section class="legends-featured-section" id="lendas-destaque" aria-labelledby="titulo-lendas-destaque">
             <div class="container">
 
                 <div class="legends-section-title">
                     <span aria-hidden="true"></span>
-                    <h2>Lendas em Destaque</h2>
+                    <h2 id="titulo-lendas-destaque">Lendas em Destaque</h2>
                     <span aria-hidden="true"></span>
                 </div>
 
                 <div class="legends-featured-wrapper">
 
-                    <button class="legends-arrow legends-arrow-left" type="button" aria-label="Voltar">
+                    <button class="legends-arrow legends-arrow-left" type="button" aria-label="Voltar lenda em destaque">
                         ‹
                     </button>
 
-                    <div class="legends-featured-grid" id="legendsFeaturedGrid"></div>
+                    <div class="legends-featured-grid" id="legendsFeaturedGrid" aria-live="polite" role="list" aria-label="Lista de lendas em destaque"></div>
 
-                    <button class="legends-arrow legends-arrow-right" type="button" aria-label="Avançar">
+                    <button class="legends-arrow legends-arrow-right" type="button" aria-label="Avançar lenda em destaque">
                         ›
                     </button>
 
@@ -329,12 +334,12 @@
              O JS controla os botões de continente, o zoom e o card lateral.
              Arquivo responsável: ./js/legends/legends-map.js
         ====================================================== -->
-        <section class="legends-map-section" id="legends-map">
+        <section class="legends-map-section" id="legends-map" aria-labelledby="titulo-mapa-lendas">
             <div class="legends-map-container">
 
                 <div class="legends-section-header">
                     <span class="section-ornament" aria-hidden="true">✦</span>
-                    <h2>Mapa das Lendas</h2>
+                    <h2 id="titulo-mapa-lendas">Mapa das Lendas</h2>
                     <span class="section-ornament" aria-hidden="true">✦</span>
                 </div>
 
@@ -343,21 +348,21 @@
                 </p>
 
                 <!-- Controles de aproximação por continente -->
-                <div class="legends-map-zoom-controls" aria-label="Controles de aproximação do mapa">
-                    <button type="button" data-region="world" class="active"
+                <div class="legends-map-zoom-controls" role="group" aria-label="Controles de aproximação do mapa">
+                    <button type="button" data-region="world" class="active" aria-pressed="true"
                         aria-label="Mostrar mapa completo">Mundo</button>
-                    <button type="button" data-region="america"
+                    <button type="button" data-region="america" aria-pressed="false"
                         aria-label="Aproximar mapa nas Américas">Américas</button>
-                    <button type="button" data-region="europe" aria-label="Aproximar mapa na Europa">Europa</button>
-                    <button type="button" data-region="asia" aria-label="Aproximar mapa na Ásia">Ásia</button>
-                    <button type="button" data-region="africa" aria-label="Aproximar mapa na África">África</button>
-                    <button type="button" data-region="oceania" aria-label="Aproximar mapa na Oceania">Oceania</button>
+                    <button type="button" data-region="europe" aria-pressed="false" aria-label="Aproximar mapa na Europa">Europa</button>
+                    <button type="button" data-region="asia" aria-pressed="false" aria-label="Aproximar mapa na Ásia">Ásia</button>
+                    <button type="button" data-region="africa" aria-pressed="false" aria-label="Aproximar mapa na África">África</button>
+                    <button type="button" data-region="oceania" aria-pressed="false" aria-label="Aproximar mapa na Oceania">Oceania</button>
                 </div>
 
                 <div class="legends-map-layout">
 
                     <!-- Área visual do mapa -->
-                    <div class="legends-map-wrapper" id="legendsMapWrapper">
+                    <div class="legends-map-wrapper" id="legendsMapWrapper" role="region" aria-label="Mapa interativo de lendas por país">
 
                         <div class="legends-map-stage">
 
@@ -455,7 +460,7 @@
                     </div>
 
                     <!-- Card lateral atualizado pelo JS ao clicar em um país -->
-                    <aside class="legend-map-card" id="legendMapCard" aria-live="polite">
+                    <aside class="legend-map-card" id="legendMapCard" aria-labelledby="legendMapCardTitle" aria-live="polite">
                         <button type="button" class="legend-map-card-close" id="legendMapCardClose"
                             aria-label="Fechar card do mapa">
                             ×
@@ -473,7 +478,7 @@
                                 Clique em um país no mapa para visualizar as lendas daquela região.
                             </p>
 
-                            <ul id="legendMapCardList"></ul>
+                            <ul id="legendMapCardList" aria-label="Lista de lendas da região selecionada"></ul>
                         </div>
                     </aside>
 
@@ -489,27 +494,27 @@
              e troca o grupo ao clicar nas setas.
              Arquivo responsável: ./js/legends/legends-quotes-data.js
         ====================================================== -->
-        <section class="legends-quotes-section" id="frases-folclore">
+        <section class="legends-quotes-section" id="frases-folclore" aria-labelledby="titulo-frases-folclore">
             <div class="container">
 
                 <div class="legends-section-title">
                     <span aria-hidden="true"></span>
-                    <h2>Frases e Provérbios do Folclore</h2>
+                    <h2 id="titulo-frases-folclore">Frases e Provérbios do Folclore</h2>
                     <span aria-hidden="true"></span>
                 </div>
 
                 <div class="legends-quotes-wrapper">
 
                     <button class="legends-quotes-arrow" id="legendsQuotesPrev" type="button"
-                        aria-label="Frase anterior">
+                        aria-label="Mostrar frases anteriores">
                         ‹
                     </button>
 
                     <!-- O conteúdo será criado automaticamente pelo JS -->
-                    <div class="legends-quotes-grid" id="legendsQuotesGrid" aria-live="polite"></div>
+                    <div class="legends-quotes-grid" id="legendsQuotesGrid" aria-live="polite" role="list" aria-label="Frases e provérbios exibidos"></div>
 
                     <button class="legends-quotes-arrow" id="legendsQuotesNext" type="button"
-                        aria-label="Próxima frase">
+                        aria-label="Mostrar próximas frases">
                         ›
                     </button>
 
@@ -522,72 +527,39 @@
         </section>
 
         <!-- =====================================================
-     LENDAS POR CATEGORIA + LUGARES MISTERIOSOS
-====================================================== -->
-        <section class="legends-category-mystery-section" id="lendas-por-categoria">
+             LENDAS POR CATEGORIA + LUGARES MISTERIOSOS
+             Conteúdo renderizado parcialmente via JS.
+             Arquivo responsável: ./js/legends/legends-category-data.js
+        ====================================================== -->
+        <section class="legends-category-mystery-section" id="lendas-por-categoria" aria-labelledby="titulo-lendas-por-categoria">
             <div class="container legends-category-mystery-grid">
 
                 <div class="legends-category-panel">
                     <div class="legends-section-title small">
-                        <span></span>
-                        <h2>Lendas e Criaturas por Categoria</h2>
-                        <span></span>
+                        <span aria-hidden="true"></span>
+                        <h2 id="titulo-lendas-por-categoria">Lendas e Criaturas por Categoria</h2>
+                        <span aria-hidden="true"></span>
                     </div>
 
-                    <!-- Botões controlados pelo arquivo legends-category-data.js -->
-                    <div class="legends-category-tabs" aria-label="Filtrar lendas por categoria">
-                        <button type="button" class="active" data-category="fantasmas">Fantasmas</button>
-                        <button type="button" data-category="monstros">Monstros</button>
-                        <button type="button" data-category="protetores">Protetores</button>
-                        <button type="button" data-category="espiritos">Espíritos</button>
+                    <div class="legends-category-tabs" role="group" aria-label="Filtrar lendas por categoria">
+                        <button type="button" class="active" data-category="fantasmas" role="tab" aria-selected="true" aria-controls="legendsCategoryList">Fantasmas</button>
+                        <button type="button" data-category="monstros" role="tab" aria-selected="false" aria-controls="legendsCategoryList">Monstros</button>
+                        <button type="button" data-category="protetores" role="tab" aria-selected="false" aria-controls="legendsCategoryList">Protetores</button>
+                        <button type="button" data-category="espiritos" role="tab" aria-selected="false" aria-controls="legendsCategoryList">Espíritos</button>
                     </div>
 
-                    <!-- Lista renderizada automaticamente pelo JS -->
-                    <div class="legends-category-list" aria-live="polite"></div>
+                    <div class="legends-category-list" id="legendsCategoryList" role="list" aria-live="polite" aria-label="Lendas filtradas por categoria"></div>
                 </div>
 
                 <div class="legends-mystery-panel" id="lugares-misteriosos">
                     <div class="legends-section-title small">
-                        <span></span>
-                        <h2>Lugares Misteriosos do Mundo</h2>
-                        <span></span>
+                        <span aria-hidden="true"></span>
+                        <h2 id="titulo-lugares-misteriosos">Lugares Misteriosos do Mundo</h2>
+                        <span aria-hidden="true"></span>
                     </div>
 
-                    <div class="legends-mystery-grid">
-                        <article class="legends-mystery-card">
-                            <img src="./assets/images/legends/mystery/triangulo-bermudas.png"
-                                alt="Triângulo das Bermudas" loading="lazy">
-                            <h3>Triângulo das Bermudas</h3>
-                        </article>
-
-                        <article class="legends-mystery-card">
-                            <img src="./assets/images/legends/mystery/ilha-pascoa.png" alt="Ilha da Páscoa"
-                                loading="lazy">
-                            <h3>Ilha da Páscoa</h3>
-                        </article>
-
-                        <article class="legends-mystery-card">
-                            <img src="./assets/images/legends/mystery/floresta-aokigahara.png"
-                                alt="Floresta de Aokigahara" loading="lazy">
-                            <h3>Floresta de Aokigahara</h3>
-                        </article>
-
-                        <article class="legends-mystery-card">
-                            <img src="./assets/images/legends/mystery/stonehenge.png" alt="Stonehenge" loading="lazy">
-                            <h3>Stonehenge</h3>
-                        </article>
-
-                        <article class="legends-mystery-card">
-                            <img src="./assets/images/legends/mystery/ilha-das-bonecas.png" alt="Ilha das Bonecas"
-                                loading="lazy">
-                            <h3>Ilha das Bonecas</h3>
-                        </article>
-
-                        <article class="legends-mystery-card">
-                            <img src="./assets/images/legends/mystery/castelo-bran.png" alt="Castelo de Bran"
-                                loading="lazy">
-                            <h3>Castelo de Bran</h3>
-                        </article>
+                    <!-- Cards renderizados automaticamente pelo JS -->
+                    <div class="legends-mystery-grid" id="mysteriousPlacesGrid" aria-live="polite" role="list" aria-labelledby="titulo-lugares-misteriosos">
                     </div>
                 </div>
 
@@ -599,20 +571,20 @@
              Cards renderizados via JS em #hauntedPlacesGrid.
              Arquivo responsável: ./js/legends/legends-haunted-data.js
         ====================================================== -->
-        <section class="haunted-places-section" id="lugares-assombrados">
+        <section class="haunted-places-section" id="lugares-assombrados" aria-labelledby="titulo-lugares-assombrados">
             <div class="container">
 
                 <div class="haunted-places-header">
                     <span class="section-line" aria-hidden="true"></span>
-                    <h2>Lugares Assombrados Populares</h2>
+                    <h2 id="titulo-lugares-assombrados">Lugares Assombrados Populares</h2>
                     <span class="section-line" aria-hidden="true"></span>
 
-                    <a href="#" class="haunted-places-button">
+                    <a href="#" class="haunted-places-button" aria-label="Ver todos os lugares assombrados populares">
                         Ver todos
                     </a>
                 </div>
 
-                <div class="haunted-places-grid" id="hauntedPlacesGrid"></div>
+                <div class="haunted-places-grid" id="hauntedPlacesGrid" role="list" aria-live="polite" aria-label="Lista de lugares assombrados populares"></div>
 
             </div>
         </section>
@@ -628,8 +600,8 @@
 
             <!-- Identidade visual e descrição curta -->
             <div class="footer-brand">
-                <a href="./index.html#home" class="footer-logo">
-                    <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" loading="lazy"
+                <a href="./index.html#home" class="footer-logo" aria-label="Voltar para a página inicial do Bestiário">
+                    <img src="./assets/images/home/icone-login.png" alt="" aria-hidden="true" loading="lazy"
                         decoding="async" />
                     <span>Bestiário</span>
                 </a>
@@ -645,7 +617,7 @@
                 <a href="./index.html#home">Home</a>
                 <a href="./mitologias.html">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
-                <a href="./lendas.html">Lendas</a>
+                <a href="./lendas.html" aria-current="page">Lendas</a>
                 <a href="./index.html#simbolos">Símbolos</a>
                 <a href="./index.html#reliquias">Relíquias</a>
             </nav>
@@ -657,6 +629,12 @@
 
         </div>
     </footer>
+
+    <noscript>
+        <p style="padding: 16px; text-align: center; background: #020504; color: #e8d8b4;">
+            Algumas seções desta página dependem de JavaScript para exibir cards, mapas e carrosséis.
+        </p>
+    </noscript>
 
     <!-- =====================================================
          JS DA PÁGINA
