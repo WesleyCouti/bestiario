@@ -1067,9 +1067,9 @@ const symbolsEvolutionData = [
                 description: "Símbolo de defesa, resistência, proteção e identidade de um povo."
             },
             {
-                name: "Martelo de Thor",
+                name: "Mjölnir",
                 origin: "Nórdicos",
-                img: "./assets/images/symbols/evolution/symbols/martelo-de-thor.png",
+                img: "./assets/images/symbols/evolution/symbols/mjolnir.png",
                 description: "Representa força divina, proteção em batalha e bênção guerreira."
             },
             {
@@ -1640,34 +1640,36 @@ function injectSymbolsEvolutionImageStyles() {
     style.id = "symbolsEvolutionImageStyles";
     style.textContent = `
         .symbols-evolution-tab-icon {
-            width: 30px;
-            height: 30px;
+            width: 5px;
+            height: 5px;
 
             display: inline-flex;
             align-items: center;
             justify-content: center;
 
             flex: 0 0 30px;
+            overflow: visible;
         }
 
         .symbols-evolution-tab-icon img {
-            width: 30px;
-            height: 30px;
+            width: 55px;
+            height: 55px;
 
             display: block;
             object-fit: contain;
+            max-width: none;
 
-            transform: scale(1.35);
+            transform: none;
             transform-origin: center;
 
             filter:
                 brightness(1.08)
-                drop-shadow(0 0 9px rgba(216, 170, 71, .42));
+                drop-shadow(0 0 12px rgba(216, 170, 71, .55));
         }
 
         .symbols-evolution-group-icon img {
-            width: 48px;
-            height: 48px;
+            width: 100px;
+            height: 100px;
             display: block;
             object-fit: contain;
             filter: drop-shadow(0 0 10px rgba(216, 170, 71, .38));
@@ -1692,13 +1694,15 @@ function injectSymbolsEvolutionImageStyles() {
             .symbols-evolution-tab-icon {
                 width: 28px;
                 height: 28px;
-                flex-basis: 28px;
+                flex: 0 0 28px;
+                overflow: visible;
             }
 
             .symbols-evolution-tab-icon img {
-                width: 28px;
-                height: 28px;
-                transform: scale(1.25);
+                width: 42px;
+                height: 42px;
+                max-width: none;
+                transform: none;
             }
 
             .symbols-evolution-symbol img {

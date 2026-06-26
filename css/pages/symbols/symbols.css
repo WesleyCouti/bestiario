@@ -1752,6 +1752,8 @@
     background:
         linear-gradient(180deg, rgba(10, 16, 13, .96), rgba(3, 6, 5, .98));
 
+    overflow: visible;
+
     cursor: pointer;
 
     transition:
