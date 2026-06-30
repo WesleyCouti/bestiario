@@ -2,21 +2,71 @@
    SYMBOLS.CSS
    Página: Símbolos do Mundo Antigo
 
-   Responsável por:
-   - Hero da página
-   - O que são símbolos
-   - Como os símbolos são usados
-   - Símbolos em destaque
-   - Linha do tempo
-   - Mapa dos símbolos
-   - Categorias
-   - Geometria sagrada
-   - Civilizações
-   - Curiosidades
-   - Símbolos na atualidade
-   - Frases e pensamentos
-   - Galeria dos símbolos
+   Organização do arquivo:
+   01. Acessibilidade e ajustes gerais
+   02. Hero / apresentação da página
+   03. Cabeçalhos compartilhados das seções
+   04. O que são símbolos
+   05. Como os símbolos são usados
+   06. Símbolos através das civilizações
+   07. Evolução dos símbolos
+   08. Imagens renderizadas pelo JavaScript
+   09. Responsividade
+
+   Observação:
+   - Este CSS foi reorganizado para acompanhar melhor a ordem do HTML.
+   - Classes antigas ou não usadas foram removidas quando não afetavam a página atual.
+   - Os comentários foram mantidos por seção para facilitar manutenção.
 ===================================================== */
+
+/* =====================================================
+   ACESSIBILIDADE E AJUSTES GERAIS
+===================================================== */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.symbols-civilizations-filter:focus-visible,
+.symbols-evolution-tab:focus-visible,
+.symbols-civilizations-search input:focus-visible,
+.symbols-civilization-link:focus-visible {
+    outline: 2px solid #d8aa47;
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+/* Estado visual durante atualizações dinâmicas feitas pelo JavaScript */
+
+.symbols-civilizations-groups[aria-busy="true"],
+.symbols-evolution-panel[aria-busy="true"] {
+    opacity: .72;
+    transition: opacity .22s ease;
+}
+
+.symbols-civilizations-groups[aria-busy="false"],
+.symbols-evolution-panel[aria-busy="false"] {
+    opacity: 1;
+    transition: opacity .22s ease;
+}
 
 
 /* =====================================================
@@ -26,10 +76,8 @@
 .symbols-hero {
     position: relative;
     overflow: hidden;
-
     min-height: 760px;
     padding: 155px 20px 120px;
-
     display: flex;
     align-items: center;
 
@@ -43,7 +91,6 @@
 
 .symbols-hero::before {
     content: "";
-
     position: absolute;
     inset: 0;
 
@@ -52,9 +99,7 @@
         linear-gradient(to bottom, rgba(199, 151, 54, .035) 1px, transparent 1px);
 
     background-size: 78px 78px;
-
     mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
-
     pointer-events: none;
 }
 
@@ -62,7 +107,6 @@
 
 .symbols-hero::after {
     content: "";
-
     position: absolute;
     inset: 0;
 
@@ -78,10 +122,8 @@
 .symbols-hero-content {
     position: relative;
     z-index: 2;
-
     max-width: 1120px;
     margin: 0 auto;
-
     text-align: center;
 }
 
@@ -89,27 +131,20 @@
 
 .symbols-hero-ornament {
     position: relative;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     gap: 26px;
-
     margin-bottom: 34px;
-
     color: #d8aa47;
-
     font-size: 1.45rem;
     letter-spacing: 8px;
-
     text-shadow: 0 0 18px rgba(216, 170, 71, .38);
 }
 
 .symbols-hero-ornament::before,
 .symbols-hero-ornament::after {
     content: "";
-
     width: 130px;
     height: 1px;
 
@@ -121,18 +156,14 @@
 
 .symbols-hero-kicker {
     display: block;
-
     margin-bottom: 26px;
-
     color: #d8aa47;
-
     font-family: "Cinzel", serif;
     font-size: .9rem;
     font-weight: 700;
     letter-spacing: 11px;
     line-height: 1.7;
     text-transform: uppercase;
-
     text-shadow: 0 0 14px rgba(216, 170, 71, .22);
 }
 
@@ -140,12 +171,9 @@
 
 .symbols-hero h1 {
     position: relative;
-
     max-width: 1060px;
     margin: 0 auto 38px;
-
     color: #f3dfaa;
-
     font-family: "Cinzel", serif;
     font-size: clamp(4.8rem, 9vw, 8.2rem);
     font-weight: 700;
@@ -163,36 +191,31 @@
 
 .symbols-hero h1::after {
     content: "✦";
-
     position: absolute;
     left: 50%;
     bottom: -28px;
-
     transform: translateX(-50%);
-
     color: #d8aa47;
-
     font-size: .92rem;
     line-height: 1;
-
     text-shadow: 0 0 14px rgba(216, 170, 71, .42);
 }
 
-/* Subtítulo */
+/* Subtítulo do hero
+   Compatível com a estrutura atual (.symbols-hero-subtitle)
+   e com versões antigas que usavam h2 no hero. */
 
+.symbols-hero-subtitle,
 .symbols-hero h2 {
     max-width: 760px;
     margin: 54px auto 34px;
-
     color: #dca64a;
-
     font-family: "Cinzel", serif;
     font-size: clamp(1.25rem, 2vw, 1.75rem);
     font-weight: 600;
     letter-spacing: 5px;
     line-height: 1.45;
     text-transform: uppercase;
-
     text-shadow: 0 0 14px rgba(220, 166, 74, .20);
 }
 
@@ -201,13 +224,10 @@
 .symbols-hero p {
     max-width: 760px;
     margin: 0 auto;
-
     color: rgba(255, 248, 230, .88);
-
     font-size: 1.08rem;
     font-weight: 500;
     line-height: 1.9;
-
     text-shadow: 0 4px 14px rgba(0, 0, 0, .45);
 }
 
@@ -217,11 +237,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     gap: 18px;
-
     margin-top: 44px;
-
     color: #d8aa47;
 }
 
@@ -236,7 +253,6 @@
 .symbols-hero-divider strong {
     font-size: 1.2rem;
     font-weight: 400;
-
     text-shadow: 0 0 14px rgba(216, 170, 71, .42);
 }
 
@@ -248,7 +264,6 @@
 .symbols-about-section {
     position: relative;
     overflow: hidden;
-
     padding: 105px 20px;
 
     background:
@@ -265,7 +280,6 @@
 
 .symbols-about-section::before {
     content: "";
-
     position: absolute;
     inset: 0;
 
@@ -274,32 +288,29 @@
         linear-gradient(to bottom, rgba(199, 151, 54, .025) 1px, transparent 1px);
 
     background-size: 72px 72px;
-
     mask-image: radial-gradient(circle at center, black 0%, transparent 75%);
-
     pointer-events: none;
 }
 
 .symbols-about-container {
     position: relative;
     z-index: 1;
-
     max-width: 1450px;
     margin: 0 auto;
 }
 
-/* Cabeçalho da seção */
+/* =====================================================
+   CABEÇALHOS COMPARTILHADOS DAS SEÇÕES
+   Usado em: O que são símbolos, Como são usados e Civilizações.
+===================================================== */
 
 .symbols-section-heading {
     max-width: 880px;
     margin: 0 auto 54px;
-
     display: grid;
     grid-template-columns: 80px auto 80px;
     align-items: center;
-
     gap: 18px;
-
     text-align: center;
 }
 
@@ -312,9 +323,7 @@
 
 .symbols-section-heading h2 {
     margin: 0;
-
     color: #f2dfa9;
-
     font-family: "Cinzel", serif;
     font-size: clamp(1.8rem, 3vw, 2.7rem);
     font-weight: 700;
@@ -328,12 +337,9 @@
 
 .symbols-section-heading p {
     grid-column: 1 / -1;
-
     max-width: 760px;
     margin: 14px auto 0;
-
     color: rgba(255, 248, 230, .78);
-
     font-size: 1rem;
     line-height: 1.8;
 }
@@ -343,9 +349,7 @@
 .symbols-about-layout {
     display: grid;
     grid-template-columns: 1fr 1.08fr;
-
     gap: 34px;
-
     align-items: stretch;
 }
 
@@ -353,7 +357,6 @@
 .symbols-about-content {
     position: relative;
     overflow: hidden;
-
     border: 1px solid rgba(199, 151, 54, .32);
     border-radius: 16px;
 
@@ -368,13 +371,10 @@
 .symbols-about-image::before,
 .symbols-about-content::before {
     content: "";
-
     position: absolute;
     inset: 10px;
-
     border: 1px solid rgba(199, 151, 54, .10);
     border-radius: 12px;
-
     pointer-events: none;
     z-index: 2;
 }
@@ -383,9 +383,7 @@
     width: 100%;
     height: 100%;
     min-height: 360px;
-
     display: block;
-
     object-fit: cover;
     object-position: center;
 
@@ -408,7 +406,6 @@
 
 .symbols-about-content {
     padding: 50px 56px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -420,11 +417,8 @@
 
 .symbols-about-kicker {
     display: inline-block;
-
     margin-bottom: 16px;
-
     color: #c79736;
-
     font-family: "Cinzel", serif;
     font-size: .76rem;
     font-weight: 700;
@@ -434,9 +428,7 @@
 
 .symbols-about-content h3 {
     margin: 0 0 24px;
-
     color: #f2dfa9;
-
     font-family: "Cinzel", serif;
     font-size: clamp(1.55rem, 2.5vw, 2.25rem);
     font-weight: 700;
@@ -447,9 +439,7 @@
 
 .symbols-about-content p {
     margin: 0 0 18px;
-
     color: rgba(255, 248, 230, .84);
-
     font-size: 1rem;
     line-height: 1.8;
 }
@@ -458,11 +448,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     gap: 14px;
-
     margin-top: 20px;
-
     color: #c79736;
 }
 
@@ -477,7 +464,6 @@
 .symbols-about-divider strong {
     font-size: 1rem;
     font-weight: 400;
-
     text-shadow: 0 0 12px rgba(199, 151, 54, .38);
 }
 
@@ -489,7 +475,6 @@
 .symbols-uses-section {
     position: relative;
     overflow: hidden;
-
     padding: 92px 20px 106px;
 
     background:
@@ -506,7 +491,6 @@
 
 .symbols-uses-section::before {
     content: "";
-
     position: absolute;
     inset: 0;
 
@@ -515,44 +499,22 @@
         linear-gradient(to bottom, rgba(199, 151, 54, .024) 1px, transparent 1px);
 
     background-size: 72px 72px;
-
     mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
-
     pointer-events: none;
 }
 
 .symbols-uses-container {
     position: relative;
     z-index: 1;
-
     max-width: 1500px;
     margin: 0 auto;
 }
-
-/* Lateral numerada */
-
-.symbols-uses-side {
-    min-height: 210px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    gap: 14px;
-
-    padding: 22px 12px;
-
-    border-right: 1px solid rgba(199, 151, 54, .10);
-}
-
 
 /* Grid de usos */
 
 .symbols-uses-grid {
     display: grid;
     grid-template-columns: repeat(6, minmax(135px, 1fr));
-
     gap: 18px;
 }
 
@@ -561,17 +523,13 @@
 .symbols-uses-card {
     position: relative;
     overflow: hidden;
-
     min-height: 215px;
     padding: 24px 16px 22px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-
     text-align: center;
-
     border: 1px solid rgba(199, 151, 54, .24);
     border-radius: 16px;
 
@@ -591,19 +549,15 @@
 
 .symbols-uses-card::before {
     content: "";
-
     position: absolute;
     inset: 9px;
-
     border: 1px solid rgba(199, 151, 54, .08);
     border-radius: 12px;
-
     pointer-events: none;
 }
 
 .symbols-uses-card:hover {
     transform: translateY(-6px);
-
     border-color: rgba(199, 151, 54, .58);
 
     box-shadow:
@@ -617,11 +571,8 @@
 .symbols-uses-card img {
     width: 76px;
     height: 76px;
-
     margin-bottom: 18px;
-
     display: block;
-
     object-fit: contain;
 
     filter:
@@ -689,6 +640,7 @@
         line-height: 1.04;
     }
 
+    .symbols-hero-subtitle,
     .symbols-hero h2 {
         margin-top: 48px;
 
@@ -728,6 +680,7 @@
         letter-spacing: 4px;
     }
 
+    .symbols-hero-subtitle,
     .symbols-hero h2 {
         font-size: .95rem;
         letter-spacing: 2px;
@@ -798,21 +751,6 @@
 ===================================================== */
 
 @media (max-width: 1200px) {
-    .symbols-uses-container {
-        grid-template-columns: 1fr;
-    }
-
-    .symbols-uses-side {
-        min-height: auto;
-
-        flex-direction: row;
-
-        border-right: 0;
-        border-bottom: 1px solid rgba(199, 151, 54, .12);
-
-        padding: 0 0 28px;
-    }
-
     .symbols-uses-grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -849,16 +787,6 @@
 }
 
 @media (max-width: 480px) {
-    .symbols-uses-side {
-        flex-direction: column;
-
-        text-align: center;
-    }
-
-    .symbols-uses-side h2 {
-        text-align: center;
-    }
-
     .symbols-uses-grid {
         grid-template-columns: 1fr;
     }
@@ -1707,20 +1635,18 @@
 .symbols-evolution-tabs {
     position: relative;
     z-index: 1;
-
     margin-bottom: 24px;
     padding: 18px;
-
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 14px;
-
+    gap: 10px;
     border: 1px solid rgba(199, 151, 54, .22);
     border-radius: 16px;
 
     background:
         linear-gradient(180deg, rgba(8, 14, 12, .96), rgba(2, 5, 4, .98));
+
 
     box-shadow:
         inset 0 0 28px rgba(199, 151, 54, .025),
@@ -1728,33 +1654,27 @@
 }
 
 .symbols-evolution-tab {
-    min-height: 70px;
-    padding: 14px 22px;
 
+    min-height: 52px;
+    padding: 10px 18px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    gap: 14px;
-
+    gap: 8px;
     border: 1px solid rgba(199, 151, 54, .22);
-    border-radius: 16px;
-
+    border-radius: 14px;
     color: rgba(255, 248, 230, .82);
-
     font-family: "Cinzel", serif;
-    font-size: .95rem;
+    font-size: .82rem;
     font-weight: 700;
-    letter-spacing: 3px;
-    text-decoration: none;
+    letter-spacing: 2.4px;
     text-transform: uppercase;
-
+    text-decoration: none;
     background:
         linear-gradient(180deg, rgba(10, 16, 13, .96), rgba(3, 6, 5, .98));
 
-    overflow: visible;
-
     cursor: pointer;
+    overflow: visible;
 
     transition:
         transform .28s ease,
@@ -1766,17 +1686,16 @@
 
 .symbols-evolution-tab:hover,
 .symbols-evolution-tab[aria-selected="true"] {
-    transform: translateY(-2px);
 
+    transform: translateY(-2px);
     color: #fff3c4;
     border-color: rgba(216, 170, 71, .65);
-
     background:
         radial-gradient(circle at top, rgba(199, 151, 54, .17), transparent 60%),
         linear-gradient(180deg, rgba(13, 19, 15, .98), rgba(3, 6, 5, .98));
 
     box-shadow:
-        0 0 22px rgba(199, 151, 54, .14),
+        0 0 18px rgba(199, 151, 54, .12),
         inset 0 0 18px rgba(199, 151, 54, .06);
 }
 
@@ -1949,40 +1868,16 @@
 
 .symbols-evolution-card::before {
     content: "";
-
     position: absolute;
     inset: 10px;
-
     border: 1px solid rgba(199, 151, 54, .09);
     border-radius: 12px;
-
     pointer-events: none;
 }
 
-.symbols-evolution-card::after {
-    content: "";
-
-    position: absolute;
-    left: 50%;
-    top: 106px;
-
-    width: 15px;
-    height: 15px;
-
-    transform: translateX(-50%);
-
-    border-radius: 50%;
-
-    background: #f2dfa9;
-
-    box-shadow:
-        0 0 0 6px rgba(216, 170, 71, .12),
-        0 0 18px rgba(216, 170, 71, .58);
-}
 
 .symbols-evolution-card:hover {
     transform: translateY(-7px);
-
     border-color: rgba(216, 170, 71, .58);
 
     box-shadow:
@@ -2070,6 +1965,92 @@
 
     text-shadow: 0 0 16px rgba(199, 151, 54, .22);
 }
+
+
+/* =====================================================
+   IMAGENS RENDERIZADAS PELO JS / EVOLUÇÃO DOS SÍMBOLOS
+   Controla ícones dos botões, cabeçalho ativo e cards.
+===================================================== */
+.symbols-evolution-tab-icon {
+    width: 30px;
+    height: 30px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 30px;
+}
+
+.symbols-evolution-tab[aria-selected="true"] .symbols-evolution-tab-icon {
+    display: inline-flex;
+}
+
+.symbols-evolution-tab-icon img {
+    width: 36px;
+    height: 36px;
+    display: block;
+    object-fit: contain;
+    max-width: none;
+    filter: brightness(1.08) drop-shadow(0 0 10px rgba(216, 170, 71, .48));
+}
+
+.symbols-evolution-group-image-wrap,
+.symbols-evolution-symbol-image-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.symbols-evolution-group-icon img {
+    width: 52px;
+    height: 52px;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(216, 170, 71, .38));
+}
+
+.symbols-evolution-symbol img {
+    width: 112px;
+    height: 112px;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 0 14px rgba(216, 170, 71, .38));
+}
+
+.symbols-evolution-image-fallback {
+    color: #f2dfa9;
+    font-size: inherit;
+    line-height: 1;
+    text-shadow: 0 0 18px rgba(216, 170, 71, .34);
+}
+
+
+@media (max-width: 760px) {
+    .symbols-evolution-tab[aria-selected="true"] .symbols-evolution-tab-icon {
+        display: inline-flex;
+    }
+
+    .symbols-evolution-tab-icon {
+        width: 28px;
+        height: 28px;
+        flex-basis: 28px;
+    }
+
+    .symbols-evolution-tab-icon img {
+        width: 34px;
+        height: 34px;
+    }
+
+    .symbols-evolution-symbol img {
+        width: 102px;
+        height: 102px;
+    }
+
+    .symbols-evolution-group-icon img {
+        width: 44px;
+        height: 44px;
+    }
+}
+
 
 /* =====================================================
    RESPONSIVO / EVOLUÇÃO DOS SÍMBOLOS
@@ -2160,16 +2141,32 @@
     }
 
     .symbols-evolution-tabs {
-        justify-content: stretch;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: x proximity;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .symbols-evolution-tabs::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .symbols-evolution-tabs::-webkit-scrollbar-thumb {
+        border-radius: 999px;
+        background: rgba(216, 170, 71, .36);
     }
 
     .symbols-evolution-tab {
-        width: 100%;
-        min-height: 62px;
-        padding: 13px 18px;
+        flex: 0 0 auto;
+        min-width: 165px;
+        min-height: 58px;
+        padding: 12px 16px;
+        scroll-snap-align: start;
 
-        font-size: .86rem;
-        letter-spacing: 2.4px;
+        font-size: .8rem;
+        letter-spacing: 2px;
     }
 
     .symbols-evolution-group-header {
@@ -2193,5 +2190,14 @@
         width: 138px;
         height: 138px;
         font-size: 3.8rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .symbols-evolution-tab {
+        min-width: 145px;
+        font-size: .74rem;
+        letter-spacing: 1.6px;
     }
 }
