@@ -104,18 +104,7 @@
          HOME
     ====================================================== -->
 
-    <link rel="stylesheet" href="./css/pages/home/hero.css" />
-    <link rel="stylesheet" href="./css/pages/home/about-bestiario.css" />
-    <link rel="stylesheet" href="./css/pages/home/about-mythology.css" />
-    <link rel="stylesheet" href="./css/pages/home/ancient-knowledge.css" />
-    <link rel="stylesheet" href="./css/pages/home/flip-card.css" />
-    <link rel="stylesheet" href="./css/pages/home/infinite-carousel.css" />
-    <link rel="stylesheet" href="./css/pages/home/mythologies-showcase.css" />
-    <link rel="stylesheet" href="./css/pages/home/creatures.css" />
-    <link rel="stylesheet" href="./css/pages/home/symbols.css" />
-    <link rel="stylesheet" href="./css/pages/home/legends.css" />
-    <link rel="stylesheet" href="./css/pages/home/why-study.css" />
-    <link rel="stylesheet" href="./css/pages/home/relics.css" />
+    <link rel="stylesheet" href="./css/pages/home/home.css" />
 
     <!-- =====================================================
          AJUSTES ESPECÍFICOS DA HOME
@@ -164,6 +153,7 @@
                 <a href="./mythology.html">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
                 <a href="./legends.html">Lendas</a>
+                <a href="./criaturas.html">Criaturas</a>
                 <a href="./symbols.html">Símbolos</a>
                 <a href="./relics.html">Relíquias</a>
             </nav>
@@ -202,13 +192,25 @@
                         aqueles que ousam olhar além do visível.
                     </p>
 
+                    <div class="hero-actions" aria-label="Ações principais da página inicial">
+                        <a href="#sobre-bestiario" class="hero-button hero-button-primary">
+                            <span>Explorar o Bestiário</span>
+                            <small>✦</small>
+                        </a>
+
+                        <a href="#reliquias" class="hero-button hero-button-secondary">
+                            <span>Ver Relíquias Lendárias</span>
+                            <small>›</small>
+                        </a>
+                    </div>
+
                     <!-- Atalhos de navegação -->
                     <div class="hero-shortcuts">
 
                         <a href="#mitologias" class="hero-shortcut">
 
                             <div class="shortcut-icon">
-                                <img src="./assets/images/home/home-hero/mitologias-icon.png" alt="Mitologias">
+                                <img src="./assets/images/home/home-hero/mitologias-icon.png" alt="" aria-hidden="true">
                             </div>
 
                             <strong>Mitologias</strong>
@@ -222,7 +224,7 @@
                         <a href="#simbolos" class="hero-shortcut">
 
                             <div class="shortcut-icon">
-                                <img src="./assets/images/home/home-hero/simbolos-icon.png" alt="Símbolos">
+                                <img src="./assets/images/home/home-hero/simbolos-icon.png" alt="" aria-hidden="true">
                             </div>
 
                             <strong>Símbolos</strong>
@@ -236,7 +238,7 @@
                         <a href="#lendas" class="hero-shortcut">
 
                             <div class="shortcut-icon">
-                                <img src="./assets/images/home/home-hero/lendas-icon.png" alt="Lendas">
+                                <img src="./assets/images/home/home-hero/lendas-icon.png" alt="" aria-hidden="true">
                             </div>
 
                             <strong>Lendas</strong>
@@ -250,7 +252,7 @@
                         <a href="#reliquias" class="hero-shortcut">
 
                             <div class="shortcut-icon">
-                                <img src="./assets/images/home/home-hero/reliquias-icon.png" alt="Relíquias">
+                                <img src="./assets/images/home/home-hero/reliquias-icon.png" alt="" aria-hidden="true">
                             </div>
 
                             <strong>Relíquias</strong>
@@ -299,6 +301,35 @@
                     acessível, visual e respeitosa, conectando conhecimento antigo
                     com a curiosidade do mundo moderno.
                 </p>
+
+                <div class="about-bestiario-grid" aria-label="Pilares do Bestiário">
+                    <article class="about-bestiario-card">
+                        <span class="about-bestiario-icon" aria-hidden="true">✦</span>
+                        <h3>Conhecimento</h3>
+                        <p>
+                            Conteúdos organizados para explicar mitos, crenças, símbolos,
+                            criaturas e relíquias de forma clara e acessível.
+                        </p>
+                    </article>
+
+                    <article class="about-bestiario-card">
+                        <span class="about-bestiario-icon" aria-hidden="true">◈</span>
+                        <h3>Culturas</h3>
+                        <p>
+                            Um espaço para explorar tradições de diferentes povos,
+                            civilizações antigas e narrativas preservadas ao longo do tempo.
+                        </p>
+                    </article>
+
+                    <article class="about-bestiario-card">
+                        <span class="about-bestiario-icon" aria-hidden="true">✧</span>
+                        <h3>Mistérios</h3>
+                        <p>
+                            Lendas, enigmas, objetos sagrados e histórias que atravessam
+                            gerações entre a realidade, o símbolo e o imaginário.
+                        </p>
+                    </article>
+                </div>
             </div>
 
         </section>
@@ -345,6 +376,17 @@
                             </p>
                         </div>
 
+                        <!-- Bloco: mito, símbolo e cultura -->
+                        <div class="about-block">
+                            <h3>Mito, Símbolo e Cultura</h3>
+                            <p>
+                                Os mitos também moldaram símbolos, rituais, obras de arte, templos,
+                                festas populares, literatura e costumes. Por isso, estudar mitologia
+                                é observar como uma narrativa pode influenciar a cultura de um povo
+                                por séculos.
+                            </p>
+                        </div>
+
                     </div>
 
                     <p class="about-conclusion">
@@ -359,17 +401,22 @@
         <!-- =====================================================
              SEÇÃO: VOZES DO MUNDO ANTIGO
         ====================================================== -->
-        <section class="ancient-knowledge" id="vozes-antigas">
+        <section class="ancient-knowledge" id="vozes-antigas" aria-labelledby="vozes-antigas-title">
             <div class="container ancient-knowledge-content">
 
                 <!-- Cabeçalho da seção -->
                 <span class="section-tag">Conhecimento Antigo</span>
-                <h2>Vozes do Mundo Antigo</h2>
+                <h2 id="vozes-antigas-title">Vozes do Mundo Antigo</h2>
 
                 <p class="ancient-intro">
                     Ao longo da história, diferentes povos registraram sua visão do mundo por meio de provérbios,
                     ensinamentos e tradições orais. Essas vozes antigas continuam inspirando gerações e revelam como
                     diferentes culturas compreenderam a existência.
+                </p>
+
+                <p class="ancient-origin-note">
+                    Cada card apresenta uma frase acompanhada de sua origem cultural, como provérbios egípcios,
+                    tradições iorubás, sabedorias nórdicas e outras vozes ancestrais.
                 </p>
 
                 <!-- Carrossel de citações -->
@@ -403,6 +450,16 @@
                 <div class="carousel-header">
                     <span class="section-tag">Exploração Visual</span>
                     <h2 id="mitologias-title">Visões do Mundo Antigo</h2>
+
+                    <p>
+                        Cada cultura criou sua própria forma de explicar a origem do mundo,
+                        dos deuses, da morte, dos heróis e do destino.
+                    </p>
+
+                    <a href="./mythology.html" class="section-main-button">
+                        <span class="button-text">Ver todas as mitologias</span>
+                        <span class="button-arrow">›</span>
+                    </a>
                 </div>
 
                 <div class="infinite-carousel" aria-label="Carrossel de mitologias">
@@ -437,8 +494,16 @@
                     </div>
 
                     <div class="creatures-symbol">
-                        <img src="./assets/images/sua-imagem-dragao.png" alt="Símbolo de dragão" loading="lazy"
-                            decoding="async">
+                        <img src="./assets/images/home/creatures/dragon-symbol.png" alt="Símbolo de dragão"
+                            loading="lazy" decoding="async">
+                    </div>
+
+                    <div class="creatures-filter-preview" aria-label="Categorias de criaturas">
+                        <span>Aquáticas</span>
+                        <span>Celestiais</span>
+                        <span>Sombras</span>
+                        <span>Guardiãs</span>
+                        <span>Híbridas</span>
                     </div>
 
                     <a href="./criaturas.html" class="creatures-main-button">
@@ -499,7 +564,7 @@
                                 Explore nossa biblioteca completa de símbolos e seus significados.
                             </p>
 
-                            <a href="./simbologia.html" class="symbols-feature-button">
+                            <a href="./symbols.html" class="symbols-feature-button">
                                 <span class="button-text">Explorar simbologia</span>
                                 <span class="button-arrow">›</span>
                             </a>
@@ -536,6 +601,16 @@
                 <div class="legends-header">
                     <span class="section-tag">Narrativas e Tradições</span>
                     <h2 id="lendas-title">Lendas do Mundo</h2>
+
+                    <p>
+                        Histórias transmitidas por gerações revelam medos, heróis, criaturas
+                        e mistérios que continuam vivos na memória popular.
+                    </p>
+
+                    <a href="./legends.html" class="section-main-button">
+                        <span class="button-text">Ver todas as lendas</span>
+                        <span class="button-arrow">›</span>
+                    </a>
                 </div>
 
                 <!-- Carrossel de cards -->
@@ -578,6 +653,44 @@
                     contemporânea.
                 </p>
 
+                <div class="why-study-grid" aria-label="Áreas influenciadas pelas tradições antigas">
+                    <article class="why-study-card">
+                        <span aria-hidden="true">✦</span>
+                        <h3>Arte</h3>
+                        <p>
+                            Pinturas, esculturas, templos e monumentos carregam imagens
+                            inspiradas por deuses, heróis, criaturas e símbolos antigos.
+                        </p>
+                    </article>
+
+                    <article class="why-study-card">
+                        <span aria-hidden="true">✧</span>
+                        <h3>Religião</h3>
+                        <p>
+                            Ritos, festas, textos sagrados e tradições espirituais preservam
+                            narrativas que ajudam povos a explicar o sagrado.
+                        </p>
+                    </article>
+
+                    <article class="why-study-card">
+                        <span aria-hidden="true">◈</span>
+                        <h3>Literatura</h3>
+                        <p>
+                            Épicos, poemas, romances e histórias modernas continuam usando
+                            arquétipos, jornadas heroicas e conflitos herdados dos mitos.
+                        </p>
+                    </article>
+
+                    <article class="why-study-card">
+                        <span aria-hidden="true">✺</span>
+                        <h3>Cultura Popular</h3>
+                        <p>
+                            Filmes, jogos, séries, quadrinhos e animes reinterpretam lendas
+                            antigas para novas gerações.
+                        </p>
+                    </article>
+                </div>
+
             </div>
         </section>
 
@@ -607,6 +720,15 @@
                         Entre a história e a lenda, muitas culturas preservaram relatos sobre objetos dotados de poder
                         extraordinário. Alguns representam autoridade, outros proteção, sabedoria ou destruição.
                     </p>
+
+                    <p class="relics-note">
+                        Algumas relíquias existiram. Outras talvez nunca tenham sido encontradas.
+                    </p>
+
+                    <a href="./relics.html" class="section-main-button relics-main-button">
+                        <span class="button-text">Ver todas as relíquias</span>
+                        <span class="button-arrow">›</span>
+                    </a>
 
                 </div>
 
@@ -656,6 +778,7 @@
                 <a href="./mythology.html">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
                 <a href="./legends.html">Lendas</a>
+                <a href="./criaturas.html">Criaturas</a>
                 <a href="./symbols.html">Símbolos</a>
                 <a href="./relics.html">Relíquias</a>
             </nav>
