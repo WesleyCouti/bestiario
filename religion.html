@@ -3,38 +3,108 @@
 
 <head>
 
-    <meta charset="UTF-8" />
+    <!-- =====================================================
+         METADADOS BÁSICOS
+         Configurações essenciais da página
+    ====================================================== -->
 
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Religiões | Bestiário - Crenças, Tradições e Espiritualidades do Mundo</title>
+
     <meta name="description"
-        content="Explore religiões do mundo, suas crenças, símbolos, tradições, espiritualidades e histórias no Bestiário." />
+        content="Explore religiões antigas e modernas, conheça suas crenças, símbolos, tradições, escrituras, rituais e espiritualidades que marcaram a história da humanidade." />
+
+    <meta name="keywords"
+        content="religiões, cristianismo, islamismo, judaísmo, hinduísmo, budismo, espiritismo, umbanda, candomblé, crenças, espiritualidade, tradições, símbolos religiosos, bestiário" />
+
+    <meta name="author" content="Wesley Coutinho" />
+    <meta name="robots" content="index, follow" />
+
+    <meta name="theme-color" content="#0d0d0d" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- =====================================================
+         SEO / OPEN GRAPH
+         Substitua as URLs quando o domínio estiver publicado.
+    ====================================================== -->
+
+    <link rel="canonical" href="https://seu-dominio.com/religion.html" />
+
+    <meta property="og:site_name" content="Bestiário" />
+
+    <meta property="og:title" content="Religiões | Bestiário - Crenças, Tradições e Espiritualidades" />
+
+    <meta property="og:description"
+        content="Conheça religiões do mundo, suas crenças, escrituras, símbolos, rituais e tradições que moldaram diferentes civilizações ao longo da história." />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Religiões | Bestiário" />
-    <meta property="og:description"
-        content="Explore religiões antigas e modernas, suas crenças, símbolos e tradições espirituais." />
-    <meta property="og:image" content="./assets/images/compartilhamento.png" />
-    <meta property="og:url" content="./religion.html" />
+
+    <meta property="og:url" content="https://seu-dominio.com/religion.html" />
+
+    <meta property="og:image" content="https://seu-dominio.com/assets/images/preview-religion.png" />
+
+    <meta property="og:image:alt"
+        content="Página de Religiões do Bestiário apresentando símbolos e tradições religiosas do mundo." />
+
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- =====================================================
+         TWITTER / X
+    ====================================================== -->
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Religiões | Bestiário" />
+
+    <meta name="twitter:title" content="Religiões | Bestiário - Crenças, Tradições e Espiritualidades" />
+
     <meta name="twitter:description"
-        content="Explore religiões antigas e modernas, suas crenças, símbolos e tradições espirituais." />
-    <meta name="twitter:image" content="./assets/images/compartilhamento.png" />
+        content="Explore religiões antigas e modernas, suas crenças, símbolos, escrituras e tradições espirituais." />
 
-    <title>Religiões | Bestiário</title>
+    <meta name="twitter:image" content="https://seu-dominio.com/assets/images/preview-religion.png" />
 
-    <!-- CSS GLOBAL -->
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon.png" />
+
+    <link rel="apple-touch-icon" href="./assets/images/favicon.png" />
+
+    <!-- =====================================================
+         GOOGLE FONTS
+         (Adicionar apenas se utilizar Google Fonts)
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- =====================================================
+         ESTILOS GLOBAIS
+    ====================================================== -->
+
     <link rel="stylesheet" href="./css/global/reset.css" />
     <link rel="stylesheet" href="./css/global/variables.css" />
     <link rel="stylesheet" href="./css/global/base.css" />
-    <link rel="stylesheet" href="./css/global/responsive.css" />
 
-    <!-- CSS LAYOUT -->
+    <!-- =====================================================
+         LAYOUT
+    ====================================================== -->
+
     <link rel="stylesheet" href="./css/layout/menu.css" />
     <link rel="stylesheet" href="./css/layout/footer.css" />
 
-    <!-- CSS DA PÁGINA -->
+    <!-- =====================================================
+         RESPONSIVIDADE GLOBAL
+         Deve permanecer por último entre os estilos globais.
+    ====================================================== -->
+
+    <link rel="stylesheet" href="./css/global/responsive.css" />
+
+    <!-- =====================================================
+         RELIGIÕES
+    ====================================================== -->
+
     <link rel="stylesheet" href="./css/pages/religion/religion.css" />
 
 </head>
@@ -51,7 +121,8 @@
         <div class="container topbar-content">
 
             <a href="./index.html#home" class="logo" aria-label="Ir para a página inicial do Bestiário">
-                <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" class="logo-icon" loading="eager" decoding="async" />
+                <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" class="logo-icon" loading="eager"
+                    decoding="async" />
                 <span>Bestiário</span>
             </a>
 
@@ -60,13 +131,13 @@
                 ☰
             </button>
 
-            <nav class="menu" id="mainMenu" aria-label="Menu principal">
+            <nav class="menu" id="menu-principal" aria-label="Menu principal">
                 <a href="./index.html#home">Home</a>
-                <a href="./mitologias.html">Mitologias</a>
+                <a href="./mythology.html">Mitologias</a>
                 <a href="./religion.html" class="active" aria-current="page">Religiões</a>
-                <a href="./lendas.html">Lendas</a>
-                <a href="./simbolos.html">Símbolos</a>
-                <a href="./index.html#reliquias">Relíquias</a>
+                <a href="./legends.html">Lendas</a>
+                <a href="./symbols.html">Símbolos</a>
+                <a href="./relics.html">Relíquias</a>
             </nav>
 
         </div>
@@ -144,19 +215,19 @@
                     <div class="religion-intro-symbols" aria-hidden="true">
 
                         <img src="./assets/images/religion/simbolo-cruz.png" alt="Cruz Cristã"
-                            class="religion-symbol-image"  loading="lazy" decoding="async"/>
+                            class="religion-symbol-image" loading="lazy" decoding="async" />
 
                         <img src="./assets/images/religion/simbolo-estrela-davi.png" alt="Estrela de Davi"
-                            class="religion-symbol-image"  loading="lazy" decoding="async"/>
+                            class="religion-symbol-image" loading="lazy" decoding="async" />
 
                         <img src="./assets/images/religion/simbolo-islam.png" alt="Crescente Islâmico"
-                            class="religion-symbol-image"  loading="lazy" decoding="async"/>
+                            class="religion-symbol-image" loading="lazy" decoding="async" />
 
-                        <img src="./assets/images/religion/simbolo-om.png" alt="Om Hindu"
-                            class="religion-symbol-image"  loading="lazy" decoding="async"/>
+                        <img src="./assets/images/religion/simbolo-om.png" alt="Om Hindu" class="religion-symbol-image"
+                            loading="lazy" decoding="async" />
 
                         <img src="./assets/images/religion/simbolo-roda-dharma.png" alt="Roda do Dharma"
-                            class="religion-symbol-image"  loading="lazy" decoding="async"/>
+                            class="religion-symbol-image" loading="lazy" decoding="async" />
 
                     </div>
 
@@ -191,7 +262,8 @@
                     <div class="religion-grid">
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/catolicismo.png" alt="Catolicismo"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/catolicismo.png" alt="Catolicismo"
+                                loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">✟</div>
                                 <h3>Catolicismo</h3>
@@ -202,7 +274,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/protestantismo.png" alt="Protestantismo"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/protestantismo.png" alt="Protestantismo"
+                                loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">✝</div>
                                 <h3>Protestantismo</h3>
@@ -214,7 +287,7 @@
 
                         <article class="religion-card">
                             <img src="./assets/images/religion/religions/pentecostais.png"
-                                alt="Pentecostais e Neopentecostais"  loading="lazy" decoding="async"/>
+                                alt="Pentecostais e Neopentecostais" loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">🔥</div>
                                 <h3>Pentecostais</h3>
@@ -225,7 +298,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/judaismo.png" alt="Judaísmo"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/judaismo.png" alt="Judaísmo" loading="lazy"
+                                decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">✡</div>
                                 <h3>Judaísmo</h3>
@@ -236,7 +310,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/islamismo.png" alt="Islamismo"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/islamismo.png" alt="Islamismo" loading="lazy"
+                                decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">☾</div>
                                 <h3>Islamismo</h3>
@@ -246,8 +321,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/igrejas-ortodoxas.png"
-                                alt="Igrejas Ortodoxas"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/igrejas-ortodoxas.png" alt="Igrejas Ortodoxas"
+                                loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">☦</div>
                                 <h3>Igrejas Ortodoxas</h3>
@@ -259,7 +334,7 @@
 
                         <article class="religion-card">
                             <img src="./assets/images/religion/religions/santos-dos-ultimos-dias.png"
-                                alt="Santos dos Últimos Dias"  loading="lazy" decoding="async"/>
+                                alt="Santos dos Últimos Dias" loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">✝</div>
                                 <h3>Santos dos Últimos Dias</h3>
@@ -271,7 +346,7 @@
 
                         <article class="religion-card">
                             <img src="./assets/images/religion/religions/testemunhas-jeova.png"
-                                alt="Testemunhas de Jeová"  loading="lazy" decoding="async"/>
+                                alt="Testemunhas de Jeová" loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">📖</div>
                                 <h3>Testemunhas de Jeová</h3>
@@ -283,7 +358,7 @@
 
                         <article class="religion-card">
                             <img src="./assets/images/religion/religions/adventistas.png"
-                                alt="Adventistas do Sétimo Dia"  loading="lazy" decoding="async"/>
+                                alt="Adventistas do Sétimo Dia" loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">✦</div>
                                 <h3>Adventistas</h3>
@@ -294,7 +369,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/bahai.png" alt="Fé Bahá’í"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/bahai.png" alt="Fé Bahá’í" loading="lazy"
+                                decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">✦</div>
                                 <h3>Bahá’í</h3>
@@ -326,7 +402,8 @@
                     <div class="religion-grid">
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/umbanda.png" alt="Umbanda"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/umbanda.png" alt="Umbanda" loading="lazy"
+                                decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">⚚</div>
                                 <h3>Umbanda</h3>
@@ -337,7 +414,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/candomble.png" alt="Candomblé"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/candomble.png" alt="Candomblé" loading="lazy"
+                                decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">☥</div>
                                 <h3>Candomblé</h3>
@@ -348,7 +426,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/quimbanda.png" alt="Quimbanda"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/quimbanda.png" alt="Quimbanda" loading="lazy"
+                                decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">☾</div>
                                 <h3>Quimbanda</h3>
@@ -359,7 +438,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/Ifa.png" alt="Religião Tradicional Ifá"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/Ifa.png" alt="Religião Tradicional Ifá"
+                                loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">⚚</div>
                                 <h3>Ifá</h3>
@@ -391,7 +471,8 @@
                     <div class="religion-grid">
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/hinduismo.png" alt="Hinduísmo"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/hinduismo.png" alt="Hinduísmo" loading="lazy"
+                                decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">ॐ</div>
                                 <h3>Hinduísmo</h3>
@@ -402,7 +483,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/budismo.png" alt="Budismo"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/budismo.png" alt="Budismo" loading="lazy"
+                                decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">☸</div>
                                 <h3>Budismo</h3>
@@ -413,8 +495,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/hare-krishna.png"
-                                alt="Movimento Hare Krishna"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/hare-krishna.png" alt="Movimento Hare Krishna"
+                                loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">🪷</div>
                                 <h3>Hare Krishna</h3>
@@ -446,7 +528,8 @@
                     <div class="religion-grid">
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/xintoismo.png" alt="Xintoísmo"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/xintoismo.png" alt="Xintoísmo" loading="lazy"
+                                decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">⛩</div>
                                 <h3>Xintoísmo</h3>
@@ -457,7 +540,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/taoismo.png" alt="Taoísmo"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/taoismo.png" alt="Taoísmo" loading="lazy"
+                                decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">☯</div>
                                 <h3>Taoísmo</h3>
@@ -468,7 +552,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/seicho-no-ie.png" alt="Seicho-no-Ie"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/seicho-no-ie.png" alt="Seicho-no-Ie"
+                                loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">☀</div>
                                 <h3>Seicho-no-Ie</h3>
@@ -479,8 +564,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/messianica.png"
-                                alt="Igreja Messiânica Mundial"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/messianica.png" alt="Igreja Messiânica Mundial"
+                                loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">光</div>
                                 <h3>Igreja Messiânica</h3>
@@ -491,7 +576,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/tenrikyo.png" alt="Tenrikyo"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/tenrikyo.png" alt="Tenrikyo" loading="lazy"
+                                decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">☀</div>
                                 <h3>Tenrikyo</h3>
@@ -502,7 +588,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/cao-dai.png" alt="Cao Dai"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/cao-dai.png" alt="Cao Dai" loading="lazy"
+                                decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">👁</div>
                                 <h3>Cao Dai</h3>
@@ -535,7 +622,7 @@
 
                         <article class="religion-card">
                             <img src="./assets/images/religion/religions/indigena-brasileira.png"
-                                alt="Religiões Indígenas Brasileiras"  loading="lazy" decoding="async"/>
+                                alt="Religiões Indígenas Brasileiras" loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">🌿</div>
                                 <h3>Indígenas Brasileiras</h3>
@@ -546,7 +633,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/santo-daime.png" alt="Santo Daime"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/santo-daime.png" alt="Santo Daime"
+                                loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">🌿</div>
                                 <h3>Santo Daime</h3>
@@ -557,7 +645,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/udv.png" alt="União do Vegetal"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/udv.png" alt="União do Vegetal" loading="lazy"
+                                decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">🍃</div>
                                 <h3>UDV</h3>
@@ -569,7 +658,7 @@
 
                         <article class="religion-card">
                             <img src="./assets/images/religion/religions/xamanismo-ayahuasqueiro.png"
-                                alt="Xamanismo Ayahuasqueiro"  loading="lazy" decoding="async"/>
+                                alt="Xamanismo Ayahuasqueiro" loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">🌀</div>
                                 <h3>Xamanismo Ayahuasqueiro</h3>
@@ -601,8 +690,8 @@
                     <div class="religion-grid">
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/espiritismo.png"
-                                alt="Espiritismo Kardecista"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/espiritismo.png" alt="Espiritismo Kardecista"
+                                loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">🕯</div>
                                 <h3>Espiritismo</h3>
@@ -613,8 +702,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/vale-do-amanhecer.png"
-                                alt="Vale do Amanhecer"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/vale-do-amanhecer.png" alt="Vale do Amanhecer"
+                                loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">🌅</div>
                                 <h3>Vale do Amanhecer</h3>
@@ -625,7 +714,8 @@
                         </article>
 
                         <article class="religion-card">
-                            <img src="./assets/images/religion/religions/wicca.png" alt="Wicca e Neopaganismo"  loading="lazy" decoding="async"/>
+                            <img src="./assets/images/religion/religions/wicca.png" alt="Wicca e Neopaganismo"
+                                loading="lazy" decoding="async" />
                             <div class="religion-card-content">
                                 <div class="religion-icon">☽</div>
                                 <h3>Wicca</h3>
@@ -671,7 +761,8 @@
                 </div>
 
                 <div class="religion-map-visual">
-                    <img src="./assets/images/religion/mapa-religioes-mund.png" alt="Mapa das religiões do mundo" loading="lazy" decoding="async">
+                    <img src="./assets/images/religion/mapa-religioes-mund.png" alt="Mapa das religiões do mundo"
+                        loading="lazy" decoding="async">
                 </div>
 
             </div>
@@ -689,7 +780,8 @@
             </svg>
 
             <article class="religion-timeline-item timeline-up">
-                <img src="./assets/images/religion/icone-arvore-vida.png" alt="Árvore da Vida" class="timeline-image" loading="lazy" decoding="async">
+                <img src="./assets/images/religion/icone-arvore-vida.png" alt="Árvore da Vida" class="timeline-image"
+                    loading="lazy" decoding="async">
 
                 <h3>3000 a.C. ou antes</h3>
 
@@ -705,7 +797,8 @@
             </article>
 
             <article class="religion-timeline-item timeline-down">
-                <img src="./assets/images/religion/icone-tabuas-da-lei.png" alt="Tábuas da Lei" class="timeline-image" loading="lazy" decoding="async">
+                <img src="./assets/images/religion/icone-tabuas-da-lei.png" alt="Tábuas da Lei" class="timeline-image"
+                    loading="lazy" decoding="async">
 
                 <h3>2000 a.C. – 500 d.C.</h3>
 
@@ -720,7 +813,8 @@
             </article>
 
             <article class="religion-timeline-item timeline-up">
-                <img src="./assets/images/religion/icone-mandala.png" alt="Mandala" class="timeline-image" loading="lazy" decoding="async">
+                <img src="./assets/images/religion/icone-mandala.png" alt="Mandala" class="timeline-image"
+                    loading="lazy" decoding="async">
 
                 <h3>0 – 1500 d.C.</h3>
 
@@ -736,7 +830,8 @@
             </article>
 
             <article class="religion-timeline-item timeline-down">
-                <img src="./assets/images/religion/icone-bussola.png" alt="Bússola" class="timeline-image" loading="lazy" decoding="async">
+                <img src="./assets/images/religion/icone-bussola.png" alt="Bússola" class="timeline-image"
+                    loading="lazy" decoding="async">
 
                 <h3>1500 – 1900 d.C.</h3>
 
@@ -752,7 +847,8 @@
             </article>
 
             <article class="religion-timeline-item timeline-up">
-                <img src="./assets/images/religion/icone-maos-unidas.png" alt="Mãos Unidas" class="timeline-image" loading="lazy" decoding="async">
+                <img src="./assets/images/religion/icone-maos-unidas.png" alt="Mãos Unidas" class="timeline-image"
+                    loading="lazy" decoding="async">
 
                 <h3>1900 – Atualidade</h3>
 
@@ -800,7 +896,8 @@
 
                     <div class="religion-unity-image">
                         <img src="./assets/images/religion/o-que-une-religioes.png"
-                            alt="Símbolos religiosos unidos em torno de uma mandala dourada" loading="lazy" decoding="async">
+                            alt="Símbolos religiosos unidos em torno de uma mandala dourada" loading="lazy"
+                            decoding="async">
                     </div>
 
                 </div>
@@ -814,7 +911,8 @@
             <div class="religion-closing-container">
 
                 <div class="religion-closing-symbol">
-                    <img src="./assets/images/religion/arvore-dos-conhecimentos.png" alt="Árvore do Conhecimento" loading="lazy" decoding="async">
+                    <img src="./assets/images/religion/arvore-dos-conhecimentos.png" alt="Árvore do Conhecimento"
+                        loading="lazy" decoding="async">
                 </div>
 
                 <span class="religion-closing-tag">
@@ -873,11 +971,11 @@
             <!-- Navegação rápida -->
             <nav class="footer-nav" aria-label="Navegação do rodapé">
                 <a href="./index.html#home">Home</a>
-                <a href="./mitologias.html">Mitologias</a>
+                <a href="./mythology.html">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
-                <a href="./lendas.html">Lendas</a>
-                <a href="./simbolos.html">Símbolos</a>
-                <a href="./index.html#reliquias">Relíquias</a>
+                <a href="./legends.html">Lendas</a>
+                <a href="./symbols.html">Símbolos</a>
+                <a href="./relics.html">Relíquias</a>
             </nav>
 
             <!-- Direitos -->

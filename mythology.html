@@ -2,42 +2,110 @@
 <html lang="pt-BR">
 
 <head>
+
+    <!-- =====================================================
+         METADADOS BÁSICOS
+         Configurações essenciais da página
+    ====================================================== -->
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO básico -->
+    <title>Mitologias | Bestiário - Mitologias, Deuses, Criaturas e Civilizações Antigas</title>
+
     <meta name="description"
-        content="Explore mitologias do mundo, seus deuses, criaturas lendárias, símbolos sagrados e histórias ancestrais no Bestiário." />
+        content="Explore mitologias de diversas civilizações, conheça deuses, criaturas lendárias, heróis, símbolos sagrados e as histórias que moldaram culturas ao redor do mundo." />
 
-    <!-- Compartilhamento / Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Mitologias | Bestiário" />
+    <meta name="keywords"
+        content="mitologias, mitologia grega, mitologia nórdica, mitologia egípcia, mitologia romana, mitologia japonesa, mitologia chinesa, mitologia celta, deuses, criaturas lendárias, heróis, bestiário" />
+
+    <meta name="author" content="Wesley Coutinho" />
+    <meta name="robots" content="index, follow" />
+
+    <meta name="theme-color" content="#0d0d0d" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- =====================================================
+         SEO / OPEN GRAPH
+         Substitua as URLs quando o domínio estiver publicado.
+    ====================================================== -->
+
+    <link rel="canonical" href="https://seu-dominio.com/mythology.html" />
+
+    <meta property="og:site_name" content="Bestiário" />
+
+    <meta property="og:title" content="Mitologias | Bestiário - Deuses, Criaturas e Civilizações Antigas" />
+
     <meta property="og:description"
-        content="Explore mitologias do mundo, seus deuses, criaturas e símbolos ancestrais." />
-    <meta property="og:image" content="./assets/images/compartilhamento.png" />
-    <meta property="og:url" content="./mitologias.html" />
+        content="Viaje pelas maiores mitologias do mundo e descubra seus deuses, criaturas lendárias, símbolos sagrados, heróis e tradições ancestrais." />
 
-    <!-- Compartilhamento / Twitter -->
+    <meta property="og:type" content="website" />
+
+    <meta property="og:url" content="https://seu-dominio.com/mythology.html" />
+
+    <meta property="og:image" content="https://seu-dominio.com/assets/images/compartilhamento-mythology.png" />
+
+    <meta property="og:image:alt"
+        content="Página de Mitologias do Bestiário apresentando diferentes civilizações e seres mitológicos." />
+
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- =====================================================
+         TWITTER / X
+    ====================================================== -->
+
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Mitologias | Bestiário" />
+
+    <meta name="twitter:title" content="Mitologias | Bestiário - Deuses, Criaturas e Civilizações Antigas" />
+
     <meta name="twitter:description"
-        content="Explore mitologias do mundo, seus deuses, criaturas e símbolos ancestrais." />
-    <meta name="twitter:image" content="./assets/images/compartilhamento.png" />
+        content="Conheça mitologias, deuses, criaturas lendárias, heróis e símbolos ancestrais das maiores civilizações do mundo." />
 
-    <title>Mitologias | Bestiário</title>
+    <meta name="twitter:image" content="https://seu-dominio.com/assets/images/compartilhamento-mythology.png" />
 
-    <!-- CSS global -->
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon.png" />
+
+    <link rel="apple-touch-icon" href="./assets/images/favicon.png" />
+
+    <!-- =====================================================
+         GOOGLE FONTS
+         (Adicionar apenas se utilizar Google Fonts)
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- =====================================================
+         ESTILOS GLOBAIS
+    ====================================================== -->
+
     <link rel="stylesheet" href="./css/global/reset.css" />
     <link rel="stylesheet" href="./css/global/variables.css" />
     <link rel="stylesheet" href="./css/global/base.css" />
 
-    <!-- CSS de layout -->
+    <!-- =====================================================
+         LAYOUT
+    ====================================================== -->
+
     <link rel="stylesheet" href="./css/layout/menu.css" />
     <link rel="stylesheet" href="./css/layout/footer.css" />
 
-    <!-- CSS responsivo e da página -->
+    <!-- =====================================================
+         RESPONSIVIDADE GLOBAL
+    ====================================================== -->
+
     <link rel="stylesheet" href="./css/global/responsive.css" />
+
+    <!-- =====================================================
+         MITOLOGIAS
+    ====================================================== -->
+
     <link rel="stylesheet" href="./css/pages/mythology/mythology.css" />
+
 </head>
 
 <body>
@@ -63,13 +131,13 @@
                 ☰
             </button>
 
-            <nav class="menu" id="mainMenu" aria-label="Menu principal">
+            <nav class="menu" id="menu-principal" aria-label="Menu principal">
                 <a href="./index.html#home">Home</a>
-                <a href="./mitologias.html" class="active" aria-current="page">Mitologias</a>
+                <a href="./mythology.html" class="active" aria-current="page">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
-                <a href="./lendas.html">Lendas</a>
-                <a href="./simbolos.html">Símbolos</a>
-                <a href="./index.html#reliquias">Relíquias</a>
+                <a href="./legends.html">Lendas</a>
+                <a href="./symbols.html">Símbolos</a>
+                <a href="./relics.html">Relíquias</a>
             </nav>
 
         </div>
@@ -376,11 +444,11 @@
             <!-- Navegação rápida -->
             <nav class="footer-nav" aria-label="Navegação do rodapé">
                 <a href="./index.html#home">Home</a>
-                <a href="./mitologias.html">Mitologias</a>
+                <a href="./mythology.html">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
-                <a href="./lendas.html">Lendas</a>
-                <a href="./simbolos.html">Símbolos</a>
-                <a href="./index.html#reliquias">Relíquias</a>
+                <a href="./legends.html">Lendas</a>
+                <a href="./symbols.html">Símbolos</a>
+                <a href="./relics.html">Relíquias</a>
             </nav>
 
             <!-- Direitos -->

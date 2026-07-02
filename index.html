@@ -2,48 +2,108 @@
 <html lang="pt-BR">
 
 <head>
+
     <!-- =====================================================
-         CONFIGURAÇÕES BÁSICAS
+         METADADOS BÁSICOS
+         Configurações essenciais da página
     ====================================================== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Bestiário | Mitologias, Religiões, Lendas, Símbolos e Relíquias</title>
+
     <meta name="description"
-        content="Explore mitologias, religiões, lendas, criaturas, símbolos e relíquias do mundo antigo no Bestiário." />
+        content="Descubra mitologias, religiões, criaturas lendárias, símbolos ancestrais, relíquias históricas e lendas do mundo em uma enciclopédia digital dedicada às maiores tradições da humanidade." />
+
+    <meta name="keywords"
+        content="mitologia, mitologias, religiões, lendas, criaturas, símbolos, relíquias, folclore, arqueologia, história antiga, civilizações, bestiário" />
+
+    <meta name="author" content="Wesley Coutinho" />
+    <meta name="robots" content="index, follow" />
+
     <meta name="theme-color" content="#0d0d0d" />
-    <meta property="og:title" content="Bestiário" />
-    <meta property="og:description"
-        content="Explore mitologias, religiões, lendas, criaturas, símbolos e relíquias do mundo antigo." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="./assets/images/preview.png" />
-
-    <title>Bestiário</title>
-
-    <link rel="icon" href="./assets/images/favicon.png" />
-    <link rel="canonical" href="https://seu-dominio.com/" />
+    <meta name="color-scheme" content="dark" />
 
     <!-- =====================================================
-        ESTILOS GLOBAIS
+         SEO / OPEN GRAPH
+         Ativar URLs definitivas quando o domínio estiver publicado.
     ====================================================== -->
+
+    <link rel="canonical" href="https://seu-dominio.com/" />
+
+    <meta property="og:site_name" content="Bestiário" />
+    <meta property="og:title" content="Bestiário | Mitologias, Religiões, Lendas, Símbolos e Relíquias" />
+
+    <meta property="og:description"
+        content="Explore criaturas lendárias, mitologias antigas, religiões, símbolos ancestrais e relíquias históricas em uma biblioteca digital dedicada ao conhecimento do mundo antigo." />
+
+    <meta property="og:type" content="website" />
+
+    <meta property="og:url" content="https://seu-dominio.com/" />
+
+    <meta property="og:image" content="https://seu-dominio.com/assets/images/preview.png" />
+
+    <meta property="og:image:alt"
+        content="Página inicial do Bestiário apresentando mitologias, criaturas, símbolos e relíquias." />
+
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- =====================================================
+         TWITTER / X
+    ====================================================== -->
+
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="twitter:title" content="Bestiário | Mitologias, Religiões, Lendas, Símbolos e Relíquias" />
+
+    <meta name="twitter:description"
+        content="Explore criaturas lendárias, mitologias, símbolos ancestrais e relíquias do mundo antigo." />
+
+    <meta name="twitter:image" content="https://seu-dominio.com/assets/images/preview.png" />
+
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon.png" />
+
+    <link rel="apple-touch-icon" href="./assets/images/favicon.png" />
+
+    <!-- =====================================================
+         GOOGLE FONTS
+         (Adicionar apenas se utilizar Google Fonts)
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- =====================================================
+         ESTILOS GLOBAIS
+    ====================================================== -->
+
     <link rel="stylesheet" href="./css/global/reset.css" />
     <link rel="stylesheet" href="./css/global/variables.css" />
     <link rel="stylesheet" href="./css/global/base.css" />
 
     <!-- =====================================================
-        LAYOUT
+         LAYOUT
     ====================================================== -->
+
     <link rel="stylesheet" href="./css/layout/menu.css" />
     <link rel="stylesheet" href="./css/layout/footer.css" />
 
     <!-- =====================================================
-        BASE / COMPONENTES GERAIS
+         COMPONENTES GERAIS
     ====================================================== -->
+
     <link rel="stylesheet" href="./css/base/netflix-sections.css" />
     <link rel="stylesheet" href="./css/base/accessibility.css" />
     <link rel="stylesheet" href="./css/base/style.css" />
 
     <!-- =====================================================
-        HOME
+         HOME
     ====================================================== -->
+
     <link rel="stylesheet" href="./css/pages/home/hero.css" />
     <link rel="stylesheet" href="./css/pages/home/about-bestiario.css" />
     <link rel="stylesheet" href="./css/pages/home/about-mythology.css" />
@@ -58,13 +118,17 @@
     <link rel="stylesheet" href="./css/pages/home/relics.css" />
 
     <!-- =====================================================
-        AJUSTES FINAIS DA HOME
+         AJUSTES ESPECÍFICOS DA HOME
     ====================================================== -->
+
     <link rel="stylesheet" href="./css/overrides/home-adjustments.css" />
 
     <!-- =====================================================
-        RESPONSIVIDADE GLOBAL
+         RESPONSIVIDADE GLOBAL
+         Deve permanecer por último para sobrescrever estilos
+         quando necessário.
     ====================================================== -->
+
     <link rel="stylesheet" href="./css/global/responsive.css" />
 
 </head>
@@ -97,11 +161,11 @@
             <!-- Menu principal -->
             <nav class="menu" id="menu-principal" aria-label="Menu principal">
                 <a href="./index.html#home" class="active" aria-current="page">Home</a>
-                <a href="./mitologias.html">Mitologias</a>
+                <a href="./mythology.html">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
-                <a href="./lendas.html">Lendas</a>
-                <a href="./simbolos.html">Símbolos</a>
-                <a href="./index.html#reliquias">Relíquias</a>
+                <a href="./legends.html">Lendas</a>
+                <a href="./symbols.html">Símbolos</a>
+                <a href="./relics.html">Relíquias</a>
             </nav>
 
         </div>
@@ -589,11 +653,11 @@
             <!-- Navegação rápida -->
             <nav class="footer-nav" aria-label="Navegação do rodapé">
                 <a href="./index.html#home">Home</a>
-                <a href="./mitologias.html">Mitologias</a>
+                <a href="./mythology.html">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
-                <a href="./lendas.html">Lendas</a>
-                <a href="./simbolos.html">Símbolos</a>
-                <a href="./index.html#reliquias">Relíquias</a>
+                <a href="./legends.html">Lendas</a>
+                <a href="./symbols.html">Símbolos</a>
+                <a href="./relics.html">Relíquias</a>
             </nav>
 
             <!-- Direitos -->

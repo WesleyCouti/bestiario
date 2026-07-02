@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- CONFIGURAÇÕES BÁSICAS -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Relíquias do Mundo Antigo | Bestiário</title>
+    <meta name="description"
+        content="Explore relíquias lendárias, artefatos sagrados, armas míticas e objetos ancestrais ligados a mitologias, religiões e civilizações do mundo." />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#010706" />
+
+    <!-- SEO / COMPARTILHAMENTO
+         Ative as tags abaixo quando o projeto tiver um domínio publicado.
+
+    <link rel="canonical" href="https://seu-dominio.com/relics.html" />
+
+    <meta property="og:title" content="Relíquias do Mundo Antigo | Bestiário" />
+    <meta property="og:description"
+        content="Explore relíquias lendárias, artefatos sagrados, armas míticas e objetos ancestrais ligados a mitologias, religiões e civilizações do mundo." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://seu-dominio.com/relics.html" />
+    <meta property="og:image" content="https://seu-dominio.com/assets/images/relics/relics-hero.png" />
+    <meta property="og:image:alt" content="Relíquia antiga iluminada por luz dourada em um templo ancestral" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Relíquias do Mundo Antigo | Bestiário" />
+    <meta name="twitter:description"
+        content="Explore relíquias lendárias, artefatos sagrados, armas míticas e objetos ancestrais ligados a mitologias, religiões e civilizações do mundo." />
+    <meta name="twitter:image" content="https://seu-dominio.com/assets/images/relics/relics-hero.png" />
+    -->
+
+    <link rel="icon" href="./assets/images/favicon.png" type="image/png" />
+
+    <!-- CSS GLOBAL -->
+    <link rel="stylesheet" href="./css/global/reset.css" />
+    <link rel="stylesheet" href="./css/global/variables.css" />
+    <link rel="stylesheet" href="./css/global/base.css" />
+    <link rel="stylesheet" href="./css/global/responsive.css" />
+
+    <!-- CSS DE LAYOUT -->
+    <link rel="stylesheet" href="./css/layout/menu.css" />
+    <link rel="stylesheet" href="./css/layout/footer.css" />
+
+    <!-- CSS DA PÁGINA -->
+    <link rel="stylesheet" href="./css/pages/relics/relics.css" />
+</head>
+
+<body>
+
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- HEADER / MENU PRINCIPAL -->
+    <header class="topbar">
+        <div class="container topbar-content">
+
+            <a href="./index.html#home" class="logo" aria-label="Voltar para a página inicial do Bestiário">
+                <img src="./assets/images/home/icone-login.png" alt="" class="logo-icon" aria-hidden="true" width="48"
+                    height="48" decoding="async" />
+                <span>Bestiário</span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"
+                aria-controls="menu-principal">
+                ☰
+            </button>
+
+            <nav class="menu" id="menu-principal" aria-label="Menu principal">
+                <a href="./index.html#home">Home</a>
+                <a href="./mythology.html">Mitologias</a>
+                <a href="./religion.html">Religiões</a>
+                <a href="./legends.html">Lendas</a>
+                <a href="./symbols.html">Símbolos</a>
+                <a href="./relics.html" class="active" aria-current="page">Relíquias</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main id="conteudo-principal">
+
+        <!-- =====================================================
+            MAPA DE NAVEGAÇÃO DA PÁGINA
+            Ordem ajustada para uma navegação mais natural:
+            01. Hero / Abertura visual
+            02. O que é uma Relíquia?
+            03. Como uma Relíquia se Torna Lendária?
+            04. Tipos de Relíquias
+            05. Relíquias através das Civilizações
+            06. O Destino das Relíquias
+            07. Verdade ou Lenda?
+
+            Lógica narrativa:
+            Primeiro o usuário entende o conceito, depois acompanha a transformação
+            do objeto em lenda, conhece as categorias, explora o catálogo, descobre
+            os possíveis destinos e finaliza com a dúvida entre fato e mito.
+        ===================================================== -->
+
+        <!-- =====================================================
+                    01. HERO / ABERTURA DA PÁGINA
+                    Função na navegação:
+                    - Apresentar o tema das relíquias.
+                    - Criar impacto visual inicial.
+                    - Levar o usuário para a introdução antes das seções didáticas.
+                ===================================================== -->
+        <section class="relics-hero" aria-labelledby="relics-hero-title">
+            <div class="relics-hero__overlay"></div>
+
+            <div class="relics-hero__content">
+                <span class="relics-hero__eyebrow">Artefatos lendários</span>
+
+                <h1 id="relics-hero-title" class="relics-hero__title">
+                    Relíquias do Mundo Antigo
+                </h1>
+
+                <p class="relics-hero__subtitle">
+                    Objetos lendários que atravessaram civilizações, religiões e mitologias.
+                </p>
+
+                <p class="relics-hero__text">
+                    Espadas sagradas, coroas, manuscritos, joias e artefatos ancestrais
+                    guardam histórias de poder, fé, tradição e mistério. Ao longo dos séculos,
+                    essas peças atravessaram impérios, inspiraram povos e deram origem a lendas
+                    que ainda ecoam no imaginário humano.
+                </p>
+
+                <a href="#relics-intro" class="relics-hero__button">
+                    Iniciar jornada
+                </a>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+                    02. INTRODUÇÃO / O QUE É UMA RELÍQUIA?
+                    Função na navegação:
+                    - Explicar o conceito base antes de mostrar processos, categorias e catálogos.
+                    - Preparar o usuário para entender relíquias históricas, religiosas,
+                      mitológicas e lendárias.
+                ===================================================== -->
+        <section class="relics-about-section" id="relics-intro" aria-labelledby="relics-about-title">
+            <div class="relics-about-container">
+
+                <header class="relics-section-heading">
+                    <span aria-hidden="true"></span>
+
+                    <h2 id="relics-about-title">O que é uma Relíquia?</h2>
+
+                    <span aria-hidden="true"></span>
+
+                    <p>
+                        Entre a história, a fé e a lenda, as relíquias preservam memórias de
+                        povos antigos, crenças sagradas e narrativas que atravessaram gerações.
+                    </p>
+                </header>
+
+                <div class="relics-about-layout">
+
+                    <figure class="relics-about-image">
+                        <img src="./assets/images/relics/relics-about.png"
+                            alt="Antiga relíquia dourada sobre pedra em um templo escuro" width="900" height="1100"
+                            loading="lazy" decoding="async">
+                    </figure>
+
+                    <article class="relics-about-content">
+                        <span class="relics-about-kicker">Memória ancestral</span>
+
+                        <h3>Mais do que um objeto antigo</h3>
+
+                        <p>
+                            Uma relíquia é um objeto que carrega valor especial por estar ligado a
+                            uma tradição, crença, personagem histórico, mito ou acontecimento
+                            marcante. Diferente de um artefato comum, ela não é lembrada apenas por
+                            sua idade ou origem, mas pelo significado simbólico que recebeu ao
+                            longo do tempo.
+                        </p>
+
+                        <p>
+                            Artefatos podem ser ferramentas, armas, adornos ou fragmentos materiais
+                            encontrados por arqueólogos. Já as relíquias são objetos cercados por
+                            devoção, memória, poder ou mistério, muitas vezes preservados como
+                            testemunhos de algo considerado sagrado, lendário ou extraordinário.
+                        </p>
+
+                        <p>
+                            Essas peças podem surgir como objetos sagrados venerados por religiões,
+                            artefatos históricos associados a reis e civilizações, itens
+                            mitológicos descritos em antigas narrativas ou símbolos lendários
+                            ligados à coragem, magia, destino e poder.
+                        </p>
+
+                        <div class="relics-about-divider" aria-hidden="true">
+                            <span></span>
+                            <strong>✦</strong>
+                            <span></span>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+                    03. COMO UMA RELÍQUIA SE TORNA LENDÁRIA?
+                    Função na navegação:
+                    - Explicar a evolução de uma relíquia em etapas.
+                    - Criar uma ponte didática entre conceito, tradição, disputa,
+                      desaparecimento e mito.
+                    - Preparar o usuário para entender por que algumas relíquias são
+                      históricas, outras religiosas, outras perdidas e outras lendárias.
+                ===================================================== -->
+        <section class="relics-legendary-section" id="relics-legendary" aria-labelledby="relics-legendary-title">
+            <div class="relics-legendary-container">
+
+                <!-- Cabeçalho da seção -->
+                <header class="relics-legendary-header">
+                    <div class="relics-legendary-ornament" aria-hidden="true">
+                        <span></span>
+                        <strong>✦</strong>
+                        <span></span>
+                    </div>
+
+                    <span class="relics-legendary-kicker">A jornada do objeto ao mito</span>
+
+                    <h2 id="relics-legendary-title">
+                        Como uma Relíquia se Torna Lendária?
+                    </h2>
+
+                    <p>
+                        Toda relíquia começa como um objeto comum. Com o passar do tempo,
+                        ela ganha significado, é disputada, se perde... e se transforma em lenda.
+                    </p>
+
+                    <div class="relics-legendary-ornament relics-legendary-ornament--bottom" aria-hidden="true">
+                        <span></span>
+                        <strong>✦</strong>
+                        <span></span>
+                    </div>
+                </header>
+
+                <!-- Linha narrativa das etapas -->
+                <div class="relics-legendary-timeline" aria-label="Etapas que transformam uma relíquia em lenda">
+
+                    <!-- Etapa 01 -->
+                    <article class="relics-legendary-card">
+                        <span class="relics-legendary-number" aria-hidden="true">1</span>
+
+                        <figure class="relics-legendary-image">
+                            <img src="./assets/images/relics/legendary/object-real.png"
+                                alt="Objeto antigo sobre pedra representando o início de uma relíquia" width="520"
+                                height="420" loading="lazy" decoding="async">
+                        </figure>
+
+                        <div class="relics-legendary-content">
+                            <h3>Objeto Real</h3>
+                            <p>
+                                Tudo começa com um objeto real, criado para um propósito prático,
+                                ritual, religioso ou cerimonial.
+                            </p>
+                        </div>
+                    </article>
+
+                    <span class="relics-legendary-arrow" aria-hidden="true">➜</span>
+
+                    <!-- Etapa 02 -->
+                    <article class="relics-legendary-card">
+                        <span class="relics-legendary-number" aria-hidden="true">2</span>
+
+                        <figure class="relics-legendary-image">
+                            <img src="./assets/images/relics/legendary/tradition.png"
+                                alt="Cena antiga representando tradição e transmissão de significado" width="520"
+                                height="420" loading="lazy" decoding="async">
+                        </figure>
+
+                        <div class="relics-legendary-content">
+                            <h3>Tradição</h3>
+                            <p>
+                                O objeto passa a ter significado espiritual, cultural ou simbólico
+                                para um povo, religião ou civilização.
+                            </p>
+                        </div>
+                    </article>
+
+                    <span class="relics-legendary-arrow" aria-hidden="true">➜</span>
+
+                    <!-- Etapa 03 -->
+                    <article class="relics-legendary-card">
+                        <span class="relics-legendary-number" aria-hidden="true">3</span>
+
+                        <figure class="relics-legendary-image">
+                            <img src="./assets/images/relics/legendary/dispute.png"
+                                alt="Guerreiros disputando uma relíquia antiga" width="520" height="420" loading="lazy"
+                                decoding="async">
+                        </figure>
+
+                        <div class="relics-legendary-content">
+                            <h3>Disputa</h3>
+                            <p>
+                                Religiões, impérios e governantes passam a disputar o poder,
+                                o controle ou a posse da relíquia.
+                            </p>
+                        </div>
+                    </article>
+
+                    <span class="relics-legendary-arrow" aria-hidden="true">➜</span>
+
+                    <!-- Etapa 04 -->
+                    <article class="relics-legendary-card">
+                        <span class="relics-legendary-number" aria-hidden="true">4</span>
+
+                        <figure class="relics-legendary-image">
+                            <img src="./assets/images/relics/legendary/disappearance.png"
+                                alt="Ruínas antigas em meio à névoa representando o desaparecimento de uma relíquia"
+                                width="520" height="420" loading="lazy" decoding="async">
+                        </figure>
+
+                        <div class="relics-legendary-content">
+                            <h3>Desaparecimento</h3>
+                            <p>
+                                Guerras, saques, incêndios ou desastres fazem a relíquia desaparecer
+                                sem deixar rastros claros.
+                            </p>
+                        </div>
+                    </article>
+
+                    <span class="relics-legendary-arrow" aria-hidden="true">➜</span>
+
+                    <!-- Etapa 05 -->
+                    <article class="relics-legendary-card">
+                        <span class="relics-legendary-number" aria-hidden="true">5</span>
+
+                        <figure class="relics-legendary-image">
+                            <img src="./assets/images/relics/legendary/myth.png"
+                                alt="Livro antigo aberto representando o nascimento de uma lenda" width="520"
+                                height="420" loading="lazy" decoding="async">
+                        </figure>
+
+                        <div class="relics-legendary-content">
+                            <h3>Mito</h3>
+                            <p>
+                                Sem provas ou registros definitivos, a relíquia se transforma em lenda,
+                                inspirando histórias por gerações.
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Frase final -->
+                <footer class="relics-legendary-footer">
+                    <span aria-hidden="true">✦</span>
+                    <p>
+                        “Entre a história e o mito, as relíquias continuam a despertar
+                        a imaginação humana.”
+                    </p>
+                    <span aria-hidden="true">✦</span>
+                </footer>
+
+            </div>
+        </section>
+
+        <!-- =====================================================
+                    04. TIPOS DE RELÍQUIAS
+                    Função na navegação:
+                    - Depois de entender o conceito e a transformação de uma relíquia,
+                      o usuário passa a conhecer as principais categorias.
+                    - Ajuda a organizar mentalmente armas, coroas, manuscritos,
+                      joias, artefatos e objetos cerimoniais.
+                ===================================================== -->
+        <section class="relics-types-section" id="relics-types" aria-labelledby="relics-types-title">
+            <div class="relics-types-container">
+
+                <header class="relics-types-heading">
+                    <span class="relics-types-kicker">Memória Ancestral</span>
+
+                    <h2 id="relics-types-title">Tipos de Relíquias</h2>
+
+                    <div class="relics-types-ornament" aria-hidden="true">
+                        <span></span>
+                        <strong>✧</strong>
+                        <span></span>
+                    </div>
+
+                    <p>
+                        Das armas lendárias aos manuscritos sagrados, cada tipo de relíquia
+                        carrega uma função simbólica: proteger, coroar, revelar, curar,
+                        consagrar ou guardar mistérios antigos.
+                    </p>
+                </header>
+
+                <div class="relics-types-grid" aria-label="Categorias de relíquias">
+
+                    <article class="relics-type-card">
+                        <div class="relics-type-card__visual relics-type-card__visual--weapons">
+                            <img src="./assets/images/relics/types/weapons.png" alt="Armas Sagradas" width="520"
+                                height="520" loading="lazy" decoding="async">
+                        </div>
+
+                        <div class="relics-type-card__icon" aria-hidden="true">
+                            <img src="./assets/images/relics/icons/weapons.png" alt="" width="48" height="48"
+                                loading="lazy" decoding="async">
+                        </div>
+
+                        <div class="relics-type-card__content">
+                            <h3>Armas Sagradas</h3>
+                            <div class="relics-type-card__line" aria-hidden="true"></div>
+
+                            <ul>
+                                <li>Excalibur</li>
+                                <li>Mjölnir</li>
+                                <li>Lança de Longinus</li>
+                                <li>Durandal</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="relics-type-card">
+                        <div class="relics-type-card__visual relics-type-card__visual--crowns">
+                            <img src="./assets/images/relics/types/crowns.png" alt="Coroas e Insígnias" width="520"
+                                height="520" loading="lazy" decoding="async">
+                        </div>
+
+                        <div class="relics-type-card__icon" aria-hidden="true">
+                            <img src="./assets/images/relics/icons/crowns.png" alt="" width="48" height="48"
+                                loading="lazy" decoding="async">
+                        </div>
+
+                        <div class="relics-type-card__content">
+                            <h3>Coroas e Insígnias</h3>
+                            <div class="relics-type-card__line" aria-hidden="true"></div>
+
+                            <ul>
+                                <li>Coroa de Espinhos</li>
+                                <li>Coroa Imperial</li>
+                                <li>Coroa de Santo Estêvão</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="relics-type-card">
+                        <div class="relics-type-card__visual relics-type-card__visual--scrolls">
+                            <img src="./assets/images/relics/types/manuscripts.png" alt="Manuscritos" width="520"
+                                height="520" loading="lazy" decoding="async">
+                        </div>
+
+                        <div class="relics-type-card__icon" aria-hidden="true">
+                            <img src="./assets/images/relics/icons/manuscripts.png" alt="" width="48" height="48"
+                                loading="lazy" decoding="async">
+                        </div>
+
+                        <div class="relics-type-card__content">
+                            <h3>Manuscritos</h3>
+                            <div class="relics-type-card__line" aria-hidden="true"></div>
+
+                            <ul>
+                                <li>Manuscritos do Mar Morto</li>
+                                <li>Livro de Thoth</li>
+                                <li>Livro dos Mortos</li>
+                                <li>Codex Gigas</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="relics-type-card">
+                        <div class="relics-type-card__visual relics-type-card__visual--jewels">
+                            <img src="./assets/images/relics/types/jewels.png" alt="Joias e Tesouros" width="520"
+                                height="520" loading="lazy" decoding="async">
+                        </div>
+
+                        <div class="relics-type-card__icon" aria-hidden="true">
+                            <img src="./assets/images/relics/icons/jewels.png" alt="" width="48" height="48"
+                                loading="lazy" decoding="async">
+                        </div>
+
+                        <div class="relics-type-card__content">
+                            <h3>Joias e Tesouros</h3>
+                            <div class="relics-type-card__line" aria-hidden="true"></div>
+
+                            <ul>
+                                <li>Santo Graal</li>
+                                <li>Pedra Filosofal</li>
+                                <li>Koh-i-Noor</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="relics-type-card">
+                        <div class="relics-type-card__visual relics-type-card__visual--artifacts">
+                            <img src="./assets/images/relics/types/artifacts.png" alt="Artefatos" width="520"
+                                height="520" loading="lazy" decoding="async">
+                        </div>
+
+                        <div class="relics-type-card__icon" aria-hidden="true">
+                            <img src="./assets/images/relics/icons/artifacts.png" alt="" width="48" height="48"
+                                loading="lazy" decoding="async">
+                        </div>
+
+                        <div class="relics-type-card__content">
+                            <h3>Artefatos</h3>
+                            <div class="relics-type-card__line" aria-hidden="true"></div>
+
+                            <ul>
+                                <li>Arca da Aliança</li>
+                                <li>Arca de Noé</li>
+                                <li>Disco de Nebra</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="relics-type-card">
+                        <div class="relics-type-card__visual relics-type-card__visual--ceremonial">
+                            <img src="./assets/images/relics/types/ceremonial.png" alt="Objetos Cerimoniais" width="520"
+                                height="520" loading="lazy" decoding="async">
+                        </div>
+
+                        <div class="relics-type-card__icon" aria-hidden="true">
+                            <img src="./assets/images/relics/icons/ceremonial.png" alt="" width="48" height="48"
+                                loading="lazy" decoding="async">
+                        </div>
+
+                        <div class="relics-type-card__content">
+                            <h3>Objetos Cerimoniais</h3>
+                            <div class="relics-type-card__line" aria-hidden="true"></div>
+
+                            <ul>
+                                <li>Cálice</li>
+                                <li>Báculo</li>
+                                <li>Cetro</li>
+                                <li>Máscaras rituais</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+                    05. RELÍQUIAS ATRAVÉS DAS CIVILIZAÇÕES
+                    Função na navegação:
+                    - Entrar após as categorias, pois agora o usuário já sabe
+                      reconhecer tipos, significados e origens.
+                    - Funciona como o catálogo principal da página, com filtros e paginação.
+                ===================================================== -->
+        <section class="relics-civilizations-section" id="relics-civilizations"
+            aria-labelledby="relics-civilizations-title">
+            <div class="relics-civilizations-container">
+
+                <header class="relics-civilizations-heading">
+                    <h2 id="relics-civilizations-title">
+                        Relíquias através das Civilizações
+                    </h2>
+
+                    <div class="relics-civilizations-ornament" aria-hidden="true">
+                        <span></span>
+                        <strong>✧</strong>
+                        <span></span>
+                    </div>
+
+                    <p>
+                        Explore objetos sagrados, artefatos lendários e símbolos de poder que atravessaram
+                        civilizações, sobreviveram ao tempo e permanecem envoltos em mistério,
+                        devoção e significado.
+                    </p>
+                </header>
+
+                <div class="relics-civilizations-filters" role="group" aria-label="Filtros de relíquias">
+                    <button class="relics-civilizations-filter is-active" type="button" data-filter="all">
+                        <span aria-hidden="true">✦</span>
+                        Todas
+                    </button>
+
+                    <button class="relics-civilizations-filter" type="button" data-filter="mitologias">
+                        <span aria-hidden="true">✧</span>
+                        Mitologias
+                    </button>
+
+                    <button class="relics-civilizations-filter" type="button" data-filter="religioes">
+                        <span aria-hidden="true">✥</span>
+                        Religiões
+                    </button>
+
+                    <button class="relics-civilizations-filter" type="button" data-filter="civilizacoes">
+                        <span aria-hidden="true">◆</span>
+                        Civilizações
+                    </button>
+
+                    <button class="relics-civilizations-filter" type="button" data-filter="historicos">
+                        <span aria-hidden="true">◇</span>
+                        Objetos Históricos
+                    </button>
+
+                    <button class="relics-civilizations-filter" type="button" data-filter="ocultismo">
+                        <span aria-hidden="true">◉</span>
+                        Ocultismo
+                    </button>
+                </div>
+
+                <div class="relics-civilizations-controls" role="group" aria-label="Navegação dos cards de relíquias">
+                    <button class="relics-civilizations-arrow relics-civilizations-arrow--prev"
+                        id="relicsCivilizationsPrev" type="button" aria-label="Voltar cards de relíquias">
+                        <span aria-hidden="true">‹</span>
+                    </button>
+
+                    <p class="relics-civilizations-counter" id="relicsCivilizationsCounter" aria-live="polite">
+                        Página 1 de 1
+                    </p>
+
+                    <button class="relics-civilizations-arrow relics-civilizations-arrow--next"
+                        id="relicsCivilizationsNext" type="button" aria-label="Avançar cards de relíquias">
+                        <span aria-hidden="true">›</span>
+                    </button>
+                </div>
+
+                <div class="relics-civilizations-grid" id="relicsCivilizationsGrid" aria-live="polite"
+                    aria-label="Lista de relíquias através das civilizações">
+                    <p class="relics-civilizations-empty">Carregando relíquias...</p>
+                </div>
+
+                <footer class="relics-civilizations-footer">
+                    <div aria-hidden="true">
+                        <span></span>
+                        <strong>✦</strong>
+                        <span></span>
+                    </div>
+
+                    <p>
+                        Cada relíquia preserva fragmentos de poder, fé e memória,
+                        revelando como povos antigos transformaram objetos em símbolos eternos.
+                    </p>
+                </footer>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+                    06. O DESTINO DAS RELÍQUIAS
+                    Função na navegação:
+                    - Mostrar os possíveis caminhos de uma relíquia após sua descoberta,
+                      preservação, perda ou transformação em mito.
+                    - Reforçar curiosidade antes do encerramento com “Verdade ou Lenda?”.
+                ===================================================== -->
+        <section class="relics-destiny-section" id="relicsDestiny" aria-labelledby="relics-destiny-title">
+            <div class="relics-destiny-container">
+
+                <header class="relics-destiny-header">
+                    <span class="relics-destiny-kicker" aria-hidden="true">✦ O DESTINO DAS ✦</span>
+
+                    <h2 id="relics-destiny-title">Relíquias</h2>
+
+                    <div class="relics-destiny-ornament" aria-hidden="true">
+                        <span></span>
+                        <strong>✧</strong>
+                        <span></span>
+                    </div>
+
+                    <p>
+                        Cada relíquia segue um caminho único. Algumas repousam em grandes museus,
+                        outras permanecem perdidas, ocultas ou talvez nunca tenham existido.
+                    </p>
+                </header>
+
+                <div class="relics-destiny-content" aria-label="Possíveis destinos das relíquias">
+
+                    <div class="relics-destiny-column relics-destiny-column--left">
+
+                        <article class="relic-destiny-card destiny-blue">
+                            <figure class="relic-destiny-image">
+                                <img src="./assets/images/relics/destiny/british-museum.png"
+                                    alt="Museu Britânico em atmosfera cinematográfica" width="520" height="680"
+                                    loading="lazy" decoding="async">
+                            </figure>
+
+                            <div class="relic-destiny-info">
+                                <span class="relic-destiny-icon" aria-hidden="true">🏛️</span>
+                                <h3>Museu Britânico</h3>
+                                <p>
+                                    Guardião de milhares de relíquias antigas, incluindo artefatos
+                                    egípcios, gregos e mesopotâmicos.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="relic-destiny-card destiny-gold">
+                            <figure class="relic-destiny-image">
+                                <img src="./assets/images/relics/destiny/vatican.png"
+                                    alt="Vaticano em luz dourada cinematográfica" width="520" height="680"
+                                    loading="lazy" decoding="async">
+                            </figure>
+
+                            <div class="relic-destiny-info">
+                                <span class="relic-destiny-icon" aria-hidden="true">✝</span>
+                                <h3>Vaticano</h3>
+                                <p>
+                                    Lar de relíquias sagradas do cristianismo, preservadas com
+                                    reverência há séculos.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="relic-destiny-card destiny-purple">
+                            <figure class="relic-destiny-image">
+                                <img src="./assets/images/relics/destiny/louvre.png"
+                                    alt="Museu do Louvre em atmosfera histórica" width="520" height="680" loading="lazy"
+                                    decoding="async">
+                            </figure>
+
+                            <div class="relic-destiny-info">
+                                <span class="relic-destiny-icon" aria-hidden="true">△</span>
+                                <h3>Louvre</h3>
+                                <p>
+                                    Um dos maiores museus do mundo, abriga obras, símbolos e objetos
+                                    históricos de valor incalculável.
+                                </p>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <div class="relics-destiny-center" aria-hidden="true">
+                        <div class="relics-destiny-orb">
+                            <img src="./assets/images/relics/destiny/ancient-world-map.png" alt="" width="720"
+                                height="720" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+
+                    <div class="relics-destiny-column relics-destiny-column--right">
+
+                        <article class="relic-destiny-card destiny-orange">
+                            <figure class="relic-destiny-image">
+                                <img src="./assets/images/relics/destiny/cairo-museum.png"
+                                    alt="Museu do Cairo em atmosfera cinematográfica" width="520" height="680"
+                                    loading="lazy" decoding="async">
+                            </figure>
+
+                            <div class="relic-destiny-info">
+                                <span class="relic-destiny-icon" aria-hidden="true">𓂀</span>
+                                <h3>Museu do Cairo</h3>
+                                <p>
+                                    Protege tesouros do Egito Antigo, incluindo múmias, sarcófagos
+                                    e objetos de antigos faraós.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="relic-destiny-card destiny-green">
+                            <figure class="relic-destiny-image">
+                                <img src="./assets/images/relics/destiny/lost-relic.png"
+                                    alt="Pedestal vazio representando uma relíquia desaparecida" width="520"
+                                    height="680" loading="lazy" decoding="async">
+                            </figure>
+
+                            <div class="relic-destiny-info">
+                                <span class="relic-destiny-icon" aria-hidden="true">?</span>
+                                <h3>Desaparecida</h3>
+                                <p>
+                                    Relíquias que já foram registradas, mas sumiram sem deixar rastros.
+                                    Seu paradeiro continua sendo um mistério.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="relic-destiny-card destiny-cyan">
+                            <figure class="relic-destiny-image">
+                                <img src="./assets/images/relics/destiny/unknown-place.png"
+                                    alt="Local misterioso e desconhecido entre ruínas antigas" width="520" height="680"
+                                    loading="lazy" decoding="async">
+                            </figure>
+
+                            <div class="relic-destiny-info">
+                                <span class="relic-destiny-icon" aria-hidden="true">⌖</span>
+                                <h3>Local desconhecido</h3>
+                                <p>
+                                    Objetos que podem estar escondidos em algum lugar do mundo,
+                                    aguardando para serem encontrados.
+                                </p>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </div>
+
+                <article class="relic-destiny-card relic-destiny-never destiny-red">
+                    <figure class="relic-destiny-image">
+                        <img src="./assets/images/relics/destiny/never-existed.png"
+                            alt="Relíquia imaginária brilhando em um templo escuro" width="520" height="680"
+                            loading="lazy" decoding="async">
+                    </figure>
+
+                    <div class="relic-destiny-info">
+                        <span class="relic-destiny-icon" aria-hidden="true">✕</span>
+                        <h3>Nunca existiu</h3>
+                        <p>
+                            Algumas relíquias podem ter sido apenas criações da imaginação,
+                            lendas transmitidas por gerações.
+                        </p>
+                    </div>
+                </article>
+
+                <footer class="relics-destiny-footer">
+                    <p>
+                        “Algumas relíquias são encontradas. Outras, esquecidas.
+                        E há aquelas que talvez nunca tenham existido.”
+                    </p>
+                </footer>
+
+            </div>
+        </section>
+
+
+
+
+        <!-- =====================================================
+                    07. VERDADE OU LENDA?
+                    Função na navegação:
+                    - Encerrar a jornada com dúvida, mistério e reflexão.
+                    - Manter o usuário engajado depois do catálogo principal,
+                      comparando existência histórica, tradição e lenda.
+                ===================================================== -->
+        <section class="relics-truth-section" id="relics-truth" aria-labelledby="relics-truth-title">
+            <div class="relics-truth-container">
+
+                <header class="relics-truth-heading">
+                    <h2 id="relics-truth-title">Verdade ou Lenda?</h2>
+
+                    <div class="relics-truth-ornament" aria-hidden="true">
+                        <span></span>
+                        <strong>✧</strong>
+                        <span></span>
+                    </div>
+
+                    <p>
+                        Ao longo da história, muitos objetos despertaram fé, disputa e fascínio.
+                        Alguns foram encontrados, outros permanecem perdidos, e muitos vivem
+                        entre o fato histórico, a tradição religiosa e a lenda.
+                    </p>
+                </header>
+
+                <div class="relics-truth-controls" role="group" aria-label="Navegação dos cards de Verdade ou Lenda">
+                    <button class="relics-truth-arrow relics-truth-arrow--prev" id="relicsTruthPrev" type="button"
+                        aria-label="Voltar cards de Verdade ou Lenda">
+                        <span aria-hidden="true">‹</span>
+                    </button>
+
+                    <p class="relics-truth-counter" id="relicsTruthCounter" aria-live="polite">
+                        Página 1 de 1
+                    </p>
+
+                    <button class="relics-truth-arrow relics-truth-arrow--next" id="relicsTruthNext" type="button"
+                        aria-label="Avançar cards de Verdade ou Lenda">
+                        <span aria-hidden="true">›</span>
+                    </button>
+                </div>
+
+                <div class="relics-truth-grid" id="relicsTruthGrid" aria-live="polite"
+                    aria-label="Lista de cards sobre verdade ou lenda">
+                    <p class="relics-truth-empty">Carregando comparações...</p>
+                </div>
+
+                <footer class="relics-truth-footer">
+                    <div aria-hidden="true">
+                        <span></span>
+                        <strong>✦</strong>
+                        <span></span>
+                    </div>
+
+                    <p>
+                        Entre fatos e lendas, essas relíquias continuam a inspirar gerações
+                        e alimentar mistérios.
+                    </p>
+                </footer>
+
+            </div>
+        </section>
+
+
+
+    </main>
+
+    <!-- FOOTER / RODAPÉ -->
+    <footer class="footer">
+        <div class="container footer-content">
+
+            <div class="footer-brand">
+                <a href="./index.html#home" class="footer-logo" aria-label="Voltar para a página inicial do Bestiário">
+                    <img src="./assets/images/home/icone-login.png" alt="" aria-hidden="true" width="48" height="48"
+                        loading="lazy" decoding="async" />
+                    <span>Bestiário</span>
+                </a>
+
+                <p>
+                    Uma biblioteca digital dedicada às mitologias, religiões,
+                    lendas, criaturas, símbolos e relíquias do mundo antigo.
+                </p>
+            </div>
+
+            <nav class="footer-nav" aria-label="Navegação do rodapé">
+                <a href="./index.html#home">Home</a>
+                <a href="./mythology.html">Mitologias</a>
+                <a href="./religion.html">Religiões</a>
+                <a href="./legends.html">Lendas</a>
+                <a href="./symbols.html">Símbolos</a>
+                <a href="./relics.html" aria-current="page">Relíquias</a>
+            </nav>
+
+            <p class="footer-copy">
+                © 2026 Bestiário. Todos os direitos reservados.
+            </p>
+
+        </div>
+    </footer>
+
+    <!-- SCRIPTS DA PÁGINA -->
+    <script src="./js/relics/relics-civilizations-data.js" defer></script>
+    <script src="./js/relics/relics-truth-data.js" defer></script>
+    <script src="./js/relics/relics.js" defer></script>
+    <script src="./js/main.js" defer></script>
+
+</body>
+
+</html>

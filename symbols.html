@@ -2,63 +2,111 @@
 <html lang="pt-BR">
 
 <head>
+
     <!-- =====================================================
-         CONFIGURAÇÕES BÁSICAS DA PÁGINA
-         Define idioma, codificação, responsividade e SEO básico.
+         METADADOS BÁSICOS
+         Configurações essenciais da página
     ====================================================== -->
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Símbolos do Mundo Antigo | Bestiário</title>
+    <title>Símbolos | Bestiário - Símbolos Antigos, Sagrados e Seus Significados</title>
+
     <meta name="description"
-        content="Explore símbolos antigos, seus significados, origens e usos em diferentes civilizações, religiões e tradições do mundo." />
+        content="Explore símbolos antigos, religiosos, mitológicos e culturais. Descubra suas origens, significados, interpretações e importância nas civilizações do mundo." />
+
+    <meta name="keywords"
+        content="símbolos, símbolos antigos, símbolos religiosos, símbolos mitológicos, olho de hórus, ankh, yin yang, triquetra, pentagrama, árvore da vida, vegvísir, bestiário" />
+
+    <meta name="author" content="Wesley Coutinho" />
     <meta name="robots" content="index, follow" />
+
     <meta name="theme-color" content="#010706" />
-
-    <!--
-        SEO / COMPARTILHAMENTO
-        Observação: troque "https://seu-dominio.com" pelo domínio real do projeto quando publicar.
-    -->
-    <link rel="canonical" href="https://seu-dominio.com/simbolos.html" />
-
-    <meta property="og:title" content="Símbolos do Mundo Antigo | Bestiário" />
-    <meta property="og:description"
-        content="Explore símbolos antigos, seus significados, origens e usos em diferentes civilizações, religiões e tradições do mundo." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://seu-dominio.com/simbolos.html" />
-    <meta property="og:image" content="https://seu-dominio.com/assets/images/symbols/o-que-sao-simbolos.png" />
-    <meta property="og:image:alt" content="Símbolo Ankh gravado em uma parede antiga" />
-    <meta property="og:locale" content="pt_BR" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Símbolos do Mundo Antigo | Bestiário" />
-    <meta name="twitter:description"
-        content="Explore símbolos antigos, seus significados, origens e usos em diferentes civilizações, religiões e tradições do mundo." />
-    <meta name="twitter:image" content="https://seu-dominio.com/assets/images/symbols/o-que-sao-simbolos.png" />
-
-    <link rel="icon" href="./assets/images/home/icone-login.png" type="image/png" />
+    <meta name="color-scheme" content="dark" />
 
     <!-- =====================================================
-         CSS GLOBAL
-         Arquivos compartilhados entre as páginas do projeto.
+         SEO / OPEN GRAPH
+         Substitua as URLs quando o domínio estiver publicado.
     ====================================================== -->
+
+    <link rel="canonical" href="https://seu-dominio.com/symbols.html" />
+
+    <meta property="og:site_name" content="Bestiário" />
+
+    <meta property="og:title" content="Símbolos | Bestiário - Símbolos Antigos, Sagrados e Seus Significados" />
+
+    <meta property="og:description"
+        content="Descubra símbolos ancestrais utilizados por diferentes civilizações, religiões e tradições, compreendendo seus significados e sua importância histórica." />
+
+    <meta property="og:type" content="website" />
+
+    <meta property="og:url" content="https://seu-dominio.com/symbols.html" />
+
+    <meta property="og:image" content="https://seu-dominio.com/assets/images/preview-symbols.png" />
+
+    <meta property="og:image:alt"
+        content="Página de Símbolos do Bestiário apresentando símbolos antigos de diversas culturas." />
+
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- =====================================================
+         TWITTER / X
+    ====================================================== -->
+
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="twitter:title" content="Símbolos | Bestiário - Símbolos Antigos, Sagrados e Seus Significados" />
+
+    <meta name="twitter:description"
+        content="Conheça símbolos antigos, religiosos e mitológicos utilizados ao longo da história por diferentes povos e civilizações." />
+
+    <meta name="twitter:image" content="https://seu-dominio.com/assets/images/preview-symbols.png" />
+
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon.png" />
+
+    <link rel="apple-touch-icon" href="./assets/images/favicon.png" />
+
+    <!-- =====================================================
+         GOOGLE FONTS
+         (Adicionar apenas se utilizar Google Fonts)
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- =====================================================
+         ESTILOS GLOBAIS
+    ====================================================== -->
+
     <link rel="stylesheet" href="./css/global/reset.css" />
     <link rel="stylesheet" href="./css/global/variables.css" />
     <link rel="stylesheet" href="./css/global/base.css" />
-    <link rel="stylesheet" href="./css/global/responsive.css" />
 
     <!-- =====================================================
-         CSS DE LAYOUT
-         Menu principal e rodapé compartilhados no site.
+         LAYOUT
     ====================================================== -->
+
     <link rel="stylesheet" href="./css/layout/menu.css" />
     <link rel="stylesheet" href="./css/layout/footer.css" />
 
     <!-- =====================================================
-         CSS DA PÁGINA DE SÍMBOLOS
-         Controla as seções específicas desta página.
+         RESPONSIVIDADE GLOBAL
+         Deve permanecer por último entre os estilos globais.
     ====================================================== -->
+
+    <link rel="stylesheet" href="./css/global/responsive.css" />
+
+    <!-- =====================================================
+         SÍMBOLOS
+    ====================================================== -->
+
     <link rel="stylesheet" href="./css/pages/symbols/symbols.css" />
+
 </head>
 
 <body>
@@ -85,11 +133,11 @@
 
             <nav class="menu" id="menu-principal" aria-label="Menu principal">
                 <a href="./index.html#home">Home</a>
-                <a href="./mitologias.html">Mitologias</a>
+                <a href="./mythology.html">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
-                <a href="./lendas.html">Lendas</a>
-                <a href="./simbolos.html" class="active" aria-current="page">Símbolos</a>
-                <a href="./index.html#reliquias">Relíquias</a>
+                <a href="./legends.html">Lendas</a>
+                <a href="./symbols.html" class="active" aria-current="page">Símbolos</a>
+                <a href="./relics.html">Relíquias</a>
             </nav>
 
         </div>
@@ -320,8 +368,7 @@
 
                         <input type="search" id="symbolsCivilizationsSearch"
                             placeholder="Ex.: Ankh, Om, Nórdica, Alquimia..." autocomplete="off"
-                            aria-label="Buscar símbolo, civilização ou categoria"
-                            aria-describedby="symbolsSearchHint">
+                            aria-label="Buscar símbolo, civilização ou categoria" aria-describedby="symbolsSearchHint">
 
                         <small id="symbolsSearchHint" class="sr-only">
                             Digite o nome de um símbolo, civilização ou categoria para filtrar os resultados.
@@ -446,11 +493,11 @@
 
             <nav class="footer-nav" aria-label="Navegação do rodapé">
                 <a href="./index.html#home">Home</a>
-                <a href="./mitologias.html">Mitologias</a>
+                <a href="./mythology.html">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
-                <a href="./lendas.html">Lendas</a>
-                <a href="./simbolos.html" aria-current="page">Símbolos</a>
-                <a href="./index.html#reliquias">Relíquias</a>
+                <a href="./legends.html">Lendas</a>
+                <a href="./symbols.html">Símbolos</a>
+                <a href="./relics.html">Relíquias</a>
             </nav>
 
             <p class="footer-copy">
