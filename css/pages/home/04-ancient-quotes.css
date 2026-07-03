@@ -1,0 +1,617 @@
+/* =====================================================
+   04. VOZES DO MUNDO ANTIGO
+===================================================== */
+
+.ancient-knowledge {
+    position: relative;
+    z-index: 2;
+    padding: 90px 0 105px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 14%, rgba(129, 199, 132, 0.10), transparent 34%),
+        radial-gradient(circle at 50% 55%, rgba(201, 162, 74, 0.07), transparent 42%),
+        linear-gradient(180deg, #03110a 0%, #020806 100%);
+}
+
+.ancient-knowledge::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.025), transparent 35%);
+    pointer-events: none;
+}
+
+.ancient-knowledge-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.ancient-knowledge .section-tag {
+    display: inline-block;
+    color: #74d873;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+}
+
+.ancient-knowledge .section-tag::after {
+    content: "";
+    width: 150px;
+    height: 1px;
+    display: block;
+    margin: 14px auto 0;
+    background: linear-gradient(90deg, transparent, rgba(116, 216, 115, 0.7), transparent);
+}
+
+.ancient-knowledge h2 {
+    max-width: 1050px;
+    margin: 16px auto 0;
+    color: var(--home-text-cream);
+    font-family: var(--home-font-serif);
+    font-size: clamp(3.2rem, 5.5vw, 5rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -2px;
+    text-shadow: 0 0 24px rgba(201, 162, 74, 0.14);
+}
+
+.ancient-title-divider {
+    position: relative;
+    width: min(330px, 100%);
+    height: 1px;
+    margin: 24px auto 24px;
+    background: linear-gradient(90deg, transparent, rgba(201, 162, 74, 0.75), transparent);
+}
+
+.ancient-title-divider::before {
+    content: "✦";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: var(--home-gold-soft);
+    font-size: 1rem;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 14px rgba(201, 162, 74, 0.28);
+}
+
+.ancient-intro,
+.ancient-origin-note {
+    max-width: 920px;
+    margin: 0 auto;
+    color: rgba(238, 232, 210, 0.84);
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+.ancient-origin-note {
+    max-width: 980px;
+    margin-top: 28px;
+}
+
+.quotes-carousel-wrapper {
+    position: relative;
+    max-width: 1180px;
+    margin: 38px auto 0;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.quotes-carousel {
+    width: 100%;
+    overflow: hidden;
+    padding: 6px 4px 14px;
+}
+
+.ancient-quotes {
+    display: flex;
+    gap: 24px;
+    scroll-behavior: smooth;
+}
+
+.carousel-button {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 162, 74, 0.44);
+    background: rgba(3, 14, 9, 0.9);
+    color: var(--home-gold-soft);
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 0 18px rgba(201, 162, 74, 0.08);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-button:hover {
+    transform: translateY(-3px);
+    border-color: rgba(241, 215, 138, 0.72);
+    box-shadow: 0 0 24px rgba(201, 162, 74, 0.14);
+}
+
+.quote-card {
+    position: relative;
+    flex: 0 0 calc((100% - 48px) / 3);
+    min-height: 350px;
+    padding: 24px 24px 26px;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid rgba(201, 162, 74, 0.38);
+    background:
+        radial-gradient(circle at 50% 8%, rgba(129, 199, 132, 0.12), transparent 36%),
+        linear-gradient(180deg, rgba(16, 48, 31, 0.82), rgba(3, 14, 9, 0.96));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow:
+        inset 0 0 22px rgba(255, 255, 255, 0.022),
+        0 18px 46px rgba(0, 0, 0, 0.30);
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.quote-card::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(201, 162, 74, 0.12);
+    border-radius: 15px;
+    pointer-events: none;
+}
+
+.quote-card::after {
+    content: "“";
+    position: absolute;
+    top: 132px;
+    left: 24px;
+    color: rgba(201, 162, 74, 0.48);
+    font-family: var(--home-font-serif);
+    font-size: 2.35rem;
+    line-height: 1;
+}
+
+.quote-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(241, 215, 138, 0.52);
+    box-shadow:
+        0 0 22px rgba(201, 162, 74, 0.09),
+        0 22px 54px rgba(0, 0, 0, 0.38);
+}
+
+.quote-symbol {
+    position: relative;
+    z-index: 2;
+    width: 76px;
+    height: 76px;
+    margin-bottom: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    color: var(--quote-color, var(--home-gold-soft));
+    background: rgba(3, 14, 9, 0.92);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.02),
+        0 0 0 7px color-mix(in srgb, currentColor 7%, transparent),
+        0 0 12px color-mix(in srgb, currentColor 22%, transparent);
+}
+
+.quote-symbol::before {
+    content: "✦";
+    font-size: 1.65rem;
+}
+
+.quote-symbol::after {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    border: 1px dotted color-mix(in srgb, currentColor 22%, transparent);
+    opacity: 0.45;
+}
+
+.quote-text {
+    position: relative;
+    z-index: 2;
+    max-width: 260px;
+    margin: 0 auto;
+    color: var(--home-text-cream);
+    font-family: var(--home-font-serif);
+    font-size: 1.22rem;
+    font-style: italic;
+    line-height: 1.48;
+    text-align: center;
+}
+
+.quote-author {
+    position: relative;
+    z-index: 2;
+    margin-top: auto;
+    color: var(--quote-color, var(--home-gold-soft));
+    font-family: var(--home-font-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.quote-author::before {
+    content: "";
+    display: block;
+    width: 115px;
+    height: 1px;
+    margin: 0 auto 15px;
+    background: linear-gradient(90deg, transparent, currentColor, transparent);
+}
+
+.quote-author::after {
+    content: "✦";
+    position: absolute;
+    top: -21px;
+    left: 50%;
+    font-size: 0.65rem;
+    transform: translateX(-50%);
+}
+
+/* =====================================================
+   CORES E SÍMBOLOS
+===================================================== */
+
+.quote-card.christian,
+.quote-card.biblical {
+    --quote-color: #e8eaf6;
+}
+
+.quote-card.greek {
+    --quote-color: #ffd36a;
+}
+
+.quote-card.roman {
+    --quote-color: #ffca63;
+}
+
+.quote-card.gaelic,
+.quote-card.celtic,
+.quote-card.druid {
+    --quote-color: #22bfb2;
+}
+
+.quote-card.nordic,
+.quote-card.scandinavian {
+    --quote-color: #8fc9ff;
+}
+
+.quote-card.egyptian {
+    --quote-color: #d4af37;
+}
+
+.quote-card.yoruba,
+.quote-card.african {
+    --quote-color: #ff9800;
+}
+
+.quote-card.japanese {
+    --quote-color: #ec407a;
+}
+
+.quote-card.chinese {
+    --quote-color: #42a5f5;
+}
+
+.quote-card.hindu,
+.quote-card.indian {
+    --quote-color: #ff7043;
+}
+
+.quote-card.mesopotamian {
+    --quote-color: #caa472;
+}
+
+.quote-card.persian {
+    --quote-color: #f4b860;
+}
+
+.quote-card.arabic {
+    --quote-color: #7ddc9b;
+}
+
+.quote-card.jewish {
+    --quote-color: #9dbdff;
+}
+
+.quote-card.tibetan {
+    --quote-color: #ffd56b;
+}
+
+.quote-card.maya,
+.quote-card.aztec {
+    --quote-color: #7cc957;
+}
+
+.quote-card.inca {
+    --quote-color: #e7c35d;
+}
+
+.quote-card.tupi,
+.quote-card.brazilian {
+    --quote-color: #55d67f;
+}
+
+.quote-card.irish {
+    --quote-color: #42d7b0;
+}
+
+.quote-card.hawaiian {
+    --quote-color: #56d6ff;
+}
+
+.quote-card.chilean {
+    --quote-color: #7ec9ff;
+}
+
+.quote-card.aboriginal {
+    --quote-color: #ffb86a;
+}
+
+.quote-card.basque {
+    --quote-color: #d7d08c;
+}
+
+.quote-card.maori {
+    --quote-color: #6ad9c2;
+}
+
+.quote-card.buddhist {
+    --quote-color: #ffc857;
+}
+
+.quote-card.caribbean {
+    --quote-color: #47d7d7;
+}
+
+.quote-card.slavic {
+    --quote-color: #d8c27d;
+}
+
+/* =====================================================
+   ÍCONES
+===================================================== */
+
+.quote-card .quote-symbol::before {
+    content: "✦";
+}
+
+/* Cristianismo */
+.quote-card.christian .quote-symbol::before,
+.quote-card.biblical .quote-symbol::before {
+    content: "✝";
+}
+
+/* Grécia */
+.quote-card.greek .quote-symbol::before {
+    content: "⚡";
+}
+
+/* Roma */
+.quote-card.roman .quote-symbol::before {
+    content: "🏛";
+}
+
+/* Celtas */
+.quote-card.gaelic .quote-symbol::before,
+.quote-card.celtic .quote-symbol::before,
+.quote-card.druid .quote-symbol::before {
+    content: "☘";
+}
+
+/* Nórdicos */
+.quote-card.nordic .quote-symbol::before,
+.quote-card.scandinavian .quote-symbol::before {
+    content: "ᛟ";
+}
+
+/* Egito */
+.quote-card.egyptian .quote-symbol::before {
+    content: "☥";
+}
+
+/* Yoruba */
+.quote-card.yoruba .quote-symbol::before {
+    content: "◉";
+}
+
+/* Africana */
+.quote-card.african .quote-symbol::before {
+    content: "◈";
+}
+
+/* Japão */
+.quote-card.japanese .quote-symbol::before {
+    content: "花";
+}
+
+/* China */
+.quote-card.chinese .quote-symbol::before {
+    content: "☯";
+}
+
+/* Hindu */
+.quote-card.hindu .quote-symbol::before,
+.quote-card.indian .quote-symbol::before {
+    content: "ॐ";
+}
+
+/* Mesopotâmia */
+.quote-card.mesopotamian .quote-symbol::before {
+    content: "𒀭";
+}
+
+/* Persa */
+.quote-card.persian .quote-symbol::before {
+    content: "☀";
+}
+
+/* Árabe */
+.quote-card.arabic .quote-symbol::before {
+    content: "☾";
+}
+
+/* Judaica */
+.quote-card.jewish .quote-symbol::before {
+    content: "✡";
+}
+
+/* Tibet */
+.quote-card.tibetan .quote-symbol::before {
+    content: "☸";
+}
+
+/* Budismo */
+.quote-card.buddhist .quote-symbol::before {
+    content: "☸";
+}
+
+/* Maia */
+.quote-card.maya .quote-symbol::before {
+    content: "✹";
+}
+
+/* Asteca */
+.quote-card.aztec .quote-symbol::before {
+    content: "❖";
+}
+
+/* Inca */
+.quote-card.inca .quote-symbol::before {
+    content: "☀";
+}
+
+/* Tupi */
+.quote-card.tupi .quote-symbol::before {
+    content: "❀";
+}
+
+/* Brasileira */
+.quote-card.brazilian .quote-symbol::before {
+    content: "🌿";
+}
+
+/* Irlandesa */
+.quote-card.irish .quote-symbol::before {
+    content: "☘";
+}
+
+/* Havaiana */
+.quote-card.hawaiian .quote-symbol::before {
+    content: "✺";
+}
+
+/* Chilena */
+.quote-card.chilean .quote-symbol::before {
+    content: "▲";
+}
+
+/* Aborígene */
+.quote-card.aboriginal .quote-symbol::before {
+    content: "◌";
+}
+
+/* Basca */
+.quote-card.basque .quote-symbol::before {
+    content: "✢";
+}
+
+/* Maori */
+.quote-card.maori .quote-symbol::before {
+    content: "➳";
+}
+
+/* Caribenha */
+.quote-card.caribbean .quote-symbol::before {
+    content: "≈";
+}
+
+/* Eslava */
+.quote-card.slavic .quote-symbol::before {
+    content: "✶";
+}
+
+/* Responsivo */
+
+@media (max-width: 1100px) {
+    .quote-card {
+        flex: 0 0 calc((100% - 24px) / 2);
+    }
+}
+
+@media (max-width: 768px) {
+    .ancient-knowledge {
+        padding: 76px 0;
+    }
+
+    .ancient-knowledge h2 {
+        padding: 0 20px;
+        font-size: clamp(2.6rem, 12vw, 3.8rem);
+    }
+
+    .ancient-intro,
+    .ancient-origin-note {
+        padding: 0 22px;
+        font-size: 0.94rem;
+    }
+
+    .quotes-carousel-wrapper {
+        display: block;
+        overflow: hidden;
+        padding-top: 28px;
+    }
+
+    .carousel-button {
+        display: none;
+    }
+
+    .quotes-carousel {
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 24px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+    .quotes-carousel::-webkit-scrollbar {
+        display: none;
+    }
+
+    .ancient-quotes {
+        width: max-content;
+        gap: 16px;
+        padding-left: 22px;
+        padding-right: 64px;
+    }
+
+    .quote-card {
+        flex: 0 0 82vw;
+        width: 82vw;
+        max-width: 340px;
+        min-height: 370px;
+        scroll-snap-align: start;
+    }
+
+    .quote-symbol {
+        width: 74px;
+        height: 74px;
+        margin-bottom: 28px;
+    }
+
+    .quote-text {
+        max-width: 250px;
+        font-size: 1.16rem;
+    }
+
+    .quote-author {
+        font-size: 0.96rem;
+    }
+}

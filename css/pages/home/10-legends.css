@@ -1,0 +1,835 @@
+/* =====================================================
+   10. LENDAS DO MUNDO
+===================================================== */
+
+.legends-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 128px 0 118px;
+    background:
+        radial-gradient(circle at 78% 24%, rgba(170, 34, 28, 0.20), transparent 31%),
+        radial-gradient(circle at 17% 17%, rgba(74, 185, 105, 0.15), transparent 34%),
+        radial-gradient(circle at 50% 88%, rgba(201, 162, 74, 0.08), transparent 32%),
+        linear-gradient(180deg, var(--home-bg-deep) 0%, #06130d 48%, #050604 100%);
+}
+
+.legends-section::before {
+    content: "";
+    position: absolute;
+    inset: -18%;
+    z-index: -3;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 20% 70%, rgba(255, 255, 255, 0.055), transparent 18%),
+        radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.045), transparent 22%),
+        radial-gradient(circle at 50% 50%, rgba(160, 30, 24, 0.16), transparent 34%),
+        linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.035) 46%, transparent 72%);
+    opacity: 0.82;
+    filter: blur(22px);
+    animation: legendsFogDrift 28s linear infinite alternate;
+}
+
+.legends-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    opacity: 0.34;
+    background-image:
+        radial-gradient(circle, rgba(241, 215, 138, 0.26) 0 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(255, 255, 255, 0.11) 0 1px, transparent 1.5px);
+    background-size: 120px 120px, 190px 190px;
+    background-position: 0 0, 60px 80px;
+    mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+    animation: legendsParticles 42s linear infinite;
+}
+
+.legends-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.legends-section .container::before {
+    content: "";
+    position: absolute;
+    inset: 112px -7% auto auto;
+    z-index: -1;
+    width: 540px;
+    height: 540px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(166, 31, 25, 0.23), transparent 66%);
+    filter: blur(22px);
+    pointer-events: none;
+}
+
+.legends-header {
+    position: relative;
+    z-index: 4;
+    max-width: 760px;
+    margin-bottom: 58px;
+}
+
+.legends-header .section-tag,
+.legends-header>span:first-child {
+    display: inline-block;
+    margin-bottom: 14px;
+    color: #4ed36d;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    opacity: 0.92;
+}
+
+.legends-header h2 {
+    max-width: 720px;
+    margin: 0;
+    color: #f4e8c5;
+    font-family: var(--home-font-serif);
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    text-shadow:
+        0 0 28px rgba(201, 162, 74, 0.10),
+        0 5px 25px rgba(0, 0, 0, 0.82);
+}
+
+.legends-header p {
+    max-width: 540px;
+    margin: 24px 0 0;
+    color: rgba(233, 222, 194, 0.76);
+    font-size: 1.05rem;
+    line-height: 1.72;
+}
+
+.legends-section .legends-header .section-main-button,
+.legends-section .legends-header .legends-main-button {
+    position: relative;
+    width: min(100%, 560px);
+    min-height: 74px;
+    margin-top: 34px;
+    padding: 0 96px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid rgba(241, 215, 138, 0.56);
+    border-radius: 999px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.006)),
+        radial-gradient(circle at 50% 0%, rgba(220, 181, 85, 0.15), transparent 54%),
+        radial-gradient(circle at 88% 50%, rgba(78, 211, 109, 0.10), transparent 34%),
+        linear-gradient(135deg, rgba(7, 28, 18, 0.94), rgba(2, 8, 6, 0.96));
+    color: #54e875;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    font-weight: 950;
+    line-height: 1;
+    letter-spacing: 4px;
+    isolation: isolate;
+    backdrop-filter: blur(10px);
+    box-shadow:
+        inset 0 0 24px rgba(201, 162, 74, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 0 0 1px rgba(201, 162, 74, 0.08),
+        0 20px 48px rgba(0, 0, 0, 0.34);
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        color 0.35s ease,
+        background 0.35s ease;
+}
+
+.legends-section .legends-header .section-main-button::before,
+.legends-section .legends-header .legends-main-button::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: 0;
+    border-radius: inherit;
+    background:
+        linear-gradient(120deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.14) 44%,
+            transparent 70%);
+    opacity: 0;
+    transform: translateX(-70%);
+    transition:
+        transform 0.65s ease,
+        opacity 0.35s ease;
+}
+
+.legends-section .legends-header .section-main-button::after,
+.legends-section .legends-header .legends-main-button::after {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    z-index: -1;
+    border: 1px solid rgba(241, 215, 138, 0.10);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.legends-section .legends-header .section-main-button .button-text,
+.legends-section .legends-header .legends-main-button .button-text,
+.legends-section .legends-header .section-main-button span:not(.button-arrow),
+.legends-section .legends-header .legends-main-button span:not(.button-arrow) {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.legends-section .legends-header .section-main-button .button-arrow,
+.legends-section .legends-header .legends-main-button .button-arrow {
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    z-index: 3;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(241, 215, 138, 0.48);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(241, 215, 138, 0.20), transparent 58%),
+        rgba(2, 8, 6, 0.72);
+    color: transparent;
+    font-size: 0;
+    line-height: 1;
+    transform: translateY(-50%);
+    pointer-events: none;
+    box-shadow:
+        inset 0 0 12px rgba(201, 162, 74, 0.08),
+        0 0 16px rgba(201, 162, 74, 0.12);
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.legends-section .legends-header .section-main-button .button-arrow::before,
+.legends-section .legends-header .legends-main-button .button-arrow::before {
+    content: "›";
+    color: var(--home-gold-soft);
+    font-size: 1.45rem;
+    line-height: 1;
+}
+
+.legends-section .legends-header .section-main-button:hover,
+.legends-section .legends-header .section-main-button:focus-visible,
+.legends-section .legends-header .legends-main-button:hover,
+.legends-section .legends-header .legends-main-button:focus-visible {
+    transform: translateY(-5px);
+    border-color: rgba(255, 232, 160, 0.94);
+    color: #72ff93;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.008)),
+        radial-gradient(circle at 50% 0%, rgba(220, 181, 85, 0.18), transparent 54%),
+        radial-gradient(circle at 88% 50%, rgba(78, 211, 109, 0.13), transparent 34%),
+        linear-gradient(135deg, rgba(9, 38, 23, 0.98), rgba(3, 13, 8, 0.98));
+    box-shadow:
+        inset 0 0 24px rgba(201, 162, 74, 0.075),
+        inset 0 1px 0 rgba(255, 255, 255, 0.075),
+        0 0 0 1px rgba(241, 215, 138, 0.16),
+        0 0 34px rgba(201, 162, 74, 0.20),
+        0 24px 58px rgba(0, 0, 0, 0.42);
+}
+
+.legends-section .legends-header .section-main-button:hover::before,
+.legends-section .legends-header .section-main-button:focus-visible::before,
+.legends-section .legends-header .legends-main-button:hover::before,
+.legends-section .legends-header .legends-main-button:focus-visible::before {
+    opacity: 1;
+    transform: translateX(70%);
+}
+
+.legends-section .legends-header .section-main-button:hover .button-arrow,
+.legends-section .legends-header .section-main-button:focus-visible .button-arrow,
+.legends-section .legends-header .legends-main-button:hover .button-arrow,
+.legends-section .legends-header .legends-main-button:focus-visible .button-arrow {
+    transform: translateY(-50%) translateX(4px) scale(1.05);
+    border-color: rgba(255, 232, 160, 0.86);
+    background:
+        radial-gradient(circle at 30% 22%, rgba(255, 232, 160, 0.24), transparent 58%),
+        rgba(201, 162, 74, 0.13);
+    box-shadow:
+        inset 0 0 14px rgba(201, 162, 74, 0.11),
+        0 0 22px rgba(201, 162, 74, 0.20);
+}
+
+.legends-section .legends-header .section-main-button:active,
+.legends-section .legends-header .legends-main-button:active {
+    transform: translateY(-2px) scale(0.99);
+}
+
+.legends-section .legends-header .section-main-button:focus-visible,
+.legends-section .legends-header .legends-main-button:focus-visible {
+    outline: 2px solid rgba(255, 232, 160, 0.95);
+    outline-offset: 5px;
+}
+
+.legends-wrapper {
+    position: relative;
+    z-index: 3;
+}
+
+.legends-wrapper::before,
+.legends-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 34px;
+    z-index: 5;
+    width: 118px;
+    pointer-events: none;
+}
+
+.legends-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(2, 8, 6, 0.98), rgba(2, 8, 6, 0));
+}
+
+.legends-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(2, 8, 6, 0.98), rgba(2, 8, 6, 0));
+}
+
+.legends-track {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    gap: 34px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 18px 12px 38px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.legends-track::-webkit-scrollbar {
+    display: none;
+}
+
+.legend-card {
+    position: relative;
+    flex: 0 0 286px;
+    height: 420px;
+    overflow: hidden;
+    border: 1px solid rgba(124, 32, 28, 0.42);
+    border-radius: 18px;
+    background: #050806;
+    scroll-snap-align: center;
+    transform: translateZ(0);
+    box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.72),
+        inset 0 0 28px rgba(120, 20, 20, 0.18);
+    transition:
+        transform 0.38s ease,
+        border-color 0.38s ease,
+        box-shadow 0.38s ease,
+        filter 0.38s ease;
+}
+
+.legend-card:hover,
+.legend-card:focus-within {
+    z-index: 8;
+    transform: translateY(-10px) scale(1.025);
+    border-color: rgba(241, 215, 138, 0.88);
+    box-shadow:
+        0 0 0 1px rgba(241, 215, 138, 0.16),
+        0 0 34px rgba(201, 162, 74, 0.24),
+        0 30px 80px rgba(0, 0, 0, 0.86),
+        inset 0 0 26px rgba(201, 162, 74, 0.07);
+}
+
+.legend-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: contrast(1.06) brightness(0.78) saturate(1.05);
+    transition:
+        transform 0.55s ease,
+        filter 0.55s ease;
+}
+
+.legend-card:hover img,
+.legend-card:focus-within img {
+    transform: scale(1.08);
+    filter: contrast(1.12) brightness(0.86) saturate(1.12);
+}
+
+.legend-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background:
+        linear-gradient(to top, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.74) 23%, rgba(0, 0, 0, 0.14) 58%, transparent 78%),
+        radial-gradient(circle at center, transparent 36%, rgba(0, 0, 0, 0.46));
+}
+
+.legend-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    opacity: 0.22;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    background:
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04), transparent 25%),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 5px);
+}
+
+.legend-badge {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    z-index: 5;
+    max-width: calc(100% - 36px);
+    padding: 8px 12px;
+    overflow: hidden;
+    border: 1px solid rgba(241, 215, 138, 0.38);
+    border-radius: 999px;
+    background:
+        radial-gradient(circle at 20% 0%, rgba(201, 162, 74, 0.18), transparent 52%),
+        rgba(3, 10, 8, 0.74);
+    color: var(--home-gold-soft);
+    font-size: 0.62rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 1.35px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    backdrop-filter: blur(8px);
+    box-shadow:
+        0 0 18px rgba(201, 162, 74, 0.12),
+        0 10px 22px rgba(0, 0, 0, 0.26);
+}
+
+.legend-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 4;
+    min-height: 42%;
+    padding: 92px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: center;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0));
+}
+
+.legend-overlay h3 {
+    margin: 0;
+    color: #fff3dc;
+    font-size: 1.15rem;
+    font-weight: 900;
+    line-height: 1.16;
+    text-transform: uppercase;
+    text-shadow:
+        0 0 12px rgba(201, 162, 74, 0.24),
+        0 4px 14px rgba(0, 0, 0, 0.95);
+}
+
+.legend-summary {
+    max-height: 0;
+    margin: 0 auto;
+    overflow: hidden;
+    color: rgba(239, 231, 211, 0.78);
+    font-size: 0.86rem;
+    font-weight: 600;
+    line-height: 1.55;
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+        max-height 0.42s ease,
+        margin-top 0.42s ease,
+        opacity 0.32s ease,
+        transform 0.32s ease;
+}
+
+.legend-card:hover .legend-summary,
+.legend-card:focus-within .legend-summary {
+    max-height: 120px;
+    margin-top: 14px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.legend-summary::before {
+    content: "";
+    display: block;
+    width: 72px;
+    height: 1px;
+    margin: 0 auto 12px;
+    background: linear-gradient(90deg, transparent, rgba(201, 162, 74, 0.75), transparent);
+    box-shadow: 0 0 10px rgba(201, 162, 74, 0.22);
+}
+
+.legend-card-link {
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    color: transparent;
+    font-size: 0;
+    text-decoration: none;
+}
+
+.legend-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 9;
+    width: 66px;
+    height: 66px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(241, 215, 138, 0.38);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(201, 162, 74, 0.16), transparent 54%),
+        rgba(4, 24, 16, 0.92);
+    color: #fff0b3;
+    font-size: 2rem;
+    cursor: pointer;
+    transform: translateY(-50%);
+    box-shadow:
+        0 0 0 1px rgba(201, 162, 74, 0.10),
+        0 18px 46px rgba(0, 0, 0, 0.45);
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.legend-btn.left {
+    left: -18px;
+}
+
+.legend-btn.right {
+    right: -18px;
+}
+
+.legend-btn:hover,
+.legend-btn:focus-visible {
+    transform: translateY(-50%) scale(1.06);
+    border-color: rgba(241, 215, 138, 0.90);
+    background:
+        radial-gradient(circle at 30% 20%, rgba(201, 162, 74, 0.24), transparent 54%),
+        rgba(20, 55, 35, 0.98);
+    box-shadow:
+        0 0 36px rgba(201, 162, 74, 0.22),
+        0 0 46px rgba(160, 0, 0, 0.22),
+        0 20px 54px rgba(0, 0, 0, 0.52);
+}
+
+.legend-btn:focus-visible {
+    outline: 2px solid var(--home-gold-soft);
+    outline-offset: 5px;
+}
+
+.legends-progress {
+    position: relative;
+    z-index: 3;
+    width: min(520px, 100%);
+    height: 11px;
+    margin: 18px auto 0;
+    overflow: hidden;
+    border: 1px solid rgba(139, 101, 42, 0.32);
+    border-radius: 999px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.005)),
+        linear-gradient(90deg, rgba(2, 8, 6, 0.96), rgba(9, 16, 11, 0.94), rgba(2, 8, 6, 0.96));
+    box-shadow:
+        inset 0 0 14px rgba(0, 0, 0, 0.78),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035),
+        0 10px 26px rgba(0, 0, 0, 0.36);
+}
+
+.legends-progress::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    z-index: 1;
+    border-radius: inherit;
+    background:
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.04),
+            transparent 28%,
+            rgba(255, 255, 255, 0.025),
+            transparent 72%),
+        repeating-linear-gradient(90deg,
+            rgba(241, 215, 138, 0.07) 0 1px,
+            transparent 1px 18px);
+    pointer-events: none;
+}
+
+.legends-progress-bar {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 0%;
+    min-width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background:
+        linear-gradient(90deg,
+            #285f38 0%,
+            #5f6b35 36%,
+            #8a6630 62%,
+            var(--home-red-shadow) 100%);
+    box-shadow:
+        inset 0 0 8px rgba(0, 0, 0, 0.46),
+        0 0 12px rgba(78, 211, 109, 0.16),
+        0 0 14px rgba(139, 30, 30, 0.16);
+    transition: width 0.25s ease;
+}
+
+.legends-progress-bar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.20),
+            transparent 42%,
+            rgba(0, 0, 0, 0.28));
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+@keyframes legendsFogDrift {
+    from {
+        transform: translate3d(-3%, 0, 0) scale(1);
+    }
+
+    to {
+        transform: translate3d(3%, -2%, 0) scale(1.06);
+    }
+}
+
+@keyframes legendsParticles {
+    from {
+        background-position: 0 0, 60px 80px;
+    }
+
+    to {
+        background-position: 220px -180px, -140px 220px;
+    }
+}
+
+@media (max-width: 900px) {
+    .legends-section {
+        padding: 100px 0 92px;
+    }
+
+    .legends-wrapper::before,
+    .legends-wrapper::after {
+        width: 58px;
+    }
+
+    .legend-card {
+        flex-basis: 250px;
+        height: 370px;
+    }
+
+    .legend-btn {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .legends-section {
+        padding: 82px 0;
+    }
+
+    .legends-header {
+        max-width: none;
+        margin-bottom: 42px;
+    }
+
+    .legends-header .section-tag,
+    .legends-header>span:first-child {
+        font-size: 0.70rem;
+        letter-spacing: 3.4px;
+    }
+
+    .legends-header h2 {
+        font-size: clamp(2.1rem, 13vw, 3rem);
+        line-height: 1.02;
+    }
+
+    .legends-header p {
+        font-size: 0.96rem;
+    }
+
+    .legends-section .legends-header .section-main-button,
+    .legends-section .legends-header .legends-main-button {
+        width: 100%;
+        min-height: 68px;
+        margin-top: 30px;
+        padding: 0 76px;
+        border-radius: 22px;
+        font-size: 0.68rem;
+        letter-spacing: 2.1px;
+    }
+
+    .legends-section .legends-header .section-main-button .button-arrow,
+    .legends-section .legends-header .legends-main-button .button-arrow {
+        right: 20px;
+        width: 38px;
+        height: 38px;
+    }
+
+    .legends-section .legends-header .section-main-button .button-arrow::before,
+    .legends-section .legends-header .legends-main-button .button-arrow::before {
+        font-size: 1.22rem;
+    }
+
+    .legends-wrapper::before,
+    .legends-wrapper::after {
+        display: none;
+    }
+
+    .legends-track {
+        gap: 18px;
+        padding: 12px 4px 28px;
+        scroll-snap-type: x mandatory;
+    }
+
+    .legend-card {
+        flex: 0 0 78vw;
+        max-width: 310px;
+        height: 405px;
+    }
+
+    .legend-card:hover,
+    .legend-card:focus-within {
+        transform: translateY(-6px) scale(1.015);
+    }
+
+    .legend-summary {
+        max-height: 120px;
+        margin-top: 12px;
+        opacity: 1;
+        transform: none;
+    }
+
+    .legends-progress {
+        width: min(100%, 360px);
+        height: 10px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .legends-section .legends-header .section-main-button,
+    .legends-section .legends-header .legends-main-button {
+        min-height: 60px;
+        padding: 0 56px;
+        border-radius: 18px;
+        font-size: 0.58rem;
+        letter-spacing: 1.45px;
+    }
+
+    .legends-section .legends-header .section-main-button .button-arrow,
+    .legends-section .legends-header .legends-main-button .button-arrow {
+        right: 14px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .legends-section .legends-header .section-main-button .button-arrow::before,
+    .legends-section .legends-header .legends-main-button .button-arrow::before {
+        font-size: 1.02rem;
+    }
+
+    .legend-card {
+        flex-basis: 82vw;
+        height: 380px;
+    }
+
+    .legend-overlay {
+        padding: 84px 18px 22px;
+    }
+
+    .legend-overlay h3 {
+        font-size: 1.02rem;
+    }
+
+    .legend-summary {
+        font-size: 0.80rem;
+    }
+
+    .legend-badge {
+        top: 14px;
+        left: 14px;
+        padding: 7px 10px;
+        font-size: 0.56rem;
+        letter-spacing: 1px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .legends-section::before,
+    .legends-section::after {
+        animation: none;
+    }
+
+    .legends-track {
+        scroll-behavior: auto;
+    }
+
+    .legends-section .legends-header .section-main-button,
+    .legends-section .legends-header .section-main-button::before,
+    .legends-section .legends-header .section-main-button .button-arrow,
+    .legends-section .legends-header .legends-main-button,
+    .legends-section .legends-header .legends-main-button::before,
+    .legends-section .legends-header .legends-main-button .button-arrow,
+    .legend-card,
+    .legend-card img,
+    .legend-summary,
+    .legend-btn,
+    .legends-progress-bar {
+        transition: none;
+    }
+
+    .legends-section .legends-header .section-main-button:hover,
+    .legends-section .legends-header .section-main-button:focus-visible,
+    .legends-section .legends-header .legends-main-button:hover,
+    .legends-section .legends-header .legends-main-button:focus-visible,
+    .legend-card:hover,
+    .legend-card:focus-within,
+    .legend-btn:hover,
+    .legend-btn:focus-visible {
+        transform: none;
+    }
+
+    .legend-card:hover img,
+    .legend-card:focus-within img {
+        transform: none;
+    }
+}

@@ -1,0 +1,39 @@
+/* =====================================================
+   15. OTIMIZAÇÕES DE PERFORMANCE EM TELAS MENORES
+===================================================== */
+
+@media (max-width: 700px) {
+    .hero-image {
+        filter: drop-shadow(0 0 34px rgba(129, 199, 132, 0.14));
+    }
+
+    .legends-section::before {
+        filter: blur(14px);
+        opacity: 0.58;
+    }
+
+    .legends-section::after {
+        opacity: 0.22;
+    }
+
+    .legends-section .container::before {
+        filter: blur(14px);
+        opacity: 0.72;
+    }
+
+    .relics-section::before {
+        opacity: 0.055;
+    }
+
+    .creatures-symbol img {
+        filter: drop-shadow(0 0 22px rgba(55, 175, 74, 0.25));
+    }
+
+    .about-mythology-card,
+    .symbols-feature-card,
+    .relic-symbol,
+    .legend-badge,
+    .relic-arrow {
+        backdrop-filter: none;
+    }
+}

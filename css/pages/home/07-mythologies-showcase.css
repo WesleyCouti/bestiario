@@ -1,0 +1,373 @@
+/* =====================================================
+   07. SHOWCASE DE MITOLOGIAS
+===================================================== */
+
+.mythologies-showcase {
+    position: relative;
+    padding: 110px 0;
+    overflow: hidden;
+}
+
+.showcase-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.showcase-header h2 {
+    margin: 0;
+    color: var(--home-text-cream);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1;
+}
+
+.showcase-controls {
+    display: flex;
+    gap: 12px;
+}
+
+.showcase-button {
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(129, 199, 132, 0.25);
+    border-radius: 50%;
+    background: rgba(17, 36, 27, 0.85);
+    color: var(--home-text-cream);
+    cursor: pointer;
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.showcase-button:hover,
+.showcase-button:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(129, 199, 132, 0.45);
+    background: rgba(27, 94, 32, 0.95);
+    box-shadow: 0 0 14px rgba(129, 199, 132, 0.18);
+}
+
+.showcase-button:focus-visible {
+    outline: 2px solid var(--home-green);
+    outline-offset: 4px;
+}
+
+.myth-line {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 280px);
+    gap: 20px;
+    justify-content: start;
+}
+
+.myth-line::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: calc(280px * 4 + 20px * 3);
+    height: 2px;
+    background:
+        linear-gradient(to right,
+            transparent,
+            rgba(129, 199, 132, 0.6),
+            transparent);
+    transform: translateY(-50%);
+}
+
+.myth-line span {
+    width: 10px;
+    height: 10px;
+    background: var(--home-green);
+    border-radius: 50%;
+    justify-self: center;
+    z-index: 2;
+    box-shadow:
+        0 0 8px rgba(129, 199, 132, 0.6),
+        0 0 18px rgba(129, 199, 132, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.myth-line span:hover,
+.myth-line span:focus-visible {
+    transform: scale(1.25);
+}
+
+.showcase-track-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.showcase-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 36px 0 30px;
+}
+
+.showcase-track::-webkit-scrollbar {
+    display: none;
+}
+
+.myth-card {
+    position: relative;
+    flex: 0 0 280px;
+    min-height: 460px;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid rgba(129, 199, 132, 0.16);
+    background:
+        linear-gradient(180deg,
+            rgba(22, 45, 34, 0.08) 0%,
+            rgba(22, 45, 34, 0.28) 100%);
+    z-index: 1;
+    transform: translateZ(0);
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.myth-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(to bottom,
+            transparent 58%,
+            rgba(5, 16, 11, 0.6) 100%);
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.myth-card:hover,
+.myth-card:focus-within {
+    transform: translateY(-10px);
+    border-color: rgba(129, 199, 132, 0.45);
+    box-shadow:
+        0 0 0 1px rgba(129, 199, 132, 0.18),
+        0 0 28px rgba(129, 199, 132, 0.14),
+        0 20px 50px rgba(0, 0, 0, 0.35);
+    z-index: 20;
+}
+
+.myth-card-image {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 340px;
+    display: block;
+    object-fit: cover;
+    border-radius: 18px 18px 0 0;
+    transform-origin: center center;
+    transition:
+        transform 0.7s ease,
+        filter 0.5s ease;
+}
+
+.myth-card:hover .myth-card-image,
+.myth-card:focus-within .myth-card-image {
+    transform: scale(1.08);
+    filter:
+        brightness(1.08) contrast(1.08) saturate(1.1);
+}
+
+.myth-card h3,
+.myth-card p {
+    position: relative;
+    z-index: 2;
+    padding-left: 22px;
+    padding-right: 22px;
+    text-align: left;
+}
+
+.myth-card h3 {
+    margin-top: 18px;
+    margin-bottom: 10px;
+    font-size: 1.28rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.myth-card p {
+    margin-bottom: 22px;
+    color: var(--home-text-muted);
+    font-size: 0.96rem;
+    line-height: 1.65;
+}
+
+.myth-card.egyptian h3 {
+    color: #d8b64b;
+}
+
+.myth-card.greek h3 {
+    color: #d4af37;
+}
+
+.myth-card.nordic h3 {
+    color: #9fbcd3;
+}
+
+.myth-card.hindu h3 {
+    color: #ffb07a;
+}
+
+.myth-card.druid h3 {
+    color: #81c784;
+}
+
+.myth-card.yoruba h3 {
+    color: #f0a35a;
+}
+
+.myth-card.mesopotamian h3 {
+    color: #c78b52;
+}
+
+.myth-card.chinese h3 {
+    color: #8ecaff;
+}
+
+.myth-card.biblical h3 {
+    color: #d6d6a8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .showcase-track {
+        scroll-behavior: auto;
+    }
+
+    .showcase-button,
+    .myth-line span,
+    .myth-card,
+    .myth-card::after,
+    .myth-card-image {
+        transition: none;
+    }
+
+    .showcase-button:hover,
+    .showcase-button:focus-visible,
+    .myth-line span:hover,
+    .myth-line span:focus-visible,
+    .myth-card:hover,
+    .myth-card:focus-within,
+    .myth-card:hover .myth-card-image,
+    .myth-card:focus-within .myth-card-image {
+        transform: none;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .mythologies-showcase {
+        padding: 90px 0;
+    }
+
+    .showcase-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .showcase-controls {
+        align-self: flex-end;
+    }
+
+    .myth-line {
+        display: none;
+    }
+
+    .showcase-track {
+        padding-top: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .mythologies-showcase {
+        padding: 70px 0;
+    }
+
+    .showcase-header {
+        margin-bottom: 20px;
+    }
+
+    .showcase-header h2 {
+        line-height: 1.1;
+    }
+
+    .showcase-controls {
+        display: none;
+    }
+
+    .showcase-track {
+        gap: 18px;
+        padding: 22px 0 24px;
+    }
+
+    .myth-card {
+        flex: 0 0 250px;
+        min-height: 430px;
+    }
+
+    .myth-card-image {
+        height: 300px;
+    }
+
+    .myth-card h3,
+    .myth-card p {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .myth-card h3 {
+        font-size: 1.16rem;
+    }
+
+    .myth-card p {
+        font-size: 0.9rem;
+        line-height: 1.55;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .mythologies-showcase {
+        padding: 62px 0;
+    }
+
+    .showcase-track {
+        gap: 16px;
+    }
+
+    .myth-card {
+        flex: 0 0 225px;
+        min-height: 405px;
+    }
+
+    .myth-card-image {
+        height: 275px;
+    }
+
+    .myth-card h3 {
+        margin-top: 16px;
+        font-size: 1.08rem;
+    }
+
+    .myth-card p {
+        font-size: 0.86rem;
+    }
+}

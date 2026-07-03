@@ -1,0 +1,721 @@
+/* =====================================================
+   01. HERO / DESTAQUE PRINCIPAL
+===================================================== */
+
+.hero {
+    position: relative;
+    min-height: calc(100vh - 80px);
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 20% 35%, rgba(46, 125, 50, 0.24), transparent 36%),
+        linear-gradient(90deg, #03110a 0%, #06180f 42%, #020705 100%);
+}
+
+.hero .container {
+    width: 100%;
+    max-width: none;
+    padding-left: clamp(56px, 6vw, 110px);
+    padding-right: 0;
+}
+
+.hero-layout {
+    min-height: calc(100vh - 80px);
+    display: grid;
+    grid-template-columns: minmax(520px, 43%) minmax(0, 57%);
+    align-items: stretch;
+    gap: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    max-width: 680px;
+    padding: clamp(72px, 8vh, 105px) 48px clamp(54px, 7vh, 86px) 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-tag {
+    margin-bottom: 22px;
+    color: var(--home-green);
+    font-size: 0.82rem;
+    font-weight: 900;
+    line-height: 1.6;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    max-width: 660px;
+    margin: 0;
+    font-size: clamp(4.1rem, 5.8vw, 6.4rem);
+    font-weight: 900;
+    line-height: 0.98;
+    letter-spacing: -3px;
+    background: linear-gradient(to bottom, #ffffff 0%, #dceee1 54%, #b9d8bf 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-institutional {
+    position: relative;
+    max-width: 560px;
+    margin: 34px 0 24px;
+    padding-top: 26px;
+    color: rgba(238, 232, 210, 0.9);
+    font-size: 0.86rem;
+    font-weight: 900;
+    line-height: 1.9;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.hero-institutional::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: min(330px, 100%);
+    height: 1px;
+    background:
+        linear-gradient(90deg,
+            rgba(201, 162, 74, 0.82),
+            rgba(201, 162, 74, 0.24),
+            transparent);
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 0;
+    color: rgba(226, 238, 221, 0.88);
+    font-size: 1.02rem;
+    line-height: 1.85;
+}
+
+/* =====================================================
+   BOTÕES DO HERO
+===================================================== */
+
+.hero-actions {
+    width: 100%;
+    max-width: 380px;
+    margin-top: 42px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+}
+
+.hero-button {
+    position: relative;
+    width: 100%;
+    min-height: 60px;
+    padding: 0 56px 0 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 16px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    isolation: isolate;
+    white-space: normal;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.hero-button span {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: block;
+    text-align: center;
+    line-height: 1.35;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+}
+
+.hero-button small {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    z-index: 2;
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-size: 0.82rem;
+    transform: translateY(-50%);
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.hero-button::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background:
+        linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+    opacity: 0;
+    transform: translateX(-110%);
+    transition:
+        opacity 0.3s ease,
+        transform 0.6s ease;
+}
+
+.hero-button-primary {
+    border: 1px solid rgba(151, 233, 145, 0.78);
+    background:
+        radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.16), transparent 34%),
+        linear-gradient(135deg, #2f8f3a, #67b85a);
+    color: #ffffff;
+    box-shadow:
+        0 0 24px rgba(129, 199, 132, 0.24),
+        0 16px 34px rgba(0, 0, 0, 0.34);
+}
+
+.hero-button-primary small {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+}
+
+.hero-button-secondary {
+    border: 1px solid rgba(201, 162, 74, 0.62);
+    background: rgba(4, 18, 12, 0.72);
+    color: var(--home-gold-soft);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+}
+
+.hero-button-secondary small {
+    background: rgba(201, 162, 74, 0.14);
+    color: var(--home-gold-soft);
+}
+
+.hero-button:hover,
+.hero-button:focus-visible {
+    transform: translateY(-4px);
+}
+
+.hero-button:hover::before,
+.hero-button:focus-visible::before {
+    opacity: 1;
+    transform: translateX(110%);
+}
+
+.hero-button:hover small,
+.hero-button:focus-visible small {
+    transform: translateY(-50%) translateX(4px);
+}
+
+/* =====================================================
+   ATALHOS DO HERO - AJUSTADO
+===================================================== */
+
+.hero-shortcuts {
+    width: 100%;
+    max-width: 640px;
+    margin-top: 46px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.hero-shortcut {
+    position: relative;
+    min-width: 0;
+    min-height: 170px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    border-radius: 24px;
+    text-decoration: none;
+    border: 1px solid rgba(201, 162, 74, 0.34);
+    background:
+        radial-gradient(circle at 18% 35%, var(--shortcut-glow), transparent 42%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 44%),
+        rgba(3, 14, 9, 0.86);
+    box-shadow:
+        inset 0 0 28px rgba(255, 255, 255, 0.025),
+        0 18px 42px rgba(0, 0, 0, 0.28);
+    isolation: isolate;
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+}
+
+.hero-shortcut::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.55;
+    background:
+        linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.36)),
+        radial-gradient(circle at 100% 0%, rgba(201, 162, 74, 0.12), transparent 36%);
+}
+
+.hero-shortcut::after {
+    content: "✦";
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    color: rgba(201, 162, 74, 0.7);
+    font-size: 1rem;
+}
+
+.shortcut-mythologies {
+    --shortcut-glow: rgba(77, 184, 92, 0.26);
+    --shortcut-color: #8fe083;
+}
+
+.shortcut-symbols {
+    --shortcut-glow: rgba(201, 162, 74, 0.28);
+    --shortcut-color: #d8aa35;
+}
+
+.shortcut-legends {
+    --shortcut-glow: rgba(143, 74, 201, 0.26);
+    --shortcut-color: #b783ff;
+}
+
+.shortcut-relics {
+    --shortcut-glow: rgba(52, 182, 210, 0.24);
+    --shortcut-color: #55d8ff;
+}
+
+.shortcut-icon {
+    width: 72px;
+    height: 72px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid rgba(241, 215, 138, 0.68);
+    background:
+        radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 60%),
+        rgba(2, 10, 7, 0.94);
+    box-shadow:
+        0 0 0 7px rgba(201, 162, 74, 0.06),
+        0 0 26px rgba(201, 162, 74, 0.18);
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.shortcut-icon img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(241, 215, 138, 0.32));
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.shortcut-content {
+    min-width: 0;
+    margin-top: 10px;
+}
+
+.shortcut-content strong {
+    display: block;
+    color: #f4e6b8;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.35rem, 1.4vw, 1.65rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.shortcut-content span {
+    width: 110px;
+    height: 1px;
+    margin: 12px 0 14px;
+    display: block;
+    background: linear-gradient(90deg, rgba(201, 162, 74, 0.95), transparent);
+}
+
+.shortcut-content small {
+    display: block;
+    max-width: 100%;
+    color: rgba(238, 232, 210, 0.82);
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.shortcut-content em {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    color: var(--shortcut-color);
+    font-size: 0.78rem;
+    font-weight: 900;
+    font-style: normal;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.hero-shortcut:hover,
+.hero-shortcut:focus-visible {
+    transform: translateY(-6px);
+    border-color: rgba(241, 215, 138, 0.76);
+    box-shadow:
+        0 0 30px rgba(201, 162, 74, 0.14),
+        0 26px 58px rgba(0, 0, 0, 0.42);
+}
+
+.hero-shortcut:hover .shortcut-icon,
+.hero-shortcut:focus-visible .shortcut-icon {
+    transform: scale(1.06);
+    box-shadow:
+        0 0 0 8px rgba(201, 162, 74, 0.08),
+        0 0 36px rgba(241, 215, 138, 0.28);
+}
+
+.hero-shortcut:hover .shortcut-icon img,
+.hero-shortcut:focus-visible .shortcut-icon img {
+    transform: scale(1.08);
+    filter: brightness(1.12) drop-shadow(0 0 12px rgba(241, 215, 138, 0.42));
+}
+
+/* Responsivo */
+
+@media (max-width: 1360px) {
+    .hero-shortcuts {
+        max-width: 600px;
+        gap: 16px;
+    }
+
+    .hero-shortcut {
+        min-height: 160px;
+        padding: 20px;
+    }
+
+    .shortcut-content strong {
+        font-size: 1.28rem;
+    }
+
+    .shortcut-content small {
+        font-size: 0.86rem;
+    }
+}
+
+@media (max-width: 980px) {
+    .hero-shortcuts {
+        max-width: 680px;
+    }
+}
+
+@media (max-width: 700px) {
+    .hero-shortcuts {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-top: 38px;
+    }
+
+    .hero-shortcut {
+        min-height: auto;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .shortcut-content {
+        margin-top: 0;
+    }
+
+    .shortcut-content strong {
+        white-space: normal;
+        font-size: 1.25rem;
+    }
+
+    .shortcut-content span {
+        margin: 10px 0 12px;
+    }
+
+    .shortcut-content em {
+        margin-top: 12px;
+    }
+}
+
+/* =====================================================
+   IMAGEM PRINCIPAL DO HERO
+===================================================== */
+
+.hero-visual {
+    position: relative;
+    min-height: 760px;
+    overflow: hidden;
+}
+
+.hero-visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg,
+            rgba(4, 20, 12, 0.98) 0%,
+            rgba(4, 20, 12, 0.62) 12%,
+            rgba(4, 20, 12, 0.16) 28%,
+            transparent 46%),
+        radial-gradient(circle at 52% 50%, transparent 46%, rgba(0, 0, 0, 0.46) 100%);
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    min-height: calc(100vh - 80px);
+
+    object-fit: cover;
+    object-position: 40% center;
+
+    transform: scale(0.90);
+
+    opacity: 0.94;
+
+    filter:
+        brightness(0.86) contrast(1.08) saturate(1.08);
+}
+
+/* =====================================================
+   RESPONSIVIDADE DO HERO
+===================================================== */
+
+@media (max-width: 1360px) {
+    .hero-layout {
+        grid-template-columns: minmax(500px, 44%) minmax(0, 56%);
+    }
+
+    .hero h1 {
+        font-size: clamp(3.7rem, 5.5vw, 5.7rem);
+    }
+
+    .hero-shortcuts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        max-width: 620px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .hero .container {
+        padding-left: clamp(32px, 5vw, 60px);
+    }
+
+    .hero-layout {
+        grid-template-columns: minmax(460px, 48%) minmax(0, 52%);
+    }
+
+    .hero-actions {
+        max-width: 360px;
+    }
+
+    .hero-button {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 980px) {
+    .hero {
+        min-height: auto;
+    }
+
+    .hero .container {
+        padding: 0;
+    }
+
+    .hero-layout {
+        min-height: auto;
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content {
+        max-width: 760px;
+        padding: 78px 28px 48px;
+        margin: 0 auto;
+        text-align: center;
+        align-items: center;
+    }
+
+    .hero h1 {
+        font-size: clamp(3rem, 11vw, 5rem);
+    }
+
+    .hero-institutional::before {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .hero-actions {
+        align-items: stretch;
+        max-width: 420px;
+    }
+
+    .hero-shortcuts {
+        width: 100%;
+        max-width: 620px;
+    }
+
+    .hero-shortcut {
+        text-align: left;
+    }
+
+    .hero-visual {
+        min-height: 520px;
+    }
+
+    .hero-image {
+        min-height: 520px;
+        object-position: center;
+    }
+
+    .hero-visual::before {
+        background:
+            linear-gradient(180deg,
+                rgba(4, 20, 12, 0.88) 0%,
+                transparent 30%,
+                rgba(0, 0, 0, 0.38) 100%);
+    }
+}
+
+@media (max-width: 700px) {
+    .hero-shortcuts {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 34px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .hero-shortcut {
+        width: 100%;
+        min-height: auto;
+        padding: 18px 18px;
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        align-items: center;
+        gap: 16px;
+        border-radius: 20px;
+    }
+
+    .shortcut-icon {
+        width: 64px;
+        height: 64px;
+    }
+
+    .shortcut-icon img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .shortcut-content {
+        margin-top: 0;
+        text-align: left;
+    }
+
+    .shortcut-content strong {
+        font-size: 1rem;
+        line-height: 1.2;
+        letter-spacing: 1.2px;
+        white-space: normal;
+    }
+
+    .shortcut-content span {
+        width: 90px;
+        margin: 8px 0 10px;
+    }
+
+    .shortcut-content small {
+        font-size: 0.82rem;
+        line-height: 1.45;
+    }
+
+    .shortcut-content em {
+        margin-top: 10px;
+        font-size: 0.7rem;
+        letter-spacing: 1.8px;
+    }
+
+    .hero-shortcut::after {
+        top: 14px;
+        right: 16px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero-shortcut {
+        grid-template-columns: 58px 1fr;
+        padding: 16px;
+        gap: 14px;
+    }
+
+    .shortcut-icon {
+        width: 58px;
+        height: 58px;
+    }
+
+    .shortcut-icon img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .shortcut-content strong {
+        font-size: 0.92rem;
+    }
+
+    .shortcut-content small {
+        font-size: 0.78rem;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hero-button,
+    .hero-button::before,
+    .hero-button small,
+    .hero-shortcut,
+    .shortcut-icon,
+    .shortcut-icon img {
+        transition: none;
+    }
+
+    .hero-button:hover,
+    .hero-button:focus-visible,
+    .hero-shortcut:hover,
+    .hero-shortcut:focus-visible,
+    .hero-shortcut:hover .shortcut-icon,
+    .hero-shortcut:focus-visible .shortcut-icon,
+    .hero-shortcut:hover .shortcut-icon img,
+    .hero-shortcut:focus-visible .shortcut-icon img {
+        transform: none;
+    }
+}

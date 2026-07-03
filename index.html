@@ -104,7 +104,26 @@
          HOME
     ====================================================== -->
 
-    <link rel="stylesheet" href="./css/pages/home/home.css" />
+    <link rel="stylesheet" href="./css/pages/home/00-base.css" />
+    <link rel="stylesheet" href="./css/pages/home/01-hero.css" />
+    <link rel="stylesheet" href="./css/pages/home/02-about.css" />
+    <link rel="stylesheet" href="./css/pages/home/03-mythology-intro.css" />
+    <link rel="stylesheet" href="./css/pages/home/04-ancient-quotes.css" />
+    <link rel="stylesheet" href="./css/pages/home/05-infinite-carousel.css" />
+    <link rel="stylesheet" href="./css/pages/home/06-flip-cards.css" />
+    <link rel="stylesheet" href="./css/pages/home/07-mythologies-showcase.css" />
+    <link rel="stylesheet" href="./css/pages/home/08-creatures.css" />
+    <link rel="stylesheet" href="./css/pages/home/09-symbols.css" />
+    <link rel="stylesheet" href="./css/pages/home/10-legends.css" />
+    <link rel="stylesheet" href="./css/pages/home/11-why-study-mythology.css" />
+    <link rel="stylesheet" href="./css/pages/home/12-relics.css" />
+    <link rel="stylesheet" href="./css/pages/home/13-carousel-tips.css" />
+    <link rel="stylesheet" href="./css/pages/home/14-creatures-pagination.css" />
+    <link rel="stylesheet" href="./css/pages/home/15-responsive.css" />
+    <link rel="stylesheet" href="./css/pages/home/16-optimizations.css" />
+
+
+
 
     <!-- =====================================================
          AJUSTES ESPECÍFICOS DA HOME
@@ -198,69 +217,65 @@
                             <small>✦</small>
                         </a>
 
-                        <a href="#reliquias" class="hero-button hero-button-secondary">
-                            <span>Ver Relíquias Lendárias</span>
+                        <a href="#vozes-antigas" class="hero-button hero-button-secondary">
+                            <span>Vozes do Mundo Antigo</span>
                             <small>›</small>
                         </a>
                     </div>
 
                     <!-- Atalhos de navegação -->
-                    <div class="hero-shortcuts">
+                    <div class="hero-shortcuts" aria-label="Atalhos principais do Bestiário">
 
-                        <a href="#mitologias" class="hero-shortcut">
-
+                        <a href="#mitologias" class="hero-shortcut shortcut-mythologies">
                             <div class="shortcut-icon">
                                 <img src="./assets/images/home/home-hero/mitologias-icon.png" alt="" aria-hidden="true">
                             </div>
 
-                            <strong>Mitologias</strong>
-
-                            <small>
-                                Deuses e histórias ancestrais
-                            </small>
-
+                            <div class="shortcut-content">
+                                <strong>Mitologias</strong>
+                                <span></span>
+                                <small>Deuses, heróis e histórias ancestrais que moldaram civilizações.</small>
+                                <em>Explorar →</em>
+                            </div>
                         </a>
 
-                        <a href="#simbolos" class="hero-shortcut">
-
+                        <a href="#simbolos" class="hero-shortcut shortcut-symbols">
                             <div class="shortcut-icon">
                                 <img src="./assets/images/home/home-hero/simbolos-icon.png" alt="" aria-hidden="true">
                             </div>
 
-                            <strong>Símbolos</strong>
-
-                            <small>
-                                Significados que atravessam o tempo
-                            </small>
-
+                            <div class="shortcut-content">
+                                <strong>Símbolos</strong>
+                                <span></span>
+                                <small>Significados antigos que atravessam o tempo e culturas.</small>
+                                <em>Explorar →</em>
+                            </div>
                         </a>
 
-                        <a href="#lendas" class="hero-shortcut">
-
+                        <a href="#lendas" class="hero-shortcut shortcut-legends">
                             <div class="shortcut-icon">
                                 <img src="./assets/images/home/home-hero/lendas-icon.png" alt="" aria-hidden="true">
                             </div>
 
-                            <strong>Lendas</strong>
-
-                            <small>
-                                Relatos de feitos impossíveis
-                            </small>
-
+                            <div class="shortcut-content">
+                                <strong>Lendas</strong>
+                                <span></span>
+                                <small>Relatos fascinantes de feitos impossíveis e seres lendários.</small>
+                                <em>Explorar →</em>
+                            </div>
                         </a>
 
-                        <a href="#reliquias" class="hero-shortcut">
-
+                        <a href="#reliquias" class="hero-shortcut shortcut-relics">
                             <div class="shortcut-icon">
                                 <img src="./assets/images/home/home-hero/reliquias-icon.png" alt="" aria-hidden="true">
                             </div>
 
-                            <strong>Relíquias</strong>
-
-                            <small>
-                                Objetos de poder inimaginável
-                            </small>
-
+                            <div class="shortcut-content">
+                                <strong>Relíquias</strong>
+                                <span></span>
+                                <small>Objetos de poder e mistério que marcaram gerações.</small>
+                                <em>Explorar →</em>
+                            </div>
                         </a>
 
                     </div>
@@ -284,54 +299,86 @@
         ====================================================== -->
 
         <section class="about-bestiario" id="sobre-bestiario" aria-labelledby="sobre-bestiario-title">
+            <div class="container about-bestiario-container">
 
-            <div class="container">
-                <span class="section-tag">Sobre o projeto</span>
+                <div class="about-bestiario-content">
+                    <span class="section-tag">Sobre o projeto</span>
 
-                <h2 id="sobre-bestiario-title">O que é o Bestiário?</h2>
+                    <h2 id="sobre-bestiario-title">
+                        A intenção do<br>
+                        Bestiário
+                    </h2>
 
-                <p>
-                    O Bestiário é uma biblioteca digital dedicada às mitologias,
-                    religiões, lendas, criaturas, símbolos e relíquias que marcaram
-                    a história da humanidade.
-                </p>
+                    <div class="about-bestiario-divider"></div>
 
-                <p>
-                    Nosso objetivo é apresentar esse patrimônio cultural de forma
-                    acessível, visual e respeitosa, conectando conhecimento antigo
-                    com a curiosidade do mundo moderno.
-                </p>
+                    <p>
+                        O Bestiário nasce do desejo de preservar e compartilhar o patrimônio cultural
+                        que moldou a visão de mundo das civilizações ao longo dos milênios.
+                    </p>
 
-                <div class="about-bestiario-grid" aria-label="Pilares do Bestiário">
-                    <article class="about-bestiario-card">
-                        <span class="about-bestiario-icon" aria-hidden="true">✦</span>
-                        <h3>Conhecimento</h3>
-                        <p>
-                            Conteúdos organizados para explicar mitos, crenças, símbolos,
-                            criaturas e relíquias de forma clara e acessível.
-                        </p>
-                    </article>
+                    <p>
+                        Reunimos mitologias, religiões, lendas, criaturas, símbolos e relíquias em um
+                        espaço dedicado ao conhecimento profundo, apresentado com clareza, respeito
+                        e cuidado visual.
+                    </p>
 
-                    <article class="about-bestiario-card">
-                        <span class="about-bestiario-icon" aria-hidden="true">◈</span>
-                        <h3>Culturas</h3>
-                        <p>
-                            Um espaço para explorar tradições de diferentes povos,
-                            civilizações antigas e narrativas preservadas ao longo do tempo.
-                        </p>
-                    </article>
-
-                    <article class="about-bestiario-card">
-                        <span class="about-bestiario-icon" aria-hidden="true">✧</span>
-                        <h3>Mistérios</h3>
-                        <p>
-                            Lendas, enigmas, objetos sagrados e histórias que atravessam
-                            gerações entre a realidade, o símbolo e o imaginário.
-                        </p>
-                    </article>
+                    <p>
+                        Mais do que contar histórias antigas, buscamos revelar significados,
+                        ensinamentos e conexões que ainda ecoam no mundo moderno.
+                    </p>
                 </div>
-            </div>
 
+                <div class="about-bestiario-symbol" aria-hidden="true">
+                    <img src="./assets/images/home/about/bestiario-symbol.png" alt="">
+                </div>
+
+                <div class="about-bestiario-grid" aria-label="Intenções do projeto Bestiário">
+
+                    <article class="about-bestiario-card">
+                        <div class="about-bestiario-icon">
+                            <img src="./assets/images/home/about/knowledge-icon.png" alt="" loading="lazy"
+                                aria-hidden="true">
+                        </div>
+
+                        <h3>Conhecimento com propósito</h3>
+
+                        <p>
+                            Organizamos conteúdos com profundidade e clareza para tornar mitos,
+                            crenças, símbolos e relíquias acessíveis a todos.
+                        </p>
+                    </article>
+
+                    <article class="about-bestiario-card">
+                        <div class="about-bestiario-icon">
+                            <img src="./assets/images/home/about/culture-icon.png" alt="" loading="lazy"
+                                aria-hidden="true">
+                        </div>
+
+                        <h3>Pontes entre culturas</h3>
+
+                        <p>
+                            Conectamos saberes antigos de diferentes povos, mostrando como suas
+                            histórias, valores e visões de mundo se entrelaçam.
+                        </p>
+                    </article>
+
+                    <article class="about-bestiario-card">
+                        <div class="about-bestiario-icon">
+                            <img src="./assets/images/home/about/mystery-icon.png" alt="" loading="lazy"
+                                aria-hidden="true">
+                        </div>
+
+                        <h3>Inspiração e reflexão</h3>
+
+                        <p>
+                            Queremos despertar curiosidade, admiração e reflexão sobre o legado
+                            cultural que ainda nos guia, inspira e transforma.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
         </section>
 
         <!-- =====================================================
@@ -339,62 +386,94 @@
         ====================================================== -->
         <section class="about-mythology" id="sobre-mitologia" aria-labelledby="sobre-mitologia-title">
             <div class="container">
+
                 <div class="about-mythology-card">
 
                     <span class="section-tag">Conhecimento Essencial</span>
 
-                    <h2 id="sobre-mitologia-title">O que é Mitologia?</h2>
+                    <h2 id="sobre-mitologia-title">
+                        O que é Mitologia?
+                    </h2>
 
-                    <p class="about-highlight">
-                        A mitologia reúne histórias, símbolos e personagens que ajudaram diferentes povos a compreender
-                        o mundo e transmitir seus valores através das gerações.
-                    </p>
+                    <div class="about-title-divider"></div>
+
+                    <div class="about-highlight">
+                        <span class="about-highlight-icon" aria-hidden="true">✦</span>
+
+                        <p>
+                            A mitologia reúne histórias, símbolos e personagens que ajudaram diferentes povos
+                            a compreender o mundo e transmitir seus valores através das gerações.
+                        </p>
+                    </div>
 
                     <div class="about-grid">
 
-                        <!-- Bloco: definição -->
-                        <div class="about-block">
-                            <h3>Mitologia</h3>
-                            <p>
-                                Muito além de simples contos, os mitos carregam valores, crenças e ensinamentos
-                                profundos. Deuses, criaturas e forças naturais representam ideias simbólicas que
-                                ajudavam a responder perguntas fundamentais sobre a vida, a morte, o destino e o
-                                universo.
-                            </p>
-                        </div>
+                        <article class="about-block">
+                            <div class="about-block-icon" aria-hidden="true">柱</div>
 
-                        <!-- Bloco: mito x realidade -->
-                        <div class="about-block">
-                            <h3>Mito x Realidade</h3>
-                            <p>
-                                Diferente do senso comum, um mito não é necessariamente uma mentira. Ele representa
-                                uma verdade simbólica, construída a partir da percepção e da experiência de um povo.
-                            </p>
-                            <p>
-                                Enquanto a realidade busca explicações baseadas em fatos e evidências, o mito interpreta
-                                o mundo através de símbolos, arquétipos e significados mais profundos.
-                            </p>
-                        </div>
+                            <div class="about-block-content">
+                                <h3>Mitologia</h3>
 
-                        <!-- Bloco: mito, símbolo e cultura -->
-                        <div class="about-block">
-                            <h3>Mito, Símbolo e Cultura</h3>
-                            <p>
-                                Os mitos também moldaram símbolos, rituais, obras de arte, templos,
-                                festas populares, literatura e costumes. Por isso, estudar mitologia
-                                é observar como uma narrativa pode influenciar a cultura de um povo
-                                por séculos.
-                            </p>
-                        </div>
+                                <p>
+                                    Muito além de simples contos, os mitos carregam valores, crenças e ensinamentos
+                                    profundos. Deuses, criaturas e forças naturais representam ideias simbólicas que
+                                    ajudavam a responder perguntas fundamentais sobre a vida, a morte, o destino e o
+                                    universo.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="about-block">
+                            <div class="about-block-icon" aria-hidden="true">◉</div>
+
+                            <div class="about-block-content">
+                                <h3>Mito x Realidade</h3>
+
+                                <p>
+                                    Diferente do senso comum, um mito não é necessariamente uma mentira. Ele representa
+                                    uma verdade simbólica, construída a partir da percepção e da experiência de um povo.
+                                </p>
+
+                                <p>
+                                    Enquanto a realidade busca explicações baseadas em fatos e evidências, o mito
+                                    interpreta
+                                    o mundo através de símbolos, arquétipos e significados mais profundos.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="about-block about-block-wide">
+                            <div class="about-block-icon" aria-hidden="true">△</div>
+
+                            <div class="about-block-content">
+                                <h3>Mito, Símbolo e Cultura</h3>
+
+                                <p>
+                                    Os mitos também moldaram símbolos, rituais, obras de arte, templos, festas
+                                    populares,
+                                    literatura e costumes. Por isso, estudar mitologia é observar como uma narrativa
+                                    pode
+                                    influenciar a cultura de um povo por séculos.
+                                </p>
+                            </div>
+                        </article>
 
                     </div>
 
-                    <p class="about-conclusion">
-                        Assim, mitologia e realidade não são opostos, são formas diferentes de compreender a
-                        existência: uma através da razão, outra através do significado.
-                    </p>
+                    <div class="about-conclusion">
+                        <span aria-hidden="true">“</span>
+
+                        <p>
+                            Assim, mitologia e realidade não são opostos, são formas diferentes de compreender a
+                            existência:
+                            uma através da razão, outra através do significado.
+                        </p>
+
+                        <small aria-hidden="true">✧</small>
+                    </div>
 
                 </div>
+
             </div>
         </section>
 
@@ -404,9 +483,11 @@
         <section class="ancient-knowledge" id="vozes-antigas" aria-labelledby="vozes-antigas-title">
             <div class="container ancient-knowledge-content">
 
-                <!-- Cabeçalho da seção -->
                 <span class="section-tag">Conhecimento Antigo</span>
+
                 <h2 id="vozes-antigas-title">Vozes do Mundo Antigo</h2>
+
+                <div class="ancient-title-divider"></div>
 
                 <p class="ancient-intro">
                     Ao longo da história, diferentes povos registraram sua visão do mundo por meio de provérbios,
@@ -419,25 +500,22 @@
                     tradições iorubás, sabedorias nórdicas e outras vozes ancestrais.
                 </p>
 
-                <!-- Carrossel de citações -->
                 <div class="quotes-carousel-wrapper" aria-label="Carrossel de citações antigas">
 
-                    <!-- Botão voltar -->
                     <button class="carousel-button prev" id="prevBtn" aria-label="Voltar" type="button">
-                        &#10094;
+                        ‹
                     </button>
 
-                    <!-- Trilha de cards -->
                     <div class="quotes-carousel">
                         <div class="ancient-quotes" id="quotesTrack"></div>
                     </div>
 
-                    <!-- Botão avançar -->
                     <button class="carousel-button next" id="nextBtn" aria-label="Avançar" type="button">
-                        &#10095;
+                        ›
                     </button>
 
                 </div>
+
             </div>
         </section>
 
@@ -445,11 +523,18 @@
             CARROSSEL INFINITO - MITOLOGIAS
         ===================================================== -->
         <section class="infinite-carousel-section" id="mitologias" aria-labelledby="mitologias-title">
-            <div class="container">
+            <div class="mythology-section-bg" aria-hidden="true"></div>
+
+            <div class="container mythology-carousel-container">
 
                 <div class="carousel-header">
-                    <span class="section-tag">Exploração Visual</span>
+                    <span class="section-tag">Explorando as origens</span>
+
                     <h2 id="mitologias-title">Visões do Mundo Antigo</h2>
+
+                    <div class="mythology-title-divider" aria-hidden="true">
+                        <span>✦</span>
+                    </div>
 
                     <p>
                         Cada cultura criou sua própria forma de explicar a origem do mundo,
@@ -463,7 +548,23 @@
                 </div>
 
                 <div class="infinite-carousel" aria-label="Carrossel de mitologias">
+                    <button class="mythology-carousel-arrow mythology-carousel-prev" type="button" aria-label="Voltar">
+                        ‹
+                    </button>
+
                     <div class="carousel-track" id="mythologyCarouselTrack"></div>
+
+                    <button class="mythology-carousel-arrow mythology-carousel-next" type="button" aria-label="Avançar">
+                        ›
+                    </button>
+                </div>
+
+                <div class="mythology-carousel-dots" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span class="is-active"></span>
+                    <span></span>
+                    <span></span>
                 </div>
 
             </div>
@@ -498,24 +599,73 @@
                             loading="lazy" decoding="async">
                     </div>
 
-                    <div class="creatures-filter-preview" aria-label="Categorias de criaturas">
-                        <span>Aquáticas</span>
-                        <span>Celestiais</span>
-                        <span>Sombras</span>
-                        <span>Guardiãs</span>
-                        <span>Híbridas</span>
+                    <div class="creatures-filter-preview" aria-label="Filtrar criaturas por categoria">
+                        <button type="button" class="creature-filter is-active" data-filter="all">
+                            Todas
+                        </button>
+
+                        <button type="button" class="creature-filter" data-filter="aquaticas">
+                            Aquáticas
+                        </button>
+
+                        <button type="button" class="creature-filter" data-filter="celestiais">
+                            Celestiais
+                        </button>
+
+                        <button type="button" class="creature-filter" data-filter="sombras">
+                            Sombras
+                        </button>
+
+                        <button type="button" class="creature-filter" data-filter="guardias">
+                            Guardiãs
+                        </button>
+
+                        <button type="button" class="creature-filter" data-filter="gigantes">
+                            Gigantes
+                        </button>
+
+                        <button type="button" class="creature-filter" data-filter="espiritos">
+                            Espíritos
+                        </button>
+
+                        <button type="button" class="creature-filter" data-filter="bestas">
+                            Bestas
+                        </button>
                     </div>
 
-                    <a href="./criaturas.html" class="creatures-main-button">
-                        <span class="button-text">
-                            Ver todas as criaturas
-                        </span>
+                    <div class="creatures-actions">
 
-                        <span class="button-arrow">
-                            ›
-                        </span>
-                    </a>
+                        <a href="./mythology.html" class="creatures-main-button">
 
+                            <span class="button-text">
+                                Ver todas as criaturas
+                            </span>
+
+                            <span class="button-arrow">
+                                →
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- Paginação das criaturas -->
+                <div class="creatures-pagination" aria-label="Paginação de criaturas">
+                    <button type="button" class="creatures-page-button creatures-page-prev" id="creaturesPrevPage"
+                        aria-label="Página anterior">
+                        ‹
+                    </button>
+
+                    <div class="creatures-page-counter" aria-live="polite">
+                        <span id="creaturesPageLabel">Página 1 de 1</span>
+                    </div>
+
+                    <button type="button" class="creatures-page-button creatures-page-next" id="creaturesNextPage"
+                        aria-label="Próxima página">
+                        ›
+                    </button>
                 </div>
 
                 <!-- Lista de criaturas gerada pelo JavaScript -->
@@ -606,8 +756,7 @@
                         Histórias transmitidas por gerações revelam medos, heróis, criaturas
                         e mistérios que continuam vivos na memória popular.
                     </p>
-
-                    <a href="./legends.html" class="section-main-button">
+                    <a href="./legends.html" class="section-main-button legends-main-button">
                         <span class="button-text">Ver todas as lendas</span>
                         <span class="button-arrow">›</span>
                     </a>
@@ -627,6 +776,10 @@
                         &#10095;
                     </button>
 
+                </div>
+
+                <div class="legends-progress" aria-hidden="true">
+                    <span class="legends-progress-bar" id="legendsProgressBar"></span>
                 </div>
             </div>
         </section>

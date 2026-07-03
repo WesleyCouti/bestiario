@@ -1,0 +1,75 @@
+/* =====================================================
+   16. REFINO FINAL — PERFORMANCE, ACESSIBILIDADE E MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+    .about-bestiario .container,
+    .about-bestiario-card,
+    .about-mythology-card,
+    .quote-card,
+    .myth-flip-front,
+    .myth-flip-back,
+    .myth-card,
+    .creature-card-front,
+    .creature-card-back,
+    .symbol-card-inner,
+    .legend-card,
+    .relic-card,
+    .why-study-section .container {
+        box-shadow: var(--home-shadow-soft);
+    }
+
+    .legends-section::before,
+    .legends-section::after,
+    .relics-section::before,
+    .excalibur,
+    .mjolnir,
+    .trident,
+    .monkey,
+    .carousel-interaction-tip__icon,
+    #mythologyCarouselTrack .myth-flip-front::before,
+    .quotes-carousel-wrapper::after {
+        animation: none;
+    }
+
+    .legend-badge,
+    .symbols-feature-card,
+    .creatures-section .creatures-main-button,
+    .relic-symbol,
+    .relic-arrow {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .legend-card:hover,
+    .legend-card:focus-within,
+    .relic-card:hover,
+    .relic-card:focus-within,
+    .myth-card:hover,
+    .myth-card:focus-within,
+    .quote-card:hover,
+    .about-bestiario-card:hover {
+        box-shadow: var(--home-shadow-card);
+    }
+}
+
+@media (hover: none) {
+    .hero-button:hover,
+    .section-main-button:hover,
+    .creatures-main-button:hover,
+    .symbols-feature-button:hover,
+    .relics-main-button:hover,
+    .legends-main-button:hover {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}

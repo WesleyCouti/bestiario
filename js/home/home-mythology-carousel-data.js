@@ -586,22 +586,28 @@ function createMythologyCarouselCards() {
     track.innerHTML = mythologyCarouselData.map((mythology) => {
         const name = escapeHTML(mythology.name || "Mitologia");
         const title = escapeHTML(mythology.title || name);
-        const category = escapeHTML(
-            mythology.category || "Tradição Ancestral"
-        );
+        const category = escapeHTML(mythology.category || "Tradição Ancestral");
         const image = escapeHTML(mythology.image || "");
         const alt = escapeHTML(mythology.alt || title);
-        const description = escapeHTML(
-            mythology.description || "Descrição não disponível."
-        );
+        const description = escapeHTML(mythology.description || "Descrição não disponível.");
         const url = escapeHTML(mythology.url || "#");
+        const mythKey = normalizeMythologyKey(mythology.name || "");
 
         return `
-            <div class="carousel-item">
+            <div
+                class="carousel-item"
+                data-myth="${mythKey}"
+                role="button"
+                tabindex="0"
+                aria-pressed="false"
+                aria-label="Virar card da ${title}">
+
                 <div class="myth-flip-card">
                     <div class="myth-flip-inner">
 
                         <div class="myth-flip-front">
+                            <span class="myth-symbol-badge" aria-hidden="true"></span>
+
                             <img
                                 src="${image}"
                                 alt="${alt}"
@@ -611,7 +617,10 @@ function createMythologyCarouselCards() {
                             <div class="myth-front-overlay">
                                 <span>Mitologia</span>
                                 <h3>${name}</h3>
+                                <p>${createShortMythologyDescription(description)}</p>
                             </div>
+
+                            <span class="myth-card-button" aria-hidden="true">›</span>
                         </div>
 
                         <div class="myth-flip-back">
@@ -621,7 +630,7 @@ function createMythologyCarouselCards() {
 
                             <p>${description}</p>
 
-                            <a href="${url}" class="myth-button">
+                            <a href="${url}" class="myth-button" aria-label="Explorar ${title}">
                                 Explorar
                             </a>
                         </div>
@@ -633,7 +642,125 @@ function createMythologyCarouselCards() {
     }).join("");
 
     track.dataset.rendered = "true";
+
+    setupMythologyCarouselFlip();
 }
+
+function createShortMythologyDescription(description) {
+    const cleanText = String(description || "").trim();
+
+    if (cleanText.length <= 88) {
+        return cleanText;
+    }
+
+    return `${cleanText.slice(0, 88).trim()}...`;
+}
+
+function normalizeMythologyKey(value) {
+    return String(value || "")
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/ç/g, "c")
+        .replace(/\s+/g, "-");
+}
+
+
+/* =====================================================
+   FLIP DOS CARDS — CONTROLE POR CLIQUE
+   -----------------------------------------------------
+   Comportamento aplicado:
+   - Clique no card: abre.
+   - Clique novamente no mesmo card: fecha.
+   - Clique em outro card: fecha o anterior e abre o novo.
+   - Clique fora dos cards: fecha qualquer card aberto.
+   - Enter ou Espaço também alternam o card.
+   - O botão "Explorar" continua funcionando normalmente.
+   - Funciona mesmo se o carrossel infinito clonar/recriar cards.
+===================================================== */
+
+function setupMythologyCarouselFlip() {
+    const carouselTrack = document.getElementById("mythologyCarouselTrack");
+
+    if (!carouselTrack) {
+        return;
+    }
+
+    if (carouselTrack.dataset.flipDelegationReady === "true") {
+        return;
+    }
+
+    carouselTrack.dataset.flipDelegationReady = "true";
+
+    carouselTrack.addEventListener("click", (event) => {
+        const clickedLink = event.target.closest("a");
+        const clickedCard = event.target.closest(".carousel-item");
+
+        if (clickedLink || !clickedCard || !carouselTrack.contains(clickedCard)) {
+            return;
+        }
+
+        event.preventDefault();
+
+        toggleMythologyCard(clickedCard);
+    });
+
+    carouselTrack.addEventListener("keydown", (event) => {
+        const isActionKey = event.key === "Enter" || event.key === " ";
+        const selectedCard = event.target.closest(".carousel-item");
+
+        if (!isActionKey || !selectedCard || !carouselTrack.contains(selectedCard)) {
+            return;
+        }
+
+        event.preventDefault();
+
+        toggleMythologyCard(selectedCard);
+    });
+
+    document.addEventListener("click", (event) => {
+        const clickedInsideCarousel = event.target.closest("#mythologyCarouselTrack");
+
+        if (clickedInsideCarousel) {
+            return;
+        }
+
+        closeAllMythologyCards();
+    });
+}
+
+
+/* =====================================================
+   CONTROLE DE ESTADO DO FLIP
+===================================================== */
+
+function toggleMythologyCard(selectedCard) {
+    const isAlreadyFlipped = selectedCard.classList.contains("is-flipped");
+
+    closeAllMythologyCards();
+
+    if (!isAlreadyFlipped) {
+        selectedCard.classList.add("is-flipped");
+        selectedCard.setAttribute("aria-pressed", "true");
+    }
+}
+
+
+/* =====================================================
+   FECHA TODOS OS CARDS
+===================================================== */
+
+function closeAllMythologyCards() {
+    const cards = document.querySelectorAll("#mythologyCarouselTrack .carousel-item");
+
+    cards.forEach((card) => {
+        card.classList.remove("is-flipped");
+        card.setAttribute("aria-pressed", "false");
+    });
+}
+
+
 
 /* =====================================================
    FUNÇÃO DE SEGURANÇA
@@ -647,3 +774,16 @@ function escapeHTML(value) {
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
 }
+
+/* =====================================================
+   INICIALIZAÇÃO DE SEGURANÇA
+   -----------------------------------------------------
+   Mantém compatibilidade com o main.js.
+   Se o main.js já renderizar os cards, esta chamada não
+   duplica nada por causa do controle track.dataset.rendered.
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+    createMythologyCarouselCards();
+    setupMythologyCarouselFlip();
+});

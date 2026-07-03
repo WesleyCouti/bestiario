@@ -1,0 +1,186 @@
+/* =====================================================
+   13. DICAS VISUAIS DO CARROSSEL DE MITOLOGIAS
+===================================================== */
+
+.carousel-interaction-tip {
+    width: fit-content;
+    max-width: 100%;
+    margin: 24px 0 26px;
+    padding: 12px 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(201, 162, 74, 0.28);
+    border-radius: 999px;
+    background:
+        radial-gradient(circle at 20% 0%, rgba(201, 162, 74, 0.10), transparent 48%),
+        rgba(5, 16, 11, 0.48);
+    color: rgba(241, 215, 138, 0.92);
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    box-shadow:
+        inset 0 0 18px rgba(201, 162, 74, 0.04),
+        0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.carousel-interaction-tip__icon {
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 26px;
+    border: 1px solid rgba(201, 162, 74, 0.38);
+    border-radius: 50%;
+    color: var(--home-gold-soft);
+    font-size: 0.78rem;
+    box-shadow: 0 0 16px rgba(201, 162, 74, 0.12);
+    animation: mythologyTipPulse 1.8s ease-in-out infinite;
+}
+
+#mythologyCarouselTrack .myth-flip-front::after {
+    content: "Clique para virar";
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    z-index: 6;
+    padding: 8px 12px;
+    border: 1px solid rgba(201, 162, 74, 0.34);
+    border-radius: 999px;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(201, 162, 74, 0.16), transparent 52%),
+        rgba(3, 14, 9, 0.76);
+    color: var(--home-gold-soft);
+    font-size: 0.62rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    backdrop-filter: blur(8px);
+    pointer-events: none;
+    box-shadow:
+        0 0 18px rgba(201, 162, 74, 0.12),
+        0 10px 22px rgba(0, 0, 0, 0.26);
+}
+
+#mythologyCarouselTrack .myth-flip-front::before {
+    content: "↻";
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    z-index: 6;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(201, 162, 74, 0.42);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(201, 162, 74, 0.18), transparent 56%),
+        rgba(3, 14, 9, 0.82);
+    color: var(--home-gold-soft);
+    font-size: 1rem;
+    line-height: 1;
+    pointer-events: none;
+    box-shadow:
+        0 0 20px rgba(201, 162, 74, 0.16),
+        0 10px 24px rgba(0, 0, 0, 0.28);
+    animation: mythologyCardHint 1.65s ease-in-out infinite;
+}
+
+#mythologyCarouselTrack .carousel-item.is-flipped .myth-flip-front::before,
+#mythologyCarouselTrack .carousel-item.is-flipped .myth-flip-front::after {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes mythologyTipPulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.72;
+    }
+
+    50% {
+        transform: scale(1.12);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.72;
+    }
+}
+
+@keyframes mythologyCardHint {
+    0% {
+        opacity: 0.58;
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: rotate(8deg) scale(1.08);
+    }
+
+    100% {
+        opacity: 0.58;
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+@media (max-width: 700px) {
+    .carousel-interaction-tip {
+        width: 100%;
+        justify-content: center;
+        margin: 22px 0 24px;
+        padding: 12px 14px;
+        font-size: 0.68rem;
+        letter-spacing: 1.25px;
+        text-align: center;
+    }
+
+    #mythologyCarouselTrack .myth-flip-front::after {
+        right: 14px;
+        top: 14px;
+        padding: 7px 10px;
+        font-size: 0.56rem;
+        letter-spacing: 1.1px;
+    }
+
+    #mythologyCarouselTrack .myth-flip-front::before {
+        right: 14px;
+        bottom: 14px;
+        width: 34px;
+        height: 34px;
+        font-size: 0.92rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .carousel-interaction-tip {
+        align-items: flex-start;
+        border-radius: 18px;
+        font-size: 0.62rem;
+        letter-spacing: 1px;
+    }
+
+    .carousel-interaction-tip__icon {
+        width: 24px;
+        height: 24px;
+        flex-basis: 24px;
+    }
+
+    #mythologyCarouselTrack .myth-flip-front::after {
+        content: "Clique";
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .carousel-interaction-tip__icon,
+    #mythologyCarouselTrack .myth-flip-front::before {
+        animation: none;
+    }
+}
