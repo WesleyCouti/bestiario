@@ -1,46 +1,15 @@
 /* =====================================================
-   05. VISÕES DO MUNDO ANTIGO / CARROSSEL INFINITO
+   05. VISÕES DO MUNDO ANTIGO / CARROSSEL MANUAL
 ===================================================== */
 
 .infinite-carousel-section {
     position: relative;
-    padding: 110px 0 130px;
+    padding: 110px 0 120px;
     overflow: hidden;
     background:
-        radial-gradient(circle at 50% 18%, rgba(201, 162, 74, 0.12), transparent 34%),
+        radial-gradient(circle at 50% 20%, rgba(201, 162, 74, 0.10), transparent 34%),
         radial-gradient(circle at 50% 72%, rgba(129, 199, 132, 0.08), transparent 38%),
         linear-gradient(180deg, #03110a 0%, #020806 100%);
-}
-
-.mythology-section-bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-}
-
-.mythology-section-bg::before,
-.mythology-section-bg::after {
-    content: "";
-    position: absolute;
-    top: 130px;
-    width: 360px;
-    height: 360px;
-    opacity: 0.16;
-    border-radius: 50%;
-    border: 1px solid rgba(201, 162, 74, 0.35);
-    background:
-        repeating-conic-gradient(from 0deg,
-            rgba(201, 162, 74, 0.22) 0deg 1deg,
-            transparent 1deg 15deg);
-    mask-image: radial-gradient(circle, transparent 36%, #000 37%, #000 62%, transparent 63%);
-}
-
-.mythology-section-bg::before {
-    left: -170px;
-}
-
-.mythology-section-bg::after {
-    right: -170px;
 }
 
 .infinite-carousel-section::before {
@@ -48,11 +17,10 @@
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.025), transparent 35%),
         linear-gradient(90deg, rgba(201, 162, 74, 0.025) 1px, transparent 1px),
         linear-gradient(180deg, rgba(201, 162, 74, 0.018) 1px, transparent 1px);
-    background-size: auto, 110px 110px, 110px 110px;
-    opacity: 0.38;
+    background-size: 110px 110px;
+    opacity: 0.28;
     pointer-events: none;
 }
 
@@ -62,10 +30,8 @@
 }
 
 .carousel-header {
-    position: relative;
-    z-index: 4;
     max-width: 1040px;
-    margin: 0 auto 58px;
+    margin: 0 auto 56px;
     text-align: center;
 }
 
@@ -80,28 +46,13 @@
     text-transform: uppercase;
 }
 
-.carousel-header .section-tag::before,
-.carousel-header .section-tag::after {
-    content: "⟵";
-    color: rgba(201, 162, 74, 0.86);
-    font-size: 1rem;
-    letter-spacing: 0;
-}
-
-.carousel-header .section-tag::after {
-    content: "⟶";
-}
-
 .carousel-header h2 {
-    max-width: 980px;
     margin: 16px auto 0;
     color: var(--home-text-cream);
     font-family: var(--home-font-serif);
-    font-size: clamp(3.4rem, 6vw, 5.9rem);
+    font-size: clamp(3.2rem, 6vw, 5.4rem);
     font-weight: 400;
     line-height: 0.95;
-    letter-spacing: -2px;
-    text-shadow: 0 0 26px rgba(201, 162, 74, 0.16);
 }
 
 .mythology-title-divider {
@@ -116,167 +67,71 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 32px;
-    height: 32px;
-    display: grid;
-    place-items: center;
+    padding: 0 12px;
     transform: translate(-50%, -50%);
     color: var(--home-gold-soft);
     background: #03110a;
-    font-size: 1rem;
-    text-shadow: 0 0 18px rgba(201, 162, 74, 0.38);
 }
 
 .carousel-header p {
     max-width: 760px;
     margin: 0 auto;
     color: rgba(238, 232, 210, 0.84);
-    font-size: 1.12rem;
+    font-size: 1.08rem;
     line-height: 1.65;
 }
 
 .infinite-carousel-section .section-main-button {
     position: relative;
-    width: fit-content;
-    min-width: 330px;
+    min-width: 320px;
     min-height: 58px;
-    margin: 28px auto 0;
+    margin-top: 28px;
     padding: 0 68px 0 34px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
     border: 1px solid rgba(201, 162, 74, 0.68);
     border-radius: 16px;
-    background:
-        radial-gradient(circle at 18% 0%, rgba(201, 162, 74, 0.12), transparent 46%),
-        linear-gradient(135deg, rgba(5, 18, 12, 0.92), rgba(2, 8, 5, 0.94));
+    background: linear-gradient(135deg, rgba(5, 18, 12, 0.92), rgba(2, 8, 5, 0.94));
     color: var(--home-gold-soft);
-    text-align: center;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 0.78rem;
     font-weight: 900;
-    line-height: 1;
     letter-spacing: 3px;
-    box-shadow:
-        inset 0 0 18px rgba(201, 162, 74, 0.045),
-        0 16px 34px rgba(0, 0, 0, 0.24);
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
 }
 
-.infinite-carousel-section .section-main-button::before {
-    content: "";
+.infinite-carousel-section .button-arrow {
     position: absolute;
-    inset: 1px;
-    border-radius: inherit;
-    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.12), transparent);
-    opacity: 0;
-    transform: translateX(-110%);
-    transition: opacity 0.3s ease, transform 0.6s ease;
-}
-
-.infinite-carousel-section .section-main-button .button-text {
-    position: relative;
-    z-index: 2;
-    white-space: nowrap;
-}
-
-.infinite-carousel-section .section-main-button .button-arrow {
-    position: absolute;
-    top: 50%;
     right: 26px;
-    z-index: 2;
-    transform: translateY(-50%);
-    color: var(--home-gold-soft);
     font-size: 1.35rem;
-    line-height: 1;
-}
-
-.infinite-carousel-section .section-main-button:hover,
-.infinite-carousel-section .section-main-button:focus-visible {
-    transform: translateY(-4px);
-    border-color: rgba(241, 215, 138, 0.95);
-    box-shadow:
-        inset 0 0 20px rgba(201, 162, 74, 0.065),
-        0 0 26px rgba(201, 162, 74, 0.16),
-        0 20px 42px rgba(0, 0, 0, 0.30);
-}
-
-.infinite-carousel-section .section-main-button:hover::before,
-.infinite-carousel-section .section-main-button:focus-visible::before {
-    opacity: 1;
-    transform: translateX(110%);
 }
 
 .infinite-carousel {
     position: relative;
-    width: 100%;
-    max-width: 1460px;
+    max-width: 1320px;
     margin: 0 auto;
+}
+
+.carousel-viewport {
     overflow: hidden;
-    cursor: grab;
-    user-select: none;
-    touch-action: pan-y;
-}
-
-.infinite-carousel.dragging {
-    cursor: grabbing;
-}
-
-.infinite-carousel.dragging .myth-flip-inner,
-.infinite-carousel.dragging a,
-.infinite-carousel.dragging button {
-    pointer-events: none;
-}
-
-.infinite-carousel::before,
-.infinite-carousel::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 150px;
-    height: 100%;
-    z-index: 8;
-    pointer-events: none;
-}
-
-.infinite-carousel::before {
-    left: 0;
-    background: linear-gradient(to right, #020806 0%, rgba(2, 8, 6, 0.82) 34%, transparent);
-}
-
-.infinite-carousel::after {
-    right: 0;
-    background: linear-gradient(to left, #020806 0%, rgba(2, 8, 6, 0.82) 34%, transparent);
+    padding: 18px 8px 22px;
 }
 
 .carousel-track {
     display: flex;
-    align-items: stretch;
-    gap: 34px;
-    width: max-content;
-    max-width: none;
-    padding: 48px 120px 22px;
-    transform: translate3d(0, 0, 0);
-}
-
-.infinite-carousel.dragging .carousel-track {
-    transition: none;
+    gap: 28px;
+    transition: transform 0.45s ease;
+    will-change: transform;
 }
 
 .carousel-item {
     position: relative;
-    flex: 0 0 370px;
-    width: 370px;
-    height: 470px;
-    outline: none;
+    flex: 0 0 calc((100% - 56px) / 3);
+    min-width: 0;
+    height: 430px;
     perspective: 1200px;
     --myth-accent: #c9a24a;
-    --myth-symbol: "✦";
 }
 
 .myth-flip-card,
@@ -288,7 +143,7 @@
 .myth-flip-inner {
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: transform 0.7s ease;
 }
 
 .carousel-item.is-flipped .myth-flip-inner {
@@ -301,94 +156,40 @@
     inset: 0;
     overflow: hidden;
     border-radius: 24px;
-    border: 1px solid color-mix(in srgb, var(--myth-accent) 68%, transparent);
+    border: 1px solid rgba(201, 162, 74, 0.36);
     background: #06110c;
     backface-visibility: hidden;
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.035),
-        0 28px 70px rgba(0, 0, 0, 0.44);
+    box-shadow: 0 22px 54px rgba(0, 0, 0, 0.36);
 }
 
-.myth-flip-front::before,
-.myth-flip-back::before {
-    content: "";
-    position: absolute;
-    inset: 12px;
-    z-index: 4;
-    border: 1px solid color-mix(in srgb, var(--myth-accent) 24%, transparent);
-    border-radius: 18px;
-    pointer-events: none;
+.myth-flip-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.78) contrast(1.08) saturate(1.05);
 }
 
 .myth-flip-front::after {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: 2;
     background:
-        linear-gradient(180deg, transparent 18%, rgba(0, 0, 0, 0.18) 45%, rgba(0, 0, 0, 0.94) 100%),
-        radial-gradient(circle at 50% 18%, transparent 0%, rgba(0, 0, 0, 0.16) 70%);
-    pointer-events: none;
-}
-
-.myth-flip-front img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    transform: scale(1.02);
-    filter: brightness(0.86) contrast(1.08) saturate(1.08);
-    transition: transform 0.55s ease, filter 0.55s ease;
-}
-
-.carousel-item:hover .myth-flip-front img {
-    transform: scale(1.08);
-    filter: brightness(0.96) contrast(1.12) saturate(1.12);
-}
-
-.myth-symbol-badge {
-    position: absolute;
-    top: -34px;
-    left: 50%;
-    z-index: 9;
-    width: 88px;
-    height: 88px;
-    display: grid;
-    place-items: center;
-    transform: translateX(-50%);
-    border-radius: 50%;
-    border: 1px solid color-mix(in srgb, var(--myth-accent) 88%, transparent);
-    background:
-        radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 58%),
-        rgba(3, 14, 9, 0.96);
-    color: var(--myth-accent);
-    font-size: 2.2rem;
-    font-family: var(--home-font-serif);
-    box-shadow:
-        0 0 0 8px color-mix(in srgb, var(--myth-accent) 10%, transparent),
-        0 0 26px color-mix(in srgb, var(--myth-accent) 26%, transparent),
-        0 18px 36px rgba(0, 0, 0, 0.38);
-}
-
-.myth-symbol-badge::before {
-    content: var(--myth-symbol);
+        linear-gradient(180deg, transparent 22%, rgba(0, 0, 0, 0.20) 48%, rgba(0, 0, 0, 0.92) 100%);
 }
 
 .myth-front-overlay {
     position: absolute;
-    inset: auto 0 0;
-    z-index: 5;
-    min-height: 190px;
-    padding: 68px 36px 34px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    padding: 0 30px 34px;
     text-align: center;
 }
 
 .myth-front-overlay span {
     color: #84d87d;
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 900;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -398,264 +199,143 @@
     margin: 10px 0 10px;
     color: var(--home-text-cream);
     font-family: var(--home-font-serif);
-    font-size: 2.55rem;
-    font-weight: 700;
+    font-size: 2.35rem;
     line-height: 1;
-    text-shadow: 0 8px 28px rgba(0, 0, 0, 0.58);
 }
 
 .myth-front-overlay p {
-    max-width: 290px;
+    max-width: 280px;
     margin: 0 auto;
     color: rgba(238, 232, 210, 0.82);
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     line-height: 1.45;
 }
 
 .myth-card-button {
-    position: absolute;
-    left: 50%;
-    bottom: 26px;
-    z-index: 6;
-    width: 40px;
-    height: 40px;
-    display: grid;
-    place-items: center;
-    transform: translateX(-50%);
-    border-radius: 50%;
-    border: 1px solid color-mix(in srgb, var(--myth-accent) 78%, transparent);
-    background: rgba(3, 14, 9, 0.72);
-    color: var(--myth-accent);
-    font-size: 1.25rem;
-    line-height: 1;
+    display: none;
 }
 
 .myth-flip-back {
-    padding: 110px 34px 34px;
+    padding: 46px 34px 34px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     transform: rotateY(180deg);
     background:
-        radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--myth-accent) 18%, transparent), transparent 42%),
+        radial-gradient(circle at 50% 0%, rgba(201, 162, 74, 0.14), transparent 42%),
         linear-gradient(180deg, rgba(14, 42, 28, 0.94), rgba(3, 14, 9, 0.98));
 }
 
 .myth-category {
     color: #84d87d;
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 900;
     letter-spacing: 4px;
     text-transform: uppercase;
 }
 
 .myth-flip-back h3 {
-    margin: 18px 0 18px;
+    margin: 18px 0;
     color: var(--home-text-cream);
     font-family: var(--home-font-serif);
-    font-size: 2.2rem;
-    line-height: 1.05;
+    font-size: 2rem;
 }
 
 .myth-flip-back p {
     color: rgba(238, 232, 210, 0.78);
-    font-size: 0.96rem;
+    font-size: 0.95rem;
     line-height: 1.65;
 }
 
 .myth-button {
-    width: 46px;
-    height: 46px;
     margin-top: auto;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    border: 1px solid color-mix(in srgb, var(--myth-accent) 76%, transparent);
-    color: var(--myth-accent);
-    background: rgba(3, 14, 9, 0.76);
+    padding: 13px 24px;
+    border: 1px solid rgba(201, 162, 74, 0.56);
+    border-radius: 999px;
+    color: var(--home-gold-soft);
     text-decoration: none;
-    font-size: 0;
-}
-
-.myth-button::before {
-    content: "›";
-    font-size: 1.6rem;
-    line-height: 1;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 2px;
 }
 
 .mythology-carousel-arrow {
     position: absolute;
     top: 50%;
-    z-index: 12;
-    width: 70px;
-    height: 70px;
+    z-index: 10;
+    width: 62px;
+    height: 62px;
     display: grid;
     place-items: center;
     transform: translateY(-50%);
     border-radius: 50%;
     border: 1px solid rgba(201, 162, 74, 0.72);
-    background: rgba(3, 14, 9, 0.88);
+    background: rgba(3, 14, 9, 0.9);
     color: var(--home-gold-soft);
-    font-size: 3rem;
-    line-height: 1;
+    font-size: 2.6rem;
     cursor: pointer;
-    box-shadow: 0 0 26px rgba(201, 162, 74, 0.12);
 }
 
 .mythology-carousel-prev {
-    left: 24px;
+    left: -10px;
 }
 
 .mythology-carousel-next {
-    right: 24px;
+    right: -10px;
 }
 
-.mythology-carousel-dots {
-    margin-top: 28px;
-    display: flex;
-    justify-content: center;
-    gap: 22px;
-}
-
-.mythology-carousel-dots span {
-    width: 9px;
-    height: 9px;
-    display: block;
-    transform: rotate(45deg);
-    border: 1px solid rgba(201, 162, 74, 0.52);
-}
-
-.mythology-carousel-dots span.is-active {
-    background: var(--home-gold-soft);
-    border-color: var(--home-gold-soft);
-}
-
-/* Variações por mitologia */
-
-.carousel-item[data-myth="alemã"],
-.carousel-item[data-myth="nórdica"],
-.carousel-item[data-myth="escandinava"],
-.carousel-item[data-myth="dinamarquesa"] {
-    --myth-accent: #d8a73b;
-    --myth-symbol: "ᚱ";
-}
-
-.carousel-item[data-myth="grega"] {
-    --myth-accent: #d8a73b;
-    --myth-symbol: "Ⅲ";
-}
-
-.carousel-item[data-myth="japonesa"] {
-    --myth-accent: #ff6b6b;
-    --myth-symbol: "鳥";
-}
-
-.carousel-item[data-myth="egípcia"] {
-    --myth-accent: #d4af37;
-    --myth-symbol: "☥";
-}
-
-.carousel-item[data-myth="chinesa"] {
-    --myth-accent: #59c7ff;
-    --myth-symbol: "☯";
-}
-
-.carousel-item[data-myth="celta"],
-.carousel-item[data-myth="gaélica"],
-.carousel-item[data-myth="irlandesa"],
-.carousel-item[data-myth="escocesa"] {
-    --myth-accent: #59d58a;
-    --myth-symbol: "△";
-}
-
-.carousel-item[data-myth="hindu"],
-.carousel-item[data-myth="indiana"],
-.carousel-item[data-myth="budista"],
-.carousel-item[data-myth="tibetana"] {
-    --myth-accent: #ffb35c;
-    --myth-symbol: "ॐ";
-}
-
-.carousel-item[data-myth="iorubá"],
-.carousel-item[data-myth="africana"],
-.carousel-item[data-myth="umbanda"] {
-    --myth-accent: #ff9b42;
-    --myth-symbol: "◉";
-}
-
-.carousel-item[data-myth="maia"],
-.carousel-item[data-myth="asteca"],
-.carousel-item[data-myth="inca"],
-.carousel-item[data-myth="mexicana"] {
-    --myth-accent: #e0c15a;
-    --myth-symbol: "☀";
-}
-
-.carousel-item[data-myth="árabe"],
-.carousel-item[data-myth="persa"] {
-    --myth-accent: #7ddc9b;
-    --myth-symbol: "☾";
-}
-
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
     .carousel-item {
-        flex-basis: 340px;
-        width: 340px;
-        height: 440px;
-    }
-
-    .carousel-track {
-        gap: 28px;
+        flex: 0 0 calc((100% - 28px) / 2);
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
     .infinite-carousel-section {
-        padding: 86px 0 96px;
+        padding: 80px 0;
     }
 
     .carousel-header {
         padding: 0 18px;
-        margin-bottom: 36px;
+        margin-bottom: 34px;
     }
 
     .carousel-header h2 {
-        font-size: clamp(2.7rem, 12vw, 4rem);
-    }
-
-    .carousel-header p {
-        font-size: 0.98rem;
+        font-size: clamp(2.6rem, 12vw, 3.8rem);
     }
 
     .infinite-carousel-section .section-main-button {
         min-width: 0;
         width: 100%;
-        max-width: 330px;
-    }
-
-    .infinite-carousel::before,
-    .infinite-carousel::after {
-        width: 42px;
-    }
-
-    .carousel-track {
-        gap: 18px;
-        padding: 44px 44px 18px;
+        max-width: 320px;
     }
 
     .carousel-item {
-        flex-basis: 82vw;
-        width: 82vw;
-        max-width: 340px;
-        height: 430px;
+        flex: 0 0 82vw;
+        height: 410px;
     }
 
     .mythology-carousel-arrow {
         display: none;
     }
 
-    .myth-front-overlay h3 {
-        font-size: 2.15rem;
+    .carousel-viewport {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+    .carousel-viewport::-webkit-scrollbar {
+        display: none;
+    }
+
+    .carousel-track {
+        transform: none !important;
+    }
+
+    .carousel-item {
+        scroll-snap-align: center;
     }
 }
