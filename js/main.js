@@ -276,154 +276,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       6. CARROSSEL INFINITO - MITOLOGIAS
-    ===================================================== */
-
-    function setupInfiniteMythologyCarousel() {
-        const carousel = document.querySelector(".infinite-carousel");
-        const track = document.getElementById("mythologyCarouselTrack");
-
-        if (!carousel || !track) {
-            return;
-        }
-
-        if (!track.querySelector(".carousel-item")) {
-            return;
-        }
-
-        const originalContent = track.innerHTML;
-
-        track.innerHTML = originalContent + originalContent;
-
-        let position = 0;
-        const speed = 1;
-        let halfWidth = track.scrollWidth / 2;
-
-        let isDragging = false;
-        let startX = 0;
-        let currentTranslate = 0;
-        let hasMoved = false;
-
-        function updateHalfWidth() {
-            halfWidth = track.scrollWidth / 2;
-        }
-
-        function normalizePosition() {
-            if (position <= -halfWidth) {
-                position += halfWidth;
-            }
-
-            if (position > 0) {
-                position -= halfWidth;
-            }
-        }
-
-        function applyTransform() {
-            track.style.transform = `translateX(${position}px)`;
-        }
-
-        function animateCarousel() {
-            if (!isDragging) {
-                position -= speed;
-                normalizePosition();
-                applyTransform();
-            }
-
-            requestAnimationFrame(animateCarousel);
-        }
-
-        function getEventX(event) {
-            if (event.type.includes("touch")) {
-                return event.touches[0]?.clientX || 0;
-            }
-
-            return event.pageX;
-        }
-
-        function startDrag(event) {
-            isDragging = true;
-            hasMoved = false;
-
-            carousel.classList.add("dragging");
-
-            startX = getEventX(event);
-            currentTranslate = position;
-        }
-
-        function moveDrag(event) {
-            if (!isDragging) {
-                return;
-            }
-
-            const currentX = getEventX(event);
-            const diff = currentX - startX;
-
-            if (Math.abs(diff) > 5) {
-                hasMoved = true;
-            }
-
-            position = currentTranslate + diff;
-
-            normalizePosition();
-            applyTransform();
-        }
-
-        function endDrag() {
-            if (!isDragging) {
-                return;
-            }
-
-            isDragging = false;
-            carousel.classList.remove("dragging");
-        }
-
-        function preventClickAfterDrag(event) {
-            if (hasMoved) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-        }
-
-        carousel.addEventListener("mousedown", startDrag);
-        carousel.addEventListener("mousemove", moveDrag);
-        carousel.addEventListener("mouseup", endDrag);
-        carousel.addEventListener("mouseleave", endDrag);
-
-        carousel.addEventListener("touchstart", startDrag, { passive: true });
-        carousel.addEventListener("touchmove", moveDrag, { passive: true });
-        carousel.addEventListener("touchend", endDrag);
-
-        carousel.addEventListener("click", preventClickAfterDrag, true);
-
-        window.addEventListener("resize", debounce(() => {
-            updateHalfWidth();
-            normalizePosition();
-            applyTransform();
-        }));
-
-        window.addEventListener("load", () => {
-            updateHalfWidth();
-            normalizePosition();
-            applyTransform();
-        });
-
-        animateCarousel();
-    }
-
-
-    /* =====================================================
-       7. INICIALIZAÇÃO GERAL
+       6. INICIALIZAÇÃO GERAL
     ===================================================== */
 
     setupMobileMenu();
     setupQuotesCarousel();
 
-    /*
-       Primeiro os cards dinâmicos são criados.
-       Depois os carrosséis são inicializados.
-    */
+
     setupDynamicHomeContent();
 
     setupHorizontalCarousels();
-    setupInfiniteMythologyCarousel();
+    
 });

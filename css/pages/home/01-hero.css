@@ -428,37 +428,289 @@
     }
 }
 
+/* =====================================================
+   ATALHOS DO HERO - MOBILE REFEITO
+   1 card por linha, visual premium, leitura confortável
+   e composição vertical preservando o estilo do Bestiário.
+===================================================== */
+
 @media (max-width: 700px) {
     .hero-shortcuts {
+        width: 100%;
+        max-width: 390px;
+        margin: 40px auto 0;
+        padding: 0 18px;
+        display: grid;
         grid-template-columns: 1fr;
-        gap: 14px;
-        margin-top: 38px;
+        justify-items: center;
+        gap: 26px;
     }
 
     .hero-shortcut {
-        min-height: auto;
-        padding: 20px;
-        display: grid;
-        grid-template-columns: 72px 1fr;
+        width: 100%;
+        max-width: 340px;
+        min-height: 265px;
+        padding: 30px 26px 28px;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 18px;
+        justify-content: flex-start;
+        gap: 20px;
+        overflow: hidden;
+        border-radius: 28px;
+        text-align: center;
+        border-color: rgba(201, 162, 74, 0.46);
+        background:
+            radial-gradient(circle at 50% 18%, var(--shortcut-glow), transparent 42%),
+            radial-gradient(circle at 100% 0%, rgba(241, 215, 138, 0.1), transparent 34%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.055), transparent 45%),
+            rgba(3, 14, 9, 0.9);
+        box-shadow:
+            inset 0 0 34px rgba(255, 255, 255, 0.03),
+            0 18px 46px rgba(0, 0, 0, 0.34);
+    }
+
+    .hero-shortcut::before {
+        opacity: 0.72;
+        background:
+            linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.4)),
+            radial-gradient(circle at 50% 0%, rgba(201, 162, 74, 0.14), transparent 36%);
+    }
+
+    .hero-shortcut::after {
+        top: 22px;
+        right: 24px;
+        color: rgba(241, 215, 138, 0.82);
+        font-size: 1.02rem;
+        text-shadow: 0 0 14px rgba(201, 162, 74, 0.38);
+    }
+
+    .shortcut-icon {
+        width: 90px;
+        height: 90px;
+        margin: 0 auto;
+        border-color: rgba(241, 215, 138, 0.78);
+        background:
+            radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 58%),
+            rgba(2, 10, 7, 0.96);
+        box-shadow:
+            0 0 0 9px rgba(201, 162, 74, 0.075),
+            0 0 34px rgba(201, 162, 74, 0.25);
+    }
+
+    .shortcut-icon img {
+        width: 62px;
+        height: 62px;
+        filter:
+            brightness(1.08) drop-shadow(0 0 10px rgba(241, 215, 138, 0.38));
     }
 
     .shortcut-content {
+        width: 100%;
+        min-width: 0;
         margin-top: 0;
+        text-align: center;
     }
 
     .shortcut-content strong {
+        display: block;
+        color: #f8e8b9;
+        font-size: clamp(1.38rem, 6vw, 1.72rem);
+        line-height: 1.05;
+        letter-spacing: 1.8px;
         white-space: normal;
-        font-size: 1.25rem;
+        overflow: visible;
+        text-overflow: unset;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
     }
 
     .shortcut-content span {
-        margin: 10px 0 12px;
+        width: min(140px, 70%);
+        height: 1px;
+        margin: 14px auto 16px;
+        background:
+            linear-gradient(90deg,
+                transparent,
+                rgba(201, 162, 74, 0.95),
+                transparent);
+    }
+
+    .shortcut-content small {
+        display: block;
+        max-width: 245px;
+        margin: 0 auto;
+        color: rgba(248, 240, 214, 0.9);
+        font-size: 0.96rem;
+        line-height: 1.48;
     }
 
     .shortcut-content em {
-        margin-top: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 18px;
+        color: var(--shortcut-color);
+        font-size: 0.82rem;
+        font-weight: 950;
+        font-style: normal;
+        letter-spacing: 2.6px;
+        text-transform: uppercase;
+        text-shadow: 0 0 14px color-mix(in srgb, var(--shortcut-color) 28%, transparent);
+    }
+
+    .shortcut-content em::after {
+        content: "→";
+        font-size: 1.12rem;
+        line-height: 1;
+        transform: translateY(-1px);
+        transition: transform 0.3s ease;
+    }
+
+    .hero-shortcut:hover .shortcut-content em::after,
+    .hero-shortcut:focus-visible .shortcut-content em::after {
+        transform: translate(5px, -1px);
+    }
+}
+
+@media (max-width: 520px) {
+    .hero-shortcuts {
+        max-width: 100%;
+        margin-top: 36px;
+        padding: 0 16px;
+        gap: 24px;
+    }
+
+    .hero-shortcut {
+        max-width: 315px;
+        min-height: 250px;
+        padding: 28px 22px 26px;
+        border-radius: 26px;
+        gap: 18px;
+    }
+
+    .shortcut-icon {
+        width: 82px;
+        height: 82px;
+        box-shadow:
+            0 0 0 8px rgba(201, 162, 74, 0.075),
+            0 0 30px rgba(201, 162, 74, 0.23);
+    }
+
+    .shortcut-icon img {
+        width: 56px;
+        height: 56px;
+    }
+
+    .shortcut-content strong {
+        font-size: clamp(1.24rem, 7vw, 1.56rem);
+        letter-spacing: 1.5px;
+    }
+
+    .shortcut-content span {
+        width: min(122px, 68%);
+        margin: 12px auto 14px;
+    }
+
+    .shortcut-content small {
+        max-width: 230px;
+        font-size: 0.9rem;
+        line-height: 1.44;
+    }
+
+    .shortcut-content em {
+        margin-top: 16px;
+        font-size: 0.76rem;
+        letter-spacing: 2.2px;
+    }
+
+    .hero-shortcut::after {
+        top: 20px;
+        right: 20px;
+        font-size: 0.92rem;
+    }
+}
+
+@media (max-width: 390px) {
+    .hero-shortcuts {
+        padding: 0 14px;
+        gap: 22px;
+    }
+
+    .hero-shortcut {
+        max-width: 292px;
+        min-height: 235px;
+        padding: 26px 18px 24px;
+        border-radius: 24px;
+        gap: 16px;
+    }
+
+    .shortcut-icon {
+        width: 74px;
+        height: 74px;
+    }
+
+    .shortcut-icon img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .shortcut-content strong {
+        font-size: clamp(1.12rem, 7.4vw, 1.38rem);
+        letter-spacing: 1.25px;
+    }
+
+    .shortcut-content span {
+        width: 106px;
+        margin: 10px auto 12px;
+    }
+
+    .shortcut-content small {
+        max-width: 215px;
+        font-size: 0.82rem;
+        line-height: 1.4;
+    }
+
+    .shortcut-content em {
+        margin-top: 14px;
+        font-size: 0.68rem;
+        letter-spacing: 2px;
+    }
+
+    .hero-shortcut::after {
+        top: 18px;
+        right: 18px;
+        font-size: 0.82rem;
+    }
+}
+
+@media (max-width: 340px) {
+    .hero-shortcut {
+        max-width: 270px;
+        min-height: 220px;
+        padding: 24px 16px 22px;
+    }
+
+    .shortcut-icon {
+        width: 66px;
+        height: 66px;
+    }
+
+    .shortcut-icon img {
+        width: 44px;
+        height: 44px;
+    }
+
+    .shortcut-content strong {
+        font-size: 1.04rem;
+    }
+
+    .shortcut-content small {
+        font-size: 0.76rem;
+    }
+
+    .shortcut-content em {
+        font-size: 0.62rem;
     }
 }
 
@@ -604,98 +856,26 @@
     }
 }
 
+
+/* =====================================================
+   GARANTIA FINAL - MOBILE HERO SHORTCUTS
+   Mantém 1 card por linha e preserva a composição vertical.
+===================================================== */
+
 @media (max-width: 700px) {
     .hero-shortcuts {
         width: 100%;
-        max-width: 100%;
-        margin-top: 34px;
-        display: grid;
+        max-width: 390px;
+        margin-left: auto;
+        margin-right: auto;
         grid-template-columns: 1fr;
-        gap: 14px;
+        justify-items: center;
     }
 
     .hero-shortcut {
-        width: 100%;
-        min-height: auto;
-        padding: 18px 18px;
-        display: grid;
-        grid-template-columns: 64px 1fr;
-        align-items: center;
-        gap: 16px;
-        border-radius: 20px;
-    }
-
-    .shortcut-icon {
-        width: 64px;
-        height: 64px;
-    }
-
-    .shortcut-icon img {
-        width: 42px;
-        height: 42px;
-    }
-
-    .shortcut-content {
-        margin-top: 0;
-        text-align: left;
-    }
-
-    .shortcut-content strong {
-        font-size: 1rem;
-        line-height: 1.2;
-        letter-spacing: 1.2px;
-        white-space: normal;
-    }
-
-    .shortcut-content span {
-        width: 90px;
-        margin: 8px 0 10px;
-    }
-
-    .shortcut-content small {
-        font-size: 0.82rem;
-        line-height: 1.45;
-    }
-
-    .shortcut-content em {
-        margin-top: 10px;
-        font-size: 0.7rem;
-        letter-spacing: 1.8px;
-    }
-
-    .hero-shortcut::after {
-        top: 14px;
-        right: 16px;
-        font-size: 0.85rem;
+        text-align: center;
     }
 }
-
-@media (max-width: 420px) {
-    .hero-shortcut {
-        grid-template-columns: 58px 1fr;
-        padding: 16px;
-        gap: 14px;
-    }
-
-    .shortcut-icon {
-        width: 58px;
-        height: 58px;
-    }
-
-    .shortcut-icon img {
-        width: 38px;
-        height: 38px;
-    }
-
-    .shortcut-content strong {
-        font-size: 0.92rem;
-    }
-
-    .shortcut-content small {
-        font-size: 0.78rem;
-    }
-}
-
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -704,7 +884,8 @@
     .hero-button small,
     .hero-shortcut,
     .shortcut-icon,
-    .shortcut-icon img {
+    .shortcut-icon img,
+    .shortcut-content em::after {
         transition: none;
     }
 
@@ -715,7 +896,9 @@
     .hero-shortcut:hover .shortcut-icon,
     .hero-shortcut:focus-visible .shortcut-icon,
     .hero-shortcut:hover .shortcut-icon img,
-    .hero-shortcut:focus-visible .shortcut-icon img {
+    .hero-shortcut:focus-visible .shortcut-icon img,
+    .hero-shortcut:hover .shortcut-content em::after,
+    .hero-shortcut:focus-visible .shortcut-content em::after {
         transform: none;
     }
 }
