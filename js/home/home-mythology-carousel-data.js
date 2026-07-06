@@ -787,3 +787,5 @@ document.addEventListener("DOMContentLoaded", () => {
     createMythologyCarouselCards();
     setupMythologyCarouselFlip();
 });
+
+
