@@ -136,6 +136,7 @@
     ====================================================== -->
 
     <link rel="stylesheet" href="./css/global/responsive.css" />
+    <link rel="stylesheet" href="./css/global/back-to-top.css" />
 
 </head>
 
@@ -933,16 +934,19 @@
 
     <!-- =====================================================
          FOOTER / RODAPÉ
+         Encerramento institucional da Home com navegação,
+         identidade do projeto e retorno ao início.
     ====================================================== -->
-    <footer class="footer">
+    <footer class="footer" aria-labelledby="footer-title">
         <div class="container footer-content">
 
-            <!-- Identidade -->
+            <!-- Identidade do projeto -->
             <div class="footer-brand">
-                <a href="./index.html#home" class="footer-logo">
-                    <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" loading="lazy"
-                        decoding="async" />
-                    <span>Bestiário</span>
+                <a href="./index.html#home" class="footer-logo" aria-label="Voltar ao início do Bestiário">
+                    <img src="./assets/images/home/icone-login.png" alt="" class="footer-logo-icon" loading="lazy"
+                        decoding="async" aria-hidden="true" />
+
+                    <span id="footer-title">Bestiário</span>
                 </a>
 
                 <p>
@@ -951,8 +955,8 @@
                 </p>
             </div>
 
-            <!-- Navegação rápida -->
-            <nav class="footer-nav" aria-label="Navegação do rodapé">
+            <!-- Navegação principal do rodapé -->
+            <nav class="footer-nav" aria-label="Navegação rápida do rodapé">
                 <a href="./index.html#home">Home</a>
                 <a href="./mythology.html">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
@@ -962,9 +966,16 @@
                 <a href="./relics.html">Relíquias</a>
             </nav>
 
+            <!-- Ação secundária -->
+            <a href="#home" class="footer-back-top" aria-label="Voltar para o topo da página">
+                <span>Voltar ao início</span>
+                <small aria-hidden="true">↑</small>
+            </a>
+
             <!-- Direitos -->
             <p class="footer-copy">
-                © 2026 Bestiário. Todos os direitos reservados.
+                <span>© 2026 Bestiário.</span>
+                <span>Todos os direitos reservados.</span>
             </p>
 
         </div>
@@ -980,6 +991,7 @@
     <script src="./js/home/home-relics-data.js" defer></script>
     <script src="./js/home/home-ancient-quotes-data.js" defer></script>
     <script src="./js/main.js" defer></script>
+    <script src="./js/components/back-to-top.js" defer></script>
 </body>
 
 </html>

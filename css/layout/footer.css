@@ -1,61 +1,419 @@
 /* =====================================================
-   FOOTER
+   FOOTER.CSS
+   -----------------------------------------------------
+   Rodapé global do projeto Bestiário.
+
+   Responsável por:
+   - identidade final da página;
+   - navegação rápida;
+   - botão de retorno ao início;
+   - direitos autorais;
+   - acabamento visual da base do site.
+===================================================== */
+
+
+/* =====================================================
+   1. ESTRUTURA GERAL
 ===================================================== */
 
 .footer {
-    padding: 70px 20px 40px;
-    border-top: 1px solid rgba(201, 154, 43, 0.15);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    padding: 76px 20px 42px;
+
+    border-top: 1px solid var(--border-gold-soft);
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(201, 162, 74, 0.11),
+            transparent 34%),
+        radial-gradient(circle at 15% 80%,
+            rgba(129, 199, 132, 0.06),
+            transparent 28%),
+        linear-gradient(180deg,
+            rgba(3, 17, 10, 0.42),
+            var(--bg-void));
 }
 
+.footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(201, 162, 74, 0.05),
+            transparent);
+
+    opacity: 0.75;
+}
+
+.footer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: -1;
+
+    width: min(720px, 80%);
+    height: 1px;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(243, 232, 189, 0.58),
+            transparent);
+
+    transform: translateX(-50%);
+}
+
+
+/* =====================================================
+   2. CONTEÚDO
+===================================================== */
+
 .footer-content {
+    position: relative;
+    z-index: 2;
+
     max-width: 1200px;
     margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     text-align: center;
+}
+
+
+/* =====================================================
+   3. IDENTIDADE
+===================================================== */
+
+.footer-brand {
+    max-width: 760px;
+    margin: 0 auto 34px;
 }
 
 .footer-logo {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    gap: 14px;
+
     margin-bottom: 20px;
+
     text-decoration: none;
+
+    transition:
+        transform var(--transition-default),
+        opacity var(--transition-default);
 }
 
+.footer-logo:hover,
+.footer-logo:focus-visible {
+    transform: translateY(-3px);
+}
+
+.footer-logo-icon,
 .footer-logo img {
-    width: 42px;
+    width: 46px;
+    height: 46px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 0 12px rgba(201, 162, 74, 0.24));
 }
 
 .footer-logo span {
     color: var(--text-primary);
-    font-size: 1.6rem;
-    font-family: var(--font-title);
+    font-family: var(--home-font-serif);
+    font-size: clamp(1.55rem, 3vw, 1.95rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.8px;
 }
 
 .footer-brand p {
     max-width: 700px;
-    margin: 0 auto 35px;
+    margin: 0 auto;
+
     color: var(--text-secondary);
-    line-height: 1.8;
+    font-size: 1rem;
+    line-height: 1.85;
 }
 
+
+/* =====================================================
+   4. NAVEGAÇÃO
+===================================================== */
+
 .footer-nav {
+    width: 100%;
+    max-width: 850px;
+
+    margin: 0 auto 30px;
+
     display: flex;
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 22px;
-    margin-bottom: 35px;
+    gap: 14px 24px;
 }
 
 .footer-nav a {
+    position: relative;
+
+    padding: 6px 0;
+
     color: var(--text-secondary);
-    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+
+    transition:
+        color var(--transition-default),
+        transform var(--transition-default);
 }
 
-.footer-nav a:hover {
-    color: var(--myth-gold-soft);
+.footer-nav a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+
+    width: 0;
+    height: 1px;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            var(--gold-soft),
+            transparent);
+
+    transform: translateX(-50%);
+
+    transition: width var(--transition-default);
 }
+
+.footer-nav a:hover,
+.footer-nav a:focus-visible {
+    color: var(--gold-soft);
+    transform: translateY(-2px);
+}
+
+.footer-nav a:hover::after,
+.footer-nav a:focus-visible::after {
+    width: 100%;
+}
+
+
+/* =====================================================
+   5. VOLTAR AO INÍCIO
+===================================================== */
+
+.footer-back-top {
+    min-height: 44px;
+    margin: 0 auto 28px;
+    padding: 0 18px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    border: 1px solid rgba(201, 162, 74, 0.28);
+    border-radius: var(--radius-pill);
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(201, 162, 74, 0.12),
+            transparent 62%),
+        rgba(255, 255, 255, 0.025);
+
+    color: var(--gold-soft);
+
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    box-shadow:
+        inset 0 0 18px rgba(201, 162, 74, 0.04),
+        0 10px 24px rgba(0, 0, 0, 0.22);
+
+    transition:
+        transform var(--transition-default),
+        border-color var(--transition-default),
+        box-shadow var(--transition-default),
+        background var(--transition-default);
+}
+
+.footer-back-top small {
+    width: 24px;
+    height: 24px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: rgba(201, 162, 74, 0.10);
+
+    color: var(--gold-bright);
+    font-size: 0.85rem;
+    line-height: 1;
+}
+
+.footer-back-top:hover,
+.footer-back-top:focus-visible {
+    transform: translateY(-3px);
+
+    border-color: rgba(243, 232, 189, 0.56);
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(201, 162, 74, 0.18),
+            transparent 62%),
+        rgba(255, 255, 255, 0.035);
+
+    box-shadow:
+        inset 0 0 18px rgba(201, 162, 74, 0.06),
+        0 0 24px rgba(201, 162, 74, 0.12),
+        0 14px 30px rgba(0, 0, 0, 0.28);
+}
+
+
+/* =====================================================
+   6. DIREITOS
+===================================================== */
 
 .footer-copy {
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   7. RESPONSIVIDADE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .footer {
+        padding: 58px 18px 34px;
+    }
+
+    .footer-brand {
+        margin-bottom: 30px;
+    }
+
+    .footer-logo {
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .footer-logo-icon,
+    .footer-logo img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .footer-brand p {
+        max-width: 520px;
+        font-size: 0.94rem;
+        line-height: 1.75;
+    }
+
+    .footer-nav {
+        max-width: 420px;
+        gap: 14px 18px;
+        margin-bottom: 28px;
+    }
+
+    .footer-nav a {
+        font-size: 0.74rem;
+        letter-spacing: 1.1px;
+    }
+
+    .footer-back-top {
+        min-height: 42px;
+        margin-bottom: 26px;
+        padding: 0 16px;
+
+        font-size: 0.68rem;
+        letter-spacing: 1.4px;
+    }
+
+    .footer-copy {
+        max-width: 280px;
+        font-size: 0.82rem;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .footer {
+        padding: 52px 16px 30px;
+    }
+
+    .footer-logo {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-nav {
+        gap: 12px 16px;
+    }
+
+    .footer-nav a {
+        font-size: 0.70rem;
+    }
+
+    .footer-back-top {
+        width: min(100%, 240px);
+    }
+}
+
+
+/* =====================================================
+   8. REDUÇÃO DE MOVIMENTO
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .footer-logo,
+    .footer-nav a,
+    .footer-nav a::after,
+    .footer-back-top {
+        transition: none;
+    }
+
+    .footer-logo:hover,
+    .footer-logo:focus-visible,
+    .footer-nav a:hover,
+    .footer-nav a:focus-visible,
+    .footer-back-top:hover,
+    .footer-back-top:focus-visible {
+        transform: none;
+    }
 }

@@ -76,4 +76,157 @@ Objetivo:
     --shadow-dark:
         rgba(0, 0, 0, 0.45);
 
+}/* =====================================================
+   VARIABLES.CSS
+   -----------------------------------------------------
+   Variáveis globais do projeto Bestiário.
+
+   Responsável por:
+   - centralizar cores;
+   - padronizar textos;
+   - definir sombras, bordas e raios;
+   - manter consistência visual entre páginas e seções;
+   - facilitar futuras mudanças de tema.
+
+   Observação:
+   Este arquivo deve ser carregado antes de base.css
+   e antes dos CSS específicos das páginas.
+===================================================== */
+
+:root {
+
+    /* =================================================
+       FUNDOS / BACKGROUNDS
+    ================================================= */
+
+    --bg-primary: #0b1a13;
+    --bg-secondary: #11241b;
+    --bg-tertiary: #183126;
+    --bg-dark: #07100c;
+    --bg-deep: #03110a;
+    --bg-void: #020806;
+
+    --dark-section: #020806;
+    --dark-surface: #08110d;
+    --dark-card: #050f0a;
+
+
+    /* =================================================
+       CORES PRINCIPAIS
+    ================================================= */
+
+    --primary: #1b5e20;
+    --secondary: #2e7d32;
+    --accent: #81c784;
+    --highlight: #f3e8bd;
+
+    --green: #59d47b;
+    --green-soft: #a5d6a7;
+    --green-muted: rgba(129, 199, 132, 0.42);
+
+
+    /* =================================================
+       DOURADOS / IDENTIDADE MÍSTICA
+    ================================================= */
+
+    --gold: #c9a24a;
+    --gold-soft: #d8c9a3;
+    --gold-bright: #f3e8bd;
+    --gold-highlight: #f3e8bd;
+    --gold-muted: rgba(201, 162, 74, 0.45);
+    --gold-border: rgba(201, 162, 74, 0.35);
+
+
+    /* =================================================
+       TEXTOS
+    ================================================= */
+
+    --text-primary: #f5f1e8;
+    --text-secondary: #b8c2b0;
+    --text-muted: rgba(245, 241, 232, 0.64);
+    --text-cream: #f4e8c5;
+    --text-white-soft: rgba(255, 255, 255, 0.88);
+
+
+    /* =================================================
+       VARIÁVEIS HOME
+       Mantidas para compatibilidade com os CSS da Home.
+    ================================================= */
+
+    --home-bg-deep: var(--bg-deep);
+    --home-bg-void: var(--bg-void);
+
+    --home-green: var(--green);
+    --home-gold-soft: var(--gold-soft);
+    --home-gold-bright: var(--gold-bright);
+
+    --home-text-cream: var(--text-cream);
+    --home-text-muted: var(--text-muted);
+
+    --home-red-shadow: #8b1e1e;
+
+    --home-font-serif: Georgia, "Times New Roman", serif;
+
+
+    /* =================================================
+       BORDAS
+    ================================================= */
+
+    --border-soft: rgba(129, 199, 132, 0.14);
+    --border-light: rgba(255, 255, 255, 0.10);
+    --border-gold: rgba(201, 162, 74, 0.35);
+    --border-gold-soft: rgba(201, 162, 74, 0.18);
+
+
+    /* =================================================
+       GLOWS
+    ================================================= */
+
+    --green-glow: rgba(129, 199, 132, 0.18);
+    --gold-glow: rgba(201, 162, 74, 0.22);
+    --dark-glow: rgba(0, 0, 0, 0.55);
+
+
+    /* =================================================
+       SOMBRAS
+    ================================================= */
+
+    --shadow-dark: rgba(0, 0, 0, 0.45);
+    --shadow-heavy: rgba(0, 0, 0, 0.70);
+
+    --shadow-card:
+        0 18px 42px rgba(0, 0, 0, 0.34);
+
+    --shadow-card-hover:
+        0 0 30px rgba(201, 162, 74, 0.14),
+        0 26px 58px rgba(0, 0, 0, 0.42);
+
+
+    /* =================================================
+       LAYOUT
+    ================================================= */
+
+    --container-width: 1200px;
+    --container-padding: 24px;
+
+
+    /* =================================================
+       BORDAS ARREDONDADAS
+    ================================================= */
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --radius-pill: 999px;
+
+
+    /* =================================================
+       TRANSIÇÕES
+    ================================================= */
+
+    --transition-fast: 0.2s ease;
+    --transition-default: 0.3s ease;
+    --transition-slow: 0.6s ease;
+
 }

@@ -1,56 +1,73 @@
 /* =====================================================
    RESPONSIVE.CSS - BESTIÁRIO
    -----------------------------------------------------
-   Responsividade global e ajustes mobile do site.
+   Responsividade global do projeto.
+
+   Responsável por:
+   - ajustes globais de layout em telas menores;
+   - tipografia responsiva básica;
+   - containers e grids genéricos;
+   - pequenos ajustes globais de toque/mobile;
+   - footer responsivo.
+
+   Observação:
+   - Reset global fica em reset.css.
+   - Base visual fica em base.css.
+   - Acessibilidade fica em accessibility.css.
+   - Responsividade específica de cada seção deve ficar no CSS da própria seção.
 ===================================================== */
 
+
 /* =====================================================
-   1. GLOBAL
+   1. AJUSTES GLOBAIS MOBILE
 ===================================================== */
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+@media (max-width: 768px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        min-width: 320px;
+        font-size: 15px;
+    }
+
+    main {
+        overflow: hidden;
+    }
+
+    a,
+    button {
+        -webkit-tap-highlight-color: transparent;
+    }
 }
 
-html,
-body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    min-width: 320px;
-}
-
-img,
-video,
-canvas,
-svg {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-main {
-    padding-top: 78px;
-}
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin-inline: auto;
-    padding-inline: 32px;
-}
 
 /* =====================================================
-   TEXTOS GLOBAIS
+   2. CONTAINER GLOBAL
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .container {
+        padding-inline: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .container {
+        padding-inline: 16px;
+    }
+}
+
+
+/* =====================================================
+   3. TIPOGRAFIA GLOBAL RESPONSIVA
 ===================================================== */
 
 @media (max-width: 768px) {
@@ -69,47 +86,30 @@ main {
         font-size: 0.95rem;
         line-height: 1.7;
     }
+}
 
-    .container {
-        padding-inline: 20px;
-    }
+
+/* =====================================================
+   4. ESPAÇAMENTO GLOBAL DE SEÇÕES
+===================================================== */
+
+@media (max-width: 768px) {
 
     section {
         padding-block: 64px;
     }
-
-    a,
-    button {
-        -webkit-tap-highlight-color: transparent;
-    }
-
-    .btn,
-    .button,
-    .primary-button,
-    .secondary-button {
-        width: 100%;
-        max-width: 280px;
-        min-height: 48px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
 }
 
 @media (max-width: 480px) {
-
-    .container {
-        padding-inline: 16px;
-    }
 
     section {
         padding-block: 52px;
     }
 }
 
+
 /* =====================================================
-   GRIDS GLOBAIS
+   5. GRIDS GENÉRICOS
 ===================================================== */
 
 @media (max-width: 992px) {
@@ -117,7 +117,7 @@ main {
     .grid,
     .cards-grid,
     .section-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
@@ -130,846 +130,48 @@ main {
     }
 }
 
-/* =====================================================
-   HOME - HERO
-===================================================== */
-
-@media (max-width: 1024px) {
-
-    .hero {
-        min-height: auto;
-        padding: 72px 0;
-    }
-
-    .hero-layout {
-        grid-template-columns: 1fr;
-        gap: 42px;
-        text-align: center;
-    }
-
-    .hero-content {
-        max-width: 720px;
-        margin: 0 auto;
-    }
-
-    .hero p {
-        max-width: 620px;
-        margin-inline: auto;
-    }
-
-    .hero-actions {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .hero-shortcuts {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .hero-visual {
-        min-height: auto;
-        justify-content: center;
-    }
-
-    .hero-image {
-        width: min(82vw, 620px);
-        right: 0;
-        top: 0;
-    }
-}
-
-@media (max-width: 768px) {
-
-    .hero {
-        width: 100%;
-        padding: 64px 0 72px;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .hero .container {
-        width: 100%;
-        max-width: 430px;
-        margin: 0 auto;
-        padding-inline: 18px;
-    }
-
-    .hero-layout {
-        width: 100%;
-        max-width: 360px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .hero-content {
-        width: 100%;
-        max-width: 360px;
-        margin: 0 auto;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .hero-visual,
-    .hero-image {
-        display: none !important;
-    }
-
-    .hero-tag {
-        max-width: 300px;
-        margin: 0 auto 22px;
-        font-size: 0.72rem;
-        line-height: 1.5;
-        letter-spacing: 1.6px;
-        white-space: normal;
-    }
-
-    .hero h1 {
-        width: 100%;
-        max-width: 330px;
-        margin: 0 auto 24px;
-        font-size: clamp(2.1rem, 9vw, 2.8rem);
-        line-height: 1.08;
-    }
-
-    .hero p {
-        width: 100%;
-        max-width: 310px;
-        margin: 0 auto;
-        font-size: 0.95rem;
-        line-height: 1.7;
-    }
-
-    .hero-institutional {
-        max-width: 310px;
-        margin: 18px auto 28px;
-        font-size: 0.76rem;
-        line-height: 1.6;
-        letter-spacing: 2px;
-    }
-
-    .hero-actions {
-        width: 100%;
-        max-width: 260px;
-        margin: 32px auto 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 14px;
-    }
-
-    .hero-button,
-    .hero-secondary-button {
-        width: 100%;
-        max-width: 260px;
-        min-height: 52px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-}
 
 /* =====================================================
-   HOME - ATALHOS DO HERO
+   6. BOTÕES GENÉRICOS
 ===================================================== */
 
 @media (max-width: 768px) {
 
-    .hero-shortcuts {
+    .btn,
+    .button,
+    .primary-button,
+    .secondary-button {
         width: 100%;
-        max-width: 320px;
-        margin: 52px auto 0;
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        justify-items: center;
-        align-items: start;
-        gap: 34px 28px;
-    }
+        max-width: 280px;
+        min-height: 48px;
 
-    .hero-shortcut {
-        width: 120px;
-        min-height: 128px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
+        display: inline-flex;
         align-items: center;
-        justify-content: flex-start;
-        text-align: center;
-    }
-
-    .shortcut-icon {
-        width: 58px;
-        height: 58px;
-        margin: 0 auto 14px;
-    }
-
-    .shortcut-icon img {
-        width: 44px;
-        height: 44px;
-        object-fit: contain;
-    }
-
-    .hero-shortcut strong {
-        margin-bottom: 8px;
-        font-size: 0.7rem;
-        letter-spacing: 1.4px;
-        text-align: center;
-    }
-
-    .hero-shortcut small {
-        max-width: 115px;
-        font-size: 0.72rem;
-        line-height: 1.35;
-        text-align: center;
-    }
-}
-
-@media (max-width: 420px) {
-
-    .hero-shortcuts {
-        max-width: 290px;
-        gap: 30px 20px;
-    }
-
-    .hero-shortcut {
-        width: 115px;
-    }
-
-    .shortcut-icon {
-        width: 54px;
-        height: 54px;
-    }
-
-    .shortcut-icon img {
-        width: 40px;
-        height: 40px;
-    }
-}
-
-/* =====================================================
-   MITOLOGIAS - HERO
-===================================================== */
-
-@media (max-width: 768px) {
-
-    .mythology-hero {
-        min-height: auto;
-        padding: 90px 18px 70px;
-    }
-
-    .mythology-hero-content {
-        max-width: 100%;
-        padding: 0 12px;
-    }
-
-    .hero-ornament {
-        margin-bottom: 22px;
-        font-size: 1.1rem;
-        letter-spacing: 10px;
-    }
-
-    .mythology-hero h1,
-    .mythology-page h1,
-    .mitologias-hero h1 {
-        max-width: 100%;
-        font-size: clamp(3rem, 14vw, 4.2rem);
-        line-height: 1;
-        letter-spacing: 1px;
-        text-align: center;
-    }
-
-    .hero-subtitle {
-        max-width: 330px;
-        margin: 18px auto 28px;
-        font-size: 0.82rem;
-        line-height: 1.8;
-        letter-spacing: 8px;
-        text-align: center;
-    }
-
-    .hero-subtitle::after {
-        width: 90px;
-        margin-top: 22px;
-    }
-
-    .mythology-hero p {
-        max-width: 330px;
-        margin: 0 auto;
-        font-size: 0.95rem;
-        line-height: 1.7;
-        text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-
-    .mythology-hero {
-        padding: 75px 14px 60px;
-    }
-
-    .mythology-hero h1,
-    .mythology-page h1,
-    .mitologias-hero h1 {
-        font-size: clamp(2.6rem, 13vw, 3.3rem);
-        letter-spacing: 0;
-    }
-
-    .hero-subtitle {
-        max-width: 300px;
-        font-size: 0.78rem;
-        letter-spacing: 6px;
-    }
-
-    .mythology-hero p {
-        max-width: 300px;
-        font-size: 0.92rem;
-    }
-}
-
-@media (max-width: 420px) {
-
-    .mythology-hero h1 {
-        font-size: clamp(2.4rem, 12vw, 3rem);
-    }
-
-    .hero-subtitle {
-        letter-spacing: 5px;
-    }
-}
-
-/* =====================================================
-   MITOLOGIAS - INTRODUÇÃO
-===================================================== */
-
-@media (max-width: 1100px) {
-
-    .mythology-intro-grid {
-        grid-template-columns: 1fr;
-        gap: 44px;
-    }
-
-    .mythology-intro-text {
-        max-width: 760px;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .mythology-intro-text p {
-        max-width: 620px;
-        margin: 0 auto 32px;
-        text-align: center;
-        line-height: 1.9;
-    }
-
-    .mythology-intro-divider {
-        width: 55%;
-        margin: 0 auto 32px;
-    }
-}
-
-@media (max-width: 650px) {
-
-    .mythology-intro-section {
-        padding: 70px 0;
-    }
-
-    .mythology-intro-text h2 {
-        padding: 0 12px;
-        font-size: clamp(2rem, 9vw, 2.8rem);
-        line-height: 1.1;
-        letter-spacing: 2px;
-        text-align: center;
-    }
-
-    .mythology-intro-tag {
-        letter-spacing: 3px;
-        text-align: center;
-    }
-
-    .mythology-intro-text p {
-        max-width: 100%;
-        margin: 0 auto 28px;
-        text-align: center;
-        line-height: 1.8;
-    }
-
-    .mythology-intro-image::before,
-    .mythology-intro-image::after {
-        display: none;
-    }
-
-    .mythology-intro-divider {
-        width: 70%;
-    }
-}
-
-/* =====================================================
-   MITOLOGIAS - EXPLICAÇÕES
-===================================================== */
-
-@media (max-width: 1100px) {
-
-    .mythology-explains-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-
-    .mythology-explains {
-        width: 100%;
-        max-width: 460px;
-        margin: 60px auto 0;
-        padding: 42px 22px;
-        overflow: hidden;
-        border-radius: 18px;
-    }
-
-    .mythology-explains::before,
-    .mythology-explains::after {
-        display: none !important;
-    }
-
-    .mythology-explains-title {
-        max-width: 260px;
-        margin: 0 auto 42px;
-        font-size: 0.95rem;
-        line-height: 1.7;
-        letter-spacing: 6px;
-        text-align: center;
-    }
-
-    .mythology-explains-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 36px !important;
-    }
-
-    .mythology-explain-card {
-        width: 100% !important;
-        max-width: 280px !important;
-        min-height: auto !important;
-        padding: 28px 18px 34px !important;
-        text-align: center !important;
-    }
-
-    .mythology-explain-card img {
-        width: 130px !important;
-        height: 130px !important;
-        margin: 0 auto 18px !important;
-        object-fit: contain;
-    }
-
-    .mythology-explain-card strong {
-        max-width: 260px !important;
-        margin: 0 auto !important;
-        font-size: 0.92rem !important;
-        line-height: 1.55 !important;
-        letter-spacing: 2.4px !important;
-        text-align: center !important;
-    }
-}
-
-@media (max-width: 420px) {
-
-    .mythology-explains {
-        max-width: 100%;
-        margin-top: 52px;
-        padding: 36px 18px 40px;
-    }
-
-    .mythology-explains-title {
-        max-width: 235px;
-        font-size: 0.88rem;
-        letter-spacing: 5px;
-    }
-
-    .mythology-explain-card {
-        max-width: 250px !important;
-    }
-
-    .mythology-explain-card img {
-        width: 118px !important;
-        height: 118px !important;
-    }
-
-    .mythology-explain-card strong {
-        font-size: 0.86rem !important;
-        letter-spacing: 2px !important;
-    }
-}
-
-/* =====================================================
-   MITOLOGIAS - TIMELINE
-===================================================== */
-
-@media (max-width: 768px) {
-
-    .mythology-timeline-section {
-        padding: 70px 0 80px;
-    }
-
-    .mythology-timeline-header {
-        margin-bottom: 36px;
-    }
-
-    .mythology-timeline-header h2 {
-        font-size: clamp(2rem, 9vw, 2.8rem);
-        letter-spacing: 2px;
-    }
-
-    .mythology-timeline-controls {
         justify-content: center;
-    }
 
-    .mythology-timeline-wrapper {
-        padding-inline: 18px;
-    }
-
-    .mythology-timeline-track {
-        gap: 64px;
-    }
-
-    .mythology-timeline-item {
-        width: 230px;
-        min-width: 230px;
-    }
-
-    .mythology-timeline-track::before {
-        top: 174px;
-    }
-}
-
-@media (max-width: 420px) {
-
-    .mythology-timeline-track {
-        gap: 48px;
-    }
-
-    .mythology-timeline-item {
-        width: 210px;
-        min-width: 210px;
-    }
-
-    .timeline-symbol {
-        width: 92px;
-        height: 92px;
-    }
-}
-
-/* =====================================================
-   MITOLOGIAS - GLOBO
-===================================================== */
-
-@media (max-width: 1100px) {
-
-    .mythology-globe-section {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        min-height: auto !important;
-        padding: 64px 20px !important;
-        gap: 36px !important;
-        overflow: hidden !important;
-        text-align: center !important;
-    }
-
-    .mythology-globe-text {
-        order: 1 !important;
-        width: 100% !important;
-        max-width: 360px !important;
-        margin: 0 auto !important;
-        text-align: center !important;
-    }
-
-    .mythology-globe-text .section-label {
-        display: block !important;
-        max-width: 300px !important;
-        margin: 0 auto 14px !important;
-        font-size: 0.75rem !important;
-        line-height: 1.6 !important;
-        letter-spacing: 3px !important;
-        text-align: center !important;
-        white-space: normal !important;
-    }
-
-    .mythology-globe-text h2 {
-        max-width: 340px !important;
-        margin: 0 auto 22px !important;
-        font-size: clamp(2rem, 10vw, 2.8rem) !important;
-        line-height: 1.08 !important;
-        letter-spacing: 0.5px !important;
-        text-align: center !important;
-    }
-
-    .mythology-globe-text p {
-        max-width: 330px !important;
-        margin: 0 auto !important;
-        font-size: 0.95rem !important;
-        line-height: 1.8 !important;
-        text-align: center !important;
-    }
-
-    .mythology-globe-legend,
-    .mythology-globe-tip {
-        width: 100% !important;
-        max-width: 330px !important;
-        margin: 24px auto 0 !important;
-        padding: 18px !important;
-        text-align: left !important;
-    }
-
-    .mythology-globe-area {
-        order: 2 !important;
-        width: 100% !important;
-        max-width: 360px !important;
-        height: auto !important;
-        min-height: auto !important;
-        padding: 0 !important;
-        margin: 0 auto !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        overflow: hidden !important;
-    }
-
-    #mythologyGlobe {
-        width: 100% !important;
-        max-width: 330px !important;
-        height: 330px !important;
-        margin: 0 auto !important;
-    }
-
-    .mythology-globe-instructions {
-        position: static !important;
-        width: 100% !important;
-        max-width: 330px !important;
-        margin: 18px auto 0 !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 8px !important;
-        font-size: 0.85rem !important;
-        text-align: center !important;
-    }
-}
-
-@media (max-width: 420px) {
-
-    .mythology-globe-section {
-        padding: 56px 14px !important;
-    }
-
-    .mythology-globe-text,
-    .mythology-globe-area {
-        max-width: 320px !important;
-    }
-
-    .mythology-globe-text h2,
-    .mythology-globe-text p,
-    .mythology-globe-legend,
-    .mythology-globe-tip {
-        max-width: 300px !important;
-    }
-
-    #mythologyGlobe {
-        max-width: 300px !important;
-        height: 300px !important;
-    }
-}
-
-/* =====================================================
-   MITOLOGIAS - CATÁLOGO
-===================================================== */
-
-@media (max-width: 1100px) {
-
-    .mythology-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 28px;
-    }
-}
-
-@media (max-width: 768px) {
-
-    .mythology-grid {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 28px !important;
-        width: 100% !important;
-        max-width: 340px !important;
-        margin: 0 auto !important;
-    }
-
-    .mythology-card {
-        width: 100% !important;
-        max-width: 340px !important;
-        min-height: auto !important;
-        overflow: hidden;
-        border-radius: 18px;
-    }
-
-    .mythology-card img {
-        width: 100% !important;
-        height: 360px !important;
-        object-fit: cover;
-        object-position: center top;
-    }
-
-    .mythology-card-content {
-        padding: 20px 18px 28px;
         text-align: center;
     }
-
-    .mythology-icon {
-        margin-bottom: 16px;
-        font-size: 1.7rem;
-    }
-
-    .mythology-card h2 {
-        font-size: 1.25rem;
-        line-height: 1.25;
-        margin-bottom: 14px;
-    }
-
-    .mythology-card p {
-        font-size: 0.92rem;
-        line-height: 1.65;
-        margin-bottom: 18px;
-    }
-
-    .mythology-card a {
-        display: inline-block;
-        font-size: 0.82rem;
-        letter-spacing: 1px;
-    }
 }
 
-@media (max-width: 420px) {
-
-    .mythology-grid {
-        max-width: 300px !important;
-        gap: 24px !important;
-    }
-
-    .mythology-card {
-        max-width: 300px !important;
-    }
-
-    .mythology-card img {
-        height: 330px !important;
-    }
-}
 
 /* =====================================================
-   HOME - CARROSSÉIS E CARDS
+   7. CARROSSÉIS HORIZONTAIS GENÉRICOS
 ===================================================== */
 
 @media (max-width: 768px) {
 
     .symbols-track,
     .relics-carousel,
-    .legends-carousel,
+    .legends-track,
     .showcase-track,
-    .infinite-carousel {
+    .carousel-track {
         -webkit-overflow-scrolling: touch;
     }
-
-    .symbol-btn,
-    .relic-arrow,
-    .legend-arrow,
-    .showcase-controls {
-        display: none !important;
-    }
-
-    .symbol-card {
-        flex-basis: 235px !important;
-        height: 340px !important;
-    }
-
-    .relic-card {
-        flex-basis: 220px !important;
-        height: 440px !important;
-    }
-
-    .legend-card {
-        flex-basis: 220px !important;
-        height: 330px !important;
-    }
-
-    .myth-card {
-        flex: 0 0 250px !important;
-        min-height: 430px !important;
-    }
-
-    .carousel-item {
-        width: 250px !important;
-        height: 390px !important;
-    }
 }
 
-@media (max-width: 420px) {
-
-    .symbol-card {
-        flex-basis: 210px !important;
-        height: 305px !important;
-    }
-
-    .relic-card {
-        flex-basis: 205px !important;
-        height: 410px !important;
-    }
-
-    .legend-card {
-        flex-basis: 200px !important;
-        height: 300px !important;
-    }
-
-    .myth-card {
-        flex: 0 0 225px !important;
-        min-height: 405px !important;
-    }
-
-    .carousel-item {
-        width: 235px !important;
-        height: 370px !important;
-    }
-}
 
 /* =====================================================
-   RELIGIÕES
-===================================================== */
-
-@media (max-width: 768px) {
-
-    .religion-card img {
-        height: auto;
-        max-height: 320px;
-        object-fit: cover;
-        object-position: center top;
-    }
-
-    .mythology-message {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-/* =====================================================
-   FOOTER
+   8. FOOTER
 ===================================================== */
 
 @media (max-width: 768px) {
@@ -990,21 +192,17 @@ main {
 }
 
 /* =====================================================
-   ACESSIBILIDADE
+   9. HERO - REMOVER IMAGEM NO MOBILE
 ===================================================== */
 
-@media (prefers-reduced-motion: reduce) {
+@media (max-width: 768px) {
 
-    html {
-        scroll-behavior: auto;
+    .hero-visual {
+        display: none !important;
     }
 
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+    .hero-image {
+        display: none !important;
     }
+
 }
