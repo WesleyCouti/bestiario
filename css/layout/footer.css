@@ -4,16 +4,28 @@
    Rodapé global do projeto Bestiário.
 
    Responsável por:
-   - identidade final da página;
-   - navegação rápida;
-   - botão de retorno ao início;
-   - direitos autorais;
-   - acabamento visual da base do site.
-===================================================== */
+   - encerrar visualmente as páginas;
+   - reforçar a identidade do projeto;
+   - disponibilizar navegação rápida;
+   - oferecer botão de retorno ao início;
+   - exibir direitos autorais.
 
+   Dependências:
+   - variables.css para cores, raios e transições.
+   - HTML esperado:
+     .footer
+       .footer-content
+       .footer-brand
+       .footer-logo
+       .footer-nav
+       .footer-back-top
+       .footer-copy
+===================================================== */
 
 /* =====================================================
    1. ESTRUTURA GERAL
+   -----------------------------------------------------
+   Cria o bloco escuro final com brilho superior sutil.
 ===================================================== */
 
 .footer {
@@ -23,7 +35,7 @@
 
     padding: 76px 20px 42px;
 
-    border-top: 1px solid var(--border-gold-soft);
+    border-top: 1px solid var(--border-gold-soft, rgba(201, 162, 74, 0.18));
 
     background:
         radial-gradient(circle at 50% 0%,
@@ -34,14 +46,16 @@
             transparent 28%),
         linear-gradient(180deg,
             rgba(3, 17, 10, 0.42),
-            var(--bg-void));
+            var(--bg-void, #020806));
 }
 
+/* Brilho horizontal decorativo */
 .footer::before {
     content: "";
     position: absolute;
     inset: 0;
     z-index: -2;
+
     pointer-events: none;
 
     background:
@@ -53,6 +67,7 @@
     opacity: 0.75;
 }
 
+/* Linha dourada central no topo do rodapé */
 .footer::after {
     content: "";
     position: absolute;
@@ -72,7 +87,6 @@
     transform: translateX(-50%);
 }
 
-
 /* =====================================================
    2. CONTEÚDO
 ===================================================== */
@@ -81,7 +95,7 @@
     position: relative;
     z-index: 2;
 
-    max-width: 1200px;
+    max-width: var(--container-width, 1200px);
     margin: 0 auto;
 
     display: flex;
@@ -91,9 +105,8 @@
     text-align: center;
 }
 
-
 /* =====================================================
-   3. IDENTIDADE
+   3. IDENTIDADE DO PROJETO
 ===================================================== */
 
 .footer-brand {
@@ -109,11 +122,12 @@
 
     margin-bottom: 20px;
 
+    color: var(--text-primary, #f5f1e8);
     text-decoration: none;
 
     transition:
-        transform var(--transition-default),
-        opacity var(--transition-default);
+        transform var(--transition-default, 0.3s ease),
+        opacity var(--transition-default, 0.3s ease);
 }
 
 .footer-logo:hover,
@@ -133,8 +147,9 @@
 }
 
 .footer-logo span {
-    color: var(--text-primary);
-    font-family: var(--home-font-serif);
+    color: var(--text-primary, #f5f1e8);
+
+    font-family: var(--home-font-serif, Georgia, "Times New Roman", serif);
     font-size: clamp(1.55rem, 3vw, 1.95rem);
     font-weight: 900;
     line-height: 1;
@@ -145,14 +160,14 @@
     max-width: 700px;
     margin: 0 auto;
 
-    color: var(--text-secondary);
+    color: var(--text-secondary, #b8c2b0);
+
     font-size: 1rem;
     line-height: 1.85;
 }
 
-
 /* =====================================================
-   4. NAVEGAÇÃO
+   4. NAVEGAÇÃO DO RODAPÉ
 ===================================================== */
 
 .footer-nav {
@@ -173,16 +188,18 @@
 
     padding: 6px 0;
 
-    color: var(--text-secondary);
+    color: var(--text-secondary, #b8c2b0);
+
     font-size: 0.82rem;
     font-weight: 800;
     line-height: 1.2;
     letter-spacing: 1.4px;
     text-transform: uppercase;
+    text-decoration: none;
 
     transition:
-        color var(--transition-default),
-        transform var(--transition-default);
+        color var(--transition-default, 0.3s ease),
+        transform var(--transition-default, 0.3s ease);
 }
 
 .footer-nav a::after {
@@ -197,28 +214,32 @@
     background:
         linear-gradient(90deg,
             transparent,
-            var(--gold-soft),
+            var(--gold-soft, #d8c9a3),
             transparent);
 
     transform: translateX(-50%);
 
-    transition: width var(--transition-default);
+    transition: width var(--transition-default, 0.3s ease);
 }
 
 .footer-nav a:hover,
-.footer-nav a:focus-visible {
-    color: var(--gold-soft);
+.footer-nav a:focus-visible,
+.footer-nav a[aria-current="page"] {
+    color: var(--gold-soft, #d8c9a3);
     transform: translateY(-2px);
 }
 
 .footer-nav a:hover::after,
-.footer-nav a:focus-visible::after {
+.footer-nav a:focus-visible::after,
+.footer-nav a[aria-current="page"]::after {
     width: 100%;
 }
 
-
 /* =====================================================
-   5. VOLTAR AO INÍCIO
+   5. BOTÃO: VOLTAR AO INÍCIO
+   -----------------------------------------------------
+   Botão interno do footer. O botão lateral global deve
+   sumir ao chegar no footer para evitar duplicidade.
 ===================================================== */
 
 .footer-back-top {
@@ -232,7 +253,7 @@
     gap: 10px;
 
     border: 1px solid rgba(201, 162, 74, 0.28);
-    border-radius: var(--radius-pill);
+    border-radius: var(--radius-pill, 999px);
 
     background:
         radial-gradient(circle at 50% 0%,
@@ -240,10 +261,11 @@
             transparent 62%),
         rgba(255, 255, 255, 0.025);
 
-    color: var(--gold-soft);
+    color: var(--gold-soft, #d8c9a3);
 
     font-size: 0.72rem;
     font-weight: 900;
+    line-height: 1;
     letter-spacing: 1.8px;
     text-transform: uppercase;
     text-decoration: none;
@@ -253,10 +275,10 @@
         0 10px 24px rgba(0, 0, 0, 0.22);
 
     transition:
-        transform var(--transition-default),
-        border-color var(--transition-default),
-        box-shadow var(--transition-default),
-        background var(--transition-default);
+        transform var(--transition-default, 0.3s ease),
+        border-color var(--transition-default, 0.3s ease),
+        box-shadow var(--transition-default, 0.3s ease),
+        background var(--transition-default, 0.3s ease);
 }
 
 .footer-back-top small {
@@ -270,7 +292,7 @@
 
     background: rgba(201, 162, 74, 0.10);
 
-    color: var(--gold-bright);
+    color: var(--gold-bright, #f3e8bd);
     font-size: 0.85rem;
     line-height: 1;
 }
@@ -293,9 +315,8 @@
         0 14px 30px rgba(0, 0, 0, 0.28);
 }
 
-
 /* =====================================================
-   6. DIREITOS
+   6. DIREITOS AUTORAIS
 ===================================================== */
 
 .footer-copy {
@@ -307,11 +328,11 @@
     flex-wrap: wrap;
     gap: 6px;
 
-    color: var(--text-muted);
+    color: var(--text-muted, rgba(245, 241, 232, 0.64));
+
     font-size: 0.88rem;
     line-height: 1.6;
 }
-
 
 /* =====================================================
    7. RESPONSIVIDADE
@@ -340,6 +361,7 @@
 
     .footer-brand p {
         max-width: 520px;
+
         font-size: 0.94rem;
         line-height: 1.75;
     }
@@ -394,7 +416,6 @@
     }
 }
 
-
 /* =====================================================
    8. REDUÇÃO DE MOVIMENTO
 ===================================================== */
@@ -412,6 +433,7 @@
     .footer-logo:focus-visible,
     .footer-nav a:hover,
     .footer-nav a:focus-visible,
+    .footer-nav a[aria-current="page"],
     .footer-back-top:hover,
     .footer-back-top:focus-visible {
         transform: none;
