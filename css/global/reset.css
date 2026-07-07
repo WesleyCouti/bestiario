@@ -3,23 +3,16 @@
    -----------------------------------------------------
    Reset global moderno do projeto Bestiário.
 
-   Objetivo:
-   - Remover estilos padrões inconsistentes dos navegadores.
-   - Padronizar box model, imagens, formulários e textos.
-   - Criar uma base limpa para os demais arquivos CSS.
-   - Melhorar acessibilidade e previsibilidade visual.
+   Responsável por:
+   - remover inconsistências padrão dos navegadores;
+   - padronizar box model;
+   - normalizar mídias, links, listas, formulários e tabelas;
+   - criar uma base limpa antes de variables.css, base.css e accessibility.css.
 
-   Estrutura:
-   1. Box sizing
-   2. Reset de margens e paddings
-   3. HTML e body
-   4. Mídias
-   5. Tipografia e textos
-   6. Links
-   7. Listas
-   8. Botões e formulários
-   9. Tabelas
-   10. Acessibilidade
+   Observação:
+   - Estilos visuais globais ficam em base.css.
+   - Variáveis ficam em variables.css.
+   - Foco visível e redução de movimento ficam em accessibility.css.
 ===================================================== */
 
 
@@ -48,18 +41,16 @@
    3. HTML E BODY
 ===================================================== */
 
-html,
-body {
-    min-height: 100%;
-}
-
 html {
+    min-height: 100%;
     scroll-behavior: smooth;
 }
 
 body {
+    min-height: 100%;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 
@@ -128,27 +119,22 @@ ol {
    8. BOTÕES E FORMULÁRIOS
 ===================================================== */
 
-input,
 button,
+input,
 textarea,
 select {
     font: inherit;
+    color: inherit;
 }
 
 button {
-    border: none;
-    background: none;
+    border: 0;
+    background: transparent;
     cursor: pointer;
 }
 
 button:disabled {
     cursor: not-allowed;
-}
-
-input,
-textarea,
-select {
-    color: inherit;
 }
 
 textarea {
@@ -175,20 +161,13 @@ table {
 
 
 /* =====================================================
-   10. ACESSIBILIDADE
+   10. ELEMENTOS INTERATIVOS
 ===================================================== */
 
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
+summary {
+    cursor: pointer;
+}
 
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
+[hidden] {
+    display: none !important;
 }

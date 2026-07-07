@@ -512,3 +512,39 @@
 #mythologyCarouselTrack .carousel-item.is-flipped {
     z-index: 20;
 }
+
+
+/* =====================================================
+   AJUSTE FINAL - CARROSSEL DE MITOLOGIAS CENTRALIZADO
+   -----------------------------------------------------
+   Mantém o primeiro card centralizado no mobile e deixa
+   parte do próximo card visível à direita.
+===================================================== */
+
+#mythologyCarouselTrack .carousel-item {
+    flex: 0 0 var(--myth-card-width, 340px);
+    width: var(--myth-card-width, 340px);
+}
+
+@media (max-width: 900px) {
+    #mythologyCarouselTrack .carousel-item {
+        flex-basis: var(--myth-card-width, 290px);
+        width: var(--myth-card-width, 290px);
+    }
+}
+
+@media (max-width: 600px) {
+    #mythologyCarouselTrack .carousel-item {
+        flex-basis: var(--myth-card-width, min(76vw, 330px));
+        width: var(--myth-card-width, min(76vw, 330px));
+        max-width: none;
+    }
+}
+
+@media (max-width: 420px) {
+    #mythologyCarouselTrack .carousel-item {
+        flex-basis: var(--myth-card-width, min(78vw, 300px));
+        width: var(--myth-card-width, min(78vw, 300px));
+        max-width: none;
+    }
+}

@@ -1,30 +1,65 @@
 /* =====================================================
-   ACCESSIBILITY
+   ACCESSIBILITY.CSS
+   -----------------------------------------------------
+   Regras globais de acessibilidade
+   Responsável por melhorar a navegação por teclado,
+   foco visível e suporte às preferências do usuário.
 ===================================================== */
 
-/*
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ARQUIVO: accessibility.css
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+/* =====================================================
+   FOCO VISÍVEL GLOBAL
+===================================================== */
 
-Esse arquivo controla melhorias de acessibilidade
-e navegação por teclado.
-
-Objetivo:
-- melhorar navegação via TAB
-- destacar elementos focados
-- aumentar acessibilidade do site
-- melhorar usabilidade para teclado
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-*/
-
-
-button:focus-visible,
-a:focus-visible {
+:where(
+    a,
+    button,
+    input,
+    textarea,
+    select,
+    [tabindex],
+    [role="button"]
+):focus-visible {
 
     outline: 2px solid var(--accent);
-
     outline-offset: 4px;
+
+}
+
+/* =====================================================
+   FOCO PARA CARDS INTERATIVOS
+===================================================== */
+
+:where(
+    .legend-card,
+    .relic-card,
+    .symbol-card,
+    .flip-card,
+    .creature-card
+):focus-visible {
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 2px var(--accent),
+        0 0 22px rgba(201, 154, 43, 0.25);
+
+}
+
+/* =====================================================
+   REDUÇÃO DE MOVIMENTO
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
 
 }

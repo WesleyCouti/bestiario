@@ -34,6 +34,9 @@
 }
 
 .infinite-carousel {
+    --myth-card-width: 340px;
+    --myth-card-gap: 28px;
+
     position: relative;
     width: 100%;
     max-width: 100%;
@@ -73,13 +76,18 @@
 .carousel-track {
     display: flex;
     align-items: stretch;
-    gap: 28px;
+    gap: var(--myth-card-gap);
     width: max-content;
     max-width: none;
     transform: translateX(0);
     transition: transform 0.45s ease;
     will-change: transform;
     animation: none !important;
+}
+
+#mythologyCarouselTrack .carousel-item {
+    flex: 0 0 var(--myth-card-width);
+    width: var(--myth-card-width);
 }
 
 /* =====================================================
@@ -403,8 +411,9 @@
         width: 90px;
     }
 
-    .carousel-track {
-        gap: 22px;
+    .infinite-carousel {
+        --myth-card-width: 290px;
+        --myth-card-gap: 22px;
     }
 
     .myth-front-overlay {
@@ -432,9 +441,19 @@
         line-height: 1.12;
     }
 
+    .infinite-carousel {
+        --myth-card-width: min(76vw, 330px);
+        --myth-card-gap: 18px;
+    }
+
     .infinite-carousel::before,
     .infinite-carousel::after {
-        width: 34px;
+        width: 26px;
+    }
+
+    .carousel-track {
+        padding-left: max(18px, calc((100% - var(--myth-card-width)) / 2));
+        padding-right: max(18px, calc((100% - var(--myth-card-width)) / 2));
     }
 
     .mythology-carousel-arrow {
@@ -449,11 +468,6 @@
 
     .mythology-carousel-next {
         right: 8px;
-    }
-
-    .carousel-track {
-        gap: 18px;
-        padding: 0 18px;
     }
 
     .myth-front-overlay {
@@ -502,14 +516,19 @@
         margin-bottom: 28px;
     }
 
+    .infinite-carousel {
+        --myth-card-width: min(78vw, 300px);
+        --myth-card-gap: 14px;
+    }
+
     .infinite-carousel::before,
     .infinite-carousel::after {
-        width: 22px;
+        width: 18px;
     }
 
     .carousel-track {
-        gap: 14px;
-        padding: 0 14px;
+        padding-left: max(14px, calc((100% - var(--myth-card-width)) / 2));
+        padding-right: max(14px, calc((100% - var(--myth-card-width)) / 2));
     }
 
     .myth-front-overlay {

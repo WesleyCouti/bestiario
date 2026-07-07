@@ -6,7 +6,10 @@
 
    Ajustes aplicados:
    - selo pequeno em cada card;
-   - resumo no hover;
+   - resumo exibido apenas ao ativar o card;
+   - primeiro clique ativa o card e revela o resumo;
+   - segundo clique no mesmo card direciona para o link informado;
+   - suporte a teclado com Enter e Espaço;
    - contador de lendas;
    - barra de progresso premium;
    - atualização da barra ao rolar/clicar;
@@ -90,6 +93,95 @@ function escapeHTML(value) {
 
 
 /* =====================================================
+   AÇÃO DO CARD
+   -----------------------------------------------------
+   1º clique: ativa o card e exibe o resumo.
+   2º clique no mesmo card: abre o link informado.
+===================================================== */
+
+function activateLegendCard(card) {
+    const legendsTrack = document.getElementById("legendsTrack");
+
+    if (!legendsTrack || !card) {
+        return;
+    }
+
+    const cards = legendsTrack.querySelectorAll(".legend-card");
+
+    cards.forEach((item) => {
+        const isCurrentCard = item === card;
+
+        item.classList.toggle("is-active", isCurrentCard);
+        item.setAttribute("aria-expanded", String(isCurrentCard));
+    });
+}
+
+function handleLegendCardAction(card) {
+    if (!card) {
+        return;
+    }
+
+    const isActive = card.classList.contains("is-active");
+    const url = card.dataset.url;
+
+    if (isActive && url && url !== "#") {
+        window.location.href = url;
+        return;
+    }
+
+    activateLegendCard(card);
+}
+
+function setupLegendCardInteractions() {
+    const legendsTrack = document.getElementById("legendsTrack");
+
+    if (!legendsTrack || legendsTrack.dataset.cardInteractionReady === "true") {
+        return;
+    }
+
+    legendsTrack.dataset.cardInteractionReady = "true";
+
+    legendsTrack.addEventListener("click", (event) => {
+        const card = event.target.closest(".legend-card");
+
+        if (!card || !legendsTrack.contains(card)) {
+            return;
+        }
+
+        handleLegendCardAction(card);
+    });
+
+    legendsTrack.addEventListener("keydown", (event) => {
+        const card = event.target.closest(".legend-card");
+
+        if (!card || !legendsTrack.contains(card)) {
+            return;
+        }
+
+        if (event.key !== "Enter" && event.key !== " ") {
+            return;
+        }
+
+        event.preventDefault();
+        handleLegendCardAction(card);
+    });
+
+    document.addEventListener("click", (event) => {
+        if (legendsTrack.contains(event.target)) {
+            return;
+        }
+
+        const activeCard = legendsTrack.querySelector(".legend-card.is-active");
+
+        if (activeCard) {
+            activeCard.classList.remove("is-active");
+            activeCard.setAttribute("aria-expanded", "false");
+        }
+    });
+}
+
+
+/* =====================================================
    GERADOR DOS CARDS DE LENDAS
 ===================================================== */
 
@@ -103,6 +195,7 @@ function createLegendCards() {
     if (legendsTrack.dataset.rendered === "true") {
         updateLegendsCounter();
         setupLegendsProgress();
+        setupLegendCardInteractions();
         return;
     }
 
@@ -110,6 +203,7 @@ function createLegendCards() {
         legendsTrack.innerHTML = "";
         updateLegendsCounter();
         setupLegendsProgress();
+        setupLegendCardInteractions();
         return;
     }
 
@@ -122,7 +216,13 @@ function createLegendCards() {
         const url = escapeHTML(legend.url || "#");
 
         return `
-            <article class="legend-card">
+            <article
+                class="legend-card"
+                role="link"
+                tabindex="0"
+                data-url="${url}"
+                aria-label="Ler mais sobre ${name}"
+                aria-expanded="false">
                 <img
                     src="${image}"
                     alt="${alt}"
@@ -140,10 +240,6 @@ function createLegendCards() {
                         ${summary}
                     </p>
                 </div>
-
-                <a href="${url}" class="legend-card-link" aria-label="Ler mais sobre ${name}">
-                    Ler mais sobre ${name}
-                </a>
             </article>
         `;
     }).join("");
@@ -152,6 +248,7 @@ function createLegendCards() {
 
     updateLegendsCounter();
     setupLegendsProgress();
+    setupLegendCardInteractions();
 }
 
 

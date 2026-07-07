@@ -4,27 +4,22 @@
    Arquivo base do projeto Bestiário.
 
    Responsável por:
-   - reset global
-   - variáveis visuais
-   - estilos globais
-   - container padrão
-   - tipografia base
-   - classes utilitárias reutilizáveis
-   - acessibilidade básica
+   - base global do site;
+   - container padrão;
+   - tipografia base;
+   - elementos HTML globais;
+   - classes utilitárias reutilizáveis.
+
+   Observação:
+   - Variáveis visuais devem ficar em variables.css.
+   - Reset completo deve ficar em reset.css.
+   - Acessibilidade e redução de movimento devem ficar em accessibility.css.
 ===================================================== */
 
 
 /* =====================================================
-   1. RESET BÁSICO
+   1. BASE DO DOCUMENTO
 ===================================================== */
-
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 html {
     scroll-behavior: smooth;
@@ -32,7 +27,34 @@ html {
 
 body {
     min-height: 100vh;
+    overflow-x: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--bg-primary, #0b1a13) 0%,
+            var(--bg-dark, #07100c) 100%
+        );
+
+    color: var(--text-primary, #e8f5e9);
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
+
+main {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   2. ELEMENTOS GLOBAIS
+===================================================== */
 
 img,
 picture,
@@ -60,9 +82,14 @@ select {
 }
 
 button {
-    border: none;
-    background: none;
+    border: 0;
+    background: transparent;
     cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
 }
 
 ul,
@@ -72,95 +99,20 @@ ol {
 
 
 /* =====================================================
-   2. VARIÁVEIS GLOBAIS
-===================================================== */
-
-:root {
-    /* Fundos principais */
-    --bg-primary: #0b1a13;
-    --bg-secondary: #11241b;
-    --bg-tertiary: #183126;
-    --bg-dark: #07100c;
-
-    /* Cores principais */
-    --primary: #1b5e20;
-    --secondary: #2e7d32;
-    --accent: #81c784;
-    --highlight: #a5d6a7;
-
-    /* Dourado usado em seções místicas */
-    --gold: #c9a24a;
-    --gold-soft: #f3e8bd;
-    --gold-muted: rgba(201, 162, 74, 0.45);
-
-    /* Textos */
-    --text-primary: #e8f5e9;
-    --text-secondary: #bfd8c3;
-    --text-muted: rgba(232, 245, 233, 0.62);
-
-    /* Bordas e sombras */
-    --border-soft: rgba(129, 199, 132, 0.18);
-    --border-gold: rgba(201, 162, 74, 0.35);
-    --shadow-dark: rgba(0, 0, 0, 0.35);
-    --shadow-heavy: rgba(0, 0, 0, 0.65);
-
-    /* Layout */
-    --container-width: 1200px;
-    --container-padding: 24px;
-
-    /* Bordas */
-    --radius-sm: 8px;
-    --radius-md: 14px;
-    --radius-lg: 20px;
-    --radius-pill: 999px;
-
-    /* Transições */
-    --transition-fast: 0.2s ease;
-    --transition-default: 0.3s ease;
-    --transition-slow: 0.6s ease;
-}
-
-
-/* =====================================================
-   3. BASE GLOBAL
-===================================================== */
-
-body {
-    overflow-x: hidden;
-
-    background:
-        linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-dark) 100%);
-
-    color: var(--text-primary);
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
-
-main {
-    position: relative;
-    overflow: hidden;
-}
-
-
-/* =====================================================
-   4. CONTAINER PADRÃO
+   3. CONTAINER PADRÃO
 ===================================================== */
 
 .container {
     width: 100%;
-    max-width: var(--container-width);
+    max-width: var(--container-width, 1200px);
 
     margin: 0 auto;
-    padding: 0 var(--container-padding);
+    padding-inline: var(--container-padding, 24px);
 }
 
 
 /* =====================================================
-   5. TIPOGRAFIA BASE
+   4. TIPOGRAFIA BASE
 ===================================================== */
 
 h1,
@@ -169,18 +121,18 @@ h3,
 h4,
 h5,
 h6 {
-    color: var(--text-primary);
-    font-weight: 600;
-    line-height: 1.2;
+    color: var(--text-primary, #e8f5e9);
+    font-weight: 700;
+    line-height: 1.15;
 }
 
 p {
-    color: var(--text-secondary);
+    color: var(--text-secondary, #bfd8c3);
     line-height: 1.7;
 }
 
 strong {
-    color: var(--text-primary);
+    color: var(--text-primary, #e8f5e9);
     font-weight: 700;
 }
 
@@ -190,7 +142,7 @@ small {
 
 
 /* =====================================================
-   6. UTILIDADES REUTILIZÁVEIS
+   5. UTILIDADES REUTILIZÁVEIS
 ===================================================== */
 
 /* Tag usada no topo de várias seções */
@@ -199,7 +151,7 @@ small {
 
     margin-bottom: 14px;
 
-    color: var(--accent);
+    color: var(--accent, #81c784);
 
     font-size: 0.9rem;
     font-weight: 700;
@@ -212,18 +164,19 @@ small {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
 
     padding: 12px 22px;
 
-    border-radius: var(--radius-pill);
+    border-radius: var(--radius-pill, 999px);
 
     cursor: pointer;
 
     transition:
-        transform var(--transition-default),
-        box-shadow var(--transition-default),
-        background var(--transition-default),
-        border-color var(--transition-default);
+        transform var(--transition-default, 0.3s ease),
+        box-shadow var(--transition-default, 0.3s ease),
+        background var(--transition-default, 0.3s ease),
+        border-color var(--transition-default, 0.3s ease);
 }
 
 .button:hover {
@@ -233,6 +186,7 @@ small {
 /* Remove scrollbar mantendo o scroll funcional */
 .no-scrollbar {
     scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -264,44 +218,29 @@ small {
     border: 0;
 }
 
+/* Impede seleção em elementos puramente interativos/decorativos */
+.no-select {
+    user-select: none;
+}
+
+/* Centraliza texto em blocos reutilizáveis */
+.text-center {
+    text-align: center;
+}
+
 
 /* =====================================================
-   7. ACESSIBILIDADE
+   6. SELEÇÃO DE TEXTO
 ===================================================== */
-
-:focus-visible {
-    outline: 2px solid var(--gold);
-    outline-offset: 4px;
-}
 
 ::selection {
     background: rgba(201, 162, 74, 0.35);
-    color: var(--text-primary);
+    color: var(--text-primary, #e8f5e9);
 }
 
 
 /* =====================================================
-   8. REDUÇÃO DE MOVIMENTO
-===================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
-
-/* =====================================================
-   9. RESPONSIVIDADE GLOBAL
+   7. RESPONSIVIDADE GLOBAL
 ===================================================== */
 
 @media (max-width: 768px) {
