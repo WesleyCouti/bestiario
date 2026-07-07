@@ -1,14 +1,24 @@
 /* =====================================================
    05. VISÕES DO MUNDO ANTIGO / CARROSSEL MANUAL
    -----------------------------------------------------
-   Ajustes aplicados:
-   - Carrossel manual, sem loop infinito;
-   - Cards avançam somente ao clicar nas setas;
-   - Track usa translateX controlado pelo JS;
-   - Sem autoplay;
-   - Sem animação CSS infinita no track;
-   - Frente do card sem sombra interna;
-   - Frente mantém apenas selo "Mitologia" + nome.
+   Objetivo da seção:
+   - Exibir cards de mitologias em carrossel manual;
+   - Avançar apenas por clique nas setas;
+   - Manter o primeiro card centralizado no mobile;
+   - Mostrar parte discreta do próximo card no mobile;
+   - Evitar autoplay, loop infinito e animações automáticas.
+
+   Dependências esperadas:
+   - JS controla o translateX do .carousel-track;
+   - JS adiciona/remove .is-active nos dots;
+   - JS pode desabilitar setas com o atributo disabled;
+   - Estrutura HTML deve conter:
+     .infinite-carousel-section
+     .carousel-header
+     .infinite-carousel
+     .carousel-viewport
+     #mythologyCarouselTrack.carousel-track
+     .carousel-item
 ===================================================== */
 
 .infinite-carousel-section {
@@ -33,9 +43,14 @@
     line-height: 1;
 }
 
+/* =====================================================
+   ESTRUTURA DO CARROSSEL
+===================================================== */
+
 .infinite-carousel {
     --myth-card-width: 340px;
     --myth-card-gap: 28px;
+    --myth-edge-fade: 150px;
 
     position: relative;
     width: 100%;
@@ -52,7 +67,7 @@
     position: absolute;
     top: 0;
     z-index: 6;
-    width: 150px;
+    width: var(--myth-edge-fade);
     height: 100%;
     pointer-events: none;
 }
@@ -91,7 +106,7 @@
 }
 
 /* =====================================================
-   SETAS DO CARROSSEL MANUAL
+   SETAS DO CARROSSEL
 ===================================================== */
 
 .mythology-carousel-arrow {
@@ -130,7 +145,7 @@
 
 .mythology-carousel-arrow:hover,
 .mythology-carousel-arrow:focus-visible {
-    border-color: rgba(241, 215, 138, 0.9);
+    border-color: rgba(241, 215, 138, 0.90);
     background: rgba(7, 28, 18, 0.96);
     box-shadow:
         inset 0 0 16px rgba(201, 162, 74, 0.08),
@@ -146,11 +161,15 @@
 .mythology-carousel-arrow:disabled {
     opacity: 0.32;
     cursor: not-allowed;
+    pointer-events: none;
     box-shadow: none;
 }
 
 /* =====================================================
-   FRENTE DO CARD — IMAGEM LIMPA + IDENTIFICAÇÃO
+   FRENTE DO CARD
+   -----------------------------------------------------
+   Mantém a frente limpa: imagem, selo e nome da mitologia.
+   A descrição e o botão ficam ocultos na frente do card.
 ===================================================== */
 
 .myth-flip-front {
@@ -209,9 +228,9 @@
 
 .myth-front-overlay {
     position: absolute;
-    left: 34px;
     right: 34px;
     bottom: 34px;
+    left: 34px;
     z-index: 4;
     display: flex;
     flex-direction: column;
@@ -362,10 +381,10 @@
     top: 50%;
     right: 26px;
     z-index: 2;
-    transform: translateY(-50%);
     color: var(--home-gold-soft);
     font-size: 1.3rem;
     line-height: 1;
+    transform: translateY(-50%);
 }
 
 .infinite-carousel-section .section-main-button:hover,
@@ -385,15 +404,35 @@
     opacity: 1;
 }
 
+.infinite-carousel-section .section-main-button:focus-visible {
+    outline: 2px solid var(--home-gold-soft);
+    outline-offset: 4px;
+}
+
 /* =====================================================
-   RESPONSIVIDADE
+   RESPONSIVIDADE E ACESSIBILIDADE
 ===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
     .carousel-track,
-    .myth-flip-front img {
+    .myth-carousel-dot,
+    .mythology-carousel-arrow,
+    .infinite-carousel-section .section-main-button,
+    .infinite-carousel-section .section-main-button::before {
         transition: none;
+    }
+
+    .carousel-track {
         will-change: auto;
+    }
+}
+
+@media (max-width: 1100px) {
+    .infinite-carousel {
+        --myth-card-width: 315px;
+        --myth-card-gap: 24px;
+        --myth-edge-fade: 110px;
     }
 }
 
@@ -406,20 +445,16 @@
         margin-bottom: 44px;
     }
 
-    .infinite-carousel::before,
-    .infinite-carousel::after {
-        width: 90px;
-    }
-
     .infinite-carousel {
         --myth-card-width: 290px;
         --myth-card-gap: 22px;
+        --myth-edge-fade: 90px;
     }
 
     .myth-front-overlay {
-        left: 26px;
         right: 26px;
         bottom: 28px;
+        left: 26px;
     }
 
     .myth-symbol-badge {
@@ -444,11 +479,7 @@
     .infinite-carousel {
         --myth-card-width: min(76vw, 330px);
         --myth-card-gap: 18px;
-    }
-
-    .infinite-carousel::before,
-    .infinite-carousel::after {
-        width: 26px;
+        --myth-edge-fade: 26px;
     }
 
     .carousel-track {
@@ -471,9 +502,9 @@
     }
 
     .myth-front-overlay {
-        left: 22px;
         right: 22px;
         bottom: 24px;
+        left: 22px;
     }
 
     .myth-front-label {
@@ -491,6 +522,12 @@
         right: 18px;
         width: 48px;
         height: 48px;
+    }
+
+    .myth-carousel-lore {
+        max-width: 330px;
+        padding: 0 16px;
+        font-size: 0.88rem;
     }
 
     .infinite-carousel-section .section-main-button {
@@ -519,11 +556,7 @@
     .infinite-carousel {
         --myth-card-width: min(78vw, 300px);
         --myth-card-gap: 14px;
-    }
-
-    .infinite-carousel::before,
-    .infinite-carousel::after {
-        width: 18px;
+        --myth-edge-fade: 18px;
     }
 
     .carousel-track {
@@ -532,8 +565,8 @@
     }
 
     .myth-front-overlay {
-        left: 18px;
         right: 18px;
         bottom: 20px;
+        left: 18px;
     }
 }

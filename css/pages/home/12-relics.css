@@ -1,8 +1,30 @@
 /* =====================================================
    12. RELÍQUIAS LENDÁRIAS
+   -----------------------------------------------------
+   Ajustes aplicados:
+   - Comentários reorganizados por responsabilidade;
+   - Variáveis locais para facilitar manutenção;
+   - Botão exclusivo isolado da seção;
+   - Removidos seletores de outras seções;
+   - Estados de foco e disabled revisados;
+   - Melhor suporte para touch/mobile;
+   - prefers-reduced-motion mais completo.
+===================================================== */
+
+/* =====================================================
+   BASE DA SEÇÃO
 ===================================================== */
 
 .relics-section {
+    --relic-card-width: 240px;
+    --relic-card-height: 500px;
+    --relic-card-gap: 18px;
+    --relic-radius: 20px;
+    --relic-gold: var(--home-gold-soft);
+    --relic-gold-bright: var(--home-gold-bright, #f1d78a);
+    --relic-green: #59d47b;
+    --relic-muted: #b6b1a1;
+
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -16,30 +38,26 @@
     content: "";
     position: absolute;
     inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.08;
     background:
         radial-gradient(circle at 18% 30%, rgba(255, 255, 255, 0.05), transparent 28%),
         radial-gradient(circle at 72% 42%, rgba(201, 162, 74, 0.04), transparent 30%),
         linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.035) 48%, transparent 74%);
     background-size: 120% 120%;
-    opacity: 0.08;
-    animation: fogMove 40s linear infinite;
-    pointer-events: none;
-    z-index: -1;
+    animation: relicsFogMove 40s linear infinite;
 }
 
 .relics-overlay {
     position: absolute;
     inset: 0;
+    z-index: 1;
+    pointer-events: none;
     background:
         radial-gradient(circle at center, rgba(255, 180, 0, 0.06), transparent 35%),
         radial-gradient(circle at 80% 20%, rgba(255, 0, 0, 0.05), transparent 25%),
-        linear-gradient(to right,
-            rgba(0, 0, 0, 0.85),
-            transparent 20%,
-            transparent 80%,
-            rgba(0, 0, 0, 0.85));
-    pointer-events: none;
-    z-index: 1;
+        linear-gradient(to right, rgba(0, 0, 0, 0.85), transparent 20%, transparent 80%, rgba(0, 0, 0, 0.85));
 }
 
 .relics-container {
@@ -49,14 +67,19 @@
     margin: 0 auto;
 }
 
+/* =====================================================
+   CABEÇALHO
+===================================================== */
+
 .relics-header {
+    max-width: 640px;
     margin-bottom: 36px;
 }
 
 .relics-tag {
     display: inline-block;
     margin-bottom: 20px;
-    color: #59d47b;
+    color: var(--relic-green);
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 6px;
@@ -65,7 +88,8 @@
 
 .relics-header h2 {
     max-width: 640px;
-    color: var(--home-gold-soft);
+    margin: 0;
+    color: var(--relic-gold);
     font-size: clamp(2rem, 3.2vw, 2.9rem);
     font-weight: 900;
     line-height: 1.02;
@@ -75,12 +99,11 @@
 
 .relics-header p {
     max-width: 500px;
-    margin-top: 16px;
-    color: #b6b1a1;
+    margin: 16px 0 0;
+    color: var(--relic-muted);
     font-size: 0.92rem;
     line-height: 1.5;
 }
-
 
 .relics-note {
     max-width: 520px;
@@ -91,9 +114,11 @@
     line-height: 1.6;
 }
 
-/* Botão exclusivo da seção Relíquias Lendárias */
-.relics-section .section-main-button,
-.relics-section .relics-main-button {
+/* =====================================================
+   BOTÃO PRINCIPAL DA SEÇÃO
+===================================================== */
+
+.relics-section :is(.section-main-button, .relics-main-button) {
     position: relative;
     width: fit-content;
     min-width: 360px;
@@ -110,7 +135,7 @@
         radial-gradient(circle at 18% 0%, rgba(201, 162, 74, 0.13), transparent 46%),
         radial-gradient(circle at 84% 50%, rgba(95, 212, 123, 0.06), transparent 34%),
         linear-gradient(135deg, rgba(5, 16, 11, 0.92), rgba(1, 5, 4, 0.98));
-    color: var(--home-gold-soft);
+    color: var(--relic-gold);
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
@@ -129,14 +154,12 @@
         color 0.32s ease;
 }
 
-.relics-section .section-main-button::before,
-.relics-section .relics-main-button::before {
+.relics-section :is(.section-main-button, .relics-main-button)::before {
     content: "";
     position: absolute;
     inset: 1px;
     border-radius: inherit;
-    background:
-        linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.12), transparent);
     opacity: 0;
     transform: translateX(-110%);
     transition:
@@ -144,34 +167,27 @@
         transform 0.62s ease;
 }
 
-.relics-section .section-main-button .button-text,
-.relics-section .relics-main-button .button-text,
-.relics-section .section-main-button span:not(.button-arrow),
-.relics-section .relics-main-button span:not(.button-arrow) {
+.relics-section :is(.section-main-button, .relics-main-button) :is(.button-text, span:not(.button-arrow)) {
     position: relative;
     z-index: 2;
     white-space: nowrap;
 }
 
-.relics-section .section-main-button .button-arrow,
-.relics-section .relics-main-button .button-arrow {
+.relics-section :is(.section-main-button, .relics-main-button) .button-arrow {
     position: absolute;
     top: 50%;
     right: 26px;
     z-index: 2;
-    color: var(--home-gold-soft);
+    color: var(--relic-gold);
     font-size: 1.3rem;
     line-height: 1;
     transform: translateY(-50%);
 }
 
-.relics-section .section-main-button:hover,
-.relics-section .section-main-button:focus-visible,
-.relics-section .relics-main-button:hover,
-.relics-section .relics-main-button:focus-visible {
+.relics-section :is(.section-main-button, .relics-main-button):is(:hover, :focus-visible) {
     transform: translateY(-4px);
     border-color: rgba(241, 215, 138, 0.94);
-    color: var(--home-gold-bright);
+    color: var(--relic-gold-bright);
     background:
         radial-gradient(circle at 18% 0%, rgba(201, 162, 74, 0.18), transparent 46%),
         radial-gradient(circle at 84% 50%, rgba(95, 212, 123, 0.08), transparent 34%),
@@ -182,63 +198,26 @@
         0 22px 44px rgba(0, 0, 0, 0.34);
 }
 
-.relics-section .section-main-button:hover::before,
-.relics-section .section-main-button:focus-visible::before,
-.relics-section .relics-main-button:hover::before,
-.relics-section .relics-main-button:focus-visible::before {
+.relics-section :is(.section-main-button, .relics-main-button):is(:hover, :focus-visible)::before {
     opacity: 1;
     transform: translateX(110%);
 }
 
-/* Foco acessível dos botões desta seção */
-.infinite-carousel-section .section-main-button:focus-visible,
-.relics-section .section-main-button:focus-visible,
-.relics-section .relics-main-button:focus-visible {
+.relics-section :is(.section-main-button, .relics-main-button):focus-visible {
     outline: 2px solid rgba(241, 215, 138, 0.95);
     outline-offset: 4px;
 }
 
-@media (max-width: 700px) {
-
-    .infinite-carousel-section .section-main-button,
-    .relics-section .section-main-button,
-    .relics-section .relics-main-button {
-        width: 100%;
-        min-width: 0;
-        min-height: 60px;
-        padding: 0 58px 0 24px;
-        border-radius: 14px;
-        font-size: 0.70rem;
-        letter-spacing: 2px;
-    }
-
-    .infinite-carousel-section .section-main-button .button-arrow,
-    .relics-section .section-main-button .button-arrow,
-    .relics-section .relics-main-button .button-arrow {
-        right: 22px;
-    }
+.relics-section :is(.section-main-button, .relics-main-button)[aria-disabled="true"],
+.relics-section :is(.section-main-button, .relics-main-button):disabled {
+    opacity: 0.48;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-
-    .infinite-carousel-section .section-main-button,
-    .infinite-carousel-section .section-main-button::before,
-    .relics-section .section-main-button,
-    .relics-section .section-main-button::before,
-    .relics-section .relics-main-button,
-    .relics-section .relics-main-button::before {
-        transition: none;
-    }
-
-    .infinite-carousel-section .section-main-button:hover,
-    .infinite-carousel-section .section-main-button:focus-visible,
-    .relics-section .section-main-button:hover,
-    .relics-section .section-main-button:focus-visible,
-    .relics-section .relics-main-button:hover,
-    .relics-section .relics-main-button:focus-visible {
-        transform: none;
-    }
-}
+/* =====================================================
+   CARROSSEL
+===================================================== */
 
 .relics-carousel-wrapper {
     position: relative;
@@ -247,7 +226,7 @@
 .relics-carousel {
     position: relative;
     display: flex;
-    gap: 18px;
+    gap: var(--relic-card-gap);
     overflow-x: auto;
     overflow-y: hidden;
     padding: 10px 0 22px;
@@ -261,14 +240,18 @@
     display: none;
 }
 
+/* =====================================================
+   CARD DE RELÍQUIA
+===================================================== */
+
 .relic-card {
     position: relative;
-    flex: 0 0 240px;
-    height: 500px;
+    flex: 0 0 var(--relic-card-width);
+    height: var(--relic-card-height);
     overflow: hidden;
-    border-radius: 20px;
-    background: #050505;
     border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--relic-radius);
+    background: #050505;
     cursor: pointer;
     scroll-snap-align: start;
     transform: translateZ(0);
@@ -282,19 +265,17 @@
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 5;
     padding: 1px;
     border-radius: inherit;
+    pointer-events: none;
     background:
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.5),
-            transparent,
-            rgba(255, 255, 255, 0.2));
+        linear-gradient(180deg, rgba(255, 255, 255, 0.5), transparent, rgba(255, 255, 255, 0.2));
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
-    pointer-events: none;
-    z-index: 5;
+    mask-composite: exclude;
 }
 
 .relic-card::after {
@@ -306,9 +287,7 @@
     transition: opacity 0.5s ease;
 }
 
-.relic-card:hover,
-.relic-card:focus-within,
-.relic-card.is-active {
+.relic-card:is(:hover, :focus-within, .is-active) {
     transform: translateY(-12px) scale(1.025);
     border-color: rgba(255, 255, 255, 0.16);
 }
@@ -317,14 +296,12 @@
     z-index: 6;
 }
 
-.relic-card:hover::after,
-.relic-card:focus-within::after,
-.relic-card.is-active::after {
+.relic-card:is(:hover, :focus-within, .is-active)::after {
     opacity: 1;
 }
 
 .relic-card:focus-visible {
-    outline: 2px solid var(--home-gold-soft);
+    outline: 2px solid var(--relic-gold);
     outline-offset: 5px;
 }
 
@@ -339,9 +316,7 @@
         filter 0.7s ease;
 }
 
-.relic-card:hover img,
-.relic-card:focus-within img,
-.relic-card.is-active img {
+.relic-card:is(:hover, :focus-within, .is-active) img {
     transform: scale(1.08);
     filter: brightness(0.78) contrast(1.15) saturate(1.08);
 }
@@ -365,7 +340,7 @@
 }
 
 .relic-content h3 {
-    margin-bottom: 10px;
+    margin: 0 0 10px;
     color: #ffffff;
     font-size: 1.05rem;
     letter-spacing: 0.8px;
@@ -376,6 +351,7 @@
 }
 
 .relic-content p {
+    margin: 0;
     color: inherit;
     font-size: 0.78rem;
     line-height: 1.4;
@@ -387,11 +363,7 @@
     width: 80px;
     height: 1px;
     margin: 0 auto 18px;
-    background:
-        linear-gradient(to right,
-            transparent,
-            currentColor,
-            transparent);
+    background: linear-gradient(to right, transparent, currentColor, transparent);
     opacity: 0.7;
 }
 
@@ -400,21 +372,25 @@
     top: 14px;
     left: 50%;
     z-index: 5;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
     font-size: 1.25rem;
     transform: translateX(-50%);
     backdrop-filter: blur(10px);
 }
 
+/* =====================================================
+   VARIAÇÕES VISUAIS POR RELÍQUIA
+===================================================== */
+
 .excalibur {
     box-shadow: 0 0 40px rgba(255, 200, 0, 0.15);
-    animation: goldPulse 4s infinite;
+    animation: relicGoldPulse 4s infinite;
 }
 
 .excalibur .relic-content p,
@@ -423,13 +399,12 @@
 }
 
 .excalibur::after {
-    background:
-        radial-gradient(circle, rgba(255, 215, 0, 0.35), transparent 60%);
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.35), transparent 60%);
 }
 
 .mjolnir {
     box-shadow: 0 0 40px rgba(61, 130, 255, 0.15);
-    animation: bluePulse 4s infinite;
+    animation: relicBluePulse 4s infinite;
 }
 
 .mjolnir .relic-content p,
@@ -438,13 +413,12 @@
 }
 
 .mjolnir::after {
-    background:
-        radial-gradient(circle, rgba(0, 140, 255, 0.35), transparent 60%);
+    background: radial-gradient(circle, rgba(0, 140, 255, 0.35), transparent 60%);
 }
 
 .trident {
     box-shadow: 0 0 40px rgba(56, 201, 184, 0.15);
-    animation: aquaPulse 4s infinite;
+    animation: relicAquaPulse 4s infinite;
 }
 
 .trident .relic-content p,
@@ -453,13 +427,12 @@
 }
 
 .trident::after {
-    background:
-        radial-gradient(circle, rgba(0, 255, 200, 0.35), transparent 60%);
+    background: radial-gradient(circle, rgba(0, 255, 200, 0.35), transparent 60%);
 }
 
 .monkey {
     box-shadow: 0 0 40px rgba(255, 61, 61, 0.18);
-    animation: redPulse 4s infinite;
+    animation: relicRedPulse 4s infinite;
 }
 
 .monkey .relic-content p,
@@ -468,8 +441,7 @@
 }
 
 .monkey::after {
-    background:
-        radial-gradient(circle, rgba(255, 0, 0, 0.35), transparent 60%);
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.35), transparent 60%);
 }
 
 .grail {
@@ -482,8 +454,7 @@
 }
 
 .grail::after {
-    background:
-        radial-gradient(circle, rgba(255, 215, 120, 0.35), transparent 60%);
+    background: radial-gradient(circle, rgba(255, 215, 120, 0.35), transparent 60%);
 }
 
 .pandora {
@@ -496,9 +467,12 @@
 }
 
 .pandora::after {
-    background:
-        radial-gradient(circle, rgba(170, 0, 255, 0.35), transparent 60%);
+    background: radial-gradient(circle, rgba(170, 0, 255, 0.35), transparent 60%);
 }
+
+/* =====================================================
+   SETAS DO CARROSSEL
+===================================================== */
 
 .relic-arrow {
     position: absolute;
@@ -506,6 +480,8 @@
     z-index: 80;
     width: 56px;
     height: 56px;
+    display: grid;
+    place-items: center;
     border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.78);
@@ -518,7 +494,8 @@
         transform 0.3s ease,
         background 0.3s ease,
         box-shadow 0.3s ease,
-        border-color 0.3s ease;
+        border-color 0.3s ease,
+        opacity 0.3s ease;
 }
 
 .relic-arrow.left {
@@ -529,20 +506,29 @@
     right: -68px;
 }
 
-.relic-arrow:hover,
-.relic-arrow:focus-visible {
+.relic-arrow:is(:hover, :focus-visible) {
     background: rgba(0, 0, 0, 0.95);
+    border-color: var(--relic-gold);
     box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
     transform: translateY(-50%) scale(1.08);
 }
 
 .relic-arrow:focus-visible {
-    outline: 2px solid var(--home-gold-soft);
+    outline: 2px solid var(--relic-gold);
     outline-offset: 4px;
-    border-color: var(--home-gold-soft);
 }
 
-@keyframes fogMove {
+.relic-arrow:disabled {
+    opacity: 0.32;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* =====================================================
+   ANIMAÇÕES
+===================================================== */
+
+@keyframes relicsFogMove {
     from {
         transform: translateX(0);
     }
@@ -552,7 +538,7 @@
     }
 }
 
-@keyframes goldPulse {
+@keyframes relicGoldPulse {
 
     0%,
     100% {
@@ -564,7 +550,7 @@
     }
 }
 
-@keyframes bluePulse {
+@keyframes relicBluePulse {
 
     0%,
     100% {
@@ -576,7 +562,7 @@
     }
 }
 
-@keyframes aquaPulse {
+@keyframes relicAquaPulse {
 
     0%,
     100% {
@@ -588,7 +574,7 @@
     }
 }
 
-@keyframes redPulse {
+@keyframes relicRedPulse {
 
     0%,
     100% {
@@ -600,15 +586,18 @@
     }
 }
 
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
 @media (max-width: 900px) {
+    .relics-section {
+        --relic-card-width: 230px;
+        --relic-card-height: 470px;
+    }
 
     .relic-arrow {
         display: none;
-    }
-
-    .relic-card {
-        flex-basis: 230px;
-        height: 470px;
     }
 
     .relics-header h2 {
@@ -616,19 +605,32 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
+    .relics-section :is(.section-main-button, .relics-main-button) {
+        width: 100%;
+        min-width: 0;
+        min-height: 60px;
+        padding: 0 58px 0 24px;
+        border-radius: 14px;
+        font-size: 0.70rem;
+        letter-spacing: 2px;
+    }
 
+    .relics-section :is(.section-main-button, .relics-main-button) .button-arrow {
+        right: 22px;
+    }
+}
+
+@media (max-width: 600px) {
     .relics-section {
+        --relic-card-width: 220px;
+        --relic-card-height: 440px;
+
         padding: 70px 0;
     }
 
     .relics-container {
         width: min(100% - 32px, 1400px);
-    }
-
-    .relic-card {
-        flex-basis: 220px;
-        height: 440px;
     }
 
     .relics-header p {
@@ -641,20 +643,17 @@
 }
 
 @media (max-width: 420px) {
-
     .relics-section {
+        --relic-card-width: 205px;
+        --relic-card-height: 410px;
+
         padding: 62px 0;
     }
 
-    .relic-card {
-        flex-basis: 205px;
-        height: 410px;
-    }
-
     .relic-content {
-        left: 16px;
         right: 16px;
         bottom: 20px;
+        left: 16px;
     }
 
     .relic-content h3 {
@@ -672,6 +671,23 @@
     }
 }
 
+/* =====================================================
+   TOUCH E MOVIMENTO REDUZIDO
+===================================================== */
+
+@media (hover: none) {
+
+    .relic-card:hover,
+    .relic-card:hover img,
+    .relics-section :is(.section-main-button, .relics-main-button):hover {
+        transform: none;
+    }
+
+    .relic-card:hover img {
+        filter: brightness(0.7) contrast(1.1);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
 
     .relics-section::before,
@@ -686,6 +702,8 @@
         scroll-behavior: auto;
     }
 
+    .relics-section :is(.section-main-button, .relics-main-button),
+    .relics-section :is(.section-main-button, .relics-main-button)::before,
     .relic-card,
     .relic-card img,
     .relic-card::after,
@@ -693,20 +711,13 @@
         transition: none;
     }
 
-    .relic-card:hover,
-    .relic-card:focus-within,
-    .relic-card.is-active {
+    .relics-section :is(.section-main-button, .relics-main-button):is(:hover, :focus-visible),
+    .relic-card:is(:hover, :focus-within, .is-active),
+    .relic-arrow:is(:hover, :focus-visible) {
         transform: none;
     }
 
-    .relic-card:hover img,
-    .relic-card:focus-within img,
-    .relic-card.is-active img {
+    .relic-card:is(:hover, :focus-within, .is-active) img {
         transform: none;
-    }
-
-    .relic-arrow:hover,
-    .relic-arrow:focus-visible {
-        transform: translateY(-50%);
     }
 }

@@ -1,8 +1,38 @@
 /* =====================================================
    08. CRIATURAS DO MUNDO ANTIGO
+   -----------------------------------------------------
+   Objetivo da seção:
+   - Apresentar criaturas antigas em cards com efeito flip;
+   - Permitir filtros/categorias no topo;
+   - Destacar um CTA próprio da seção;
+   - Manter visual sombrio, místico e premium.
+
+   Melhorias aplicadas:
+   - Comentários reorganizados por bloco;
+   - Variáveis locais para medidas, cores e transições;
+   - Responsividade mais previsível;
+   - Melhor foco acessível em botões, filtros e links;
+   - Hover desativado corretamente em dispositivos touch;
+   - Redução de animações com prefers-reduced-motion;
+   - Estrutura mais fácil de manter.
+===================================================== */
+
+/* =====================================================
+   08.1 SEÇÃO E FUNDO
 ===================================================== */
 
 .creatures-section {
+    --creatures-container: 1420px;
+    --creatures-grid-gap: 28px;
+    --creatures-card-height: 470px;
+    --creatures-radius-card: 14px;
+    --creatures-border-gold: rgba(198, 144, 45, 0.55);
+    --creatures-border-green: rgba(129, 199, 132, 0.28);
+    --creatures-gold-light: #dcb555;
+    --creatures-text-cream: #f5e6b8;
+    --creatures-transition: 0.3s ease;
+    --creatures-flip-transition: 0.9s ease;
+
     position: relative;
     padding: 78px 0 110px;
     overflow: hidden;
@@ -19,21 +49,27 @@
     inset: 0;
     z-index: -1;
     pointer-events: none;
+    opacity: 0.14;
     background:
         linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
         linear-gradient(180deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
     background-size: 96px 96px;
-    opacity: 0.14;
 }
 
 .creatures-container {
     position: relative;
-    width: min(calc(100% - 96px), 1420px);
+    width: min(calc(100% - 96px), var(--creatures-container));
     margin: 0 auto;
 }
 
+/* =====================================================
+   08.2 CABEÇALHO, TEXTO E DECORAÇÃO
+===================================================== */
+
 .creatures-top {
     position: relative;
+    min-height: 430px;
+    margin-bottom: 44px;
     display: grid;
     grid-template-columns: minmax(420px, 620px) minmax(520px, 1fr);
     grid-template-areas:
@@ -42,8 +78,6 @@
     align-items: start;
     column-gap: clamp(48px, 6vw, 96px);
     row-gap: 20px;
-    min-height: 430px;
-    margin-bottom: 44px;
 }
 
 .creatures-header {
@@ -98,28 +132,22 @@
     top: 50%;
     width: 45%;
     height: 1px;
-    background:
-        linear-gradient(90deg,
-            transparent,
-            rgba(197, 154, 62, 0.75));
 }
 
 .creatures-section .title-divider::before {
     left: 0;
+    background: linear-gradient(90deg, transparent, rgba(197, 154, 62, 0.75));
 }
 
 .creatures-section .title-divider::after {
     right: 0;
-    background:
-        linear-gradient(90deg,
-            rgba(197, 154, 62, 0.75),
-            transparent);
+    background: linear-gradient(90deg, rgba(197, 154, 62, 0.75), transparent);
 }
 
 .creatures-section .title-divider span {
     position: absolute;
-    left: 50%;
     top: 50%;
+    left: 50%;
     width: 13px;
     height: 13px;
     border: 1px solid #c59a3e;
@@ -141,6 +169,10 @@
     width: 100%;
     filter: drop-shadow(0 0 35px rgba(55, 175, 74, 0.35));
 }
+
+/* =====================================================
+   08.3 FILTROS / CHIPS DE CATEGORIA
+===================================================== */
 
 .creatures-section .creatures-filter-preview {
     position: relative;
@@ -174,11 +206,11 @@
     text-transform: uppercase;
     cursor: pointer;
     transition:
-        background 0.3s ease,
-        border-color 0.3s ease,
-        color 0.3s ease,
-        box-shadow 0.3s ease,
-        transform 0.3s ease;
+        transform var(--creatures-transition),
+        background var(--creatures-transition),
+        border-color var(--creatures-transition),
+        color var(--creatures-transition),
+        box-shadow var(--creatures-transition);
 }
 
 .creatures-section .creature-filter:hover,
@@ -186,8 +218,8 @@
 .creatures-section .creature-filter.is-active,
 .creatures-section .creatures-filter-preview span:hover {
     transform: translateY(-2px);
-    background: rgba(201, 162, 74, 0.14);
     border-color: rgba(241, 215, 138, 0.9);
+    background: rgba(201, 162, 74, 0.14);
     color: var(--home-gold-bright);
     box-shadow: 0 0 20px rgba(201, 162, 74, 0.16);
 }
@@ -196,6 +228,10 @@
     outline: 2px solid var(--home-gold-soft);
     outline-offset: 4px;
 }
+
+/* =====================================================
+   08.4 BOTÃO PRINCIPAL DA SEÇÃO
+===================================================== */
 
 .creatures-section .creatures-main-button {
     position: relative;
@@ -228,13 +264,12 @@
     box-shadow:
         inset 0 0 18px rgba(201, 162, 74, 0.04),
         0 14px 30px rgba(0, 0, 0, 0.22);
-    transform: none;
     transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        border-color 0.3s ease,
-        color 0.3s ease,
-        box-shadow 0.3s ease;
+        transform var(--creatures-transition),
+        background var(--creatures-transition),
+        border-color var(--creatures-transition),
+        color var(--creatures-transition),
+        box-shadow var(--creatures-transition);
 }
 
 .creatures-section .creatures-main-button::before {
@@ -242,16 +277,16 @@
     position: absolute;
     inset: 1px;
     border-radius: inherit;
+    opacity: 0;
+    transform: translateX(-110%);
     background:
         linear-gradient(120deg,
             transparent 0%,
             rgba(255, 255, 255, 0.12) 46%,
             transparent 72%);
-    opacity: 0;
-    transform: translateX(-110%);
     transition:
         transform 0.6s ease,
-        opacity 0.3s ease;
+        opacity var(--creatures-transition);
 }
 
 .creatures-section .creatures-main-button .button-text,
@@ -270,22 +305,20 @@
     color: var(--home-gold-soft);
     font-size: 1.2rem;
     line-height: 1;
-    opacity: 1;
-    transform: none;
     transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        color 0.3s ease,
-        background 0.3s ease;
+        transform var(--creatures-transition),
+        border-color var(--creatures-transition),
+        color var(--creatures-transition),
+        background var(--creatures-transition);
 }
 
 .creatures-section .creatures-main-button:hover,
 .creatures-section .creatures-main-button:focus-visible {
     transform: translateY(-3px);
+    border-color: rgba(241, 215, 138, 0.9);
     background:
         radial-gradient(circle at 20% 0%, rgba(201, 162, 74, 0.16), transparent 42%),
         rgba(5, 16, 11, 0.72);
-    border-color: rgba(241, 215, 138, 0.9);
     color: var(--home-gold-bright);
     box-shadow:
         inset 0 0 22px rgba(201, 162, 74, 0.07),
@@ -303,29 +336,33 @@
 .creatures-section .creatures-main-button:focus-visible .button-arrow {
     transform: translateX(4px);
     border-color: rgba(241, 215, 138, 0.78);
-    color: var(--home-gold-bright);
     background: rgba(201, 162, 74, 0.10);
+    color: var(--home-gold-bright);
 }
 
 .creatures-section .creatures-main-button:focus-visible {
-    outline: 2px solid #dcb555;
+    outline: 2px solid var(--creatures-gold-light);
     outline-offset: 4px;
 }
+
+/* =====================================================
+   08.5 GRID DE CRIATURAS
+===================================================== */
 
 .creatures-grid {
     position: relative;
     z-index: 2;
-    margin-top: 0;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     align-items: stretch;
-    gap: 28px;
+    gap: var(--creatures-grid-gap);
 }
 
 .creature-card {
     position: relative;
-    height: 470px;
+    height: var(--creatures-card-height);
     perspective: 1200px;
+    outline: none;
 }
 
 .creature-card-inner {
@@ -333,12 +370,20 @@
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    transition: transform 0.9s ease;
+    transition: transform var(--creatures-flip-transition);
 }
 
+/* Desktop: flip no hover. JS pode adicionar .is-flipped para clique. */
 .creature-card:hover .creature-card-inner,
+.creature-card:focus-within .creature-card-inner,
 .creature-card.is-flipped .creature-card-inner {
     transform: rotateY(180deg);
+}
+
+.creature-card:focus-visible {
+    outline: 2px solid var(--home-gold-soft);
+    outline-offset: 6px;
+    border-radius: var(--creatures-radius-card);
 }
 
 .creature-card-front,
@@ -346,8 +391,8 @@
     position: absolute;
     inset: 0;
     overflow: hidden;
-    border-radius: 14px;
-    border: 1px solid rgba(198, 144, 45, 0.55);
+    border: 1px solid var(--creatures-border-gold);
+    border-radius: var(--creatures-radius-card);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     box-shadow:
@@ -357,6 +402,16 @@
 
 .creature-card-front {
     background: #03130d;
+}
+
+.creature-card-front::before,
+.creature-card-back::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(201, 162, 74, 0.22);
+    border-radius: 10px;
+    pointer-events: none;
 }
 
 .creature-card-front img {
@@ -371,30 +426,24 @@
         filter 0.5s ease;
 }
 
-.creature-card:hover .creature-card-front img {
+.creature-card:hover .creature-card-front img,
+.creature-card:focus-within .creature-card-front img {
     transform: scale(1.05);
-    filter:
-        brightness(0.9) contrast(1.08) saturate(1.05);
+    filter: brightness(0.9) contrast(1.08) saturate(1.05);
 }
 
-.creature-card-front::before,
-.creature-card-back::before {
-    content: "";
-    position: absolute;
-    inset: 10px;
-    border: 1px solid rgba(201, 162, 74, 0.22);
-    border-radius: 10px;
-    pointer-events: none;
-}
+/* =====================================================
+   08.6 VERSO DO CARD
+===================================================== */
 
 .creature-card-back {
-    transform: rotateY(180deg);
+    padding: 38px 28px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 38px 28px;
     text-align: center;
+    transform: rotateY(180deg);
     background:
         radial-gradient(circle at center, rgba(70, 145, 55, 0.22), transparent 45%),
         linear-gradient(180deg, #071f14 0%, #020f0a 100%);
@@ -407,16 +456,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
     border: 1px solid rgba(201, 162, 74, 0.55);
-    color: #dcb555;
+    border-radius: 50%;
+    color: var(--creatures-gold-light);
     font-size: 1.6rem;
     box-shadow: 0 0 18px rgba(201, 162, 74, 0.14);
 }
 
 .creature-card-back h3 {
     margin: 0 0 18px;
-    color: #f5e6b8;
+    color: var(--creatures-text-cream);
     font-family: var(--home-font-serif);
     font-size: 2.2rem;
     line-height: 1;
@@ -448,7 +497,7 @@
     letter-spacing: 2px;
     font-size: 0.9rem;
     font-weight: 700;
-    transition: color 0.3s ease;
+    transition: color var(--creatures-transition);
 }
 
 .creature-card-link span {
@@ -457,8 +506,9 @@
     vertical-align: -1px;
 }
 
-.creature-card-link:hover {
-    color: #dcb555;
+.creature-card-link:hover,
+.creature-card-link:focus-visible {
+    color: var(--creatures-gold-light);
 }
 
 .creature-card-link:focus-visible {
@@ -466,6 +516,10 @@
     outline-offset: 4px;
     border-radius: 4px;
 }
+
+/* =====================================================
+   08.7 RESPONSIVIDADE
+===================================================== */
 
 @media (max-width: 1280px) {
     .creatures-top {
@@ -485,14 +539,14 @@
 
 @media (max-width: 1100px) {
     .creatures-top {
+        min-height: auto;
+        margin-bottom: 48px;
         grid-template-columns: 1fr;
         grid-template-areas:
             "header"
             "filters"
             "action";
         row-gap: 24px;
-        min-height: auto;
-        margin-bottom: 48px;
     }
 
     .creatures-section .creatures-filter-preview {
@@ -521,11 +575,14 @@
 
 @media (max-width: 700px) {
     .creatures-section {
+        --creatures-grid-gap: 22px;
+        --creatures-card-height: 500px;
+
         padding: 70px 0 80px;
     }
 
     .creatures-container {
-        width: min(calc(100% - 32px), 1420px);
+        width: min(calc(100% - 32px), var(--creatures-container));
     }
 
     .creatures-header {
@@ -558,20 +615,15 @@
         min-width: 0;
         padding: 16px 22px;
         justify-content: center;
-        letter-spacing: 2px;
         font-size: 0.76rem;
+        letter-spacing: 2px;
     }
 
     .creatures-grid {
         grid-template-columns: 1fr;
         max-width: min(100%, 380px);
-        margin-left: auto;
         margin-right: auto;
-        gap: 22px;
-    }
-
-    .creature-card {
-        height: 500px;
+        margin-left: auto;
     }
 
     .creatures-symbol {
@@ -580,6 +632,10 @@
 }
 
 @media (max-width: 420px) {
+    .creatures-section {
+        --creatures-card-height: 470px;
+    }
+
     .creatures-header h2 {
         font-size: 2rem;
     }
@@ -593,17 +649,38 @@
         letter-spacing: 1.7px;
     }
 
+    .creature-card-back {
+        padding: 34px 24px;
+    }
+
     .creature-card-back h3 {
         font-size: 1.8rem;
     }
+
+    .creature-card-back p {
+        font-size: 0.94rem;
+        line-height: 1.62;
+    }
 }
 
+/* =====================================================
+   08.8 TOUCH E REDUÇÃO DE MOVIMENTO
+===================================================== */
+
+/* Em celulares/tablets sem hover real, evita flip acidental.
+   O flip fica sob controle da classe .is-flipped via JS. */
 @media (hover: none) {
-    .creature-card:hover .creature-card-inner {
+    .creature-card:hover .creature-card-inner,
+    .creature-card:focus-within .creature-card-inner {
         transform: none;
     }
 
-    .creature-card:hover .creature-card-front img {
+    .creature-card.is-flipped .creature-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .creature-card:hover .creature-card-front img,
+    .creature-card:focus-within .creature-card-front img {
         transform: none;
         filter: none;
     }
@@ -616,7 +693,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-
     .creature-card-inner,
     .creature-card-front img,
     .creatures-section .creatures-main-button,
@@ -628,11 +704,13 @@
         transition: none;
     }
 
-    .creature-card:hover .creature-card-inner {
+    .creature-card:hover .creature-card-inner,
+    .creature-card:focus-within .creature-card-inner {
         transform: none;
     }
 
-    .creature-card:hover .creature-card-front img {
+    .creature-card:hover .creature-card-front img,
+    .creature-card:focus-within .creature-card-front img {
         transform: none;
         filter: none;
     }

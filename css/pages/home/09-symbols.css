@@ -1,8 +1,29 @@
 /* =====================================================
    09. SÍMBOLOS DO MUNDO ANTIGO
+   -----------------------------------------------------
+   Estrutura da seção:
+   - cabeçalho com texto introdutório;
+   - card de destaque lateral;
+   - trilho horizontal de símbolos;
+   - cards com flip controlado por classe .is-flipped;
+   - setas laterais para navegação em telas maiores.
 ===================================================== */
 
+/* -----------------------------------------------------
+   BASE DA SEÇÃO
+----------------------------------------------------- */
+
 .symbols-section {
+    --symbols-container-width: 1400px;
+    --symbols-card-width: 290px;
+    --symbols-card-height: 460px;
+    --symbols-card-radius: 22px;
+    --symbols-gap: 28px;
+    --symbols-border: rgba(201, 162, 74, 0.45);
+    --symbols-border-soft: rgba(201, 162, 74, 0.18);
+    --symbols-bg-dark: #03130d;
+    --symbols-text-soft: rgba(236, 222, 181, 0.72);
+
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -16,9 +37,13 @@
 .symbols-container {
     position: relative;
     z-index: 2;
-    width: min(90%, 1400px);
+    width: min(90%, var(--symbols-container-width));
     margin: 0 auto;
 }
+
+/* -----------------------------------------------------
+   CABEÇALHO + CARD DE DESTAQUE
+----------------------------------------------------- */
 
 .symbols-top {
     display: grid;
@@ -91,7 +116,8 @@
 
 .symbols-header p {
     max-width: 540px;
-    color: rgba(236, 222, 181, 0.72);
+    margin: 0;
+    color: var(--symbols-text-soft);
     font-size: 0.95rem;
     line-height: 1.5;
 }
@@ -106,7 +132,7 @@
     min-height: 210px;
     padding: 26px 30px;
     overflow: hidden;
-    border: 1px solid rgba(201, 162, 74, 0.45);
+    border: 1px solid var(--symbols-border);
     border-radius: 18px;
     background:
         radial-gradient(circle at top, rgba(55, 145, 74, 0.12), transparent 60%),
@@ -118,18 +144,17 @@
     content: "";
     position: absolute;
     inset: 10px;
-    border: 1px solid rgba(201, 162, 74, 0.18);
+    border: 1px solid var(--symbols-border-soft);
     border-radius: 14px;
     pointer-events: none;
 }
 
 .symbols-feature-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 56px;
     width: 56px;
     height: 56px;
+    flex: 0 0 56px;
+    display: grid;
+    place-items: center;
     border: 1px solid rgba(201, 162, 74, 0.5);
     border-radius: 50%;
     color: #dcb555;
@@ -160,18 +185,22 @@
 
 .symbols-feature-card p {
     margin: 0 0 16px;
-    color: rgba(236, 222, 181, 0.72);
+    color: var(--symbols-text-soft);
     font-size: 0.9rem;
     line-height: 1.5;
 }
 
+/* -----------------------------------------------------
+   BOTÃO DO CARD DE DESTAQUE
+----------------------------------------------------- */
+
 .symbols-feature-button {
-    display: flex;
+    width: fit-content;
+    padding: 11px 18px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    width: fit-content;
-    padding: 11px 18px;
     overflow: hidden;
     border: 1px solid rgba(201, 162, 74, 0.6);
     border-radius: 12px;
@@ -183,6 +212,14 @@
     transition:
         background 0.3s ease,
         border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.symbols-feature-button .button-arrow {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition:
+        opacity 0.3s ease,
         transform 0.3s ease;
 }
 
@@ -198,18 +235,14 @@
     transform: translateX(4px);
 }
 
-.symbols-feature-button .button-arrow {
-    opacity: 0;
-    transform: translateX(-10px);
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
-}
-
 .symbols-feature-button:focus-visible {
     outline: 2px solid var(--home-gold-soft);
     outline-offset: 4px;
 }
+
+/* -----------------------------------------------------
+   TRILHO HORIZONTAL
+----------------------------------------------------- */
 
 .symbols-wrapper {
     position: relative;
@@ -218,7 +251,7 @@
 
 .symbols-track {
     display: flex;
-    gap: 28px;
+    gap: var(--symbols-gap);
     overflow-x: auto;
     overflow-y: hidden;
     padding: 20px 6px 30px;
@@ -232,10 +265,14 @@
     display: none;
 }
 
+/* -----------------------------------------------------
+   CARD COM FLIP
+----------------------------------------------------- */
+
 .symbol-card {
     position: relative;
-    flex: 0 0 290px;
-    height: 460px;
+    flex: 0 0 var(--symbols-card-width);
+    height: var(--symbols-card-height);
     scroll-snap-align: start;
     perspective: 1400px;
     cursor: pointer;
@@ -246,9 +283,9 @@
     position: relative;
     width: 100%;
     height: 100%;
-    border: 1px solid rgba(201, 162, 74, 0.45);
-    border-radius: 22px;
-    background: #03130d;
+    border: 1px solid var(--symbols-border);
+    border-radius: var(--symbols-card-radius);
+    background: var(--symbols-bg-dark);
     transform-style: preserve-3d;
     transition:
         transform 0.8s ease,
@@ -268,14 +305,14 @@
     position: absolute;
     inset: 0;
     overflow: hidden;
-    border-radius: 22px;
+    border-radius: var(--symbols-card-radius);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 }
 
 .symbol-card-front {
     z-index: 2;
-    background: #03130d;
+    background: var(--symbols-bg-dark);
 }
 
 .symbol-card-front::before,
@@ -284,7 +321,7 @@
     position: absolute;
     inset: 10px;
     z-index: 4;
-    border: 1px solid rgba(201, 162, 74, 0.18);
+    border: 1px solid var(--symbols-border-soft);
     border-radius: 16px;
     pointer-events: none;
 }
@@ -321,10 +358,7 @@
     align-items: flex-end;
     justify-content: center;
     padding: 24px;
-    background:
-        linear-gradient(to top,
-            rgba(0, 0, 0, 0.92),
-            transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.92), transparent);
     text-align: center;
 }
 
@@ -334,8 +368,11 @@
     font-family: var(--home-font-serif);
     font-size: 1.7rem;
     line-height: 1;
-    text-shadow: none;
 }
+
+/* -----------------------------------------------------
+   VERSO DO CARD
+----------------------------------------------------- */
 
 .symbol-card-back {
     z-index: 1;
@@ -354,12 +391,11 @@
 }
 
 .symbol-back-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 74px;
     height: 74px;
     margin-bottom: 6px;
+    display: grid;
+    place-items: center;
     border: 1px solid rgba(201, 162, 74, 0.42);
     border-radius: 50%;
     color: var(--home-gold-soft);
@@ -388,10 +424,10 @@
 }
 
 .symbol-back-divider {
-    display: block;
     width: 120px;
     height: 1px;
     margin: 8px 0 2px;
+    display: block;
     background: linear-gradient(90deg, transparent, rgba(201, 162, 74, 0.45), transparent);
 }
 
@@ -413,7 +449,7 @@
 
 .symbol-card-link::after {
     content: "›";
-    color: #6bd36f;
+    color: currentColor;
     font-size: 1.5rem;
     line-height: 1;
 }
@@ -424,10 +460,15 @@
     transform: translateX(4px);
 }
 
-.symbol-card-link:hover::after,
-.symbol-card-link:focus-visible::after {
-    color: var(--home-gold-soft);
+.symbol-card-link:focus-visible {
+    outline: 2px solid var(--home-gold-soft);
+    outline-offset: 4px;
+    border-radius: 6px;
 }
+
+/* -----------------------------------------------------
+   ESTADOS INTERATIVOS
+----------------------------------------------------- */
 
 .symbol-card:hover .symbol-card-inner,
 .symbol-card:focus-visible .symbol-card-inner,
@@ -442,8 +483,7 @@
 .symbol-card:focus-visible .symbol-card-front img,
 .symbol-card:focus-within .symbol-card-front img {
     transform: scale(1.06);
-    filter:
-        brightness(1.05) contrast(1.05);
+    filter: brightness(1.05) contrast(1.05);
 }
 
 .symbol-card.is-flipped:hover .symbol-card-front img,
@@ -453,12 +493,24 @@
     filter: none;
 }
 
+.symbol-card:focus-visible {
+    outline: 2px solid var(--home-gold-soft);
+    outline-offset: 6px;
+    border-radius: var(--symbols-card-radius);
+}
+
+/* -----------------------------------------------------
+   SETAS DO CARROSSEL
+----------------------------------------------------- */
+
 .symbol-btn {
     position: absolute;
     top: 50%;
     z-index: 20;
     width: 54px;
     height: 54px;
+    display: grid;
+    place-items: center;
     border: 1px solid rgba(201, 162, 74, 0.25);
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.75);
@@ -469,7 +521,8 @@
     transition:
         background 0.3s ease,
         border-color 0.3s ease,
-        box-shadow 0.3s ease;
+        box-shadow 0.3s ease,
+        opacity 0.3s ease;
 }
 
 .symbol-btn.left {
@@ -487,7 +540,6 @@
     box-shadow:
         0 0 18px rgba(201, 162, 74, 0.28),
         0 0 35px rgba(0, 0, 0, 0.45);
-    transform: translateY(-50%);
 }
 
 .symbol-btn:focus-visible {
@@ -495,7 +547,21 @@
     outline-offset: 4px;
 }
 
+.symbol-btn:disabled {
+    opacity: 0.32;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
 @media (max-width: 1200px) {
+    .symbols-section {
+        --symbols-card-width: 270px;
+        --symbols-card-height: 390px;
+    }
 
     .symbols-top {
         grid-template-columns: 1fr;
@@ -506,16 +572,13 @@
     .symbols-feature-card {
         max-width: 100%;
     }
-
-    .symbol-card {
-        flex-basis: 270px;
-        height: 390px;
-    }
 }
 
 @media (max-width: 900px) {
-
     .symbols-section {
+        --symbols-card-width: 250px;
+        --symbols-card-height: 360px;
+
         padding: 110px 0 80px;
     }
 
@@ -524,19 +587,16 @@
         padding-bottom: 26px;
     }
 
-    .symbol-card {
-        flex-basis: 250px;
-        height: 360px;
-    }
-
     .symbol-btn {
         display: none;
     }
 }
 
 @media (max-width: 700px) {
-
     .symbols-section {
+        --symbols-card-width: 235px;
+        --symbols-card-height: 340px;
+
         padding: 90px 0 70px;
     }
 
@@ -566,11 +626,6 @@
         padding: 24px;
     }
 
-    .symbol-card {
-        flex-basis: 235px;
-        height: 340px;
-    }
-
     .symbol-overlay {
         padding: 20px;
     }
@@ -580,8 +635,8 @@
     }
 
     .symbol-card-back {
-        padding: 26px 22px;
         gap: 14px;
+        padding: 26px 22px;
     }
 
     .symbol-back-icon {
@@ -607,13 +662,16 @@
 }
 
 @media (max-width: 420px) {
-
     .symbols-section {
+        --symbols-card-width: 210px;
+        --symbols-card-height: 305px;
+        --symbols-gap: 18px;
+
         padding: 76px 0 60px;
     }
 
     .symbols-container {
-        width: min(100% - 32px, 1400px);
+        width: min(100% - 32px, var(--symbols-container-width));
     }
 
     .symbols-header h2 {
@@ -625,13 +683,7 @@
     }
 
     .symbols-track {
-        gap: 18px;
         padding: 18px 0 24px;
-    }
-
-    .symbol-card {
-        flex-basis: 210px;
-        height: 305px;
     }
 
     .symbol-overlay h3 {
@@ -639,8 +691,8 @@
     }
 
     .symbol-card-back {
-        padding: 22px 18px;
         gap: 12px;
+        padding: 22px 18px;
     }
 
     .symbol-back-icon {
@@ -670,13 +722,35 @@
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* -----------------------------------------------------
+   DISPOSITIVOS TOUCH
+   Evita animações de hover presas em celulares.
+----------------------------------------------------- */
 
+@media (hover: none) {
+
+    .symbol-card:hover .symbol-card-front img,
+    .symbol-card:focus-within .symbol-card-front img,
+    .symbol-card-link:hover {
+        transform: none;
+        filter: none;
+    }
+
+    .symbols-feature-button:hover .button-arrow {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+}
+
+/* -----------------------------------------------------
+   ACESSIBILIDADE DE MOVIMENTO
+----------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
     .symbols-track {
         scroll-behavior: auto;
     }
 
-    .symbol-card,
     .symbol-card-inner,
     .symbol-card-front img,
     .symbol-card-link,
@@ -686,8 +760,6 @@
         transition: none;
     }
 
-    .symbol-card:hover,
-    .symbol-card:focus-within,
     .symbol-card:hover .symbol-card-front img,
     .symbol-card:focus-within .symbol-card-front img,
     .symbol-card-link:hover,

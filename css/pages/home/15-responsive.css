@@ -1,15 +1,32 @@
 /* =====================================================
    15. OTIMIZAÇÕES DE PERFORMANCE EM TELAS MENORES
+   -----------------------------------------------------
+   Objetivo:
+   - Reduzir efeitos visuais pesados em dispositivos menores;
+   - Diminuir blur, sombras e filtros muito intensos;
+   - Remover backdrop-filter onde ele pode causar perda de FPS;
+   - Preservar a identidade visual sem comprometer a navegação mobile.
 ===================================================== */
 
 @media (max-width: 700px) {
+
+    /* -----------------------------------------------------
+       HERO
+       Reduz o peso do drop-shadow principal no mobile.
+    ----------------------------------------------------- */
+
     .hero-image {
-        filter: drop-shadow(0 0 34px rgba(129, 199, 132, 0.14));
+        filter: drop-shadow(0 0 28px rgba(129, 199, 132, 0.12));
     }
 
+    /* -----------------------------------------------------
+       LENDAS DO MUNDO
+       Suaviza névoa, partículas e brilho de fundo.
+    ----------------------------------------------------- */
+
     .legends-section::before {
+        opacity: 0.56;
         filter: blur(14px);
-        opacity: 0.58;
     }
 
     .legends-section::after {
@@ -17,23 +34,81 @@
     }
 
     .legends-section .container::before {
+        opacity: 0.68;
         filter: blur(14px);
-        opacity: 0.72;
     }
+
+    /* -----------------------------------------------------
+       RELÍQUIAS LENDÁRIAS
+       Reduz sobreposição animada e remove blur de elementos.
+    ----------------------------------------------------- */
 
     .relics-section::before {
         opacity: 0.055;
     }
 
-    .creatures-symbol img {
-        filter: drop-shadow(0 0 22px rgba(55, 175, 74, 0.25));
+    .relic-symbol,
+    .relic-arrow {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
     }
+
+    /* -----------------------------------------------------
+       CRIATURAS DO MUNDO ANTIGO
+       Diminui o custo do drop-shadow no símbolo decorativo.
+    ----------------------------------------------------- */
+
+    .creatures-symbol img {
+        filter: drop-shadow(0 0 20px rgba(55, 175, 74, 0.22));
+    }
+
+    /* -----------------------------------------------------
+       CARDS E BADGES COM VIDRO
+       Remove blur em elementos com fundo translúcido.
+    ----------------------------------------------------- */
 
     .about-mythology-card,
     .symbols-feature-card,
-    .relic-symbol,
-    .legend-badge,
-    .relic-arrow {
+    .legend-badge {
         backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+}
+
+/* =====================================================
+   OTIMIZAÇÃO EXTRA PARA APARELHOS COM TOQUE
+   -----------------------------------------------------
+   Evita efeitos hover pesados em dispositivos sem mouse.
+===================================================== */
+
+@media (max-width: 700px) and (hover: none) {
+
+    .legend-card:hover,
+    .relic-card:hover,
+    .creature-card:hover,
+    .why-study-card:hover {
+        transform: none;
+    }
+
+    .legend-card:hover img,
+    .relic-card:hover img,
+    .creature-card:hover img {
+        transform: none;
+    }
+}
+
+/* =====================================================
+   ACESSIBILIDADE: REDUÇÃO DE MOVIMENTO
+   -----------------------------------------------------
+   Garante que animações decorativas não rodem para usuários
+   com preferência por menos movimento.
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .legends-section::before,
+    .legends-section::after,
+    .relics-section::before {
+        animation: none;
     }
 }

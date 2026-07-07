@@ -1,8 +1,23 @@
 /* =====================================================
    16. REFINO FINAL — PERFORMANCE, ACESSIBILIDADE E MOBILE
+   -----------------------------------------------------
+   Objetivo:
+   - reduzir efeitos pesados em telas menores;
+   - evitar animações excessivas em mobile;
+   - melhorar acessibilidade para usuários com redução de movimento;
+   - impedir que hovers causem saltos visuais em dispositivos touch.
+
+   Observação:
+   Esta seção deve ficar no final do CSS global, pois atua como
+   camada de refinamento sobre componentes já declarados.
+===================================================== */
+
+/* =====================================================
+   MOBILE — REDUÇÃO DE CUSTO VISUAL
 ===================================================== */
 
 @media (max-width: 700px) {
+
     .about-bestiario .container,
     .about-bestiario-card,
     .about-mythology-card,
@@ -19,6 +34,7 @@
         box-shadow: var(--home-shadow-soft);
     }
 
+    /* Pausa animações decorativas mais pesadas no mobile */
     .legends-section::before,
     .legends-section::after,
     .relics-section::before,
@@ -32,6 +48,7 @@
         animation: none;
     }
 
+    /* Remove blur translúcido em elementos pequenos ou repetidos */
     .legend-badge,
     .symbols-feature-card,
     .creatures-section .creatures-main-button,
@@ -41,6 +58,7 @@
         -webkit-backdrop-filter: none;
     }
 
+    /* Mantém feedback visual sem exagerar em sombra no mobile */
     .legend-card:hover,
     .legend-card:focus-within,
     .relic-card:hover,
@@ -53,7 +71,12 @@
     }
 }
 
+/* =====================================================
+   TOUCH — REMOVE HOVERS QUE DESLOCAM ELEMENTOS
+===================================================== */
+
 @media (hover: none) {
+
     .hero-button:hover,
     .section-main-button:hover,
     .creatures-main-button:hover,
@@ -62,14 +85,72 @@
     .legends-main-button:hover {
         transform: none;
     }
+
+    .legend-card:hover,
+    .relic-card:hover,
+    .myth-card:hover,
+    .quote-card:hover,
+    .about-bestiario-card:hover {
+        transform: none;
+    }
 }
 
+/* =====================================================
+   ACESSIBILIDADE — REDUÇÃO DE MOVIMENTO
+   -----------------------------------------------------
+   Evita usar seletor global com animation-duration muito baixo.
+   A abordagem abaixo é mais segura e mantém o site previsível.
+===================================================== */
+
 @media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
     *,
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
         scroll-behavior: auto !important;
+    }
+
+    .legends-section::before,
+    .legends-section::after,
+    .relics-section::before,
+    .excalibur,
+    .mjolnir,
+    .trident,
+    .monkey,
+    .carousel-interaction-tip__icon,
+    #mythologyCarouselTrack .myth-flip-front::before,
+    .quotes-carousel-wrapper::after {
+        animation: none !important;
+    }
+
+    .hero-button,
+    .section-main-button,
+    .creatures-main-button,
+    .symbols-feature-button,
+    .relics-main-button,
+    .legends-main-button,
+    .legend-card,
+    .relic-card,
+    .myth-card,
+    .quote-card,
+    .about-bestiario-card {
+        transition: none !important;
+    }
+
+    .hero-button:hover,
+    .section-main-button:hover,
+    .creatures-main-button:hover,
+    .symbols-feature-button:hover,
+    .relics-main-button:hover,
+    .legends-main-button:hover,
+    .legend-card:hover,
+    .relic-card:hover,
+    .myth-card:hover,
+    .quote-card:hover,
+    .about-bestiario-card:hover {
+        transform: none !important;
     }
 }

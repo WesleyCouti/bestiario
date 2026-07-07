@@ -1,32 +1,56 @@
 /* =====================================================
    14. PAGINAÇÃO DE CRIATURAS
+   -----------------------------------------------------
+   Componente responsável pela navegação paginada da
+   seção "Criaturas do Mundo Antigo".
+
+   Ajustes aplicados:
+   - comentários reorganizados;
+   - variáveis locais para facilitar manutenção;
+   - estados de foco, hover e disabled revisados;
+   - responsividade refinada;
+   - removido ajuste direto em .creature-card para evitar
+     conflito com o CSS principal da seção de criaturas;
+   - suporte a usuários com redução de movimento.
 ===================================================== */
 
 .creatures-pagination {
+    --pagination-button-size: 66px;
+    --pagination-gap: 18px;
+    --pagination-counter-height: 54px;
+    --pagination-border: rgba(201, 162, 74, 0.42);
+    --pagination-border-active: rgba(241, 215, 138, 0.88);
+    --pagination-bg: rgba(3, 14, 9, 0.78);
+    --pagination-bg-active: rgba(5, 20, 13, 0.92);
+
     position: relative;
     z-index: 4;
     width: min(100%, 620px);
     margin: 42px auto 0;
     display: grid;
-    grid-template-columns: 66px minmax(0, 1fr) 66px;
+    grid-template-columns: var(--pagination-button-size) minmax(0, 1fr) var(--pagination-button-size);
     align-items: center;
-    gap: 18px;
+    gap: var(--pagination-gap);
 }
 
 .creatures-pagination[hidden] {
     display: none;
 }
 
+/* =====================================================
+   BOTÕES DE NAVEGAÇÃO
+===================================================== */
+
 .creatures-page-button {
-    width: 66px;
-    height: 66px;
+    width: var(--pagination-button-size);
+    height: var(--pagination-button-size);
     display: grid;
     place-items: center;
-    border: 1px solid rgba(201, 162, 74, 0.42);
+    border: 1px solid var(--pagination-border);
     border-radius: 50%;
     background:
         radial-gradient(circle at 30% 20%, rgba(201, 162, 74, 0.13), transparent 56%),
-        rgba(3, 14, 9, 0.78);
+        var(--pagination-bg);
     color: var(--home-gold-soft);
     font-size: 2.45rem;
     line-height: 1;
@@ -43,8 +67,61 @@
         opacity 0.3s ease;
 }
 
+.creatures-page-button:hover,
+.creatures-page-button:focus-visible {
+    transform: translateY(-3px) scale(1.04);
+    border-color: var(--pagination-border-active);
+    background:
+        radial-gradient(circle at 30% 20%, rgba(201, 162, 74, 0.22), transparent 58%),
+        var(--pagination-bg-active);
+    color: var(--home-gold-bright);
+    box-shadow:
+        inset 0 0 20px rgba(201, 162, 74, 0.06),
+        0 0 26px rgba(201, 162, 74, 0.18),
+        0 18px 38px rgba(0, 0, 0, 0.30);
+}
+
+.creatures-page-button:focus-visible {
+    outline: 2px solid var(--home-gold-soft);
+    outline-offset: 5px;
+}
+
+.creatures-page-button:disabled,
+.creatures-page-button[aria-disabled="true"] {
+    opacity: 0.34;
+    cursor: not-allowed;
+    transform: none;
+    border-color: var(--pagination-border);
+    color: var(--home-gold-soft);
+    background:
+        radial-gradient(circle at 30% 20%, rgba(201, 162, 74, 0.13), transparent 56%),
+        var(--pagination-bg);
+    box-shadow:
+        inset 0 0 12px rgba(201, 162, 74, 0.025),
+        0 8px 20px rgba(0, 0, 0, 0.14);
+}
+
+.creatures-page-button:disabled:hover,
+.creatures-page-button:disabled:focus-visible,
+.creatures-page-button[aria-disabled="true"]:hover,
+.creatures-page-button[aria-disabled="true"]:focus-visible {
+    transform: none;
+    border-color: var(--pagination-border);
+    background:
+        radial-gradient(circle at 30% 20%, rgba(201, 162, 74, 0.13), transparent 56%),
+        var(--pagination-bg);
+    color: var(--home-gold-soft);
+    box-shadow:
+        inset 0 0 12px rgba(201, 162, 74, 0.025),
+        0 8px 20px rgba(0, 0, 0, 0.14);
+}
+
+/* =====================================================
+   CONTADOR DA PÁGINA
+===================================================== */
+
 .creatures-page-counter {
-    min-height: 54px;
+    min-height: var(--pagination-counter-height);
     padding: 0 26px;
     display: grid;
     place-items: center;
@@ -68,44 +145,9 @@
     text-transform: uppercase;
 }
 
-.creatures-page-button:hover,
-.creatures-page-button:focus-visible {
-    transform: translateY(-3px) scale(1.04);
-    border-color: rgba(241, 215, 138, 0.88);
-    background:
-        radial-gradient(circle at 30% 20%, rgba(201, 162, 74, 0.22), transparent 58%),
-        rgba(5, 20, 13, 0.92);
-    color: var(--home-gold-bright);
-    box-shadow:
-        inset 0 0 20px rgba(201, 162, 74, 0.06),
-        0 0 26px rgba(201, 162, 74, 0.18),
-        0 18px 38px rgba(0, 0, 0, 0.30);
-}
-
-.creatures-page-button:focus-visible {
-    outline: 2px solid var(--home-gold-soft);
-    outline-offset: 5px;
-}
-
-.creatures-page-button:disabled,
-.creatures-page-button[aria-disabled="true"] {
-    opacity: 0.34;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow:
-        inset 0 0 12px rgba(201, 162, 74, 0.025),
-        0 8px 20px rgba(0, 0, 0, 0.14);
-}
-
-.creatures-page-button:disabled:hover,
-.creatures-page-button[aria-disabled="true"]:hover {
-    transform: none;
-    border-color: rgba(201, 162, 74, 0.42);
-    background:
-        radial-gradient(circle at 30% 20%, rgba(201, 162, 74, 0.13), transparent 56%),
-        rgba(3, 14, 9, 0.78);
-    color: var(--home-gold-soft);
-}
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
 
 @media (max-width: 1100px) {
     .creatures-pagination {
@@ -115,20 +157,19 @@
 
 @media (max-width: 700px) {
     .creatures-pagination {
+        --pagination-button-size: 56px;
+        --pagination-gap: 12px;
+        --pagination-counter-height: 50px;
+
         width: min(100%, 420px);
         margin-top: 30px;
-        grid-template-columns: 56px minmax(0, 1fr) 56px;
-        gap: 12px;
     }
 
     .creatures-page-button {
-        width: 56px;
-        height: 56px;
         font-size: 2rem;
     }
 
     .creatures-page-counter {
-        min-height: 50px;
         padding: 0 18px;
     }
 
@@ -136,26 +177,20 @@
         font-size: 0.70rem;
         letter-spacing: 1.7px;
     }
-
-    .creature-card {
-        height: 500px;
-    }
 }
 
 @media (max-width: 420px) {
     .creatures-pagination {
-        grid-template-columns: 50px minmax(0, 1fr) 50px;
-        gap: 10px;
+        --pagination-button-size: 50px;
+        --pagination-gap: 10px;
+        --pagination-counter-height: 48px;
     }
 
     .creatures-page-button {
-        width: 50px;
-        height: 50px;
         font-size: 1.8rem;
     }
 
     .creatures-page-counter {
-        min-height: 48px;
         padding: 0 12px;
     }
 
@@ -163,9 +198,15 @@
         font-size: 0.64rem;
         letter-spacing: 1.35px;
     }
+}
 
-    .creature-card {
-        height: 460px;
+/* =====================================================
+   TOUCH E ACESSIBILIDADE DE MOVIMENTO
+===================================================== */
+
+@media (hover: none) {
+    .creatures-page-button:hover {
+        transform: none;
     }
 }
 

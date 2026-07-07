@@ -1,82 +1,125 @@
 /* =====================================================
-   00. BASE GLOBAL E QUALIDADE VISUAL
+   00-BASE.CSS
+   -----------------------------------------------------
+   Base visual exclusiva da Home do Bestiário.
+
+   Responsável por:
+   - definir variáveis locais da Home;
+   - aplicar acabamento visual geral da página inicial;
+   - personalizar scrollbar;
+   - padronizar botões reutilizados na Home;
+   - melhorar comportamento de carrosséis horizontais.
+
+   Observações importantes:
+   - Reset estrutural fica em css/global/reset.css.
+   - Variáveis globais ficam em css/global/variables.css.
+   - Foco, teclado e redução de movimento ficam em accessibility.css.
+   - Este arquivo deve conter apenas regras gerais da Home.
+   - Estilos específicos devem ficar no CSS da seção correspondente.
+===================================================== */
+
+/* =====================================================
+   1. VARIÁVEIS LOCAIS DA HOME
+   -----------------------------------------------------
+   Tokens usados apenas na Home. Sempre que possível,
+   valores globais são reaproveitados com fallback.
 ===================================================== */
 
 :root {
-    --home-font-serif: Georgia, "Times New Roman", serif;
+    /* Tipografia */
+    --home-font-serif: var(--font-serif, Georgia, "Times New Roman", serif);
 
-    --home-bg-deep: #020806;
+    /* Fundos */
+    --home-bg-deep: var(--bg-void, #020806);
     --home-bg-void: #010403;
     --home-bg-forest: #05100b;
 
-    --home-gold: #c9a24a;
+    /* Cores principais */
+    --home-gold: var(--gold, #c9a24a);
     --home-gold-soft: #f1d78a;
     --home-gold-bright: #ffe7a3;
+
     --home-green: #5fb85f;
     --home-green-bright: #72ff93;
+
     --home-red-shadow: #711e1e;
 
+    /* Bordas */
     --home-border-gold-soft: rgba(201, 162, 74, 0.28);
     --home-border-gold-medium: rgba(201, 162, 74, 0.45);
     --home-border-gold-strong: rgba(241, 215, 138, 0.88);
     --home-border-green-soft: rgba(129, 199, 132, 0.18);
 
+    /* Textos */
     --home-text-cream: #f3e8bd;
     --home-text-cream-soft: rgba(236, 222, 181, 0.76);
     --home-text-muted: rgba(226, 238, 221, 0.78);
 
+    /* Raios */
     --home-radius-sm: 14px;
     --home-radius-md: 18px;
     --home-radius-lg: 24px;
     --home-radius-xl: 32px;
-    --home-radius-pill: 999px;
+    --home-radius-pill: var(--radius-pill, 999px);
 
+    /* Sombras */
     --home-shadow-soft: 0 14px 30px rgba(0, 0, 0, 0.18);
     --home-shadow-card: 0 22px 50px rgba(0, 0, 0, 0.35);
     --home-shadow-strong: 0 30px 80px rgba(0, 0, 0, 0.72);
 
+    /* Transições */
     --home-transition-fast: 0.3s ease;
     --home-transition-medium: 0.35s ease;
     --home-transition-slow: 0.6s ease;
 }
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
+/* =====================================================
+   2. BASE VISUAL DA HOME
+   -----------------------------------------------------
+   Complementos visuais da página inicial.
+   Evita repetir reset global que já existe em reset.css.
+===================================================== */
 
 html {
-    scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color: rgba(104, 79, 35, 0.72) var(--home-bg-deep);
+    scrollbar-color:
+        rgba(104, 79, 35, 0.72) var(--home-bg-deep);
 }
 
 body {
     overflow-x: clip;
 }
 
+/* =====================================================
+   3. SCROLLBAR PERSONALIZADA
+   -----------------------------------------------------
+   Acabamento visual para navegadores WebKit.
+===================================================== */
+
 body::-webkit-scrollbar {
     width: 12px;
 }
 
 body::-webkit-scrollbar-track {
+    border-left: 1px solid rgba(201, 162, 74, 0.08);
+
     background:
         linear-gradient(180deg,
             var(--home-bg-void) 0%,
             #04110b 50%,
             var(--home-bg-void) 100%);
-    border-left: 1px solid rgba(201, 162, 74, 0.08);
 }
 
 body::-webkit-scrollbar-thumb {
     border: 3px solid var(--home-bg-deep);
     border-radius: var(--home-radius-pill);
+
     background:
         linear-gradient(180deg,
             rgba(201, 162, 74, 0.54) 0%,
             rgba(64, 118, 67, 0.54) 42%,
             rgba(92, 24, 22, 0.62) 100%);
+
     box-shadow:
         inset 0 0 10px rgba(0, 0, 0, 0.72),
         0 0 12px rgba(201, 162, 74, 0.12);
@@ -90,10 +133,23 @@ body::-webkit-scrollbar-thumb:hover {
             rgba(132, 32, 28, 0.72) 100%);
 }
 
+/* =====================================================
+   4. SELEÇÃO DE TEXTO
+   -----------------------------------------------------
+   Mantém a seleção combinando com a identidade dourada.
+===================================================== */
+
 ::selection {
     background: rgba(201, 162, 74, 0.28);
     color: #fff7d6;
 }
+
+/* =====================================================
+   5. MÍDIAS DA HOME
+   -----------------------------------------------------
+   Complemento seguro para mídias usadas na Home.
+   O reset global já cobre a maioria dos casos.
+===================================================== */
 
 img,
 picture,
@@ -103,15 +159,11 @@ video {
     max-width: 100%;
 }
 
-a:focus-visible,
-button:focus-visible,
-[tabindex]:focus-visible {
-    outline: 2px solid rgba(241, 215, 138, 0.95);
-    outline-offset: 4px;
-}
-
 /* =====================================================
-   BOTÕES REUTILIZÁVEIS DA HOME
+   6. BOTÕES REUTILIZÁVEIS DA HOME
+   -----------------------------------------------------
+   Normaliza estrutura interna de botões usados em várias
+   seções, sem definir aparência específica.
 ===================================================== */
 
 .section-main-button,
@@ -120,12 +172,16 @@ button:focus-visible,
 .relics-main-button,
 .legends-main-button {
     position: relative;
+
+    min-width: 0;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 0;
+
     text-align: center;
     text-decoration: none;
+
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -147,7 +203,10 @@ button:focus-visible,
 }
 
 /* =====================================================
-   CARROSSÉIS / CONTROLE DE SCROLL LATERAL
+   7. CARROSSÉIS / SCROLL HORIZONTAL
+   -----------------------------------------------------
+   Evita que o scroll lateral dos carrosséis arraste a
+   página inteira em dispositivos touch.
 ===================================================== */
 
 .legends-track,
@@ -156,9 +215,37 @@ button:focus-visible,
 .showcase-track,
 .quotes-carousel {
     overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
 }
 
+/* =====================================================
+   8. RESPONSIVIDADE BASE DA HOME
+===================================================== */
+
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .section-main-button,
+    .creatures-main-button,
+    .symbols-feature-button,
+    .relics-main-button,
+    .legends-main-button {
+        max-width: 100%;
+    }
+}
+
+/* =====================================================
+   9. REDUÇÃO DE MOVIMENTO
+   -----------------------------------------------------
+   Reforço local. A regra principal deve permanecer em
+   accessibility.css.
+===================================================== */
+
 @media (prefers-reduced-motion: reduce) {
+
     html {
         scroll-behavior: auto;
     }

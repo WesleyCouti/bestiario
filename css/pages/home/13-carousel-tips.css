@@ -1,8 +1,25 @@
 /* =====================================================
    13. DICAS VISUAIS DO CARROSSEL DE MITOLOGIAS
+   -----------------------------------------------------
+   Função da seção:
+   - Exibir uma dica textual antes do carrossel;
+   - Mostrar indicação visual de clique nos cards;
+   - Reforçar que o card pode ser virado;
+   - Remover as dicas quando o card estiver virado;
+   - Respeitar usuários com redução de movimento ativa.
+===================================================== */
+
+/* =====================================================
+   VARIÁVEIS LOCAIS
 ===================================================== */
 
 .carousel-interaction-tip {
+    --tip-border: rgba(201, 162, 74, 0.28);
+    --tip-border-strong: rgba(201, 162, 74, 0.42);
+    --tip-bg: rgba(5, 16, 11, 0.48);
+    --tip-text: rgba(241, 215, 138, 0.92);
+    --tip-glow: rgba(201, 162, 74, 0.12);
+
     width: fit-content;
     max-width: 100%;
     margin: 24px 0 26px;
@@ -10,12 +27,12 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    border: 1px solid rgba(201, 162, 74, 0.28);
+    border: 1px solid var(--tip-border);
     border-radius: 999px;
     background:
         radial-gradient(circle at 20% 0%, rgba(201, 162, 74, 0.10), transparent 48%),
-        rgba(5, 16, 11, 0.48);
-    color: rgba(241, 215, 138, 0.92);
+        var(--tip-bg);
+    color: var(--tip-text);
     font-size: 0.78rem;
     font-weight: 800;
     line-height: 1.4;
@@ -29,22 +46,27 @@
 .carousel-interaction-tip__icon {
     width: 26px;
     height: 26px;
+    flex: 0 0 26px;
     display: grid;
     place-items: center;
-    flex: 0 0 26px;
-    border: 1px solid rgba(201, 162, 74, 0.38);
+    border: 1px solid var(--tip-border-strong);
     border-radius: 50%;
     color: var(--home-gold-soft);
     font-size: 0.78rem;
-    box-shadow: 0 0 16px rgba(201, 162, 74, 0.12);
+    line-height: 1;
+    box-shadow: 0 0 16px var(--tip-glow);
     animation: mythologyTipPulse 1.8s ease-in-out infinite;
 }
+
+/* =====================================================
+   INDICADORES VISUAIS NO CARD
+===================================================== */
 
 #mythologyCarouselTrack .myth-flip-front::after {
     content: "Clique para virar";
     position: absolute;
-    right: 18px;
     top: 18px;
+    right: 18px;
     z-index: 6;
     padding: 8px 12px;
     border: 1px solid rgba(201, 162, 74, 0.34);
@@ -63,6 +85,9 @@
     box-shadow:
         0 0 18px rgba(201, 162, 74, 0.12),
         0 10px 22px rgba(0, 0, 0, 0.26);
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
 }
 
 #mythologyCarouselTrack .myth-flip-front::before {
@@ -88,6 +113,9 @@
         0 0 20px rgba(201, 162, 74, 0.16),
         0 10px 24px rgba(0, 0, 0, 0.28);
     animation: mythologyCardHint 1.65s ease-in-out infinite;
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
 }
 
 #mythologyCarouselTrack .carousel-item.is-flipped .myth-flip-front::before,
@@ -96,8 +124,26 @@
     visibility: hidden;
 }
 
+/* =====================================================
+   FOCO E ACESSIBILIDADE
+===================================================== */
+
+#mythologyCarouselTrack .carousel-item:focus-visible .myth-flip-front::after {
+    border-color: rgba(241, 215, 138, 0.86);
+    box-shadow:
+        0 0 0 1px rgba(241, 215, 138, 0.20),
+        0 0 22px rgba(201, 162, 74, 0.18),
+        0 10px 22px rgba(0, 0, 0, 0.26);
+}
+
+/* =====================================================
+   ANIMAÇÕES
+===================================================== */
+
 @keyframes mythologyTipPulse {
-    0% {
+
+    0%,
+    100% {
         transform: scale(1);
         opacity: 0.72;
     }
@@ -106,15 +152,12 @@
         transform: scale(1.12);
         opacity: 1;
     }
-
-    100% {
-        transform: scale(1);
-        opacity: 0.72;
-    }
 }
 
 @keyframes mythologyCardHint {
-    0% {
+
+    0%,
+    100% {
         opacity: 0.58;
         transform: rotate(0deg) scale(1);
     }
@@ -123,12 +166,11 @@
         opacity: 1;
         transform: rotate(8deg) scale(1.08);
     }
-
-    100% {
-        opacity: 0.58;
-        transform: rotate(0deg) scale(1);
-    }
 }
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
 
 @media (max-width: 700px) {
     .carousel-interaction-tip {
@@ -142,8 +184,8 @@
     }
 
     #mythologyCarouselTrack .myth-flip-front::after {
-        right: 14px;
         top: 14px;
+        right: 14px;
         padding: 7px 10px;
         font-size: 0.56rem;
         letter-spacing: 1.1px;
@@ -177,10 +219,19 @@
     }
 }
 
+/* =====================================================
+   PREFERÊNCIA DE MOVIMENTO REDUZIDO
+===================================================== */
+
 @media (prefers-reduced-motion: reduce) {
 
     .carousel-interaction-tip__icon,
     #mythologyCarouselTrack .myth-flip-front::before {
         animation: none;
+    }
+
+    #mythologyCarouselTrack .myth-flip-front::before,
+    #mythologyCarouselTrack .myth-flip-front::after {
+        transition: none;
     }
 }

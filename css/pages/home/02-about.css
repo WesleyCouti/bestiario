@@ -1,36 +1,79 @@
 /* =====================================================
-   02. SOBRE O BESTIÁRIO
+   02-ABOUT-BESTIARIO.CSS
+   -----------------------------------------------------
+   Seção "Sobre o Bestiário" da Home.
+
+   Responsável por:
+   - apresentar a intenção do projeto;
+   - exibir texto institucional;
+   - mostrar imagem/símbolo principal;
+   - organizar cards de propósito;
+   - manter responsividade para tablet e mobile.
+
+   Observações:
+   - Variáveis globais ficam em variables.css.
+   - Variáveis locais da Home ficam em 00-base.css.
+   - Este arquivo deve conter apenas estilos desta seção.
+===================================================== */
+
+/* =====================================================
+   1. SEÇÃO PRINCIPAL
+   -----------------------------------------------------
+   Fundo místico com pontos de luz, grade sutil e atmosfera
+   escura para destacar o conteúdo institucional.
 ===================================================== */
 
 .about-bestiario {
     position: relative;
-    padding: 110px 20px;
     overflow: hidden;
+
+    padding: 110px 20px;
+
     background:
-        radial-gradient(circle at 72% 22%, rgba(201, 154, 43, 0.14), transparent 34%),
-        radial-gradient(circle at 18% 72%, rgba(129, 199, 132, 0.08), transparent 34%),
-        linear-gradient(180deg, #03110a 0%, #020806 100%);
+        radial-gradient(circle at 72% 22%,
+            rgba(201, 154, 43, 0.14),
+            transparent 34%),
+        radial-gradient(circle at 18% 72%,
+            rgba(129, 199, 132, 0.08),
+            transparent 34%),
+        linear-gradient(180deg,
+            #03110a 0%,
+            #020806 100%);
 }
 
+/* Grade decorativa de fundo */
 .about-bestiario::before {
     content: "";
     position: absolute;
     inset: 0;
+
+    pointer-events: none;
+
     background:
-        linear-gradient(90deg, rgba(201, 154, 43, 0.035) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(201, 154, 43, 0.025) 1px, transparent 1px);
+        linear-gradient(90deg,
+            rgba(201, 154, 43, 0.035) 1px,
+            transparent 1px),
+        linear-gradient(180deg,
+            rgba(201, 154, 43, 0.025) 1px,
+            transparent 1px);
+
     background-size: 90px 90px;
     opacity: 0.18;
-    pointer-events: none;
 }
+
+/* =====================================================
+   2. CONTAINER E LAYOUT
+===================================================== */
 
 .about-bestiario-container {
     position: relative;
+
     max-width: 1320px;
+
     display: grid;
     grid-template-columns: minmax(0, 1fr) 560px;
-    gap: 70px;
     align-items: center;
+    gap: 70px;
 }
 
 .about-bestiario-content {
@@ -38,14 +81,22 @@
     z-index: 3;
 }
 
+/* =====================================================
+   3. CABEÇALHO E TEXTO INSTITUCIONAL
+===================================================== */
+
 .about-bestiario .section-tag {
+    margin-bottom: 24px;
+
     display: inline-flex;
     align-items: center;
     gap: 18px;
-    margin-bottom: 24px;
-    color: var(--home-gold-soft);
+
+    color: var(--home-gold-soft, #f1d78a);
+
     font-size: 0.78rem;
     font-weight: 900;
+    line-height: 1.4;
     letter-spacing: 7px;
     text-transform: uppercase;
 }
@@ -53,31 +104,45 @@
 .about-bestiario .section-tag::before,
 .about-bestiario .section-tag::after {
     content: "";
+
     width: 48px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(201, 154, 43, 0.8));
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(201, 154, 43, 0.8));
 }
 
 .about-bestiario .section-tag::after {
-    background: linear-gradient(90deg, rgba(201, 154, 43, 0.8), transparent);
+    background:
+        linear-gradient(90deg,
+            rgba(201, 154, 43, 0.8),
+            transparent);
 }
 
 .about-bestiario h2 {
     max-width: 720px;
     margin: 0;
-    color: var(--home-text-cream);
-    font-family: var(--home-font-serif);
+
+    color: var(--home-text-cream, #f3e8bd);
+
+    font-family: var(--home-font-serif, Georgia, "Times New Roman", serif);
     font-size: clamp(4rem, 7.4vw, 6.8rem);
     font-weight: 400;
     line-height: 0.95;
     letter-spacing: -3px;
-    text-shadow: 0 0 34px rgba(201, 154, 43, 0.12);
+
+    text-shadow:
+        0 0 34px rgba(201, 154, 43, 0.12);
 }
 
 .about-bestiario-divider {
     width: min(460px, 100%);
     height: 1px;
+
     margin: 30px 0 26px;
+
     background:
         linear-gradient(90deg,
             rgba(201, 154, 43, 0.95),
@@ -88,35 +153,56 @@
 .about-bestiario-content p {
     max-width: 680px;
     margin: 0 0 18px;
+
     color: rgba(238, 232, 210, 0.84);
+
     font-size: 1.04rem;
     line-height: 1.85;
 }
 
-/* Imagem principal da árvore */
+.about-bestiario-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* =====================================================
+   4. IMAGEM / SÍMBOLO PRINCIPAL
+   -----------------------------------------------------
+   Elemento visual de destaque exibido apenas em telas
+   maiores para evitar excesso visual no mobile.
+===================================================== */
+
 .about-bestiario-symbol {
     position: relative;
     z-index: 2;
+
     min-height: 720px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     overflow: visible;
 }
 
+/* Aura luminosa atrás da imagem */
 .about-bestiario-symbol::before {
     content: "";
     position: absolute;
+
     width: 980px;
     height: 980px;
+
     border-radius: 50%;
+
     background:
         radial-gradient(circle,
             rgba(201, 154, 43, 0.24) 0%,
             rgba(201, 154, 43, 0.12) 28%,
             rgba(201, 154, 43, 0.05) 52%,
             transparent 72%);
+
     filter: blur(12px);
+
     animation: bestiarioGlow 8s ease-in-out infinite;
 }
 
@@ -124,93 +210,140 @@
     position: relative;
     right: -80px;
     z-index: 2;
+
     width: 900px;
     max-width: none;
     height: auto;
+
     opacity: 0.95;
+
     transform: scale(1);
+
     filter:
         drop-shadow(0 0 30px rgba(201, 154, 43, 0.35)) drop-shadow(0 0 80px rgba(201, 154, 43, 0.18)) drop-shadow(0 45px 80px rgba(0, 0, 0, 0.45));
-    transition: transform 0.45s ease;
+
+    transition:
+        transform 0.45s ease;
 }
 
 .about-bestiario:hover .about-bestiario-symbol img {
     transform: scale(1.03);
 }
 
+/* =====================================================
+   5. ANIMAÇÃO DA AURA
+===================================================== */
+
 @keyframes bestiarioGlow {
 
     0%,
     100% {
-        transform: scale(1);
         opacity: 0.8;
+        transform: scale(1);
     }
 
     50% {
-        transform: scale(1.08);
         opacity: 1;
+        transform: scale(1.08);
     }
 }
+
+/* =====================================================
+   6. GRID DE CARDS
+===================================================== */
 
 .about-bestiario-grid {
     position: relative;
     z-index: 3;
+
     grid-column: 1 / -1;
+
+    margin-top: 34px;
+
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 26px;
-    margin-top: 34px;
 }
 
 .about-bestiario-card {
     position: relative;
+
     min-height: 310px;
+
     padding: 38px 34px 34px;
+
     overflow: hidden;
+
     border: 1px solid rgba(201, 154, 43, 0.28);
     border-radius: 26px;
-    text-align: center;
+
     background:
-        radial-gradient(circle at 50% 0%, rgba(201, 154, 43, 0.14), transparent 46%),
-        linear-gradient(180deg, rgba(18, 42, 29, 0.82), rgba(4, 16, 11, 0.92));
+        radial-gradient(circle at 50% 0%,
+            rgba(201, 154, 43, 0.14),
+            transparent 46%),
+        linear-gradient(180deg,
+            rgba(18, 42, 29, 0.82),
+            rgba(4, 16, 11, 0.92));
+
+    text-align: center;
+
     box-shadow:
         inset 0 0 28px rgba(255, 255, 255, 0.025),
         0 22px 58px rgba(0, 0, 0, 0.28);
+
     transition:
         transform 0.35s ease,
         border-color 0.35s ease,
         box-shadow 0.35s ease;
 }
 
+/* Moldura interna do card */
 .about-bestiario-card::before {
     content: "";
     position: absolute;
     inset: 12px;
+
     border: 1px solid rgba(201, 154, 43, 0.10);
     border-radius: 20px;
+
     pointer-events: none;
 }
 
-.about-bestiario-card:hover {
+.about-bestiario-card:hover,
+.about-bestiario-card:focus-within {
     transform: translateY(-8px);
+
     border-color: rgba(241, 215, 138, 0.58);
+
     box-shadow:
         0 0 34px rgba(201, 154, 43, 0.12),
         0 26px 64px rgba(0, 0, 0, 0.38);
 }
 
+/* =====================================================
+   7. CONTEÚDO DOS CARDS
+===================================================== */
+
 .about-bestiario-icon {
     position: relative;
     z-index: 2;
+
     width: 86px;
     height: 86px;
+
     margin: 0 auto 28px;
+
     display: grid;
     place-items: center;
-    border-radius: 50%;
+
     border: 1px solid rgba(201, 154, 43, 0.52);
+    border-radius: 50%;
+
     background:
-        radial-gradient(circle, rgba(201, 154, 43, 0.20), rgba(5, 16, 11, 0.72));
+        radial-gradient(circle,
+            rgba(201, 154, 43, 0.20),
+            rgba(5, 16, 11, 0.72));
+
     box-shadow:
         0 0 0 8px rgba(201, 154, 43, 0.055),
         0 0 28px rgba(201, 154, 43, 0.14);
@@ -219,7 +352,9 @@
 .about-bestiario-icon img {
     width: 36px;
     height: 36px;
+
     object-fit: contain;
+
     filter:
         brightness(0) saturate(100%) invert(79%) sepia(27%) saturate(644%) hue-rotate(7deg) brightness(102%) contrast(91%);
 }
@@ -227,34 +362,50 @@
 .about-bestiario-card h3 {
     position: relative;
     z-index: 2;
+
     max-width: 280px;
     margin: 0 auto 18px;
+
     color: #f4ecd0;
-    font-family: var(--home-font-serif);
+
+    font-family: var(--home-font-serif, Georgia, "Times New Roman", serif);
     font-size: 1.45rem;
     line-height: 1.2;
 }
 
 .about-bestiario-card h3::after {
     content: "";
+
     width: 120px;
     height: 1px;
-    display: block;
+
     margin: 16px auto 0;
-    background: linear-gradient(90deg, transparent, rgba(201, 154, 43, 0.85), transparent);
+
+    display: block;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(201, 154, 43, 0.85),
+            transparent);
 }
 
 .about-bestiario-card p {
     position: relative;
     z-index: 2;
+
     max-width: 300px;
     margin: 0 auto;
+
     color: rgba(238, 232, 210, 0.78);
+
     font-size: 0.98rem;
     line-height: 1.75;
 }
 
-/* Responsivo */
+/* =====================================================
+   8. RESPONSIVIDADE - TABLET
+===================================================== */
 
 @media (max-width: 980px) {
 
@@ -264,6 +415,7 @@
 
     .about-bestiario-container {
         display: block;
+
         text-align: center;
     }
 
@@ -273,27 +425,28 @@
     }
 
     .about-bestiario h2,
-    .about-bestiario-content p {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
+    .about-bestiario-content p,
     .about-bestiario-divider {
         margin-left: auto;
         margin-right: auto;
     }
 
-    /* Esconde completamente a imagem no tablet e mobile */
+    /* Imagem removida em tablet/mobile para priorizar leitura */
     .about-bestiario-symbol {
         display: none;
     }
 
     .about-bestiario-grid {
         grid-template-columns: 1fr;
+
         max-width: 520px;
         margin: 40px auto 0;
     }
 }
+
+/* =====================================================
+   9. RESPONSIVIDADE - MOBILE
+===================================================== */
 
 @media (max-width: 520px) {
 
@@ -308,6 +461,7 @@
 
     .about-bestiario .section-tag {
         gap: 12px;
+
         font-size: 0.68rem;
         letter-spacing: 4px;
     }
@@ -324,9 +478,14 @@
 
     .about-bestiario-card {
         min-height: auto;
+
         padding: 34px 26px;
     }
 }
+
+/* =====================================================
+   10. REDUÇÃO DE MOVIMENTO
+===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -338,7 +497,8 @@
     }
 
     .about-bestiario:hover .about-bestiario-symbol img,
-    .about-bestiario-card:hover {
+    .about-bestiario-card:hover,
+    .about-bestiario-card:focus-within {
         transform: none;
     }
 }
