@@ -1,24 +1,27 @@
 /* =====================================================
    BASE.CSS
    -----------------------------------------------------
-   Arquivo base do projeto Bestiário.
+   Base visual global do projeto Bestiário.
 
    Responsável por:
-   - base global do site;
-   - container padrão;
-   - tipografia base;
-   - elementos HTML globais;
-   - classes utilitárias reutilizáveis.
+   - definir aparência base do documento;
+   - aplicar fundo e cor padrão do site;
+   - configurar container global;
+   - padronizar tipografia inicial;
+   - centralizar utilitários reutilizáveis.
 
-   Observação:
-   - Variáveis visuais devem ficar em variables.css.
-   - Reset completo deve ficar em reset.css.
-   - Acessibilidade e redução de movimento devem ficar em accessibility.css.
+   Organização recomendada:
+   - reset.css: remove padrões do navegador.
+   - variables.css: concentra cores, espaçamentos e tokens.
+   - base.css: define base visual e utilitários.
+   - accessibility.css: foco, teclado e redução de movimento.
+   - responsive.css: ajustes globais responsivos.
 ===================================================== */
 
-
 /* =====================================================
-   1. BASE DO DOCUMENTO
+   1. DOCUMENTO
+   -----------------------------------------------------
+   Regras visuais gerais aplicadas à página inteira.
 ===================================================== */
 
 html {
@@ -51,9 +54,10 @@ main {
     overflow: hidden;
 }
 
-
 /* =====================================================
-   2. ELEMENTOS GLOBAIS
+   2. ELEMENTOS HTML GLOBAIS
+   -----------------------------------------------------
+   Complementa o reset com comportamentos visuais básicos.
 ===================================================== */
 
 img,
@@ -84,6 +88,7 @@ select {
 button {
     border: 0;
     background: transparent;
+    color: inherit;
     cursor: pointer;
 }
 
@@ -92,24 +97,30 @@ button:disabled {
     opacity: 0.55;
 }
 
+input,
+textarea,
+select {
+    color: inherit;
+}
+
 ul,
 ol {
     list-style: none;
 }
 
-
 /* =====================================================
-   3. CONTAINER PADRÃO
+   3. CONTAINER GLOBAL
+   -----------------------------------------------------
+   Classe padrão para limitar largura e manter respiro lateral.
 ===================================================== */
 
 .container {
     width: 100%;
     max-width: var(--container-width, 1200px);
 
-    margin: 0 auto;
+    margin-inline: auto;
     padding-inline: var(--container-padding, 24px);
 }
-
 
 /* =====================================================
    4. TIPOGRAFIA BASE
@@ -131,7 +142,8 @@ p {
     line-height: 1.7;
 }
 
-strong {
+strong,
+b {
     color: var(--text-primary, #e8f5e9);
     font-weight: 700;
 }
@@ -140,12 +152,13 @@ small {
     font-size: 0.875rem;
 }
 
-
 /* =====================================================
-   5. UTILIDADES REUTILIZÁVEIS
+   5. COMPONENTES UTILITÁRIOS
+   -----------------------------------------------------
+   Classes pequenas e reutilizáveis em várias páginas.
 ===================================================== */
 
-/* Tag usada no topo de várias seções */
+/* Selo usado no topo de seções */
 .section-tag {
     display: inline-block;
 
@@ -155,6 +168,7 @@ small {
 
     font-size: 0.9rem;
     font-weight: 700;
+    line-height: 1.3;
     letter-spacing: 1.5px;
     text-transform: uppercase;
 }
@@ -179,11 +193,16 @@ small {
         border-color var(--transition-default, 0.3s ease);
 }
 
-.button:hover {
+.button:hover,
+.button:focus-visible {
     transform: translateY(-2px);
 }
 
-/* Remove scrollbar mantendo o scroll funcional */
+/* =====================================================
+   6. UTILIDADES DE LAYOUT
+===================================================== */
+
+/* Remove scrollbar, mantendo o scroll funcional */
 .no-scrollbar {
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -200,7 +219,23 @@ small {
     justify-content: center;
 }
 
-/* Esconde visualmente, mas mantém acessível para leitores de tela */
+/* Centraliza texto */
+.text-center {
+    text-align: center;
+}
+
+/* Impede seleção em elementos decorativos/interativos */
+.no-select {
+    user-select: none;
+}
+
+/* =====================================================
+   7. UTILIDADE DE ACESSIBILIDADE
+   -----------------------------------------------------
+   Esconde visualmente, mas mantém o conteúdo acessível
+   para leitores de tela.
+===================================================== */
+
 .sr-only {
     position: absolute;
 
@@ -218,19 +253,8 @@ small {
     border: 0;
 }
 
-/* Impede seleção em elementos puramente interativos/decorativos */
-.no-select {
-    user-select: none;
-}
-
-/* Centraliza texto em blocos reutilizáveis */
-.text-center {
-    text-align: center;
-}
-
-
 /* =====================================================
-   6. SELEÇÃO DE TEXTO
+   8. SELEÇÃO DE TEXTO
 ===================================================== */
 
 ::selection {
@@ -238,12 +262,15 @@ small {
     color: var(--text-primary, #e8f5e9);
 }
 
-
 /* =====================================================
-   7. RESPONSIVIDADE GLOBAL
+   9. RESPONSIVIDADE BASE
+   -----------------------------------------------------
+   Ajustes simples globais. Responsividade específica deve
+   ficar no CSS de cada página/seção.
 ===================================================== */
 
 @media (max-width: 768px) {
+
     :root {
         --container-padding: 20px;
     }
@@ -254,6 +281,7 @@ small {
 }
 
 @media (max-width: 480px) {
+
     :root {
         --container-padding: 16px;
     }

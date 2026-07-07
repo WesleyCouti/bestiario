@@ -4,20 +4,29 @@
    Reset global moderno do projeto Bestiário.
 
    Responsável por:
-   - remover inconsistências padrão dos navegadores;
+   - remover inconsistências padrão entre navegadores;
    - padronizar box model;
+   - zerar margens e espaçamentos nativos;
    - normalizar mídias, links, listas, formulários e tabelas;
-   - criar uma base limpa antes de variables.css, base.css e accessibility.css.
+   - criar uma base limpa antes de variables.css, base.css
+     e accessibility.css.
+
+   Organização recomendada:
+   1. reset.css          → reset estrutural
+   2. variables.css      → variáveis visuais
+   3. base.css           → base visual e utilitários
+   4. accessibility.css  → foco, teclado e movimento
+   5. responsive.css     → ajustes globais responsivos
 
    Observação:
-   - Estilos visuais globais ficam em base.css.
-   - Variáveis ficam em variables.css.
-   - Foco visível e redução de movimento ficam em accessibility.css.
+   - Não adicionar cores, backgrounds ou estilos visuais aqui.
+   - Redução de movimento deve ficar em accessibility.css.
 ===================================================== */
-
 
 /* =====================================================
    1. BOX SIZING
+   -----------------------------------------------------
+   Garante que padding e border entrem no cálculo do tamanho.
 ===================================================== */
 
 *,
@@ -26,9 +35,10 @@
     box-sizing: border-box;
 }
 
-
 /* =====================================================
-   2. RESET DE MARGENS E PADDINGS
+   2. RESET DE ESPAÇAMENTOS
+   -----------------------------------------------------
+   Remove margens e paddings nativos dos elementos.
 ===================================================== */
 
 * {
@@ -36,26 +46,32 @@
     padding: 0;
 }
 
-
 /* =====================================================
    3. HTML E BODY
+   -----------------------------------------------------
+   Define altura mínima e melhora renderização de texto.
 ===================================================== */
 
-html {
+html,
+body {
     min-height: 100%;
+}
+
+html {
     scroll-behavior: smooth;
 }
 
 body {
-    min-height: 100%;
     line-height: 1.5;
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-
 /* =====================================================
    4. MÍDIAS
+   -----------------------------------------------------
+   Evita estouro horizontal e padroniza comportamento visual.
 ===================================================== */
 
 img,
@@ -74,9 +90,10 @@ canvas {
     height: auto;
 }
 
-
 /* =====================================================
    5. TIPOGRAFIA E TEXTOS
+   -----------------------------------------------------
+   Evita que textos longos quebrem o layout.
 ===================================================== */
 
 p,
@@ -94,7 +111,6 @@ b {
     font-weight: 700;
 }
 
-
 /* =====================================================
    6. LINKS
 ===================================================== */
@@ -103,7 +119,6 @@ a {
     color: inherit;
     text-decoration: none;
 }
-
 
 /* =====================================================
    7. LISTAS
@@ -114,9 +129,10 @@ ol {
     list-style: none;
 }
 
-
 /* =====================================================
    8. BOTÕES E FORMULÁRIOS
+   -----------------------------------------------------
+   Remove estilos nativos e herda tipografia do projeto.
 ===================================================== */
 
 button,
@@ -137,6 +153,12 @@ button:disabled {
     cursor: not-allowed;
 }
 
+input,
+textarea,
+select {
+    background: transparent;
+}
+
 textarea {
     resize: vertical;
 }
@@ -149,7 +171,6 @@ legend {
     padding: 0;
 }
 
-
 /* =====================================================
    9. TABELAS
 ===================================================== */
@@ -159,9 +180,8 @@ table {
     border-spacing: 0;
 }
 
-
 /* =====================================================
-   10. ELEMENTOS INTERATIVOS
+   10. ELEMENTOS INTERATIVOS E ESTADOS NATIVOS
 ===================================================== */
 
 summary {

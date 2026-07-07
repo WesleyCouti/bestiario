@@ -3,21 +3,40 @@
    -----------------------------------------------------
    Botão global de voltar ao topo do Bestiário.
 
-   Correção mobile:
-   - força exibição no mobile quando .is-visible estiver ativo;
-   - evita conflito com outros CSS responsivos;
-   - usa safe-area com fallback;
-   - mantém oculto ao chegar no footer.
+   Responsável por:
+   - exibir um botão fixo após rolagem da página;
+   - permitir retorno rápido ao topo;
+   - manter compatibilidade com desktop e mobile;
+   - respeitar áreas seguras de dispositivos móveis;
+   - ocultar o botão quando o footer estiver visível.
+
+   Dependência:
+   - ./js/components/back-to-top.js
+   - O JS adiciona as classes:
+     .is-visible
+     .is-hidden-footer
+===================================================== */
+
+/* =====================================================
+   1. BOTÃO FIXO
+   -----------------------------------------------------
+   As variáveis locais facilitam ajustar tamanho,
+   posição e ícone sem repetir valores no arquivo.
 ===================================================== */
 
 .back-to-top {
+    --back-top-size: 54px;
+    --back-top-offset-x: 28px;
+    --back-top-offset-y: 28px;
+    --back-top-icon-size: 26px;
+
     position: fixed;
-    right: 28px;
-    bottom: 28px;
+    right: var(--back-top-offset-x);
+    bottom: var(--back-top-offset-y);
     z-index: 99999;
 
-    width: 54px;
-    height: 54px;
+    width: var(--back-top-size);
+    height: var(--back-top-size);
 
     display: flex;
     align-items: center;
@@ -44,6 +63,8 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 
+    cursor: pointer;
+
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -59,10 +80,15 @@
         background 0.32s ease;
 }
 
+/* =====================================================
+   2. ESTADOS CONTROLADOS PELO JAVASCRIPT
+===================================================== */
+
 .back-to-top.is-visible:not(.is-hidden-footer) {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+
     transform: translateY(0) scale(1);
 }
 
@@ -70,27 +96,40 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+
     transform: translateY(18px) scale(0.92);
 }
 
+/* =====================================================
+   3. ÍCONE
+===================================================== */
+
 .back-to-top__icon {
-    width: 26px;
-    height: 26px;
+    width: var(--back-top-icon-size);
+    height: var(--back-top-icon-size);
 
     display: grid;
     place-items: center;
 
     color: currentColor;
+
     font-size: 1.35rem;
     line-height: 1;
 
-    text-shadow: 0 0 12px rgba(201, 162, 74, 0.34);
+    text-shadow:
+        0 0 12px rgba(201, 162, 74, 0.34);
 }
 
 .back-to-top__icon::before {
     content: "↑";
+    display: block;
+
     transform: translateY(-1px);
 }
+
+/* =====================================================
+   4. INTERAÇÃO
+===================================================== */
 
 .back-to-top:hover,
 .back-to-top:focus-visible {
@@ -110,27 +149,30 @@
 }
 
 /* =====================================================
-   MOBILE
+   5. MOBILE / TOUCH
+   -----------------------------------------------------
+   O botão continua ativo no mobile.
+   As regras com !important foram mantidas apenas onde
+   podem existir conflitos com CSS responsivos globais.
 ===================================================== */
 
 @media (max-width: 768px) {
 
     .back-to-top {
+        --back-top-size: 48px;
+        --back-top-icon-size: 24px;
+
         right: calc(14px + env(safe-area-inset-right, 0px));
         bottom: calc(18px + env(safe-area-inset-bottom, 0px));
-        z-index: 99999;
-
-        width: 48px;
-        height: 48px;
 
         display: flex !important;
     }
 
     .back-to-top.is-visible:not(.is-hidden-footer) {
-        display: flex !important;
         opacity: 1 !important;
         visibility: visible !important;
         pointer-events: auto !important;
+
         transform: translateY(0) scale(1) !important;
     }
 
@@ -141,8 +183,6 @@
     }
 
     .back-to-top__icon {
-        width: 24px;
-        height: 24px;
         font-size: 1.18rem;
     }
 
@@ -156,16 +196,23 @@
     }
 }
 
+/* =====================================================
+   6. MOBILE PEQUENO
+===================================================== */
+
 @media (max-width: 420px) {
 
     .back-to-top {
+        --back-top-size: 46px;
+
         right: calc(12px + env(safe-area-inset-right, 0px));
         bottom: calc(14px + env(safe-area-inset-bottom, 0px));
-
-        width: 46px;
-        height: 46px;
     }
 }
+
+/* =====================================================
+   7. REDUÇÃO DE MOVIMENTO
+===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 

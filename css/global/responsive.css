@@ -1,25 +1,27 @@
 /* =====================================================
-   RESPONSIVE.CSS - BESTIÁRIO
+   RESPONSIVE.CSS
    -----------------------------------------------------
-   Responsividade global do projeto.
+   Responsividade global do projeto Bestiário.
 
    Responsável por:
-   - ajustes globais de layout em telas menores;
-   - tipografia responsiva básica;
-   - containers e grids genéricos;
-   - pequenos ajustes globais de toque/mobile;
-   - footer responsivo.
+   - aplicar ajustes gerais para telas menores;
+   - proteger o layout contra overflow horizontal;
+   - ajustar container global;
+   - definir pequenas melhorias de toque/mobile;
+   - oferecer suporte genérico para grids e carrosséis.
 
    Observação:
-   - Reset global fica em reset.css.
-   - Base visual fica em base.css.
-   - Acessibilidade fica em accessibility.css.
-   - Responsividade específica de cada seção deve ficar no CSS da própria seção.
+   - Responsividade específica de cada seção deve ficar
+     no CSS da própria seção.
+   - Evite regras muito específicas aqui para não sobrescrever
+     estilos importantes das páginas.
+   - Use este arquivo apenas para padrões globais.
 ===================================================== */
 
-
 /* =====================================================
-   1. AJUSTES GLOBAIS MOBILE
+   1. AJUSTES GERAIS PARA MOBILE
+   -----------------------------------------------------
+   Evita estouro lateral e melhora interação em telas touch.
 ===================================================== */
 
 @media (max-width: 768px) {
@@ -46,9 +48,10 @@
     }
 }
 
-
 /* =====================================================
    2. CONTAINER GLOBAL
+   -----------------------------------------------------
+   Ajusta o respiro lateral padrão do site em telas menores.
 ===================================================== */
 
 @media (max-width: 768px) {
@@ -65,9 +68,11 @@
     }
 }
 
-
 /* =====================================================
    3. TIPOGRAFIA GLOBAL RESPONSIVA
+   -----------------------------------------------------
+   Mantém títulos e textos legíveis em páginas genéricas.
+   Se uma seção tiver tipografia própria, ajuste no CSS dela.
 ===================================================== */
 
 @media (max-width: 768px) {
@@ -88,9 +93,11 @@
     }
 }
 
-
 /* =====================================================
    4. ESPAÇAMENTO GLOBAL DE SEÇÕES
+   -----------------------------------------------------
+   Reduz espaçamentos em seções genéricas.
+   Não use !important para permitir ajustes específicos.
 ===================================================== */
 
 @media (max-width: 768px) {
@@ -107,9 +114,11 @@
     }
 }
 
-
 /* =====================================================
    5. GRIDS GENÉRICOS
+   -----------------------------------------------------
+   Aplica responsividade apenas em classes utilitárias.
+   Grids específicos devem ser tratados em seus próprios CSS.
 ===================================================== */
 
 @media (max-width: 992px) {
@@ -130,9 +139,10 @@
     }
 }
 
-
 /* =====================================================
    6. BOTÕES GENÉRICOS
+   -----------------------------------------------------
+   Melhora área de toque e leitura em mobile.
 ===================================================== */
 
 @media (max-width: 768px) {
@@ -153,9 +163,10 @@
     }
 }
 
-
 /* =====================================================
    7. CARROSSÉIS HORIZONTAIS GENÉRICOS
+   -----------------------------------------------------
+   Suaviza o scroll em dispositivos touch.
 ===================================================== */
 
 @media (max-width: 768px) {
@@ -169,9 +180,11 @@
     }
 }
 
-
 /* =====================================================
-   8. FOOTER
+   8. FOOTER GLOBAL
+   -----------------------------------------------------
+   Ajustes leves do rodapé em telas menores.
+   Estilos completos do footer ficam em footer.css.
 ===================================================== */
 
 @media (max-width: 768px) {
@@ -192,17 +205,21 @@
 }
 
 /* =====================================================
-   9. HERO - REMOVER IMAGEM NO MOBILE
+   9. HOME HERO - IMAGEM PRINCIPAL NO MOBILE
+   -----------------------------------------------------
+   Remove a imagem principal da Home em telas menores
+   para valorizar o conteúdo textual e evitar excesso visual.
+
+   Observação:
+   - Esta regra é específica da Home.
+   - Se preferir uma organização mais rígida, mova este bloco
+     para css/pages/home/01-hero.css.
 ===================================================== */
 
 @media (max-width: 768px) {
 
-    .hero-visual {
-        display: none !important;
-    }
-
+    .hero-visual,
     .hero-image {
         display: none !important;
     }
-
 }
