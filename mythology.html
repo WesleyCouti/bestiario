@@ -26,6 +26,14 @@
     <meta name="color-scheme" content="dark" />
 
     <!-- =====================================================
+         PERFORMANCE
+         Conexão antecipada com CDN usado pelo globo interativo.
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+    <link rel="dns-prefetch" href="https://unpkg.com" />
+
+    <!-- =====================================================
          SEO / OPEN GRAPH
          Substitua as URLs quando o domínio estiver publicado.
     ====================================================== -->
@@ -72,12 +80,10 @@
     <link rel="apple-touch-icon" href="./assets/images/favicon.png" />
 
     <!-- =====================================================
-         GOOGLE FONTS
-         (Adicionar apenas se utilizar Google Fonts)
+         FONTES
+         As fontes estão sendo controladas pelo CSS global.
+         Adicione Google Fonts aqui somente se houver importação real.
     ====================================================== -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- =====================================================
          ESTILOS GLOBAIS
@@ -111,7 +117,10 @@
 
 <body>
 
-    <!-- Link de acessibilidade -->
+    <!-- =====================================================
+         ACESSIBILIDADE
+         Permite pular o menu e ir direto ao conteúdo principal.
+    ====================================================== -->
     <a href="#conteudo-principal" class="skip-link">
         Pular para o conteúdo
     </a>
@@ -128,7 +137,7 @@
             </a>
 
             <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"
-                aria-controls="mainMenu">
+                aria-controls="menu-principal">
                 ☰
             </button>
 
@@ -149,59 +158,194 @@
     <main id="conteudo-principal">
 
         <!-- ================= HERO / CAPA DA PÁGINA ================= -->
-        <section class="mythology-hero" aria-labelledby="mythology-hero-title">
+        <section class="mythology-hero" id="home" aria-labelledby="mythology-hero-title">
 
             <div class="mythology-hero-overlay" aria-hidden="true"></div>
 
-            <div class="container mythology-hero-content">
+            <div class="container mythology-hero-layout">
 
-                <div class="hero-ornament" aria-hidden="true">
-                    ✦ ─ ✦ ─ ✦
+                <!-- CONTEÚDO PRINCIPAL -->
+                <div class="mythology-hero-content">
+
+                    <div class="hero-ornament" aria-hidden="true">
+                        <span></span>
+                        ✦
+                        <span></span>
+                    </div>
+
+                    <span class="hero-kicker">
+                        Conheça as origens das crenças e dos mitos
+                    </span>
+
+                    <h1 id="mythology-hero-title">Mitologias</h1>
+
+                    <span class="hero-subtitle">
+                        Histórias que moldaram civilizações
+                    </span>
+
+                    <div class="hero-divider" aria-hidden="true">
+                        <span></span>
+                        <small>☼</small>
+                        <span></span>
+                    </div>
+
+                    <p>
+                        Deuses, heróis, criaturas lendárias e mitos que atravessam gerações.
+                        Explore as principais mitologias do mundo e descubra a sabedoria
+                        de cada cultura.
+                    </p>
+
+                    <div class="mythology-hero-actions" aria-label="Ações principais da página">
+                        <a href="#catalogo-mitologias" class="mythology-hero-btn primary">
+                            <span aria-hidden="true">☼</span>
+                            Explorar Mitologias
+                        </a>
+
+                        <a href="#o-que-sao-mitologias" class="mythology-hero-btn secondary">
+                            <span aria-hidden="true">▤</span>
+                            Guia das Culturas
+                        </a>
+                    </div>
+
                 </div>
 
-                <h1 id="mythology-hero-title">Mitologias</h1>
+                <!-- IMAGEM / ARTE PRINCIPAL -->
+                <div class="mythology-hero-visual" aria-hidden="true">
+                    <div class="mythology-hero-circle"></div>
 
-                <span class="hero-subtitle">
-                    Histórias que moldaram civilizações
-                </span>
+                    <img src="./assets/images/mitologia/hero-mitologias.png" alt="" loading="eager" decoding="async" />
+                </div>
 
-                <p>
-                    Deuses, heróis, criaturas lendárias e mitos que atravessam gerações.
-                    Explore as principais mitologias do mundo e descubra a sabedoria de
-                    cada cultura.
-                </p>
+            </div>
+
+            <!-- CARDS INFERIORES -->
+            <div class="container mythology-hero-highlights" aria-label="Destaques da página de mitologias">
+
+                <article class="mythology-hero-highlight">
+                    <div class="highlight-icon" aria-hidden="true">🏛️</div>
+                    <div>
+                        <h2>Civilizações</h2>
+                        <p>Das antigas às modernas, cada povo tem sua história.</p>
+                    </div>
+                </article>
+
+                <article class="mythology-hero-highlight">
+                    <div class="highlight-icon" aria-hidden="true">📖</div>
+                    <div>
+                        <h2>Símbolos</h2>
+                        <p>Descubra os significados ocultos por trás dos mitos.</p>
+                    </div>
+                </article>
+
+                <article class="mythology-hero-highlight">
+                    <div class="highlight-icon" aria-hidden="true">⚔️</div>
+                    <div>
+                        <h2>Lendas</h2>
+                        <p>Relatos épicos que atravessam o tempo e o espaço.</p>
+                    </div>
+                </article>
+
+                <article class="mythology-hero-highlight">
+                    <div class="highlight-icon" aria-hidden="true">🌎</div>
+                    <div>
+                        <h2>Culturas</h2>
+                        <p>Conecte-se com a diversidade e sabedoria do mundo.</p>
+                    </div>
+                </article>
 
             </div>
 
         </section>
 
-        <!-- ================= LINHA DO TEMPO DAS MITOLOGIAS ================= -->
-        <section class="mythology-timeline-section" aria-labelledby="mythology-timeline-title">
+        <!-- ================= LINHA DO TEMPO DAS CIVILIZAÇÕES ================= -->
+        <section class="mythology-timeline-section mythology-timeline-premium"
+            aria-labelledby="mythology-timeline-title">
 
-            <div class="mythology-timeline-header">
-                <span>Linha do Tempo</span>
+            <div class="mythology-timeline-aura" aria-hidden="true"></div>
 
-                <h2 id="mythology-timeline-title">
-                    A jornada das mitologias através da história
-                </h2>
+            <div class="container mythology-timeline-shell">
 
-                <p>
-                    Explore o surgimento aproximado das principais tradições mitológicas ao longo dos séculos.
-                </p>
-            </div>
+                <!-- CABEÇALHO DA LINHA DO TEMPO -->
+                <div class="mythology-timeline-top">
 
-            <div class="mythology-timeline-controls" aria-label="Controles da linha do tempo">
-                <button class="timeline-arrow timeline-prev" type="button" aria-label="Voltar linha do tempo">
-                    ‹
-                </button>
+                    <div class="mythology-timeline-header">
+                        <div class="timeline-title-ornament" aria-hidden="true">
+                            <span></span>
+                            <small>✧</small>
+                            <span></span>
+                        </div>
 
-                <button class="timeline-arrow timeline-next" type="button" aria-label="Avançar linha do tempo">
-                    ›
-                </button>
-            </div>
+                        <span class="timeline-kicker">
+                            Linha do Tempo
+                        </span>
 
-            <div class="mythology-timeline-wrapper">
-                <div class="mythology-timeline-track" id="mythologyTimelineTrack" aria-live="polite"></div>
+                        <h2 id="mythology-timeline-title">
+                            Linha do Tempo das Civilizações
+                        </h2>
+
+                        <p>
+                            Explore as origens das culturas e mitologias que moldaram o mundo.
+                        </p>
+                    </div>
+
+                    <div class="mythology-timeline-controls" aria-label="Controles da linha do tempo">
+                        <button class="timeline-arrow timeline-prev" type="button" aria-label="Voltar linha do tempo"
+                            aria-controls="mythologyTimelineTrack">
+                            ‹
+                        </button>
+
+                        <button class="timeline-arrow timeline-next" type="button" aria-label="Avançar linha do tempo"
+                            aria-controls="mythologyTimelineTrack">
+                            ›
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- LISTA ROLÁVEL GERADA PELO JAVASCRIPT -->
+                <div class="mythology-timeline-wrapper" aria-label="Linha do tempo rolável das mitologias">
+                    <div class="mythology-timeline-track" id="mythologyTimelineTrack" role="list" aria-live="polite">
+                    </div>
+
+                    <noscript>
+                        <p class="mythology-noscript-message">
+                            Ative o JavaScript para visualizar a linha do tempo das mitologias.
+                        </p>
+                    </noscript>
+                </div>
+
+                <!-- LINHA ORNAMENTAL INFERIOR -->
+                <div class="timeline-premium-line" aria-hidden="true">
+                    <span></span>
+                    <small>✦</small>
+                    <span></span>
+                </div>
+
+                <!-- APOIO VISUAL DA SEÇÃO -->
+                <div class="timeline-insights" aria-label="Resumo da linha do tempo">
+
+                    <article class="timeline-insight-card">
+                        <span aria-hidden="true">✦</span>
+                        <p>Cada civilização possui suas próprias histórias, deuses e tradições.</p>
+                    </article>
+
+                    <article class="timeline-insight-card">
+                        <span aria-hidden="true">📖</span>
+                        <p>Conhecer o passado é compreender as raízes do presente.</p>
+                    </article>
+
+                    <article class="timeline-insight-card">
+                        <span aria-hidden="true">🏛️</span>
+                        <p>Mitos atravessam gerações e conectam culturas.</p>
+                    </article>
+
+                    <article class="timeline-insight-card">
+                        <span aria-hidden="true">🌎</span>
+                        <p>Explore. Descubra. Entenda. Conecte-se com a humanidade.</p>
+                    </article>
+
+                </div>
+
             </div>
 
         </section>
@@ -373,7 +517,13 @@
                     aria-describedby="mythology-globe-tip">
                 </div>
 
-                <div class="mythology-globe-instructions" aria-label="Instruções do globo interativo">
+                <noscript>
+                    <p class="mythology-noscript-message">
+                        Ative o JavaScript para interagir com o mapa das origens.
+                    </p>
+                </noscript>
+
+                <div class="mythology-globe-instructions" role="note" aria-label="Instruções do globo interativo">
                     <span>🖱️ Arraste para girar</span>
                     <span>🔍 Role para aproximar</span>
                 </div>
@@ -400,14 +550,20 @@
 
             <div class="container">
 
-                <div class="mythology-grid" id="mythologyGrid" aria-live="polite"></div>
+                <div class="mythology-grid" id="mythologyGrid" role="list" aria-live="polite"></div>
+
+                <noscript>
+                    <p class="mythology-noscript-message">
+                        Ative o JavaScript para visualizar o catálogo completo de mitologias.
+                    </p>
+                </noscript>
 
                 <!-- ================= MENSAGEM FINAL ================= -->
-                <div class="mythology-message">
+                <div class="mythology-message" aria-labelledby="mythology-message-title">
                     <span aria-hidden="true">🌎</span>
 
                     <div>
-                        <h3>A memória da humanidade vive nas mitologias.</h3>
+                        <h3 id="mythology-message-title">A memória da humanidade vive nas mitologias.</h3>
 
                         <p>
                             Conhecer uma mitologia é compreender a visão de mundo de um povo e preservar histórias que
@@ -424,16 +580,19 @@
 
     <!-- =====================================================
          FOOTER / RODAPÉ
+         Encerramento institucional da página com navegação,
+         identidade do projeto e retorno ao início.
     ====================================================== -->
-    <footer class="footer">
+    <footer class="footer" aria-labelledby="footer-title">
         <div class="container footer-content">
 
-            <!-- Identidade -->
+            <!-- Identidade do projeto -->
             <div class="footer-brand">
-                <a href="./index.html#home" class="footer-logo">
-                    <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" loading="lazy"
-                        decoding="async" />
-                    <span>Bestiário</span>
+                <a href="./index.html#home" class="footer-logo" aria-label="Voltar ao início do Bestiário">
+                    <img src="./assets/images/home/icone-login.png" alt="" class="footer-logo-icon" loading="lazy"
+                        decoding="async" aria-hidden="true" />
+
+                    <span id="footer-title">Bestiário</span>
                 </a>
 
                 <p>
@@ -442,25 +601,46 @@
                 </p>
             </div>
 
-            <!-- Navegação rápida -->
-            <nav class="footer-nav" aria-label="Navegação do rodapé">
+            <!-- Navegação principal do rodapé -->
+            <nav class="footer-nav" aria-label="Navegação rápida do rodapé">
                 <a href="./index.html#home">Home</a>
                 <a href="./mythology.html">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
                 <a href="./legends.html">Lendas</a>
+                <a href="./criaturas.html">Criaturas</a>
                 <a href="./symbols.html">Símbolos</a>
                 <a href="./relics.html">Relíquias</a>
             </nav>
 
+            <!-- Ação secundária -->
+            <a href="#conteudo-principal" class="footer-back-top" aria-label="Voltar para o topo da página">
+                <span>Voltar ao início</span>
+                <small aria-hidden="true">↑</small>
+            </a>
+
             <!-- Direitos -->
             <p class="footer-copy">
-                © 2026 Bestiário. Todos os direitos reservados.
+                <span>© 2026 Bestiário.</span>
+                <span>Todos os direitos reservados.</span>
             </p>
 
         </div>
     </footer>
 
-    <!-- ================= SCRIPTS DA PÁGINA ================= -->
+
+    <!-- =====================================================
+         BOTÃO GLOBAL — VOLTAR AO TOPO
+         Usado pelo script global back-to-top.js.
+         O atributo hidden evita exibição antes do controle via JS/CSS.
+    ====================================================== -->
+    <button class="back-to-top" type="button" aria-label="Voltar ao topo da página" hidden>
+        ↑
+    </button>
+
+    <!-- ================= SCRIPTS DA PÁGINA =================
+         Em produção, considere hospedar bibliotecas externas localmente
+         para mais controle de performance e disponibilidade.
+    ====================================================== -->
     <script src="https://unpkg.com/three@0.160.0/build/three.min.js" defer></script>
     <script src="https://unpkg.com/globe.gl@2.32.1/dist/globe.gl.min.js" defer></script>
     <script src="./js/mythology/mythology-catalog.js" defer></script>
