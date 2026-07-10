@@ -16,9 +16,6 @@
     <meta name="description"
         content="Explore mitologias de diversas civilizações, conheça deuses, criaturas lendárias, heróis, símbolos sagrados e as histórias que moldaram culturas ao redor do mundo." />
 
-    <meta name="keywords"
-        content="mitologias, mitologia grega, mitologia nórdica, mitologia egípcia, mitologia romana, mitologia japonesa, mitologia chinesa, mitologia celta, deuses, criaturas lendárias, heróis, bestiário" />
-
     <meta name="author" content="Wesley Coutinho" />
     <meta name="robots" content="index, follow" />
 
@@ -35,10 +32,9 @@
 
     <!-- =====================================================
          SEO / OPEN GRAPH
-         Substitua as URLs quando o domínio estiver publicado.
+         URLs absolutas e imagem de compartilhamento devem ser
+         adicionadas somente quando o domínio estiver publicado.
     ====================================================== -->
-
-    <link rel="canonical" href="https://seu-dominio.com/mythology.html" />
 
     <meta property="og:site_name" content="Bestiário" />
 
@@ -48,13 +44,6 @@
         content="Viaje pelas maiores mitologias do mundo e descubra seus deuses, criaturas lendárias, símbolos sagrados, heróis e tradições ancestrais." />
 
     <meta property="og:type" content="website" />
-
-    <meta property="og:url" content="https://seu-dominio.com/mythology.html" />
-
-    <meta property="og:image" content="https://seu-dominio.com/assets/images/compartilhamento-mythology.png" />
-
-    <meta property="og:image:alt"
-        content="Página de Mitologias do Bestiário apresentando diferentes civilizações e seres mitológicos." />
 
     <meta property="og:locale" content="pt_BR" />
 
@@ -68,8 +57,6 @@
 
     <meta name="twitter:description"
         content="Conheça mitologias, deuses, criaturas lendárias, heróis e símbolos ancestrais das maiores civilizações do mundo." />
-
-    <meta name="twitter:image" content="https://seu-dominio.com/assets/images/compartilhamento-mythology.png" />
 
     <!-- =====================================================
          FAVICON
@@ -131,8 +118,8 @@
         <div class="container topbar-content">
 
             <a href="./index.html#home" class="logo" aria-label="Ir para a página inicial do Bestiário">
-                <img src="./assets/images/home/icone-login.png" alt="Logo Bestiário" class="logo-icon" loading="eager"
-                    decoding="async" />
+                <img src="./assets/images/home/icone-login.png" alt="" aria-hidden="true" class="logo-icon" width="64"
+                    height="64" loading="eager" decoding="async" />
                 <span>Bestiário</span>
             </a>
 
@@ -156,6 +143,18 @@
 
     <!-- ================= CONTEÚDO PRINCIPAL ================= -->
     <main id="conteudo-principal">
+
+
+        <!-- ================= NAVEGAÇÃO INTERNA DA PÁGINA ================= -->
+        <nav class="mythology-page-nav" aria-label="Navegação interna da página">
+            <div class="mythology-page-nav-list">
+                <a href="#linha-do-tempo">Linha do Tempo</a>
+                <a href="#o-que-sao-mitologias">O que são Mitologias</a>
+                <a href="#mapa-das-origens">Mapa das Origens</a>
+                <a href="#catalogo-mitologias">Catálogo</a>
+                <a href="#continue-explorando">Continue explorando</a>
+            </div>
+        </nav>
 
         <!-- ================= HERO / CAPA DA PÁGINA ================= -->
         <section class="mythology-hero" id="home" aria-labelledby="mythology-hero-title">
@@ -213,52 +212,53 @@
                 <div class="mythology-hero-visual" aria-hidden="true">
                     <div class="mythology-hero-circle"></div>
 
-                    <img src="./assets/images/mitologia/hero-mitologias.png" alt="" loading="eager" decoding="async" />
+                    <img src="./assets/images/mitologia/hero-mitologias.png" alt="" width="900" height="900"
+                        loading="eager" decoding="async" />
                 </div>
 
             </div>
 
-            <!-- CARDS INFERIORES -->
-            <div class="container mythology-hero-highlights" aria-label="Destaques da página de mitologias">
+            <!-- CARDS INFERIORES / ATALHOS DE NAVEGAÇÃO -->
+            <div class="container mythology-hero-highlights" aria-label="Atalhos da página de mitologias">
 
-                <article class="mythology-hero-highlight">
+                <a href="#linha-do-tempo" class="mythology-hero-highlight">
                     <div class="highlight-icon" aria-hidden="true">🏛️</div>
                     <div>
-                        <h2>Civilizações</h2>
+                        <h3>Civilizações</h3>
                         <p>Das antigas às modernas, cada povo tem sua história.</p>
                     </div>
-                </article>
+                </a>
 
-                <article class="mythology-hero-highlight">
+                <a href="./symbols.html" class="mythology-hero-highlight">
                     <div class="highlight-icon" aria-hidden="true">📖</div>
                     <div>
-                        <h2>Símbolos</h2>
+                        <h3>Símbolos</h3>
                         <p>Descubra os significados ocultos por trás dos mitos.</p>
                     </div>
-                </article>
+                </a>
 
-                <article class="mythology-hero-highlight">
+                <a href="./legends.html" class="mythology-hero-highlight">
                     <div class="highlight-icon" aria-hidden="true">⚔️</div>
                     <div>
-                        <h2>Lendas</h2>
+                        <h3>Lendas</h3>
                         <p>Relatos épicos que atravessam o tempo e o espaço.</p>
                     </div>
-                </article>
+                </a>
 
-                <article class="mythology-hero-highlight">
+                <a href="#mapa-das-origens" class="mythology-hero-highlight">
                     <div class="highlight-icon" aria-hidden="true">🌎</div>
                     <div>
-                        <h2>Culturas</h2>
+                        <h3>Culturas</h3>
                         <p>Conecte-se com a diversidade e sabedoria do mundo.</p>
                     </div>
-                </article>
+                </a>
 
             </div>
 
         </section>
 
         <!-- ================= LINHA DO TEMPO DAS CIVILIZAÇÕES ================= -->
-        <section class="mythology-timeline-section mythology-timeline-premium"
+        <section class="mythology-timeline-section mythology-timeline-premium" id="linha-do-tempo"
             aria-labelledby="mythology-timeline-title">
 
             <div class="mythology-timeline-aura" aria-hidden="true"></div>
@@ -271,7 +271,7 @@
                     <div class="mythology-timeline-header">
                         <div class="timeline-title-ornament" aria-hidden="true">
                             <span></span>
-                            <small>✧</small>
+                            <small><span>✧</span></small>
                             <span></span>
                         </div>
 
@@ -304,7 +304,7 @@
 
                 <!-- LISTA ROLÁVEL GERADA PELO JAVASCRIPT -->
                 <div class="mythology-timeline-wrapper" aria-label="Linha do tempo rolável das mitologias">
-                    <div class="mythology-timeline-track" id="mythologyTimelineTrack" role="list" aria-live="polite">
+                    <div class="mythology-timeline-track" id="mythologyTimelineTrack" role="list">
                     </div>
 
                     <noscript>
@@ -393,59 +393,60 @@
 
                     <div class="mythology-intro-image">
                         <img src="./assets/images/mitologia/o-que-sao-mitologias.png"
-                            alt="Livro aberto com árvore mitológica dourada" loading="lazy" decoding="async" />
+                            alt="Livro aberto com árvore mitológica dourada" width="1600" height="1100" loading="lazy"
+                            decoding="async" />
                     </div>
 
                 </div>
 
-                <div class="mythology-explains" aria-labelledby="mythology-explains-title">
+                <section class="mythology-explains" aria-labelledby="mythology-explains-title">
 
-                    <div class="mythology-explains-title" id="mythology-explains-title">
+                    <h3 class="mythology-explains-title" id="mythology-explains-title">
                         As mitologias ajudam a explicar:
-                    </div>
+                    </h3>
 
-                    <div class="mythology-explains-grid">
+                    <ul class="mythology-explains-grid">
 
-                        <div class="mythology-explain-card">
+                        <li class="mythology-explain-card">
                             <img src="./assets/images/mitologia/page-mitologia-icones/icone-mundo.png"
-                                alt="Origem do mundo" loading="lazy" decoding="async" />
+                                alt="Origem do mundo" width="170" height="170" loading="lazy" decoding="async" />
                             <strong>A origem<br>do mundo</strong>
-                        </div>
+                        </li>
 
-                        <div class="mythology-explain-card">
+                        <li class="mythology-explain-card">
                             <img src="./assets/images/mitologia/page-mitologia-icones/icone-natureza.png"
-                                alt="Fenômenos da natureza" loading="lazy" decoding="async" />
+                                alt="Fenômenos da natureza" width="170" height="170" loading="lazy" decoding="async" />
                             <strong>Fenômenos<br>da natureza</strong>
-                        </div>
+                        </li>
 
-                        <div class="mythology-explain-card">
+                        <li class="mythology-explain-card">
                             <img src="./assets/images/mitologia/page-mitologia-icones/icone-heroi.png"
-                                alt="Deuses e heróis" loading="lazy" decoding="async" />
+                                alt="Deuses e heróis" width="170" height="170" loading="lazy" decoding="async" />
                             <strong>Deuses<br>e heróis</strong>
-                        </div>
+                        </li>
 
-                        <div class="mythology-explain-card">
+                        <li class="mythology-explain-card">
                             <img src="./assets/images/mitologia/page-mitologia-icones/icone-dragao.png"
-                                alt="Criaturas lendárias" loading="lazy" decoding="async" />
+                                alt="Criaturas lendárias" width="170" height="170" loading="lazy" decoding="async" />
                             <strong>Criaturas<br>lendárias</strong>
-                        </div>
+                        </li>
 
-                        <div class="mythology-explain-card">
+                        <li class="mythology-explain-card">
                             <img src="./assets/images/mitologia/page-mitologia-icones/icone-pergaminho.png"
-                                alt="Sabedoria ancestral" loading="lazy" decoding="async" />
+                                alt="Sabedoria ancestral" width="170" height="170" loading="lazy" decoding="async" />
                             <strong>Sabedoria<br>ancestral</strong>
-                        </div>
+                        </li>
 
-                    </div>
+                    </ul>
 
-                </div>
+
 
             </div>
 
         </section>
 
         <!-- ================= MAPA DAS ORIGENS / GLOBO INTERATIVO ================= -->
-        <section class="mythology-globe-section" aria-labelledby="mythology-globe-title">
+        <section class="mythology-globe-section" id="mapa-das-origens" aria-labelledby="mythology-globe-title">
 
             <div class="mythology-globe-text">
 
@@ -550,7 +551,86 @@
 
             <div class="container">
 
-                <div class="mythology-grid" id="mythologyGrid" role="list" aria-live="polite"></div>
+
+                <!-- ================= NAVEGAÇÃO ALFABÉTICA DO CATÁLOGO ================= -->
+                <nav class="mythology-alphabet-nav" aria-label="Navegação alfabética do catálogo">
+                    <div class="mythology-alphabet-nav-heading">
+                        <div class="mythology-alphabet-nav-ornament" aria-hidden="true">
+                            <span></span>
+                            <small>✦</small>
+                            <span></span>
+                        </div>
+
+                        <span class="mythology-alphabet-nav-kicker">Índice de enciclopédia</span>
+                        <h3>Navegação rápida</h3>
+
+                        <p>
+                            Escolha uma letra para ir diretamente à primeira mitologia
+                            correspondente no catálogo.
+                        </p>
+                    </div>
+
+                    <div class="mythology-alphabet-list" aria-label="Letras disponíveis">
+                        <button type="button" class="mythology-alphabet-link" data-letter="A"
+                            aria-controls="mythologyGrid">A</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="B"
+                            aria-controls="mythologyGrid">B</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="C"
+                            aria-controls="mythologyGrid">C</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="D"
+                            aria-controls="mythologyGrid">D</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="E"
+                            aria-controls="mythologyGrid">E</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="F"
+                            aria-controls="mythologyGrid">F</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="G"
+                            aria-controls="mythologyGrid">G</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="H"
+                            aria-controls="mythologyGrid">H</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="I"
+                            aria-controls="mythologyGrid">I</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="J"
+                            aria-controls="mythologyGrid">J</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="K"
+                            aria-controls="mythologyGrid">K</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="L"
+                            aria-controls="mythologyGrid">L</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="M"
+                            aria-controls="mythologyGrid">M</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="N"
+                            aria-controls="mythologyGrid">N</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="O"
+                            aria-controls="mythologyGrid">O</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="P"
+                            aria-controls="mythologyGrid">P</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="Q"
+                            aria-controls="mythologyGrid">Q</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="R"
+                            aria-controls="mythologyGrid">R</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="S"
+                            aria-controls="mythologyGrid">S</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="T"
+                            aria-controls="mythologyGrid">T</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="U"
+                            aria-controls="mythologyGrid">U</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="V"
+                            aria-controls="mythologyGrid">V</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="W"
+                            aria-controls="mythologyGrid">W</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="X"
+                            aria-controls="mythologyGrid">X</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="Y"
+                            aria-controls="mythologyGrid">Y</button>
+                        <button type="button" class="mythology-alphabet-link" data-letter="Z"
+                            aria-controls="mythologyGrid">Z</button>
+                    </div>
+
+                    <p class="mythology-alphabet-status" aria-live="polite">
+                        Selecione uma letra para navegar pelo catálogo.
+                    </p>
+                </nav>
+
+                <div class="mythology-grid" id="mythologyGrid" role="list"></div>
 
                 <noscript>
                     <p class="mythology-noscript-message">
@@ -576,6 +656,102 @@
 
         </section>
 
+        <!-- ================= CONTINUE EXPLORANDO ================= -->
+        <section class="mythology-explore-more" id="continue-explorando" aria-labelledby="mythology-explore-more-title">
+
+            <div class="mythology-explore-more-aura" aria-hidden="true"></div>
+
+            <div class="container mythology-explore-more-container">
+
+                <header class="mythology-explore-more-header">
+                    <div class="mythology-explore-more-ornament" aria-hidden="true">
+                        <span></span>
+                        <small>✦</small>
+                        <span></span>
+                    </div>
+
+                    <span class="mythology-explore-more-kicker">Outros caminhos do Bestiário</span>
+
+                    <h2 id="mythology-explore-more-title">Continue explorando</h2>
+
+                    <p>
+                        Aprofunde-se em outros universos e descubra ainda mais histórias,
+                        seres, crenças e significados.
+                    </p>
+                </header>
+
+                <div class="mythology-explore-more-grid">
+
+                    <a href="./religion.html" class="mythology-explore-card mythology-explore-card--religion">
+                        <div class="mythology-explore-card-visual" aria-hidden="true">
+                            <img src="./assets/images/mitologia/page-imagem-conteudos/religiao.png" alt="" width="1000"
+                                height="1000" loading="lazy" decoding="async" />
+                        </div>
+
+                        <div class="mythology-explore-card-content">
+                            <span class="mythology-explore-card-icon" aria-hidden="true">✞</span>
+                            <span class="mythology-explore-card-label">Crenças e tradições</span>
+                            <h3>Religiões</h3>
+                            <p>
+                                Explore crenças, rituais e ensinamentos que moldaram diferentes culturas.
+                            </p>
+                            <span class="mythology-explore-card-action">
+                                Explorar religiões
+                                <small aria-hidden="true">→</small>
+                            </span>
+                        </div>
+                    </a>
+
+                    <a href="./legends.html" class="mythology-explore-card mythology-explore-card--legends">
+                        <div class="mythology-explore-card-visual" aria-hidden="true">
+                            <img src="./assets/images/mitologia/page-imagem-conteudos/lenda.png" alt="" width="1000"
+                                height="1000" loading="lazy" decoding="async" />
+                        </div>
+
+                        <div class="mythology-explore-card-content">
+                            <span class="mythology-explore-card-icon" aria-hidden="true">✦</span>
+                            <span class="mythology-explore-card-label">Narrativas e tradições</span>
+
+                            <h3>Lendas</h3>
+
+                            <p>
+                                Descubra histórias, heróis e mistérios transmitidos através das gerações.
+                            </p>
+
+                            <span class="mythology-explore-card-action">
+                                Explorar lendas
+                                <small aria-hidden="true">→</small>
+                            </span>
+                        </div>
+                    </a>
+
+                    <a href="./symbols.html" class="mythology-explore-card mythology-explore-card--symbols">
+                        <div class="mythology-explore-card-visual" aria-hidden="true">
+                            <img src="./assets/images/mitologia/page-imagem-conteudos/simbolo.png" alt="" width="1000"
+                                height="1000" loading="lazy" decoding="async" />
+                        </div>
+
+                        <div class="mythology-explore-card-content">
+                            <span class="mythology-explore-card-icon" aria-hidden="true">△</span>
+                            <span class="mythology-explore-card-label">Significados ancestrais</span>
+                            <h3>Símbolos</h3>
+                            <p>
+                                Descubra os significados por trás dos símbolos que comunicam ideias eternas.
+                            </p>
+                            <span class="mythology-explore-card-action">
+                                Descobrir símbolos
+                                <small aria-hidden="true">→</small>
+                            </span>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
     </main>
 
     <!-- =====================================================
@@ -589,8 +765,8 @@
             <!-- Identidade do projeto -->
             <div class="footer-brand">
                 <a href="./index.html#home" class="footer-logo" aria-label="Voltar ao início do Bestiário">
-                    <img src="./assets/images/home/icone-login.png" alt="" class="footer-logo-icon" loading="lazy"
-                        decoding="async" aria-hidden="true" />
+                    <img src="./assets/images/home/icone-login.png" alt="" class="footer-logo-icon" width="64"
+                        height="64" loading="lazy" decoding="async" aria-hidden="true" />
 
                     <span id="footer-title">Bestiário</span>
                 </a>
@@ -604,10 +780,9 @@
             <!-- Navegação principal do rodapé -->
             <nav class="footer-nav" aria-label="Navegação rápida do rodapé">
                 <a href="./index.html#home">Home</a>
-                <a href="./mythology.html">Mitologias</a>
+                <a href="./mythology.html" aria-current="page">Mitologias</a>
                 <a href="./religion.html">Religiões</a>
-                <a href="./legends.html">Lendas</a>
-                <a href="./criaturas.html">Criaturas</a>
+                <a href="./legends.html">Lendas</a> 
                 <a href="./symbols.html">Símbolos</a>
                 <a href="./relics.html">Relíquias</a>
             </nav>
@@ -644,6 +819,7 @@
     <script src="https://unpkg.com/three@0.160.0/build/three.min.js" defer></script>
     <script src="https://unpkg.com/globe.gl@2.32.1/dist/globe.gl.min.js" defer></script>
     <script src="./js/mythology/mythology-catalog.js" defer></script>
+    <script src="./js/mythology/mythology-alphabet.js" defer></script>
     <script src="./js/mythology/mythology-timeline.js" defer></script>
     <script src="./js/mythology/mythology-globe.js" defer></script>
     <script src="./js/main.js" defer></script>

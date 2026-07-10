@@ -547,7 +547,15 @@ const mythologyCarouselData = [
 
 const mythologyCarouselState = {
     activeIndex: 0,
-    isReady: false
+    isReady: false,
+    drag: {
+        isDragging: false,
+        hasMoved: false,
+        pointerId: null,
+        startX: 0,
+        startTranslate: 0,
+        currentTranslate: 0
+    }
 };
 
 function createMythologyCarouselCards() {
@@ -560,6 +568,7 @@ function createMythologyCarouselCards() {
     if (track.dataset.rendered === "true") {
         setupMythologyCarouselFlip();
         setupManualMythologyCarousel();
+        setupMythologyCarouselDrag();
         return;
     }
 
@@ -627,6 +636,7 @@ function createMythologyCarouselCards() {
 
     setupMythologyCarouselFlip();
     setupManualMythologyCarousel();
+    setupMythologyCarouselDrag();
 }
 
 /* =====================================================
@@ -720,7 +730,7 @@ function updateManualMythologyCarousel() {
 
     const activeIndex = getCurrentMythologyIndex();
     const activeCard = cards[activeIndex];
-    const maxTranslate = Math.min(0, viewport.clientWidth - track.scrollWidth);
+    const maxTranslate = getMythologyMaxTranslate(viewport, track);
     const nextTranslate = Math.max(maxTranslate, -activeCard.offsetLeft);
 
     track.style.transform = `translateX(${nextTranslate}px)`;
@@ -769,6 +779,203 @@ function updateMythologyDots(dots, activeIndex) {
 }
 
 /* =====================================================
+   ARRASTE DO CARROSSEL — DESKTOP E MOBILE
+   -----------------------------------------------------
+   Mantém as setas funcionando e adiciona navegação por:
+   - Mouse no desktop;
+   - Toque no celular;
+   - Caneta/stylus quando disponível.
+
+   Importante:
+   - Se o usuário arrastar, o clique do card é bloqueado;
+   - Se o usuário apenas clicar/toocar sem arrastar, o flip continua normal.
+===================================================== */
+
+function setupMythologyCarouselDrag() {
+    const viewport = getMythologyCarouselViewport();
+    const track = document.getElementById("mythologyCarouselTrack");
+    const cards = getMythologyCards();
+
+    if (!viewport || !track || !cards.length || track.dataset.dragReady === "true") {
+        return;
+    }
+
+    track.dataset.dragReady = "true";
+
+    viewport.addEventListener("pointerdown", handleMythologyDragStart);
+    viewport.addEventListener("pointermove", handleMythologyDragMove);
+    viewport.addEventListener("pointerup", handleMythologyDragEnd);
+    viewport.addEventListener("pointercancel", handleMythologyDragEnd);
+    viewport.addEventListener("lostpointercapture", handleMythologyDragEnd);
+
+    viewport.addEventListener("dragstart", (event) => {
+        event.preventDefault();
+    });
+}
+
+function handleMythologyDragStart(event) {
+    if (event.button !== undefined && event.button !== 0) {
+        return;
+    }
+
+    const clickedLink = event.target.closest("a");
+
+    if (clickedLink) {
+        return;
+    }
+
+    const viewport = getMythologyCarouselViewport();
+    const track = document.getElementById("mythologyCarouselTrack");
+
+    if (!viewport || !track) {
+        return;
+    }
+
+    mythologyCarouselState.drag.isDragging = true;
+    mythologyCarouselState.drag.hasMoved = false;
+    mythologyCarouselState.drag.pointerId = event.pointerId;
+    mythologyCarouselState.drag.startX = event.clientX;
+    mythologyCarouselState.drag.startTranslate = getCurrentTrackTranslate(track);
+    mythologyCarouselState.drag.currentTranslate = mythologyCarouselState.drag.startTranslate;
+
+    viewport.classList.add("is-dragging");
+    track.classList.add("is-dragging");
+    track.style.transition = "none";
+
+    try {
+        viewport.setPointerCapture(event.pointerId);
+    } catch (error) {
+        /* Alguns navegadores podem não permitir captura em casos específicos. */
+    }
+}
+
+function handleMythologyDragMove(event) {
+    const viewport = getMythologyCarouselViewport();
+    const track = document.getElementById("mythologyCarouselTrack");
+
+    if (
+        !viewport
+        || !track
+        || !mythologyCarouselState.drag.isDragging
+        || mythologyCarouselState.drag.pointerId !== event.pointerId
+    ) {
+        return;
+    }
+
+    const deltaX = event.clientX - mythologyCarouselState.drag.startX;
+
+    if (Math.abs(deltaX) > 6) {
+        mythologyCarouselState.drag.hasMoved = true;
+        track.dataset.suppressClick = "true";
+    }
+
+    if (!mythologyCarouselState.drag.hasMoved) {
+        return;
+    }
+
+    const maxTranslate = getMythologyMaxTranslate(viewport, track);
+    const nextTranslate = clampNumber(
+        mythologyCarouselState.drag.startTranslate + deltaX,
+        maxTranslate,
+        0
+    );
+
+    mythologyCarouselState.drag.currentTranslate = nextTranslate;
+    track.style.transform = `translateX(${nextTranslate}px)`;
+
+    event.preventDefault();
+}
+
+function handleMythologyDragEnd(event) {
+    const viewport = getMythologyCarouselViewport();
+    const track = document.getElementById("mythologyCarouselTrack");
+
+    if (
+        !viewport
+        || !track
+        || !mythologyCarouselState.drag.isDragging
+        || mythologyCarouselState.drag.pointerId !== event.pointerId
+    ) {
+        return;
+    }
+
+    mythologyCarouselState.drag.isDragging = false;
+    mythologyCarouselState.drag.pointerId = null;
+
+    viewport.classList.remove("is-dragging");
+    track.classList.remove("is-dragging");
+    track.style.transition = "";
+
+    try {
+        viewport.releasePointerCapture(event.pointerId);
+    } catch (error) {
+        /* Alguns navegadores podem liberar a captura automaticamente. */
+    }
+
+    if (mythologyCarouselState.drag.hasMoved) {
+        const nearestIndex = getNearestMythologyCardIndex(
+            Math.abs(mythologyCarouselState.drag.currentTranslate)
+        );
+
+        setManualMythologyActiveIndex(nearestIndex);
+
+        window.setTimeout(() => {
+            track.dataset.suppressClick = "false";
+        }, 80);
+
+        return;
+    }
+
+    track.dataset.suppressClick = "false";
+}
+
+function getNearestMythologyCardIndex(targetOffset) {
+    const cards = getMythologyCards();
+
+    if (!cards.length) {
+        return 0;
+    }
+
+    return cards.reduce((nearestIndex, card, index) => {
+        const nearestDistance = Math.abs(cards[nearestIndex].offsetLeft - targetOffset);
+        const currentDistance = Math.abs(card.offsetLeft - targetOffset);
+
+        return currentDistance < nearestDistance ? index : nearestIndex;
+    }, 0);
+}
+
+function getMythologyMaxTranslate(viewport, track) {
+    return Math.min(0, viewport.clientWidth - track.scrollWidth);
+}
+
+function getCurrentTrackTranslate(track) {
+    const transform = window.getComputedStyle(track).transform;
+
+    if (!transform || transform === "none") {
+        return 0;
+    }
+
+    const matrixValues = transform.match(/matrix.*\((.+)\)/);
+
+    if (!matrixValues) {
+        return 0;
+    }
+
+    const values = matrixValues[1].split(",").map((value) => Number(value.trim()));
+
+    if (values.length === 6) {
+        return values[4] || 0;
+    }
+
+    if (values.length === 16) {
+        return values[12] || 0;
+    }
+
+    return 0;
+}
+
+
+/* =====================================================
    FLIP DOS CARDS — CONTROLE POR CLIQUE E TECLADO
 ===================================================== */
 
@@ -784,6 +991,12 @@ function setupMythologyCarouselFlip() {
     carouselTrack.addEventListener("click", (event) => {
         const clickedLink = event.target.closest("a");
         const clickedCard = event.target.closest(".carousel-item");
+
+        if (carouselTrack.dataset.suppressClick === "true") {
+            event.preventDefault();
+            event.stopPropagation();
+            return;
+        }
 
         if (clickedLink || !clickedCard || !carouselTrack.contains(clickedCard)) {
             return;
