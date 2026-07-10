@@ -1,46 +1,46 @@
 /* =====================================================
    11. POR QUE ESTUDAR
    -----------------------------------------------------
-   Seção de fechamento didático da Home.
-
-   Ajustes aplicados:
-   - Comentários reorganizados por bloco;
-   - Variáveis locais para facilitar manutenção;
-   - Container com melhor profundidade visual;
-   - Cards com foco acessível via :focus-within;
-   - Responsividade refinada para tablet e mobile;
-   - Redução de animações respeitando prefers-reduced-motion.
+   Ícones ampliados, cards mais equilibrados e melhor
+   aproveitamento da largura disponível.
 ===================================================== */
 
 .why-study-section {
-    --why-card-radius: 18px;
-    --why-container-radius: 28px;
-    --why-border-gold: rgba(201, 154, 43, 0.18);
-    --why-border-gold-strong: rgba(201, 154, 43, 0.34);
-    --why-bg-soft: rgba(255, 255, 255, 0.025);
-    --why-icon-size: 72px;
-    --why-icon-img-size: 46px;
+    --why-card-radius: 20px;
+    --why-container-radius: 30px;
+    --why-border-gold: rgba(201, 154, 43, 0.20);
+    --why-border-gold-strong: rgba(201, 154, 43, 0.48);
+    --why-icon-size: 132px;
+    --why-icon-img-size: 124px;
 
     position: relative;
-    padding: 90px 20px;
+    padding: 100px 20px;
     overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(circle at 50% 15%, rgba(201, 154, 43, 0.08), transparent 34%),
+        linear-gradient(180deg, rgba(2, 10, 6, 0.98), rgba(1, 7, 4, 1));
 }
 
-.why-study-section .container {
+.why-study-section .why-study-container {
     position: relative;
-    max-width: 950px;
+    width: min(100% - 20px, 1420px);
+    max-width: 1420px;
     margin: 0 auto;
-    padding: 70px 64px;
+    padding: 82px 64px 68px;
     overflow: hidden;
     text-align: center;
     border: 1px solid var(--why-border-gold);
     border-radius: var(--why-container-radius);
     background:
-        radial-gradient(circle at 50% 0%, rgba(201, 154, 43, 0.055), transparent 44%),
-        var(--why-bg-soft);
+        radial-gradient(circle at 50% 0%, rgba(201, 154, 43, 0.07), transparent 42%),
+        linear-gradient(180deg, rgba(7, 20, 13, 0.90), rgba(3, 12, 8, 0.96));
+    box-shadow:
+        0 34px 82px rgba(0, 0, 0, 0.42),
+        inset 0 1px 0 rgba(242, 213, 138, 0.05);
 }
 
-.why-study-section .container::before {
+.why-study-section .why-study-container::before {
     content: "";
     position: absolute;
     inset: 14px;
@@ -49,13 +49,14 @@
     pointer-events: none;
 }
 
-/* =====================================================
-   CABEÇALHO
-===================================================== */
-
-.why-study-section .section-tag {
+.why-study-header {
     position: relative;
     z-index: 2;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.why-study-section .section-tag {
     display: inline-block;
     margin-bottom: 22px;
     color: var(--home-gold-soft);
@@ -66,65 +67,59 @@
 }
 
 .why-study-section h2 {
-    position: relative;
-    z-index: 2;
-    max-width: 780px;
+    max-width: 900px;
     margin: 0 auto 34px;
     color: var(--home-text-cream);
     font-family: var(--home-font-serif);
-    font-size: clamp(2.4rem, 5vw, 4.2rem);
-    line-height: 1.1;
+    font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+    line-height: 1.08;
+    text-wrap: balance;
 }
 
 .why-study-section h2::after {
     content: "";
     display: block;
-    width: 140px;
+    width: 160px;
     height: 2px;
     margin: 32px auto 0;
-    background: linear-gradient(to right,
-            transparent,
-            var(--home-gold-soft),
-            transparent);
+    background: linear-gradient(to right, transparent, var(--home-gold-soft), transparent);
 }
 
-.why-study-section p {
-    position: relative;
-    z-index: 2;
-    max-width: 760px;
-    margin: 0 auto 24px;
+.why-study-header>p {
+    max-width: 860px;
+    margin: 0 auto 22px;
     color: var(--home-text-muted);
     font-size: 1.08rem;
     line-height: 1.9;
 }
 
-.why-study-section p:last-child {
-    margin-bottom: 0;
-}
-
-/* =====================================================
-   GRID DE CARDS
-===================================================== */
-
 .why-study-grid {
     position: relative;
     z-index: 2;
+    margin-top: 58px;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 18px;
-    margin-top: 42px;
+    gap: 24px;
+    align-items: stretch;
 }
 
 .why-study-card {
     position: relative;
-    min-height: 190px;
-    padding: 26px 18px 24px;
+    min-width: 0;
+    min-height: 330px;
+    padding: 30px 24px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     overflow: hidden;
-    border: 1px solid rgba(201, 154, 43, 0.16);
+    border: 1px solid rgba(201, 154, 43, 0.20);
     border-radius: var(--why-card-radius);
     background:
-        radial-gradient(circle at top, rgba(201, 154, 43, 0.07), transparent 60%),
-        rgba(255, 255, 255, 0.022);
+        radial-gradient(circle at 50% 18%, rgba(201, 154, 43, 0.10), transparent 42%),
+        linear-gradient(180deg, rgba(10, 24, 16, 0.82), rgba(4, 13, 9, 0.94));
+    box-shadow:
+        0 18px 44px rgba(0, 0, 0, 0.26),
+        inset 0 1px 0 rgba(242, 213, 138, 0.04);
     transition:
         transform 0.3s ease,
         border-color 0.3s ease,
@@ -135,74 +130,87 @@
 .why-study-card::before {
     content: "";
     position: absolute;
-    inset: 8px;
-    border: 1px solid rgba(201, 154, 43, 0.06);
-    border-radius: calc(var(--why-card-radius) - 6px);
+    inset: 10px;
+    border: 1px solid rgba(201, 154, 43, 0.07);
+    border-radius: calc(var(--why-card-radius) - 7px);
     pointer-events: none;
 }
 
 .why-study-card:hover,
 .why-study-card:focus-within {
-    transform: translateY(-6px);
+    transform: translateY(-7px);
     border-color: var(--why-border-gold-strong);
     background:
-        radial-gradient(circle at top, rgba(201, 154, 43, 0.10), transparent 62%),
-        rgba(255, 255, 255, 0.028);
-    box-shadow: 0 0 22px rgba(201, 154, 43, 0.10);
-}
-
-.why-study-card:focus-within {
-    outline: 2px solid var(--home-gold-soft);
-    outline-offset: 4px;
+        radial-gradient(circle at 50% 16%, rgba(201, 154, 43, 0.15), transparent 44%),
+        linear-gradient(180deg, rgba(13, 31, 20, 0.92), rgba(4, 13, 9, 0.98));
+    box-shadow:
+        0 28px 58px rgba(0, 0, 0, 0.36),
+        0 0 30px rgba(201, 154, 43, 0.12);
 }
 
 .why-study-card h3 {
     position: relative;
     z-index: 2;
-    margin: 0 0 10px;
+    margin: 2px 0 14px;
     color: var(--home-text-cream);
-    font-size: 1.05rem;
+    font-family: var(--home-font-serif);
+    font-size: clamp(1.15rem, 1.35vw, 1.4rem);
+    line-height: 1.2;
 }
 
 .why-study-card p {
     position: relative;
     z-index: 2;
     margin: 0;
-    font-size: 0.88rem;
-    line-height: 1.65;
+    color: var(--home-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.72;
 }
-
-/* =====================================================
-   ÍCONES DOS CARDS
-===================================================== */
 
 .why-study-icon {
     position: relative;
     z-index: 2;
     width: var(--why-icon-size);
     height: var(--why-icon-size);
-    margin: 0 auto 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(201, 154, 43, 0.45);
+    margin: 0 auto 24px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    border: 1px solid rgba(201, 154, 43, 0.58);
     border-radius: 50%;
     background:
-        radial-gradient(circle, rgba(201, 154, 43, 0.14), transparent 70%);
+        radial-gradient(circle at 42% 34%, rgba(242, 213, 138, 0.14), transparent 34%),
+        radial-gradient(circle, rgba(201, 154, 43, 0.11), rgba(2, 10, 6, 0.96) 72%);
     box-shadow:
-        0 0 0 8px rgba(201, 154, 43, 0.05),
-        0 0 26px rgba(201, 154, 43, 0.14);
+        0 0 0 10px rgba(201, 154, 43, 0.055),
+        0 0 34px rgba(201, 154, 43, 0.18),
+        inset 0 0 24px rgba(201, 154, 43, 0.08);
     transition:
         transform 0.35s ease,
-        box-shadow 0.35s ease;
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.why-study-icon::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(201, 154, 43, 0.18);
+    border-radius: inherit;
+    pointer-events: none;
 }
 
 .why-study-icon img {
+    position: relative;
+    z-index: 2;
     width: var(--why-icon-img-size);
     height: var(--why-icon-img-size);
+    max-width: none;
     display: block;
     object-fit: contain;
-    filter: drop-shadow(0 0 10px rgba(201, 154, 43, 0.30));
+    transform: scale(1.08);
+    filter:
+        brightness(1.08) contrast(1.08) drop-shadow(0 0 12px rgba(201, 154, 43, 0.34));
     transition:
         transform 0.35s ease,
         filter 0.35s ease;
@@ -210,27 +218,30 @@
 
 .why-study-card:hover .why-study-icon,
 .why-study-card:focus-within .why-study-icon {
-    transform: scale(1.08);
+    transform: scale(1.06);
+    border-color: rgba(242, 213, 138, 0.80);
     box-shadow:
-        0 0 0 8px rgba(201, 154, 43, 0.08),
-        0 0 34px rgba(201, 154, 43, 0.24);
+        0 0 0 10px rgba(201, 154, 43, 0.08),
+        0 0 42px rgba(201, 154, 43, 0.28),
+        inset 0 0 26px rgba(201, 154, 43, 0.10);
 }
 
 .why-study-card:hover .why-study-icon img,
 .why-study-card:focus-within .why-study-icon img {
-    transform: scale(1.08);
+    transform: scale(1.16);
     filter:
-        brightness(1.08) drop-shadow(0 0 16px rgba(201, 154, 43, 0.42));
+        brightness(1.14) contrast(1.1) drop-shadow(0 0 18px rgba(201, 154, 43, 0.48));
 }
 
-/* =====================================================
-   RESPONSIVIDADE
-===================================================== */
+@media (max-width: 1180px) {
+    .why-study-section {
+        --why-icon-size: 122px;
+        --why-icon-img-size: 100px;
+    }
 
-@media (max-width: 1100px) {
-    .why-study-section .container {
-        max-width: 900px;
-        padding: 62px 46px;
+    .why-study-section .why-study-container {
+        width: min(100% - 12px, 1040px);
+        padding: 70px 46px 58px;
     }
 
     .why-study-grid {
@@ -240,73 +251,53 @@
 
 @media (max-width: 768px) {
     .why-study-section {
-        padding: 70px 18px;
-    }
-
-    .why-study-section {
         --why-container-radius: 22px;
-        --why-icon-size: 64px;
-        --why-icon-img-size: 40px;
+        --why-icon-size: 116px;
+        --why-icon-img-size: 94px;
+        padding: 72px 16px;
     }
 
-    .why-study-section .container {
-        padding: 48px 28px;
-    }
-
-    .why-study-section .section-tag {
-        font-size: 0.72rem;
-        line-height: 1.6;
-        letter-spacing: 3px;
+    .why-study-section .why-study-container {
+        width: 100%;
+        padding: 50px 26px 42px;
     }
 
     .why-study-section h2 {
-        font-size: clamp(2rem, 9vw, 3rem);
+        font-size: clamp(2rem, 9vw, 3.2rem);
     }
 
-    .why-study-section p {
-        font-size: 0.96rem;
+    .why-study-header>p {
+        font-size: 0.98rem;
         line-height: 1.8;
-    }
-
-    .why-study-icon {
-        margin-bottom: 18px;
     }
 }
 
 @media (max-width: 700px) {
     .why-study-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
+    }
+
+    .why-study-card {
+        min-height: 0;
+        padding: 30px 24px;
     }
 }
 
 @media (max-width: 420px) {
     .why-study-section {
-        padding: 62px 14px;
+        --why-icon-size: 108px;
+        --why-icon-img-size: 88px;
+        padding: 62px 12px;
     }
 
-    .why-study-section .container {
-        padding: 40px 22px;
+    .why-study-section .why-study-container {
+        padding: 42px 20px 36px;
     }
 
     .why-study-section h2 {
         font-size: 2rem;
     }
-
-    .why-study-section h2::after {
-        width: 110px;
-        margin-top: 26px;
-    }
-
-    .why-study-card {
-        min-height: 178px;
-        padding: 24px 16px 22px;
-    }
 }
-
-/* =====================================================
-   ACESSIBILIDADE E REDUÇÃO DE MOVIMENTO
-===================================================== */
 
 @media (hover: none) {
 
