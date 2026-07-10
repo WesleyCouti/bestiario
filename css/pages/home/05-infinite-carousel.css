@@ -56,9 +56,10 @@
     width: 100%;
     max-width: 100%;
     overflow: hidden;
-    cursor: default;
+    cursor: grab;
     user-select: none;
     touch-action: pan-y;
+    -webkit-user-select: none;
 }
 
 .infinite-carousel::before,
@@ -98,6 +99,24 @@
     transition: transform 0.45s ease;
     will-change: transform;
     animation: none !important;
+    cursor: grab;
+}
+
+.carousel-viewport.is-dragging,
+.carousel-track.is-dragging {
+    cursor: grabbing;
+}
+
+.carousel-track.is-dragging {
+    transition: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.carousel-track.is-dragging .carousel-item,
+.carousel-track.is-dragging img,
+.carousel-track.is-dragging a {
+    pointer-events: none;
 }
 
 #mythologyCarouselTrack .carousel-item {
