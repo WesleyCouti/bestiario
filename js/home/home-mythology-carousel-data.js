@@ -542,21 +542,38 @@ const mythologyCarouselData = [
 ];
 
 /* =====================================================
-   GERADOR DOS CARDS
+   ESTADO E CONFIGURAÇÕES DO CARROSSEL
+   -----------------------------------------------------
+   O movimento dos cards utiliza rolagem horizontal nativa.
+   Isso preserva a inércia do toque no celular e evita o
+   conflito entre pointermove, preventDefault e translateX.
 ===================================================== */
+
+const MYTHOLOGY_CAROUSEL_CONFIG = Object.freeze({
+    scrollEndDelay: 120,
+    clickSuppressDistance: 8,
+    resizeDelay: 180
+});
 
 const mythologyCarouselState = {
     activeIndex: 0,
     isReady: false,
-    drag: {
-        isDragging: false,
+    scrollEndTimer: null,
+    resizeTimer: null,
+    pointer: {
+        isPressed: false,
+        isMouseDragging: false,
         hasMoved: false,
         pointerId: null,
+        pointerType: "",
         startX: 0,
-        startTranslate: 0,
-        currentTranslate: 0
+        startScrollLeft: 0
     }
 };
+
+/* =====================================================
+   GERADOR DOS CARDS
+===================================================== */
 
 function createMythologyCarouselCards() {
     const track = document.getElementById("mythologyCarouselTrack");
@@ -573,65 +590,17 @@ function createMythologyCarouselCards() {
     }
 
     if (!mythologyCarouselData.length) {
-        track.innerHTML = "";
+        track.replaceChildren();
         return;
     }
 
-    track.innerHTML = mythologyCarouselData.map((mythology, index) => {
-        const name = escapeHTML(mythology.name || "Mitologia");
-        const title = escapeHTML(mythology.title || name);
-        const category = escapeHTML(mythology.category || "Tradição Ancestral");
-        const image = escapeHTML(mythology.image || "");
-        const alt = escapeHTML(mythology.alt || title);
-        const description = escapeHTML(mythology.description || "Descrição não disponível.");
-        const url = escapeHTML(mythology.url || "#");
-        const mythKey = normalizeMythologyKey(mythology.name || "");
+    const fragment = document.createDocumentFragment();
 
-        return `
-            <article
-                class="carousel-item"
-                data-myth="${mythKey}"
-                data-index="${index}"
-                tabindex="0"
-                aria-pressed="false"
-                aria-label="Card da ${title}. Pressione Enter ou clique para virar.">
+    mythologyCarouselData.forEach((mythology, index) => {
+        fragment.appendChild(createMythologyCarouselCard(mythology, index));
+    });
 
-                <div class="myth-flip-card">
-                    <div class="myth-flip-inner">
-
-                        <div class="myth-flip-front">
-                            <span class="myth-symbol-badge" aria-hidden="true"></span>
-
-                            <img
-                                src="${image}"
-                                alt="${alt}"
-                                loading="lazy"
-                                decoding="async">
-
-                            <div class="myth-front-overlay">
-                                <span class="myth-front-label">Mitologia</span>
-                                <h3>${name}</h3>
-                            </div>
-                        </div>
-
-                        <div class="myth-flip-back">
-                            <span class="myth-category">${category}</span>
-
-                            <h3>${title}</h3>
-
-                            <p>${description}</p>
-
-                            <a href="${url}" class="myth-button" aria-label="Explorar ${title}">
-                                Explorar
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-            </article>
-        `;
-    }).join("");
-
+    track.replaceChildren(fragment);
     track.dataset.rendered = "true";
 
     setupMythologyCarouselFlip();
@@ -639,46 +608,150 @@ function createMythologyCarouselCards() {
     setupMythologyCarouselDrag();
 }
 
+function createMythologyCarouselCard(mythology, index) {
+    const name = mythology.name || "Mitologia";
+    const title = mythology.title || name;
+    const category = mythology.category || "Tradição Ancestral";
+    const image = mythology.image || "";
+    const alt = mythology.alt || title;
+    const description = mythology.description || "Descrição não disponível.";
+    const url = mythology.url || "#";
+    const mythKey = normalizeMythologyKey(name);
+
+    const article = document.createElement("article");
+    article.className = "carousel-item";
+    article.dataset.myth = mythKey;
+    article.dataset.index = String(index);
+    article.tabIndex = 0;
+    article.setAttribute("aria-pressed", "false");
+    article.setAttribute(
+        "aria-label",
+        `Card da ${title}. Pressione Enter ou clique para virar.`
+    );
+
+    const flipCard = document.createElement("div");
+    flipCard.className = "myth-flip-card";
+
+    const flipInner = document.createElement("div");
+    flipInner.className = "myth-flip-inner";
+
+    const front = document.createElement("div");
+    front.className = "myth-flip-front";
+
+    const badge = document.createElement("span");
+    badge.className = "myth-symbol-badge";
+    badge.setAttribute("aria-hidden", "true");
+
+    const imageElement = document.createElement("img");
+    imageElement.src = image;
+    imageElement.alt = alt;
+    imageElement.loading = "lazy";
+    imageElement.decoding = "async";
+    imageElement.draggable = false;
+
+    const frontOverlay = document.createElement("div");
+    frontOverlay.className = "myth-front-overlay";
+
+    const frontLabel = document.createElement("span");
+    frontLabel.className = "myth-front-label";
+    frontLabel.textContent = "Mitologia";
+
+    const frontTitle = document.createElement("h3");
+    frontTitle.textContent = name;
+
+    frontOverlay.append(frontLabel, frontTitle);
+    front.append(badge, imageElement, frontOverlay);
+
+    const back = document.createElement("div");
+    back.className = "myth-flip-back";
+
+    const categoryElement = document.createElement("span");
+    categoryElement.className = "myth-category";
+    categoryElement.textContent = category;
+
+    const backTitle = document.createElement("h3");
+    backTitle.textContent = title;
+
+    const descriptionElement = document.createElement("p");
+    descriptionElement.textContent = description;
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.className = "myth-button";
+    link.setAttribute("aria-label", `Explorar ${title}`);
+    link.textContent = "Explorar";
+
+    back.append(categoryElement, backTitle, descriptionElement, link);
+    flipInner.append(front, back);
+    flipCard.appendChild(flipInner);
+    article.appendChild(flipCard);
+
+    return article;
+}
+
 /* =====================================================
-   CARROSSEL MANUAL POR SETAS
+   NAVEGAÇÃO MANUAL POR SETAS
    -----------------------------------------------------
-   Sem autoplay, sem loop infinito e sem movimento contínuo.
-   O track só muda de posição quando o usuário clica nas setas.
+   - Sem autoplay;
+   - Sem loop infinito;
+   - As setas avançam um card por vez;
+   - O arraste no mobile utiliza a rolagem nativa;
+   - O card ativo é atualizado durante a rolagem.
 ===================================================== */
 
 function setupManualMythologyCarousel() {
+    const viewport = getMythologyCarouselViewport();
     const track = document.getElementById("mythologyCarouselTrack");
     const prevButton = document.querySelector(".mythology-carousel-prev");
     const nextButton = document.querySelector(".mythology-carousel-next");
     const dotsContainer = document.getElementById("mythologyCarouselDots");
     const cards = getMythologyCards();
 
-    if (!track || !cards.length) {
+    if (!viewport || !track || !cards.length) {
         return;
     }
+
+    renderMythologyDots(cards.length, dotsContainer);
 
     if (!mythologyCarouselState.isReady) {
         mythologyCarouselState.activeIndex = 0;
         track.dataset.activeIndex = "0";
         mythologyCarouselState.isReady = true;
-    }
 
-    renderMythologyDots(cards.length, dotsContainer);
-    updateManualMythologyCarousel();
+        requestAnimationFrame(() => {
+            scrollToMythologyCard(0, "auto");
+            updateMythologyCarouselInterface(0);
+        });
+    } else {
+        updateMythologyCarouselInterface(getCurrentMythologyIndex());
+    }
 
     if (prevButton && prevButton.dataset.ready !== "true") {
         prevButton.dataset.ready = "true";
-        prevButton.addEventListener("click", () => moveManualMythologyCarousel(-1));
+        prevButton.addEventListener("click", () => {
+            moveManualMythologyCarousel(-1);
+        });
     }
 
     if (nextButton && nextButton.dataset.ready !== "true") {
         nextButton.dataset.ready = "true";
-        nextButton.addEventListener("click", () => moveManualMythologyCarousel(1));
+        nextButton.addEventListener("click", () => {
+            moveManualMythologyCarousel(1);
+        });
+    }
+
+    if (viewport.dataset.scrollReady !== "true") {
+        viewport.dataset.scrollReady = "true";
+        viewport.addEventListener("scroll", handleMythologyCarouselScroll, {
+            passive: true
+        });
     }
 
     if (window.datasetMythologyCarouselResize !== "true") {
         window.datasetMythologyCarouselResize = "true";
-        window.addEventListener("resize", updateManualMythologyCarousel);
+        window.addEventListener("resize", handleMythologyCarouselResize, {
+            passive: true
+        });
     }
 }
 
@@ -690,16 +763,26 @@ function moveManualMythologyCarousel(direction) {
     }
 
     const currentIndex = getCurrentMythologyIndex();
-    const nextIndex = clampNumber(currentIndex + direction, 0, cards.length - 1);
+    const nextIndex = clampNumber(
+        currentIndex + direction,
+        0,
+        cards.length - 1
+    );
 
     if (nextIndex === currentIndex) {
         return;
     }
 
-    setManualMythologyActiveIndex(nextIndex);
+    setManualMythologyActiveIndex(nextIndex, {
+        scroll: true,
+        behavior: getPreferredScrollBehavior()
+    });
 }
 
-function setManualMythologyActiveIndex(index) {
+function setManualMythologyActiveIndex(
+    index,
+    { scroll = false, behavior = "smooth" } = {}
+) {
     const track = document.getElementById("mythologyCarouselTrack");
     const cards = getMythologyCards();
 
@@ -713,33 +796,126 @@ function setManualMythologyActiveIndex(index) {
     track.dataset.activeIndex = String(safeIndex);
 
     closeAllMythologyCards();
-    updateManualMythologyCarousel();
+    updateMythologyCarouselInterface(safeIndex);
+
+    if (scroll) {
+        scrollToMythologyCard(safeIndex, behavior);
+    }
 }
 
-function updateManualMythologyCarousel() {
+function scrollToMythologyCard(index, behavior = "smooth") {
     const viewport = getMythologyCarouselViewport();
+    const cards = getMythologyCards();
+    const card = cards[index];
+
+    if (!viewport || !card) {
+        return;
+    }
+
+    const targetLeft = getMythologyCardScrollPosition(viewport, card);
+
+    viewport.scrollTo({
+        left: targetLeft,
+        behavior
+    });
+}
+
+function getMythologyCardScrollPosition(viewport, card) {
+    const centeredPosition =
+        card.offsetLeft - ((viewport.clientWidth - card.offsetWidth) / 2);
+
+    const maximumScroll = Math.max(
+        0,
+        viewport.scrollWidth - viewport.clientWidth
+    );
+
+    return clampNumber(centeredPosition, 0, maximumScroll);
+}
+
+function handleMythologyCarouselScroll() {
+    const viewport = getMythologyCarouselViewport();
+
+    if (!viewport) {
+        return;
+    }
+
+    window.requestAnimationFrame(() => {
+        const nearestIndex = getNearestMythologyCardIndex(viewport);
+        updateMythologyActiveIndexFromScroll(nearestIndex);
+    });
+
+    window.clearTimeout(mythologyCarouselState.scrollEndTimer);
+
+    mythologyCarouselState.scrollEndTimer = window.setTimeout(() => {
+        const nearestIndex = getNearestMythologyCardIndex(viewport);
+
+        updateMythologyActiveIndexFromScroll(nearestIndex);
+    }, MYTHOLOGY_CAROUSEL_CONFIG.scrollEndDelay);
+}
+
+function updateMythologyActiveIndexFromScroll(index) {
     const track = document.getElementById("mythologyCarouselTrack");
+    const cards = getMythologyCards();
+
+    if (!track || !cards.length) {
+        return;
+    }
+
+    const safeIndex = clampNumber(index, 0, cards.length - 1);
+
+    mythologyCarouselState.activeIndex = safeIndex;
+    track.dataset.activeIndex = String(safeIndex);
+
+    updateMythologyCarouselInterface(safeIndex);
+}
+
+function getNearestMythologyCardIndex(viewport) {
+    const cards = getMythologyCards();
+
+    if (!viewport || !cards.length) {
+        return 0;
+    }
+
+    const viewportCenter = viewport.scrollLeft + (viewport.clientWidth / 2);
+
+    return cards.reduce((nearestIndex, card, index) => {
+        const nearestCard = cards[nearestIndex];
+        const nearestCenter =
+            nearestCard.offsetLeft + (nearestCard.offsetWidth / 2);
+        const currentCenter = card.offsetLeft + (card.offsetWidth / 2);
+
+        const nearestDistance = Math.abs(nearestCenter - viewportCenter);
+        const currentDistance = Math.abs(currentCenter - viewportCenter);
+
+        return currentDistance < nearestDistance ? index : nearestIndex;
+    }, 0);
+}
+
+function handleMythologyCarouselResize() {
+    window.clearTimeout(mythologyCarouselState.resizeTimer);
+
+    mythologyCarouselState.resizeTimer = window.setTimeout(() => {
+        scrollToMythologyCard(getCurrentMythologyIndex(), "auto");
+        updateMythologyCarouselInterface(getCurrentMythologyIndex());
+    }, MYTHOLOGY_CAROUSEL_CONFIG.resizeDelay);
+}
+
+function updateMythologyCarouselInterface(activeIndex) {
     const cards = getMythologyCards();
     const prevButton = document.querySelector(".mythology-carousel-prev");
     const nextButton = document.querySelector(".mythology-carousel-next");
     const dots = Array.from(document.querySelectorAll(".myth-carousel-dot"));
 
-    if (!viewport || !track || !cards.length) {
-        return;
-    }
-
-    const activeIndex = getCurrentMythologyIndex();
-    const activeCard = cards[activeIndex];
-    const maxTranslate = getMythologyMaxTranslate(viewport, track);
-    const nextTranslate = Math.max(maxTranslate, -activeCard.offsetLeft);
-
-    track.style.transform = `translateX(${nextTranslate}px)`;
-
     cards.forEach((card, index) => {
         const isActive = index === activeIndex;
 
         card.classList.toggle("is-active", isActive);
-        card.setAttribute("aria-current", isActive ? "true" : "false");
+
+        if (isActive) {
+            card.setAttribute("aria-current", "true");
+        } else {
+            card.removeAttribute("aria-current");
+        }
     });
 
     updateCarouselButtonState(prevButton, activeIndex === 0);
@@ -761,14 +937,19 @@ function renderMythologyDots(totalCards, dotsContainer) {
         return;
     }
 
-    dotsContainer.innerHTML = Array.from({ length: totalCards }).map((_, index) => `
-        <span
-            class="myth-carousel-dot"
-            aria-hidden="true"
-            data-target-index="${index}">
-        </span>
-    `).join("");
+    const fragment = document.createDocumentFragment();
 
+    for (let index = 0; index < totalCards; index += 1) {
+        const dot = document.createElement("span");
+
+        dot.className = "myth-carousel-dot";
+        dot.dataset.targetIndex = String(index);
+        dot.setAttribute("aria-hidden", "true");
+
+        fragment.appendChild(dot);
+    }
+
+    dotsContainer.replaceChildren(fragment);
     dotsContainer.dataset.rendered = "true";
 }
 
@@ -779,149 +960,153 @@ function updateMythologyDots(dots, activeIndex) {
 }
 
 /* =====================================================
-   ARRASTE DO CARROSSEL — DESKTOP E MOBILE
+   ARRASTE SUAVE — MOBILE E DESKTOP
    -----------------------------------------------------
-   Mantém as setas funcionando e adiciona navegação por:
-   - Mouse no desktop;
-   - Toque no celular;
-   - Caneta/stylus quando disponível.
+   Mobile e dispositivos touch:
+   - O navegador controla a rolagem e a inércia;
+   - Nenhum preventDefault é executado durante o toque;
+   - Não há translateX disputando com o gesto.
 
-   Importante:
-   - Se o usuário arrastar, o clique do card é bloqueado;
-   - Se o usuário apenas clicar/toocar sem arrastar, o flip continua normal.
+   Desktop com mouse:
+   - O usuário pode clicar e arrastar;
+   - O movimento altera somente scrollLeft;
+   - Ao soltar, o scroll-snap aproxima o card mais próximo.
 ===================================================== */
 
 function setupMythologyCarouselDrag() {
     const viewport = getMythologyCarouselViewport();
     const track = document.getElementById("mythologyCarouselTrack");
-    const cards = getMythologyCards();
 
-    if (!viewport || !track || !cards.length || track.dataset.dragReady === "true") {
+    if (!viewport || !track || viewport.dataset.dragReady === "true") {
         return;
     }
 
-    track.dataset.dragReady = "true";
+    viewport.dataset.dragReady = "true";
 
-    viewport.addEventListener("pointerdown", handleMythologyDragStart);
-    viewport.addEventListener("pointermove", handleMythologyDragMove);
-    viewport.addEventListener("pointerup", handleMythologyDragEnd);
-    viewport.addEventListener("pointercancel", handleMythologyDragEnd);
-    viewport.addEventListener("lostpointercapture", handleMythologyDragEnd);
+    viewport.addEventListener("pointerdown", handleMythologyPointerDown);
+    viewport.addEventListener("pointermove", handleMythologyPointerMove);
+    viewport.addEventListener("pointerup", handleMythologyPointerEnd);
+    viewport.addEventListener("pointercancel", handleMythologyPointerEnd);
+    viewport.addEventListener("lostpointercapture", handleMythologyPointerEnd);
 
     viewport.addEventListener("dragstart", (event) => {
         event.preventDefault();
     });
 }
 
-function handleMythologyDragStart(event) {
+function handleMythologyPointerDown(event) {
     if (event.button !== undefined && event.button !== 0) {
         return;
     }
 
-    const clickedLink = event.target.closest("a");
-
-    if (clickedLink) {
+    if (event.target.closest("a")) {
         return;
     }
 
     const viewport = getMythologyCarouselViewport();
-    const track = document.getElementById("mythologyCarouselTrack");
 
-    if (!viewport || !track) {
+    if (!viewport) {
         return;
     }
 
-    mythologyCarouselState.drag.isDragging = true;
-    mythologyCarouselState.drag.hasMoved = false;
-    mythologyCarouselState.drag.pointerId = event.pointerId;
-    mythologyCarouselState.drag.startX = event.clientX;
-    mythologyCarouselState.drag.startTranslate = getCurrentTrackTranslate(track);
-    mythologyCarouselState.drag.currentTranslate = mythologyCarouselState.drag.startTranslate;
+    const pointer = mythologyCarouselState.pointer;
 
-    viewport.classList.add("is-dragging");
-    track.classList.add("is-dragging");
-    track.style.transition = "none";
+    pointer.isPressed = true;
+    pointer.isMouseDragging = event.pointerType === "mouse";
+    pointer.hasMoved = false;
+    pointer.pointerId = event.pointerId;
+    pointer.pointerType = event.pointerType;
+    pointer.startX = event.clientX;
+    pointer.startScrollLeft = viewport.scrollLeft;
 
-    try {
-        viewport.setPointerCapture(event.pointerId);
-    } catch (error) {
-        /* Alguns navegadores podem não permitir captura em casos específicos. */
+    if (pointer.isMouseDragging) {
+        viewport.classList.add("is-dragging");
+
+        try {
+            viewport.setPointerCapture(event.pointerId);
+        } catch (error) {
+            /* A captura pode não estar disponível em alguns navegadores. */
+        }
     }
 }
 
-function handleMythologyDragMove(event) {
+function handleMythologyPointerMove(event) {
     const viewport = getMythologyCarouselViewport();
     const track = document.getElementById("mythologyCarouselTrack");
+    const pointer = mythologyCarouselState.pointer;
 
     if (
         !viewport
         || !track
-        || !mythologyCarouselState.drag.isDragging
-        || mythologyCarouselState.drag.pointerId !== event.pointerId
+        || !pointer.isPressed
+        || pointer.pointerId !== event.pointerId
     ) {
         return;
     }
 
-    const deltaX = event.clientX - mythologyCarouselState.drag.startX;
+    const deltaX = event.clientX - pointer.startX;
 
-    if (Math.abs(deltaX) > 6) {
-        mythologyCarouselState.drag.hasMoved = true;
+    if (
+        !pointer.hasMoved
+        && Math.abs(deltaX) >= MYTHOLOGY_CAROUSEL_CONFIG.clickSuppressDistance
+    ) {
+        pointer.hasMoved = true;
         track.dataset.suppressClick = "true";
     }
 
-    if (!mythologyCarouselState.drag.hasMoved) {
+    /*
+     * No touch, o navegador deve manter controle total do gesto.
+     * O código manual abaixo é usado somente para arraste com mouse.
+     */
+    if (!pointer.isMouseDragging || !pointer.hasMoved) {
         return;
     }
 
-    const maxTranslate = getMythologyMaxTranslate(viewport, track);
-    const nextTranslate = clampNumber(
-        mythologyCarouselState.drag.startTranslate + deltaX,
-        maxTranslate,
-        0
-    );
-
-    mythologyCarouselState.drag.currentTranslate = nextTranslate;
-    track.style.transform = `translateX(${nextTranslate}px)`;
-
+    viewport.scrollLeft = pointer.startScrollLeft - deltaX;
     event.preventDefault();
 }
 
-function handleMythologyDragEnd(event) {
+function handleMythologyPointerEnd(event) {
     const viewport = getMythologyCarouselViewport();
     const track = document.getElementById("mythologyCarouselTrack");
+    const pointer = mythologyCarouselState.pointer;
 
     if (
         !viewport
         || !track
-        || !mythologyCarouselState.drag.isDragging
-        || mythologyCarouselState.drag.pointerId !== event.pointerId
+        || !pointer.isPressed
+        || pointer.pointerId !== event.pointerId
     ) {
         return;
     }
 
-    mythologyCarouselState.drag.isDragging = false;
-    mythologyCarouselState.drag.pointerId = null;
+    pointer.isPressed = false;
 
-    viewport.classList.remove("is-dragging");
-    track.classList.remove("is-dragging");
-    track.style.transition = "";
+    if (pointer.isMouseDragging) {
+        viewport.classList.remove("is-dragging");
 
-    try {
-        viewport.releasePointerCapture(event.pointerId);
-    } catch (error) {
-        /* Alguns navegadores podem liberar a captura automaticamente. */
+        try {
+            viewport.releasePointerCapture(event.pointerId);
+        } catch (error) {
+            /* O navegador pode liberar a captura automaticamente. */
+        }
     }
 
-    if (mythologyCarouselState.drag.hasMoved) {
-        const nearestIndex = getNearestMythologyCardIndex(
-            Math.abs(mythologyCarouselState.drag.currentTranslate)
-        );
+    const moved = pointer.hasMoved;
 
-        setManualMythologyActiveIndex(nearestIndex);
+    pointer.isMouseDragging = false;
+    pointer.hasMoved = false;
+    pointer.pointerId = null;
+    pointer.pointerType = "";
+
+    if (moved) {
+        const nearestIndex = getNearestMythologyCardIndex(viewport);
+
+        updateMythologyActiveIndexFromScroll(nearestIndex);
 
         window.setTimeout(() => {
             track.dataset.suppressClick = "false";
-        }, 80);
+        }, 120);
 
         return;
     }
@@ -929,101 +1114,55 @@ function handleMythologyDragEnd(event) {
     track.dataset.suppressClick = "false";
 }
 
-function getNearestMythologyCardIndex(targetOffset) {
-    const cards = getMythologyCards();
-
-    if (!cards.length) {
-        return 0;
-    }
-
-    return cards.reduce((nearestIndex, card, index) => {
-        const nearestDistance = Math.abs(cards[nearestIndex].offsetLeft - targetOffset);
-        const currentDistance = Math.abs(card.offsetLeft - targetOffset);
-
-        return currentDistance < nearestDistance ? index : nearestIndex;
-    }, 0);
-}
-
-function getMythologyMaxTranslate(viewport, track) {
-    return Math.min(0, viewport.clientWidth - track.scrollWidth);
-}
-
-function getCurrentTrackTranslate(track) {
-    const transform = window.getComputedStyle(track).transform;
-
-    if (!transform || transform === "none") {
-        return 0;
-    }
-
-    const matrixValues = transform.match(/matrix.*\((.+)\)/);
-
-    if (!matrixValues) {
-        return 0;
-    }
-
-    const values = matrixValues[1].split(",").map((value) => Number(value.trim()));
-
-    if (values.length === 6) {
-        return values[4] || 0;
-    }
-
-    if (values.length === 16) {
-        return values[12] || 0;
-    }
-
-    return 0;
-}
-
-
 /* =====================================================
-   FLIP DOS CARDS — CONTROLE POR CLIQUE E TECLADO
+   FLIP DOS CARDS — CLIQUE E TECLADO
 ===================================================== */
 
 function setupMythologyCarouselFlip() {
-    const carouselTrack = document.getElementById("mythologyCarouselTrack");
+    const track = document.getElementById("mythologyCarouselTrack");
 
-    if (!carouselTrack || carouselTrack.dataset.flipDelegationReady === "true") {
+    if (!track || track.dataset.flipDelegationReady === "true") {
         return;
     }
 
-    carouselTrack.dataset.flipDelegationReady = "true";
+    track.dataset.flipDelegationReady = "true";
 
-    carouselTrack.addEventListener("click", (event) => {
+    track.addEventListener("click", (event) => {
         const clickedLink = event.target.closest("a");
         const clickedCard = event.target.closest(".carousel-item");
 
-        if (carouselTrack.dataset.suppressClick === "true") {
+        if (track.dataset.suppressClick === "true") {
             event.preventDefault();
             event.stopPropagation();
             return;
         }
 
-        if (clickedLink || !clickedCard || !carouselTrack.contains(clickedCard)) {
+        if (clickedLink || !clickedCard || !track.contains(clickedCard)) {
             return;
         }
 
         event.preventDefault();
-
         toggleMythologyCard(clickedCard);
     });
 
-    carouselTrack.addEventListener("keydown", (event) => {
+    track.addEventListener("keydown", (event) => {
         const isActionKey = event.key === "Enter" || event.key === " ";
         const selectedCard = event.target.closest(".carousel-item");
 
-        if (!isActionKey || !selectedCard || !carouselTrack.contains(selectedCard)) {
+        if (
+            !isActionKey
+            || !selectedCard
+            || !track.contains(selectedCard)
+        ) {
             return;
         }
 
         event.preventDefault();
-
         toggleMythologyCard(selectedCard);
     });
 
     document.addEventListener("click", (event) => {
-        const clickedInsideCarousel = event.target.closest("#mythologyCarouselTrack");
-
-        if (!clickedInsideCarousel) {
+        if (!event.target.closest("#mythologyCarouselTrack")) {
             closeAllMythologyCards();
         }
     });
@@ -1061,7 +1200,11 @@ function getMythologyCarouselViewport() {
 }
 
 function getMythologyCards() {
-    return Array.from(document.querySelectorAll("#mythologyCarouselTrack .carousel-item"));
+    return Array.from(
+        document.querySelectorAll(
+            "#mythologyCarouselTrack .carousel-item"
+        )
+    );
 }
 
 function getCurrentMythologyIndex() {
@@ -1072,9 +1215,20 @@ function getCurrentMythologyIndex() {
         return 0;
     }
 
-    const indexFromDataset = Number(track.dataset.activeIndex || mythologyCarouselState.activeIndex || 0);
+    const datasetIndex = Number(track.dataset.activeIndex);
+    const fallbackIndex = mythologyCarouselState.activeIndex;
 
-    return clampNumber(indexFromDataset, 0, cards.length - 1);
+    return clampNumber(
+        Number.isFinite(datasetIndex) ? datasetIndex : fallbackIndex,
+        0,
+        cards.length - 1
+    );
+}
+
+function getPreferredScrollBehavior() {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth";
 }
 
 function clampNumber(value, min, max) {
@@ -1095,15 +1249,6 @@ function normalizeMythologyKey(value) {
         .replace(/[\u0300-\u036f]/g, "")
         .replace(/ç/g, "c")
         .replace(/\s+/g, "-");
-}
-
-function escapeHTML(value) {
-    return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
 }
 
 /* =====================================================

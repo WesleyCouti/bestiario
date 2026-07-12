@@ -56,9 +56,7 @@
     width: 100%;
     max-width: 100%;
     overflow: hidden;
-    cursor: grab;
     user-select: none;
-    touch-action: pan-y;
     -webkit-user-select: none;
 }
 
@@ -86,7 +84,24 @@
 .carousel-viewport {
     position: relative;
     width: 100%;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x pan-y;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    cursor: grab;
+    scroll-padding-inline: max(18px, calc((100% - var(--myth-card-width)) / 2));
+}
+
+.carousel-viewport::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-viewport:active {
+    cursor: grabbing;
 }
 
 .carousel-track {
@@ -95,33 +110,18 @@
     gap: var(--myth-card-gap);
     width: max-content;
     max-width: none;
-    transform: translateX(0);
-    transition: transform 0.45s ease;
-    will-change: transform;
+    padding-inline: max(18px, calc((100% - var(--myth-card-width)) / 2));
+    transform: none !important;
+    transition: none !important;
+    will-change: auto;
     animation: none !important;
-    cursor: grab;
-}
-
-.carousel-viewport.is-dragging,
-.carousel-track.is-dragging {
-    cursor: grabbing;
-}
-
-.carousel-track.is-dragging {
-    transition: none;
-    user-select: none;
-    -webkit-user-drag: none;
-}
-
-.carousel-track.is-dragging .carousel-item,
-.carousel-track.is-dragging img,
-.carousel-track.is-dragging a {
-    pointer-events: none;
 }
 
 #mythologyCarouselTrack .carousel-item {
     flex: 0 0 var(--myth-card-width);
     width: var(--myth-card-width);
+    scroll-snap-align: center;
+    scroll-snap-stop: normal;
 }
 
 /* =====================================================
@@ -442,8 +442,8 @@
         transition: none;
     }
 
-    .carousel-track {
-        will-change: auto;
+    .carousel-viewport {
+        scroll-behavior: auto;
     }
 }
 
@@ -499,11 +499,6 @@
         --myth-card-width: min(76vw, 330px);
         --myth-card-gap: 18px;
         --myth-edge-fade: 26px;
-    }
-
-    .carousel-track {
-        padding-left: max(18px, calc((100% - var(--myth-card-width)) / 2));
-        padding-right: max(18px, calc((100% - var(--myth-card-width)) / 2));
     }
 
     .mythology-carousel-arrow {
@@ -576,11 +571,6 @@
         --myth-card-width: min(78vw, 300px);
         --myth-card-gap: 14px;
         --myth-edge-fade: 18px;
-    }
-
-    .carousel-track {
-        padding-left: max(14px, calc((100% - var(--myth-card-width)) / 2));
-        padding-right: max(14px, calc((100% - var(--myth-card-width)) / 2));
     }
 
     .myth-front-overlay {
