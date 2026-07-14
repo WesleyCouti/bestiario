@@ -1974,7 +1974,7 @@ body {
     text-align: center;
 }
 
-.mythology-timeline-header span {
+.mythology-timeline-header>.timeline-kicker {
     display: block;
     margin-bottom: 16px;
     color: var(--myth-gold);
@@ -2343,18 +2343,21 @@ body {
     gap: 12px;
 }
 
-.timeline-title-ornament span {
+.timeline-title-ornament>span {
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(129, 199, 132, 0.72));
 }
 
-.timeline-title-ornament span:last-child {
+.timeline-title-ornament>span:last-child {
     background: linear-gradient(90deg, rgba(129, 199, 132, 0.72), transparent);
 }
 
 .timeline-title-ornament small {
+    box-sizing: border-box;
     width: 34px;
     height: 34px;
+    margin: 0;
+    padding: 0;
     display: grid;
     place-items: center;
     border: 1px solid rgba(129, 199, 132, 0.42);
@@ -2373,7 +2376,17 @@ body {
 }
 
 .mythology-timeline-premium .timeline-title-ornament small>span {
-    display: block;
+    width: auto;
+    height: auto;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    color: inherit;
+    font-size: inherit;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    background: none;
     transform: rotate(-45deg);
 }
 
@@ -7025,7 +7038,7 @@ body {
     .mythology-intro-tag,
     .mythology-explains-title,
     .mythology-globe-text .section-label,
-    .mythology-timeline-header span {
+    .mythology-timeline-header>.timeline-kicker {
         font-size: 0.70rem;
         letter-spacing: 3px;
     }

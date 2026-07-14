@@ -245,7 +245,7 @@ const MYTHOLOGIES = Object.freeze([
         image: "./assets/images/mitologia/page-mitologia-personagens/mitologia-grega.png",
         icon: "🏛",
         description: "Deuses do Olimpo, heróis lendários e mitos que moldaram a civilização ocidental.",
-        url: "./mitologias/grega.html"
+        url: "./mythologies/mythology-detail.html?mythology=greek"
     },
     {
         title: "Haitiana",
