@@ -22,25 +22,29 @@
 ===================================================== */
 
 .infinite-carousel-section {
-    position: relative;
-    padding: 160px 0;
-    overflow: hidden;
-    background:
-        radial-gradient(circle at 50% 20%, rgba(129, 199, 132, 0.06), transparent 35%),
-        linear-gradient(180deg, transparent, rgba(5, 16, 11, 0.42));
+  position: relative;
+  padding: 160px 0;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(129, 199, 132, 0.06),
+      transparent 35%
+    ),
+    linear-gradient(180deg, transparent, rgba(5, 16, 11, 0.42));
 }
 
 .carousel-header {
-    position: relative;
-    z-index: 3;
-    margin-bottom: 60px;
+  position: relative;
+  z-index: 3;
+  margin-bottom: 60px;
 }
 
 .carousel-header h2 {
-    margin-top: 12px;
-    color: var(--home-text-cream);
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 1;
+  margin-top: 12px;
+  color: var(--home-text-cream);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
 }
 
 /* =====================================================
@@ -48,91 +52,101 @@
 ===================================================== */
 
 .infinite-carousel {
-    --myth-card-width: 340px;
-    --myth-card-gap: 28px;
-    --myth-edge-fade: 150px;
-    --myth-track-padding: 82px;
+  --myth-card-width: 340px;
+  --myth-card-gap: 28px;
+  --myth-edge-fade: 150px;
+  --myth-track-padding: 82px;
 
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    overflow: visible;
-    user-select: none;
-    -webkit-user-select: none;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .infinite-carousel::before,
 .infinite-carousel::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    z-index: 5;
-    width: var(--myth-edge-fade);
-    height: 100%;
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  width: var(--myth-edge-fade);
+  height: 100%;
+  pointer-events: none;
 }
 
 .infinite-carousel::before {
-    left: 0;
-    background: linear-gradient(to right, rgba(1, 12, 8, 1), rgba(1, 12, 8, 0.70), transparent);
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(1, 12, 8, 1),
+    rgba(1, 12, 8, 0.7),
+    transparent
+  );
 }
 
 .infinite-carousel::after {
-    right: 0;
-    background: linear-gradient(to left, rgba(1, 12, 8, 1), rgba(1, 12, 8, 0.70), transparent);
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(1, 12, 8, 1),
+    rgba(1, 12, 8, 0.7),
+    transparent
+  );
 }
 
 .carousel-viewport {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    overscroll-behavior-x: contain;
-    touch-action: pan-x pan-y;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    cursor: grab;
-    scroll-padding-inline: var(--myth-track-padding);
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x pan-y;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  scroll-padding-inline: var(--myth-track-padding);
 }
 
 .carousel-viewport::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .carousel-viewport:active {
-    cursor: grabbing;
+  cursor: grabbing;
 }
 
 .carousel-track {
-    display: flex;
-    align-items: stretch;
-    gap: var(--myth-card-gap);
-    width: max-content;
-    max-width: none;
-    justify-content: flex-start;
-    padding-inline: var(--myth-track-padding);
-    transform: none !important;
-    transition: none !important;
-    will-change: auto;
-    animation: none !important;
+  display: flex;
+  align-items: stretch;
+  gap: var(--myth-card-gap);
+  width: max-content;
+  max-width: none;
+  justify-content: flex-start;
+  padding-inline: var(--myth-track-padding);
+  transform: none !important;
+  transition: none !important;
+  will-change: auto;
+  animation: none !important;
 }
 
 #mythologyCarouselTrack .carousel-item {
-    flex: 0 0 var(--myth-card-width);
-    width: var(--myth-card-width);
-    scroll-snap-align: center;
-    scroll-snap-stop: normal;
+  flex: 0 0 var(--myth-card-width);
+  width: var(--myth-card-width);
+  scroll-snap-align: center;
+  scroll-snap-stop: normal;
 }
 
 #mythologyCarouselTrack .carousel-item:first-child {
-    scroll-snap-align: start;
+  scroll-snap-align: start;
 }
 
 #mythologyCarouselTrack .carousel-item:last-child {
-    scroll-snap-align: end;
+  scroll-snap-align: end;
 }
 
 /* =====================================================
@@ -140,66 +154,66 @@
 ===================================================== */
 
 .mythology-carousel-arrow {
-    position: absolute;
-    top: 50%;
-    z-index: 30;
-    width: 54px;
-    height: 54px;
-    display: grid;
-    place-items: center;
-    border: 1px solid rgba(201, 162, 74, 0.48);
-    border-radius: 50%;
-    background: rgba(2, 12, 8, 0.82);
-    color: var(--home-gold-soft);
-    font-size: 2rem;
-    line-height: 1;
-    cursor: pointer;
-    transform: translateY(-50%);
-    box-shadow:
-        inset 0 0 14px rgba(201, 162, 74, 0.06),
-        0 14px 30px rgba(0, 0, 0, 0.32);
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transition:
-        border-color 0.25s ease,
-        background 0.25s ease,
-        box-shadow 0.25s ease,
-        transform 0.25s ease;
+  position: absolute;
+  top: 50%;
+  z-index: 30;
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(201, 162, 74, 0.48);
+  border-radius: 50%;
+  background: rgba(2, 12, 8, 0.82);
+  color: var(--home-gold-soft);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+  box-shadow:
+    inset 0 0 14px rgba(201, 162, 74, 0.06),
+    0 14px 30px rgba(0, 0, 0, 0.32);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
 .mythology-carousel-prev {
-    left: 20px;
+  left: 20px;
 }
 
 .mythology-carousel-next {
-    right: 20px;
+  right: 20px;
 }
 
 .mythology-carousel-arrow:hover,
 .mythology-carousel-arrow:focus-visible {
-    transform: translateY(-50%) scale(1.06);
-    border-color: rgba(241, 215, 138, 0.90);
-    background: rgba(7, 28, 18, 0.96);
-    box-shadow:
-        inset 0 0 16px rgba(201, 162, 74, 0.08),
-        0 0 24px rgba(201, 162, 74, 0.16),
-        0 16px 34px rgba(0, 0, 0, 0.36);
+  transform: translateY(-50%) scale(1.06);
+  border-color: rgba(241, 215, 138, 0.9);
+  background: rgba(7, 28, 18, 0.96);
+  box-shadow:
+    inset 0 0 16px rgba(201, 162, 74, 0.08),
+    0 0 24px rgba(201, 162, 74, 0.16),
+    0 16px 34px rgba(0, 0, 0, 0.36);
 }
 
 .mythology-carousel-arrow:focus-visible {
-    outline: 2px solid var(--home-gold-soft);
-    outline-offset: 4px;
+  outline: 2px solid var(--home-gold-soft);
+  outline-offset: 4px;
 }
 
 .mythology-carousel-arrow:disabled {
-    opacity: 1;
-    visibility: visible;
-    cursor: pointer;
-    pointer-events: auto;
-    box-shadow:
-        inset 0 0 14px rgba(201, 162, 74, 0.06),
-        0 14px 30px rgba(0, 0, 0, 0.32);
+  opacity: 1;
+  visibility: visible;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow:
+    inset 0 0 14px rgba(201, 162, 74, 0.06),
+    0 14px 30px rgba(0, 0, 0, 0.32);
 }
 
 /* =====================================================
@@ -210,110 +224,110 @@
 ===================================================== */
 
 .myth-flip-front {
-    position: relative;
-    overflow: hidden;
-    background: #020806;
+  position: relative;
+  overflow: hidden;
+  background: #020806;
 }
 
 .myth-flip-front img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    filter: none;
-    opacity: 1;
-    mix-blend-mode: normal;
-    transform: none;
-    transition: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  filter: none;
+  opacity: 1;
+  mix-blend-mode: normal;
+  transform: none;
+  transition: none;
 }
 
 .carousel-item:hover .myth-flip-front img,
 .carousel-item.is-active .myth-flip-front img {
-    transform: none;
+  transform: none;
 }
 
 .myth-flip-front::before,
 .myth-flip-front::after {
-    content: none;
-    display: none;
+  content: none;
+  display: none;
 }
 
 .myth-symbol-badge {
-    position: absolute;
-    top: 22px;
-    right: 22px;
-    z-index: 4;
-    width: 58px;
-    height: 58px;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    border: 1px solid rgba(201, 162, 74, 0.55);
-    border-radius: 50%;
-    background: rgba(2, 12, 8, 0.72);
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.34);
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  z-index: 4;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(201, 162, 74, 0.55);
+  border-radius: 50%;
+  background: rgba(2, 12, 8, 0.72);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.34);
 }
 
 .myth-symbol-badge::before {
-    content: "✦";
-    color: var(--home-gold-soft);
-    font-size: 1.35rem;
-    line-height: 1;
+  content: "✦";
+  color: var(--home-gold-soft);
+  font-size: 1.35rem;
+  line-height: 1;
 }
 
 .myth-front-overlay {
-    position: absolute;
-    right: 34px;
-    bottom: 34px;
-    left: 34px;
-    z-index: 4;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-end;
-    pointer-events: none;
+  position: absolute;
+  right: 34px;
+  bottom: 34px;
+  left: 34px;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  pointer-events: none;
 }
 
 .myth-front-label {
-    margin-bottom: 10px;
-    padding: 8px 13px;
-    border: 1px solid rgba(129, 199, 132, 0.26);
-    border-radius: 999px;
-    background: rgba(2, 12, 8, 0.52);
-    color: var(--home-green);
-    text-transform: uppercase;
-    font-size: 0.72rem;
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: 2.8px;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(6px);
+  margin-bottom: 10px;
+  padding: 8px 13px;
+  border: 1px solid rgba(129, 199, 132, 0.26);
+  border-radius: 999px;
+  background: rgba(2, 12, 8, 0.52);
+  color: var(--home-green);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 2.8px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
 }
 
 .myth-front-overlay h3 {
-    margin: 0;
-    color: #fff;
-    font-size: clamp(2.15rem, 3.1vw, 3.25rem);
-    font-weight: 900;
-    line-height: 0.96;
-    letter-spacing: -1px;
-    text-shadow: 0 3px 16px rgba(0, 0, 0, 0.72);
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2.15rem, 3.1vw, 3.25rem);
+  font-weight: 900;
+  line-height: 0.96;
+  letter-spacing: -1px;
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.72);
 }
 
 .myth-front-overlay h3::after {
-    content: "";
-    display: block;
-    width: 78px;
-    height: 1px;
-    margin-top: 16px;
-    background: linear-gradient(90deg, rgba(201, 162, 74, 0.75), transparent);
+  content: "";
+  display: block;
+  width: 78px;
+  height: 1px;
+  margin-top: 16px;
+  background: linear-gradient(90deg, rgba(201, 162, 74, 0.75), transparent);
 }
 
 .myth-front-overlay p,
 .myth-card-button {
-    display: none;
+  display: none;
 }
 
 /* =====================================================
@@ -321,42 +335,42 @@
 ===================================================== */
 
 .myth-carousel-dots {
-    position: relative;
-    z-index: 4;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 28px;
+  position: relative;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
 }
 
 .myth-carousel-dot {
-    width: 10px;
-    height: 10px;
-    padding: 0;
-    border: 1px solid rgba(201, 162, 74, 0.38);
-    border-radius: 50%;
-    background: rgba(241, 215, 138, 0.24);
-    cursor: default;
-    transition:
-        width 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 1px solid rgba(201, 162, 74, 0.38);
+  border-radius: 50%;
+  background: rgba(241, 215, 138, 0.24);
+  cursor: default;
+  transition:
+    width 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .myth-carousel-dot.is-active {
-    width: 28px;
-    border-radius: 999px;
-    border-color: rgba(241, 215, 138, 0.80);
-    background: rgba(201, 162, 74, 0.88);
+  width: 28px;
+  border-radius: 999px;
+  border-color: rgba(241, 215, 138, 0.8);
+  background: rgba(201, 162, 74, 0.88);
 }
 
 .myth-carousel-lore {
-    max-width: 640px;
-    margin: 22px auto 0;
-    color: rgba(244, 232, 199, 0.68);
-    text-align: center;
-    font-size: 0.95rem;
-    line-height: 1.7;
+  max-width: 640px;
+  margin: 22px auto 0;
+  color: rgba(244, 232, 199, 0.68);
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.7;
 }
 
 /* =====================================================
@@ -364,86 +378,99 @@
 ===================================================== */
 
 .infinite-carousel-section .section-main-button {
-    position: relative;
-    width: fit-content;
-    min-width: 360px;
-    min-height: 70px;
-    margin-top: 26px;
-    padding: 0 74px 0 38px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border: 1px solid rgba(201, 162, 74, 0.58);
-    border-radius: 16px;
-    background:
-        radial-gradient(circle at 18% 0%, rgba(201, 162, 74, 0.12), transparent 46%),
-        linear-gradient(135deg, rgba(5, 18, 12, 0.92), rgba(2, 8, 5, 0.94));
-    color: var(--home-gold-soft);
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 0.82rem;
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: 3px;
-    box-shadow:
-        inset 0 0 18px rgba(201, 162, 74, 0.045),
-        0 16px 34px rgba(0, 0, 0, 0.24);
-    transition:
-        border-color 0.3s ease,
-        background 0.3s ease,
-        box-shadow 0.3s ease;
+  position: relative;
+  width: fit-content;
+  min-width: 360px;
+  min-height: 70px;
+  margin-top: 26px;
+  padding: 0 74px 0 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(201, 162, 74, 0.58);
+  border-radius: 16px;
+  background:
+    radial-gradient(
+      circle at 18% 0%,
+      rgba(201, 162, 74, 0.12),
+      transparent 46%
+    ),
+    linear-gradient(135deg, rgba(5, 18, 12, 0.92), rgba(2, 8, 5, 0.94));
+  color: var(--home-gold-soft);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 3px;
+  box-shadow:
+    inset 0 0 18px rgba(201, 162, 74, 0.045),
+    0 16px 34px rgba(0, 0, 0, 0.24);
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .infinite-carousel-section .section-main-button::before {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    border-radius: inherit;
-    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.12), transparent);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .infinite-carousel-section .section-main-button .button-text,
 .infinite-carousel-section .section-main-button span:not(.button-arrow) {
-    position: relative;
-    z-index: 2;
-    white-space: nowrap;
+  position: relative;
+  z-index: 2;
+  white-space: nowrap;
 }
 
 .infinite-carousel-section .section-main-button .button-arrow {
-    position: absolute;
-    top: 50%;
-    right: 26px;
-    z-index: 2;
-    color: var(--home-gold-soft);
-    font-size: 1.3rem;
-    line-height: 1;
-    transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  right: 26px;
+  z-index: 2;
+  color: var(--home-gold-soft);
+  font-size: 1.3rem;
+  line-height: 1;
+  transform: translateY(-50%);
 }
 
 .infinite-carousel-section .section-main-button:hover,
 .infinite-carousel-section .section-main-button:focus-visible {
-    border-color: rgba(241, 215, 138, 0.90);
-    background:
-        radial-gradient(circle at 18% 0%, rgba(201, 162, 74, 0.18), transparent 46%),
-        linear-gradient(135deg, rgba(7, 28, 18, 0.96), rgba(2, 10, 7, 0.98));
-    box-shadow:
-        inset 0 0 20px rgba(201, 162, 74, 0.065),
-        0 0 26px rgba(201, 162, 74, 0.16),
-        0 20px 42px rgba(0, 0, 0, 0.30);
+  border-color: rgba(241, 215, 138, 0.9);
+  background:
+    radial-gradient(
+      circle at 18% 0%,
+      rgba(201, 162, 74, 0.18),
+      transparent 46%
+    ),
+    linear-gradient(135deg, rgba(7, 28, 18, 0.96), rgba(2, 10, 7, 0.98));
+  box-shadow:
+    inset 0 0 20px rgba(201, 162, 74, 0.065),
+    0 0 26px rgba(201, 162, 74, 0.16),
+    0 20px 42px rgba(0, 0, 0, 0.3);
 }
 
 .infinite-carousel-section .section-main-button:hover::before,
 .infinite-carousel-section .section-main-button:focus-visible::before {
-    opacity: 1;
+  opacity: 1;
 }
 
 .infinite-carousel-section .section-main-button:focus-visible {
-    outline: 2px solid var(--home-gold-soft);
-    outline-offset: 4px;
+  outline: 2px solid var(--home-gold-soft);
+  outline-offset: 4px;
 }
 
 /* =====================================================
@@ -451,153 +478,162 @@
 ===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
+  .carousel-track,
+  .myth-carousel-dot,
+  .mythology-carousel-arrow,
+  .infinite-carousel-section .section-main-button,
+  .infinite-carousel-section .section-main-button::before {
+    transition: none;
+  }
 
-    .carousel-track,
-    .myth-carousel-dot,
-    .mythology-carousel-arrow,
-    .infinite-carousel-section .section-main-button,
-    .infinite-carousel-section .section-main-button::before {
-        transition: none;
-    }
-
-    .carousel-viewport {
-        scroll-behavior: auto;
-    }
+  .carousel-viewport {
+    scroll-behavior: auto;
+  }
 }
 
 @media (max-width: 1100px) {
-    .infinite-carousel {
-        --myth-card-width: 315px;
-        --myth-card-gap: 24px;
-        --myth-edge-fade: 110px;
-        --myth-track-padding: 68px;
-    }
+  .infinite-carousel {
+    --myth-card-width: 315px;
+    --myth-card-gap: 24px;
+    --myth-edge-fade: 110px;
+    --myth-track-padding: 68px;
+  }
 }
 
 @media (max-width: 900px) {
-    .infinite-carousel-section {
-        padding: 120px 0;
-    }
+  .infinite-carousel-section {
+    padding: 120px 0;
+  }
 
-    .carousel-header {
-        margin-bottom: 44px;
-    }
+  .carousel-header {
+    margin-bottom: 44px;
+  }
 
-    .infinite-carousel {
-        --myth-card-width: 290px;
-        --myth-card-gap: 22px;
-        --myth-edge-fade: 90px;
-        --myth-track-padding: 56px;
-    }
+  .infinite-carousel {
+    --myth-card-width: 290px;
+    --myth-card-gap: 22px;
+    --myth-edge-fade: 90px;
+    --myth-track-padding: 56px;
+  }
 
-    .myth-front-overlay {
-        right: 26px;
-        bottom: 28px;
-        left: 26px;
-    }
+  .myth-front-overlay {
+    right: 26px;
+    bottom: 28px;
+    left: 26px;
+  }
 
-    .myth-symbol-badge {
-        width: 52px;
-        height: 52px;
-    }
+  .myth-symbol-badge {
+    width: 52px;
+    height: 52px;
+  }
 }
 
 @media (max-width: 600px) {
-    .infinite-carousel-section {
-        padding: 90px 0;
-    }
+  .infinite-carousel-section {
+    padding: 90px 0;
+  }
 
-    .carousel-header {
-        margin-bottom: 34px;
-    }
+  .carousel-header {
+    margin-bottom: 34px;
+  }
 
-    .carousel-header h2 {
-        line-height: 1.12;
-    }
+  .carousel-header h2 {
+    line-height: 1.12;
+  }
 
-    .infinite-carousel {
-        --myth-card-width: min(76vw, 330px);
-        --myth-card-gap: 18px;
-        --myth-edge-fade: 26px;
-        --myth-track-padding: 18px;
-    }
+  .infinite-carousel {
+    --myth-card-width: min(76vw, 330px);
+    --myth-card-gap: 18px;
+    --myth-edge-fade: 26px;
+    --myth-track-padding: 18px;
+  }
 
-    .mythology-carousel-arrow {
-        width: 44px;
-        height: 44px;
-        font-size: 1.55rem;
-    }
+  .mythology-carousel-arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 1.55rem;
+  }
 
-    .mythology-carousel-prev {
-        left: 8px;
-    }
+  .mythology-carousel-prev {
+    left: 8px;
+  }
 
-    .mythology-carousel-next {
-        right: 8px;
-    }
+  .mythology-carousel-next {
+    right: 8px;
+  }
 
-    .myth-front-overlay {
-        right: 22px;
-        bottom: 24px;
-        left: 22px;
-    }
+  .myth-front-overlay {
+    right: 22px;
+    bottom: 24px;
+    left: 22px;
+  }
 
-    .myth-front-label {
-        padding: 7px 11px;
-        font-size: 0.64rem;
-        letter-spacing: 2.2px;
-    }
+  .myth-front-label {
+    padding: 7px 11px;
+    font-size: 0.64rem;
+    letter-spacing: 2.2px;
+  }
 
-    .myth-front-overlay h3 {
-        font-size: clamp(1.9rem, 11vw, 2.55rem);
-    }
+  .myth-front-overlay h3 {
+    font-size: clamp(1.9rem, 11vw, 2.55rem);
+  }
 
-    .myth-symbol-badge {
-        top: 18px;
-        right: 18px;
-        width: 48px;
-        height: 48px;
-    }
+  .myth-symbol-badge {
+    top: 18px;
+    right: 18px;
+    width: 48px;
+    height: 48px;
+  }
 
-    .myth-carousel-lore {
-        max-width: 330px;
-        padding: 0 16px;
-        font-size: 0.88rem;
-    }
+  .myth-carousel-lore {
+    max-width: 330px;
+    padding: 0 16px;
+    font-size: 0.88rem;
+  }
 
-    .infinite-carousel-section .section-main-button {
-        width: 100%;
-        min-width: 0;
-        min-height: 62px;
-        padding: 0 58px 0 24px;
-        font-size: 0.72rem;
-        letter-spacing: 2px;
-    }
+  .infinite-carousel-section .section-main-button {
+    width: 100%;
+    min-width: 0;
+    min-height: 62px;
+    padding: 0 58px 0 24px;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+  }
 
-    .infinite-carousel-section .section-main-button .button-arrow {
-        right: 22px;
-    }
+  .infinite-carousel-section .section-main-button .button-arrow {
+    right: 22px;
+  }
 }
 
 @media (max-width: 420px) {
-    .infinite-carousel-section {
-        padding: 78px 0;
-    }
+  .infinite-carousel-section {
+    padding: 78px 0;
+  }
 
-    .carousel-header {
-        margin-bottom: 28px;
-    }
+  .carousel-header {
+    margin-bottom: 28px;
+  }
 
-    .infinite-carousel {
-        --myth-card-width: min(78vw, 300px);
-        --myth-card-gap: 14px;
-        --myth-edge-fade: 18px;
-        --myth-track-padding: 14px;
-    }
+  .infinite-carousel {
+    --myth-card-width: min(78vw, 300px);
+    --myth-card-gap: 14px;
+    --myth-edge-fade: 18px;
+    --myth-track-padding: 14px;
+  }
 
-    .myth-front-overlay {
-        right: 18px;
-        bottom: 20px;
-        left: 18px;
-    }
+  .myth-front-overlay {
+    right: 18px;
+    bottom: 20px;
+    left: 18px;
+  }
+}
+
+/* =====================================================
+   INTERAÇÃO DO BOTÃO NO VERSO
+===================================================== */
+
+#mythologyCarouselTrack .carousel-item.is-flipped .myth-button {
+  position: relative;
+  z-index: 50;
+  pointer-events: auto;
 }

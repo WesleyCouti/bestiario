@@ -19,38 +19,42 @@
 ===================================================== */
 
 .flip-card-section {
-    position: relative;
-    overflow: hidden;
-    padding: 140px 0;
-    background:
-        radial-gradient(circle at 50% 20%, rgba(129, 199, 132, 0.08), transparent 35%),
-        linear-gradient(180deg, transparent, rgba(5, 16, 11, 0.75));
+  position: relative;
+  overflow: hidden;
+  padding: 140px 0;
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(129, 199, 132, 0.08),
+      transparent 35%
+    ),
+    linear-gradient(180deg, transparent, rgba(5, 16, 11, 0.75));
 }
 
 .flip-card-header {
-    max-width: 720px;
-    margin: 0 auto 60px;
-    padding: 0 20px;
-    text-align: center;
+  max-width: 720px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+  text-align: center;
 }
 
 .flip-card-header h2 {
-    margin: 12px 0 16px;
-    color: var(--home-text-cream);
-    font-size: clamp(1.85rem, 4vw, 2.8rem);
-    line-height: 1.08;
+  margin: 12px 0 16px;
+  color: var(--home-text-cream);
+  font-size: clamp(1.85rem, 4vw, 2.8rem);
+  line-height: 1.08;
 }
 
 .flip-card-header p {
-    color: var(--home-text-muted);
-    font-size: 1.05rem;
-    line-height: 1.8;
+  color: var(--home-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
 }
 
 .flip-card-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* =====================================================
@@ -58,140 +62,137 @@
 ===================================================== */
 
 .flip-card {
-    width: 360px;
-    height: 530px;
-    cursor: pointer;
-    perspective: 1200px;
-    outline: none;
+  width: 360px;
+  height: 530px;
+  cursor: pointer;
+  perspective: 1200px;
+  outline: none;
 }
 
 .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.8s ease-in-out;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease-in-out;
 }
 
 .flip-card:hover .flip-card-inner,
 .flip-card:focus-within .flip-card-inner,
 .flip-card.is-flipped .flip-card-inner {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .flip-card:focus-visible {
-    outline: 2px solid var(--home-gold-soft);
-    outline-offset: 8px;
-    border-radius: 24px;
+  outline: 2px solid var(--home-gold-soft);
+  outline-offset: 8px;
+  border-radius: 24px;
 }
 
 .flip-card-face {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    border: 1px solid rgba(129, 199, 132, 0.28);
-    border-radius: 24px;
-    background: rgba(10, 24, 18, 0.95);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    box-shadow:
-        0 0 0 1px rgba(129, 199, 132, 0.08),
-        0 22px 50px rgba(0, 0, 0, 0.45);
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid rgba(129, 199, 132, 0.28);
+  border-radius: 24px;
+  background: rgba(10, 24, 18, 0.95);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow:
+    0 0 0 1px rgba(129, 199, 132, 0.08),
+    0 22px 50px rgba(0, 0, 0, 0.45);
 }
 
 .flip-card-front img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    transition: transform 0.8s ease;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.8s ease;
 }
 
 .flip-card:hover .flip-card-front img,
 .flip-card:focus-within .flip-card-front img,
 .flip-card.is-flipped .flip-card-front img {
-    transform: scale(1.08);
+  transform: scale(1.08);
 }
 
 .flip-card-overlay {
-    position: absolute;
-    inset: auto 0 0 0;
-    padding: 32px 28px;
-    background:
-        linear-gradient(to top,
-            rgba(2, 7, 5, 0.95),
-            transparent);
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 32px 28px;
+  background: linear-gradient(to top, rgba(2, 7, 5, 0.95), transparent);
 }
 
 .flip-card-overlay span,
 .flip-card-category {
-    display: inline-block;
-    margin-bottom: 12px;
-    color: var(--home-green);
-    font-size: 0.78rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--home-green);
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .flip-card-overlay h3,
 .flip-card-back h3 {
-    margin: 0 0 12px;
-    color: var(--home-text-cream);
-    font-size: 1.8rem;
-    line-height: 1.1;
+  margin: 0 0 12px;
+  color: var(--home-text-cream);
+  font-size: 1.8rem;
+  line-height: 1.1;
 }
 
 .flip-card-overlay p {
-    margin: 0;
-    color: var(--home-text-muted);
-    line-height: 1.6;
+  margin: 0;
+  color: var(--home-text-muted);
+  line-height: 1.6;
 }
 
 .flip-card-back {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 42px 34px;
-    overflow-y: auto;
-    transform: rotateY(180deg);
-    background:
-        radial-gradient(circle at top, rgba(129, 199, 132, 0.12), transparent 45%),
-        linear-gradient(135deg, rgba(17, 36, 27, 0.96), rgba(5, 16, 11, 0.98));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 42px 34px;
+  overflow-y: auto;
+  transform: rotateY(180deg);
+  background:
+    radial-gradient(circle at top, rgba(129, 199, 132, 0.12), transparent 45%),
+    linear-gradient(135deg, rgba(17, 36, 27, 0.96), rgba(5, 16, 11, 0.98));
 }
 
 .flip-card-back p {
-    margin: 0 0 30px;
-    color: var(--home-text-muted);
-    font-size: 1rem;
-    line-height: 1.8;
+  margin: 0 0 30px;
+  color: var(--home-text-muted);
+  font-size: 1rem;
+  line-height: 1.8;
 }
 
 .flip-card-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 13px 24px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #2e7d32, #43a047);
-    color: #ffffff;
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 0 20px rgba(129, 199, 132, 0.22);
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2e7d32, #43a047);
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(129, 199, 132, 0.22);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .flip-card-button:hover,
 .flip-card-button:focus-visible {
-    transform: translateY(-3px);
-    box-shadow: 0 0 30px rgba(129, 199, 132, 0.38);
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(129, 199, 132, 0.38);
 }
 
 .flip-card-button:focus-visible {
-    outline: 2px solid var(--home-gold-soft);
-    outline-offset: 4px;
+  outline: 2px solid var(--home-gold-soft);
+  outline-offset: 4px;
 }
 
 /* =====================================================
@@ -205,173 +206,164 @@
 ===================================================== */
 
 .carousel-item {
-    flex: 0 0 var(--myth-card-width, 340px);
-    width: var(--myth-card-width, 340px);
-    height: 480px;
-    overflow: visible;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    perspective: 1400px;
-    outline: none;
-    transition:
-        transform 0.35s ease,
-        z-index 0.35s ease;
+  flex: 0 0 var(--myth-card-width, 340px);
+  width: var(--myth-card-width, 340px);
+  height: 480px;
+  overflow: visible;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  perspective: 1400px;
+  outline: none;
+  transition:
+    transform 0.35s ease,
+    z-index 0.35s ease;
 }
 
 .carousel-item:hover,
 .carousel-item:focus-within {
-    z-index: 10;
-}
-
-.carousel-item.is-flipped {
-    z-index: 20;
+  z-index: 10;
 }
 
 .carousel-item:focus-visible {
-    outline: 2px solid var(--home-gold-soft);
-    outline-offset: 6px;
-    border-radius: 24px;
+  outline: 2px solid var(--home-gold-soft);
+  outline-offset: 6px;
+  border-radius: 24px;
 }
 
 .carousel-item.is-flipped {
-    z-index: 20;
+  z-index: 20;
 }
 
 .myth-flip-card {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    isolation: isolate;
-    perspective: 1400px;
-    -webkit-perspective: 1400px;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  isolation: isolate;
+  perspective: 1400px;
+  -webkit-perspective: 1400px;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .myth-flip-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform: translateZ(0) rotateY(0deg);
-    -webkit-transform: translateZ(0) rotateY(0deg);
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    transition: transform 0.72s cubic-bezier(0.22, 0.61, 0.36, 1);
-    -webkit-transition: -webkit-transform 0.72s cubic-bezier(0.22, 0.61, 0.36, 1);
-    will-change: transform;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(0) rotateY(0deg);
+  -webkit-transform: translateZ(0) rotateY(0deg);
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform 0.72s cubic-bezier(0.22, 0.61, 0.36, 1);
+  -webkit-transition: -webkit-transform 0.72s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
 }
 
 /* Mantém o carrossel manual: sem flip automático no hover/foco */
 #mythologyCarouselTrack .carousel-item:not(.is-flipped):hover .myth-flip-inner,
 #mythologyCarouselTrack .carousel-item:not(.is-flipped):focus .myth-flip-inner,
-#mythologyCarouselTrack .carousel-item:not(.is-flipped):focus-within .myth-flip-inner {
-    transform: translateZ(0) rotateY(0deg);
-    -webkit-transform: translateZ(0) rotateY(0deg);
+#mythologyCarouselTrack
+  .carousel-item:not(.is-flipped):focus-within
+  .myth-flip-inner {
+  transform: translateZ(0) rotateY(0deg);
+  -webkit-transform: translateZ(0) rotateY(0deg);
 }
 
 #mythologyCarouselTrack .carousel-item.is-flipped .myth-flip-inner {
-    transform: translateZ(0) rotateY(180deg) !important;
-    -webkit-transform: translateZ(0) rotateY(180deg) !important;
+  transform: translateZ(0) rotateY(180deg) !important;
+  -webkit-transform: translateZ(0) rotateY(180deg) !important;
 }
 
 .myth-flip-front,
 .myth-flip-back {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    border: 1px solid rgba(129, 199, 132, 0.18);
-    border-radius: 24px;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    visibility: visible;
-    box-shadow:
-        0 0 0 1px rgba(129, 199, 132, 0.06),
-        0 20px 50px rgba(0, 0, 0, 0.35);
-    transition:
-        border-color 0.4s ease,
-        box-shadow 0.4s ease;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid rgba(129, 199, 132, 0.18);
+  border-radius: 24px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  box-shadow:
+    0 0 0 1px rgba(129, 199, 132, 0.06),
+    0 20px 50px rgba(0, 0, 0, 0.35);
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .carousel-item:hover .myth-flip-front,
 .carousel-item:focus-visible .myth-flip-front,
 .carousel-item.is-flipped .myth-flip-front,
 .carousel-item.is-flipped .myth-flip-back {
-    border-color: rgba(129, 199, 132, 0.36);
-    box-shadow:
-        0 0 0 1px rgba(129, 199, 132, 0.12),
-        0 0 28px rgba(129, 199, 132, 0.14),
-        0 24px 60px rgba(0, 0, 0, 0.45);
+  border-color: rgba(129, 199, 132, 0.36);
+  box-shadow:
+    0 0 0 1px rgba(129, 199, 132, 0.12),
+    0 0 28px rgba(129, 199, 132, 0.14),
+    0 24px 60px rgba(0, 0, 0, 0.45);
 }
 
 /* =====================================================
    06.4 FRENTE DO CARD DE MITOLOGIA
+   -----------------------------------------------------
+   A face frontal fica interativa apenas enquanto o card
+   não está virado. Ao virar, ela é ocultada também para
+   o sistema de hit testing do navegador.
 ===================================================== */
 
-#mythologyCarouselTrack .myth-flip-front {
-    pointer-events: auto;
-}
-
-#mythologyCarouselTrack .myth-flip-back {
-    pointer-events: none;
+.myth-flip-front {
+  z-index: 2;
+  visibility: visible;
+  pointer-events: auto;
+  transform: rotateY(0deg) translateZ(1px);
+  -webkit-transform: rotateY(0deg) translateZ(1px);
+  background: #08130d;
 }
 
 #mythologyCarouselTrack .carousel-item.is-flipped .myth-flip-front {
-    pointer-events: none;
-}
-
-#mythologyCarouselTrack .carousel-item.is-flipped .myth-flip-back {
-    pointer-events: auto;
-}
-
-.myth-flip-front {
-    z-index: 2;
-    transform: translateZ(1px) rotateY(0deg);
-    -webkit-transform: translateZ(1px) rotateY(0deg);
-    background: #08130d;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .myth-flip-front img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    transition:
-        transform 0.8s ease,
-        filter 0.5s ease;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  pointer-events: none;
+  transition:
+    transform 0.8s ease,
+    filter 0.5s ease;
 }
 
 .carousel-item.is-flipped .myth-flip-front img {
-    transform: scale(1.08);
-    filter: brightness(1.05) contrast(1.08) saturate(1.08);
+  transform: scale(1.08);
+  filter: brightness(1.05) contrast(1.08) saturate(1.08);
 }
 
 .myth-front-overlay {
-    position: absolute;
-    inset: auto 0 0 0;
-    padding: 30px;
-    background:
-        linear-gradient(to top,
-            rgba(2, 7, 5, 0.96),
-            transparent);
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 30px;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(2, 7, 5, 0.96), transparent);
 }
 
 .myth-front-overlay span {
-    display: inline-block;
-    margin-bottom: 12px;
-    color: var(--home-green);
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--home-green);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .myth-front-overlay h3 {
-    margin: 0;
-    color: #ffffff;
-    font-size: 2rem;
-    line-height: 1.08;
+  margin: 0;
+  color: #ffffff;
+  font-size: 2rem;
+  line-height: 1.08;
 }
 
 /* =====================================================
@@ -379,66 +371,81 @@
 ===================================================== */
 
 .myth-flip-back {
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 36px;
-    overflow-y: auto;
-    transform: translateZ(2px) rotateY(180deg);
-    -webkit-transform: translateZ(2px) rotateY(180deg);
-    background:
-        radial-gradient(circle at top, rgba(129, 199, 132, 0.12), transparent 40%),
-        linear-gradient(135deg, rgba(17, 36, 27, 0.98), rgba(5, 16, 11, 1));
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 36px;
+  overflow-y: auto;
+  visibility: hidden;
+  pointer-events: none;
+  transform: rotateY(180deg) translateZ(1px);
+  -webkit-transform: rotateY(180deg) translateZ(1px);
+  background:
+    radial-gradient(circle at top, rgba(129, 199, 132, 0.12), transparent 40%),
+    linear-gradient(135deg, rgba(17, 36, 27, 0.98), rgba(5, 16, 11, 1));
+}
+
+#mythologyCarouselTrack .carousel-item.is-flipped .myth-flip-back {
+  z-index: 3;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .myth-category {
-    display: inline-block;
-    margin-bottom: 14px;
-    color: var(--home-green);
-    font-size: 0.72rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--home-green);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .myth-flip-back h3 {
-    margin: 0 0 18px;
-    color: var(--home-text-cream);
-    font-size: 2rem;
-    line-height: 1.1;
+  margin: 0 0 18px;
+  color: var(--home-text-cream);
+  font-size: 2rem;
+  line-height: 1.1;
 }
 
 .myth-flip-back p {
-    margin: 0 0 30px;
-    color: var(--home-text-muted);
-    line-height: 1.8;
+  margin: 0 0 30px;
+  color: var(--home-text-muted);
+  line-height: 1.8;
 }
 
 .myth-button {
-    width: fit-content;
-    padding: 14px 24px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #2e7d32, #43a047);
-    color: #ffffff;
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 0 20px rgba(129, 199, 132, 0.22);
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+  position: relative;
+  z-index: 20;
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  padding: 14px 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2e7d32, #43a047);
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(129, 199, 132, 0.22);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .myth-button:hover,
 .myth-button:focus-visible {
-    transform: translateY(-3px);
-    box-shadow: 0 0 28px rgba(129, 199, 132, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 0 28px rgba(129, 199, 132, 0.35);
 }
 
 .myth-button:focus-visible {
-    outline: 2px solid var(--home-gold-soft);
-    outline-offset: 4px;
+  outline: 2px solid var(--home-gold-soft);
+  outline-offset: 4px;
 }
-
 
 /* =====================================================
    06.5.1 CORREÇÃO SAFARI / IOS
@@ -448,39 +455,48 @@
 ===================================================== */
 
 @supports (-webkit-touch-callout: none) {
+  #mythologyCarouselTrack .carousel-item,
+  #mythologyCarouselTrack .myth-flip-card,
+  #mythologyCarouselTrack .myth-flip-inner {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
 
-    #mythologyCarouselTrack .carousel-item,
-    #mythologyCarouselTrack .myth-flip-card,
-    #mythologyCarouselTrack .myth-flip-inner {
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-    }
+  #mythologyCarouselTrack .myth-flip-inner {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
 
-    #mythologyCarouselTrack .myth-flip-inner {
-        -webkit-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-    }
+  #mythologyCarouselTrack .myth-flip-front,
+  #mythologyCarouselTrack .myth-flip-back {
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+  }
 
-    #mythologyCarouselTrack .myth-flip-front,
-    #mythologyCarouselTrack .myth-flip-back {
-        -webkit-backface-visibility: hidden !important;
-        backface-visibility: hidden !important;
-    }
+  #mythologyCarouselTrack .myth-flip-front {
+    -webkit-transform: translateZ(1px) rotateY(0deg);
+    transform: translateZ(1px) rotateY(0deg);
+  }
 
-    #mythologyCarouselTrack .myth-flip-front {
-        -webkit-transform: translateZ(1px) rotateY(0deg);
-        transform: translateZ(1px) rotateY(0deg);
-    }
+  #mythologyCarouselTrack .myth-flip-back {
+    -webkit-transform: translateZ(1px) rotateY(180deg);
+    transform: translateZ(1px) rotateY(180deg);
+  }
 
-    #mythologyCarouselTrack .myth-flip-back {
-        -webkit-transform: translateZ(1px) rotateY(180deg);
-        transform: translateZ(1px) rotateY(180deg);
-    }
+  #mythologyCarouselTrack .carousel-item.is-flipped .myth-flip-inner {
+    -webkit-transform: translateZ(0) rotateY(180deg);
+    transform: translateZ(0) rotateY(180deg);
+  }
 
-    #mythologyCarouselTrack .carousel-item.is-flipped .myth-flip-inner {
-        -webkit-transform: translateZ(0) rotateY(180deg);
-        transform: translateZ(0) rotateY(180deg);
-    }
+  #mythologyCarouselTrack .carousel-item.is-flipped .myth-flip-front {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  #mythologyCarouselTrack .carousel-item.is-flipped .myth-flip-back {
+    visibility: visible;
+    pointer-events: auto;
+  }
 }
 
 /* =====================================================
@@ -488,18 +504,17 @@
 ===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
-
-    .flip-card-inner,
-    .myth-flip-inner,
-    .flip-card-front img,
-    .myth-flip-front img,
-    .flip-card-button,
-    .myth-button,
-    .carousel-item,
-    .myth-flip-front,
-    .myth-flip-back {
-        transition: none;
-    }
+  .flip-card-inner,
+  .myth-flip-inner,
+  .flip-card-front img,
+  .myth-flip-front img,
+  .flip-card-button,
+  .myth-button,
+  .carousel-item,
+  .myth-flip-front,
+  .myth-flip-back {
+    transition: none;
+  }
 }
 
 /* =====================================================
@@ -507,187 +522,187 @@
 ===================================================== */
 
 @media (max-width: 900px) {
-    .flip-card-section {
-        padding: 110px 0;
-    }
+  .flip-card-section {
+    padding: 110px 0;
+  }
 
-    .flip-card-header {
-        margin-bottom: 48px;
-    }
+  .flip-card-header {
+    margin-bottom: 48px;
+  }
 
-    .carousel-item {
-        flex-basis: var(--myth-card-width, 290px);
-        width: var(--myth-card-width, 290px);
-        height: 430px;
-    }
+  .carousel-item {
+    flex-basis: var(--myth-card-width, 290px);
+    width: var(--myth-card-width, 290px);
+    height: 430px;
+  }
 
-    .myth-front-overlay {
-        padding: 24px;
-    }
+  .myth-front-overlay {
+    padding: 24px;
+  }
 
-    .myth-flip-back {
-        justify-content: flex-start;
-        padding: 30px;
-    }
+  .myth-flip-back {
+    justify-content: flex-start;
+    padding: 30px;
+  }
 
-    .myth-front-overlay h3,
-    .myth-flip-back h3 {
-        font-size: 1.6rem;
-    }
+  .myth-front-overlay h3,
+  .myth-flip-back h3 {
+    font-size: 1.6rem;
+  }
 
-    .myth-flip-back p {
-        font-size: 0.94rem;
-        line-height: 1.68;
-    }
+  .myth-flip-back p {
+    font-size: 0.94rem;
+    line-height: 1.68;
+  }
 }
 
 @media (max-width: 768px) {
-    .flip-card-section {
-        padding: 100px 0;
-    }
+  .flip-card-section {
+    padding: 100px 0;
+  }
 
-    .flip-card-header {
-        margin-bottom: 44px;
-    }
+  .flip-card-header {
+    margin-bottom: 44px;
+  }
 
-    .flip-card-header p {
-        font-size: 1rem;
-        line-height: 1.7;
-    }
+  .flip-card-header p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
 
-    .flip-card {
-        width: 300px;
-        height: 450px;
-    }
+  .flip-card {
+    width: 300px;
+    height: 450px;
+  }
 
-    .flip-card-back {
-        justify-content: flex-start;
-        padding: 34px 26px;
-    }
+  .flip-card-back {
+    justify-content: flex-start;
+    padding: 34px 26px;
+  }
 
-    .flip-card-overlay {
-        padding: 26px 24px;
-    }
+  .flip-card-overlay {
+    padding: 26px 24px;
+  }
 
-    .flip-card-overlay h3,
-    .flip-card-back h3 {
-        font-size: 1.5rem;
-    }
+  .flip-card-overlay h3,
+  .flip-card-back h3 {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 600px) {
-    .carousel-item {
-        flex-basis: var(--myth-card-width, min(76vw, 330px));
-        width: var(--myth-card-width, min(76vw, 330px));
-        max-width: none;
-    }
+  .carousel-item {
+    flex-basis: var(--myth-card-width, min(76vw, 330px));
+    width: var(--myth-card-width, min(76vw, 330px));
+    max-width: none;
+  }
 }
 
 @media (max-width: 480px) {
-    .flip-card-section {
-        padding: 80px 0;
-    }
+  .flip-card-section {
+    padding: 80px 0;
+  }
 
-    .flip-card-header {
-        margin-bottom: 36px;
-    }
+  .flip-card-header {
+    margin-bottom: 36px;
+  }
 
-    .flip-card {
-        width: min(86vw, 280px);
-        height: 410px;
-    }
+  .flip-card {
+    width: min(86vw, 280px);
+    height: 410px;
+  }
 
-    .flip-card-overlay {
-        padding: 22px 20px;
-    }
+  .flip-card-overlay {
+    padding: 22px 20px;
+  }
 
-    .flip-card-overlay span,
-    .flip-card-category {
-        font-size: 0.68rem;
-        letter-spacing: 1.6px;
-    }
+  .flip-card-overlay span,
+  .flip-card-category {
+    font-size: 0.68rem;
+    letter-spacing: 1.6px;
+  }
 
-    .flip-card-overlay h3,
-    .flip-card-back h3 {
-        font-size: 1.35rem;
-    }
+  .flip-card-overlay h3,
+  .flip-card-back h3 {
+    font-size: 1.35rem;
+  }
 
-    .flip-card-back {
-        padding: 24px;
-    }
+  .flip-card-back {
+    padding: 24px;
+  }
 
-    .flip-card-back p {
-        margin-bottom: 22px;
-        font-size: 0.88rem;
-        line-height: 1.6;
-    }
+  .flip-card-back p {
+    margin-bottom: 22px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
 
-    .carousel-item {
-        height: 390px;
-    }
+  .carousel-item {
+    height: 390px;
+  }
 
-    .myth-front-overlay {
-        padding: 20px;
-    }
+  .myth-front-overlay {
+    padding: 20px;
+  }
 
-    .myth-front-overlay span,
-    .myth-category {
-        font-size: 0.66rem;
-        letter-spacing: 1.6px;
-    }
+  .myth-front-overlay span,
+  .myth-category {
+    font-size: 0.66rem;
+    letter-spacing: 1.6px;
+  }
 
-    .myth-front-overlay h3,
-    .myth-flip-back h3 {
-        font-size: 1.35rem;
-    }
+  .myth-front-overlay h3,
+  .myth-flip-back h3 {
+    font-size: 1.35rem;
+  }
 
-    .myth-flip-back {
-        padding: 24px;
-    }
+  .myth-flip-back {
+    padding: 24px;
+  }
 
-    .myth-flip-back p {
-        margin-bottom: 22px;
-        font-size: 0.88rem;
-        line-height: 1.6;
-    }
+  .myth-flip-back p {
+    margin-bottom: 22px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
 
-    .myth-button,
-    .flip-card-button {
-        padding: 12px 20px;
-        font-size: 0.85rem;
-    }
+  .myth-button,
+  .flip-card-button {
+    padding: 12px 20px;
+    font-size: 0.85rem;
+  }
 }
 
 @media (max-width: 420px) {
-    .carousel-item {
-        flex-basis: var(--myth-card-width, min(78vw, 300px));
-        width: var(--myth-card-width, min(78vw, 300px));
-        max-width: none;
-    }
+  .carousel-item {
+    flex-basis: var(--myth-card-width, min(78vw, 300px));
+    width: var(--myth-card-width, min(78vw, 300px));
+    max-width: none;
+  }
 }
 
 @media (max-width: 360px) {
-    .flip-card {
-        width: min(88vw, 260px);
-        height: 390px;
-    }
+  .flip-card {
+    width: min(88vw, 260px);
+    height: 390px;
+  }
 
-    .carousel-item {
-        height: 370px;
-    }
+  .carousel-item {
+    height: 370px;
+  }
 
-    .myth-front-overlay,
-    .myth-flip-back {
-        padding: 20px;
-    }
+  .myth-front-overlay,
+  .myth-flip-back {
+    padding: 20px;
+  }
 
-    .myth-front-overlay h3,
-    .myth-flip-back h3 {
-        font-size: 1.22rem;
-    }
+  .myth-front-overlay h3,
+  .myth-flip-back h3 {
+    font-size: 1.22rem;
+  }
 
-    .myth-flip-back p {
-        font-size: 0.84rem;
-        line-height: 1.55;
-    }
+  .myth-flip-back p {
+    font-size: 0.84rem;
+    line-height: 1.55;
+  }
 }
