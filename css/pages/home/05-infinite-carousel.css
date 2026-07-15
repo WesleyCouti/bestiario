@@ -51,11 +51,12 @@
     --myth-card-width: 340px;
     --myth-card-gap: 28px;
     --myth-edge-fade: 150px;
+    --myth-track-padding: 82px;
 
     position: relative;
     width: 100%;
     max-width: 100%;
-    overflow: hidden;
+    overflow: visible;
     user-select: none;
     -webkit-user-select: none;
 }
@@ -65,7 +66,7 @@
     content: "";
     position: absolute;
     top: 0;
-    z-index: 6;
+    z-index: 5;
     width: var(--myth-edge-fade);
     height: 100%;
     pointer-events: none;
@@ -83,6 +84,7 @@
 
 .carousel-viewport {
     position: relative;
+    z-index: 2;
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
@@ -93,7 +95,7 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     cursor: grab;
-    scroll-padding-inline: max(18px, calc((100% - var(--myth-card-width)) / 2));
+    scroll-padding-inline: var(--myth-track-padding);
 }
 
 .carousel-viewport::-webkit-scrollbar {
@@ -110,7 +112,8 @@
     gap: var(--myth-card-gap);
     width: max-content;
     max-width: none;
-    padding-inline: max(18px, calc((100% - var(--myth-card-width)) / 2));
+    justify-content: flex-start;
+    padding-inline: var(--myth-track-padding);
     transform: none !important;
     transition: none !important;
     will-change: auto;
@@ -124,6 +127,14 @@
     scroll-snap-stop: normal;
 }
 
+#mythologyCarouselTrack .carousel-item:first-child {
+    scroll-snap-align: start;
+}
+
+#mythologyCarouselTrack .carousel-item:last-child {
+    scroll-snap-align: end;
+}
+
 /* =====================================================
    SETAS DO CARROSSEL
 ===================================================== */
@@ -131,7 +142,7 @@
 .mythology-carousel-arrow {
     position: absolute;
     top: 50%;
-    z-index: 9;
+    z-index: 30;
     width: 54px;
     height: 54px;
     display: grid;
@@ -147,11 +158,14 @@
     box-shadow:
         inset 0 0 14px rgba(201, 162, 74, 0.06),
         0 14px 30px rgba(0, 0, 0, 0.32);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
     transition:
         border-color 0.25s ease,
         background 0.25s ease,
         box-shadow 0.25s ease,
-        opacity 0.25s ease;
+        transform 0.25s ease;
 }
 
 .mythology-carousel-prev {
@@ -164,6 +178,7 @@
 
 .mythology-carousel-arrow:hover,
 .mythology-carousel-arrow:focus-visible {
+    transform: translateY(-50%) scale(1.06);
     border-color: rgba(241, 215, 138, 0.90);
     background: rgba(7, 28, 18, 0.96);
     box-shadow:
@@ -178,10 +193,13 @@
 }
 
 .mythology-carousel-arrow:disabled {
-    opacity: 0.32;
-    cursor: not-allowed;
-    pointer-events: none;
-    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    cursor: pointer;
+    pointer-events: auto;
+    box-shadow:
+        inset 0 0 14px rgba(201, 162, 74, 0.06),
+        0 14px 30px rgba(0, 0, 0, 0.32);
 }
 
 /* =====================================================
@@ -452,6 +470,7 @@
         --myth-card-width: 315px;
         --myth-card-gap: 24px;
         --myth-edge-fade: 110px;
+        --myth-track-padding: 68px;
     }
 }
 
@@ -468,6 +487,7 @@
         --myth-card-width: 290px;
         --myth-card-gap: 22px;
         --myth-edge-fade: 90px;
+        --myth-track-padding: 56px;
     }
 
     .myth-front-overlay {
@@ -499,6 +519,7 @@
         --myth-card-width: min(76vw, 330px);
         --myth-card-gap: 18px;
         --myth-edge-fade: 26px;
+        --myth-track-padding: 18px;
     }
 
     .mythology-carousel-arrow {
@@ -571,6 +592,7 @@
         --myth-card-width: min(78vw, 300px);
         --myth-card-gap: 14px;
         --myth-edge-fade: 18px;
+        --myth-track-padding: 14px;
     }
 
     .myth-front-overlay {

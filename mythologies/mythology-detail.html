@@ -234,16 +234,121 @@
 
             <section class="myth-detail-section myth-detail-genealogy" id="genealogia" aria-labelledby="genealogyTitle">
                 <div class="container">
-                    <header class="myth-detail-section-header">
-                        <span>Relações divinas</span>
+                    <header class="myth-detail-section-header myth-detail-genealogy-header">
+                        <span>Do vazio primordial ao Olimpo</span>
+
+                        <div class="myth-detail-genealogy-ornament" aria-hidden="true">
+                            <span></span>
+                            <small>◇</small>
+                            <span></span>
+                        </div>
+
                         <h2 id="genealogyTitle">Árvore genealógica</h2>
+
+                        <div class="myth-detail-genealogy-divider" aria-hidden="true">
+                            <span></span>
+                            <small>◆</small>
+                            <span></span>
+                        </div>
+
                         <p>
-                            Uma primeira visualização das gerações divinas.
-                            Depois ela poderá receber zoom, filtros e conexões mais complexas.
+                            Acompanhe as linhagens desde Caos e as forças primordiais até os Titãs,
+                            os deuses do Olimpo e os grandes heróis. Todos os personagens cadastrados
+                            na genealogia são apresentados no painel.
                         </p>
                     </header>
 
-                    <div class="myth-detail-genealogy-tree" id="genealogyTree"></div>
+                    <div class="myth-detail-genealogy-stage">
+                        <span class="myth-detail-genealogy-silhouette myth-detail-genealogy-silhouette--left"
+                            aria-hidden="true"></span>
+                        <span class="myth-detail-genealogy-silhouette myth-detail-genealogy-silhouette--right"
+                            aria-hidden="true"></span>
+
+                        <div class="myth-detail-genealogy-layout">
+                            <aside class="myth-detail-genealogy-guide" aria-label="Guia da árvore genealógica">
+                                <div class="myth-detail-genealogy-guide-heading">
+                                    <span class="myth-detail-genealogy-guide-tree" aria-hidden="true">♧</span>
+                                    <span>Árvore genealógica</span>
+                                    <strong>Panteão Grego</strong>
+                                    <p>Dos seres primordiais aos heróis e descendentes mortais.</p>
+                                </div>
+
+                                <div class="myth-detail-genealogy-legend">
+                                    <h3>Como ler</h3>
+                                    <div><i class="is-union" aria-hidden="true"></i><span>União / parceria</span></div>
+                                    <div><i class="is-descent" aria-hidden="true"></i><span>Descendência</span></div>
+                                    <div><i class="is-generation" aria-hidden="true">◇</i><span>Geração</span></div>
+                                </div>
+
+                                <div class="myth-detail-genealogy-guide-tip">
+                                    <span aria-hidden="true">✦</span>
+                                    <p>
+                                        Clique em qualquer personagem para destacar pais,
+                                        parceiros e descendentes diretos.
+                                    </p>
+                                </div>
+                            </aside>
+
+                            <div class="myth-detail-genealogy-main">
+                                <div class="myth-detail-genealogy-toolbar">
+                                    <div class="myth-detail-genealogy-filters" id="genealogyFilters"
+                                        aria-label="Filtros da árvore genealógica"></div>
+
+                                    <button class="myth-detail-genealogy-reset" id="genealogyReset" type="button">
+                                        Limpar destaque
+                                    </button>
+                                </div>
+
+                                <div class="myth-detail-genealogy-summary" id="genealogySummary" aria-live="polite">
+                                </div>
+
+                                <div class="myth-detail-genealogy-navigation"
+                                    aria-label="Controles de navegação da árvore genealógica">
+                                    <div class="myth-detail-genealogy-zoom-controls">
+                                        <button id="genealogyZoomOut" type="button"
+                                            aria-label="Diminuir zoom da árvore">−</button>
+
+                                        <span id="genealogyZoomValue" aria-live="polite">100%</span>
+
+                                        <button id="genealogyZoomIn" type="button"
+                                            aria-label="Aumentar zoom da árvore">+</button>
+
+                                        <button id="genealogyFit" type="button" aria-label="Enquadrar toda a árvore">
+                                            Enquadrar
+                                        </button>
+                                    </div>
+
+                                    <p>
+                                        Use a roda do mouse para aproximar ou afastar.
+                                        Arraste o fundo para mover a árvore.
+                                    </p>
+                                </div>
+
+                                <div class="myth-detail-genealogy-viewport" id="genealogyViewport" tabindex="0"
+                                    aria-label="Árvore genealógica completa. Use a roda do mouse para controlar o zoom e arraste o fundo para navegar.">
+                                    <div class="myth-detail-genealogy-canvas" id="genealogyCanvas">
+                                        <svg class="myth-detail-genealogy-lines" id="genealogyLines"
+                                            aria-hidden="true"></svg>
+                                        <div class="myth-detail-genealogy-tree" id="genealogyTree"></div>
+                                    </div>
+                                </div>
+
+                                <aside class="myth-detail-genealogy-details" id="genealogyDetails" aria-live="polite">
+                                    <div class="myth-detail-genealogy-details-symbol" aria-hidden="true">✦</div>
+
+                                    <div>
+                                        <span>Como explorar</span>
+                                        <h3>Selecione um personagem</h3>
+                                        <p>
+                                            A árvore destacará pais, parceiros e descendentes.
+                                            As linhas douradas indicam descendência e as linhas duplas representam
+                                            uniões.
+                                        </p>
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 

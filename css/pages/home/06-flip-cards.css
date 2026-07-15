@@ -220,9 +220,12 @@
 }
 
 .carousel-item:hover,
-.carousel-item:focus-within,
-.carousel-item.is-flipped {
+.carousel-item:focus-within {
     z-index: 10;
+}
+
+.carousel-item.is-flipped {
+    z-index: 20;
 }
 
 .carousel-item:focus-visible {
@@ -239,6 +242,7 @@
     position: relative;
     width: 100%;
     height: 100%;
+    isolation: isolate;
     perspective: 1400px;
     -webkit-perspective: 1400px;
     transform: translateZ(0);
@@ -253,22 +257,22 @@
     -webkit-transform: translateZ(0) rotateY(0deg);
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    transition: transform 0.9s ease;
-    -webkit-transition: -webkit-transform 0.9s ease;
+    transition: transform 0.72s cubic-bezier(0.22, 0.61, 0.36, 1);
+    -webkit-transition: -webkit-transform 0.72s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform;
 }
 
-/* Mantém o carrossel manual: sem flip no hover/foco */
-#mythologyCarouselTrack .carousel-item:hover .myth-flip-inner,
-#mythologyCarouselTrack .carousel-item:focus .myth-flip-inner,
-#mythologyCarouselTrack .carousel-item:focus-within .myth-flip-inner {
+/* Mantém o carrossel manual: sem flip automático no hover/foco */
+#mythologyCarouselTrack .carousel-item:not(.is-flipped):hover .myth-flip-inner,
+#mythologyCarouselTrack .carousel-item:not(.is-flipped):focus .myth-flip-inner,
+#mythologyCarouselTrack .carousel-item:not(.is-flipped):focus-within .myth-flip-inner {
     transform: translateZ(0) rotateY(0deg);
     -webkit-transform: translateZ(0) rotateY(0deg);
 }
 
-#mythologyCarouselTrack .carousel-item.is-flipped .myth-flip-inner,
-.carousel-item.is-flipped .myth-flip-inner {
-    transform: translateZ(0) rotateY(180deg);
-    -webkit-transform: translateZ(0) rotateY(180deg);
+#mythologyCarouselTrack .carousel-item.is-flipped .myth-flip-inner {
+    transform: translateZ(0) rotateY(180deg) !important;
+    -webkit-transform: translateZ(0) rotateY(180deg) !important;
 }
 
 .myth-flip-front,
@@ -305,6 +309,22 @@
 /* =====================================================
    06.4 FRENTE DO CARD DE MITOLOGIA
 ===================================================== */
+
+#mythologyCarouselTrack .myth-flip-front {
+    pointer-events: auto;
+}
+
+#mythologyCarouselTrack .myth-flip-back {
+    pointer-events: none;
+}
+
+#mythologyCarouselTrack .carousel-item.is-flipped .myth-flip-front {
+    pointer-events: none;
+}
+
+#mythologyCarouselTrack .carousel-item.is-flipped .myth-flip-back {
+    pointer-events: auto;
+}
 
 .myth-flip-front {
     z-index: 2;
@@ -365,8 +385,8 @@
     justify-content: center;
     padding: 36px;
     overflow-y: auto;
-    transform: translateZ(1px) rotateY(180deg);
-    -webkit-transform: translateZ(1px) rotateY(180deg);
+    transform: translateZ(2px) rotateY(180deg);
+    -webkit-transform: translateZ(2px) rotateY(180deg);
     background:
         radial-gradient(circle at top, rgba(129, 199, 132, 0.12), transparent 40%),
         linear-gradient(135deg, rgba(17, 36, 27, 0.98), rgba(5, 16, 11, 1));
@@ -428,6 +448,7 @@
 ===================================================== */
 
 @supports (-webkit-touch-callout: none) {
+
     #mythologyCarouselTrack .carousel-item,
     #mythologyCarouselTrack .myth-flip-card,
     #mythologyCarouselTrack .myth-flip-inner {

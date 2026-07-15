@@ -551,7 +551,9 @@ const mythologyCarouselData = [
 
 const MYTHOLOGY_CAROUSEL_CONFIG = Object.freeze({
     scrollEndDelay: 120,
-    clickSuppressDistance: 8,
+    mouseDragDistance: 8,
+    touchDragDistance: 18,
+    clickReleaseDelay: 160,
     resizeDelay: 180
 });
 
@@ -567,7 +569,8 @@ const mythologyCarouselState = {
         pointerId: null,
         pointerType: "",
         startX: 0,
-        startScrollLeft: 0
+        startScrollLeft: 0,
+        hasPointerCapture: false
     }
 };
 
@@ -718,8 +721,10 @@ function setupManualMythologyCarousel() {
         track.dataset.activeIndex = "0";
         mythologyCarouselState.isReady = true;
 
+        viewport.scrollLeft = 0;
+
         requestAnimationFrame(() => {
-            scrollToMythologyCard(0, "auto");
+            viewport.scrollLeft = 0;
             updateMythologyCarouselInterface(0);
         });
     } else {
@@ -763,15 +768,8 @@ function moveManualMythologyCarousel(direction) {
     }
 
     const currentIndex = getCurrentMythologyIndex();
-    const nextIndex = clampNumber(
-        currentIndex + direction,
-        0,
-        cards.length - 1
-    );
-
-    if (nextIndex === currentIndex) {
-        return;
-    }
+    const nextIndex =
+        (currentIndex + direction + cards.length) % cards.length;
 
     setManualMythologyActiveIndex(nextIndex, {
         scroll: true,
@@ -821,13 +819,24 @@ function scrollToMythologyCard(index, behavior = "smooth") {
 }
 
 function getMythologyCardScrollPosition(viewport, card) {
-    const centeredPosition =
-        card.offsetLeft - ((viewport.clientWidth - card.offsetWidth) / 2);
-
+    const cards = getMythologyCards();
+    const cardIndex = cards.indexOf(card);
     const maximumScroll = Math.max(
         0,
         viewport.scrollWidth - viewport.clientWidth
     );
+
+    if (cardIndex <= 0) {
+        return 0;
+    }
+
+    if (cardIndex === cards.length - 1) {
+        return maximumScroll;
+    }
+
+    const centeredPosition =
+        card.offsetLeft -
+        ((viewport.clientWidth - card.offsetWidth) / 2);
 
     return clampNumber(centeredPosition, 0, maximumScroll);
 }
@@ -876,18 +885,26 @@ function getNearestMythologyCardIndex(viewport) {
         return 0;
     }
 
-    const viewportCenter = viewport.scrollLeft + (viewport.clientWidth / 2);
-
     return cards.reduce((nearestIndex, card, index) => {
-        const nearestCard = cards[nearestIndex];
-        const nearestCenter =
-            nearestCard.offsetLeft + (nearestCard.offsetWidth / 2);
-        const currentCenter = card.offsetLeft + (card.offsetWidth / 2);
+        const nearestPosition = getMythologyCardScrollPosition(
+            viewport,
+            cards[nearestIndex]
+        );
+        const currentPosition = getMythologyCardScrollPosition(
+            viewport,
+            card
+        );
 
-        const nearestDistance = Math.abs(nearestCenter - viewportCenter);
-        const currentDistance = Math.abs(currentCenter - viewportCenter);
+        const nearestDistance = Math.abs(
+            nearestPosition - viewport.scrollLeft
+        );
+        const currentDistance = Math.abs(
+            currentPosition - viewport.scrollLeft
+        );
 
-        return currentDistance < nearestDistance ? index : nearestIndex;
+        return currentDistance < nearestDistance
+            ? index
+            : nearestIndex;
     }, 0);
 }
 
@@ -918,18 +935,24 @@ function updateMythologyCarouselInterface(activeIndex) {
         }
     });
 
-    updateCarouselButtonState(prevButton, activeIndex === 0);
-    updateCarouselButtonState(nextButton, activeIndex === cards.length - 1);
+    updateCarouselButtonState(prevButton);
+    updateCarouselButtonState(nextButton);
     updateMythologyDots(dots, activeIndex);
 }
 
-function updateCarouselButtonState(button, isDisabled) {
+function updateCarouselButtonState(button) {
     if (!button) {
         return;
     }
 
-    button.disabled = isDisabled;
-    button.setAttribute("aria-disabled", String(isDisabled));
+    /*
+     * As setas permanecem sempre disponíveis.
+     * A navegação é circular: ao voltar no primeiro card,
+     * o carrossel vai para o último; ao avançar no último,
+     * retorna ao primeiro.
+     */
+    button.disabled = false;
+    button.setAttribute("aria-disabled", "false");
 }
 
 function renderMythologyDots(totalCards, dotsContainer) {
@@ -1004,13 +1027,15 @@ function handleMythologyPointerDown(event) {
     }
 
     const viewport = getMythologyCarouselViewport();
+    const track = document.getElementById("mythologyCarouselTrack");
 
-    if (!viewport) {
+    if (!viewport || !track) {
         return;
     }
 
     const pointer = mythologyCarouselState.pointer;
 
+    track.dataset.suppressClick = "false";
     pointer.isPressed = true;
     pointer.isMouseDragging = event.pointerType === "mouse";
     pointer.hasMoved = false;
@@ -1018,16 +1043,14 @@ function handleMythologyPointerDown(event) {
     pointer.pointerType = event.pointerType;
     pointer.startX = event.clientX;
     pointer.startScrollLeft = viewport.scrollLeft;
+    pointer.hasPointerCapture = false;
 
-    if (pointer.isMouseDragging) {
-        viewport.classList.add("is-dragging");
-
-        try {
-            viewport.setPointerCapture(event.pointerId);
-        } catch (error) {
-            /* A captura pode não estar disponível em alguns navegadores. */
-        }
-    }
+    /*
+     * Não capturamos o ponteiro aqui.
+     * Capturar no pointerdown fazia o clique final pertencer ao viewport,
+     * e não ao card, impedindo o flip.
+     * A captura será ativada somente depois que um arraste real começar.
+     */
 }
 
 function handleMythologyPointerMove(event) {
@@ -1036,27 +1059,42 @@ function handleMythologyPointerMove(event) {
     const pointer = mythologyCarouselState.pointer;
 
     if (
-        !viewport
-        || !track
-        || !pointer.isPressed
-        || pointer.pointerId !== event.pointerId
+        !viewport ||
+        !track ||
+        !pointer.isPressed ||
+        pointer.pointerId !== event.pointerId
     ) {
         return;
     }
 
     const deltaX = event.clientX - pointer.startX;
+    const dragDistance =
+        pointer.pointerType === "touch"
+            ? MYTHOLOGY_CAROUSEL_CONFIG.touchDragDistance
+            : MYTHOLOGY_CAROUSEL_CONFIG.mouseDragDistance;
 
     if (
-        !pointer.hasMoved
-        && Math.abs(deltaX) >= MYTHOLOGY_CAROUSEL_CONFIG.clickSuppressDistance
+        !pointer.hasMoved &&
+        Math.abs(deltaX) >= dragDistance
     ) {
         pointer.hasMoved = true;
         track.dataset.suppressClick = "true";
+
+        if (pointer.isMouseDragging) {
+            viewport.classList.add("is-dragging");
+
+            try {
+                viewport.setPointerCapture(event.pointerId);
+                pointer.hasPointerCapture = true;
+            } catch (error) {
+                pointer.hasPointerCapture = false;
+            }
+        }
     }
 
     /*
-     * No touch, o navegador deve manter controle total do gesto.
-     * O código manual abaixo é usado somente para arraste com mouse.
+     * Em telas touch, a rolagem e a inércia continuam nativas.
+     * O controle manual de scrollLeft é usado somente no mouse.
      */
     if (!pointer.isMouseDragging || !pointer.hasMoved) {
         return;
@@ -1072,32 +1110,34 @@ function handleMythologyPointerEnd(event) {
     const pointer = mythologyCarouselState.pointer;
 
     if (
-        !viewport
-        || !track
-        || !pointer.isPressed
-        || pointer.pointerId !== event.pointerId
+        !viewport ||
+        !track ||
+        !pointer.isPressed ||
+        pointer.pointerId !== event.pointerId
     ) {
         return;
     }
 
+    const moved = pointer.hasMoved;
+    const wasMouseDragging = pointer.isMouseDragging;
+    const hadPointerCapture = pointer.hasPointerCapture;
+
     pointer.isPressed = false;
+    pointer.isMouseDragging = false;
+    pointer.hasMoved = false;
+    pointer.pointerId = null;
+    pointer.pointerType = "";
+    pointer.hasPointerCapture = false;
 
-    if (pointer.isMouseDragging) {
-        viewport.classList.remove("is-dragging");
+    viewport.classList.remove("is-dragging");
 
+    if (wasMouseDragging && hadPointerCapture) {
         try {
             viewport.releasePointerCapture(event.pointerId);
         } catch (error) {
             /* O navegador pode liberar a captura automaticamente. */
         }
     }
-
-    const moved = pointer.hasMoved;
-
-    pointer.isMouseDragging = false;
-    pointer.hasMoved = false;
-    pointer.pointerId = null;
-    pointer.pointerType = "";
 
     if (moved) {
         const nearestIndex = getNearestMythologyCardIndex(viewport);
@@ -1106,11 +1146,15 @@ function handleMythologyPointerEnd(event) {
 
         window.setTimeout(() => {
             track.dataset.suppressClick = "false";
-        }, 120);
+        }, MYTHOLOGY_CAROUSEL_CONFIG.clickReleaseDelay);
 
         return;
     }
 
+    /*
+     * Clique simples: nenhum bloqueio é mantido.
+     * O evento click subsequente chegará ao card normalmente.
+     */
     track.dataset.suppressClick = "false";
 }
 
@@ -1129,7 +1173,13 @@ function setupMythologyCarouselFlip() {
 
     track.addEventListener("click", (event) => {
         const clickedLink = event.target.closest("a");
-        const clickedCard = event.target.closest(".carousel-item");
+        const clickedCard =
+            event.target.closest(".carousel-item") ||
+            event.composedPath().find(
+                (element) =>
+                    element instanceof HTMLElement &&
+                    element.classList?.contains("carousel-item")
+            );
 
         if (track.dataset.suppressClick === "true") {
             event.preventDefault();
@@ -1137,22 +1187,32 @@ function setupMythologyCarouselFlip() {
             return;
         }
 
-        if (clickedLink || !clickedCard || !track.contains(clickedCard)) {
+        if (clickedLink) {
+            return;
+        }
+
+        if (
+            !(clickedCard instanceof HTMLElement) ||
+            !track.contains(clickedCard)
+        ) {
             return;
         }
 
         event.preventDefault();
+        event.stopPropagation();
         toggleMythologyCard(clickedCard);
     });
 
     track.addEventListener("keydown", (event) => {
-        const isActionKey = event.key === "Enter" || event.key === " ";
+        const isActionKey =
+            event.key === "Enter" ||
+            event.key === " ";
         const selectedCard = event.target.closest(".carousel-item");
 
         if (
-            !isActionKey
-            || !selectedCard
-            || !track.contains(selectedCard)
+            !isActionKey ||
+            !selectedCard ||
+            !track.contains(selectedCard)
         ) {
             return;
         }
