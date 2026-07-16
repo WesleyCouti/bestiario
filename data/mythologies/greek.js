@@ -1562,41 +1562,201 @@ const GREEK_MYTHOLOGY = Object.freeze({
     {
       symbol: "♜",
       name: "Héracles",
-      title: "Os doze trabalhos",
+      title: "Os Doze Trabalhos",
+      image: "/assets/images/mythologies/greek/heroes/heracles.png",
       description:
-        "Herói conhecido por sua força, resistência e pelos trabalhos realizados como expiação.",
+        "Maior herói da Grécia, filho de Zeus e Alcmena. Tornou-se imortal após completar os Doze Trabalhos.",
     },
+
     {
       symbol: "⚔",
       name: "Perseu",
-      title: "Vencedor de Medusa",
+      title: "Matador de Medusa",
+      image: "/assets/images/mythologies/greek/heroes/perseus.png",
       description:
-        "Herói que derrotou Medusa e participou do resgate de Andrômeda.",
+        "Filho de Zeus e Dânae. Decapitou Medusa e libertou Andrômeda.",
     },
+
     {
       symbol: "⌘",
       name: "Teseu",
-      title: "Herói de Atenas",
-      description: "Ligado ao Labirinto de Creta e à derrota do Minotauro.",
+      title: "Rei de Atenas",
+      image: "/assets/images/mythologies/greek/heroes/theseus.png",
+      description:
+        "Herói ateniense que derrotou o Minotauro no Labirinto de Creta.",
     },
+
     {
       symbol: "⛵",
       name: "Odisseu",
       title: "Rei de Ítaca",
+      image: "/assets/images/mythologies/greek/heroes/odysseus.png",
       description:
-        "Conhecido pela inteligência e pela longa jornada narrada na Odisseia.",
+        "Conhecido por sua inteligência e pela longa viagem narrada na Odisseia.",
     },
+
     {
       symbol: "🛡",
       name: "Aquiles",
-      title: "Guerreiro de Troia",
-      description: "Um dos maiores guerreiros do ciclo troiano.",
+      title: "Maior Guerreiro Grego",
+      image: "/assets/images/mythologies/greek/heroes/achilles.png",
+      description:
+        "Filho de Tétis e Peleu. Guerreiro quase invulnerável da Guerra de Troia.",
     },
+
     {
       symbol: "✧",
       name: "Atalanta",
-      title: "Caçadora e heroína",
-      description: "Heroína veloz ligada à caça ao javali da Calidônia.",
+      title: "Caçadora Lendária",
+      image: "/assets/images/mythologies/greek/heroes/atalanta.png",
+      description: "Heroína veloz participante da caça ao Javali da Calidônia.",
+    },
+
+    {
+      symbol: "🏹",
+      name: "Jasão",
+      title: "Líder dos Argonautas",
+      image: "/assets/images/mythologies/greek/heroes/jason.png",
+      description:
+        "Comandou a expedição da nau Argos em busca do Velocino de Ouro.",
+    },
+
+    {
+      symbol: "⚓",
+      name: "Orfeu",
+      title: "Mestre da Lira",
+      image: "/assets/images/mythologies/greek/heroes/orpheus.png",
+      description:
+        "Poeta e músico capaz de encantar homens, animais e deuses com sua música.",
+    },
+
+    {
+      symbol: "🦁",
+      name: "Belerofonte",
+      title: "Domador de Pégaso",
+      image: "/assets/images/mythologies/greek/heroes/bellerophon.png",
+      description: "Montou Pégaso e derrotou a monstruosa Quimera.",
+    },
+
+    {
+      symbol: "🐗",
+      name: "Meleagro",
+      title: "Caçador da Calidônia",
+      image: "/assets/images/mythologies/greek/heroes/meleager.png",
+      description: "Principal herói da caça ao Javali da Calidônia.",
+    },
+
+    {
+      symbol: "🏛",
+      name: "Cadmo",
+      title: "Fundador de Tebas",
+      image: "/assets/images/mythologies/greek/heroes/cadmus.png",
+      description:
+        "Fundou Tebas após derrotar o dragão de Ares e semear seus dentes.",
+    },
+
+    {
+      symbol: "🦅",
+      name: "Diomedes",
+      title: "Herói de Troia",
+      image: "/assets/images/mythologies/greek/heroes/diomedes.png",
+      description:
+        "Grande guerreiro da Ilíada que chegou a ferir Ares e Afrodite.",
+    },
+
+    {
+      symbol: "⚜",
+      name: "Ajax, o Grande",
+      title: "Escudo dos Gregos",
+      image: "/assets/images/mythologies/greek/heroes/ajax.png",
+      description:
+        "Segundo maior guerreiro da Guerra de Troia, famoso por sua força colossal.",
+    },
+
+    {
+      symbol: "🏹",
+      name: "Filoctetes",
+      title: "Arqueiro de Héracles",
+      image: "/assets/images/mythologies/greek/heroes/philoctetes.png",
+      description:
+        "Guardião do arco e das flechas de Héracles, indispensável para a queda de Troia.",
+    },
+
+    {
+      symbol: "🔥",
+      name: "Peleu",
+      title: "Rei dos Mirmidões",
+      image: "/assets/images/mythologies/greek/heroes/peleus.png",
+      description: "Pai de Aquiles e esposo da nereida Tétis.",
+    },
+
+    {
+      symbol: "🌊",
+      name: "Telamão",
+      title: "Rei de Salamina",
+      image: "/assets/images/mythologies/greek/heroes/telamon.png",
+      description:
+        "Pai de Ajax e companheiro de Héracles em diversas aventuras.",
+    },
+
+    {
+      symbol: "⚡",
+      name: "Anfiarau",
+      title: "Herói Profeta",
+      image: "/assets/images/mythologies/greek/heroes/amphiaraus.png",
+      description:
+        "Rei e vidente participante da expedição dos Sete contra Tebas.",
+    },
+
+    {
+      symbol: "👑",
+      name: "Édipo",
+      title: "Rei de Tebas",
+      image: "/assets/images/mythologies/greek/heroes/oedipus.png",
+      description:
+        "Figura central da tragédia tebana, famoso pelo enigma da Esfinge.",
+    },
+
+    {
+      symbol: "🦢",
+      name: "Castor",
+      title: "Um dos Dióscuros",
+      image: "/assets/images/mythologies/greek/heroes/castor.png",
+      description: "Filho de Leda, irmão de Pólux, patrono dos cavaleiros.",
+    },
+
+    {
+      symbol: "⭐",
+      name: "Pólux",
+      title: "Um dos Dióscuros",
+      image: "/assets/images/mythologies/greek/heroes/pollux.png",
+      description:
+        "Filho de Zeus e Leda, tornou-se imortal ao compartilhar sua imortalidade com Castor.",
+    },
+
+    {
+      symbol: "🌟",
+      name: "Hipólito",
+      title: "Devoto de Ártemis",
+      image: "/assets/images/mythologies/greek/heroes/hippolytus.png",
+      description: "Filho de Teseu, conhecido por sua devoção à deusa Ártemis.",
+    },
+
+    {
+      symbol: "🐎",
+      name: "Peleu",
+      title: "Pai de Aquiles",
+      image: "/assets/images/mythologies/greek/heroes/peleus.png",
+      description: "Herói dos Argonautas e esposo da nereida Tétis.",
+    },
+
+    {
+      symbol: "⚔",
+      name: "Eneias",
+      title: "Herói Troiano",
+      image: "/assets/images/mythologies/greek/heroes/aeneas.png",
+      description:
+        "Filho de Afrodite e Anquises, sobrevivente da Guerra de Troia.",
     },
   ],
 
