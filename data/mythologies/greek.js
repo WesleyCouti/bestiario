@@ -1764,42 +1764,1052 @@ const GREEK_MYTHOLOGY = Object.freeze({
     {
       symbol: "☠",
       name: "Medusa",
-      title: "Górgona",
+      title: "A Górgona Mortal",
+      image: "/assets/images/mythologies/greek/creatures/medusa.png",
       description:
-        "Figura monstruosa cujo olhar era capaz de transformar pessoas em pedra.",
+        "A única mortal entre as três Górgonas. Possuía serpentes no lugar dos cabelos e seu olhar transformava os homens em pedra.",
     },
+
+    {
+      symbol: "☠",
+      name: "Esteno",
+      title: "A Górgona Poderosa",
+      image: "/assets/images/mythologies/greek/creatures/esteno.png",
+      description:
+        "Uma das três Górgonas e irmã imortal de Medusa. Seu nome significa poderosa ou vigorosa.",
+    },
+
+    {
+      symbol: "☠",
+      name: "Euríale",
+      title: "A Górgona do Grito Terrível",
+      image: "/assets/images/mythologies/greek/creatures/euriale.png",
+      description:
+        "Górgona imortal conhecida por seu grito aterrorizante, capaz de ecoar por grandes distâncias.",
+    },
+
     {
       symbol: "♉",
       name: "Minotauro",
       title: "Criatura do Labirinto",
+      image: "/assets/images/mythologies/greek/creatures/minotauro.png",
       description:
-        "Ser híbrido associado ao rei Minos, a Creta e ao herói Teseu.",
+        "Monstro com corpo humano e cabeça de touro, aprisionado no Labirinto de Creta e derrotado pelo herói Teseu.",
     },
+
     {
       symbol: "🐍",
       name: "Hidra de Lerna",
-      title: "Serpente de múltiplas cabeças",
-      description: "Criatura enfrentada por Héracles em um de seus trabalhos.",
+      title: "Serpente de Muitas Cabeças",
+      image: "/assets/images/mythologies/greek/creatures/hidra-de-lerna.png",
+      description:
+        "Serpente aquática venenosa cujas cabeças se regeneravam quando cortadas. Foi derrotada por Héracles.",
     },
+
     {
       symbol: "♞",
       name: "Quimera",
-      title: "Criatura híbrida",
+      title: "Monstro de Três Naturezas",
+      image: "/assets/images/mythologies/greek/creatures/quimera.png",
       description:
-        "Monstro formado por partes de diferentes animais e derrotado por Belerofonte.",
+        "Criatura híbrida com partes de leão, cabra e serpente, capaz de cuspir fogo e derrotada por Belerofonte.",
     },
+
     {
       symbol: "●",
       name: "Ciclope",
-      title: "Gigante de um olho",
+      title: "Gigante de Um Olho",
+      image: "/assets/images/mythologies/greek/creatures/ciclope.png",
       description:
-        "Nome dado a diferentes grupos de gigantes presentes em tradições gregas.",
+        "Nome atribuído a diferentes grupos de gigantes com apenas um olho no centro da testa.",
     },
+
+    {
+      symbol: "●",
+      name: "Polifemo",
+      title: "O Ciclope da Odisseia",
+      image: "/assets/images/mythologies/greek/creatures/polifemo.png",
+      description:
+        "Ciclope pastor e filho de Poseidon que aprisionou Odisseu e seus companheiros em uma caverna.",
+    },
+
+    {
+      symbol: "⚡",
+      name: "Brontes",
+      title: "Ciclope do Trovão",
+      image: "/assets/images/mythologies/greek/creatures/brontes.png",
+      description:
+        "Um dos três Ciclopes primordiais, associado ao trovão e à fabricação das armas divinas.",
+    },
+
+    {
+      symbol: "⚡",
+      name: "Estéropes",
+      title: "Ciclope do Relâmpago",
+      image: "/assets/images/mythologies/greek/creatures/esteropes.png",
+      description:
+        "Ciclope primordial associado aos relâmpagos e responsável por ajudar na criação das armas de Zeus.",
+    },
+
+    {
+      symbol: "⚡",
+      name: "Arges",
+      title: "Ciclope do Brilho",
+      image: "/assets/images/mythologies/greek/creatures/arges.png",
+      description:
+        "Um dos Ciclopes primordiais, personificação do brilho intenso dos raios.",
+    },
+
     {
       symbol: "♧",
       name: "Cérbero",
-      title: "Guardião do submundo",
-      description: "Cão monstruoso que guardava a entrada do reino de Hades.",
+      title: "Guardião do Submundo",
+      image: "/assets/images/mythologies/greek/creatures/cerbero.png",
+      description:
+        "Cão monstruoso de múltiplas cabeças que guardava a entrada do reino de Hades e impedia a fuga dos mortos.",
+    },
+
+    {
+      symbol: "🐕",
+      name: "Ortro",
+      title: "Cão de Duas Cabeças",
+      image: "/assets/images/mythologies/greek/creatures/ortro.png",
+      description:
+        "Cão monstruoso de duas cabeças que guardava o rebanho do gigante Gérion.",
+    },
+
+    {
+      symbol: "🦁",
+      name: "Leão de Nemeia",
+      title: "A Fera Invulnerável",
+      image: "/assets/images/mythologies/greek/creatures/leao-de-nemeia.png",
+      description:
+        "Leão gigantesco cuja pele não podia ser atravessada por armas comuns. Foi morto por Héracles.",
+    },
+
+    {
+      symbol: "🐗",
+      name: "Javali de Erimanto",
+      title: "A Fera das Montanhas",
+      image:
+        "/assets/images/mythologies/greek/creatures/javali-de-erimanto.png",
+      description:
+        "Javali colossal que aterrorizava a região do monte Erimanto e foi capturado vivo por Héracles.",
+    },
+
+    {
+      symbol: "🐗",
+      name: "Javali de Cálidon",
+      title: "A Fera Enviada por Ártemis",
+      image: "/assets/images/mythologies/greek/creatures/javali-de-calidon.png",
+      description:
+        "Javali monstruoso enviado por Ártemis para devastar Cálidon e caçado por diversos heróis gregos.",
+    },
+
+    {
+      symbol: "🦌",
+      name: "Corça de Cerineia",
+      title: "Animal Sagrado de Ártemis",
+      image: "/assets/images/mythologies/greek/creatures/corca-de-cerineia.png",
+      description:
+        "Corça sagrada com chifres dourados e cascos de bronze, extremamente veloz e capturada por Héracles.",
+    },
+
+    {
+      symbol: "🐦",
+      name: "Aves do Estínfalo",
+      title: "Pássaros de Bronze",
+      image: "/assets/images/mythologies/greek/creatures/aves-do-estinfalo.png",
+      description:
+        "Aves monstruosas com penas metálicas afiadas, bicos de bronze e hábitos antropófagos.",
+    },
+
+    {
+      symbol: "🐂",
+      name: "Touro de Creta",
+      title: "A Fera de Poseidon",
+      image: "/assets/images/mythologies/greek/creatures/touro-de-creta.png",
+      description:
+        "Touro sobrenatural enviado por Poseidon ao rei Minos e posteriormente capturado por Héracles.",
+    },
+
+    {
+      symbol: "🐎",
+      name: "Éguas de Diomedes",
+      title: "Cavalos Devoradores de Homens",
+      image: "/assets/images/mythologies/greek/creatures/eguas-de-diomedes.png",
+      description:
+        "Quatro éguas selvagens alimentadas com carne humana e pertencentes ao rei trácio Diomedes.",
+    },
+
+    {
+      symbol: "🐂",
+      name: "Touros da Cólquida",
+      title: "Touros de Cascos de Bronze",
+      image:
+        "/assets/images/mythologies/greek/creatures/touros-da-colquida.png",
+      description:
+        "Touros mágicos que possuíam cascos de bronze e expeliam fogo pelas narinas.",
+    },
+
+    {
+      symbol: "🐉",
+      name: "Dragão da Cólquida",
+      title: "Guardião do Velocino de Ouro",
+      image:
+        "/assets/images/mythologies/greek/creatures/dragao-da-colquida.png",
+      description:
+        "Dragão gigantesco que nunca dormia e guardava o Velocino de Ouro em um bosque sagrado.",
+    },
+
+    {
+      symbol: "🐉",
+      name: "Ládon",
+      title: "Dragão das Hespérides",
+      image: "/assets/images/mythologies/greek/creatures/ladon.png",
+      description:
+        "Serpente ou dragão de múltiplas cabeças encarregado de proteger as maçãs douradas das Hespérides.",
+    },
+
+    {
+      symbol: "🐉",
+      name: "Píton",
+      title: "Serpente de Delfos",
+      image: "/assets/images/mythologies/greek/creatures/piton.png",
+      description:
+        "Serpente monstruosa associada ao antigo oráculo de Delfos e posteriormente derrotada pelo deus Apolo.",
+    },
+
+    {
+      symbol: "🐍",
+      name: "Equidna",
+      title: "Mãe dos Monstros",
+      image: "/assets/images/mythologies/greek/creatures/equidna.png",
+      description:
+        "Criatura metade mulher e metade serpente, considerada mãe de muitos dos monstros mais temidos da mitologia grega.",
+    },
+
+    {
+      symbol: "🔥",
+      name: "Tifão",
+      title: "Pai dos Monstros",
+      image: "/assets/images/mythologies/greek/creatures/tifao.png",
+      description:
+        "Gigantesca criatura serpentina e tempestuosa que enfrentou Zeus pelo domínio do cosmos.",
+    },
+
+    {
+      symbol: "🌊",
+      name: "Cila",
+      title: "Monstro do Estreito",
+      image: "/assets/images/mythologies/greek/creatures/cila.png",
+      description:
+        "Monstro marinho com várias cabeças e bocas que devorava marinheiros que passavam próximos à sua caverna.",
+    },
+
+    {
+      symbol: "🌀",
+      name: "Caríbdis",
+      title: "O Redemoinho Devorador",
+      image: "/assets/images/mythologies/greek/creatures/caribdis.png",
+      description:
+        "Criatura marinha que engolia enormes quantidades de água, formando um redemoinho capaz de destruir navios.",
+    },
+
+    {
+      symbol: "🌊",
+      name: "Ceto",
+      title: "Monstro Primordial dos Mares",
+      image: "/assets/images/mythologies/greek/creatures/ceto.png",
+      description:
+        "Divindade marinha primordial associada aos perigos do oceano e mãe de diversas criaturas monstruosas.",
+    },
+
+    {
+      symbol: "🐋",
+      name: "Cetus",
+      title: "Monstro Marinho de Andrômeda",
+      image: "/assets/images/mythologies/greek/creatures/cetus.png",
+      description:
+        "Monstro enviado para destruir a Etiópia e devorar Andrômeda, sendo morto pelo herói Perseu.",
+    },
+
+    {
+      symbol: "🦅",
+      name: "Sereias",
+      title: "Cantoras da Perdição",
+      image: "/assets/images/mythologies/greek/creatures/sereias.png",
+      description:
+        "Criaturas originalmente retratadas com corpo de ave e cabeça de mulher, cujo canto atraía marinheiros para a morte.",
+    },
+
+    {
+      symbol: "🦅",
+      name: "Harpias",
+      title: "Espíritos dos Ventos Violentos",
+      image: "/assets/images/mythologies/greek/creatures/harpias.png",
+      description:
+        "Criaturas aladas com rosto feminino e corpo de ave, associadas a tempestades, punições e desaparecimentos súbitos.",
+    },
+
+    {
+      symbol: "🦅",
+      name: "Aelo",
+      title: "A Harpia Tempestuosa",
+      image: "/assets/images/mythologies/greek/creatures/aelo.png",
+      description:
+        "Uma das principais Harpias, cujo nome está relacionado aos ventos rápidos e tempestuosos.",
+    },
+
+    {
+      symbol: "🦅",
+      name: "Ocípete",
+      title: "A Harpia de Voo Veloz",
+      image: "/assets/images/mythologies/greek/creatures/ocipete.png",
+      description:
+        "Harpia conhecida por sua extraordinária velocidade e por perseguir aqueles punidos pelos deuses.",
+    },
+
+    {
+      symbol: "🦅",
+      name: "Celeno",
+      title: "A Harpia Sombria",
+      image: "/assets/images/mythologies/greek/creatures/celeno.png",
+      description:
+        "Harpia associada à escuridão, às tempestades e às profecias de desgraça.",
+    },
+
+    {
+      symbol: "♞",
+      name: "Pégaso",
+      title: "O Cavalo Alado",
+      image: "/assets/images/mythologies/greek/creatures/pegaso.png",
+      description:
+        "Cavalo alado nascido do sangue de Medusa e posteriormente montado por Belerofonte.",
+    },
+
+    {
+      symbol: "♞",
+      name: "Crisáor",
+      title: "O Guerreiro da Espada Dourada",
+      image: "/assets/images/mythologies/greek/creatures/crisaor.png",
+      description:
+        "Ser nascido do sangue de Medusa após sua decapitação, frequentemente retratado como guerreiro ou criatura alada.",
+    },
+
+    {
+      symbol: "♘",
+      name: "Centauro",
+      title: "Homem-Cavalo",
+      image: "/assets/images/mythologies/greek/creatures/centauro.png",
+      description:
+        "Criatura com torso humano unido ao corpo de um cavalo, associada tanto à selvageria quanto à sabedoria.",
+    },
+
+    {
+      symbol: "♘",
+      name: "Quíron",
+      title: "O Centauro Sábio",
+      image: "/assets/images/mythologies/greek/creatures/quiron.png",
+      description:
+        "Centauro imortal conhecido por sua sabedoria, domínio da medicina e papel como mestre de diversos heróis.",
+    },
+
+    {
+      symbol: "♘",
+      name: "Nesso",
+      title: "O Centauro Vingativo",
+      image: "/assets/images/mythologies/greek/creatures/nesso.png",
+      description:
+        "Centauro cuja morte e sangue envenenado contribuíram para o fim trágico de Héracles.",
+    },
+
+    {
+      symbol: "🐐",
+      name: "Sátiro",
+      title: "Espírito Selvagem da Natureza",
+      image: "/assets/images/mythologies/greek/creatures/satiro.png",
+      description:
+        "Ser masculino da natureza com características caprinas, associado à música, ao vinho e ao séquito de Dionísio.",
+    },
+
+    {
+      symbol: "🐐",
+      name: "Sileno",
+      title: "O Velho Companheiro de Dionísio",
+      image: "/assets/images/mythologies/greek/creatures/sileno.png",
+      description:
+        "Sátiro idoso e sábio que servia como tutor e companheiro do deus Dionísio.",
+    },
+
+    {
+      symbol: "🌳",
+      name: "Dríade",
+      title: "Ninfa das Árvores",
+      image: "/assets/images/mythologies/greek/creatures/driade.png",
+      description:
+        "Ninfa ligada às árvores e às florestas, representando a força vital da natureza.",
+    },
+
+    {
+      symbol: "🌳",
+      name: "Hamadríade",
+      title: "Espírito Unido à Árvore",
+      image: "/assets/images/mythologies/greek/creatures/hamadriade.png",
+      description:
+        "Ninfa cuja vida estava diretamente ligada a uma árvore específica, morrendo quando ela era destruída.",
+    },
+
+    {
+      symbol: "🌊",
+      name: "Náiade",
+      title: "Ninfa das Águas Doces",
+      image: "/assets/images/mythologies/greek/creatures/naiade.png",
+      description:
+        "Ninfa associada a rios, fontes, riachos, lagos e outras formas de água doce.",
+    },
+
+    {
+      symbol: "🌊",
+      name: "Nereida",
+      title: "Ninfa do Mar",
+      image: "/assets/images/mythologies/greek/creatures/nereida.png",
+      description:
+        "Uma das cinquenta filhas de Nereu, frequentemente descritas como protetoras dos marinheiros.",
+    },
+
+    {
+      symbol: "🌊",
+      name: "Oceânide",
+      title: "Ninfa das Águas do Mundo",
+      image: "/assets/images/mythologies/greek/creatures/oceanide.png",
+      description:
+        "Filha dos titãs Oceano e Tétis, ligada a rios, fontes, nuvens, mares e regiões naturais.",
+    },
+
+    {
+      symbol: "⛰",
+      name: "Oréade",
+      title: "Ninfa das Montanhas",
+      image: "/assets/images/mythologies/greek/creatures/oreade.png",
+      description:
+        "Ninfa associada às montanhas, cavernas, vales rochosos e florestas elevadas.",
+    },
+
+    {
+      symbol: "🦁",
+      name: "Esfinge",
+      title: "A Guardiã dos Enigmas",
+      image: "/assets/images/mythologies/greek/creatures/esfinge.png",
+      description:
+        "Criatura com corpo de leão, asas de ave e rosto feminino que aterrorizava Tebas com seus enigmas.",
+    },
+
+    {
+      symbol: "🦅",
+      name: "Grifo",
+      title: "Guardião de Tesouros",
+      image: "/assets/images/mythologies/greek/creatures/grifo.png",
+      description:
+        "Criatura com corpo de leão e cabeça e asas de águia, frequentemente associada à proteção de riquezas.",
+    },
+
+    {
+      symbol: "🐜",
+      name: "Mirmecoleão",
+      title: "Leão-Formiga",
+      image: "/assets/images/mythologies/greek/creatures/mirmecoleao.png",
+      description:
+        "Criatura fantástica híbrida descrita como possuindo características de leão e formiga.",
+    },
+
+    {
+      symbol: "🐜",
+      name: "Formigas Devoradoras de Ouro",
+      title: "Guardadoras do Ouro Oriental",
+      image:
+        "/assets/images/mythologies/greek/creatures/formigas-devoradoras-de-ouro.png",
+      description:
+        "Formigas gigantes mencionadas em relatos antigos como guardiãs de regiões ricas em ouro.",
+    },
+
+    {
+      symbol: "🐉",
+      name: "Dracaena",
+      title: "Mulher-Serpente",
+      image: "/assets/images/mythologies/greek/creatures/dracaena.png",
+      description:
+        "Categoria de criaturas femininas com a parte superior humana e a inferior semelhante a uma grande serpente.",
+    },
+
+    {
+      symbol: "🐍",
+      name: "Lâmia",
+      title: "A Devoradora de Crianças",
+      image: "/assets/images/mythologies/greek/creatures/lamia.png",
+      description:
+        "Rainha transformada em criatura monstruosa, associada à noite e ao desaparecimento de crianças.",
+    },
+
+    {
+      symbol: "🌙",
+      name: "Empusa",
+      title: "Espectro de Hécate",
+      image: "/assets/images/mythologies/greek/creatures/empusa.png",
+      description:
+        "Criatura metamórfica ligada a Hécate, descrita com aparência feminina e pernas de materiais diferentes.",
+    },
+
+    {
+      symbol: "🌙",
+      name: "Mormo",
+      title: "Espírito do Medo",
+      image: "/assets/images/mythologies/greek/creatures/mormo.png",
+      description:
+        "Espírito feminino assustador usado nas histórias gregas para provocar medo, especialmente em crianças.",
+    },
+
+    {
+      symbol: "👁",
+      name: "Gelo",
+      title: "Demônio Feminino da Morte Infantil",
+      image: "/assets/images/mythologies/greek/creatures/gelo.png",
+      description:
+        "Espírito maligno associado à morte de crianças e aos perigos enfrentados durante o nascimento.",
+    },
+
+    {
+      symbol: "🩸",
+      name: "Keres",
+      title: "Espíritos da Morte Violenta",
+      image: "/assets/images/mythologies/greek/creatures/keres.png",
+      description:
+        "Espíritos femininos sombrios que pairavam sobre campos de batalha e personificavam mortes brutais.",
+    },
+
+    {
+      symbol: "⚔",
+      name: "Erínias",
+      title: "As Fúrias Vingadoras",
+      image: "/assets/images/mythologies/greek/creatures/erinias.png",
+      description:
+        "Entidades do submundo responsáveis por perseguir e punir crimes contra a família e a ordem natural.",
+    },
+
+    {
+      symbol: "⚔",
+      name: "Alecto",
+      title: "A Fúria Incansável",
+      image: "/assets/images/mythologies/greek/creatures/alecto.png",
+      description:
+        "Uma das Erínias, personificação da ira contínua e da perseguição aos culpados.",
+    },
+
+    {
+      symbol: "⚔",
+      name: "Megera",
+      title: "A Fúria do Ressentimento",
+      image: "/assets/images/mythologies/greek/creatures/megera.png",
+      description:
+        "Uma das Erínias, relacionada à inveja, à infidelidade, ao rancor e aos crimes familiares.",
+    },
+
+    {
+      symbol: "⚔",
+      name: "Tisífone",
+      title: "A Vingadora dos Assassinatos",
+      image: "/assets/images/mythologies/greek/creatures/tisifone.png",
+      description:
+        "Uma das Erínias, encarregada de punir assassinos e perseguir aqueles que derramavam sangue familiar.",
+    },
+
+    {
+      symbol: "💯",
+      name: "Hecatônquiro",
+      title: "Gigante de Cem Braços",
+      image: "/assets/images/mythologies/greek/creatures/hecatonquiro.png",
+      description:
+        "Gigante primordial dotado de cinquenta cabeças e cem braços, possuidor de força incomparável.",
+    },
+
+    {
+      symbol: "💯",
+      name: "Briareu",
+      title: "O Poderoso Hecatônquiro",
+      image: "/assets/images/mythologies/greek/creatures/briareu.png",
+      description:
+        "Um dos três Hecatônquiros, conhecido também como Egeão e lembrado por sua força extraordinária.",
+    },
+
+    {
+      symbol: "💯",
+      name: "Coto",
+      title: "O Hecatônquiro Furioso",
+      image: "/assets/images/mythologies/greek/creatures/coto.png",
+      description:
+        "Gigante primordial de cem braços que auxiliou Zeus na guerra contra os Titãs.",
+    },
+
+    {
+      symbol: "💯",
+      name: "Giges",
+      title: "O Hecatônquiro dos Cem Braços",
+      image: "/assets/images/mythologies/greek/creatures/giges.png",
+      description:
+        "Um dos três Hecatônquiros libertados por Zeus durante a Titanomaquia.",
+    },
+
+    {
+      symbol: "🗿",
+      name: "Gigante",
+      title: "Filho de Gaia",
+      image: "/assets/images/mythologies/greek/creatures/gigante.png",
+      description:
+        "Membro da raça de poderosos seres nascidos de Gaia que enfrentaram os deuses olímpicos na Gigantomaquia.",
+    },
+
+    {
+      symbol: "🗿",
+      name: "Alcioneu",
+      title: "O Gigante Imortal em Sua Terra",
+      image: "/assets/images/mythologies/greek/creatures/alcioneu.png",
+      description:
+        "Um dos mais poderosos Gigantes, invencível enquanto permanecesse dentro de sua terra natal.",
+    },
+
+    {
+      symbol: "🗿",
+      name: "Porfírio",
+      title: "Rei dos Gigantes",
+      image: "/assets/images/mythologies/greek/creatures/porfirio.png",
+      description:
+        "Líder dos Gigantes durante a guerra contra os deuses olímpicos.",
+    },
+
+    {
+      symbol: "🗿",
+      name: "Encélado",
+      title: "Gigante Sepultado sob a Terra",
+      image: "/assets/images/mythologies/greek/creatures/encelado.png",
+      description:
+        "Gigante derrotado por Atena e associado a terremotos e atividades vulcânicas.",
+    },
+
+    {
+      symbol: "🗿",
+      name: "Efialtes",
+      title: "Gigante Adversário dos Deuses",
+      image: "/assets/images/mythologies/greek/creatures/efialtes.png",
+      description:
+        "Gigante que combateu os deuses olímpicos e foi derrotado durante a Gigantomaquia.",
+    },
+
+    {
+      symbol: "🗿",
+      name: "Mimas",
+      title: "Gigante da Gigantomaquia",
+      image: "/assets/images/mythologies/greek/creatures/mimas.png",
+      description:
+        "Um dos Gigantes que se rebelaram contra o domínio dos deuses do Olimpo.",
+    },
+
+    {
+      symbol: "🗿",
+      name: "Palas",
+      title: "Gigante Derrotado por Atena",
+      image: "/assets/images/mythologies/greek/creatures/palas-gigante.png",
+      description:
+        "Gigante morto por Atena durante a Gigantomaquia, tendo sua pele utilizada como proteção pela deusa.",
+    },
+
+    {
+      symbol: "🗿",
+      name: "Polibotes",
+      title: "Inimigo de Poseidon",
+      image: "/assets/images/mythologies/greek/creatures/polibotes.png",
+      description:
+        "Gigante perseguido por Poseidon durante a guerra entre os Gigantes e os deuses olímpicos.",
+    },
+
+    {
+      symbol: "🗿",
+      name: "Otus",
+      title: "Gigante Aloada",
+      image: "/assets/images/mythologies/greek/creatures/otus.png",
+      description:
+        "Um dos irmãos Aloídas, gigantes que tentaram alcançar o Olimpo empilhando montanhas.",
+    },
+
+    {
+      symbol: "🗿",
+      name: "Efialtes Aloada",
+      title: "Gigante que Desafiou o Olimpo",
+      image: "/assets/images/mythologies/greek/creatures/efialtes-aloada.png",
+      description:
+        "Irmão de Otus e um dos gigantes Aloídas que ameaçaram os deuses olímpicos.",
+    },
+
+    {
+      symbol: "🗿",
+      name: "Talos",
+      title: "O Autômato de Bronze",
+      image: "/assets/images/mythologies/greek/creatures/talos.png",
+      description:
+        "Gigante artificial feito de bronze que patrulhava a ilha de Creta e atacava embarcações invasoras.",
+    },
+
+    {
+      symbol: "🐍",
+      name: "Gegenees",
+      title: "Gigantes de Seis Braços",
+      image: "/assets/images/mythologies/greek/creatures/gegenees.png",
+      description:
+        "Tribos de gigantes com seis braços encontradas pelos Argonautas durante sua jornada.",
+    },
+
+    {
+      symbol: "🐚",
+      name: "Tritão",
+      title: "Mensageiro Marinho",
+      image: "/assets/images/mythologies/greek/creatures/tritao.png",
+      description:
+        "Ser marinho com torso humano e cauda de peixe, filho de Poseidon e Anfitrite.",
+    },
+
+    {
+      symbol: "🐚",
+      name: "Tritões",
+      title: "Povo do Mar",
+      image: "/assets/images/mythologies/greek/creatures/tritoes.png",
+      description:
+        "Criaturas marinhas semelhantes a Tritão, frequentemente retratadas acompanhando divindades oceânicas.",
+    },
+
+    {
+      symbol: "🐟",
+      name: "Hipocampo",
+      title: "Cavalo do Mar",
+      image: "/assets/images/mythologies/greek/creatures/hipocampo.png",
+      description:
+        "Criatura com a parte dianteira de cavalo e a parte traseira semelhante à cauda de um peixe.",
+    },
+
+    {
+      symbol: "🐟",
+      name: "Ictiocentauro",
+      title: "Centauro Marinho",
+      image: "/assets/images/mythologies/greek/creatures/ictiocentauro.png",
+      description:
+        "Criatura marinha com torso humano, patas dianteiras de cavalo e uma longa cauda de peixe.",
+    },
+
+    {
+      symbol: "🐐",
+      name: "Capricórnio",
+      title: "Cabra Marinha",
+      image: "/assets/images/mythologies/greek/creatures/capricornio.png",
+      description:
+        "Criatura híbrida com a parte dianteira de cabra e a parte traseira de peixe.",
+    },
+
+    {
+      symbol: "🐬",
+      name: "Delfim",
+      title: "O Golfinho Celestial",
+      image: "/assets/images/mythologies/greek/creatures/delfim.png",
+      description:
+        "Golfinho mítico que ajudou Poseidon a encontrar Anfitrite e foi colocado entre as constelações.",
+    },
+
+    {
+      symbol: "🐐",
+      name: "Amalteia",
+      title: "A Cabra Nutridora de Zeus",
+      image: "/assets/images/mythologies/greek/creatures/amalteia.png",
+      description:
+        "Cabra ou ninfa que alimentou Zeus durante sua infância escondida na ilha de Creta.",
+    },
+
+    {
+      symbol: "🐍",
+      name: "Ofíon",
+      title: "A Serpente Primordial",
+      image: "/assets/images/mythologies/greek/creatures/ofion.png",
+      description:
+        "Serpente primordial que, em algumas tradições, governou o mundo antes de Cronos.",
+    },
+
+    {
+      symbol: "🐉",
+      name: "Delfina",
+      title: "A Guardiã Serpentina",
+      image: "/assets/images/mythologies/greek/creatures/delfina.png",
+      description:
+        "Criatura feminina com corpo de serpente encarregada de guardar os tendões de Zeus após seu confronto com Tifão.",
+    },
+
+    {
+      symbol: "🦅",
+      name: "Águia do Cáucaso",
+      title: "A Torturadora de Prometeu",
+      image: "/assets/images/mythologies/greek/creatures/aguia-do-caucaso.png",
+      description:
+        "Águia monstruosa enviada por Zeus para devorar diariamente o fígado regenerado de Prometeu.",
+    },
+
+    {
+      symbol: "🐍",
+      name: "Serpente de Ares",
+      title: "Guardião da Fonte de Tebas",
+      image: "/assets/images/mythologies/greek/creatures/serpente-de-ares.png",
+      description:
+        "Dragão ou serpente sagrada de Ares que guardava uma fonte e foi morta pelo herói Cadmo.",
+    },
+
+    {
+      symbol: "🐉",
+      name: "Dragão de Nemeia",
+      title: "Guardião de Ofeltes",
+      image: "/assets/images/mythologies/greek/creatures/dragao-de-nemeia.png",
+      description:
+        "Serpente monstruosa associada à morte do jovem Ofeltes e à origem dos Jogos Nemeus.",
+    },
+
+    {
+      symbol: "🐍",
+      name: "Serpentes de Laocoonte",
+      title: "Mensageiras da Punição Divina",
+      image:
+        "/assets/images/mythologies/greek/creatures/serpentes-de-laocoonte.png",
+      description:
+        "Duas serpentes marinhas enviadas para matar o sacerdote troiano Laocoonte e seus filhos.",
+    },
+
+    {
+      symbol: "🐴",
+      name: "Aríon",
+      title: "O Cavalo Imortal",
+      image: "/assets/images/mythologies/greek/creatures/arion.png",
+      description:
+        "Cavalo divino de extraordinária velocidade, nascido de Poseidon e Deméter em algumas tradições.",
+    },
+
+    {
+      symbol: "🐴",
+      name: "Bálios",
+      title: "Cavalo Imortal de Aquiles",
+      image: "/assets/images/mythologies/greek/creatures/balios.png",
+      description:
+        "Um dos cavalos imortais concedidos a Peleu e posteriormente conduzidos por Aquiles na Guerra de Troia.",
+    },
+
+    {
+      symbol: "🐴",
+      name: "Xanto",
+      title: "Cavalo Profético de Aquiles",
+      image: "/assets/images/mythologies/greek/creatures/xanto.png",
+      description:
+        "Cavalo imortal de Aquiles que recebeu temporariamente o poder da fala e profetizou a morte do herói.",
+    },
+
+    {
+      symbol: "🐴",
+      name: "Celeris",
+      title: "O Cavalo da Velocidade",
+      image: "/assets/images/mythologies/greek/creatures/celeris.png",
+      description:
+        "Cavalo mítico associado à extraordinária velocidade e, em algumas tradições, irmão de Pégaso.",
+    },
+
+    {
+      symbol: "🦊",
+      name: "Raposa de Teumesso",
+      title: "A Raposa Inalcançável",
+      image:
+        "/assets/images/mythologies/greek/creatures/raposa-de-teumesso.png",
+      description:
+        "Raposa gigantesca destinada pelos deuses a jamais ser capturada.",
+    },
+
+    {
+      symbol: "🐕",
+      name: "Lélape",
+      title: "O Cão que Sempre Capturava",
+      image: "/assets/images/mythologies/greek/creatures/leelape.png",
+      description:
+        "Cão mágico destinado a sempre alcançar qualquer presa que perseguisse.",
+    },
+
+    {
+      symbol: "🦅",
+      name: "Fênix",
+      title: "A Ave que Renascía",
+      image: "/assets/images/mythologies/greek/creatures/fenix.png",
+      description:
+        "Ave extraordinária associada ao Sol, à longevidade e ao renascimento depois da morte.",
+    },
+
+    {
+      symbol: "🦅",
+      name: "Aves do Lago Averno",
+      title: "Criaturas das Águas Mortais",
+      image:
+        "/assets/images/mythologies/greek/creatures/aves-do-lago-averno.png",
+      description:
+        "Aves sobrenaturais associadas às regiões próximas das entradas do submundo.",
+    },
+
+    {
+      symbol: "🌑",
+      name: "Cacodemon",
+      title: "Espírito Maligno",
+      image: "/assets/images/mythologies/greek/creatures/cacodemon.png",
+      description:
+        "Termo utilizado para designar espíritos ou daimones considerados prejudiciais aos seres humanos.",
+    },
+
+    {
+      symbol: "✨",
+      name: "Agathos Daimon",
+      title: "Espírito Protetor",
+      image: "/assets/images/mythologies/greek/creatures/agathos-daimon.png",
+      description:
+        "Espírito benéfico representado frequentemente como uma serpente protetora das casas e da prosperidade.",
+    },
+
+    {
+      symbol: "😴",
+      name: "Oneiroi",
+      title: "Espíritos dos Sonhos",
+      image: "/assets/images/mythologies/greek/creatures/oneiroi.png",
+      description:
+        "Espíritos alados responsáveis por transportar sonhos verdadeiros, falsos, proféticos ou assustadores.",
+    },
+
+    {
+      symbol: "😴",
+      name: "Morféu",
+      title: "Espírito das Formas Humanas",
+      image: "/assets/images/mythologies/greek/creatures/morfeu.png",
+      description:
+        "Espírito dos sonhos capaz de assumir perfeitamente a forma de qualquer ser humano.",
+    },
+
+    {
+      symbol: "😴",
+      name: "Fobetor",
+      title: "Espírito dos Pesadelos",
+      image: "/assets/images/mythologies/greek/creatures/fobetor.png",
+      description:
+        "Espírito dos sonhos que assumia formas de animais, monstros e criaturas aterrorizantes.",
+    },
+
+    {
+      symbol: "😴",
+      name: "Fantaso",
+      title: "Espírito das Formas Inanimadas",
+      image: "/assets/images/mythologies/greek/creatures/fantaso.png",
+      description:
+        "Espírito capaz de aparecer nos sonhos como pedras, árvores, água e outros elementos da natureza.",
+    },
+
+    {
+      symbol: "🌪",
+      name: "Anemoi Thuellai",
+      title: "Espíritos das Tempestades",
+      image: "/assets/images/mythologies/greek/creatures/anemoi-thuellai.png",
+      description:
+        "Espíritos violentos dos ventos de tempestade, frequentemente retratados como seres alados.",
+    },
+
+    {
+      symbol: "🌪",
+      name: "Aura",
+      title: "Ninfa da Brisa",
+      image: "/assets/images/mythologies/greek/creatures/aura.png",
+      description:
+        "Espírito ou ninfa associada às brisas suaves e ao movimento delicado do ar.",
+    },
+
+    {
+      symbol: "🔥",
+      name: "Cabiros",
+      title: "Espíritos Misteriosos do Fogo",
+      image: "/assets/images/mythologies/greek/creatures/cabiros.png",
+      description:
+        "Divindades ou espíritos enigmáticos associados à metalurgia, ao fogo e a cultos secretos.",
+    },
+
+    {
+      symbol: "⚒",
+      name: "Dáctilos Ideus",
+      title: "Espíritos Ferreiros",
+      image: "/assets/images/mythologies/greek/creatures/dactilos-ideus.png",
+      description:
+        "Seres mágicos ligados ao monte Ida, à metalurgia e à descoberta do trabalho com metais.",
+    },
+
+    {
+      symbol: "🛡",
+      name: "Curetes",
+      title: "Guerreiros Protetores de Zeus",
+      image: "/assets/images/mythologies/greek/creatures/curetes.png",
+      description:
+        "Guerreiros míticos que batiam suas armas e escudos para esconder o choro do jovem Zeus.",
+    },
+
+    {
+      symbol: "🛡",
+      name: "Coribantes",
+      title: "Dançarinos Armados",
+      image: "/assets/images/mythologies/greek/creatures/coribantes.png",
+      description:
+        "Espíritos guerreiros associados a danças frenéticas, tambores e rituais dedicados à deusa Cibele.",
+    },
+
+    {
+      symbol: "🔥",
+      name: "Telquines",
+      title: "Feiticeiros do Mar",
+      image: "/assets/images/mythologies/greek/creatures/telquines.png",
+      description:
+        "Seres marinhos mágicos associados à metalurgia, à feitiçaria e à criação de objetos divinos.",
+    },
+
+    {
+      symbol: "🐍",
+      name: "Cecrops",
+      title: "Rei Homem-Serpente",
+      image: "/assets/images/mythologies/greek/creatures/cecrops.png",
+      description:
+        "Antigo rei de Atenas representado com torso humano e parte inferior semelhante a uma serpente.",
+    },
+
+    {
+      symbol: "🐍",
+      name: "Erictônio",
+      title: "O Filho da Terra",
+      image: "/assets/images/mythologies/greek/creatures/erictonio.png",
+      description:
+        "Rei ateniense nascido da terra e frequentemente associado a características serpentinas.",
+    },
+
+    {
+      symbol: "👻",
+      name: "Eidolon",
+      title: "Imagem Fantasmagórica",
+      image: "/assets/images/mythologies/greek/creatures/eidolon.png",
+      description:
+        "Manifestação espectral ou imagem de uma pessoa, semelhante a um fantasma ou duplicata ilusória.",
+    },
+
+    {
+      symbol: "👻",
+      name: "Sombra do Hades",
+      title: "Espírito dos Mortos",
+      image: "/assets/images/mythologies/greek/creatures/sombra-do-hades.png",
+      description:
+        "Forma enfraquecida e incorpórea assumida pelas almas humanas após entrarem no reino dos mortos.",
     },
   ],
 
