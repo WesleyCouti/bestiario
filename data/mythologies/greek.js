@@ -135,18 +135,9 @@ const GREEK_MYTHOLOGY = Object.freeze({
   },
 
   pantheonGroups: [
-    {
-      id: "primordials",
-      label: "Primordiais",
-    },
-    {
-      id: "titans",
-      label: "Titãs",
-    },
-    {
-      id: "olympians",
-      label: "Olímpicos",
-    },
+    { id: "primordials", label: "Primordiais" },
+    { id: "titans", label: "Titãs" },
+    { id: "olympians", label: "Olímpicos" },
     {
       id: "underworld",
       label: "Submundo",
@@ -2814,45 +2805,993 @@ const GREEK_MYTHOLOGY = Object.freeze({
   ],
 
   places: [
+    // =====================================================
+    // REINOS CÓSMICOS E DIVINOS
+    // =====================================================
     {
       icon: "△",
       name: "Monte Olimpo",
       type: "Lugar divino",
+      image: "/assets/images/mythologies/greek/places/mount-olympus.png",
       description:
         "Montanha associada à morada das principais divindades olímpicas.",
     },
     {
-      icon: "◈",
-      name: "Delfos",
-      type: "Santuário histórico",
-      description: "Centro religioso associado a Apolo e ao famoso oráculo.",
-    },
-    {
-      icon: "⌂",
-      name: "Creta",
-      type: "Lugar histórico e mítico",
+      icon: "☁",
+      name: "Palácio de Zeus",
+      type: "Morada divina",
+      image: "/assets/images/mythologies/greek/places/palace-of-zeus.png",
       description:
-        "Ilha ligada a Minos, ao Labirinto, ao Minotauro e a antigas tradições.",
+        "Residência simbólica de Zeus no Olimpo e centro da assembleia dos deuses.",
     },
     {
-      icon: "⚑",
-      name: "Troia",
-      type: "Cidade do ciclo heroico",
-      description: "Local central das narrativas da guerra de Troia.",
+      icon: "✦",
+      name: "Éter",
+      type: "Região celestial",
+      image: "/assets/images/mythologies/greek/places/aether.png",
+      description:
+        "Região luminosa e superior do céu, associada ao ar puro respirado pelos deuses.",
+    },
+    {
+      icon: "☄",
+      name: "Urano",
+      type: "Céu primordial",
+      image: "/assets/images/mythologies/greek/places/uranus-sky.png",
+      description:
+        "A abóbada celeste primordial, concebida como domínio e personificação divina.",
+    },
+    {
+      icon: "♁",
+      name: "Gaia",
+      type: "Terra primordial",
+      image: "/assets/images/mythologies/greek/places/gaia-earth.png",
+      description:
+        "A Terra viva e primordial da qual nasceram numerosas linhagens divinas.",
+    },
+    {
+      icon: "≋",
+      name: "Oceano",
+      type: "Rio cósmico",
+      image: "/assets/images/mythologies/greek/places/oceanus.png",
+      description:
+        "Grande corrente que, segundo antigas concepções, circundava o mundo habitado.",
+    },
+    {
+      icon: "⊙",
+      name: "Ilha do Sol",
+      type: "Domínio divino",
+      image: "/assets/images/mythologies/greek/places/island-of-the-sun.png",
+      description:
+        "Ilha associada aos rebanhos sagrados de Hélio no ciclo de Odisseu.",
     },
     {
       icon: "☾",
-      name: "Rio Estige",
-      type: "Lugar do submundo",
+      name: "Palácio de Selene",
+      type: "Morada celestial",
+      image: "/assets/images/mythologies/greek/places/palace-of-selene.png",
       description:
-        "Rio associado a juramentos divinos e à passagem para o mundo dos mortos.",
+        "Morada poética da deusa lunar Selene nas regiões luminosas do céu.",
+    },
+    {
+      icon: "☼",
+      name: "Palácio de Hélio",
+      type: "Morada celestial",
+      image: "/assets/images/mythologies/greek/places/palace-of-helios.png",
+      description:
+        "Palácio solar de onde Hélio partia diariamente conduzindo seu carro pelo céu.",
+    },
+    {
+      icon: "✧",
+      name: "Casa de Eos",
+      type: "Morada celestial",
+      image: "/assets/images/mythologies/greek/places/house-of-eos.png",
+      description:
+        "Residência oriental da deusa da aurora, de onde a luz do dia surgia.",
+    },
+
+    // =====================================================
+    // SUBMUNDO E DESTINOS DAS ALMAS
+    // =====================================================
+    {
+      icon: "☾",
+      name: "Hades",
+      type: "Reino dos mortos",
+      image: "/assets/images/mythologies/greek/places/hades-underworld.png",
+      description:
+        "Reino subterrâneo governado por Hades e Perséfone, destino das almas mortais.",
+    },
+    {
+      icon: "♜",
+      name: "Palácio de Hades",
+      type: "Morada do submundo",
+      image: "/assets/images/mythologies/greek/places/palace-of-hades.png",
+      description:
+        "Residência de Hades e Perséfone no interior do mundo dos mortos.",
     },
     {
       icon: "▼",
       name: "Tártaro",
-      type: "Lugar mítico",
+      type: "Abismo primordial",
+      image: "/assets/images/mythologies/greek/places/tartarus.png",
       description:
-        "Abismo profundo utilizado como prisão em diferentes tradições.",
+        "Profundidade cósmica utilizada como prisão para Titãs e outros seres poderosos.",
+    },
+    {
+      icon: "✦",
+      name: "Campos Elísios",
+      type: "Destino dos favorecidos",
+      image: "/assets/images/mythologies/greek/places/elysian-fields.png",
+      description:
+        "Região feliz reservada, em diferentes tradições, a heróis e almas virtuosas.",
+    },
+    {
+      icon: "❀",
+      name: "Campos de Asfódelos",
+      type: "Região do submundo",
+      image: "/assets/images/mythologies/greek/places/asphodel-meadows.png",
+      description:
+        "Planícies sombrias onde repousavam muitas das almas comuns dos mortos.",
+    },
+    {
+      icon: "◈",
+      name: "Ilhas dos Bem-Aventurados",
+      type: "Paraíso heroico",
+      image: "/assets/images/mythologies/greek/places/isles-of-the-blessed.png",
+      description:
+        "Ilhas paradisíacas do extremo ocidente destinadas a heróis excepcionalmente favorecidos.",
+    },
+    {
+      icon: "⚪",
+      name: "Ilha Branca",
+      type: "Morada heroica",
+      image: "/assets/images/mythologies/greek/places/white-island.png",
+      description:
+        "Ilha remota ligada ao descanso de Aquiles e de outros heróis após a morte.",
+    },
+    {
+      icon: "☠",
+      name: "Campos de Punição",
+      type: "Região do submundo",
+      image: "/assets/images/mythologies/greek/places/fields-of-punishment.png",
+      description:
+        "Área associada ao castigo de almas que cometeram crimes graves contra deuses e homens.",
+    },
+    {
+      icon: "☾",
+      name: "Érebo",
+      type: "Região de trevas",
+      image: "/assets/images/mythologies/greek/places/erebus.png",
+      description:
+        "Escuridão profunda situada entre o mundo dos vivos e as regiões inferiores.",
+    },
+    {
+      icon: "⚖",
+      name: "Tribunal dos Mortos",
+      type: "Lugar de julgamento",
+      image:
+        "/assets/images/mythologies/greek/places/judgement-of-the-dead.png",
+      description:
+        "Local em que Minos, Radamanto e Éaco julgavam as almas recém-chegadas.",
+    },
+    {
+      icon: "🚪",
+      name: "Portões do Hades",
+      type: "Entrada do submundo",
+      image: "/assets/images/mythologies/greek/places/gates-of-hades.png",
+      description:
+        "Passagem guardada por Cérbero que separava o reino dos vivos do mundo dos mortos.",
+    },
+    {
+      icon: "☾",
+      name: "Caverna de Hipnos",
+      type: "Morada divina",
+      image: "/assets/images/mythologies/greek/places/cave-of-hypnos.png",
+      description: "Gruta silenciosa e sombria associada ao deus do sono.",
+    },
+    {
+      icon: "✧",
+      name: "Terra dos Sonhos",
+      type: "Região onírica",
+      image: "/assets/images/mythologies/greek/places/land-of-dreams.png",
+      description:
+        "Domínio simbólico dos Oneiroi, de onde sonhos verdadeiros e enganosos alcançavam os mortais.",
+    },
+    {
+      icon: "🚪",
+      name: "Portão de Chifre",
+      type: "Passagem dos sonhos",
+      image: "/assets/images/mythologies/greek/places/gate-of-horn.png",
+      description: "Portão mítico pelo qual passariam os sonhos verdadeiros.",
+    },
+    {
+      icon: "🚪",
+      name: "Portão de Marfim",
+      type: "Passagem dos sonhos",
+      image: "/assets/images/mythologies/greek/places/gate-of-ivory.png",
+      description: "Portão mítico relacionado aos sonhos falsos ou enganosos.",
+    },
+
+    // =====================================================
+    // RIOS, LAGOS E PASSAGENS DO SUBMUNDO
+    // =====================================================
+    {
+      icon: "☾",
+      name: "Rio Estige",
+      type: "Rio do submundo",
+      image: "/assets/images/mythologies/greek/places/river-styx.png",
+      description:
+        "Rio sagrado ligado a juramentos divinos e à fronteira do reino dos mortos.",
+    },
+    {
+      icon: "≋",
+      name: "Rio Aqueronte",
+      type: "Rio do submundo",
+      image: "/assets/images/mythologies/greek/places/river-acheron.png",
+      description:
+        "Rio da dor associado à travessia das almas conduzidas por Caronte.",
+    },
+    {
+      icon: "≋",
+      name: "Rio Cócito",
+      type: "Rio do submundo",
+      image: "/assets/images/mythologies/greek/places/river-cocytus.png",
+      description:
+        "Rio das lamentações formado, em tradições tardias, pelas lágrimas dos mortos.",
+    },
+    {
+      icon: "🔥",
+      name: "Rio Flegetonte",
+      type: "Rio de fogo",
+      image: "/assets/images/mythologies/greek/places/river-phlegethon.png",
+      description:
+        "Corrente ardente que atravessava as regiões profundas do submundo.",
+    },
+    {
+      icon: "◌",
+      name: "Rio Lete",
+      type: "Rio do esquecimento",
+      image: "/assets/images/mythologies/greek/places/river-lethe.png",
+      description:
+        "Rio cujas águas faziam as almas esquecerem sua existência anterior.",
+    },
+    {
+      icon: "✦",
+      name: "Rio Mnemosine",
+      type: "Rio da memória",
+      image: "/assets/images/mythologies/greek/places/river-mnemosyne.png",
+      description:
+        "Corrente iniciática ligada à preservação da memória após a morte.",
+    },
+    {
+      icon: "◉",
+      name: "Lago Aquerúsia",
+      type: "Lago do submundo",
+      image: "/assets/images/mythologies/greek/places/acherusian-lake.png",
+      description:
+        "Lago associado ao Aqueronte e às rotas de entrada no reino dos mortos.",
+    },
+    {
+      icon: "◉",
+      name: "Lago Estige",
+      type: "Água sagrada",
+      image: "/assets/images/mythologies/greek/places/styx-lake.png",
+      description: "Nascente ou lago ligado às águas invioláveis do Estige.",
+    },
+
+    // =====================================================
+    // ILHAS, TERRAS REMOTAS E LUGARES FANTÁSTICOS
+    // =====================================================
+    {
+      icon: "⌂",
+      name: "Creta",
+      type: "Ilha histórica e mítica",
+      image: "/assets/images/mythologies/greek/places/crete.png",
+      description:
+        "Ilha ligada a Minos, ao Labirinto, ao Minotauro e ao nascimento de Zeus.",
+    },
+    {
+      icon: "⌘",
+      name: "Labirinto de Creta",
+      type: "Construção mítica",
+      image: "/assets/images/mythologies/greek/places/labyrinth-of-crete.png",
+      description:
+        "Estrutura concebida por Dédalo para aprisionar o Minotauro.",
+    },
+    {
+      icon: "△",
+      name: "Monte Ida de Creta",
+      type: "Montanha sagrada",
+      image: "/assets/images/mythologies/greek/places/mount-ida-crete.png",
+      description: "Montanha cretense associada à infância secreta de Zeus.",
+    },
+    {
+      icon: "◉",
+      name: "Caverna Dicteia",
+      type: "Caverna sagrada",
+      image: "/assets/images/mythologies/greek/places/dictaean-cave.png",
+      description:
+        "Gruta cretense tradicionalmente relacionada ao nascimento ou à criação de Zeus.",
+    },
+    {
+      icon: "◉",
+      name: "Caverna Ideia",
+      type: "Caverna sagrada",
+      image: "/assets/images/mythologies/greek/places/idaean-cave.png",
+      description:
+        "Santuário em gruta ligado à infância de Zeus e aos Curetes.",
+    },
+    {
+      icon: "⚓",
+      name: "Ítaca",
+      type: "Reino heroico",
+      image: "/assets/images/mythologies/greek/places/ithaca.png",
+      description:
+        "Ilha e reino de Odisseu, destino final de sua longa viagem.",
+    },
+    {
+      icon: "⚓",
+      name: "Eéia",
+      type: "Ilha encantada",
+      image: "/assets/images/mythologies/greek/places/aeaea.png",
+      description:
+        "Ilha de Circe, onde Odisseu e seus companheiros permaneceram durante sua jornada.",
+    },
+    {
+      icon: "⚓",
+      name: "Ogígia",
+      type: "Ilha mítica",
+      image: "/assets/images/mythologies/greek/places/ogygia.png",
+      description:
+        "Ilha de Calipso, onde Odisseu ficou retido por vários anos.",
+    },
+    {
+      icon: "⚓",
+      name: "Esquéria",
+      type: "Terra dos Feácios",
+      image: "/assets/images/mythologies/greek/places/scheria.png",
+      description:
+        "Reino marítimo dos Feácios, último grande refúgio de Odisseu antes de Ítaca.",
+    },
+    {
+      icon: "⚓",
+      name: "Ilha das Sereias",
+      type: "Lugar marítimo mítico",
+      image: "/assets/images/mythologies/greek/places/island-of-the-sirens.png",
+      description:
+        "Costa perigosa onde as Sereias atraíam navegantes por meio de seu canto.",
+    },
+    {
+      icon: "🌀",
+      name: "Estreito de Cila e Caríbdis",
+      type: "Passagem marítima",
+      image: "/assets/images/mythologies/greek/places/scylla-and-charybdis.png",
+      description:
+        "Canal mortal entre o monstro Cila e o redemoinho de Caríbdis.",
+    },
+    {
+      icon: "⚓",
+      name: "Trinácia",
+      type: "Ilha sagrada",
+      image: "/assets/images/mythologies/greek/places/thrinacia.png",
+      description: "Ilha onde pastavam os rebanhos sagrados de Hélio.",
+    },
+    {
+      icon: "⚓",
+      name: "Eólia",
+      type: "Ilha dos ventos",
+      image: "/assets/images/mythologies/greek/places/aeolia.png",
+      description: "Ilha flutuante governada por Éolo, guardião dos ventos.",
+    },
+    {
+      icon: "⚓",
+      name: "Lemnos",
+      type: "Ilha mítica",
+      image: "/assets/images/mythologies/greek/places/lemnos.png",
+      description:
+        "Ilha associada a Hefesto, aos Cabiros e à passagem dos Argonautas.",
+    },
+    {
+      icon: "⚓",
+      name: "Delos",
+      type: "Ilha sagrada",
+      image: "/assets/images/mythologies/greek/places/delos.png",
+      description:
+        "Ilha vinculada ao nascimento de Apolo e Ártemis e a importantes cultos.",
+    },
+    {
+      icon: "⚓",
+      name: "Naxos",
+      type: "Ilha dionisíaca",
+      image: "/assets/images/mythologies/greek/places/naxos.png",
+      description:
+        "Ilha em que Ariadne foi encontrada e desposada por Dionísio.",
+    },
+    {
+      icon: "⚓",
+      name: "Samotrácia",
+      type: "Ilha sagrada",
+      image: "/assets/images/mythologies/greek/places/samothrace.png",
+      description:
+        "Ilha célebre pelos mistérios dos Grandes Deuses e pelos Cabiros.",
+    },
+    {
+      icon: "⚓",
+      name: "Rodes",
+      type: "Ilha de Hélio",
+      image: "/assets/images/mythologies/greek/places/rhodes.png",
+      description: "Ilha especialmente associada ao culto de Hélio.",
+    },
+    {
+      icon: "⚓",
+      name: "Chipre",
+      type: "Ilha de Afrodite",
+      image: "/assets/images/mythologies/greek/places/cyprus.png",
+      description:
+        "Ilha ligada ao nascimento marítimo e aos principais cultos de Afrodite.",
+    },
+    {
+      icon: "⚓",
+      name: "Citera",
+      type: "Ilha de Afrodite",
+      image: "/assets/images/mythologies/greek/places/cythera.png",
+      description:
+        "Ilha associada à chegada de Afrodite e a antigos santuários da deusa.",
+    },
+    {
+      icon: "⚓",
+      name: "Salamina",
+      type: "Ilha heroica",
+      image: "/assets/images/mythologies/greek/places/salamis.png",
+      description:
+        "Reino de Telamão e Ajax, ligado ao ciclo da Guerra de Troia.",
+    },
+    {
+      icon: "⚓",
+      name: "Egina",
+      type: "Ilha mítica",
+      image: "/assets/images/mythologies/greek/places/aegina.png",
+      description:
+        "Ilha associada à ninfa Egina, a Éaco e à origem dos Mirmidões.",
+    },
+    {
+      icon: "⚓",
+      name: "Cólquida",
+      type: "Terra distante",
+      image: "/assets/images/mythologies/greek/places/colchis.png",
+      description:
+        "Reino oriental onde Jasão e os Argonautas buscaram o Velocino de Ouro.",
+    },
+    {
+      icon: "✦",
+      name: "Jardim das Hespérides",
+      type: "Jardim divino",
+      image:
+        "/assets/images/mythologies/greek/places/garden-of-the-hesperides.png",
+      description:
+        "Jardim remoto onde cresciam as maçãs de ouro protegidas por Ládon.",
+    },
+    {
+      icon: "⚓",
+      name: "Etiópia Mítica",
+      type: "Terra remota",
+      image: "/assets/images/mythologies/greek/places/mythic-aethiopia.png",
+      description:
+        "Região distante ligada a Andrômeda, Cefeu e às visitas festivas dos deuses.",
+    },
+    {
+      icon: "⚓",
+      name: "Hiperbórea",
+      type: "Terra paradisíaca",
+      image: "/assets/images/mythologies/greek/places/hyperborea.png",
+      description:
+        "País idealizado além do vento norte, especialmente associado a Apolo.",
+    },
+    {
+      icon: "☼",
+      name: "Terra dos Cimérios",
+      type: "Terra de escuridão",
+      image:
+        "/assets/images/mythologies/greek/places/land-of-the-cimmerians.png",
+      description:
+        "Região envolta em névoa e trevas visitada por Odisseu antes da descida ao mundo dos mortos.",
+    },
+    {
+      icon: "⚓",
+      name: "Terra dos Lotófagos",
+      type: "Terra fantástica",
+      image:
+        "/assets/images/mythologies/greek/places/land-of-the-lotus-eaters.png",
+      description:
+        "Região onde o fruto do lótus fazia os viajantes esquecerem o desejo de retornar.",
+    },
+    {
+      icon: "⚓",
+      name: "Terra dos Ciclopes",
+      type: "Terra fantástica",
+      image: "/assets/images/mythologies/greek/places/land-of-the-cyclopes.png",
+      description: "Costa habitada por Ciclopes pastores, incluindo Polifemo.",
+    },
+    {
+      icon: "⚓",
+      name: "Lestrigônia",
+      type: "Terra fantástica",
+      image: "/assets/images/mythologies/greek/places/laestrygonia.png",
+      description:
+        "Reino dos gigantes Lestrigões, responsáveis pela destruição de quase toda a frota de Odisseu.",
+    },
+
+    // =====================================================
+    // CIDADES, REINOS E REGIÕES DOS CICLOS HEROICOS
+    // =====================================================
+    {
+      icon: "⚑",
+      name: "Troia",
+      type: "Cidade do ciclo heroico",
+      image: "/assets/images/mythologies/greek/places/troy.png",
+      description: "Cidade central das narrativas da Guerra de Troia.",
+    },
+    {
+      icon: "♛",
+      name: "Micenas",
+      type: "Reino heroico",
+      image: "/assets/images/mythologies/greek/places/mycenae.png",
+      description: "Cidade de Agamêmnon, Perseu e da linhagem dos Atridas.",
+    },
+    {
+      icon: "♛",
+      name: "Argos",
+      type: "Reino heroico",
+      image: "/assets/images/mythologies/greek/places/argos.png",
+      description:
+        "Antiga cidade ligada a Hera, Perseu, Dânae e numerosas genealogias heroicas.",
+    },
+    {
+      icon: "♛",
+      name: "Esparta",
+      type: "Reino heroico",
+      image: "/assets/images/mythologies/greek/places/sparta.png",
+      description:
+        "Reino de Menelau e Helena, fundamental para o ciclo troiano.",
+    },
+    {
+      icon: "🏛",
+      name: "Atenas",
+      type: "Cidade sagrada",
+      image: "/assets/images/mythologies/greek/places/athens.png",
+      description:
+        "Cidade protegida por Atena e associada a Teseu, Erecteu e Cécrops.",
+    },
+    {
+      icon: "🏛",
+      name: "Acrópole de Atenas",
+      type: "Santuário urbano",
+      image: "/assets/images/mythologies/greek/places/acropolis-of-athens.png",
+      description:
+        "Centro sagrado ateniense ligado à disputa entre Atena e Poseidon.",
+    },
+    {
+      icon: "♛",
+      name: "Tebas",
+      type: "Cidade do ciclo heroico",
+      image: "/assets/images/mythologies/greek/places/thebes.png",
+      description:
+        "Cidade associada a Cadmo, Édipo, Dionísio e aos Sete contra Tebas.",
+    },
+    {
+      icon: "♛",
+      name: "Corinto",
+      type: "Cidade mítica",
+      image: "/assets/images/mythologies/greek/places/corinth.png",
+      description:
+        "Cidade ligada a Sísifo, Belerofonte, Medeia e ao cavalo Pégaso.",
+    },
+    {
+      icon: "♛",
+      name: "Iolco",
+      type: "Reino dos Argonautas",
+      image: "/assets/images/mythologies/greek/places/iolcus.png",
+      description:
+        "Cidade de onde Jasão partiu com os Argonautas em busca do Velocino de Ouro.",
+    },
+    {
+      icon: "♛",
+      name: "Pilos",
+      type: "Reino heroico",
+      image: "/assets/images/mythologies/greek/places/pylos.png",
+      description:
+        "Reino do sábio Nestor, importante aliado dos gregos em Troia.",
+    },
+    {
+      icon: "♛",
+      name: "Tirinto",
+      type: "Cidade heroica",
+      image: "/assets/images/mythologies/greek/places/tiryns.png",
+      description:
+        "Fortaleza associada a Héracles, Perseu e aos reis de Argólida.",
+    },
+    {
+      icon: "♛",
+      name: "Calidão",
+      type: "Reino heroico",
+      image: "/assets/images/mythologies/greek/places/calydon.png",
+      description:
+        "Cidade ligada à caça ao Javali de Cálidon e ao herói Meleagro.",
+    },
+    {
+      icon: "♛",
+      name: "Orcômeno",
+      type: "Reino lendário",
+      image: "/assets/images/mythologies/greek/places/orchomenus.png",
+      description:
+        "Cidade associada aos Mínias e a antigas tradições heroicas.",
+    },
+    {
+      icon: "♛",
+      name: "Feras",
+      type: "Reino mítico",
+      image: "/assets/images/mythologies/greek/places/pherae.png",
+      description: "Cidade ligada ao rei Admeto e ao sacrifício de Alceste.",
+    },
+    {
+      icon: "♛",
+      name: "Trezena",
+      type: "Cidade heroica",
+      image: "/assets/images/mythologies/greek/places/troezen.png",
+      description:
+        "Cidade relacionada à juventude de Teseu e ao ciclo de Hipólito.",
+    },
+    {
+      icon: "♛",
+      name: "Tebas Hipoplácia",
+      type: "Cidade troiana",
+      image: "/assets/images/mythologies/greek/places/hypoplacian-thebes.png",
+      description:
+        "Cidade natal de Andrômaca e ligada às campanhas de Aquiles.",
+    },
+    {
+      icon: "♛",
+      name: "Lícia",
+      type: "Reino heroico",
+      image: "/assets/images/mythologies/greek/places/lycia.png",
+      description: "Região ligada a Belerofonte, Sarpédon e Glauco.",
+    },
+    {
+      icon: "♛",
+      name: "Frígia",
+      type: "Reino mítico",
+      image: "/assets/images/mythologies/greek/places/phrygia.png",
+      description:
+        "Terra associada a Midas, Górdio, Cibele e antigos mitos anatólios.",
+    },
+
+    // =====================================================
+    // SANTUÁRIOS, ORÁCULOS E LOCAIS DE CULTO
+    // =====================================================
+    {
+      icon: "◈",
+      name: "Delfos",
+      type: "Santuário histórico",
+      image: "/assets/images/mythologies/greek/places/delphi.png",
+      description:
+        "Centro religioso associado a Apolo e ao célebre oráculo da Pítia.",
+    },
+    {
+      icon: "△",
+      name: "Monte Parnaso",
+      type: "Montanha sagrada",
+      image: "/assets/images/mythologies/greek/places/mount-parnassus.png",
+      description:
+        "Montanha ligada a Apolo, às Musas, a Delfos e ao mito de Deucalião.",
+    },
+    {
+      icon: "◉",
+      name: "Fonte Castália",
+      type: "Fonte sagrada",
+      image: "/assets/images/mythologies/greek/places/castalian-spring.png",
+      description:
+        "Fonte de Delfos usada em purificações e associada à inspiração profética.",
+    },
+    {
+      icon: "🏛",
+      name: "Dodona",
+      type: "Oráculo antigo",
+      image: "/assets/images/mythologies/greek/places/dodona.png",
+      description:
+        "Oráculo de Zeus em que sinais eram interpretados pelo som de carvalhos sagrados.",
+    },
+    {
+      icon: "🏛",
+      name: "Olímpia",
+      type: "Santuário pan-helênico",
+      image: "/assets/images/mythologies/greek/places/olympia.png",
+      description: "Grande santuário de Zeus e sede dos Jogos Olímpicos.",
+    },
+    {
+      icon: "🏛",
+      name: "Eleusis",
+      type: "Centro dos Mistérios",
+      image: "/assets/images/mythologies/greek/places/eleusis.png",
+      description:
+        "Cidade dos Mistérios Eleusinos dedicados a Deméter e Perséfone.",
+    },
+    {
+      icon: "🏛",
+      name: "Epidauro",
+      type: "Santuário de cura",
+      image: "/assets/images/mythologies/greek/places/epidaurus.png",
+      description:
+        "Centro de culto de Asclépio, procurado por peregrinos em busca de cura.",
+    },
+    {
+      icon: "🏛",
+      name: "Nemeia",
+      type: "Santuário e lugar heroico",
+      image: "/assets/images/mythologies/greek/places/nemea.png",
+      description:
+        "Região ligada ao Leão de Nemeia e aos Jogos Nemeus dedicados a Zeus.",
+    },
+    {
+      icon: "🏛",
+      name: "Istmo de Corinto",
+      type: "Santuário e jogos",
+      image: "/assets/images/mythologies/greek/places/isthmus-of-corinth.png",
+      description: "Área dedicada a Poseidon e sede dos Jogos Ístmicos.",
+    },
+    {
+      icon: "🏛",
+      name: "Cabo Súnio",
+      type: "Santuário marítimo",
+      image: "/assets/images/mythologies/greek/places/cape-sounion.png",
+      description:
+        "Promontório consagrado a Poseidon e ligado à morte do rei Egeu.",
+    },
+    {
+      icon: "🏛",
+      name: "Brauron",
+      type: "Santuário de Ártemis",
+      image: "/assets/images/mythologies/greek/places/brauron.png",
+      description:
+        "Santuário ático de Ártemis Braurônia, associado a ritos femininos.",
+    },
+    {
+      icon: "🏛",
+      name: "Dídima",
+      type: "Oráculo de Apolo",
+      image: "/assets/images/mythologies/greek/places/didyma.png",
+      description: "Grande santuário oracular de Apolo na costa da Ásia Menor.",
+    },
+    {
+      icon: "🏛",
+      name: "Claros",
+      type: "Oráculo de Apolo",
+      image: "/assets/images/mythologies/greek/places/claros.png",
+      description: "Centro profético dedicado a Apolo próximo a Colofão.",
+    },
+    {
+      icon: "🏛",
+      name: "Amicleia",
+      type: "Santuário de Apolo",
+      image: "/assets/images/mythologies/greek/places/amyklai.png",
+      description:
+        "Local de culto a Apolo e Jacinto nas proximidades de Esparta.",
+    },
+    {
+      icon: "🏛",
+      name: "Cilene",
+      type: "Montanha sagrada",
+      image: "/assets/images/mythologies/greek/places/mount-cyllene.png",
+      description:
+        "Montanha da Arcádia tradicionalmente identificada como local de nascimento de Hermes.",
+    },
+    {
+      icon: "🏛",
+      name: "Licáion",
+      type: "Montanha sagrada",
+      image: "/assets/images/mythologies/greek/places/mount-lykaion.png",
+      description:
+        "Monte arcádio ligado a Zeus Liceu e a tradições sobre Licáon.",
+    },
+
+    // =====================================================
+    // MONTANHAS, CAVERNAS, BOSQUES E FONTES MÍTICAS
+    // =====================================================
+    {
+      icon: "△",
+      name: "Monte Pélion",
+      type: "Montanha heroica",
+      image: "/assets/images/mythologies/greek/places/mount-pelion.png",
+      description:
+        "Montanha dos Centauros, morada de Quíron e local ligado ao casamento de Peleu e Tétis.",
+    },
+    {
+      icon: "△",
+      name: "Monte Otris",
+      type: "Fortaleza dos Titãs",
+      image: "/assets/images/mythologies/greek/places/mount-othrys.png",
+      description:
+        "Montanha tradicionalmente associada à base dos Titãs durante a Titanomaquia.",
+    },
+    {
+      icon: "△",
+      name: "Monte Etna",
+      type: "Montanha vulcânica",
+      image: "/assets/images/mythologies/greek/places/mount-etna.png",
+      description:
+        "Vulcão ligado à oficina de Hefesto e ao aprisionamento de Tifão ou Encélado.",
+    },
+    {
+      icon: "△",
+      name: "Monte Cáucaso",
+      type: "Lugar de punição",
+      image: "/assets/images/mythologies/greek/places/mount-caucasus.png",
+      description:
+        "Montanha em que Prometeu foi acorrentado e atormentado pela águia de Zeus.",
+    },
+    {
+      icon: "△",
+      name: "Monte Nisa",
+      type: "Montanha mítica",
+      image: "/assets/images/mythologies/greek/places/mount-nysa.png",
+      description:
+        "Local de localização variável onde Dionísio teria sido criado por ninfas.",
+    },
+    {
+      icon: "△",
+      name: "Monte Hélicon",
+      type: "Montanha das Musas",
+      image: "/assets/images/mythologies/greek/places/mount-helicon.png",
+      description:
+        "Montanha sagrada das Musas e das fontes de inspiração poética.",
+    },
+    {
+      icon: "≋",
+      name: "Fonte Hipocrene",
+      type: "Fonte das Musas",
+      image: "/assets/images/mythologies/greek/places/hippocrene.png",
+      description:
+        "Fonte criada, segundo o mito, pelo casco de Pégaso no monte Hélicon.",
+    },
+    {
+      icon: "≋",
+      name: "Fonte Aganipe",
+      type: "Fonte das Musas",
+      image: "/assets/images/mythologies/greek/places/aganippe.png",
+      description:
+        "Nascente do Hélicon associada às Musas e à inspiração poética.",
+    },
+    {
+      icon: "△",
+      name: "Monte Citerão",
+      type: "Montanha mítica",
+      image: "/assets/images/mythologies/greek/places/mount-cithaeron.png",
+      description:
+        "Montanha ligada a Édipo, Penteu, Dionísio e a rituais báquicos.",
+    },
+    {
+      icon: "△",
+      name: "Monte Erimanto",
+      type: "Montanha heroica",
+      image: "/assets/images/mythologies/greek/places/mount-erymanthus.png",
+      description:
+        "Região montanhosa onde Héracles capturou o Javali de Erimanto.",
+    },
+    {
+      icon: "◉",
+      name: "Pântano de Lerna",
+      type: "Lugar monstruoso",
+      image: "/assets/images/mythologies/greek/places/lerna.png",
+      description:
+        "Área pantanosa onde vivia a Hidra e onde existiam antigas tradições de entrada no submundo.",
+    },
+    {
+      icon: "◉",
+      name: "Lago Estínfalo",
+      type: "Lugar heroico",
+      image: "/assets/images/mythologies/greek/places/lake-stymphalus.png",
+      description:
+        "Lago arcádio habitado pelas Aves do Estínfalo enfrentadas por Héracles.",
+    },
+    {
+      icon: "◉",
+      name: "Caverna de Polifemo",
+      type: "Lugar da Odisseia",
+      image: "/assets/images/mythologies/greek/places/cave-of-polyphemus.png",
+      description:
+        "Gruta em que o Ciclope Polifemo aprisionou Odisseu e seus companheiros.",
+    },
+    {
+      icon: "◉",
+      name: "Caverna de Cila",
+      type: "Covil monstruoso",
+      image: "/assets/images/mythologies/greek/places/cave-of-scylla.png",
+      description:
+        "Covil elevado de onde Cila atacava os navios que atravessavam o estreito.",
+    },
+    {
+      icon: "🌿",
+      name: "Bosque de Dodona",
+      type: "Bosque sagrado",
+      image: "/assets/images/mythologies/greek/places/grove-of-dodona.png",
+      description:
+        "Bosque de carvalhos cujos sons eram interpretados como mensagens de Zeus.",
+    },
+    {
+      icon: "🌿",
+      name: "Bosque de Colono",
+      type: "Bosque sagrado",
+      image: "/assets/images/mythologies/greek/places/grove-of-colonus.png",
+      description:
+        "Lugar consagrado às Eumênides e associado aos últimos dias de Édipo.",
+    },
+    {
+      icon: "🌿",
+      name: "Bosque de Ares",
+      type: "Bosque sagrado",
+      image: "/assets/images/mythologies/greek/places/grove-of-ares.png",
+      description:
+        "Bosque da Cólquida em que o dragão guardava o Velocino de Ouro.",
+    },
+    {
+      icon: "≋",
+      name: "Fonte de Ares",
+      type: "Fonte sagrada",
+      image: "/assets/images/mythologies/greek/places/spring-of-ares.png",
+      description:
+        "Fonte tebana guardada por um dragão antes da fundação da cidade por Cadmo.",
+    },
+    {
+      icon: "≋",
+      name: "Fonte de Pirene",
+      type: "Fonte mítica",
+      image: "/assets/images/mythologies/greek/places/pirene-fountain.png",
+      description:
+        "Fonte de Corinto ligada a Pégaso, Belerofonte e às tradições locais.",
+    },
+
+    // =====================================================
+    // ENTRADAS TRADICIONAIS DO SUBMUNDO
+    // =====================================================
+    {
+      icon: "▼",
+      name: "Cabo Tênaro",
+      type: "Entrada do submundo",
+      image: "/assets/images/mythologies/greek/places/cape-taenarum.png",
+      description:
+        "Promontório com uma caverna considerada passagem para o Hades.",
+    },
+    {
+      icon: "▼",
+      name: "Averno",
+      type: "Entrada do submundo",
+      image: "/assets/images/mythologies/greek/places/avernus.png",
+      description:
+        "Lago da tradição greco-romana associado a uma passagem para o reino dos mortos.",
+    },
+    {
+      icon: "▼",
+      name: "Necromanteion do Aqueronte",
+      type: "Oráculo dos mortos",
+      image:
+        "/assets/images/mythologies/greek/places/necromanteion-of-acheron.png",
+      description:
+        "Santuário associado à consulta ritual das almas junto ao rio Aqueronte.",
+    },
+    {
+      icon: "▼",
+      name: "Heracleia Pôntica",
+      type: "Entrada do submundo",
+      image: "/assets/images/mythologies/greek/places/heraclea-pontica.png",
+      description:
+        "Cidade com uma caverna identificada em algumas tradições como acesso ao Hades.",
+    },
+    {
+      icon: "▼",
+      name: "Lerna",
+      type: "Passagem ctônica",
+      image:
+        "/assets/images/mythologies/greek/places/lerna-underworld-gate.png",
+      description:
+        "Região argiva relacionada a cultos ctônicos e a antigas passagens para o mundo inferior.",
     },
   ],
 

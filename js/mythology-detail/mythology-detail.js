@@ -1,1374 +1,1580 @@
 import GREEK_MYTHOLOGY from "../../data/mythologies/greek.js";
 
 const MYTHOLOGIES = Object.freeze({
-    greek: GREEK_MYTHOLOGY
+  greek: GREEK_MYTHOLOGY,
 });
 
 const SELECTORS = Object.freeze({
-    loading: "#mythologyLoading",
-    error: "#mythologyError",
-    page: "#mythologyPage",
-    heroKicker: "#mythologyHeroKicker",
-    heroTitle: "#mythologyHeroTitle",
-    originalName: "#mythologyOriginalName",
-    heroDescription: "#mythologyHeroDescription",
-    heroMeta: "#mythologyHeroMeta",
-    heroImage: "#mythologyHeroImage",
-    overviewSummary: "#overviewSummary",
-    overviewFacts: "#overviewFacts",
-    historyIntroduction: "#historyIntroduction",
-    historyTimeline: "#historyTimeline",
-    cosmologyIntroduction: "#cosmologyIntroduction",
-    cosmologyGrid: "#cosmologyGrid",
-    pantheonFilters: "#pantheonFilters",
-    pantheonGrid: "#pantheonGrid",
-    genealogyFilters: "#genealogyFilters",
-    genealogyReset: "#genealogyReset",
-    genealogySummary: "#genealogySummary",
-    genealogyViewport: "#genealogyViewport",
-    genealogyCanvas: "#genealogyCanvas",
-    genealogyTree: "#genealogyTree",
-    genealogyZoomOut: "#genealogyZoomOut",
-    genealogyZoomValue: "#genealogyZoomValue",
-    genealogyZoomIn: "#genealogyZoomIn",
-    genealogyFit: "#genealogyFit",
-    genealogyLines: "#genealogyLines",
-    genealogyDetails: "#genealogyDetails",
-    heroesGrid: "#heroesGrid",
-    creaturesGrid: "#creaturesGrid",
-    placesGrid: "#placesGrid",
-    cultsGrid: "#cultsGrid",
-    sourcesList: "#sourcesList"
+  loading: "#mythologyLoading",
+  error: "#mythologyError",
+  page: "#mythologyPage",
+  heroKicker: "#mythologyHeroKicker",
+  heroTitle: "#mythologyHeroTitle",
+  originalName: "#mythologyOriginalName",
+  heroDescription: "#mythologyHeroDescription",
+  heroMeta: "#mythologyHeroMeta",
+  heroImage: "#mythologyHeroImage",
+  overviewSummary: "#overviewSummary",
+  overviewFacts: "#overviewFacts",
+  historyIntroduction: "#historyIntroduction",
+  historyTimeline: "#historyTimeline",
+  cosmologyIntroduction: "#cosmologyIntroduction",
+  cosmologyGrid: "#cosmologyGrid",
+  pantheonFilters: "#pantheonFilters",
+  pantheonSummary: "#pantheonSummary",
+  pantheonLoadMore: "#pantheonLoadMore",
+  pantheonGrid: "#pantheonGrid",
+  genealogyFilters: "#genealogyFilters",
+  genealogyReset: "#genealogyReset",
+  genealogySummary: "#genealogySummary",
+  genealogyViewport: "#genealogyViewport",
+  genealogyCanvas: "#genealogyCanvas",
+  genealogyTree: "#genealogyTree",
+  genealogyZoomOut: "#genealogyZoomOut",
+  genealogyZoomValue: "#genealogyZoomValue",
+  genealogyZoomIn: "#genealogyZoomIn",
+  genealogyFit: "#genealogyFit",
+  genealogyLines: "#genealogyLines",
+  genealogyDetails: "#genealogyDetails",
+  heroesSummary: "#heroesSummary",
+  heroesLoadMore: "#heroesLoadMore",
+  heroesGrid: "#heroesGrid",
+  creatureFilters: "#creatureFilters",
+  creatureSearch: "#creatureSearch",
+  creaturesSummary: "#creaturesSummary",
+  creaturesLoadMore: "#creaturesLoadMore",
+  creaturesGrid: "#creaturesGrid",
+  placesGrid: "#placesGrid",
+  cultsGrid: "#cultsGrid",
+  sourcesList: "#sourcesList",
 });
 
 function query(selector) {
-    return document.querySelector(selector);
+  return document.querySelector(selector);
 }
 
 function createElement(tagName, className, textContent) {
-    const element = document.createElement(tagName);
+  const element = document.createElement(tagName);
 
-    if (className) {
-        element.className = className;
-    }
+  if (className) {
+    element.className = className;
+  }
 
-    if (typeof textContent === "string") {
-        element.textContent = textContent;
-    }
+  if (typeof textContent === "string") {
+    element.textContent = textContent;
+  }
 
-    return element;
+  return element;
 }
 
 function appendChildren(parent, ...children) {
-    children.filter(Boolean).forEach((child) => parent.appendChild(child));
-    return parent;
+  children.filter(Boolean).forEach((child) => parent.appendChild(child));
+  return parent;
 }
 
 function getRequestedMythologySlug() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("mythology")?.trim().toLowerCase() || "greek";
+  const params = new URLSearchParams(window.location.search);
+  return params.get("mythology")?.trim().toLowerCase() || "greek";
 }
 
 function setDocumentMetadata(mythology) {
-    document.title = `${mythology.name} | Bestiário`;
+  document.title = `${mythology.name} | Bestiário`;
 
-    const description = document.querySelector('meta[name="description"]');
+  const description = document.querySelector('meta[name="description"]');
 
-    if (description) {
-        description.setAttribute("content", mythology.hero.description);
-    }
+  if (description) {
+    description.setAttribute("content", mythology.hero.description);
+  }
 }
 
 function renderHero(mythology) {
-    query(SELECTORS.heroKicker).textContent = mythology.hero.kicker;
-    query(SELECTORS.heroTitle).textContent = mythology.name;
-    query(SELECTORS.originalName).textContent = mythology.originalName;
-    query(SELECTORS.heroDescription).textContent = mythology.hero.description;
+  query(SELECTORS.heroKicker).textContent = mythology.hero.kicker;
+  query(SELECTORS.heroTitle).textContent = mythology.name;
+  query(SELECTORS.originalName).textContent = mythology.originalName;
+  query(SELECTORS.heroDescription).textContent = mythology.hero.description;
 
-    const heroImage = query(SELECTORS.heroImage);
-    heroImage.src = mythology.hero.image;
-    heroImage.alt = mythology.hero.imageAlt || "";
+  const heroImage = query(SELECTORS.heroImage);
+  heroImage.src = mythology.hero.image;
+  heroImage.alt = mythology.hero.imageAlt || "";
 
-    const facts = mythology.overview.facts.slice(0, 3);
-    const metaContainer = query(SELECTORS.heroMeta);
-    metaContainer.replaceChildren();
+  const facts = mythology.overview.facts.slice(0, 3);
+  const metaContainer = query(SELECTORS.heroMeta);
+  metaContainer.replaceChildren();
 
-    facts.forEach((fact) => {
-        const item = createElement("div", "myth-detail-meta-item");
-        const label = createElement("span", null, fact.label);
-        const value = createElement("strong", null, fact.value);
+  facts.forEach((fact) => {
+    const item = createElement("div", "myth-detail-meta-item");
+    const label = createElement("span", null, fact.label);
+    const value = createElement("strong", null, fact.value);
 
-        appendChildren(item, label, value);
-        metaContainer.appendChild(item);
-    });
+    appendChildren(item, label, value);
+    metaContainer.appendChild(item);
+  });
 }
 
 function renderOverview(mythology) {
-    query(SELECTORS.overviewSummary).textContent = mythology.overview.summary;
+  query(SELECTORS.overviewSummary).textContent = mythology.overview.summary;
 
-    const factsContainer = query(SELECTORS.overviewFacts);
-    factsContainer.replaceChildren();
+  const factsContainer = query(SELECTORS.overviewFacts);
+  factsContainer.replaceChildren();
 
-    mythology.overview.facts.forEach((fact) => {
-        const item = createElement("div", "myth-detail-fact");
-        const term = createElement("dt", null, fact.label);
-        const description = createElement("dd", null, fact.value);
+  mythology.overview.facts.forEach((fact) => {
+    const item = createElement("div", "myth-detail-fact");
+    const term = createElement("dt", null, fact.label);
+    const description = createElement("dd", null, fact.value);
 
-        appendChildren(item, term, description);
-        factsContainer.appendChild(item);
-    });
+    appendChildren(item, term, description);
+    factsContainer.appendChild(item);
+  });
 }
 
 function renderHistory(mythology) {
-    query(SELECTORS.historyIntroduction).textContent =
-        mythology.history.introduction;
+  query(SELECTORS.historyIntroduction).textContent =
+    mythology.history.introduction;
 
-    const timeline = query(SELECTORS.historyTimeline);
-    timeline.replaceChildren();
+  const timeline = query(SELECTORS.historyTimeline);
+  timeline.replaceChildren();
 
-    mythology.history.periods.forEach((period, index) => {
-        const article = createElement("article", "myth-detail-timeline-item");
-        article.dataset.index = String(index + 1);
+  mythology.history.periods.forEach((period, index) => {
+    const article = createElement("article", "myth-detail-timeline-item");
+    article.dataset.index = String(index + 1);
 
-        const periodLabel = createElement(
-            "span",
-            "myth-detail-timeline-period",
-            period.period
-        );
-        const title = createElement("h3", null, period.title);
-        const description = createElement("p", null, period.description);
+    const periodLabel = createElement(
+      "span",
+      "myth-detail-timeline-period",
+      period.period,
+    );
+    const title = createElement("h3", null, period.title);
+    const description = createElement("p", null, period.description);
 
-        appendChildren(article, periodLabel, title, description);
-        timeline.appendChild(article);
-    });
+    appendChildren(article, periodLabel, title, description);
+    timeline.appendChild(article);
+  });
 }
 
-function createInfoCard(item) {
-    const article = createElement("article", "myth-detail-info-card");
+function createInfoCard(item, variant = "") {
+  const className = ["myth-detail-info-card", variant]
+    .filter(Boolean)
+    .join(" ");
 
-    if (item.image) {
-        article.style.setProperty("--info-card-image", `url("${item.image}")`);
-    }
+  const article = createElement("article", className);
 
-    const icon = createElement(
-        "span",
-        "myth-detail-info-card-icon",
-        item.icon || "✦"
-    );
-    icon.setAttribute("aria-hidden", "true");
+  if (typeof item.image === "string" && item.image.trim()) {
+    const imageUrl = item.image.trim();
 
-    const type = createElement(
-        "span",
-        "myth-detail-info-card-type",
-        item.type || ""
-    );
-    const title = createElement("h3", null, item.name);
-    const description = createElement("p", null, item.description);
+    article.style.setProperty("--info-card-image", `url("${imageUrl}")`);
 
-    appendChildren(article, icon, type, title, description);
-    return article;
+    article.classList.add("has-background-image");
+  }
+
+  const icon = createElement(
+    "span",
+    "myth-detail-info-card-icon",
+    item.icon || "✦",
+  );
+
+  icon.setAttribute("aria-hidden", "true");
+
+  const type = createElement(
+    "span",
+    "myth-detail-info-card-type",
+    item.type || "",
+  );
+
+  const title = createElement("h3", null, item.name);
+
+  const description = createElement("p", null, item.description);
+
+  appendChildren(article, icon, type, title, description);
+
+  return article;
 }
 
 function renderInfoCards(items, selector) {
-    const container = query(selector);
-    container.replaceChildren();
+  const container = query(selector);
+  container.replaceChildren();
 
-    items.forEach((item) => {
-        container.appendChild(createInfoCard(item));
-    });
+  const cardVariant =
+    selector === SELECTORS.placesGrid ? "myth-detail-place-card" : "";
+
+  items.forEach((item) => {
+    container.appendChild(createInfoCard(item, cardVariant));
+  });
 }
 
 function createEntityCard(entity) {
-    const article = createElement("article", "myth-detail-entity-card");
-    const visual = createElement("div", "myth-detail-entity-visual");
+  const article = createElement("article", "myth-detail-entity-card");
+  const visual = createElement("div", "myth-detail-entity-visual");
 
-    if (entity.image) {
-        const image = createElement("img", "myth-detail-entity-image");
+  if (entity.image) {
+    const image = createElement("img", "myth-detail-entity-image");
 
-        image.src = entity.image;
-        image.alt = entity.imageAlt || `Representação de ${entity.name}`;
-        image.width = 360;
-        image.height = 420;
-        image.loading = "lazy";
-        image.decoding = "async";
+    image.src = entity.image;
+    image.alt = entity.imageAlt || `Representação de ${entity.name}`;
+    image.width = 360;
+    image.height = 420;
+    image.loading = "lazy";
+    image.decoding = "async";
 
-        image.addEventListener("error", () => {
-            visual.classList.add("has-image-error");
-            image.remove();
+    image.addEventListener("error", () => {
+      visual.classList.add("has-image-error");
+      image.remove();
 
-            const fallbackSymbol = createElement(
-                "span",
-                "myth-detail-entity-symbol",
-                entity.symbol || "✦"
-            );
-
-            fallbackSymbol.setAttribute("aria-hidden", "true");
-            visual.appendChild(fallbackSymbol);
-        });
-
-        visual.classList.add("has-image");
-        visual.appendChild(image);
-    } else {
-        const symbol = createElement(
-            "span",
-            "myth-detail-entity-symbol",
-            entity.symbol || "✦"
-        );
-
-        symbol.setAttribute("aria-hidden", "true");
-        visual.appendChild(symbol);
-    }
-
-    const content = createElement("div", "myth-detail-entity-content");
-    const title = createElement("h3", null, entity.name);
-    const subtitle = createElement(
+      const fallbackSymbol = createElement(
         "span",
-        "myth-detail-entity-title",
-        entity.title
+        "myth-detail-entity-symbol",
+        entity.symbol || "✦",
+      );
+
+      fallbackSymbol.setAttribute("aria-hidden", "true");
+      visual.appendChild(fallbackSymbol);
+    });
+
+    visual.classList.add("has-image");
+    visual.appendChild(image);
+  } else {
+    const symbol = createElement(
+      "span",
+      "myth-detail-entity-symbol",
+      entity.symbol || "✦",
     );
-    const description = createElement("p", null, entity.description);
 
-    appendChildren(content, title, subtitle, description);
-    appendChildren(article, visual, content);
+    symbol.setAttribute("aria-hidden", "true");
+    visual.appendChild(symbol);
+  }
 
-    return article;
+  const content = createElement("div", "myth-detail-entity-content");
+  const title = createElement("h3", null, entity.name);
+  const subtitle = createElement(
+    "span",
+    "myth-detail-entity-title",
+    entity.title,
+  );
+  const description = createElement("p", null, entity.description);
+
+  appendChildren(content, title, subtitle, description);
+  appendChildren(article, visual, content);
+
+  return article;
 }
 
 function renderEntityCards(items, selector) {
-    const container = query(selector);
-    container.replaceChildren();
+  const container = query(selector);
+  container.replaceChildren();
 
-    items.forEach((item) => {
-        container.appendChild(createEntityCard(item));
+  items.forEach((item) => {
+    container.appendChild(createEntityCard(item));
+  });
+}
+
+/* ===================================================== HERÓIS —
+RENDERIZAÇÃO PROGRESSIVA
+===================================================== */
+
+const HERO_PAGE_SIZE = 12;
+
+function renderHeroes(mythology) {
+  const section = query("#herois");
+  const summary = query(SELECTORS.heroesSummary);
+  const loadMore = query(SELECTORS.heroesLoadMore);
+  const grid = query(SELECTORS.heroesGrid);
+
+  if (!section || !summary || !loadMore || !grid) {
+    return;
+  }
+
+  const heroes = Array.isArray(mythology.heroes) ? mythology.heroes : [];
+
+  const state = {
+    visibleCount: HERO_PAGE_SIZE,
+    hasRendered: false,
+  };
+
+  grid.replaceChildren();
+
+  function updateGrid() {
+    const visible = heroes.slice(0, state.visibleCount);
+    const fragment = document.createDocumentFragment();
+
+    visible.forEach((hero) => {
+      fragment.appendChild(createEntityCard(hero));
     });
+
+    grid.replaceChildren(fragment);
+    state.hasRendered = true;
+
+    summary.textContent =
+      heroes.length === 0
+        ? "Nenhum herói cadastrado."
+        : `${visible.length} de ${heroes.length} heróis exibidos.`;
+
+    loadMore.hidden = visible.length >= heroes.length;
+  }
+
+  loadMore.addEventListener("click", () => {
+    state.visibleCount += HERO_PAGE_SIZE;
+    updateGrid();
+  });
+
+  const renderWhenNearViewport = () => {
+    if (!state.hasRendered) {
+      updateGrid();
+    }
+  };
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          renderWhenNearViewport();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "700px 0px" },
+    );
+
+    observer.observe(section);
+  } else {
+    renderWhenNearViewport();
+  }
+}
+
+/* ===================================================== CRIATURAS —
+FILTRO, BUSCA E RENDERIZAÇÃO PROGRESSIVA
+===================================================== */
+
+const CREATURE_PAGE_SIZE = 12;
+
+const CREATURE_GROUPS = Object.freeze([
+  { id: "all", label: "Todas" },
+  {
+    id: "monsters",
+    label: "Monstros",
+  },
+  { id: "dragons", label: "Dragões e serpentes" },
+  { id: "giants", label: "Gigantes" },
+  { id: "marine", label: "Marinhas" },
+  { id: "spirits", label: "Espíritos e ninfas" },
+  {
+    id: "animals",
+    label: "Animais lendários",
+  },
+  { id: "humanoids", label: "Humanoides" },
+]);
+
+function normalizeSearchText(value = "") {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+
+function getCreatureGroup(creature) {
+  if (creature.group) {
+    return creature.group;
+  }
+
+  const text = normalizeSearchText(
+    `${creature.name} ${creature.title} ${creature.description}`,
+  );
+
+  if (/dragao|serpente|hidra|piton|ladon|equidna|ofion|delfina/.test(text))
+    return "dragons";
+  if (/gigante|ciclope|hecatonquiro|geg|aloada|talos/.test(text))
+    return "giants";
+  if (
+    /mar|oceano|aquatic|tritao|hipocampo|cila|caribdis|ceto|cetus|sereia|nereida|ictiocentauro|delfim/.test(
+      text,
+    )
+  )
+    return "marine";
+  if (
+    /ninfa|espirito|daimon|eidolon|sombra|oneiroi|morfeu|fantaso|keres|erinia|empusa|mormo|gelo|driade|naiade|oreade|oceanide|hamadriade|aura|anemoi/.test(
+      text,
+    )
+  )
+    return "spirits";
+  if (
+    /cavalo|cao|raposa|leao|javali|corca|ave|touro|aguia|formiga|pegaso|arion|balios|xanto|celeris|lelape|ortro|cerbero|grifo|fenix/.test(
+      text,
+    )
+  )
+    return "animals";
+  if (
+    /centauro|satiro|sileno|harpia|gorgona|medusa|minotauro|lamia|dracaena|cabiro|dactilo|curete|coribante|telquine|cecrops|erictonio/.test(
+      text,
+    )
+  )
+    return "humanoids";
+
+  return "monsters";
+}
+
+function renderCreatures(mythology) {
+  const section = query("#criaturas");
+  const filters = query(SELECTORS.creatureFilters);
+  const search = query(SELECTORS.creatureSearch);
+  const summary = query(SELECTORS.creaturesSummary);
+  const loadMore = query(SELECTORS.creaturesLoadMore);
+  const grid = query(SELECTORS.creaturesGrid);
+
+  if (!section || !filters || !search || !summary || !loadMore || !grid) {
+    return;
+  }
+
+  const creatures = mythology.creatures.map((creature) => ({
+    ...creature,
+    group: getCreatureGroup(creature),
+  }));
+
+  const state = {
+    selectedGroup: "all",
+    searchTerm: "",
+    visibleCount: CREATURE_PAGE_SIZE,
+    hasRendered: false,
+  };
+
+  filters.replaceChildren();
+
+  CREATURE_GROUPS.forEach((group, index) => {
+    const count =
+      group.id === "all"
+        ? creatures.length
+        : creatures.filter((creature) => creature.group === group.id).length;
+
+    if (count === 0) return;
+
+    filters.appendChild(
+      createFilterButton(`${group.label} (${count})`, group.id, index === 0),
+    );
+  });
+
+  function getFilteredCreatures() {
+    return creatures.filter((creature) => {
+      const matchesGroup =
+        state.selectedGroup === "all" || creature.group === state.selectedGroup;
+
+      const searchableText = normalizeSearchText(
+        `${creature.name} ${creature.title} ${creature.description}`,
+      );
+
+      return matchesGroup && searchableText.includes(state.searchTerm);
+    });
+  }
+
+  function updateGrid() {
+    const filtered = getFilteredCreatures();
+    const visible = filtered.slice(0, state.visibleCount);
+    const fragment = document.createDocumentFragment();
+
+    visible.forEach((creature) => {
+      fragment.appendChild(createEntityCard(creature));
+    });
+
+    grid.replaceChildren(fragment);
+    state.hasRendered = true;
+
+    summary.textContent =
+      filtered.length === 0
+        ? "Nenhuma criatura encontrada."
+        : `${Math.min(visible.length, filtered.length)} de ${filtered.length} criaturas exibidas.`;
+
+    loadMore.hidden = visible.length >= filtered.length;
+  }
+
+  function resetAndRender() {
+    state.visibleCount = CREATURE_PAGE_SIZE;
+    updateGrid();
+  }
+
+  filters.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-group]");
+    if (!button) return;
+
+    state.selectedGroup = button.dataset.group;
+
+    filters.querySelectorAll("button[data-group]").forEach((currentButton) => {
+      const isActive = currentButton === button;
+      currentButton.classList.toggle("is-active", isActive);
+      currentButton.setAttribute("aria-pressed", String(isActive));
+    });
+
+    resetAndRender();
+  });
+
+  let searchTimer = 0;
+  search.addEventListener("input", () => {
+    window.clearTimeout(searchTimer);
+    searchTimer = window.setTimeout(() => {
+      state.searchTerm = normalizeSearchText(search.value);
+      resetAndRender();
+    }, 180);
+  });
+
+  loadMore.addEventListener("click", () => {
+    state.visibleCount += CREATURE_PAGE_SIZE;
+    updateGrid();
+  });
+
+  const renderWhenNearViewport = () => {
+    if (!state.hasRendered) updateGrid();
+  };
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          renderWhenNearViewport();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "700px 0px" },
+    );
+
+    observer.observe(section);
+  } else {
+    renderWhenNearViewport();
+  }
 }
 
 function createFilterButton(label, group, active, extraClass = "") {
-    const className = ["myth-detail-filter-button", extraClass]
-        .filter(Boolean)
-        .join(" ");
+  const className = ["myth-detail-filter-button", extraClass]
+    .filter(Boolean)
+    .join(" ");
 
-    const button = createElement("button", className, label);
-    button.type = "button";
-    button.dataset.group = group;
-    button.classList.toggle("is-active", active);
-    button.setAttribute("aria-pressed", String(active));
+  const button = createElement("button", className, label);
+  button.type = "button";
+  button.dataset.group = group;
+  button.classList.toggle("is-active", active);
+  button.setAttribute("aria-pressed", String(active));
 
-    return button;
+  return button;
 }
+
+const PANTHEON_PAGE_SIZE = 12;
 
 function renderPantheon(mythology) {
-    const filtersContainer = query(SELECTORS.pantheonFilters);
-    const grid = query(SELECTORS.pantheonGrid);
+  const section = query("#panteao");
+  const filtersContainer = query(SELECTORS.pantheonFilters);
+  const summary = query(SELECTORS.pantheonSummary);
+  const loadMore = query(SELECTORS.pantheonLoadMore);
+  const grid = query(SELECTORS.pantheonGrid);
 
-    filtersContainer.replaceChildren();
-    grid.replaceChildren();
+  if (!section || !filtersContainer || !summary || !loadMore || !grid) {
+    return;
+  }
 
-    filtersContainer.appendChild(createFilterButton("Todos", "all", true));
+  const deities = Array.isArray(mythology.deities) ? mythology.deities : [];
 
-    mythology.pantheonGroups.forEach((group) => {
-        filtersContainer.appendChild(
-            createFilterButton(group.label, group.id, false)
-        );
+  const state = {
+    selectedGroup: "all",
+    visibleCount: PANTHEON_PAGE_SIZE,
+    hasRendered: false,
+  };
+
+  filtersContainer.replaceChildren();
+  grid.replaceChildren();
+
+  filtersContainer.appendChild(
+    createFilterButton(`Todos (${deities.length})`, "all", true),
+  );
+
+  mythology.pantheonGroups.forEach((group) => {
+    const count = deities.filter((deity) => deity.group === group.id).length;
+
+    if (count === 0) {
+      return;
+    }
+
+    filtersContainer.appendChild(
+      createFilterButton(`${group.label} (${count})`, group.id, false),
+    );
+  });
+
+  function getFilteredDeities() {
+    if (state.selectedGroup === "all") {
+      return deities;
+    }
+
+    return deities.filter((deity) => deity.group === state.selectedGroup);
+  }
+
+  function updateGrid() {
+    const filtered = getFilteredDeities();
+    const visible = filtered.slice(0, state.visibleCount);
+    const fragment = document.createDocumentFragment();
+
+    visible.forEach((deity) => {
+      const card = createEntityCard(deity);
+      card.dataset.group = deity.group;
+      fragment.appendChild(card);
     });
 
-    mythology.deities.forEach((deity) => {
-        const card = createEntityCard(deity);
-        card.dataset.group = deity.group;
-        grid.appendChild(card);
-    });
+    grid.replaceChildren(fragment);
+    state.hasRendered = true;
 
-    filtersContainer.addEventListener("click", (event) => {
-        const button = event.target.closest("button[data-group]");
+    summary.textContent =
+      filtered.length === 0
+        ? "Nenhuma divindade encontrada neste grupo."
+        : `${visible.length} de ${filtered.length} divindades exibidas.`;
 
-        if (!button) {
-            return;
+    loadMore.hidden = visible.length >= filtered.length;
+  }
+
+  function resetAndRender() {
+    state.visibleCount = PANTHEON_PAGE_SIZE;
+    updateGrid();
+  }
+
+  filtersContainer.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-group]");
+
+    if (!button) {
+      return;
+    }
+
+    state.selectedGroup = button.dataset.group;
+
+    filtersContainer
+      .querySelectorAll("button[data-group]")
+      .forEach((currentButton) => {
+        const isActive = currentButton === button;
+        currentButton.classList.toggle("is-active", isActive);
+        currentButton.setAttribute("aria-pressed", String(isActive));
+      });
+
+    resetAndRender();
+  });
+
+  loadMore.addEventListener("click", () => {
+    state.visibleCount += PANTHEON_PAGE_SIZE;
+    updateGrid();
+  });
+
+  const renderWhenNearViewport = () => {
+    if (!state.hasRendered) {
+      updateGrid();
+    }
+  };
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          renderWhenNearViewport();
+          observer.disconnect();
         }
+      },
+      { rootMargin: "700px 0px" },
+    );
 
-        const selectedGroup = button.dataset.group;
-
-        filtersContainer.querySelectorAll("button").forEach((currentButton) => {
-            const isActive = currentButton === button;
-            currentButton.classList.toggle("is-active", isActive);
-            currentButton.setAttribute("aria-pressed", String(isActive));
-        });
-
-        grid.querySelectorAll("[data-group]").forEach((card) => {
-            card.hidden =
-                selectedGroup !== "all" &&
-                card.dataset.group !== selectedGroup;
-        });
-    });
+    observer.observe(section);
+  } else {
+    renderWhenNearViewport();
+  }
 }
 
-
-/* =====================================================
-   GENEALOGIA — ÁRVORE COMPLETA E INTERATIVA
+/* ===================================================== GENEALOGIA —
+ÁRVORE COMPLETA E INTERATIVA
 ===================================================== */
 
 function getGenealogyPerson(genealogy, personId) {
-    return genealogy.people.find((person) => person.id === personId);
+  return genealogy.people.find((person) => person.id === personId);
 }
 
 function getGenealogyRelations(people, selectedPerson) {
-    const children = people.filter((person) =>
-        person.parents.includes(selectedPerson.id)
-    );
+  const children = people.filter((person) =>
+    person.parents.includes(selectedPerson.id),
+  );
 
-    return {
-        parents: selectedPerson.parents
-            .map((id) => people.find((person) => person.id === id))
-            .filter(Boolean),
-        partners: selectedPerson.partners
-            .map((id) => people.find((person) => person.id === id))
-            .filter(Boolean),
-        children
-    };
+  return {
+    parents: selectedPerson.parents
+      .map((id) => people.find((person) => person.id === id))
+      .filter(Boolean),
+    partners: selectedPerson.partners
+      .map((id) => people.find((person) => person.id === id))
+      .filter(Boolean),
+    children,
+  };
 }
 
 function createGenealogyRelationGroup(title, people) {
-    const group = createElement(
-        "div",
-        "myth-detail-genealogy-relation-group"
-    );
-    const heading = createElement("strong", null, title);
-    const list = createElement(
-        "div",
-        "myth-detail-genealogy-relation-list"
-    );
+  const group = createElement("div", "myth-detail-genealogy-relation-group");
+  const heading = createElement("strong", null, title);
+  const list = createElement("div", "myth-detail-genealogy-relation-list");
 
-    if (people.length === 0) {
-        list.appendChild(
-            createElement("span", "is-empty", "Não registrado")
-        );
-    } else {
-        people.forEach((person) => {
-            const button = createElement("button", null, person.name);
-            button.type = "button";
-            button.dataset.openPerson = person.id;
-            list.appendChild(button);
-        });
-    }
+  if (people.length === 0) {
+    list.appendChild(createElement("span", "is-empty", "Não registrado"));
+  } else {
+    people.forEach((person) => {
+      const button = createElement("button", null, person.name);
+      button.type = "button";
+      button.dataset.openPerson = person.id;
+      list.appendChild(button);
+    });
+  }
 
-    appendChildren(group, heading, list);
-    return group;
+  appendChildren(group, heading, list);
+  return group;
 }
 
 function updateGenealogyDetails(genealogy, selectedPerson) {
-    const details = query(SELECTORS.genealogyDetails);
-    details.replaceChildren();
+  const details = query(SELECTORS.genealogyDetails);
+  details.replaceChildren();
 
-    const symbol = createElement(
-        "div",
-        "myth-detail-genealogy-details-symbol"
-    );
-    symbol.setAttribute("aria-hidden", "true");
+  const symbol = createElement("div", "myth-detail-genealogy-details-symbol");
+  symbol.setAttribute("aria-hidden", "true");
 
-    const fallbackSymbol = createElement(
-        "span",
-        "myth-detail-genealogy-details-fallback",
-        selectedPerson.symbol || "✦"
-    );
+  const fallbackSymbol = createElement(
+    "span",
+    "myth-detail-genealogy-details-fallback",
+    selectedPerson.symbol || "✦",
+  );
 
-    function showDetailsFallback() {
-        symbol.classList.remove("has-image");
-        symbol.replaceChildren(fallbackSymbol);
-    }
+  function showDetailsFallback() {
+    symbol.classList.remove("has-image");
+    symbol.replaceChildren(fallbackSymbol);
+  }
 
-    if (selectedPerson.image) {
-        const image = createElement(
-            "img",
-            "myth-detail-genealogy-details-image"
-        );
+  if (selectedPerson.image) {
+    const image = createElement("img", "myth-detail-genealogy-details-image");
 
-        image.src = selectedPerson.image;
-        image.alt = "";
-        image.width = 140;
-        image.height = 140;
-        image.loading = "lazy";
-        image.decoding = "async";
+    image.src = selectedPerson.image;
+    image.alt = "";
+    image.width = 140;
+    image.height = 140;
+    image.loading = "lazy";
+    image.decoding = "async";
 
-        image.addEventListener("load", () => {
-            symbol.classList.add("has-image");
-        });
+    image.addEventListener("load", () => {
+      symbol.classList.add("has-image");
+    });
 
-        image.addEventListener("error", showDetailsFallback, {
-            once: true
-        });
+    image.addEventListener("error", showDetailsFallback, {
+      once: true,
+    });
 
-        symbol.appendChild(image);
-    } else {
-        showDetailsFallback();
-    }
+    symbol.appendChild(image);
+  } else {
+    showDetailsFallback();
+  }
 
-    const content = createElement("div");
-    const type = createElement(
-        "span",
-        null,
-        selectedPerson.title || "Personagem mitológico"
-    );
-    const title = createElement("h3", null, selectedPerson.name);
-    const description = createElement(
-        "p",
-        null,
-        selectedPerson.note ||
-        "Personagem pertencente à tradição genealógica grega."
-    );
+  const content = createElement("div");
+  const type = createElement(
+    "span",
+    null,
+    selectedPerson.title || "Personagem mitológico",
+  );
+  const title = createElement("h3", null, selectedPerson.name);
+  const description = createElement(
+    "p",
+    null,
+    selectedPerson.note ||
+      "Personagem pertencente à tradição genealógica grega.",
+  );
 
-    const relations = getGenealogyRelations(
-        genealogy.people,
-        selectedPerson
-    );
+  const relations = getGenealogyRelations(genealogy.people, selectedPerson);
 
-    const relationGrid = createElement(
-        "div",
-        "myth-detail-genealogy-relations"
-    );
+  const relationGrid = createElement("div", "myth-detail-genealogy-relations");
 
-    appendChildren(
-        relationGrid,
-        createGenealogyRelationGroup("Pais", relations.parents),
-        createGenealogyRelationGroup("Parceiros", relations.partners),
-        createGenealogyRelationGroup("Descendentes", relations.children)
-    );
+  appendChildren(
+    relationGrid,
+    createGenealogyRelationGroup("Pais", relations.parents),
+    createGenealogyRelationGroup("Parceiros", relations.partners),
+    createGenealogyRelationGroup("Descendentes", relations.children),
+  );
 
-    appendChildren(content, type, title, description, relationGrid);
-    appendChildren(details, symbol, content);
+  appendChildren(content, type, title, description, relationGrid);
+  appendChildren(details, symbol, content);
 }
 
 function resetGenealogyDetails() {
-    const details = query(SELECTORS.genealogyDetails);
-    details.replaceChildren();
+  const details = query(SELECTORS.genealogyDetails);
+  details.replaceChildren();
 
-    const symbol = createElement(
-        "div",
-        "myth-detail-genealogy-details-symbol",
-        "✦"
-    );
-    symbol.setAttribute("aria-hidden", "true");
+  const symbol = createElement(
+    "div",
+    "myth-detail-genealogy-details-symbol",
+    "✦",
+  );
+  symbol.setAttribute("aria-hidden", "true");
 
-    const content = createElement("div");
-    const type = createElement("span", null, "Como explorar");
-    const title = createElement("h3", null, "Selecione um personagem");
-    const description = createElement(
-        "p",
-        null,
-        "A árvore destacará pais, parceiros e descendentes. " +
-        "As linhas douradas indicam descendência e as linhas duplas representam uniões."
-    );
+  const content = createElement("div");
+  const type = createElement("span", null, "Como explorar");
+  const title = createElement("h3", null, "Selecione um personagem");
+  const description = createElement(
+    "p",
+    null,
+    "A árvore destacará pais, parceiros e descendentes. " +
+      "As linhas douradas indicam descendência e as linhas duplas representam uniões.",
+  );
 
-    appendChildren(content, type, title, description);
-    appendChildren(details, symbol, content);
+  appendChildren(content, type, title, description);
+  appendChildren(details, symbol, content);
 }
 
 function createGenealogyPersonCard(person) {
-    const button = createElement(
-        "button",
-        "myth-detail-genealogy-person"
-    );
+  const button = createElement("button", "myth-detail-genealogy-person");
 
-    button.type = "button";
-    button.dataset.personId = person.id;
-    button.dataset.group = person.group;
-    button.dataset.generation = person.generation;
-    button.setAttribute(
-        "aria-label",
-        `${person.name}: ${person.title}`
-    );
-    button.setAttribute("aria-pressed", "false");
+  button.type = "button";
+  button.dataset.personId = person.id;
+  button.dataset.group = person.group;
+  button.dataset.generation = person.generation;
+  button.setAttribute("aria-label", `${person.name}: ${person.title}`);
+  button.setAttribute("aria-pressed", "false");
 
-    const portrait = createElement(
-        "span",
-        "myth-detail-genealogy-person-portrait"
-    );
-    portrait.setAttribute("aria-hidden", "true");
+  const portrait = createElement(
+    "span",
+    "myth-detail-genealogy-person-portrait",
+  );
+  portrait.setAttribute("aria-hidden", "true");
 
-    const fallbackSymbol = createElement(
-        "span",
-        "myth-detail-genealogy-person-symbol",
-        person.symbol || "✦"
-    );
+  const fallbackSymbol = createElement(
+    "span",
+    "myth-detail-genealogy-person-symbol",
+    person.symbol || "✦",
+  );
 
-    function showFallbackSymbol() {
-        portrait.classList.remove("has-image");
-        portrait.replaceChildren(fallbackSymbol);
-    }
+  function showFallbackSymbol() {
+    portrait.classList.remove("has-image");
+    portrait.replaceChildren(fallbackSymbol);
+  }
 
-    if (person.image) {
-        const image = createElement(
-            "img",
-            "myth-detail-genealogy-person-image"
-        );
+  if (person.image) {
+    const image = createElement("img", "myth-detail-genealogy-person-image");
 
-        image.src = person.image;
-        image.alt = "";
-        image.width = 192;
-        image.height = 192;
-        image.loading = "lazy";
-        image.decoding = "async";
+    image.src = person.image;
+    image.alt = "";
+    image.width = 192;
+    image.height = 192;
+    image.loading = "lazy";
+    image.decoding = "async";
 
-        image.addEventListener("load", () => {
-            portrait.classList.add("has-image");
-        });
+    image.addEventListener("load", () => {
+      portrait.classList.add("has-image");
+    });
 
-        image.addEventListener("error", showFallbackSymbol, {
-            once: true
-        });
+    image.addEventListener("error", showFallbackSymbol, {
+      once: true,
+    });
 
-        portrait.appendChild(image);
-    } else {
-        showFallbackSymbol();
-    }
+    portrait.appendChild(image);
+  } else {
+    showFallbackSymbol();
+  }
 
-    const personText = createElement(
-        "span",
-        "myth-detail-genealogy-person-copy"
-    );
-    const personName = createElement("strong", null, person.name);
-    const personTitle = createElement("small", null, person.title);
+  const personText = createElement("span", "myth-detail-genealogy-person-copy");
+  const personName = createElement("strong", null, person.name);
+  const personTitle = createElement("small", null, person.title);
 
-    appendChildren(personText, personName, personTitle);
-    appendChildren(button, portrait, personText);
+  appendChildren(personText, personName, personTitle);
+  appendChildren(button, portrait, personText);
 
-    return button;
+  return button;
 }
 
 function createGenealogySvgPath(
-    startX,
-    startY,
-    endX,
-    endY,
-    className,
-    relationIds
+  startX,
+  startY,
+  endX,
+  endY,
+  className,
+  relationIds,
 ) {
-    const path = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "path"
-    );
-    const middleY = startY + (endY - startY) * 0.5;
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  const middleY = startY + (endY - startY) * 0.5;
 
-    path.setAttribute(
-        "d",
-        `M ${startX} ${startY} ` +
-        `C ${startX} ${middleY}, ${endX} ${middleY}, ${endX} ${endY}`
-    );
-    path.setAttribute("class", className);
-    path.dataset.relations = relationIds.join(" ");
+  path.setAttribute(
+    "d",
+    `M ${startX} ${startY} ` +
+      `C ${startX} ${middleY}, ${endX} ${middleY}, ${endX} ${endY}`,
+  );
+  path.setAttribute("class", className);
+  path.dataset.relations = relationIds.join(" ");
 
-    return path;
+  return path;
 }
 
-function createGenealogyPartnerLines(
-    startX,
-    startY,
-    endX,
-    endY,
-    relationIds
-) {
-    const group = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "g"
-    );
+function createGenealogyPartnerLines(startX, startY, endX, endY, relationIds) {
+  const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
 
-    group.setAttribute(
-        "class",
-        "genealogy-line-group genealogy-line-group--partner"
-    );
-    group.dataset.relations = relationIds.join(" ");
+  group.setAttribute(
+    "class",
+    "genealogy-line-group genealogy-line-group--partner",
+  );
+  group.dataset.relations = relationIds.join(" ");
 
-    [-3, 3].forEach((offset) => {
-        const line = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "line"
-        );
+  [-3, 3].forEach((offset) => {
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
-        line.setAttribute("x1", String(startX));
-        line.setAttribute("y1", String(startY + offset));
-        line.setAttribute("x2", String(endX));
-        line.setAttribute("y2", String(endY + offset));
-        line.setAttribute(
-            "class",
-            "genealogy-line genealogy-line--partner"
-        );
+    line.setAttribute("x1", String(startX));
+    line.setAttribute("y1", String(startY + offset));
+    line.setAttribute("x2", String(endX));
+    line.setAttribute("y2", String(endY + offset));
+    line.setAttribute("class", "genealogy-line genealogy-line--partner");
 
-        group.appendChild(line);
-    });
+    group.appendChild(line);
+  });
 
-    return group;
+  return group;
 }
 
 function renderGenealogy(mythology) {
-    const genealogy = mythology.genealogy;
-    const filters = query(SELECTORS.genealogyFilters);
-    const resetButton = query(SELECTORS.genealogyReset);
-    const summary = query(SELECTORS.genealogySummary);
-    const viewport = query(SELECTORS.genealogyViewport);
-    const canvas = query(SELECTORS.genealogyCanvas);
-    const tree = query(SELECTORS.genealogyTree);
-    const zoomOutButton = query(SELECTORS.genealogyZoomOut);
-    const zoomValue = query(SELECTORS.genealogyZoomValue);
-    const zoomInButton = query(SELECTORS.genealogyZoomIn);
-    const fitButton = query(SELECTORS.genealogyFit);
-    const lines = query(SELECTORS.genealogyLines);
-    const details = query(SELECTORS.genealogyDetails);
+  const genealogy = mythology.genealogy;
+  const filters = query(SELECTORS.genealogyFilters);
+  const resetButton = query(SELECTORS.genealogyReset);
+  const summary = query(SELECTORS.genealogySummary);
+  const viewport = query(SELECTORS.genealogyViewport);
+  const canvas = query(SELECTORS.genealogyCanvas);
+  const tree = query(SELECTORS.genealogyTree);
+  const zoomOutButton = query(SELECTORS.genealogyZoomOut);
+  const zoomValue = query(SELECTORS.genealogyZoomValue);
+  const zoomInButton = query(SELECTORS.genealogyZoomIn);
+  const fitButton = query(SELECTORS.genealogyFit);
+  const lines = query(SELECTORS.genealogyLines);
+  const details = query(SELECTORS.genealogyDetails);
 
-    if (
-        !genealogy ||
-        !filters ||
-        !resetButton ||
-        !summary ||
-        !viewport ||
-        !canvas ||
-        !tree ||
-        !zoomOutButton ||
-        !zoomValue ||
-        !zoomInButton ||
-        !fitButton ||
-        !details
-    ) {
+  if (
+    !genealogy ||
+    !filters ||
+    !resetButton ||
+    !summary ||
+    !viewport ||
+    !canvas ||
+    !tree ||
+    !zoomOutButton ||
+    !zoomValue ||
+    !zoomInButton ||
+    !fitButton ||
+    !details
+  ) {
+    return;
+  }
+
+  const state = {
+    selectedGroup: "all",
+    selectedPersonId: null,
+    animationFrame: 0,
+    scale: 1,
+    minScale: 0.24,
+    maxScale: 2.4,
+    panX: 0,
+    panY: 0,
+    isPanning: false,
+    pointerId: null,
+    pointerStartX: 0,
+    pointerStartY: 0,
+    panStartX: 0,
+    panStartY: 0,
+  };
+
+  filters.replaceChildren();
+  tree.replaceChildren();
+
+  genealogy.groups.forEach((group, index) => {
+    filters.appendChild(
+      createFilterButton(
+        group.label,
+        group.id,
+        index === 0,
+        "myth-detail-genealogy-filter",
+      ),
+    );
+  });
+
+  genealogy.generations.forEach((generation) => {
+    const section = createElement("section", "myth-detail-generation");
+    section.dataset.generation = generation.id;
+
+    const header = createElement("header", "myth-detail-generation-header");
+    const badge = createElement(
+      "span",
+      "myth-detail-generation-number",
+      generation.numeral,
+    );
+    const heading = createElement("h3", null, generation.title);
+    const subtitle = createElement(
+      "p",
+      "myth-detail-generation-subtitle",
+      generation.subtitle,
+    );
+    const list = createElement("div", "myth-detail-generation-list");
+
+    genealogy.people
+      .filter((person) => person.generation === generation.id)
+      .forEach((person) => {
+        list.appendChild(createGenealogyPersonCard(person));
+      });
+
+    appendChildren(header, badge, heading, subtitle);
+    appendChildren(section, header, list);
+    tree.appendChild(section);
+  });
+
+  const cards = [...tree.querySelectorAll("[data-person-id]")];
+
+  function getVisibleCards() {
+    return cards.filter((card) => !card.hidden);
+  }
+
+  function updateSummary() {
+    const group = genealogy.groups.find(
+      (item) => item.id === state.selectedGroup,
+    );
+    const visibleCount = getVisibleCards().length;
+
+    summary.textContent =
+      `${visibleCount} personagens exibidos` +
+      (state.selectedGroup === "all"
+        ? " em sete gerações."
+        : ` no grupo ${group?.label || ""}.`);
+  }
+
+  function clearCardStates() {
+    cards.forEach((card) => {
+      card.classList.remove("is-selected", "is-related", "is-muted");
+      card.setAttribute("aria-pressed", "false");
+    });
+  }
+
+  function updateLineHighlight() {
+    if (!lines) {
+      return;
+    }
+
+    lines.querySelectorAll("[data-relations]").forEach((line) => {
+      const relationIds = line.dataset.relations?.split(" ") || [];
+      const isActive =
+        state.selectedPersonId && relationIds.includes(state.selectedPersonId);
+
+      line.classList.toggle("is-active", Boolean(isActive));
+      line.classList.toggle(
+        "is-muted",
+        Boolean(state.selectedPersonId) && !isActive,
+      );
+    });
+  }
+
+  function drawGenealogyLines() {
+    if (!lines || !tree.parentElement) {
+      return;
+    }
+
+    state.animationFrame = 0;
+
+    const canvasRect = canvas.getBoundingClientRect();
+    const canvasWidth = canvas.scrollWidth;
+    const canvasHeight = canvas.scrollHeight;
+    const currentScale = state.scale || 1;
+
+    lines.setAttribute("viewBox", `0 0 ${canvasWidth} ${canvasHeight}`);
+    lines.setAttribute("width", String(canvasWidth));
+    lines.setAttribute("height", String(canvasHeight));
+    lines.replaceChildren();
+
+    const visibleCards = new Map(
+      getVisibleCards().map((card) => [card.dataset.personId, card]),
+    );
+
+    genealogy.people.forEach((person) => {
+      const childCard = visibleCards.get(person.id);
+
+      if (!childCard) {
         return;
-    }
+      }
 
-    const state = {
-        selectedGroup: "all",
-        selectedPersonId: null,
-        animationFrame: 0,
-        scale: 1,
-        minScale: 0.24,
-        maxScale: 2.4,
-        panX: 0,
-        panY: 0,
-        isPanning: false,
-        pointerId: null,
-        pointerStartX: 0,
-        pointerStartY: 0,
-        panStartX: 0,
-        panStartY: 0
-    };
+      const childRect = childCard.getBoundingClientRect();
+      const childX =
+        (childRect.left - canvasRect.left) / currentScale +
+        childRect.width / (2 * currentScale);
+      const childY = (childRect.top - canvasRect.top) / currentScale;
 
-    filters.replaceChildren();
-    tree.replaceChildren();
+      person.parents.forEach((parentId) => {
+        const parentCard = visibleCards.get(parentId);
 
-    genealogy.groups.forEach((group, index) => {
-        filters.appendChild(
-            createFilterButton(
-                group.label,
-                group.id,
-                index === 0,
-                "myth-detail-genealogy-filter"
-            )
+        if (!parentCard) {
+          return;
+        }
+
+        const parentRect = parentCard.getBoundingClientRect();
+        const parentX =
+          (parentRect.left - canvasRect.left) / currentScale +
+          parentRect.width / (2 * currentScale);
+        const parentY = (parentRect.bottom - canvasRect.top) / currentScale;
+
+        lines.appendChild(
+          createGenealogySvgPath(
+            parentX,
+            parentY,
+            childX,
+            childY,
+            "genealogy-line genealogy-line--descent",
+            [parentId, person.id],
+          ),
         );
+      });
     });
 
-    genealogy.generations.forEach((generation) => {
-        const section = createElement(
-            "section",
-            "myth-detail-generation"
-        );
-        section.dataset.generation = generation.id;
+    const drawnPartners = new Set();
 
-        const header = createElement(
-            "header",
-            "myth-detail-generation-header"
-        );
-        const badge = createElement(
-            "span",
-            "myth-detail-generation-number",
-            generation.numeral
-        );
-        const heading = createElement("h3", null, generation.title);
-        const subtitle = createElement(
-            "p",
-            "myth-detail-generation-subtitle",
-            generation.subtitle
-        );
-        const list = createElement(
-            "div",
-            "myth-detail-generation-list"
-        );
+    genealogy.people.forEach((person) => {
+      person.partners.forEach((partnerId) => {
+        const relationKey = [person.id, partnerId].sort().join("|");
 
-        genealogy.people
-            .filter((person) => person.generation === generation.id)
-            .forEach((person) => {
-                list.appendChild(createGenealogyPersonCard(person));
-            });
+        if (drawnPartners.has(relationKey)) {
+          return;
+        }
 
-        appendChildren(header, badge, heading, subtitle);
-        appendChildren(section, header, list);
-        tree.appendChild(section);
+        drawnPartners.add(relationKey);
+
+        const firstCard = visibleCards.get(person.id);
+        const secondCard = visibleCards.get(partnerId);
+
+        if (!firstCard || !secondCard) {
+          return;
+        }
+
+        if (firstCard.dataset.generation !== secondCard.dataset.generation) {
+          return;
+        }
+
+        const firstRect = firstCard.getBoundingClientRect();
+        const secondRect = secondCard.getBoundingClientRect();
+        const firstIsLeft = firstRect.left < secondRect.left;
+
+        const startX = firstIsLeft
+          ? (firstRect.right - canvasRect.left) / currentScale
+          : (firstRect.left - canvasRect.left) / currentScale;
+        const endX = firstIsLeft
+          ? (secondRect.left - canvasRect.left) / currentScale
+          : (secondRect.right - canvasRect.left) / currentScale;
+        const centerY =
+          ((firstRect.top +
+            firstRect.bottom +
+            secondRect.top +
+            secondRect.bottom) /
+            4 -
+            canvasRect.top) /
+          currentScale;
+
+        lines.appendChild(
+          createGenealogyPartnerLines(startX, centerY, endX, centerY, [
+            person.id,
+            partnerId,
+          ]),
+        );
+      });
     });
 
-    const cards = [...tree.querySelectorAll("[data-person-id]")];
+    updateLineHighlight();
+  }
 
-    function getVisibleCards() {
-        return cards.filter((card) => !card.hidden);
+  function requestLineUpdate() {
+    if (!lines) {
+      return;
     }
 
-    function updateSummary() {
-        const group = genealogy.groups.find(
-            (item) => item.id === state.selectedGroup
-        );
-        const visibleCount = getVisibleCards().length;
-
-        summary.textContent =
-            `${visibleCount} personagens exibidos` +
-            (state.selectedGroup === "all"
-                ? " em sete gerações."
-                : ` no grupo ${group?.label || ""}.`);
+    if (state.animationFrame) {
+      cancelAnimationFrame(state.animationFrame);
     }
 
-    function clearCardStates() {
-        cards.forEach((card) => {
-            card.classList.remove(
-                "is-selected",
-                "is-related",
-                "is-muted"
-            );
-            card.setAttribute("aria-pressed", "false");
-        });
-    }
-
-    function updateLineHighlight() {
-        if (!lines) {
-            return;
-        }
-
-        lines
-            .querySelectorAll("[data-relations]")
-            .forEach((line) => {
-                const relationIds =
-                    line.dataset.relations?.split(" ") || [];
-                const isActive =
-                    state.selectedPersonId &&
-                    relationIds.includes(state.selectedPersonId);
-
-                line.classList.toggle(
-                    "is-active",
-                    Boolean(isActive)
-                );
-                line.classList.toggle(
-                    "is-muted",
-                    Boolean(state.selectedPersonId) && !isActive
-                );
-            });
-    }
-
-    function drawGenealogyLines() {
-        if (!lines || !tree.parentElement) {
-            return;
-        }
-
-        state.animationFrame = 0;
-
-        const canvasRect = canvas.getBoundingClientRect();
-        const canvasWidth = canvas.scrollWidth;
-        const canvasHeight = canvas.scrollHeight;
-        const currentScale = state.scale || 1;
-
-        lines.setAttribute(
-            "viewBox",
-            `0 0 ${canvasWidth} ${canvasHeight}`
-        );
-        lines.setAttribute("width", String(canvasWidth));
-        lines.setAttribute("height", String(canvasHeight));
-        lines.replaceChildren();
-
-        const visibleCards = new Map(
-            getVisibleCards().map((card) => [
-                card.dataset.personId,
-                card
-            ])
-        );
-
-        genealogy.people.forEach((person) => {
-            const childCard = visibleCards.get(person.id);
-
-            if (!childCard) {
-                return;
-            }
-
-            const childRect = childCard.getBoundingClientRect();
-            const childX =
-                (childRect.left - canvasRect.left) / currentScale +
-                childRect.width / (2 * currentScale);
-            const childY =
-                (childRect.top - canvasRect.top) / currentScale;
-
-            person.parents.forEach((parentId) => {
-                const parentCard = visibleCards.get(parentId);
-
-                if (!parentCard) {
-                    return;
-                }
-
-                const parentRect = parentCard.getBoundingClientRect();
-                const parentX =
-                    (parentRect.left - canvasRect.left) / currentScale +
-                    parentRect.width / (2 * currentScale);
-                const parentY =
-                    (parentRect.bottom - canvasRect.top) / currentScale;
-
-                lines.appendChild(
-                    createGenealogySvgPath(
-                        parentX,
-                        parentY,
-                        childX,
-                        childY,
-                        "genealogy-line genealogy-line--descent",
-                        [parentId, person.id]
-                    )
-                );
-            });
-        });
-
-        const drawnPartners = new Set();
-
-        genealogy.people.forEach((person) => {
-            person.partners.forEach((partnerId) => {
-                const relationKey = [person.id, partnerId]
-                    .sort()
-                    .join("|");
-
-                if (drawnPartners.has(relationKey)) {
-                    return;
-                }
-
-                drawnPartners.add(relationKey);
-
-                const firstCard = visibleCards.get(person.id);
-                const secondCard = visibleCards.get(partnerId);
-
-                if (!firstCard || !secondCard) {
-                    return;
-                }
-
-                if (
-                    firstCard.dataset.generation !==
-                    secondCard.dataset.generation
-                ) {
-                    return;
-                }
-
-                const firstRect = firstCard.getBoundingClientRect();
-                const secondRect = secondCard.getBoundingClientRect();
-                const firstIsLeft =
-                    firstRect.left < secondRect.left;
-
-                const startX = firstIsLeft
-                    ? (firstRect.right - canvasRect.left) / currentScale
-                    : (firstRect.left - canvasRect.left) / currentScale;
-                const endX = firstIsLeft
-                    ? (secondRect.left - canvasRect.left) / currentScale
-                    : (secondRect.right - canvasRect.left) / currentScale;
-                const centerY =
-                    (
-                        (
-                            firstRect.top +
-                            firstRect.bottom +
-                            secondRect.top +
-                            secondRect.bottom
-                        ) / 4 -
-                        canvasRect.top
-                    ) / currentScale;
-
-                lines.appendChild(
-                    createGenealogyPartnerLines(
-                        startX,
-                        centerY,
-                        endX,
-                        centerY,
-                        [person.id, partnerId]
-                    )
-                );
-            });
-        });
-
-        updateLineHighlight();
-    }
-
-    function requestLineUpdate() {
-        if (!lines) {
-            return;
-        }
-
-        if (state.animationFrame) {
-            cancelAnimationFrame(state.animationFrame);
-        }
-
-        state.animationFrame = requestAnimationFrame(() => {
-            requestAnimationFrame(drawGenealogyLines);
-        });
-    }
-
-    function clamp(value, minimum, maximum) {
-        return Math.min(Math.max(value, minimum), maximum);
-    }
-
-    function updateZoomInterface() {
-        zoomValue.textContent = `${Math.round(state.scale * 100)}%`;
-        zoomOutButton.disabled = state.scale <= state.minScale + 0.001;
-        zoomInButton.disabled = state.scale >= state.maxScale - 0.001;
-    }
-
-    function applyCanvasTransform() {
-        canvas.style.transform =
-            `translate3d(${state.panX}px, ${state.panY}px, 0) ` +
-            `scale(${state.scale})`;
-
-        updateZoomInterface();
-    }
-
-    function setZoom(nextScale, originX, originY) {
-        const previousScale = state.scale;
-        const clampedScale = clamp(
-            nextScale,
-            state.minScale,
-            state.maxScale
-        );
-
-        if (Math.abs(clampedScale - previousScale) < 0.001) {
-            return;
-        }
-
-        const worldX = (originX - state.panX) / previousScale;
-        const worldY = (originY - state.panY) / previousScale;
-
-        state.scale = clampedScale;
-        state.panX = originX - worldX * clampedScale;
-        state.panY = originY - worldY * clampedScale;
-
-        applyCanvasTransform();
-    }
-
-    function zoomFromCenter(factor) {
-        setZoom(
-            state.scale * factor,
-            viewport.clientWidth / 2,
-            viewport.clientHeight / 2
-        );
-    }
-
-    function fitGenealogyToViewport() {
-        const horizontalPadding = 54;
-        const verticalPadding = 54;
-        const availableWidth = Math.max(
-            viewport.clientWidth - horizontalPadding * 2,
-            1
-        );
-        const availableHeight = Math.max(
-            viewport.clientHeight - verticalPadding * 2,
-            1
-        );
-        const canvasWidth = Math.max(canvas.scrollWidth, 1);
-        const canvasHeight = Math.max(canvas.scrollHeight, 1);
-
-        state.scale = clamp(
-            Math.min(
-                availableWidth / canvasWidth,
-                availableHeight / canvasHeight
-            ),
-            state.minScale,
-            1
-        );
-
-        state.panX =
-            (viewport.clientWidth - canvasWidth * state.scale) / 2;
-        state.panY =
-            (viewport.clientHeight - canvasHeight * state.scale) / 2;
-
-        applyCanvasTransform();
-    }
-
-    function centerPersonInViewport(card) {
-        const viewportRect = viewport.getBoundingClientRect();
-        const cardRect = card.getBoundingClientRect();
-
-        state.panX +=
-            viewportRect.left +
-            viewportRect.width / 2 -
-            (cardRect.left + cardRect.width / 2);
-
-        state.panY +=
-            viewportRect.top +
-            viewportRect.height / 2 -
-            (cardRect.top + cardRect.height / 2);
-
-        applyCanvasTransform();
-    }
-
-    function handleGenealogyWheel(event) {
-        event.preventDefault();
-
-        const viewportRect = viewport.getBoundingClientRect();
-        const pointerX = event.clientX - viewportRect.left;
-        const pointerY = event.clientY - viewportRect.top;
-        const zoomFactor = Math.exp(-event.deltaY * 0.0015);
-
-        setZoom(
-            state.scale * zoomFactor,
-            pointerX,
-            pointerY
-        );
-    }
-
-    function startGenealogyPan(event) {
-        if (
-            event.button !== 0 ||
-            event.target.closest(
-                "button, a, input, select, textarea, [data-person-id]"
-            )
-        ) {
-            return;
-        }
-
-        state.isPanning = true;
-        state.pointerId = event.pointerId;
-        state.pointerStartX = event.clientX;
-        state.pointerStartY = event.clientY;
-        state.panStartX = state.panX;
-        state.panStartY = state.panY;
-
-        viewport.classList.add("is-panning");
-        viewport.setPointerCapture(event.pointerId);
-    }
-
-    function moveGenealogyPan(event) {
-        if (
-            !state.isPanning ||
-            event.pointerId !== state.pointerId
-        ) {
-            return;
-        }
-
-        state.panX =
-            state.panStartX +
-            event.clientX -
-            state.pointerStartX;
-        state.panY =
-            state.panStartY +
-            event.clientY -
-            state.pointerStartY;
-
-        applyCanvasTransform();
-    }
-
-    function stopGenealogyPan(event) {
-        if (
-            !state.isPanning ||
-            event.pointerId !== state.pointerId
-        ) {
-            return;
-        }
-
-        state.isPanning = false;
-        viewport.classList.remove("is-panning");
-
-        if (viewport.hasPointerCapture(event.pointerId)) {
-            viewport.releasePointerCapture(event.pointerId);
-        }
-
-        state.pointerId = null;
-    }
-
-    function clearHighlight() {
-        state.selectedPersonId = null;
-        clearCardStates();
-        resetGenealogyDetails();
-        updateLineHighlight();
-    }
-
-    function selectPerson(personId, shouldScroll = true) {
-        const person = getGenealogyPerson(genealogy, personId);
-
-        if (!person) {
-            return;
-        }
-
-        state.selectedPersonId = person.id;
-
-        const relations = getGenealogyRelations(
-            genealogy.people,
-            person
-        );
-        const relatedIds = new Set([
-            ...relations.parents.map((item) => item.id),
-            ...relations.partners.map((item) => item.id),
-            ...relations.children.map((item) => item.id)
-        ]);
-
-        cards.forEach((card) => {
-            const isSelected =
-                card.dataset.personId === person.id;
-            const isRelated =
-                relatedIds.has(card.dataset.personId);
-
-            card.classList.toggle("is-selected", isSelected);
-            card.classList.toggle(
-                "is-related",
-                !isSelected && isRelated
-            );
-            card.classList.toggle(
-                "is-muted",
-                !isSelected && !isRelated
-            );
-            card.setAttribute(
-                "aria-pressed",
-                String(isSelected)
-            );
-        });
-
-        updateGenealogyDetails(genealogy, person);
-        updateLineHighlight();
-
-        if (shouldScroll) {
-            const selectedCard = tree.querySelector(
-                `[data-person-id="${CSS.escape(person.id)}"]`
-            );
-
-            if (selectedCard) {
-                centerPersonInViewport(selectedCard);
-            }
-        }
-    }
-
-    function applyFilter(groupId) {
-        state.selectedGroup = groupId;
-        clearHighlight();
-
-        cards.forEach((card) => {
-            card.hidden =
-                groupId !== "all" &&
-                card.dataset.group !== groupId;
-        });
-
-        tree
-            .querySelectorAll(".myth-detail-generation")
-            .forEach((generation) => {
-                const hasVisiblePeople = [
-                    ...generation.querySelectorAll(
-                        "[data-person-id]"
-                    )
-                ].some((card) => !card.hidden);
-
-                generation.hidden = !hasVisiblePeople;
-            });
-
-        updateSummary();
-        requestLineUpdate();
-    }
-
-    filters.addEventListener("click", (event) => {
-        const button = event.target.closest(
-            "button[data-group]"
-        );
-
-        if (!button) {
-            return;
-        }
-
-        filters
-            .querySelectorAll("button[data-group]")
-            .forEach((currentButton) => {
-                const isActive = currentButton === button;
-
-                currentButton.classList.toggle(
-                    "is-active",
-                    isActive
-                );
-                currentButton.setAttribute(
-                    "aria-pressed",
-                    String(isActive)
-                );
-            });
-
-        applyFilter(button.dataset.group);
+    state.animationFrame = requestAnimationFrame(() => {
+      requestAnimationFrame(drawGenealogyLines);
     });
+  }
 
-    tree.addEventListener("click", (event) => {
-        const card = event.target.closest(
-            "[data-person-id]"
-        );
+  function clamp(value, minimum, maximum) {
+    return Math.min(Math.max(value, minimum), maximum);
+  }
 
-        if (card && !card.hidden) {
-            selectPerson(card.dataset.personId);
-        }
-    });
+  function updateZoomInterface() {
+    zoomValue.textContent = `${Math.round(state.scale * 100)}%`;
+    zoomOutButton.disabled = state.scale <= state.minScale + 0.001;
+    zoomInButton.disabled = state.scale >= state.maxScale - 0.001;
+  }
 
-    details.addEventListener("click", (event) => {
-        const button = event.target.closest(
-            "[data-open-person]"
-        );
+  function applyCanvasTransform() {
+    canvas.style.transform =
+      `translate3d(${state.panX}px, ${state.panY}px, 0) ` +
+      `scale(${state.scale})`;
 
-        if (button) {
-            selectPerson(button.dataset.openPerson);
-        }
-    });
+    updateZoomInterface();
+  }
 
-    resetButton.addEventListener("click", clearHighlight);
+  function setZoom(nextScale, originX, originY) {
+    const previousScale = state.scale;
+    const clampedScale = clamp(nextScale, state.minScale, state.maxScale);
 
-    zoomOutButton.addEventListener("click", () => {
-        zoomFromCenter(1 / 1.2);
-    });
+    if (Math.abs(clampedScale - previousScale) < 0.001) {
+      return;
+    }
 
-    zoomInButton.addEventListener("click", () => {
-        zoomFromCenter(1.2);
-    });
+    const worldX = (originX - state.panX) / previousScale;
+    const worldY = (originY - state.panY) / previousScale;
 
-    fitButton.addEventListener("click", fitGenealogyToViewport);
+    state.scale = clampedScale;
+    state.panX = originX - worldX * clampedScale;
+    state.panY = originY - worldY * clampedScale;
 
-    viewport.addEventListener(
-        "wheel",
-        handleGenealogyWheel,
-        { passive: false }
+    applyCanvasTransform();
+  }
+
+  function zoomFromCenter(factor) {
+    setZoom(
+      state.scale * factor,
+      viewport.clientWidth / 2,
+      viewport.clientHeight / 2,
     );
-    viewport.addEventListener("pointerdown", startGenealogyPan);
-    viewport.addEventListener("pointermove", moveGenealogyPan);
-    viewport.addEventListener("pointerup", stopGenealogyPan);
-    viewport.addEventListener("pointercancel", stopGenealogyPan);
-    viewport.addEventListener("lostpointercapture", () => {
-        state.isPanning = false;
-        state.pointerId = null;
-        viewport.classList.remove("is-panning");
-    });
+  }
 
-    viewport.addEventListener("keydown", (event) => {
-        const movement = event.shiftKey ? 70 : 34;
+  function fitGenealogyToViewport() {
+    const horizontalPadding = 54;
+    const verticalPadding = 54;
+    const availableWidth = Math.max(
+      viewport.clientWidth - horizontalPadding * 2,
+      1,
+    );
+    const availableHeight = Math.max(
+      viewport.clientHeight - verticalPadding * 2,
+      1,
+    );
+    const canvasWidth = Math.max(canvas.scrollWidth, 1);
+    const canvasHeight = Math.max(canvas.scrollHeight, 1);
 
-        if (event.key === "+" || event.key === "=") {
-            event.preventDefault();
-            zoomFromCenter(1.2);
-        } else if (event.key === "-") {
-            event.preventDefault();
-            zoomFromCenter(1 / 1.2);
-        } else if (event.key === "0") {
-            event.preventDefault();
-            fitGenealogyToViewport();
-        } else if (event.key === "ArrowLeft") {
-            event.preventDefault();
-            state.panX += movement;
-            applyCanvasTransform();
-        } else if (event.key === "ArrowRight") {
-            event.preventDefault();
-            state.panX -= movement;
-            applyCanvasTransform();
-        } else if (event.key === "ArrowUp") {
-            event.preventDefault();
-            state.panY += movement;
-            applyCanvasTransform();
-        } else if (event.key === "ArrowDown") {
-            event.preventDefault();
-            state.panY -= movement;
-            applyCanvasTransform();
-        }
-    });
-
-    let resizeTimer = 0;
-
-    window.addEventListener(
-        "resize",
-        () => {
-            window.clearTimeout(resizeTimer);
-            resizeTimer = window.setTimeout(() => {
-                requestLineUpdate();
-                fitGenealogyToViewport();
-            }, 120);
-        },
-        { passive: true }
+    state.scale = clamp(
+      Math.min(availableWidth / canvasWidth, availableHeight / canvasHeight),
+      state.minScale,
+      1,
     );
 
-    if ("ResizeObserver" in window) {
-        const resizeObserver = new ResizeObserver(() => {
-            requestLineUpdate();
-        });
-        resizeObserver.observe(tree);
+    state.panX = (viewport.clientWidth - canvasWidth * state.scale) / 2;
+    state.panY = (viewport.clientHeight - canvasHeight * state.scale) / 2;
+
+    applyCanvasTransform();
+  }
+
+  function centerPersonInViewport(card) {
+    const viewportRect = viewport.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+
+    state.panX +=
+      viewportRect.left +
+      viewportRect.width / 2 -
+      (cardRect.left + cardRect.width / 2);
+
+    state.panY +=
+      viewportRect.top +
+      viewportRect.height / 2 -
+      (cardRect.top + cardRect.height / 2);
+
+    applyCanvasTransform();
+  }
+
+  function handleGenealogyWheel(event) {
+    event.preventDefault();
+
+    const viewportRect = viewport.getBoundingClientRect();
+    const pointerX = event.clientX - viewportRect.left;
+    const pointerY = event.clientY - viewportRect.top;
+    const zoomFactor = Math.exp(-event.deltaY * 0.0015);
+
+    setZoom(state.scale * zoomFactor, pointerX, pointerY);
+  }
+
+  function startGenealogyPan(event) {
+    if (
+      event.button !== 0 ||
+      event.target.closest(
+        "button, a, input, select, textarea, [data-person-id]",
+      )
+    ) {
+      return;
     }
+
+    state.isPanning = true;
+    state.pointerId = event.pointerId;
+    state.pointerStartX = event.clientX;
+    state.pointerStartY = event.clientY;
+    state.panStartX = state.panX;
+    state.panStartY = state.panY;
+
+    viewport.classList.add("is-panning");
+    viewport.setPointerCapture(event.pointerId);
+  }
+
+  function moveGenealogyPan(event) {
+    if (!state.isPanning || event.pointerId !== state.pointerId) {
+      return;
+    }
+
+    state.panX = state.panStartX + event.clientX - state.pointerStartX;
+    state.panY = state.panStartY + event.clientY - state.pointerStartY;
+
+    applyCanvasTransform();
+  }
+
+  function stopGenealogyPan(event) {
+    if (!state.isPanning || event.pointerId !== state.pointerId) {
+      return;
+    }
+
+    state.isPanning = false;
+    viewport.classList.remove("is-panning");
+
+    if (viewport.hasPointerCapture(event.pointerId)) {
+      viewport.releasePointerCapture(event.pointerId);
+    }
+
+    state.pointerId = null;
+  }
+
+  function clearHighlight() {
+    state.selectedPersonId = null;
+    clearCardStates();
+    resetGenealogyDetails();
+    updateLineHighlight();
+  }
+
+  function selectPerson(personId, shouldScroll = true) {
+    const person = getGenealogyPerson(genealogy, personId);
+
+    if (!person) {
+      return;
+    }
+
+    state.selectedPersonId = person.id;
+
+    const relations = getGenealogyRelations(genealogy.people, person);
+    const relatedIds = new Set([
+      ...relations.parents.map((item) => item.id),
+      ...relations.partners.map((item) => item.id),
+      ...relations.children.map((item) => item.id),
+    ]);
+
+    cards.forEach((card) => {
+      const isSelected = card.dataset.personId === person.id;
+      const isRelated = relatedIds.has(card.dataset.personId);
+
+      card.classList.toggle("is-selected", isSelected);
+      card.classList.toggle("is-related", !isSelected && isRelated);
+      card.classList.toggle("is-muted", !isSelected && !isRelated);
+      card.setAttribute("aria-pressed", String(isSelected));
+    });
+
+    updateGenealogyDetails(genealogy, person);
+    updateLineHighlight();
+
+    if (shouldScroll) {
+      const selectedCard = tree.querySelector(
+        `[data-person-id="${CSS.escape(person.id)}"]`,
+      );
+
+      if (selectedCard) {
+        centerPersonInViewport(selectedCard);
+      }
+    }
+  }
+
+  function applyFilter(groupId) {
+    state.selectedGroup = groupId;
+    clearHighlight();
+
+    cards.forEach((card) => {
+      card.hidden = groupId !== "all" && card.dataset.group !== groupId;
+    });
+
+    tree.querySelectorAll(".myth-detail-generation").forEach((generation) => {
+      const hasVisiblePeople = [
+        ...generation.querySelectorAll("[data-person-id]"),
+      ].some((card) => !card.hidden);
+
+      generation.hidden = !hasVisiblePeople;
+    });
 
     updateSummary();
-    resetGenealogyDetails();
     requestLineUpdate();
+  }
 
-    requestAnimationFrame(() => {
-        requestAnimationFrame(fitGenealogyToViewport);
+  filters.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-group]");
+
+    if (!button) {
+      return;
+    }
+
+    filters.querySelectorAll("button[data-group]").forEach((currentButton) => {
+      const isActive = currentButton === button;
+
+      currentButton.classList.toggle("is-active", isActive);
+      currentButton.setAttribute("aria-pressed", String(isActive));
     });
+
+    applyFilter(button.dataset.group);
+  });
+
+  tree.addEventListener("click", (event) => {
+    const card = event.target.closest("[data-person-id]");
+
+    if (card && !card.hidden) {
+      selectPerson(card.dataset.personId);
+    }
+  });
+
+  details.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-open-person]");
+
+    if (button) {
+      selectPerson(button.dataset.openPerson);
+    }
+  });
+
+  resetButton.addEventListener("click", clearHighlight);
+
+  zoomOutButton.addEventListener("click", () => {
+    zoomFromCenter(1 / 1.2);
+  });
+
+  zoomInButton.addEventListener("click", () => {
+    zoomFromCenter(1.2);
+  });
+
+  fitButton.addEventListener("click", fitGenealogyToViewport);
+
+  viewport.addEventListener("wheel", handleGenealogyWheel, { passive: false });
+  viewport.addEventListener("pointerdown", startGenealogyPan);
+  viewport.addEventListener("pointermove", moveGenealogyPan);
+  viewport.addEventListener("pointerup", stopGenealogyPan);
+  viewport.addEventListener("pointercancel", stopGenealogyPan);
+  viewport.addEventListener("lostpointercapture", () => {
+    state.isPanning = false;
+    state.pointerId = null;
+    viewport.classList.remove("is-panning");
+  });
+
+  viewport.addEventListener("keydown", (event) => {
+    const movement = event.shiftKey ? 70 : 34;
+
+    if (event.key === "+" || event.key === "=") {
+      event.preventDefault();
+      zoomFromCenter(1.2);
+    } else if (event.key === "-") {
+      event.preventDefault();
+      zoomFromCenter(1 / 1.2);
+    } else if (event.key === "0") {
+      event.preventDefault();
+      fitGenealogyToViewport();
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      state.panX += movement;
+      applyCanvasTransform();
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      state.panX -= movement;
+      applyCanvasTransform();
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      state.panY += movement;
+      applyCanvasTransform();
+    } else if (event.key === "ArrowDown") {
+      event.preventDefault();
+      state.panY -= movement;
+      applyCanvasTransform();
+    }
+  });
+
+  let resizeTimer = 0;
+
+  window.addEventListener(
+    "resize",
+    () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        requestLineUpdate();
+        fitGenealogyToViewport();
+      }, 120);
+    },
+    { passive: true },
+  );
+
+  if ("ResizeObserver" in window) {
+    const resizeObserver = new ResizeObserver(() => {
+      requestLineUpdate();
+    });
+    resizeObserver.observe(tree);
+  }
+
+  updateSummary();
+  resetGenealogyDetails();
+  requestLineUpdate();
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(fitGenealogyToViewport);
+  });
 }
 
-
 function renderSources(mythology) {
-    const list = query(SELECTORS.sourcesList);
-    list.replaceChildren();
+  const list = query(SELECTORS.sourcesList);
+  list.replaceChildren();
 
-    mythology.sources.forEach((source) => {
-        const article = createElement(
-            "article",
-            "myth-detail-source-item"
-        );
-        const title = createElement("h3", null, source.title);
-        const author = createElement("span", null, source.author);
-        const description = createElement(
-            "p",
-            null,
-            source.description
-        );
+  mythology.sources.forEach((source) => {
+    const article = createElement("article", "myth-detail-source-item");
+    const title = createElement("h3", null, source.title);
+    const author = createElement("span", null, source.author);
+    const description = createElement("p", null, source.description);
 
-        appendChildren(article, title, author, description);
-        list.appendChild(article);
-    });
+    appendChildren(article, title, author, description);
+    list.appendChild(article);
+  });
 }
 
 function renderPage(mythology) {
-    setDocumentMetadata(mythology);
-    renderHero(mythology);
-    renderOverview(mythology);
-    renderHistory(mythology);
+  setDocumentMetadata(mythology);
+  renderHero(mythology);
+  renderOverview(mythology);
+  renderHistory(mythology);
 
-    query(SELECTORS.cosmologyIntroduction).textContent =
-        mythology.cosmology.introduction;
+  query(SELECTORS.cosmologyIntroduction).textContent =
+    mythology.cosmology.introduction;
 
-    renderInfoCards(
-        mythology.cosmology.realms,
-        SELECTORS.cosmologyGrid
-    );
+  renderInfoCards(mythology.cosmology.realms, SELECTORS.cosmologyGrid);
 
-    renderPantheon(mythology);
-    renderGenealogy(mythology);
-    renderEntityCards(mythology.heroes, SELECTORS.heroesGrid);
-    renderEntityCards(
-        mythology.creatures,
-        SELECTORS.creaturesGrid
-    );
-    renderInfoCards(mythology.places, SELECTORS.placesGrid);
-    renderInfoCards(mythology.cults, SELECTORS.cultsGrid);
-    renderSources(mythology);
+  renderPantheon(mythology);
+  renderGenealogy(mythology);
+  renderHeroes(mythology);
+  renderCreatures(mythology);
+  renderInfoCards(mythology.places, SELECTORS.placesGrid);
+  renderInfoCards(mythology.cults, SELECTORS.cultsGrid);
+  renderSources(mythology);
 }
 
 function showPage() {
-    query(SELECTORS.loading).hidden = true;
-    query(SELECTORS.error).hidden = true;
-    query(SELECTORS.page).hidden = false;
+  query(SELECTORS.loading).hidden = true;
+  query(SELECTORS.error).hidden = true;
+  query(SELECTORS.page).hidden = false;
 }
 
 function showError() {
-    query(SELECTORS.loading).hidden = true;
-    query(SELECTORS.page).hidden = true;
-    query(SELECTORS.error).hidden = false;
+  query(SELECTORS.loading).hidden = true;
+  query(SELECTORS.page).hidden = true;
+  query(SELECTORS.error).hidden = false;
 }
 
 function initializeMythologyPage() {
-    const slug = getRequestedMythologySlug();
-    const mythology = MYTHOLOGIES[slug];
+  const slug = getRequestedMythologySlug();
+  const mythology = MYTHOLOGIES[slug];
 
-    if (!mythology) {
-        showError();
-        return;
-    }
+  if (!mythology) {
+    showError();
+    return;
+  }
 
-    try {
-        renderPage(mythology);
-        showPage();
-    } catch (error) {
-        console.error("Erro ao renderizar a página da mitologia:", error);
-        showError();
-    }
+  try {
+    renderPage(mythology);
+    showPage();
+  } catch (error) {
+    console.error("Erro ao renderizar a página da mitologia:", error);
+    showError();
+  }
 }
 
 document.addEventListener("DOMContentLoaded", initializeMythologyPage);

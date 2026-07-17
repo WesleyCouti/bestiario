@@ -1,13 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Mitologia | Bestiário</title>
-    <meta name="description"
-        content="Explore a história, o panteão, os heróis, as criaturas, os cultos e os locais de uma mitologia." />
+    <meta
+      name="description"
+      content="Explore a história, o panteão, os heróis, as criaturas, os cultos e os locais de uma mitologia."
+    />
 
     <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
 
@@ -19,473 +20,733 @@
     <link rel="stylesheet" href="../css/global/responsive.css" />
     <link rel="stylesheet" href="../css/global/back-to-top.css" />
 
-    <link rel="stylesheet" href="../css/pages/mythology-detail/mythology-detail.css" />
-</head>
+    <link
+      rel="stylesheet"
+      href="../css/pages/mythology-detail/mythology-detail.css"
+    />
+  </head>
 
-<body>
-    <a href="#conteudo-principal" class="skip-link">
-        Pular para o conteúdo
-    </a>
+  <body>
+    <a href="#conteudo-principal" class="skip-link"> Pular para o conteúdo </a>
 
     <header class="topbar">
-        <div class="container topbar-content">
-            <a href="../index.html#home" class="logo" aria-label="Ir para a página inicial do Bestiário">
-                <img src="../assets/images/home/icone-login.png" alt="" aria-hidden="true" class="logo-icon" width="64"
-                    height="64" />
-                <span>Bestiário</span>
-            </a>
+      <div class="container topbar-content">
+        <a
+          href="../index.html#home"
+          class="logo"
+          aria-label="Ir para a página inicial do Bestiário"
+        >
+          <img
+            src="../assets/images/home/icone-login.png"
+            alt=""
+            aria-hidden="true"
+            class="logo-icon"
+            width="64"
+            height="64"
+          />
+          <span>Bestiário</span>
+        </a>
 
-            <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"
-                aria-controls="menu-principal">
-                ☰
-            </button>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="menu-principal"
+        >
+          ☰
+        </button>
 
-            <nav class="menu" id="menu-principal" aria-label="Menu principal">
-                <a href="../index.html#home">Home</a>
-                <a href="../mythology.html" class="active">Mitologias</a>
-                <a href="../religion.html">Religiões</a>
-                <a href="../legends.html">Lendas</a>
-                <a href="../symbols.html">Símbolos</a>
-                <a href="../relics.html">Relíquias</a>
-            </nav>
-        </div>
+        <nav class="menu" id="menu-principal" aria-label="Menu principal">
+          <a href="../index.html#home">Home</a>
+          <a href="../mythology.html" class="active">Mitologias</a>
+          <a href="../religion.html">Religiões</a>
+          <a href="../legends.html">Lendas</a>
+          <a href="../symbols.html">Símbolos</a>
+          <a href="../relics.html">Relíquias</a>
+        </nav>
+      </div>
     </header>
 
     <main id="conteudo-principal">
-        <section class="myth-detail-loading" id="mythologyLoading">
-            <span class="myth-detail-loading-symbol" aria-hidden="true">Ω</span>
-            <p>Carregando mitologia...</p>
+      <section class="myth-detail-loading" id="mythologyLoading">
+        <span class="myth-detail-loading-symbol" aria-hidden="true">Ω</span>
+        <p>Carregando mitologia...</p>
+      </section>
+
+      <section
+        class="myth-detail-error"
+        id="mythologyError"
+        hidden
+        aria-live="polite"
+      >
+        <h1>Mitologia não encontrada</h1>
+        <p>Não foi possível carregar o conteúdo solicitado.</p>
+        <a href="../mythology.html">Voltar ao catálogo</a>
+      </section>
+
+      <div id="mythologyPage" hidden>
+        <section
+          class="myth-detail-hero"
+          id="inicio"
+          aria-labelledby="mythologyHeroTitle"
+        >
+          <div class="myth-detail-hero-overlay" aria-hidden="true"></div>
+
+          <div class="container myth-detail-hero-layout">
+            <div class="myth-detail-hero-content">
+              <span class="myth-detail-kicker" id="mythologyHeroKicker"></span>
+
+              <div class="myth-detail-title-ornament" aria-hidden="true">
+                <span></span>
+                <small>🏛</small>
+                <span></span>
+              </div>
+
+              <h1 id="mythologyHeroTitle"></h1>
+
+              <p
+                class="myth-detail-original-name"
+                id="mythologyOriginalName"
+              ></p>
+
+              <p
+                class="myth-detail-hero-description"
+                id="mythologyHeroDescription"
+              ></p>
+
+              <div
+                class="myth-detail-hero-meta"
+                id="mythologyHeroMeta"
+                aria-label="Informações principais"
+              ></div>
+
+              <div class="myth-detail-hero-actions">
+                <a
+                  href="#panteao"
+                  class="myth-detail-button myth-detail-button--primary"
+                >
+                  <span aria-hidden="true">⛑</span>
+                  Explorar o Panteão
+                </a>
+
+                <a
+                  href="#origens"
+                  class="myth-detail-button myth-detail-button--secondary"
+                >
+                  <span aria-hidden="true">▤</span>
+                  Conhecer a História
+                </a>
+              </div>
+            </div>
+
+            <div class="myth-detail-hero-visual" aria-hidden="true">
+              <div class="myth-detail-hero-circle"></div>
+              <img
+                id="mythologyHeroImage"
+                src=""
+                alt=""
+                width="900"
+                height="900"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+              />
+            </div>
+          </div>
         </section>
 
-        <section class="myth-detail-error" id="mythologyError" hidden aria-live="polite">
-            <h1>Mitologia não encontrada</h1>
-            <p>
-                Não foi possível carregar o conteúdo solicitado.
-            </p>
-            <a href="../mythology.html">Voltar ao catálogo</a>
+        <nav
+          class="myth-detail-page-nav"
+          aria-label="Navegação interna da mitologia"
+        >
+          <div class="myth-detail-page-nav-list">
+            <a href="#visao-geral">Visão Geral</a>
+            <a href="#origens">Origens</a>
+            <a href="#cosmologia">Cosmologia</a>
+            <a href="#panteao">Panteão</a>
+            <a href="#genealogia">Genealogia</a>
+            <a href="#herois">Heróis</a>
+            <a href="#criaturas">Criaturas</a>
+            <a href="#locais">Locais</a>
+            <a href="#cultos">Cultos</a>
+            <a href="#fontes">Fontes</a>
+          </div>
+        </nav>
+
+        <section
+          class="myth-detail-section myth-detail-overview"
+          id="visao-geral"
+          aria-labelledby="overviewTitle"
+        >
+          <div class="container">
+            <header
+              class="myth-detail-section-header myth-detail-overview-header"
+            >
+              <span>Introdução</span>
+              <h2 id="overviewTitle">Visão geral</h2>
+
+              <div class="myth-detail-overview-ornament" aria-hidden="true">
+                <span></span>
+                <small>🏛</small>
+                <span></span>
+              </div>
+
+              <p id="overviewSummary"></p>
+            </header>
+
+            <div class="myth-detail-overview-stage">
+              <span
+                class="myth-detail-overview-silhouette myth-detail-overview-silhouette--left"
+                aria-hidden="true"
+              ></span>
+              <span
+                class="myth-detail-overview-silhouette myth-detail-overview-silhouette--right"
+                aria-hidden="true"
+              ></span>
+
+              <dl class="myth-detail-facts-grid" id="overviewFacts"></dl>
+            </div>
+          </div>
         </section>
 
-        <div id="mythologyPage" hidden>
-            <section class="myth-detail-hero" id="inicio" aria-labelledby="mythologyHeroTitle">
-                <div class="myth-detail-hero-overlay" aria-hidden="true"></div>
+        <section
+          class="myth-detail-section myth-detail-history"
+          id="origens"
+          aria-labelledby="historyTitle"
+        >
+          <div class="container">
+            <header
+              class="myth-detail-section-header myth-detail-history-header"
+            >
+              <span>Desenvolvimento histórico</span>
 
-                <div class="container myth-detail-hero-layout">
-                    <div class="myth-detail-hero-content">
-                        <span class="myth-detail-kicker" id="mythologyHeroKicker"></span>
+              <div class="myth-detail-history-ornament" aria-hidden="true">
+                <span></span>
+                <small>🏛</small>
+                <span></span>
+              </div>
 
-                        <div class="myth-detail-title-ornament" aria-hidden="true">
-                            <span></span>
-                            <small>🏛</small>
-                            <span></span>
-                        </div>
+              <h2 id="historyTitle">Origens e formação</h2>
 
-                        <h1 id="mythologyHeroTitle"></h1>
+              <div class="myth-detail-history-divider" aria-hidden="true">
+                <span></span>
+                <small>◆</small>
+                <span></span>
+              </div>
 
-                        <p class="myth-detail-original-name" id="mythologyOriginalName"></p>
+              <p id="historyIntroduction"></p>
+            </header>
 
-                        <p class="myth-detail-hero-description" id="mythologyHeroDescription"></p>
+            <div class="myth-detail-history-stage">
+              <span
+                class="myth-detail-history-silhouette myth-detail-history-silhouette--left"
+                aria-hidden="true"
+              ></span>
+              <span
+                class="myth-detail-history-silhouette myth-detail-history-silhouette--right"
+                aria-hidden="true"
+              ></span>
 
-                        <div class="myth-detail-hero-meta" id="mythologyHeroMeta" aria-label="Informações principais">
-                        </div>
+              <div class="myth-detail-timeline" id="historyTimeline"></div>
+            </div>
+          </div>
+        </section>
 
-                        <div class="myth-detail-hero-actions">
-                            <a href="#panteao" class="myth-detail-button myth-detail-button--primary">
-                                <span aria-hidden="true">⛑</span>
-                                Explorar o Panteão
-                            </a>
+        <section
+          class="myth-detail-section myth-detail-cosmology"
+          id="cosmologia"
+          aria-labelledby="cosmologyTitle"
+        >
+          <div class="container">
+            <header
+              class="myth-detail-section-header myth-detail-cosmology-header"
+            >
+              <span>O universo mítico</span>
 
-                            <a href="#origens" class="myth-detail-button myth-detail-button--secondary">
-                                <span aria-hidden="true">▤</span>
-                                Conhecer a História
-                            </a>
-                        </div>
+              <div class="myth-detail-cosmology-ornament" aria-hidden="true">
+                <span></span>
+                <small>🏛</small>
+                <span></span>
+              </div>
+
+              <h2 id="cosmologyTitle">Cosmologia</h2>
+
+              <div class="myth-detail-cosmology-divider" aria-hidden="true">
+                <span></span>
+                <small>◆</small>
+                <span></span>
+              </div>
+
+              <p id="cosmologyIntroduction"></p>
+            </header>
+
+            <div class="myth-detail-cosmology-stage">
+              <span
+                class="myth-detail-cosmology-silhouette myth-detail-cosmology-silhouette--left"
+                aria-hidden="true"
+              ></span>
+              <span
+                class="myth-detail-cosmology-silhouette myth-detail-cosmology-silhouette--right"
+                aria-hidden="true"
+              ></span>
+
+              <div
+                class="myth-detail-cards-grid myth-detail-cosmology-grid"
+                id="cosmologyGrid"
+              ></div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="myth-detail-section myth-detail-pantheon"
+          id="panteao"
+          aria-labelledby="pantheonTitle"
+        >
+          <div class="container">
+            <header class="myth-detail-section-header">
+              <span>Divindades</span>
+              <h2 id="pantheonTitle">Panteão</h2>
+              <p>Conheça os principais grupos de divindades e seus domínios.</p>
+            </header>
+
+            <div
+              class="myth-detail-filter-list"
+              id="pantheonFilters"
+              aria-label="Filtros do panteão"
+            ></div>
+
+            <p
+              class="myth-detail-pantheon-summary"
+              id="pantheonSummary"
+              aria-live="polite"
+            ></p>
+
+            <div class="myth-detail-entity-grid" id="pantheonGrid"></div>
+
+            <div class="myth-detail-pantheon-actions">
+              <button
+                class="myth-detail-button myth-detail-button--secondary"
+                id="pantheonLoadMore"
+                type="button"
+                hidden
+              >
+                Ver mais divindades
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="myth-detail-section myth-detail-genealogy"
+          id="genealogia"
+          aria-labelledby="genealogyTitle"
+        >
+          <div class="container">
+            <header
+              class="myth-detail-section-header myth-detail-genealogy-header"
+            >
+              <span>Do vazio primordial ao Olimpo</span>
+
+              <div class="myth-detail-genealogy-ornament" aria-hidden="true">
+                <span></span>
+                <small>◇</small>
+                <span></span>
+              </div>
+
+              <h2 id="genealogyTitle">Árvore genealógica</h2>
+
+              <div class="myth-detail-genealogy-divider" aria-hidden="true">
+                <span></span>
+                <small>◆</small>
+                <span></span>
+              </div>
+
+              <p>
+                Acompanhe as linhagens desde Caos e as forças primordiais até os
+                Titãs, os deuses do Olimpo e os grandes heróis. Todos os
+                personagens cadastrados na genealogia são apresentados no
+                painel.
+              </p>
+            </header>
+
+            <div class="myth-detail-genealogy-stage">
+              <span
+                class="myth-detail-genealogy-silhouette myth-detail-genealogy-silhouette--left"
+                aria-hidden="true"
+              ></span>
+              <span
+                class="myth-detail-genealogy-silhouette myth-detail-genealogy-silhouette--right"
+                aria-hidden="true"
+              ></span>
+
+              <div class="myth-detail-genealogy-layout">
+                <aside
+                  class="myth-detail-genealogy-guide"
+                  aria-label="Guia da árvore genealógica"
+                >
+                  <div class="myth-detail-genealogy-guide-heading">
+                    <span
+                      class="myth-detail-genealogy-guide-tree"
+                      aria-hidden="true"
+                      >♧</span
+                    >
+                    <span>Árvore genealógica</span>
+                    <strong>Panteão Grego</strong>
+                    <p>
+                      Dos seres primordiais aos heróis e descendentes mortais.
+                    </p>
+                  </div>
+
+                  <div class="myth-detail-genealogy-legend">
+                    <h3>Como ler</h3>
+                    <div>
+                      <i class="is-union" aria-hidden="true"></i
+                      ><span>União / parceria</span>
+                    </div>
+                    <div>
+                      <i class="is-descent" aria-hidden="true"></i
+                      ><span>Descendência</span>
+                    </div>
+                    <div>
+                      <i class="is-generation" aria-hidden="true">◇</i
+                      ><span>Geração</span>
+                    </div>
+                  </div>
+
+                  <div class="myth-detail-genealogy-guide-tip">
+                    <span aria-hidden="true">✦</span>
+                    <p>
+                      Clique em qualquer personagem para destacar pais,
+                      parceiros e descendentes diretos.
+                    </p>
+                  </div>
+                </aside>
+
+                <div class="myth-detail-genealogy-main">
+                  <div class="myth-detail-genealogy-toolbar">
+                    <div
+                      class="myth-detail-genealogy-filters"
+                      id="genealogyFilters"
+                      aria-label="Filtros da árvore genealógica"
+                    ></div>
+
+                    <button
+                      class="myth-detail-genealogy-reset"
+                      id="genealogyReset"
+                      type="button"
+                    >
+                      Limpar destaque
+                    </button>
+                  </div>
+
+                  <div
+                    class="myth-detail-genealogy-summary"
+                    id="genealogySummary"
+                    aria-live="polite"
+                  ></div>
+
+                  <div
+                    class="myth-detail-genealogy-navigation"
+                    aria-label="Controles de navegação da árvore genealógica"
+                  >
+                    <div class="myth-detail-genealogy-zoom-controls">
+                      <button
+                        id="genealogyZoomOut"
+                        type="button"
+                        aria-label="Diminuir zoom da árvore"
+                      >
+                        −
+                      </button>
+
+                      <span id="genealogyZoomValue" aria-live="polite"
+                        >100%</span
+                      >
+
+                      <button
+                        id="genealogyZoomIn"
+                        type="button"
+                        aria-label="Aumentar zoom da árvore"
+                      >
+                        +
+                      </button>
+
+                      <button
+                        id="genealogyFit"
+                        type="button"
+                        aria-label="Enquadrar toda a árvore"
+                      >
+                        Enquadrar
+                      </button>
                     </div>
 
-                    <div class="myth-detail-hero-visual" aria-hidden="true">
-                        <div class="myth-detail-hero-circle"></div>
-                        <img id="mythologyHeroImage" src="" alt="" width="900" height="900" loading="eager"
-                            decoding="async" fetchpriority="high" />
+                    <p>
+                      Use a roda do mouse para aproximar ou afastar. Arraste o
+                      fundo para mover a árvore.
+                    </p>
+                  </div>
+
+                  <div
+                    class="myth-detail-genealogy-viewport"
+                    id="genealogyViewport"
+                    tabindex="0"
+                    aria-label="Árvore genealógica completa. Use a roda do mouse para controlar o zoom e arraste o fundo para navegar."
+                  >
+                    <div
+                      class="myth-detail-genealogy-canvas"
+                      id="genealogyCanvas"
+                    >
+                      <svg
+                        class="myth-detail-genealogy-lines"
+                        id="genealogyLines"
+                        aria-hidden="true"
+                      ></svg>
+                      <div
+                        class="myth-detail-genealogy-tree"
+                        id="genealogyTree"
+                      ></div>
                     </div>
-                </div>
-            </section>
+                  </div>
 
-            <nav class="myth-detail-page-nav" aria-label="Navegação interna da mitologia">
-                <div class="myth-detail-page-nav-list">
-                    <a href="#visao-geral">Visão Geral</a>
-                    <a href="#origens">Origens</a>
-                    <a href="#cosmologia">Cosmologia</a>
-                    <a href="#panteao">Panteão</a>
-                    <a href="#genealogia">Genealogia</a>
-                    <a href="#herois">Heróis</a>
-                    <a href="#criaturas">Criaturas</a>
-                    <a href="#locais">Locais</a>
-                    <a href="#cultos">Cultos</a>
-                    <a href="#fontes">Fontes</a>
-                </div>
-            </nav>
-
-            <section class="myth-detail-section myth-detail-overview" id="visao-geral" aria-labelledby="overviewTitle">
-                <div class="container">
-                    <header class="myth-detail-section-header myth-detail-overview-header">
-                        <span>Introdução</span>
-                        <h2 id="overviewTitle">Visão geral</h2>
-
-                        <div class="myth-detail-overview-ornament" aria-hidden="true">
-                            <span></span>
-                            <small>🏛</small>
-                            <span></span>
-                        </div>
-
-                        <p id="overviewSummary"></p>
-                    </header>
-
-                    <div class="myth-detail-overview-stage">
-                        <span class="myth-detail-overview-silhouette myth-detail-overview-silhouette--left"
-                            aria-hidden="true"></span>
-                        <span class="myth-detail-overview-silhouette myth-detail-overview-silhouette--right"
-                            aria-hidden="true"></span>
-
-                        <dl class="myth-detail-facts-grid" id="overviewFacts"></dl>
+                  <aside
+                    class="myth-detail-genealogy-details"
+                    id="genealogyDetails"
+                    aria-live="polite"
+                  >
+                    <div
+                      class="myth-detail-genealogy-details-symbol"
+                      aria-hidden="true"
+                    >
+                      ✦
                     </div>
-                </div>
-            </section>
 
-            <section class="myth-detail-section myth-detail-history" id="origens" aria-labelledby="historyTitle">
-                <div class="container">
-                    <header class="myth-detail-section-header myth-detail-history-header">
-                        <span>Desenvolvimento histórico</span>
-
-                        <div class="myth-detail-history-ornament" aria-hidden="true">
-                            <span></span>
-                            <small>🏛</small>
-                            <span></span>
-                        </div>
-
-                        <h2 id="historyTitle">Origens e formação</h2>
-
-                        <div class="myth-detail-history-divider" aria-hidden="true">
-                            <span></span>
-                            <small>◆</small>
-                            <span></span>
-                        </div>
-
-                        <p id="historyIntroduction"></p>
-                    </header>
-
-                    <div class="myth-detail-history-stage">
-                        <span class="myth-detail-history-silhouette myth-detail-history-silhouette--left"
-                            aria-hidden="true"></span>
-                        <span class="myth-detail-history-silhouette myth-detail-history-silhouette--right"
-                            aria-hidden="true"></span>
-
-                        <div class="myth-detail-timeline" id="historyTimeline"></div>
+                    <div>
+                      <span>Como explorar</span>
+                      <h3>Selecione um personagem</h3>
+                      <p>
+                        A árvore destacará pais, parceiros e descendentes. As
+                        linhas douradas indicam descendência e as linhas duplas
+                        representam uniões.
+                      </p>
                     </div>
+                  </aside>
                 </div>
-            </section>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <section class="myth-detail-section myth-detail-cosmology" id="cosmologia" aria-labelledby="cosmologyTitle">
-                <div class="container">
-                    <header class="myth-detail-section-header myth-detail-cosmology-header">
-                        <span>O universo mítico</span>
+        <section
+          class="myth-detail-section"
+          id="herois"
+          aria-labelledby="heroesTitle"
+        >
+          <div class="container">
+            <header class="myth-detail-section-header">
+              <span>Mortais extraordinários</span>
+              <h2 id="heroesTitle">Heróis</h2>
+              <p>
+                Guerreiros, reis e viajantes ligados aos grandes ciclos míticos.
+              </p>
+            </header>
 
-                        <div class="myth-detail-cosmology-ornament" aria-hidden="true">
-                            <span></span>
-                            <small>🏛</small>
-                            <span></span>
-                        </div>
+            <p
+              class="myth-detail-heroes-summary"
+              id="heroesSummary"
+              aria-live="polite"
+            ></p>
 
-                        <h2 id="cosmologyTitle">Cosmologia</h2>
+            <div class="myth-detail-entity-grid" id="heroesGrid"></div>
 
-                        <div class="myth-detail-cosmology-divider" aria-hidden="true">
-                            <span></span>
-                            <small>◆</small>
-                            <span></span>
-                        </div>
+            <div class="myth-detail-heroes-actions">
+              <button
+                class="myth-detail-button myth-detail-button--secondary"
+                id="heroesLoadMore"
+                type="button"
+                hidden
+              >
+                Ver mais heróis
+              </button>
+            </div>
+          </div>
+        </section>
 
-                        <p id="cosmologyIntroduction"></p>
-                    </header>
+        <section
+          class="myth-detail-section"
+          id="criaturas"
+          aria-labelledby="creaturesTitle"
+        >
+          <div class="container">
+            <header class="myth-detail-section-header">
+              <span>Seres lendários</span>
+              <h2 id="creaturesTitle">Monstros e criaturas</h2>
+              <p>Seres que desafiaram deuses e heróis nas histórias gregas.</p>
+            </header>
 
-                    <div class="myth-detail-cosmology-stage">
-                        <span class="myth-detail-cosmology-silhouette myth-detail-cosmology-silhouette--left"
-                            aria-hidden="true"></span>
-                        <span class="myth-detail-cosmology-silhouette myth-detail-cosmology-silhouette--right"
-                            aria-hidden="true"></span>
+            <div
+              class="myth-detail-creatures-toolbar"
+              aria-label="Controles de monstros e criaturas"
+            >
+              <div
+                class="myth-detail-filter-list"
+                id="creatureFilters"
+                aria-label="Filtros de criaturas"
+              ></div>
 
-                        <div class="myth-detail-cards-grid myth-detail-cosmology-grid" id="cosmologyGrid"></div>
-                    </div>
-                </div>
-            </section>
+              <label class="myth-detail-creature-search" for="creatureSearch">
+                <span class="sr-only">Buscar criatura</span>
+                <input
+                  id="creatureSearch"
+                  type="search"
+                  placeholder="Buscar criatura..."
+                  autocomplete="off"
+                />
+              </label>
+            </div>
 
-            <section class="myth-detail-section myth-detail-pantheon" id="panteao" aria-labelledby="pantheonTitle">
-                <div class="container">
-                    <header class="myth-detail-section-header">
-                        <span>Divindades</span>
-                        <h2 id="pantheonTitle">Panteão</h2>
-                        <p>
-                            Conheça os principais grupos de divindades e seus domínios.
-                        </p>
-                    </header>
+            <p
+              class="myth-detail-creatures-summary"
+              id="creaturesSummary"
+              aria-live="polite"
+            ></p>
 
-                    <div class="myth-detail-filter-list" id="pantheonFilters" aria-label="Filtros do panteão"></div>
+            <div class="myth-detail-entity-grid" id="creaturesGrid"></div>
 
-                    <div class="myth-detail-entity-grid" id="pantheonGrid"></div>
-                </div>
-            </section>
+            <div class="myth-detail-creatures-actions">
+              <button
+                class="myth-detail-button myth-detail-button--secondary"
+                id="creaturesLoadMore"
+                type="button"
+                hidden
+              >
+                Carregar mais criaturas
+              </button>
+            </div>
+          </div>
+        </section>
 
-            <section class="myth-detail-section myth-detail-genealogy" id="genealogia" aria-labelledby="genealogyTitle">
-                <div class="container">
-                    <header class="myth-detail-section-header myth-detail-genealogy-header">
-                        <span>Do vazio primordial ao Olimpo</span>
+        <section
+          class="myth-detail-section"
+          id="locais"
+          aria-labelledby="placesTitle"
+        >
+          <div class="container">
+            <header class="myth-detail-section-header">
+              <span>Geografia sagrada</span>
+              <h2 id="placesTitle">Locais mitológicos</h2>
+              <p>Lugares reais, sagrados e lendários ligados aos mitos.</p>
+            </header>
 
-                        <div class="myth-detail-genealogy-ornament" aria-hidden="true">
-                            <span></span>
-                            <small>◇</small>
-                            <span></span>
-                        </div>
+            <div class="myth-detail-cards-grid" id="placesGrid"></div>
+          </div>
+        </section>
 
-                        <h2 id="genealogyTitle">Árvore genealógica</h2>
+        <section
+          class="myth-detail-section"
+          id="cultos"
+          aria-labelledby="cultsTitle"
+        >
+          <div class="container">
+            <header class="myth-detail-section-header">
+              <span>Religião e sociedade</span>
+              <h2 id="cultsTitle">Cultos, rituais e festivais</h2>
+              <p>Como as divindades eram honradas na vida pública e privada.</p>
+            </header>
 
-                        <div class="myth-detail-genealogy-divider" aria-hidden="true">
-                            <span></span>
-                            <small>◆</small>
-                            <span></span>
-                        </div>
+            <div class="myth-detail-cards-grid" id="cultsGrid"></div>
+          </div>
+        </section>
 
-                        <p>
-                            Acompanhe as linhagens desde Caos e as forças primordiais até os Titãs,
-                            os deuses do Olimpo e os grandes heróis. Todos os personagens cadastrados
-                            na genealogia são apresentados no painel.
-                        </p>
-                    </header>
+        <section
+          class="myth-detail-section myth-detail-sources"
+          id="fontes"
+          aria-labelledby="sourcesTitle"
+        >
+          <div class="container">
+            <header class="myth-detail-section-header">
+              <span>Textos antigos</span>
+              <h2 id="sourcesTitle">Fontes e obras</h2>
+              <p>
+                Obras antigas que preservaram parte das tradições mitológicas.
+              </p>
+            </header>
 
-                    <div class="myth-detail-genealogy-stage">
-                        <span class="myth-detail-genealogy-silhouette myth-detail-genealogy-silhouette--left"
-                            aria-hidden="true"></span>
-                        <span class="myth-detail-genealogy-silhouette myth-detail-genealogy-silhouette--right"
-                            aria-hidden="true"></span>
+            <div class="myth-detail-source-list" id="sourcesList"></div>
+          </div>
+        </section>
 
-                        <div class="myth-detail-genealogy-layout">
-                            <aside class="myth-detail-genealogy-guide" aria-label="Guia da árvore genealógica">
-                                <div class="myth-detail-genealogy-guide-heading">
-                                    <span class="myth-detail-genealogy-guide-tree" aria-hidden="true">♧</span>
-                                    <span>Árvore genealógica</span>
-                                    <strong>Panteão Grego</strong>
-                                    <p>Dos seres primordiais aos heróis e descendentes mortais.</p>
-                                </div>
+        <section class="myth-detail-continue" aria-labelledby="continueTitle">
+          <div class="container">
+            <header class="myth-detail-section-header">
+              <span>Próximos caminhos</span>
+              <h2 id="continueTitle">Continue explorando</h2>
+            </header>
 
-                                <div class="myth-detail-genealogy-legend">
-                                    <h3>Como ler</h3>
-                                    <div><i class="is-union" aria-hidden="true"></i><span>União / parceria</span></div>
-                                    <div><i class="is-descent" aria-hidden="true"></i><span>Descendência</span></div>
-                                    <div><i class="is-generation" aria-hidden="true">◇</i><span>Geração</span></div>
-                                </div>
+            <div class="myth-detail-continue-grid">
+              <a href="#panteao">
+                <strong>Deuses</strong>
+                <span>Conheça as divindades gregas</span>
+              </a>
 
-                                <div class="myth-detail-genealogy-guide-tip">
-                                    <span aria-hidden="true">✦</span>
-                                    <p>
-                                        Clique em qualquer personagem para destacar pais,
-                                        parceiros e descendentes diretos.
-                                    </p>
-                                </div>
-                            </aside>
+              <a href="#herois">
+                <strong>Heróis</strong>
+                <span>Explore os grandes ciclos heroicos</span>
+              </a>
 
-                            <div class="myth-detail-genealogy-main">
-                                <div class="myth-detail-genealogy-toolbar">
-                                    <div class="myth-detail-genealogy-filters" id="genealogyFilters"
-                                        aria-label="Filtros da árvore genealógica"></div>
+              <a href="#criaturas">
+                <strong>Criaturas</strong>
+                <span>Descubra monstros e seres lendários</span>
+              </a>
 
-                                    <button class="myth-detail-genealogy-reset" id="genealogyReset" type="button">
-                                        Limpar destaque
-                                    </button>
-                                </div>
-
-                                <div class="myth-detail-genealogy-summary" id="genealogySummary" aria-live="polite">
-                                </div>
-
-                                <div class="myth-detail-genealogy-navigation"
-                                    aria-label="Controles de navegação da árvore genealógica">
-                                    <div class="myth-detail-genealogy-zoom-controls">
-                                        <button id="genealogyZoomOut" type="button"
-                                            aria-label="Diminuir zoom da árvore">−</button>
-
-                                        <span id="genealogyZoomValue" aria-live="polite">100%</span>
-
-                                        <button id="genealogyZoomIn" type="button"
-                                            aria-label="Aumentar zoom da árvore">+</button>
-
-                                        <button id="genealogyFit" type="button" aria-label="Enquadrar toda a árvore">
-                                            Enquadrar
-                                        </button>
-                                    </div>
-
-                                    <p>
-                                        Use a roda do mouse para aproximar ou afastar.
-                                        Arraste o fundo para mover a árvore.
-                                    </p>
-                                </div>
-
-                                <div class="myth-detail-genealogy-viewport" id="genealogyViewport" tabindex="0"
-                                    aria-label="Árvore genealógica completa. Use a roda do mouse para controlar o zoom e arraste o fundo para navegar.">
-                                    <div class="myth-detail-genealogy-canvas" id="genealogyCanvas">
-                                        <svg class="myth-detail-genealogy-lines" id="genealogyLines"
-                                            aria-hidden="true"></svg>
-                                        <div class="myth-detail-genealogy-tree" id="genealogyTree"></div>
-                                    </div>
-                                </div>
-
-                                <aside class="myth-detail-genealogy-details" id="genealogyDetails" aria-live="polite">
-                                    <div class="myth-detail-genealogy-details-symbol" aria-hidden="true">✦</div>
-
-                                    <div>
-                                        <span>Como explorar</span>
-                                        <h3>Selecione um personagem</h3>
-                                        <p>
-                                            A árvore destacará pais, parceiros e descendentes.
-                                            As linhas douradas indicam descendência e as linhas duplas representam
-                                            uniões.
-                                        </p>
-                                    </div>
-                                </aside>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="myth-detail-section" id="herois" aria-labelledby="heroesTitle">
-                <div class="container">
-                    <header class="myth-detail-section-header">
-                        <span>Mortais extraordinários</span>
-                        <h2 id="heroesTitle">Heróis</h2>
-                        <p>
-                            Guerreiros, reis e viajantes ligados aos grandes ciclos míticos.
-                        </p>
-                    </header>
-
-                    <div class="myth-detail-entity-grid" id="heroesGrid"></div>
-                </div>
-            </section>
-
-            <section class="myth-detail-section" id="criaturas" aria-labelledby="creaturesTitle">
-                <div class="container">
-                    <header class="myth-detail-section-header">
-                        <span>Seres lendários</span>
-                        <h2 id="creaturesTitle">Monstros e criaturas</h2>
-                        <p>
-                            Seres que desafiaram deuses e heróis nas histórias gregas.
-                        </p>
-                    </header>
-
-                    <div class="myth-detail-entity-grid" id="creaturesGrid"></div>
-                </div>
-            </section>
-
-            <section class="myth-detail-section" id="locais" aria-labelledby="placesTitle">
-                <div class="container">
-                    <header class="myth-detail-section-header">
-                        <span>Geografia sagrada</span>
-                        <h2 id="placesTitle">Locais mitológicos</h2>
-                        <p>
-                            Lugares reais, sagrados e lendários ligados aos mitos.
-                        </p>
-                    </header>
-
-                    <div class="myth-detail-cards-grid" id="placesGrid"></div>
-                </div>
-            </section>
-
-            <section class="myth-detail-section" id="cultos" aria-labelledby="cultsTitle">
-                <div class="container">
-                    <header class="myth-detail-section-header">
-                        <span>Religião e sociedade</span>
-                        <h2 id="cultsTitle">Cultos, rituais e festivais</h2>
-                        <p>
-                            Como as divindades eram honradas na vida pública e privada.
-                        </p>
-                    </header>
-
-                    <div class="myth-detail-cards-grid" id="cultsGrid"></div>
-                </div>
-            </section>
-
-            <section class="myth-detail-section myth-detail-sources" id="fontes" aria-labelledby="sourcesTitle">
-                <div class="container">
-                    <header class="myth-detail-section-header">
-                        <span>Textos antigos</span>
-                        <h2 id="sourcesTitle">Fontes e obras</h2>
-                        <p>
-                            Obras antigas que preservaram parte das tradições mitológicas.
-                        </p>
-                    </header>
-
-                    <div class="myth-detail-source-list" id="sourcesList"></div>
-                </div>
-            </section>
-
-            <section class="myth-detail-continue" aria-labelledby="continueTitle">
-                <div class="container">
-                    <header class="myth-detail-section-header">
-                        <span>Próximos caminhos</span>
-                        <h2 id="continueTitle">Continue explorando</h2>
-                    </header>
-
-                    <div class="myth-detail-continue-grid">
-                        <a href="#panteao">
-                            <strong>Deuses</strong>
-                            <span>Conheça as divindades gregas</span>
-                        </a>
-
-                        <a href="#herois">
-                            <strong>Heróis</strong>
-                            <span>Explore os grandes ciclos heroicos</span>
-                        </a>
-
-                        <a href="#criaturas">
-                            <strong>Criaturas</strong>
-                            <span>Descubra monstros e seres lendários</span>
-                        </a>
-
-                        <a href="../mythology.html">
-                            <strong>Outras mitologias</strong>
-                            <span>Volte ao catálogo completo</span>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
+              <a href="../mythology.html">
+                <strong>Outras mitologias</strong>
+                <span>Volte ao catálogo completo</span>
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
 
     <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <a href="../index.html#home" class="footer-logo">
-                    <img src="../assets/images/home/icone-login.png" alt="" class="footer-logo-icon" width="64"
-                        height="64" />
-                    <span>Bestiário</span>
-                </a>
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <a href="../index.html#home" class="footer-logo">
+            <img
+              src="../assets/images/home/icone-login.png"
+              alt=""
+              class="footer-logo-icon"
+              width="64"
+              height="64"
+            />
+            <span>Bestiário</span>
+          </a>
 
-                <p>
-                    Uma biblioteca digital dedicada às mitologias,
-                    religiões, lendas, símbolos e relíquias.
-                </p>
-            </div>
-
-            <nav class="footer-nav" aria-label="Navegação do rodapé">
-                <a href="../index.html#home">Home</a>
-                <a href="../mythology.html">Mitologias</a>
-                <a href="../religion.html">Religiões</a>
-                <a href="../legends.html">Lendas</a>
-                <a href="../symbols.html">Símbolos</a>
-                <a href="../relics.html">Relíquias</a>
-            </nav>
-
-            <p class="footer-copy">© 2026 Bestiário.</p>
+          <p>
+            Uma biblioteca digital dedicada às mitologias, religiões, lendas,
+            símbolos e relíquias.
+          </p>
         </div>
+
+        <nav class="footer-nav" aria-label="Navegação do rodapé">
+          <a href="../index.html#home">Home</a>
+          <a href="../mythology.html">Mitologias</a>
+          <a href="../religion.html">Religiões</a>
+          <a href="../legends.html">Lendas</a>
+          <a href="../symbols.html">Símbolos</a>
+          <a href="../relics.html">Relíquias</a>
+        </nav>
+
+        <p class="footer-copy">© 2026 Bestiário.</p>
+      </div>
     </footer>
 
-    <script type="module" src="../js/mythology-detail/mythology-detail.js"></script>
+    <script
+      type="module"
+      src="../js/mythology-detail/mythology-detail.js"
+    ></script>
     <script src="../js/main.js" defer></script>
     <script src="../js/components/back-to-top.js" defer></script>
-</body>
-
+  </body>
 </html>
