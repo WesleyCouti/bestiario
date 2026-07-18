@@ -44,6 +44,10 @@ const SELECTORS = Object.freeze({
   creaturesSummary: "#creaturesSummary",
   creaturesLoadMore: "#creaturesLoadMore",
   creaturesGrid: "#creaturesGrid",
+  placeFilters: "#placeFilters",
+  placeSearch: "#placeSearch",
+  placesSummary: "#placesSummary",
+  placesLoadMore: "#placesLoadMore",
   placesGrid: "#placesGrid",
   cultsGrid: "#cultsGrid",
   sourcesList: "#sourcesList",
@@ -518,6 +522,224 @@ function renderCreatures(mythology) {
 
   const renderWhenNearViewport = () => {
     if (!state.hasRendered) updateGrid();
+  };
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          renderWhenNearViewport();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "700px 0px" },
+    );
+
+    observer.observe(section);
+  } else {
+    renderWhenNearViewport();
+  }
+}
+
+/* ===================================================== LOCAIS MITOLÓGICOS —
+FILTRO, BUSCA E RENDERIZAÇÃO PROGRESSIVA
+===================================================== */
+
+const PLACE_PAGE_SIZE = 9;
+
+const PLACE_GROUPS = Object.freeze([
+  { id: "all", label: "Todos" },
+  { id: "divine", label: "Divinos e sagrados" },
+  { id: "cities", label: "Cidades e reinos" },
+  { id: "mountains", label: "Montanhas" },
+  { id: "waters", label: "Águas e fontes" },
+  { id: "nature", label: "Bosques e natureza" },
+  { id: "underworld", label: "Submundo e sombrios" },
+  { id: "islands", label: "Ilhas e costas" },
+]);
+
+function getPlaceGroup(place) {
+  if (typeof place.group === "string" && place.group.trim()) {
+    return place.group.trim();
+  }
+
+  const text = normalizeSearchText(
+    `${place.name || ""} ${place.type || ""} ${place.description || ""}`,
+  );
+
+  if (
+    /submundo|hades|tartaro|inferno|mortos|necromanteion|aqueronte|estige|cocito|flegetonte|leto|averno|sombrio|tenebroso/.test(
+      text,
+    )
+  ) {
+    return "underworld";
+  }
+
+  if (
+    /monte|montanha|pico|parnaso|olimpo|helicon|citeron|erimanto|pelion|otris|etna|caucaso|nisa|licaion/.test(
+      text,
+    )
+  ) {
+    return "mountains";
+  }
+
+  if (
+    /fonte|lago|rio|mar|oceano|estreito|pantano|nascente|agua|cascata|hipocrene|aganipe|pirene|estinfalo|lerna/.test(
+      text,
+    )
+  ) {
+    return "waters";
+  }
+
+  if (/bosque|floresta|jardim|vale|caverna|gruta|natureza/.test(text)) {
+    return "nature";
+  }
+
+  if (
+    /ilha|cabo|costa|porto|estreito|maritimo|creta|delos|naxos|itaca|samos|rodos|tenaro/.test(
+      text,
+    )
+  ) {
+    return "islands";
+  }
+
+  if (
+    /cidade|reino|polis|palacio|fortaleza|tebas|atenas|esparta|troia|micenas|arg ?os|corinto|tirinto|pilos|calidao|orcomeno|feras|trezena|licia|frigia|heracleia/.test(
+      text,
+    )
+  ) {
+    return "cities";
+  }
+
+  return "divine";
+}
+
+function renderPlaces(mythology) {
+  const section = query("#locais");
+  const filters = query(SELECTORS.placeFilters);
+  const search = query(SELECTORS.placeSearch);
+  const summary = query(SELECTORS.placesSummary);
+  const loadMore = query(SELECTORS.placesLoadMore);
+  const grid = query(SELECTORS.placesGrid);
+
+  if (!section || !filters || !search || !summary || !loadMore || !grid) {
+    return;
+  }
+
+  const sourcePlaces = Array.isArray(mythology.places) ? mythology.places : [];
+  const places = sourcePlaces.map((place) => ({
+    ...place,
+    group: getPlaceGroup(place),
+  }));
+
+  const state = {
+    selectedGroup: "all",
+    searchTerm: "",
+    visibleCount: PLACE_PAGE_SIZE,
+    hasRendered: false,
+  };
+
+  filters.replaceChildren();
+  grid.replaceChildren();
+
+  PLACE_GROUPS.forEach((group) => {
+    const count =
+      group.id === "all"
+        ? places.length
+        : places.filter((place) => place.group === group.id).length;
+
+    if (count === 0) {
+      return;
+    }
+
+    filters.appendChild(
+      createFilterButton(
+        `${group.label} (${count})`,
+        group.id,
+        group.id === "all",
+      ),
+    );
+  });
+
+  function getFilteredPlaces() {
+    return places.filter((place) => {
+      const matchesGroup =
+        state.selectedGroup === "all" || place.group === state.selectedGroup;
+
+      const searchableText = normalizeSearchText(
+        `${place.name || ""} ${place.type || ""} ${place.description || ""}`,
+      );
+
+      return matchesGroup && searchableText.includes(state.searchTerm);
+    });
+  }
+
+  function updateGrid() {
+    const filtered = getFilteredPlaces();
+    const visible = filtered.slice(0, state.visibleCount);
+    const fragment = document.createDocumentFragment();
+
+    visible.forEach((place) => {
+      const card = createInfoCard(place, "myth-detail-place-card");
+      card.dataset.group = place.group;
+      fragment.appendChild(card);
+    });
+
+    grid.replaceChildren(fragment);
+    state.hasRendered = true;
+
+    if (filtered.length === 0) {
+      summary.textContent = "Nenhum local mitológico encontrado.";
+    } else {
+      summary.textContent = `${visible.length} de ${filtered.length} locais exibidos.`;
+    }
+
+    loadMore.hidden = visible.length >= filtered.length;
+  }
+
+  function resetAndRender() {
+    state.visibleCount = PLACE_PAGE_SIZE;
+    updateGrid();
+  }
+
+  filters.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-group]");
+
+    if (!button) {
+      return;
+    }
+
+    state.selectedGroup = button.dataset.group || "all";
+
+    filters.querySelectorAll("button[data-group]").forEach((currentButton) => {
+      const isActive = currentButton === button;
+      currentButton.classList.toggle("is-active", isActive);
+      currentButton.setAttribute("aria-pressed", String(isActive));
+    });
+
+    resetAndRender();
+  });
+
+  let searchTimer = 0;
+
+  search.addEventListener("input", () => {
+    window.clearTimeout(searchTimer);
+
+    searchTimer = window.setTimeout(() => {
+      state.searchTerm = normalizeSearchText(search.value);
+      resetAndRender();
+    }, 180);
+  });
+
+  loadMore.addEventListener("click", () => {
+    state.visibleCount += PLACE_PAGE_SIZE;
+    updateGrid();
+  });
+
+  const renderWhenNearViewport = () => {
+    if (!state.hasRendered) {
+      updateGrid();
+    }
   };
 
   if ("IntersectionObserver" in window) {
@@ -1542,7 +1764,7 @@ function renderPage(mythology) {
   renderGenealogy(mythology);
   renderHeroes(mythology);
   renderCreatures(mythology);
-  renderInfoCards(mythology.places, SELECTORS.placesGrid);
+  renderPlaces(mythology);
   renderInfoCards(mythology.cults, SELECTORS.cultsGrid);
   renderSources(mythology);
 }

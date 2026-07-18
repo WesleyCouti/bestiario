@@ -638,7 +638,45 @@
               <p>Lugares reais, sagrados e lendários ligados aos mitos.</p>
             </header>
 
+            <div
+              class="myth-detail-places-toolbar"
+              aria-label="Controles dos locais mitológicos"
+            >
+              <div
+                class="myth-detail-filter-list"
+                id="placeFilters"
+                aria-label="Filtros de locais mitológicos"
+              ></div>
+
+              <label class="myth-detail-place-search" for="placeSearch">
+                <span class="sr-only">Buscar local mitológico</span>
+                <input
+                  id="placeSearch"
+                  type="search"
+                  placeholder="Buscar local mitológico..."
+                  autocomplete="off"
+                />
+              </label>
+            </div>
+
+            <p
+              class="myth-detail-places-summary"
+              id="placesSummary"
+              aria-live="polite"
+            ></p>
+
             <div class="myth-detail-cards-grid" id="placesGrid"></div>
+
+            <div class="myth-detail-places-actions">
+              <button
+                class="myth-detail-button myth-detail-button--secondary"
+                id="placesLoadMore"
+                type="button"
+                hidden
+              >
+                Carregar mais locais
+              </button>
+            </div>
           </div>
         </section>
 

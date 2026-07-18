@@ -3857,3 +3857,108 @@ LOCAIS MITOLÓGICOS — CARDS COM IMAGEM DE FUNDO
     padding: 205px 24px 26px;
   }
 }
+
+/* ===================================================== LOCAIS MITOLÓGICOS —
+FILTROS, BUSCA E CARREGAMENTO PROGRESSIVO
+===================================================== */
+
+#locais {
+  content-visibility: auto;
+  contain-intrinsic-size: 1150px;
+}
+
+.myth-detail-places-toolbar {
+  margin-bottom: 18px;
+  display: grid;
+  gap: 18px;
+}
+
+.myth-detail-places-toolbar .myth-detail-filter-list {
+  margin-bottom: 0;
+}
+
+.myth-detail-place-search {
+  position: relative;
+  width: min(100%, 520px);
+  margin-inline: auto;
+  display: block;
+}
+
+.myth-detail-place-search::before {
+  content: "⌕";
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  z-index: 2;
+  color: var(--detail-gold-light);
+  font-size: 1rem;
+  line-height: 1;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.myth-detail-place-search input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 20px 0 48px;
+  border: 1px solid var(--detail-border-strong);
+  border-radius: 999px;
+  color: var(--detail-text);
+  background: rgba(1, 8, 5, 0.84);
+  font: inherit;
+  outline: none;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.myth-detail-place-search input::placeholder {
+  color: var(--detail-text-soft);
+}
+
+.myth-detail-place-search input:hover {
+  border-color: rgba(129, 199, 132, 0.68);
+  background: rgba(3, 14, 8, 0.92);
+}
+
+.myth-detail-place-search input:focus {
+  border-color: var(--detail-gold-light);
+  box-shadow: 0 0 0 4px rgba(201, 162, 74, 0.12);
+}
+
+.myth-detail-places-summary {
+  min-height: 24px;
+  margin: 0 0 22px;
+  color: var(--detail-text-soft);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+.myth-detail-places-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.myth-detail-places-actions .myth-detail-button {
+  cursor: pointer;
+}
+
+.myth-detail-places-actions .myth-detail-button[hidden] {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .myth-detail-places-toolbar {
+    gap: 14px;
+  }
+
+  .myth-detail-place-search input {
+    min-height: 46px;
+  }
+
+  .myth-detail-places-actions .myth-detail-button {
+    width: 100%;
+  }
+}
