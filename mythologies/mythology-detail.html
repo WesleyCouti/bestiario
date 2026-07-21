@@ -70,7 +70,12 @@
 
     <main id="conteudo-principal">
       <section class="myth-detail-loading" id="mythologyLoading">
-        <span class="myth-detail-loading-symbol" aria-hidden="true">Ω</span>
+        <span
+          class="myth-detail-loading-symbol"
+          id="mythologyLoadingSymbol"
+          aria-hidden="true"
+          >✦</span
+        >
         <p>Carregando mitologia...</p>
       </section>
 
@@ -99,7 +104,7 @@
 
               <div class="myth-detail-title-ornament" aria-hidden="true">
                 <span></span>
-                <small>🏛</small>
+                <small class="mythology-ornament-symbol">✦</small>
                 <span></span>
               </div>
 
@@ -126,16 +131,16 @@
                   href="#panteao"
                   class="myth-detail-button myth-detail-button--primary"
                 >
-                  <span aria-hidden="true">⛑</span>
-                  Explorar o Panteão
+                  <span id="primaryActionIcon" aria-hidden="true">✦</span>
+                  <span id="primaryActionLabel"></span>
                 </a>
 
                 <a
                   href="#origens"
                   class="myth-detail-button myth-detail-button--secondary"
                 >
-                  <span aria-hidden="true">▤</span>
-                  Conhecer a História
+                  <span id="secondaryActionIcon" aria-hidden="true">✦</span>
+                  <span id="secondaryActionLabel"></span>
                 </a>
               </div>
             </div>
@@ -169,72 +174,62 @@
             <div class="myth-detail-page-nav-list">
               <a href="#visao-geral" class="is-active" aria-current="location">
                 <span class="myth-detail-page-nav-icon" aria-hidden="true"
-                  >🏛</span
-                >
-                <span class="myth-detail-page-nav-label">Visão Geral</span>
+                  ><span data-nav-icon="overview"></span
+                ></span>
               </a>
 
               <a href="#origens">
                 <span class="myth-detail-page-nav-icon" aria-hidden="true"
-                  >▤</span
-                >
-                <span class="myth-detail-page-nav-label">Origens</span>
+                  ><span data-nav-icon="history"></span
+                ></span>
               </a>
 
               <a href="#cosmologia">
                 <span class="myth-detail-page-nav-icon" aria-hidden="true"
-                  >◎</span
-                >
-                <span class="myth-detail-page-nav-label">Cosmologia</span>
+                  ><span data-nav-icon="cosmology"></span
+                ></span>
               </a>
 
               <a href="#panteao">
                 <span class="myth-detail-page-nav-icon" aria-hidden="true"
-                  >ϟ</span
-                >
-                <span class="myth-detail-page-nav-label">Panteão</span>
+                  ><span data-nav-icon="pantheon"></span
+                ></span>
               </a>
 
               <a href="#genealogia">
                 <span class="myth-detail-page-nav-icon" aria-hidden="true"
-                  >♧</span
-                >
-                <span class="myth-detail-page-nav-label">Genealogia</span>
+                  ><span data-nav-icon="genealogy"></span
+                ></span>
               </a>
 
               <a href="#herois">
                 <span class="myth-detail-page-nav-icon" aria-hidden="true"
-                  >⛑</span
-                >
-                <span class="myth-detail-page-nav-label">Heróis</span>
+                  ><span data-nav-icon="heroes"></span
+                ></span>
               </a>
 
               <a href="#criaturas">
                 <span class="myth-detail-page-nav-icon" aria-hidden="true"
-                  >♞</span
-                >
-                <span class="myth-detail-page-nav-label">Criaturas</span>
+                  ><span data-nav-icon="creatures"></span
+                ></span>
               </a>
 
               <a href="#locais">
                 <span class="myth-detail-page-nav-icon" aria-hidden="true"
-                  >Π</span
-                >
-                <span class="myth-detail-page-nav-label">Locais</span>
+                  ><span data-nav-icon="places"></span
+                ></span>
               </a>
 
               <a href="#cultos">
                 <span class="myth-detail-page-nav-icon" aria-hidden="true"
-                  >♨</span
-                >
-                <span class="myth-detail-page-nav-label">Cultos</span>
+                  ><span data-nav-icon="cults"></span
+                ></span>
               </a>
 
               <a href="#fontes">
                 <span class="myth-detail-page-nav-icon" aria-hidden="true"
-                  >▥</span
-                >
-                <span class="myth-detail-page-nav-label">Fontes</span>
+                  ><span data-nav-icon="sources"></span
+                ></span>
               </a>
             </div>
           </div>
@@ -254,12 +249,12 @@
             <header
               class="myth-detail-section-header myth-detail-overview-header"
             >
-              <span>Introdução</span>
-              <h2 id="overviewTitle">Visão geral</h2>
+              <span id="overviewKicker"></span>
+              <h2 id="overviewTitle"></h2>
 
               <div class="myth-detail-overview-ornament" aria-hidden="true">
                 <span></span>
-                <small>🏛</small>
+                <small class="mythology-ornament-symbol">✦</small>
                 <span></span>
               </div>
 
@@ -290,15 +285,15 @@
             <header
               class="myth-detail-section-header myth-detail-history-header"
             >
-              <span>Desenvolvimento histórico</span>
+              <span id="historyKicker"></span>
 
               <div class="myth-detail-history-ornament" aria-hidden="true">
                 <span></span>
-                <small>🏛</small>
+                <small class="mythology-ornament-symbol">✦</small>
                 <span></span>
               </div>
 
-              <h2 id="historyTitle">Origens e formação</h2>
+              <h2 id="historyTitle"></h2>
 
               <div class="myth-detail-history-divider" aria-hidden="true">
                 <span></span>
@@ -333,15 +328,15 @@
             <header
               class="myth-detail-section-header myth-detail-cosmology-header"
             >
-              <span>O universo mítico</span>
+              <span id="cosmologyKicker"></span>
 
               <div class="myth-detail-cosmology-ornament" aria-hidden="true">
                 <span></span>
-                <small>🏛</small>
+                <small class="mythology-ornament-symbol">✦</small>
                 <span></span>
               </div>
 
-              <h2 id="cosmologyTitle">Cosmologia</h2>
+              <h2 id="cosmologyTitle"></h2>
 
               <div class="myth-detail-cosmology-divider" aria-hidden="true">
                 <span></span>
@@ -377,9 +372,9 @@
         >
           <div class="container">
             <header class="myth-detail-section-header">
-              <span>Divindades</span>
-              <h2 id="pantheonTitle">Panteão</h2>
-              <p>Conheça os principais grupos de divindades e seus domínios.</p>
+              <span id="pantheonKicker"></span>
+              <h2 id="pantheonTitle"></h2>
+              <p id="pantheonDescription"></p>
             </header>
 
             <div
@@ -418,7 +413,7 @@
             <header
               class="myth-detail-section-header myth-detail-genealogy-header"
             >
-              <span>Do vazio primordial ao Olimpo</span>
+              <span id="genealogyKicker"></span>
 
               <div class="myth-detail-genealogy-ornament" aria-hidden="true">
                 <span></span>
@@ -426,7 +421,7 @@
                 <span></span>
               </div>
 
-              <h2 id="genealogyTitle">Árvore genealógica</h2>
+              <h2 id="genealogyTitle"></h2>
 
               <div class="myth-detail-genealogy-divider" aria-hidden="true">
                 <span></span>
@@ -434,12 +429,7 @@
                 <span></span>
               </div>
 
-              <p>
-                Acompanhe as linhagens desde Caos e as forças primordiais até os
-                Titãs, os deuses do Olimpo e os grandes heróis. Todos os
-                personagens cadastrados na genealogia são apresentados no
-                painel.
-              </p>
+              <p id="genealogyIntroduction"></p>
             </header>
 
             <div class="myth-detail-genealogy-stage">
@@ -464,10 +454,8 @@
                       >♧</span
                     >
                     <span>Árvore genealógica</span>
-                    <strong>Panteão Grego</strong>
-                    <p>
-                      Dos seres primordiais aos heróis e descendentes mortais.
-                    </p>
+                    <strong id="genealogyPantheonName"></strong>
+                    <p id="genealogyGuideDescription"></p>
                   </div>
 
                   <div class="myth-detail-genealogy-legend">
@@ -615,11 +603,9 @@
         >
           <div class="container">
             <header class="myth-detail-section-header">
-              <span>Mortais extraordinários</span>
-              <h2 id="heroesTitle">Heróis</h2>
-              <p>
-                Guerreiros, reis e viajantes ligados aos grandes ciclos míticos.
-              </p>
+              <span id="heroesKicker"></span>
+              <h2 id="heroesTitle"></h2>
+              <p id="heroesDescription"></p>
             </header>
 
             <p
@@ -650,9 +636,9 @@
         >
           <div class="container">
             <header class="myth-detail-section-header">
-              <span>Seres lendários</span>
-              <h2 id="creaturesTitle">Monstros e criaturas</h2>
-              <p>Seres que desafiaram deuses e heróis nas histórias gregas.</p>
+              <span id="creaturesKicker"></span>
+              <h2 id="creaturesTitle"></h2>
+              <p id="creaturesDescription"></p>
             </header>
 
             <div
@@ -670,7 +656,8 @@
                 <input
                   id="creatureSearch"
                   type="search"
-                  placeholder="Buscar criatura..."
+                  placeholder=""
+                  data-placeholder-key="creaturesSearch"
                   autocomplete="off"
                 />
               </label>
@@ -704,9 +691,9 @@
         >
           <div class="container">
             <header class="myth-detail-section-header">
-              <span>Geografia sagrada</span>
-              <h2 id="placesTitle">Locais mitológicos</h2>
-              <p>Lugares reais, sagrados e lendários ligados aos mitos.</p>
+              <span id="placesKicker"></span>
+              <h2 id="placesTitle"></h2>
+              <p id="placesDescription"></p>
             </header>
 
             <div
@@ -724,7 +711,8 @@
                 <input
                   id="placeSearch"
                   type="search"
-                  placeholder="Buscar local mitológico..."
+                  placeholder=""
+                  data-placeholder-key="placesSearch"
                   autocomplete="off"
                 />
               </label>
@@ -758,9 +746,9 @@
         >
           <div class="container">
             <header class="myth-detail-section-header">
-              <span>Religião e sociedade</span>
-              <h2 id="cultsTitle">Cultos, rituais e festivais</h2>
-              <p>Como as divindades eram honradas na vida pública e privada.</p>
+              <span id="cultsKicker"></span>
+              <h2 id="cultsTitle"></h2>
+              <p id="cultsDescription"></p>
             </header>
 
             <div
@@ -778,7 +766,8 @@
                 <input
                   id="cultSearch"
                   type="search"
-                  placeholder="Buscar culto, ritual ou festival..."
+                  placeholder=""
+                  data-placeholder-key="cultsSearch"
                   autocomplete="off"
                 />
               </label>
@@ -812,11 +801,9 @@
         >
           <div class="container">
             <header class="myth-detail-section-header">
-              <span>Textos antigos</span>
-              <h2 id="sourcesTitle">Fontes e obras</h2>
-              <p>
-                Obras antigas que preservaram parte das tradições mitológicas.
-              </p>
+              <span id="sourcesKicker"></span>
+              <h2 id="sourcesTitle"></h2>
+              <p id="sourcesDescription"></p>
             </header>
 
             <div class="myth-detail-source-list" id="sourcesList"></div>

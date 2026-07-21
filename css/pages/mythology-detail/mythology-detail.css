@@ -4508,3 +4508,221 @@ IMAGENS DE FUNDO, FILTROS, BUSCA E CARREGAMENTO PROGRESSIVO
     font-size: clamp(1.82rem, 9.6vw, 2.25rem);
   }
 }
+
+/* =====================================================
+   CARDS CLICÁVEIS — PÁGINAS DE DETALHES
+   Panteão, heróis, criaturas, locais e cultos
+===================================================== */
+
+a.myth-detail-entity-card,
+a.myth-detail-info-card {
+  color: inherit;
+  text-decoration: none;
+}
+
+.myth-detail-entity-card.is-clickable,
+.myth-detail-info-card.is-clickable {
+  cursor: pointer;
+  outline: none;
+}
+
+.myth-detail-entity-card.is-clickable::after,
+.myth-detail-info-card.is-clickable::before {
+  pointer-events: none;
+}
+
+.myth-detail-entity-card.is-clickable:focus-visible,
+.myth-detail-info-card.is-clickable:focus-visible {
+  border-color: rgba(242, 213, 138, 0.9);
+  box-shadow:
+    0 0 0 3px rgba(242, 213, 138, 0.2),
+    0 28px 68px rgba(0, 0, 0, 0.5);
+}
+
+.myth-detail-entity-card.is-clickable:hover,
+.myth-detail-info-card.is-clickable:hover {
+  text-decoration: none;
+}
+
+.myth-detail-entity-card.is-clickable .myth-detail-entity-content::after,
+.myth-detail-info-card.is-clickable::after {
+  content: "Explorar  →";
+  display: block;
+  margin-top: auto;
+  padding-top: 16px;
+  color: var(--detail-gold-light);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.78;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.myth-detail-entity-card.is-clickable:hover .myth-detail-entity-content::after,
+.myth-detail-entity-card.is-clickable:focus-visible
+  .myth-detail-entity-content::after,
+.myth-detail-info-card.is-clickable:hover::after,
+.myth-detail-info-card.is-clickable:focus-visible::after {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* =====================================================
+   AJUSTE FINAL — ALINHAMENTO PADRONIZADO DO EXPLORAR
+   Mantém "Explorar →" sempre na mesma posição em todos
+   os cards, independentemente do tamanho do conteúdo.
+===================================================== */
+
+/* O grid estica todos os cards da mesma linha igualmente. */
+.myth-detail-entity-grid,
+.myth-detail-cards-grid {
+  align-items: stretch;
+}
+
+/* Panteão, Heróis, Monstros e Criaturas */
+.myth-detail-entity-card.is-clickable {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.myth-detail-entity-card.is-clickable .myth-detail-entity-visual {
+  flex: 0 0 auto;
+}
+
+.myth-detail-entity-card.is-clickable .myth-detail-entity-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.myth-detail-entity-card.is-clickable .myth-detail-entity-content > p {
+  flex: 1 1 auto;
+}
+
+/* Locais mitológicos, Cultos, Rituais e Festivais */
+.myth-detail-info-card.is-clickable {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.myth-detail-info-card.is-clickable > p {
+  flex: 1 1 auto;
+}
+
+/* O pseudo-elemento permanece ancorado no rodapé do conteúdo. */
+.myth-detail-entity-card.is-clickable .myth-detail-entity-content::after,
+.myth-detail-info-card.is-clickable::after {
+  margin-top: auto;
+  padding-top: 22px;
+  flex: 0 0 auto;
+}
+
+/* =====================================================
+   ARQUITETURA REUTILIZÁVEL PARA TODAS AS MITOLOGIAS
+   Os dados e o JavaScript controlam ícones, imagens e tema.
+===================================================== */
+
+.myth-detail-meta-item::before {
+  content: var(--meta-icon, "✦") !important;
+}
+
+.myth-detail-fact::before {
+  content: var(--fact-icon, "✦") !important;
+}
+
+.myth-detail-fact.has-custom-image::after {
+  background-image:
+    linear-gradient(180deg, rgba(2, 8, 5, 0.2), rgba(2, 8, 5, 0.88)),
+    var(--fact-image) !important;
+}
+
+.myth-detail-timeline-item {
+  --history-card-icon: "✦";
+}
+
+.myth-detail-timeline-item h3::after {
+  content: var(--history-card-icon) !important;
+}
+
+.myth-detail-timeline-item:nth-child(n) {
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(2, 8, 5, 0) 0%,
+      rgba(2, 8, 5, 0.02) 15%,
+      rgba(2, 8, 5, 0.18) 24%,
+      rgba(2, 8, 5, 0.58) 33%,
+      rgba(2, 8, 5, 0.93) 41%,
+      rgba(2, 8, 5, 0.99) 100%
+    ),
+    var(--history-card-image),
+    linear-gradient(90deg, rgba(5, 18, 11, 0.95), rgba(2, 11, 7, 0.99));
+}
+
+/* Silhuetas configuradas pelo arquivo de dados da mitologia. */
+.myth-detail-overview-silhouette--left {
+  background:
+    linear-gradient(180deg, transparent, rgba(2, 8, 5, 0.46)),
+    var(--myth-overview-left, none) center bottom / contain no-repeat !important;
+}
+
+.myth-detail-overview-silhouette--right {
+  background:
+    linear-gradient(180deg, transparent, rgba(2, 8, 5, 0.52)),
+    var(--myth-overview-right, none) center bottom / contain no-repeat !important;
+}
+
+.myth-detail-history-silhouette--left {
+  background:
+    linear-gradient(180deg, transparent, rgba(2, 8, 5, 0.72)),
+    var(--myth-history-left, none) center top / contain no-repeat !important;
+}
+
+.myth-detail-history-silhouette--right {
+  background:
+    linear-gradient(180deg, transparent, rgba(2, 8, 5, 0.72)),
+    var(--myth-history-right, none) center top / contain no-repeat !important;
+}
+
+.myth-detail-cosmology-silhouette--left {
+  background:
+    linear-gradient(180deg, transparent, rgba(2, 8, 5, 0.76)),
+    var(--myth-cosmology-left, none) center top / contain no-repeat !important;
+}
+
+.myth-detail-cosmology-silhouette--right {
+  background:
+    linear-gradient(180deg, transparent, rgba(2, 8, 5, 0.76)),
+    var(--myth-cosmology-right, none) center top / contain no-repeat !important;
+}
+
+.myth-detail-genealogy-silhouette--left {
+  background:
+    linear-gradient(180deg, transparent, rgba(2, 8, 5, 0.72)),
+    var(--myth-genealogy-left, none) center top / contain no-repeat !important;
+}
+
+.myth-detail-genealogy-silhouette--right {
+  background:
+    linear-gradient(180deg, transparent, rgba(2, 8, 5, 0.72)),
+    var(--myth-genealogy-right, none) center top / contain no-repeat !important;
+}
+
+/* Mantém a identidade visual coerente quando o tema muda. */
+html[data-mythology] body,
+html[data-mythology] .myth-detail-section,
+html[data-mythology] .myth-detail-overview,
+html[data-mythology] .myth-detail-history,
+html[data-mythology] .myth-detail-cosmology,
+html[data-mythology] .myth-detail-genealogy {
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}

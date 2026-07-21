@@ -1,7 +1,6 @@
-import GREEK_MYTHOLOGY from "../../data/mythologies/greek.js";
-
-const MYTHOLOGIES = Object.freeze({
-  greek: GREEK_MYTHOLOGY,
+const MYTHOLOGY_LOADERS = Object.freeze({
+  greek: () => import("../../data/mythologies/greek.js"),
+  norse: () => import("../../data/mythologies/norse.js"),
 });
 
 const SELECTORS = Object.freeze({
@@ -55,6 +54,40 @@ const SELECTORS = Object.freeze({
   cultsLoadMore: "#cultsLoadMore",
   cultsGrid: "#cultsGrid",
   sourcesList: "#sourcesList",
+  loadingSymbol: "#mythologyLoadingSymbol",
+  overviewKicker: "#overviewKicker",
+  overviewTitle: "#overviewTitle",
+  historyKicker: "#historyKicker",
+  historyTitle: "#historyTitle",
+  cosmologyKicker: "#cosmologyKicker",
+  cosmologyTitle: "#cosmologyTitle",
+  pantheonKicker: "#pantheonKicker",
+  pantheonTitle: "#pantheonTitle",
+  pantheonDescription: "#pantheonDescription",
+  genealogyKicker: "#genealogyKicker",
+  genealogyTitle: "#genealogyTitle",
+  genealogyIntroduction: "#genealogyIntroduction",
+  genealogyPantheonName: "#genealogyPantheonName",
+  genealogyGuideDescription: "#genealogyGuideDescription",
+  heroesKicker: "#heroesKicker",
+  heroesTitle: "#heroesTitle",
+  heroesDescription: "#heroesDescription",
+  creaturesKicker: "#creaturesKicker",
+  creaturesTitle: "#creaturesTitle",
+  creaturesDescription: "#creaturesDescription",
+  placesKicker: "#placesKicker",
+  placesTitle: "#placesTitle",
+  placesDescription: "#placesDescription",
+  cultsKicker: "#cultsKicker",
+  cultsTitle: "#cultsTitle",
+  cultsDescription: "#cultsDescription",
+  sourcesKicker: "#sourcesKicker",
+  sourcesTitle: "#sourcesTitle",
+  sourcesDescription: "#sourcesDescription",
+  primaryActionIcon: "#primaryActionIcon",
+  primaryActionLabel: "#primaryActionLabel",
+  secondaryActionIcon: "#secondaryActionIcon",
+  secondaryActionLabel: "#secondaryActionLabel",
 });
 
 function query(selector) {
@@ -80,9 +113,281 @@ function appendChildren(parent, ...children) {
   return parent;
 }
 
+const DETAIL_PAGE_ROUTES = Object.freeze({
+  deity: "../mythology-deity.html",
+  hero: "../mythology-hero.html",
+  creature: "../mythology-creature.html",
+  place: "../mythology-place.html",
+  cult: "../mythology-cult.html",
+});
+
+function createItemSlug(item) {
+  if (typeof item?.slug === "string" && item.slug.trim()) {
+    return item.slug.trim().toLowerCase();
+  }
+
+  return normalizeSearchText(item?.name || "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function createDetailPageUrl(item, itemType, mythologySlug = "greek") {
+  const route = DETAIL_PAGE_ROUTES[itemType];
+
+  if (!route) {
+    return "";
+  }
+
+  const slug = createItemSlug(item);
+  const params = new URLSearchParams({
+    mythology: mythologySlug,
+    slug,
+  });
+
+  return `${route}?${params.toString()}`;
+}
+
+function createCardRoot(tagName, className, item, itemType, mythologySlug) {
+  const element = createElement(tagName, className);
+
+  if (tagName === "a") {
+    element.href = createDetailPageUrl(item, itemType, mythologySlug);
+    element.setAttribute(
+      "aria-label",
+      `Abrir página de ${item?.name || "detalhes"}`,
+    );
+  }
+
+  return element;
+}
+
 function getRequestedMythologySlug() {
   const params = new URLSearchParams(window.location.search);
   return params.get("mythology")?.trim().toLowerCase() || "greek";
+}
+
+const DEFAULT_PRESENTATION = Object.freeze({
+  loadingSymbol: "✦",
+  ornamentSymbol: "✦",
+  navigationIcons: {
+    overview: "◈",
+    history: "▤",
+    cosmology: "◎",
+    pantheon: "✦",
+    genealogy: "♧",
+    heroes: "⚔",
+    creatures: "♞",
+    places: "Π",
+    cults: "♨",
+    sources: "▥",
+  },
+  actions: {
+    primary: { label: "Explorar o Panteão", icon: "✦" },
+    secondary: { label: "Conhecer a História", icon: "▤" },
+  },
+  sections: {
+    overview: { kicker: "Introdução", title: "Visão geral" },
+    history: {
+      kicker: "Desenvolvimento histórico",
+      title: "Origens e formação",
+    },
+    cosmology: { kicker: "O universo mítico", title: "Cosmologia" },
+    pantheon: {
+      kicker: "Divindades",
+      title: "Panteão",
+      description:
+        "Conheça os principais grupos de divindades e seus domínios.",
+    },
+    genealogy: {
+      kicker: "Linhagens divinas e heroicas",
+      title: "Árvore genealógica",
+      introduction:
+        "Acompanhe as principais gerações, uniões e descendências desta tradição.",
+      pantheonName: "Panteão",
+      guideDescription:
+        "Das forças primordiais às linhagens divinas e mortais.",
+    },
+    heroes: {
+      kicker: "Mortais extraordinários",
+      title: "Heróis",
+      description:
+        "Guerreiros, reis e viajantes ligados aos grandes ciclos míticos.",
+    },
+    creatures: {
+      kicker: "Seres lendários",
+      title: "Monstros e criaturas",
+      description:
+        "Seres sobrenaturais presentes nas narrativas desta mitologia.",
+    },
+    places: {
+      kicker: "Geografia sagrada",
+      title: "Locais mitológicos",
+      description: "Lugares reais, sagrados e lendários ligados aos mitos.",
+    },
+    cults: {
+      kicker: "Religião e sociedade",
+      title: "Cultos, rituais e festivais",
+      description:
+        "Práticas públicas e privadas associadas às divindades e à comunidade.",
+    },
+    sources: {
+      kicker: "Textos e tradições",
+      title: "Fontes e obras",
+      description:
+        "Obras e registros que preservaram parte desta tradição mitológica.",
+    },
+  },
+  placeholders: {
+    creaturesSearch: "Buscar criatura...",
+    placesSearch: "Buscar local mitológico...",
+    cultsSearch: "Buscar culto, ritual ou festival...",
+  },
+});
+
+function mergePresentation(mythology) {
+  const custom = mythology.presentation || {};
+
+  return {
+    ...DEFAULT_PRESENTATION,
+    ...custom,
+    navigationIcons: {
+      ...DEFAULT_PRESENTATION.navigationIcons,
+      ...(custom.navigationIcons || {}),
+    },
+    actions: {
+      primary: {
+        ...DEFAULT_PRESENTATION.actions.primary,
+        ...(custom.actions?.primary || {}),
+      },
+      secondary: {
+        ...DEFAULT_PRESENTATION.actions.secondary,
+        ...(custom.actions?.secondary || {}),
+      },
+    },
+    sections: Object.fromEntries(
+      Object.entries(DEFAULT_PRESENTATION.sections).map(([key, value]) => [
+        key,
+        { ...value, ...(custom.sections?.[key] || {}) },
+      ]),
+    ),
+    placeholders: {
+      ...DEFAULT_PRESENTATION.placeholders,
+      ...(custom.placeholders || {}),
+    },
+  };
+}
+
+function setText(selector, value = "") {
+  const element = query(selector);
+
+  if (element) {
+    element.textContent = value;
+  }
+}
+
+function applyTheme(mythology) {
+  const root = document.documentElement;
+  const theme = mythology.theme || {};
+
+  root.dataset.mythology = mythology.slug;
+  document.body.dataset.mythology = mythology.slug;
+
+  Object.entries(theme.variables || {}).forEach(([name, value]) => {
+    root.style.setProperty(`--${name}`, value);
+  });
+
+  Object.entries(theme.assets || {}).forEach(([name, value]) => {
+    root.style.setProperty(
+      `--myth-${name}`,
+      value ? `url("${value}")` : "none",
+    );
+  });
+}
+
+function applyPresentation(mythology) {
+  const presentation = mergePresentation(mythology);
+
+  setText(SELECTORS.loadingSymbol, presentation.loadingSymbol);
+
+  document.querySelectorAll(".mythology-ornament-symbol").forEach((element) => {
+    element.textContent = presentation.ornamentSymbol;
+  });
+
+  document.querySelectorAll("[data-nav-icon]").forEach((element) => {
+    element.textContent =
+      presentation.navigationIcons[element.dataset.navIcon] || "✦";
+  });
+
+  setText(SELECTORS.primaryActionIcon, presentation.actions.primary.icon);
+  setText(SELECTORS.primaryActionLabel, presentation.actions.primary.label);
+  setText(SELECTORS.secondaryActionIcon, presentation.actions.secondary.icon);
+  setText(SELECTORS.secondaryActionLabel, presentation.actions.secondary.label);
+
+  const sectionSelectorMap = {
+    overview: [SELECTORS.overviewKicker, SELECTORS.overviewTitle],
+    history: [SELECTORS.historyKicker, SELECTORS.historyTitle],
+    cosmology: [SELECTORS.cosmologyKicker, SELECTORS.cosmologyTitle],
+    pantheon: [
+      SELECTORS.pantheonKicker,
+      SELECTORS.pantheonTitle,
+      SELECTORS.pantheonDescription,
+    ],
+    genealogy: [
+      SELECTORS.genealogyKicker,
+      SELECTORS.genealogyTitle,
+      SELECTORS.genealogyIntroduction,
+      SELECTORS.genealogyPantheonName,
+      SELECTORS.genealogyGuideDescription,
+    ],
+    heroes: [
+      SELECTORS.heroesKicker,
+      SELECTORS.heroesTitle,
+      SELECTORS.heroesDescription,
+    ],
+    creatures: [
+      SELECTORS.creaturesKicker,
+      SELECTORS.creaturesTitle,
+      SELECTORS.creaturesDescription,
+    ],
+    places: [
+      SELECTORS.placesKicker,
+      SELECTORS.placesTitle,
+      SELECTORS.placesDescription,
+    ],
+    cults: [
+      SELECTORS.cultsKicker,
+      SELECTORS.cultsTitle,
+      SELECTORS.cultsDescription,
+    ],
+    sources: [
+      SELECTORS.sourcesKicker,
+      SELECTORS.sourcesTitle,
+      SELECTORS.sourcesDescription,
+    ],
+  };
+
+  Object.entries(sectionSelectorMap).forEach(([key, selectors]) => {
+    const section = presentation.sections[key];
+    const values =
+      key === "genealogy"
+        ? [
+            section.kicker,
+            section.title,
+            section.introduction,
+            section.pantheonName,
+            section.guideDescription,
+          ]
+        : [section.kicker, section.title, section.description];
+
+    selectors.forEach((selector, index) =>
+      setText(selector, values[index] || ""),
+    );
+  });
+
+  document.querySelectorAll("[data-placeholder-key]").forEach((input) => {
+    input.placeholder =
+      presentation.placeholders[input.dataset.placeholderKey] || "";
+  });
 }
 
 function setDocumentMetadata(mythology) {
@@ -111,6 +416,7 @@ function renderHero(mythology) {
 
   facts.forEach((fact) => {
     const item = createElement("div", "myth-detail-meta-item");
+    item.style.setProperty("--meta-icon", `"${fact.icon || "✦"}"`);
     const label = createElement("span", null, fact.label);
     const value = createElement("strong", null, fact.value);
 
@@ -127,6 +433,13 @@ function renderOverview(mythology) {
 
   mythology.overview.facts.forEach((fact) => {
     const item = createElement("div", "myth-detail-fact");
+    item.style.setProperty("--fact-icon", `"${fact.icon || "✦"}"`);
+
+    if (fact.image) {
+      item.style.setProperty("--fact-image", `url("${fact.image}")`);
+      item.classList.add("has-custom-image");
+    }
+
     const term = createElement("dt", null, fact.label);
     const description = createElement("dd", null, fact.value);
 
@@ -145,6 +458,11 @@ function renderHistory(mythology) {
   mythology.history.periods.forEach((period, index) => {
     const article = createElement("article", "myth-detail-timeline-item");
     article.dataset.index = String(index + 1);
+    article.style.setProperty(
+      "--history-card-image",
+      period.image ? `url("${period.image}")` : "none",
+    );
+    article.style.setProperty("--history-card-icon", `"${period.icon || "✦"}"`);
 
     const periodLabel = createElement(
       "span",
@@ -159,19 +477,34 @@ function renderHistory(mythology) {
   });
 }
 
-function createInfoCard(item, variant = "") {
+function createInfoCard(
+  item,
+  variant = "",
+  itemType = "",
+  mythologySlug = "greek",
+) {
   const className = ["myth-detail-info-card", variant]
     .filter(Boolean)
     .join(" ");
 
-  const article = createElement("article", className);
+  const isLinked = Boolean(itemType && DETAIL_PAGE_ROUTES[itemType]);
+  const card = createCardRoot(
+    isLinked ? "a" : "article",
+    className,
+    item,
+    itemType,
+    mythologySlug,
+  );
+
+  if (isLinked) {
+    card.classList.add("is-clickable");
+  }
 
   if (typeof item.image === "string" && item.image.trim()) {
     const imageUrl = item.image.trim();
 
-    article.style.setProperty("--info-card-image", `url("${imageUrl}")`);
-
-    article.classList.add("has-background-image");
+    card.style.setProperty("--info-card-image", `url("${imageUrl}")`);
+    card.classList.add("has-background-image");
   }
 
   const icon = createElement(
@@ -189,12 +522,11 @@ function createInfoCard(item, variant = "") {
   );
 
   const title = createElement("h3", null, item.name);
-
   const description = createElement("p", null, item.description);
 
-  appendChildren(article, icon, type, title, description);
+  appendChildren(card, icon, type, title, description);
 
-  return article;
+  return card;
 }
 
 function renderInfoCards(items, selector) {
@@ -209,8 +541,20 @@ function renderInfoCards(items, selector) {
   });
 }
 
-function createEntityCard(entity) {
-  const article = createElement("article", "myth-detail-entity-card");
+function createEntityCard(entity, itemType = "", mythologySlug = "greek") {
+  const isLinked = Boolean(itemType && DETAIL_PAGE_ROUTES[itemType]);
+  const card = createCardRoot(
+    isLinked ? "a" : "article",
+    "myth-detail-entity-card",
+    entity,
+    itemType,
+    mythologySlug,
+  );
+
+  if (isLinked) {
+    card.classList.add("is-clickable");
+  }
+
   const visual = createElement("div", "myth-detail-entity-visual");
 
   if (entity.image) {
@@ -260,9 +604,9 @@ function createEntityCard(entity) {
   const description = createElement("p", null, entity.description);
 
   appendChildren(content, title, subtitle, description);
-  appendChildren(article, visual, content);
+  appendChildren(card, visual, content);
 
-  return article;
+  return card;
 }
 
 function renderEntityCards(items, selector) {
@@ -304,7 +648,7 @@ function renderHeroes(mythology) {
     const fragment = document.createDocumentFragment();
 
     visible.forEach((hero) => {
-      fragment.appendChild(createEntityCard(hero));
+      fragment.appendChild(createEntityCard(hero, "hero", mythology.slug));
     });
 
     grid.replaceChildren(fragment);
@@ -476,7 +820,9 @@ function renderCreatures(mythology) {
     const fragment = document.createDocumentFragment();
 
     visible.forEach((creature) => {
-      fragment.appendChild(createEntityCard(creature));
+      fragment.appendChild(
+        createEntityCard(creature, "creature", mythology.slug),
+      );
     });
 
     grid.replaceChildren(fragment);
@@ -684,7 +1030,12 @@ function renderPlaces(mythology) {
     const fragment = document.createDocumentFragment();
 
     visible.forEach((place) => {
-      const card = createInfoCard(place, "myth-detail-place-card");
+      const card = createInfoCard(
+        place,
+        "myth-detail-place-card",
+        "place",
+        mythology.slug,
+      );
       card.dataset.group = place.group;
       fragment.appendChild(card);
     });
@@ -886,7 +1237,12 @@ function renderCults(mythology) {
     const fragment = document.createDocumentFragment();
 
     visible.forEach((cult) => {
-      const card = createInfoCard(cult, "myth-detail-cult-card");
+      const card = createInfoCard(
+        cult,
+        "myth-detail-cult-card",
+        "cult",
+        mythology.slug,
+      );
       card.dataset.group = cult.group;
       fragment.appendChild(card);
     });
@@ -1032,7 +1388,7 @@ function renderPantheon(mythology) {
     const fragment = document.createDocumentFragment();
 
     visible.forEach((deity) => {
-      const card = createEntityCard(deity);
+      const card = createEntityCard(deity, "deity", mythology.slug);
       card.dataset.group = deity.group;
       fragment.appendChild(card);
     });
@@ -1196,8 +1552,7 @@ function updateGenealogyDetails(genealogy, selectedPerson) {
   const description = createElement(
     "p",
     null,
-    selectedPerson.note ||
-      "Personagem pertencente à tradição genealógica grega.",
+    selectedPerson.note || "Personagem pertencente a esta tradição mitológica.",
   );
 
   const relations = getGenealogyRelations(genealogy.people, selectedPerson);
@@ -1453,7 +1808,7 @@ function renderGenealogy(mythology) {
     summary.textContent =
       `${visibleCount} personagens exibidos` +
       (state.selectedGroup === "all"
-        ? " em sete gerações."
+        ? ` em ${genealogy.generations.length} gerações.`
         : ` no grupo ${group?.label || ""}.`);
   }
 
@@ -2126,6 +2481,8 @@ function initializeInternalNavigation() {
 }
 
 function renderPage(mythology) {
+  applyTheme(mythology);
+  applyPresentation(mythology);
   setDocumentMetadata(mythology);
   renderHero(mythology);
   renderOverview(mythology);
@@ -2157,16 +2514,23 @@ function showError() {
   query(SELECTORS.error).hidden = false;
 }
 
-function initializeMythologyPage() {
+async function initializeMythologyPage() {
   const slug = getRequestedMythologySlug();
-  const mythology = MYTHOLOGIES[slug];
+  const loader = MYTHOLOGY_LOADERS[slug];
 
-  if (!mythology) {
+  if (!loader) {
     showError();
     return;
   }
 
   try {
+    const module = await loader();
+    const mythology = module.default;
+
+    if (!mythology || mythology.slug !== slug) {
+      throw new Error(`Dados inválidos para a mitologia "${slug}".`);
+    }
+
     renderPage(mythology);
     showPage();
 
@@ -2174,7 +2538,7 @@ function initializeMythologyPage() {
       initializeInternalNavigation();
     });
   } catch (error) {
-    console.error("Erro ao renderizar a página da mitologia:", error);
+    console.error("Erro ao carregar ou renderizar a mitologia:", error);
     showError();
   }
 }

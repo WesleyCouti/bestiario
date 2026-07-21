@@ -399,7 +399,7 @@ const MYTHOLOGIES = Object.freeze([
         image: "./assets/images/mitologia/page-mitologia-personagens/mitologia-nordica.png",
         icon: "ᛟ",
         description: "Deuses poderosos, gigantes e o destino do mundo em Ragnarok.",
-        url: "./mitologias/nordica.html"
+        url: "./mythologies/mythology-detail.html?mythology=norse"
     },
     {
         title: "Persa",

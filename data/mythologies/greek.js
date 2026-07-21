@@ -3,6 +3,110 @@ const GREEK_MYTHOLOGY = Object.freeze({
   name: "Mitologia Grega",
   originalName: "Ἑλληνικὴ μυθολογία",
 
+  presentation: {
+    loadingSymbol: "Ω",
+    ornamentSymbol: "🏛",
+    navigationIcons: {
+      overview: "🏛",
+      history: "▤",
+      cosmology: "◎",
+      pantheon: "ϟ",
+      genealogy: "♧",
+      heroes: "⛑",
+      creatures: "♞",
+      places: "Π",
+      cults: "♨",
+      sources: "▥",
+    },
+    actions: {
+      primary: { label: "Explorar o Panteão", icon: "⛑" },
+      secondary: { label: "Conhecer a História", icon: "▤" },
+    },
+    sections: {
+      overview: { kicker: "Introdução", title: "Visão geral" },
+      history: {
+        kicker: "Desenvolvimento histórico",
+        title: "Origens e formação",
+      },
+      cosmology: { kicker: "O universo mítico", title: "Cosmologia" },
+      pantheon: {
+        kicker: "Divindades",
+        title: "Panteão",
+        description:
+          "Conheça os principais grupos de divindades e seus domínios.",
+      },
+      genealogy: {
+        kicker: "Do vazio primordial ao Olimpo",
+        title: "Árvore genealógica",
+        introduction:
+          "Acompanhe as linhagens desde Caos e as forças primordiais até os Titãs, os deuses do Olimpo e os grandes heróis.",
+        pantheonName: "Panteão Grego",
+        guideDescription:
+          "Dos seres primordiais aos heróis e descendentes mortais.",
+      },
+      heroes: {
+        kicker: "Mortais extraordinários",
+        title: "Heróis",
+        description:
+          "Guerreiros, reis e viajantes ligados aos grandes ciclos míticos.",
+      },
+      creatures: {
+        kicker: "Seres lendários",
+        title: "Monstros e criaturas",
+        description:
+          "Seres que desafiaram deuses e heróis nas histórias gregas.",
+      },
+      places: {
+        kicker: "Geografia sagrada",
+        title: "Locais mitológicos",
+        description:
+          "Lugares reais, sagrados e lendários ligados aos mitos gregos.",
+      },
+      cults: {
+        kicker: "Religião e sociedade",
+        title: "Cultos, rituais e festivais",
+        description:
+          "Como as divindades eram honradas na vida pública e privada.",
+      },
+      sources: {
+        kicker: "Textos antigos",
+        title: "Fontes e obras",
+        description:
+          "Obras antigas que preservaram parte das tradições mitológicas gregas.",
+      },
+    },
+  },
+
+  theme: {
+    variables: {
+      "detail-bg": "#020805",
+      "detail-bg-soft": "#06150d",
+      "detail-green": "#81c784",
+      "detail-green-strong": "#4caf50",
+      "detail-green-dark": "#2e7d32",
+      "detail-gold": "#c9a24a",
+      "detail-gold-light": "#f2d58a",
+    },
+    assets: {
+      "overview-left":
+        "../assets/images/mythologies/greek/overview/temple-left.png",
+      "overview-right":
+        "../assets/images/mythologies/greek/overview/athena-right.png",
+      "history-left":
+        "../assets/images/mythologies/greek/history/temple-left.png",
+      "history-right":
+        "../assets/images/mythologies/greek/history/temple-right.png",
+      "cosmology-left":
+        "../assets/images/mythologies/greek/cosmology/temple-left.png",
+      "cosmology-right":
+        "../assets/images/mythologies/greek/cosmology/temple-right.png",
+      "genealogy-left":
+        "../assets/images/mythologies/greek/genealogy/temple-left.png",
+      "genealogy-right":
+        "../assets/images/mythologies/greek/genealogy/temple-right.png",
+    },
+  },
+
   hero: {
     kicker: "Tradições do mundo helênico",
     description:
@@ -16,19 +120,42 @@ const GREEK_MYTHOLOGY = Object.freeze({
     summary:
       "A mitologia grega reúne narrativas sobre a origem do universo, as gerações divinas, os heróis e a relação entre os seres humanos e o sagrado.",
     facts: [
-      { label: "Região", value: "Grécia e Mediterrâneo", icon: "❧" },
-      { label: "Povo", value: "Povos helênicos", icon: "◫" },
-      { label: "Tipo", value: "Tradição politeísta", icon: "🏛" },
-      { label: "Idioma", value: "Grego antigo", icon: "Σ" },
+      {
+        label: "Região",
+        value: "Grécia e Mediterrâneo",
+        icon: "❧",
+        image: "../assets/images/mythologies/greek/overview/map-greece.png",
+      },
+      {
+        label: "Povo",
+        value: "Povos helênicos",
+        icon: "◫",
+        image: "../assets/images/mythologies/greek/overview/greek-vase.png",
+      },
+      {
+        label: "Tipo",
+        value: "Tradição politeísta",
+        icon: "🏛",
+        image: "../assets/images/mythologies/greek/overview/greek-temple.png",
+      },
+      {
+        label: "Idioma",
+        value: "Grego antigo",
+        icon: "Σ",
+        image: "../assets/images/mythologies/greek/overview/greek-writing.png",
+      },
       {
         label: "Período",
         value: "Idade do Bronze à Antiguidade tardia",
         icon: "⛑",
+        image: "../assets/images/mythologies/greek/overview/greek-warrior.png",
       },
       {
         label: "Fontes",
         value: "Homero, Hesíodo, hinos e tragédias",
         icon: "▤",
+        image:
+          "../assets/images/mythologies/greek/overview/ancient-scrolls.png",
       },
     ],
   },
