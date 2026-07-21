@@ -451,23 +451,74 @@ símbolos; - botões com identidade visual dourada.
 }
 
 /* ===================================================== NAVEGAÇÃO
-INTERNA ===================================================== */
+INTERNA — MENU SECUNDÁRIO ORNAMENTADO
+===================================================== */
 
 .myth-detail-page-nav {
+  --internal-nav-gold: #d3aa52;
+  --internal-nav-gold-light: #f1d27c;
+  --internal-nav-bg: rgba(2, 12, 8, 0.96);
+
   position: sticky;
   top: 0;
-  z-index: 30;
-  border-top: 1px solid rgba(129, 199, 132, 0.12);
-  border-bottom: 1px solid var(--detail-border);
-  background: rgba(1, 6, 4, 0.93);
-  backdrop-filter: blur(12px);
+  z-index: 40;
+  width: min(calc(100% - 54px), 1510px);
+  margin: -1px auto 0;
+  padding: 16px 0 17px;
+  isolation: isolate;
+  background: transparent;
+}
+
+.myth-detail-page-nav-shell {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  border: 1px solid rgba(211, 170, 82, 0.72);
+  border-radius: 27px;
+  background:
+    radial-gradient(
+      circle at 50% -30%,
+      rgba(211, 170, 82, 0.1),
+      transparent 48%
+    ),
+    linear-gradient(180deg, rgba(4, 21, 14, 0.97), var(--internal-nav-bg));
+  box-shadow:
+    0 15px 42px rgba(0, 0, 0, 0.48),
+    0 0 0 1px rgba(211, 170, 82, 0.06),
+    inset 0 1px 0 rgba(255, 235, 177, 0.05);
+  backdrop-filter: blur(18px) saturate(1.08);
+  -webkit-backdrop-filter: blur(18px) saturate(1.08);
+}
+
+.myth-detail-page-nav-shell::before,
+.myth-detail-page-nav-shell::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  z-index: 4;
+  width: 46px;
+  pointer-events: none;
+}
+
+.myth-detail-page-nav-shell::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(2, 12, 8, 0.98), transparent);
+}
+
+.myth-detail-page-nav-shell::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(2, 12, 8, 0.98), transparent);
 }
 
 .myth-detail-page-nav-list {
-  width: min(100% - 32px, 1320px);
-  margin-inline: auto;
-  display: flex;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(112px, 1fr));
+  align-items: stretch;
   overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x proximity;
   scrollbar-width: none;
 }
 
@@ -476,26 +527,281 @@ INTERNA ===================================================== */
 }
 
 .myth-detail-page-nav a {
-  min-height: 58px;
-  padding: 0 18px;
-  display: inline-flex;
+  position: relative;
+  min-width: 112px;
+  min-height: 102px;
+  padding: 17px 12px 15px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 9px;
   flex: 0 0 auto;
-  color: var(--detail-text-soft);
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  scroll-snap-align: center;
+  color: rgba(231, 211, 158, 0.82);
+  text-align: center;
+  text-decoration: none;
   transition:
-    color 0.3s ease,
-    background 0.3s ease;
+    color 0.26s ease,
+    background 0.26s ease,
+    transform 0.26s ease;
+}
+
+.myth-detail-page-nav a:not(:last-child)::after {
+  content: "◇";
+  position: absolute;
+  top: 50%;
+  right: -6px;
+  z-index: 3;
+  width: 12px;
+  color: rgba(211, 170, 82, 0.72);
+  background: #04130d;
+  font-size: 0.62rem;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+.myth-detail-page-nav a:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 21px;
+  right: 0;
+  bottom: 21px;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(211, 170, 82, 0.42) 22%,
+    rgba(211, 170, 82, 0.42) 78%,
+    transparent
+  );
+}
+
+.myth-detail-page-nav-icon {
+  min-height: 33px;
+  display: grid;
+  place-items: center;
+  color: var(--internal-nav-gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.82rem;
+  font-weight: 400;
+  line-height: 1;
+  filter: grayscale(1) sepia(1) saturate(2.4)
+    drop-shadow(0 0 10px rgba(211, 170, 82, 0.2));
+  transition:
+    color 0.26s ease,
+    transform 0.26s ease,
+    filter 0.26s ease;
+}
+
+.myth-detail-page-nav-label {
+  color: currentColor;
+  font-size: 0.66rem;
+  font-weight: 900;
+  letter-spacing: 1.05px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .myth-detail-page-nav a:hover,
 .myth-detail-page-nav a:focus-visible {
-  color: var(--detail-gold-light);
-  background: rgba(129, 199, 132, 0.08);
+  color: var(--internal-nav-gold-light);
+  background: linear-gradient(180deg, rgba(211, 170, 82, 0.07), transparent);
+}
+
+.myth-detail-page-nav a:hover .myth-detail-page-nav-icon,
+.myth-detail-page-nav a:focus-visible .myth-detail-page-nav-icon,
+.myth-detail-page-nav a.is-active .myth-detail-page-nav-icon {
+  color: var(--internal-nav-gold-light);
+  transform: translateY(-2px) scale(1.06);
+  filter: grayscale(1) sepia(1) saturate(3)
+    drop-shadow(0 0 14px rgba(241, 210, 124, 0.36));
+}
+
+.myth-detail-page-nav a.is-active {
+  color: var(--internal-nav-gold-light);
+  background:
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(211, 170, 82, 0.12),
+      transparent 52%
+    ),
+    linear-gradient(180deg, rgba(211, 170, 82, 0.08), transparent 78%);
+}
+
+.myth-detail-page-nav a.is-active::marker {
+  display: none;
+}
+
+.myth-detail-page-nav a.is-active > .myth-detail-page-nav-label::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 0;
+  height: 3px;
+  border-radius: 999px 999px 0 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #e2b84f 14%,
+    #ffe38b 50%,
+    #e2b84f 86%,
+    transparent
+  );
+  box-shadow:
+    0 -1px 12px rgba(255, 214, 92, 0.72),
+    0 -7px 25px rgba(211, 170, 82, 0.18);
+}
+
+.myth-detail-page-nav a.is-active > .myth-detail-page-nav-label::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid #e2b84f;
+  border-bottom: 2px solid #e2b84f;
+  background: #06150e;
+  transform: translateX(-50%) rotate(45deg);
+  box-shadow: 4px 4px 10px rgba(226, 184, 79, 0.28);
+}
+
+.myth-detail-page-nav-ornament {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  width: 43px;
+  height: 64px;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.myth-detail-page-nav-ornament::before,
+.myth-detail-page-nav-ornament::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(211, 170, 82, 0.78);
+  transform: rotate(45deg);
+}
+
+.myth-detail-page-nav-ornament::before {
+  top: 15px;
+  width: 25px;
+  height: 25px;
+}
+
+.myth-detail-page-nav-ornament::after {
+  top: 23px;
+  width: 9px;
+  height: 9px;
+  background: #06150e;
+}
+
+.myth-detail-page-nav-ornament--left {
+  left: -15px;
+}
+
+.myth-detail-page-nav-ornament--left::before {
+  left: 7px;
+}
+
+.myth-detail-page-nav-ornament--left::after {
+  left: 15px;
+}
+
+.myth-detail-page-nav-ornament--right {
+  right: -15px;
+}
+
+.myth-detail-page-nav-ornament--right::before {
+  right: 7px;
+}
+
+.myth-detail-page-nav-ornament--right::after {
+  right: 15px;
+}
+
+.myth-detail-page-nav.is-compact {
+  width: min(calc(100% - 34px), 1510px);
+  padding-top: 8px;
+  padding-bottom: 9px;
+}
+
+.myth-detail-page-nav.is-compact .myth-detail-page-nav-shell {
+  border-radius: 20px;
+  box-shadow:
+    0 12px 34px rgba(0, 0, 0, 0.54),
+    0 0 0 1px rgba(211, 170, 82, 0.06);
+}
+
+.myth-detail-page-nav.is-compact a {
+  min-height: 78px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  gap: 6px;
+}
+
+.myth-detail-page-nav.is-compact .myth-detail-page-nav-icon {
+  min-height: 27px;
+  font-size: 1.48rem;
+}
+
+@media (max-width: 1180px) {
+  .myth-detail-page-nav {
+    width: min(calc(100% - 32px), 1080px);
+  }
+
+  .myth-detail-page-nav-list {
+    display: flex;
+  }
+
+  .myth-detail-page-nav a {
+    min-width: 126px;
+  }
+}
+
+@media (max-width: 760px) {
+  .myth-detail-page-nav,
+  .myth-detail-page-nav.is-compact {
+    width: calc(100% - 18px);
+    padding: 8px 0 10px;
+  }
+
+  .myth-detail-page-nav-shell,
+  .myth-detail-page-nav.is-compact .myth-detail-page-nav-shell {
+    border-radius: 18px;
+  }
+
+  .myth-detail-page-nav a,
+  .myth-detail-page-nav.is-compact a {
+    min-width: 104px;
+    min-height: 76px;
+    padding: 10px 8px 9px;
+    gap: 6px;
+  }
+
+  .myth-detail-page-nav-icon,
+  .myth-detail-page-nav.is-compact .myth-detail-page-nav-icon {
+    min-height: 25px;
+    font-size: 1.38rem;
+  }
+
+  .myth-detail-page-nav-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.75px;
+  }
+
+  .myth-detail-page-nav a:not(:last-child)::before {
+    top: 15px;
+    bottom: 15px;
+  }
+
+  .myth-detail-page-nav-ornament {
+    display: none;
+  }
 }
 
 /* ===================================================== ESTRUTURA DAS
@@ -3960,5 +4266,245 @@ FILTROS, BUSCA E CARREGAMENTO PROGRESSIVO
 
   .myth-detail-places-actions .myth-detail-button {
     width: 100%;
+  }
+}
+
+/* ===================================================== CULTOS, RITUAIS E FESTIVAIS —
+IMAGENS DE FUNDO, FILTROS, BUSCA E CARREGAMENTO PROGRESSIVO
+===================================================== */
+
+#cultos {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  content-visibility: auto;
+  contain-intrinsic-size: 1200px;
+}
+
+#cultsGrid {
+  position: relative;
+  z-index: 2;
+}
+
+#cultsGrid .myth-detail-cult-card {
+  --info-card-image: none;
+
+  position: relative;
+  min-height: 390px;
+  padding: 210px 30px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  border-color: rgba(201, 162, 74, 0.46);
+  background: linear-gradient(180deg, #07160d, #010403);
+  box-shadow:
+    0 26px 68px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+#cultsGrid .myth-detail-cult-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--info-card-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition:
+    transform 0.55s ease,
+    filter 0.35s ease;
+}
+
+#cultsGrid .myth-detail-cult-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(1, 6, 4, 0.04) 0%,
+      rgba(1, 6, 4, 0.14) 34%,
+      rgba(1, 6, 4, 0.78) 70%,
+      rgba(1, 6, 4, 0.98) 100%
+    ),
+    linear-gradient(90deg, rgba(1, 6, 4, 0.18), transparent 60%);
+}
+
+#cultsGrid .myth-detail-cult-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+#cultsGrid .myth-detail-cult-card:hover::before {
+  transform: scale(1.065);
+  filter: brightness(1.08) saturate(1.06);
+}
+
+#cultsGrid .myth-detail-cult-card .myth-detail-info-card-icon {
+  position: absolute;
+  top: 26px;
+  left: 28px;
+  width: 64px;
+  height: 64px;
+  margin: 0;
+  border-color: rgba(242, 213, 138, 0.56);
+  background: rgba(1, 8, 5, 0.78);
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 0 0 7px rgba(201, 162, 74, 0.035),
+    0 14px 34px rgba(0, 0, 0, 0.34);
+}
+
+#cultsGrid .myth-detail-cult-card .myth-detail-info-card-type {
+  margin-bottom: 10px;
+  color: #9cdea0;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+}
+
+#cultsGrid .myth-detail-cult-card h3 {
+  margin-bottom: 12px;
+  color: var(--detail-gold-light);
+  font-size: clamp(1.65rem, 2vw, 2.15rem);
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.92);
+}
+
+#cultsGrid .myth-detail-cult-card p {
+  color: rgba(248, 239, 215, 0.9);
+  font-size: 0.96rem;
+  line-height: 1.7;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.94);
+}
+
+.myth-detail-cults-toolbar {
+  margin-bottom: 18px;
+  display: grid;
+  gap: 18px;
+}
+
+.myth-detail-cults-toolbar .myth-detail-filter-list {
+  margin-bottom: 0;
+}
+
+.myth-detail-cult-search {
+  width: min(100%, 560px);
+  margin-inline: auto;
+  display: block;
+}
+
+.myth-detail-cult-search input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 1px solid var(--detail-border-strong);
+  border-radius: 999px;
+  color: var(--detail-text);
+  background: rgba(1, 8, 5, 0.84);
+  font: inherit;
+  outline: none;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.myth-detail-cult-search input::placeholder {
+  color: var(--detail-text-soft);
+}
+
+.myth-detail-cult-search input:focus {
+  border-color: var(--detail-gold-light);
+  background: rgba(2, 12, 7, 0.96);
+  box-shadow: 0 0 0 4px rgba(201, 162, 74, 0.12);
+}
+
+.myth-detail-cults-summary {
+  min-height: 24px;
+  margin: 0 0 22px;
+  color: var(--detail-text-soft);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+.myth-detail-cults-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.myth-detail-cults-actions .myth-detail-button {
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  #cultsGrid .myth-detail-cult-card {
+    min-height: 360px;
+    padding-top: 190px;
+  }
+}
+
+@media (max-width: 700px) {
+  .myth-detail-cults-toolbar {
+    gap: 14px;
+  }
+
+  .myth-detail-cult-search input {
+    min-height: 46px;
+  }
+
+  #cultsGrid .myth-detail-cult-card {
+    min-height: 380px;
+    padding: 205px 24px 26px;
+  }
+
+  .myth-detail-cults-actions .myth-detail-button {
+    width: 100%;
+  }
+}
+
+/* =====================================================
+   AJUSTE MOBILE — TÍTULO "ÁRVORE GENEALÓGICA"
+   Mantém cada palavra inteira e evita que a última letra
+   seja enviada sozinha para uma terceira linha.
+===================================================== */
+
+@media (max-width: 760px) {
+  .myth-detail-genealogy-header {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+    padding-inline: 4px;
+  }
+
+  .myth-detail-genealogy-header h2 {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+    font-size: clamp(2.2rem, 9.6vw, 3.35rem);
+    line-height: 0.98;
+    letter-spacing: 0.4px;
+    overflow-wrap: normal;
+    word-break: keep-all;
+    hyphens: none;
+    text-wrap: balance;
+  }
+}
+
+@media (max-width: 480px) {
+  .myth-detail-genealogy-header h2 {
+    font-size: clamp(2rem, 10vw, 2.85rem);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .myth-detail-genealogy-header h2 {
+    font-size: clamp(1.82rem, 9.6vw, 2.25rem);
   }
 }

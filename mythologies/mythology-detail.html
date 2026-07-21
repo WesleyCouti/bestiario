@@ -160,18 +160,89 @@
           class="myth-detail-page-nav"
           aria-label="Navegação interna da mitologia"
         >
-          <div class="myth-detail-page-nav-list">
-            <a href="#visao-geral">Visão Geral</a>
-            <a href="#origens">Origens</a>
-            <a href="#cosmologia">Cosmologia</a>
-            <a href="#panteao">Panteão</a>
-            <a href="#genealogia">Genealogia</a>
-            <a href="#herois">Heróis</a>
-            <a href="#criaturas">Criaturas</a>
-            <a href="#locais">Locais</a>
-            <a href="#cultos">Cultos</a>
-            <a href="#fontes">Fontes</a>
+          <span
+            class="myth-detail-page-nav-ornament myth-detail-page-nav-ornament--left"
+            aria-hidden="true"
+          ></span>
+
+          <div class="myth-detail-page-nav-shell">
+            <div class="myth-detail-page-nav-list">
+              <a href="#visao-geral" class="is-active" aria-current="location">
+                <span class="myth-detail-page-nav-icon" aria-hidden="true"
+                  >🏛</span
+                >
+                <span class="myth-detail-page-nav-label">Visão Geral</span>
+              </a>
+
+              <a href="#origens">
+                <span class="myth-detail-page-nav-icon" aria-hidden="true"
+                  >▤</span
+                >
+                <span class="myth-detail-page-nav-label">Origens</span>
+              </a>
+
+              <a href="#cosmologia">
+                <span class="myth-detail-page-nav-icon" aria-hidden="true"
+                  >◎</span
+                >
+                <span class="myth-detail-page-nav-label">Cosmologia</span>
+              </a>
+
+              <a href="#panteao">
+                <span class="myth-detail-page-nav-icon" aria-hidden="true"
+                  >ϟ</span
+                >
+                <span class="myth-detail-page-nav-label">Panteão</span>
+              </a>
+
+              <a href="#genealogia">
+                <span class="myth-detail-page-nav-icon" aria-hidden="true"
+                  >♧</span
+                >
+                <span class="myth-detail-page-nav-label">Genealogia</span>
+              </a>
+
+              <a href="#herois">
+                <span class="myth-detail-page-nav-icon" aria-hidden="true"
+                  >⛑</span
+                >
+                <span class="myth-detail-page-nav-label">Heróis</span>
+              </a>
+
+              <a href="#criaturas">
+                <span class="myth-detail-page-nav-icon" aria-hidden="true"
+                  >♞</span
+                >
+                <span class="myth-detail-page-nav-label">Criaturas</span>
+              </a>
+
+              <a href="#locais">
+                <span class="myth-detail-page-nav-icon" aria-hidden="true"
+                  >Π</span
+                >
+                <span class="myth-detail-page-nav-label">Locais</span>
+              </a>
+
+              <a href="#cultos">
+                <span class="myth-detail-page-nav-icon" aria-hidden="true"
+                  >♨</span
+                >
+                <span class="myth-detail-page-nav-label">Cultos</span>
+              </a>
+
+              <a href="#fontes">
+                <span class="myth-detail-page-nav-icon" aria-hidden="true"
+                  >▥</span
+                >
+                <span class="myth-detail-page-nav-label">Fontes</span>
+              </a>
+            </div>
           </div>
+
+          <span
+            class="myth-detail-page-nav-ornament myth-detail-page-nav-ornament--right"
+            aria-hidden="true"
+          ></span>
         </nav>
 
         <section
@@ -692,7 +763,45 @@
               <p>Como as divindades eram honradas na vida pública e privada.</p>
             </header>
 
+            <div
+              class="myth-detail-cults-toolbar"
+              aria-label="Controles de cultos, rituais e festivais"
+            >
+              <div
+                class="myth-detail-filter-list"
+                id="cultFilters"
+                aria-label="Filtros de cultos, rituais e festivais"
+              ></div>
+
+              <label class="myth-detail-cult-search" for="cultSearch">
+                <span class="sr-only">Buscar culto, ritual ou festival</span>
+                <input
+                  id="cultSearch"
+                  type="search"
+                  placeholder="Buscar culto, ritual ou festival..."
+                  autocomplete="off"
+                />
+              </label>
+            </div>
+
+            <p
+              class="myth-detail-cults-summary"
+              id="cultsSummary"
+              aria-live="polite"
+            ></p>
+
             <div class="myth-detail-cards-grid" id="cultsGrid"></div>
+
+            <div class="myth-detail-cults-actions">
+              <button
+                class="myth-detail-button myth-detail-button--secondary"
+                id="cultsLoadMore"
+                type="button"
+                hidden
+              >
+                Carregar mais cultos e festivais
+              </button>
+            </div>
           </div>
         </section>
 
@@ -711,37 +820,6 @@
             </header>
 
             <div class="myth-detail-source-list" id="sourcesList"></div>
-          </div>
-        </section>
-
-        <section class="myth-detail-continue" aria-labelledby="continueTitle">
-          <div class="container">
-            <header class="myth-detail-section-header">
-              <span>Próximos caminhos</span>
-              <h2 id="continueTitle">Continue explorando</h2>
-            </header>
-
-            <div class="myth-detail-continue-grid">
-              <a href="#panteao">
-                <strong>Deuses</strong>
-                <span>Conheça as divindades gregas</span>
-              </a>
-
-              <a href="#herois">
-                <strong>Heróis</strong>
-                <span>Explore os grandes ciclos heroicos</span>
-              </a>
-
-              <a href="#criaturas">
-                <strong>Criaturas</strong>
-                <span>Descubra monstros e seres lendários</span>
-              </a>
-
-              <a href="../mythology.html">
-                <strong>Outras mitologias</strong>
-                <span>Volte ao catálogo completo</span>
-              </a>
-            </div>
           </div>
         </section>
       </div>

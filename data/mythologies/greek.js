@@ -3798,44 +3798,238 @@ const GREEK_MYTHOLOGY = Object.freeze({
   cults: [
     {
       icon: "🏛",
+      image: "/assets/images/mythologies/greek/cults/cult-of-zeus-olympia.png",
+      group: "festivals",
       name: "Culto de Zeus em Olímpia",
       type: "Culto pan-helênico",
       description:
-        "Ligado ao santuário de Olímpia e aos jogos celebrados em honra a Zeus.",
+        "Ligado ao santuário de Olímpia e aos Jogos Olímpicos celebrados em honra a Zeus.",
     },
     {
       icon: "🦉",
+      image: "/assets/images/mythologies/greek/cults/cult-of-athena-athens.png",
+      group: "deity-cults",
       name: "Culto de Atena em Atenas",
       type: "Culto cívico",
       description:
-        "Atena era a protetora da cidade e recebia grandes festivais, como as Panateneias.",
+        "Atena era a divindade protetora da cidade e recebia grandes festivais, como as Panateneias.",
     },
     {
       icon: "☀",
+      image: "/assets/images/mythologies/greek/cults/oracle-of-delphi.png",
+      group: "oracles",
       name: "Oráculo de Delfos",
       type: "Prática profética",
       description:
-        "Consultas religiosas eram realizadas por meio da sacerdotisa ligada a Apolo.",
+        "Consultas religiosas eram realizadas por meio da sacerdotisa Pítia, dedicada a Apolo.",
     },
     {
       icon: "🌾",
+      image: "/assets/images/mythologies/greek/cults/eleusinian-mysteries.png",
+      group: "mysteries",
       name: "Mistérios de Elêusis",
       type: "Culto iniciático",
       description:
-        "Ritos associados a Deméter, Perséfone, renovação e destino após a morte.",
+        "Ritos secretos dedicados a Deméter e Perséfone relacionados à fertilidade e à vida após a morte.",
     },
     {
       icon: "🍇",
+      image: "/assets/images/mythologies/greek/cults/cult-of-dionysus.png",
+      group: "deity-cults",
       name: "Culto de Dionísio",
-      type: "Festival e êxtase",
+      type: "Festival religioso",
       description:
-        "Ligado ao vinho, ao teatro, à música e a experiências religiosas coletivas.",
+        "Celebrações marcadas por teatro, música, vinho e experiências de êxtase religioso.",
     },
     {
       icon: "⚕",
+      image: "/assets/images/mythologies/greek/cults/cult-of-asclepius.png",
+      group: "deity-cults",
       name: "Culto de Asclépio",
       type: "Cura religiosa",
-      description: "Santuários dedicados à saúde, ao sonho e à busca de cura.",
+      description:
+        "Santuários onde os fiéis buscavam cura por meio de sonhos, rituais e práticas sagradas.",
+    },
+    {
+      icon: "🌙",
+      image:
+        "/assets/images/mythologies/greek/cults/cult-of-artemis-ephesus.png",
+      group: "deity-cults",
+      name: "Culto de Ártemis em Éfeso",
+      type: "Culto regional",
+      description:
+        "Importante centro religioso dedicado à deusa da natureza, da caça e da proteção feminina.",
+    },
+    {
+      icon: "⚒",
+      image: "/assets/images/mythologies/greek/cults/cult-of-hephaestus.png",
+      group: "deity-cults",
+      name: "Culto de Hefesto",
+      type: "Culto profissional",
+      description:
+        "Especialmente venerado por artesãos, ferreiros e trabalhadores ligados ao fogo e aos metais.",
+    },
+    {
+      icon: "🌊",
+      image: "/assets/images/mythologies/greek/cults/cult-of-poseidon.png",
+      group: "deity-cults",
+      name: "Culto de Poseidon",
+      type: "Culto marítimo",
+      description:
+        "Muito difundido entre marinheiros e cidades costeiras que buscavam proteção durante as viagens.",
+    },
+    {
+      icon: "💘",
+      image: "/assets/images/mythologies/greek/cults/cult-of-aphrodite.png",
+      group: "deity-cults",
+      name: "Culto de Afrodite",
+      type: "Culto à fertilidade",
+      description:
+        "Relacionava-se ao amor, à beleza, à fertilidade e aos casamentos.",
+    },
+    {
+      icon: "🔥",
+      image: "/assets/images/mythologies/greek/cults/cult-of-hestia.png",
+      group: "domestic",
+      name: "Culto de Héstia",
+      type: "Culto doméstico",
+      description:
+        "Mantinha o fogo sagrado das casas e das cidades como símbolo da unidade familiar e cívica.",
+    },
+    {
+      icon: "🌿",
+      image: "/assets/images/mythologies/greek/cults/cult-of-demeter.png",
+      group: "deity-cults",
+      name: "Culto de Deméter",
+      type: "Culto agrícola",
+      description:
+        "Celebrava a agricultura, as colheitas e a fertilidade da terra por meio de festivais sazonais.",
+    },
+    {
+      icon: "🪽",
+      image: "/assets/images/mythologies/greek/cults/cult-of-hermes.png",
+      group: "deity-cults",
+      name: "Culto de Hermes",
+      type: "Culto dos viajantes",
+      description:
+        "Procurado por comerciantes, viajantes, mensageiros e atletas em busca de proteção.",
+    },
+    {
+      icon: "🏹",
+      image: "/assets/images/mythologies/greek/cults/cult-of-apollo-delos.png",
+      group: "deity-cults",
+      name: "Culto de Apolo em Delos",
+      type: "Culto pan-helênico",
+      description:
+        "Delos era considerada o local de nascimento de Apolo e Ártemis e tornou-se um importante centro religioso.",
+    },
+    {
+      icon: "⚖",
+      image: "/assets/images/mythologies/greek/cults/cult-of-themis.png",
+      group: "deity-cults",
+      name: "Culto de Têmis",
+      type: "Culto da justiça",
+      description:
+        "Associado à ordem divina, às leis e aos juramentos sagrados.",
+    },
+    {
+      icon: "🕊",
+      image: "/assets/images/mythologies/greek/cults/cult-of-hera.png",
+      group: "deity-cults",
+      name: "Culto de Hera",
+      type: "Culto matrimonial",
+      description:
+        "Relacionava-se ao casamento, à família e à proteção das mulheres casadas.",
+    },
+    {
+      icon: "🗿",
+      image: "/assets/images/mythologies/greek/cults/hero-cult.png",
+      group: "heroic",
+      name: "Culto Heroico",
+      type: "Culto aos heróis",
+      description:
+        "Heróis como Héracles, Aquiles e Teseu recebiam sacrifícios e homenagens após sua morte.",
+    },
+    {
+      icon: "🕯",
+      image: "/assets/images/mythologies/greek/cults/ancestor-cult.png",
+      group: "domestic",
+      name: "Culto aos Antepassados",
+      type: "Culto doméstico",
+      description:
+        "As famílias realizavam oferendas periódicas em honra aos ancestrais falecidos.",
+    },
+    {
+      icon: "🐂",
+      image: "/assets/images/mythologies/greek/cults/animal-sacrifices.png",
+      group: "rituals",
+      name: "Sacrifícios Animais",
+      type: "Ritual religioso",
+      description:
+        "Touros, carneiros, cabras e porcos eram sacrificados em cerimônias públicas e privadas.",
+    },
+    {
+      icon: "🍞",
+      image: "/assets/images/mythologies/greek/cults/offerings-to-gods.png",
+      group: "rituals",
+      name: "Oferendas aos Deuses",
+      type: "Prática religiosa",
+      description:
+        "Vinho, azeite, mel, cereais, frutas e incenso eram oferecidos diariamente às divindades.",
+    },
+    {
+      icon: "🏺",
+      image: "/assets/images/mythologies/greek/cults/libations.png",
+      group: "rituals",
+      name: "Libações",
+      type: "Ritual religioso",
+      description:
+        "Derramamento ritual de vinho, leite, mel ou azeite em honra aos deuses e aos mortos.",
+    },
+    {
+      icon: "🎭",
+      image: "/assets/images/mythologies/greek/cults/great-dionysia.png",
+      group: "festivals",
+      name: "Grandes Dionísias",
+      type: "Festival religioso",
+      description:
+        "Importante celebração ateniense dedicada a Dionísio, incluindo concursos teatrais.",
+    },
+    {
+      icon: "🛡",
+      image: "/assets/images/mythologies/greek/cults/panathenaea.png",
+      group: "festivals",
+      name: "Panateneias",
+      type: "Festival cívico",
+      description:
+        "Maior festival de Atenas, realizado em honra à deusa Atena com procissões, competições e sacrifícios.",
+    },
+    {
+      icon: "🏃",
+      image: "/assets/images/mythologies/greek/cults/pythian-games.png",
+      group: "festivals",
+      name: "Jogos Píticos",
+      type: "Festival pan-helênico",
+      description:
+        "Celebrados em Delfos em honra a Apolo, reuniam competições atléticas, musicais e poéticas.",
+    },
+    {
+      icon: "🏆",
+      image: "/assets/images/mythologies/greek/cults/isthmian-games.png",
+      group: "festivals",
+      name: "Jogos Ístmicos",
+      type: "Festival pan-helênico",
+      description:
+        "Competições realizadas no Istmo de Corinto em homenagem a Poseidon.",
+    },
+    {
+      icon: "🦁",
+      image: "/assets/images/mythologies/greek/cults/nemean-games.png",
+      group: "festivals",
+      name: "Jogos Nemeus",
+      type: "Festival pan-helênico",
+      description:
+        "Celebrados em Nemeia em honra a Zeus, integravam o circuito dos grandes jogos gregos.",
     },
   ],
 

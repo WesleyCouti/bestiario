@@ -49,6 +49,10 @@ const SELECTORS = Object.freeze({
   placesSummary: "#placesSummary",
   placesLoadMore: "#placesLoadMore",
   placesGrid: "#placesGrid",
+  cultFilters: "#cultFilters",
+  cultSearch: "#cultSearch",
+  cultsSummary: "#cultsSummary",
+  cultsLoadMore: "#cultsLoadMore",
   cultsGrid: "#cultsGrid",
   sourcesList: "#sourcesList",
 });
@@ -733,6 +737,207 @@ function renderPlaces(mythology) {
 
   loadMore.addEventListener("click", () => {
     state.visibleCount += PLACE_PAGE_SIZE;
+    updateGrid();
+  });
+
+  const renderWhenNearViewport = () => {
+    if (!state.hasRendered) {
+      updateGrid();
+    }
+  };
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          renderWhenNearViewport();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "700px 0px" },
+    );
+
+    observer.observe(section);
+  } else {
+    renderWhenNearViewport();
+  }
+}
+
+/* ===================================================== CULTOS, RITUAIS E FESTIVAIS —
+FILTRO, BUSCA, IMAGENS E RENDERIZAÇÃO PROGRESSIVA
+===================================================== */
+
+const CULT_PAGE_SIZE = 9;
+
+const CULT_GROUPS = Object.freeze([
+  { id: "all", label: "Todos" },
+  { id: "deity-cults", label: "Cultos divinos" },
+  { id: "oracles", label: "Oráculos e profecia" },
+  { id: "mysteries", label: "Mistérios e iniciação" },
+  { id: "festivals", label: "Festivais e jogos" },
+  { id: "rituals", label: "Rituais e oferendas" },
+  { id: "domestic", label: "Domésticos e ancestrais" },
+  { id: "heroic", label: "Cultos heroicos" },
+]);
+
+function getCultGroup(cult) {
+  if (typeof cult.group === "string" && cult.group.trim()) {
+    return cult.group.trim();
+  }
+
+  const text = normalizeSearchText(
+    `${cult.name || ""} ${cult.type || ""} ${cult.description || ""}`,
+  );
+
+  if (/oraculo|profec|pitia|delfos|adivinh/.test(text)) {
+    return "oracles";
+  }
+
+  if (/misterio|iniciatic|iniciacao|eleusis|secreto/.test(text)) {
+    return "mysteries";
+  }
+
+  if (
+    /festival|jogos|panateneia|dionisia|piticos|istmicos|nemeus|olimpicos|competicao|teatro/.test(
+      text,
+    )
+  ) {
+    return "festivals";
+  }
+
+  if (/sacrificio|oferenda|libacao|ritual|incenso/.test(text)) {
+    return "rituals";
+  }
+
+  if (/domestico|antepassado|ancestral|familia|lar|hestia/.test(text)) {
+    return "domestic";
+  }
+
+  if (/heroico|heroi|heracles|aquiles|teseu/.test(text)) {
+    return "heroic";
+  }
+
+  return "deity-cults";
+}
+
+function renderCults(mythology) {
+  const section = query("#cultos");
+  const filters = query(SELECTORS.cultFilters);
+  const search = query(SELECTORS.cultSearch);
+  const summary = query(SELECTORS.cultsSummary);
+  const loadMore = query(SELECTORS.cultsLoadMore);
+  const grid = query(SELECTORS.cultsGrid);
+
+  if (!section || !filters || !search || !summary || !loadMore || !grid) {
+    return;
+  }
+
+  const sourceCults = Array.isArray(mythology.cults) ? mythology.cults : [];
+  const cults = sourceCults.map((cult) => ({
+    ...cult,
+    group: getCultGroup(cult),
+  }));
+
+  const state = {
+    selectedGroup: "all",
+    searchTerm: "",
+    visibleCount: CULT_PAGE_SIZE,
+    hasRendered: false,
+  };
+
+  filters.replaceChildren();
+  grid.replaceChildren();
+
+  CULT_GROUPS.forEach((group) => {
+    const count =
+      group.id === "all"
+        ? cults.length
+        : cults.filter((cult) => cult.group === group.id).length;
+
+    if (count === 0) {
+      return;
+    }
+
+    filters.appendChild(
+      createFilterButton(
+        `${group.label} (${count})`,
+        group.id,
+        group.id === "all",
+      ),
+    );
+  });
+
+  function getFilteredCults() {
+    return cults.filter((cult) => {
+      const matchesGroup =
+        state.selectedGroup === "all" || cult.group === state.selectedGroup;
+
+      const searchableText = normalizeSearchText(
+        `${cult.name || ""} ${cult.type || ""} ${cult.description || ""}`,
+      );
+
+      return matchesGroup && searchableText.includes(state.searchTerm);
+    });
+  }
+
+  function updateGrid() {
+    const filtered = getFilteredCults();
+    const visible = filtered.slice(0, state.visibleCount);
+    const fragment = document.createDocumentFragment();
+
+    visible.forEach((cult) => {
+      const card = createInfoCard(cult, "myth-detail-cult-card");
+      card.dataset.group = cult.group;
+      fragment.appendChild(card);
+    });
+
+    grid.replaceChildren(fragment);
+    state.hasRendered = true;
+
+    summary.textContent =
+      filtered.length === 0
+        ? "Nenhum culto, ritual ou festival encontrado."
+        : `${visible.length} de ${filtered.length} cultos, rituais e festivais exibidos.`;
+
+    loadMore.hidden = visible.length >= filtered.length;
+  }
+
+  function resetAndRender() {
+    state.visibleCount = CULT_PAGE_SIZE;
+    updateGrid();
+  }
+
+  filters.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-group]");
+
+    if (!button) {
+      return;
+    }
+
+    state.selectedGroup = button.dataset.group || "all";
+
+    filters.querySelectorAll("button[data-group]").forEach((currentButton) => {
+      const isActive = currentButton === button;
+      currentButton.classList.toggle("is-active", isActive);
+      currentButton.setAttribute("aria-pressed", String(isActive));
+    });
+
+    resetAndRender();
+  });
+
+  let searchTimer = 0;
+
+  search.addEventListener("input", () => {
+    window.clearTimeout(searchTimer);
+
+    searchTimer = window.setTimeout(() => {
+      state.searchTerm = normalizeSearchText(search.value);
+      resetAndRender();
+    }, 180);
+  });
+
+  loadMore.addEventListener("click", () => {
+    state.visibleCount += CULT_PAGE_SIZE;
     updateGrid();
   });
 
@@ -1749,6 +1954,177 @@ function renderSources(mythology) {
   });
 }
 
+/* ===================================================== NAVEGAÇÃO INTERNA —
+ITEM ATIVO, ROLAGEM SUAVE E MODO COMPACTO
+===================================================== */
+
+function initializeInternalNavigation() {
+  const navigation = document.querySelector(".myth-detail-page-nav");
+  const navigationList = navigation?.querySelector(
+    ".myth-detail-page-nav-list",
+  );
+  const links = navigation
+    ? [...navigation.querySelectorAll('a[href^="#"]')]
+    : [];
+
+  if (!navigation || !navigationList || links.length === 0) {
+    return;
+  }
+
+  const items = links
+    .map((link) => {
+      const id = decodeURIComponent(link.hash.slice(1));
+      const section = document.getElementById(id);
+
+      return section ? { link, section, id } : null;
+    })
+    .filter(Boolean);
+
+  if (items.length === 0) {
+    return;
+  }
+
+  let activeId = "";
+  let scrollFrame = 0;
+
+  function setActiveItem(nextId, shouldCenter = true) {
+    if (!nextId || activeId === nextId) {
+      return;
+    }
+
+    activeId = nextId;
+
+    items.forEach(({ link, id }) => {
+      const isActive = id === nextId;
+
+      link.classList.toggle("is-active", isActive);
+
+      if (isActive) {
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+
+    if (shouldCenter) {
+      const activeLink = items.find(({ id }) => id === nextId)?.link;
+
+      if (activeLink) {
+        /*
+         * Centraliza somente dentro do menu horizontal.
+         *
+         * Não usamos scrollIntoView(), pois ele também pode movimentar
+         * verticalmente a página e interromper a rolagem normal do usuário.
+         */
+        const listRect = navigationList.getBoundingClientRect();
+        const linkRect = activeLink.getBoundingClientRect();
+
+        const nextScrollLeft =
+          navigationList.scrollLeft +
+          (linkRect.left - listRect.left) -
+          (navigationList.clientWidth - linkRect.width) / 2;
+
+        navigationList.scrollTo({
+          left: Math.max(nextScrollLeft, 0),
+          behavior: "smooth",
+        });
+      }
+    }
+  }
+
+  function getNavigationOffset() {
+    return navigation.getBoundingClientRect().height + 16;
+  }
+
+  function updateNavigationState() {
+    scrollFrame = 0;
+
+    navigation.classList.toggle("is-compact", window.scrollY > 180);
+
+    const activationLine = getNavigationOffset() + 38;
+    let currentItem = items[0];
+
+    items.forEach((item) => {
+      if (item.section.getBoundingClientRect().top <= activationLine) {
+        currentItem = item;
+      }
+    });
+
+    const reachedDocumentEnd =
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 4;
+
+    if (reachedDocumentEnd) {
+      currentItem = items[items.length - 1];
+    }
+
+    setActiveItem(currentItem.id);
+  }
+
+  function requestNavigationUpdate() {
+    if (scrollFrame) {
+      return;
+    }
+
+    scrollFrame = window.requestAnimationFrame(updateNavigationState);
+  }
+
+  links.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const targetId = decodeURIComponent(link.hash.slice(1));
+      const target = document.getElementById(targetId);
+
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+
+      const targetTop =
+        window.scrollY +
+        target.getBoundingClientRect().top -
+        getNavigationOffset();
+
+      setActiveItem(targetId);
+
+      window.scrollTo({
+        top: Math.max(targetTop, 0),
+        behavior: "smooth",
+      });
+
+      window.history.replaceState(null, "", `#${targetId}`);
+    });
+  });
+
+  window.addEventListener("scroll", requestNavigationUpdate, {
+    passive: true,
+  });
+  window.addEventListener("resize", requestNavigationUpdate, {
+    passive: true,
+  });
+
+  if (window.location.hash) {
+    const initialId = decodeURIComponent(window.location.hash.slice(1));
+    const initialTarget = document.getElementById(initialId);
+
+    if (initialTarget) {
+      window.requestAnimationFrame(() => {
+        const targetTop =
+          window.scrollY +
+          initialTarget.getBoundingClientRect().top -
+          getNavigationOffset();
+
+        window.scrollTo({ top: Math.max(targetTop, 0) });
+        setActiveItem(initialId);
+      });
+    }
+  } else {
+    setActiveItem(items[0].id, false);
+  }
+
+  requestNavigationUpdate();
+}
+
 function renderPage(mythology) {
   setDocumentMetadata(mythology);
   renderHero(mythology);
@@ -1765,7 +2141,7 @@ function renderPage(mythology) {
   renderHeroes(mythology);
   renderCreatures(mythology);
   renderPlaces(mythology);
-  renderInfoCards(mythology.cults, SELECTORS.cultsGrid);
+  renderCults(mythology);
   renderSources(mythology);
 }
 
@@ -1793,6 +2169,10 @@ function initializeMythologyPage() {
   try {
     renderPage(mythology);
     showPage();
+
+    window.requestAnimationFrame(() => {
+      initializeInternalNavigation();
+    });
   } catch (error) {
     console.error("Erro ao renderizar a página da mitologia:", error);
     showError();
