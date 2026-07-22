@@ -86,24 +86,60 @@ const NORSE_MYTHOLOGY = Object.freeze({
       "detail-green-dark": "#315f66",
       "detail-gold": "#c8a65a",
       "detail-gold-light": "#f0d590",
-    },
-    assets: {
-      "overview-left":
-        "../assets/images/mythologies/norse/overview/yggdrasil-left.png",
-      "overview-right":
-        "../assets/images/mythologies/norse/overview/odin-right.png",
-      "history-left":
-        "../assets/images/mythologies/norse/history/longship-left.png",
-      "history-right":
-        "../assets/images/mythologies/norse/history/rune-stone-right.png",
-      "cosmology-left":
-        "../assets/images/mythologies/norse/cosmology/yggdrasil-left.png",
-      "cosmology-right":
-        "../assets/images/mythologies/norse/cosmology/asgard-right.png",
-      "genealogy-left":
-        "../assets/images/mythologies/norse/genealogy/yggdrasil-left.png",
-      "genealogy-right":
-        "../assets/images/mythologies/norse/genealogy/odin-right.png",
+
+      "overview-left-image":
+        'url("../assets/images/mythologies/norse/overview/map-scandinavia.png")',
+      "overview-right-image":
+        'url("../assets/images/mythologies/norse/overview/norse-people.png")',
+      "overview-card-1-image":
+        'url("../assets/images/mythologies/norse/overview/map-scandinavia.png")',
+      "overview-card-2-image":
+        'url("../assets/images/mythologies/norse/overview/norse-people.png")',
+      "overview-card-3-image":
+        'url("../assets/images/mythologies/norse/overview/norse-temple.png")',
+      "overview-card-4-image":
+        'url("../assets/images/mythologies/norse/overview/runes.png")',
+      "overview-card-5-image":
+        'url("../assets/images/mythologies/norse/overview/viking-warrior.png")',
+      "overview-card-6-image":
+        'url("../assets/images/mythologies/norse/overview/eddas.png")',
+
+      "history-left-image":
+        'url("../assets/images/mythologies/norse/history/germanic-origins.png")',
+      "history-right-image":
+        'url("../assets/images/mythologies/norse/history/eddas.png")',
+      "history-card-1-image":
+        'url("../assets/images/mythologies/norse/history/germanic-origins.png")',
+      "history-card-2-image":
+        'url("../assets/images/mythologies/norse/history/migration-period.png")',
+      "history-card-3-image":
+        'url("../assets/images/mythologies/norse/history/viking-age.png")',
+      "history-card-4-image":
+        'url("../assets/images/mythologies/norse/history/christianization.png")',
+      "history-card-5-image":
+        'url("../assets/images/mythologies/norse/history/eddas.png")',
+
+      "cosmology-left-image":
+        'url("../assets/images/mythologies/norse/cosmology/yggdrasil.png")',
+      "cosmology-right-image":
+        'url("../assets/images/mythologies/norse/cosmology/asgard.png")',
+      "cosmology-card-1-image":
+        'url("../assets/images/mythologies/norse/cosmology/asgard.png")',
+      "cosmology-card-2-image":
+        'url("../assets/images/mythologies/norse/cosmology/midgard.png")',
+      "cosmology-card-3-image":
+        'url("../assets/images/mythologies/norse/cosmology/jotunheim.png")',
+      "cosmology-card-4-image":
+        'url("../assets/images/mythologies/norse/cosmology/vanaheim.png")',
+      "cosmology-card-5-image":
+        'url("../assets/images/mythologies/norse/cosmology/alfheim.png")',
+      "cosmology-card-6-image":
+        'url("../assets/images/mythologies/norse/cosmology/svartalfheim.png")',
+
+      "genealogy-left-image":
+        'url("../assets/images/mythologies/norse/genealogy/characters/ymir.png")',
+      "genealogy-right-image":
+        'url("../assets/images/mythologies/norse/genealogy/characters/odin.png")',
     },
   },
 

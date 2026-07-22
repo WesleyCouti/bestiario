@@ -285,6 +285,49 @@ function setText(selector, value = "") {
   }
 }
 
+function resolveAssetUrl(value) {
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  const trimmedValue = value.trim();
+
+  if (!trimmedValue || trimmedValue === "none") {
+    return trimmedValue;
+  }
+
+  try {
+    return new URL(trimmedValue, document.baseURI).href;
+  } catch (error) {
+    console.warn("Não foi possível resolver o caminho da imagem:", value, error);
+    return trimmedValue;
+  }
+}
+
+function resolveCssUrls(value) {
+  if (typeof value !== "string") {
+    return value;
+  }
+
+  return value.replace(
+    /url\(\s*(["']?)(.*?)\1\s*\)/gi,
+    (_match, _quote, assetPath) => {
+      const resolvedPath = resolveAssetUrl(assetPath);
+      return resolvedPath ? `url("${resolvedPath}")` : "none";
+    },
+  );
+}
+
+function createBackgroundImageValue(imagePath, overlay) {
+  const resolvedPath = resolveAssetUrl(imagePath);
+
+  if (!resolvedPath) {
+    return "none";
+  }
+
+  return `${overlay}, url("${resolvedPath}")`;
+}
+
 function applyTheme(mythology) {
   const root = document.documentElement;
   const theme = mythology.theme || {};
@@ -293,13 +336,15 @@ function applyTheme(mythology) {
   document.body.dataset.mythology = mythology.slug;
 
   Object.entries(theme.variables || {}).forEach(([name, value]) => {
-    root.style.setProperty(`--${name}`, value);
+    root.style.setProperty(`--${name}`, resolveCssUrls(value));
   });
 
   Object.entries(theme.assets || {}).forEach(([name, value]) => {
+    const resolvedValue = resolveAssetUrl(value);
+
     root.style.setProperty(
       `--myth-${name}`,
-      value ? `url("${value}")` : "none",
+      resolvedValue ? `url("${resolvedValue}")` : "none",
     );
   });
 }
@@ -407,7 +452,7 @@ function renderHero(mythology) {
   query(SELECTORS.heroDescription).textContent = mythology.hero.description;
 
   const heroImage = query(SELECTORS.heroImage);
-  heroImage.src = mythology.hero.image;
+  heroImage.src = resolveAssetUrl(mythology.hero.image);
   heroImage.alt = mythology.hero.imageAlt || "";
 
   const facts = mythology.overview.facts.slice(0, 3);
@@ -436,7 +481,13 @@ function renderOverview(mythology) {
     item.style.setProperty("--fact-icon", `"${fact.icon || "✦"}"`);
 
     if (fact.image) {
-      item.style.setProperty("--fact-image", `url("${fact.image}")`);
+      const resolvedImage = resolveAssetUrl(fact.image);
+
+      item.style.setProperty("--fact-image", `url("${resolvedImage}")`);
+      item.style.backgroundImage = createBackgroundImageValue(
+        fact.image,
+        "linear-gradient(180deg, rgba(2, 8, 5, 0.14), rgba(2, 8, 5, 0.68))",
+      );
       item.classList.add("has-custom-image");
     }
 
@@ -460,7 +511,7 @@ function renderHistory(mythology) {
     article.dataset.index = String(index + 1);
     article.style.setProperty(
       "--history-card-image",
-      period.image ? `url("${period.image}")` : "none",
+      period.image ? `url("${resolveAssetUrl(period.image)}")` : "none",
     );
     article.style.setProperty("--history-card-icon", `"${period.icon || "✦"}"`);
 
@@ -503,7 +554,10 @@ function createInfoCard(
   if (typeof item.image === "string" && item.image.trim()) {
     const imageUrl = item.image.trim();
 
-    card.style.setProperty("--info-card-image", `url("${imageUrl}")`);
+    card.style.setProperty(
+      "--info-card-image",
+      `url("${resolveAssetUrl(imageUrl)}")`,
+    );
     card.classList.add("has-background-image");
   }
 
@@ -560,7 +614,7 @@ function createEntityCard(entity, itemType = "", mythologySlug = "greek") {
   if (entity.image) {
     const image = createElement("img", "myth-detail-entity-image");
 
-    image.src = entity.image;
+    image.src = resolveAssetUrl(entity.image);
     image.alt = entity.imageAlt || `Representação de ${entity.name}`;
     image.width = 360;
     image.height = 420;
@@ -1522,7 +1576,7 @@ function updateGenealogyDetails(genealogy, selectedPerson) {
   if (selectedPerson.image) {
     const image = createElement("img", "myth-detail-genealogy-details-image");
 
-    image.src = selectedPerson.image;
+    image.src = resolveAssetUrl(selectedPerson.image);
     image.alt = "";
     image.width = 140;
     image.height = 140;
@@ -1625,7 +1679,7 @@ function createGenealogyPersonCard(person) {
   if (person.image) {
     const image = createElement("img", "myth-detail-genealogy-person-image");
 
-    image.src = person.image;
+    image.src = resolveAssetUrl(person.image);
     image.alt = "";
     image.width = 192;
     image.height = 192;

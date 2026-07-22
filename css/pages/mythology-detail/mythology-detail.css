@@ -15,6 +15,37 @@
   --detail-shadow: 0 24px 64px rgba(0, 0, 0, 0.46);
   --detail-radius: 22px;
   --detail-title-font: Georgia, "Times New Roman", serif;
+
+  /* Imagens temáticas reutilizáveis. A mitologia carregada pode
+     sobrescrever estes valores através de theme.variables. */
+  --overview-left-image: url("../../../assets/images/mythologies/greek/overview/temple-left.png");
+  --overview-right-image: url("../../../assets/images/mythologies/greek/overview/athena-right.png");
+  --overview-card-1-image: url("../../../assets/images/mythologies/greek/overview/map-greece.png");
+  --overview-card-2-image: url("../../../assets/images/mythologies/greek/overview/greek-vase.png");
+  --overview-card-3-image: url("../../../assets/images/mythologies/greek/overview/greek-temple.png");
+  --overview-card-4-image: url("../../../assets/images/mythologies/greek/overview/greek-writing.png");
+  --overview-card-5-image: url("../../../assets/images/mythologies/greek/overview/greek-warrior.png");
+  --overview-card-6-image: url("../../../assets/images/mythologies/greek/overview/ancient-scrolls.png");
+
+  --history-left-image: url("../../../assets/images/mythologies/greek/history/temple-left.png");
+  --history-right-image: url("../../../assets/images/mythologies/greek/history/temple-right.png");
+  --history-card-1-image: url("../../../assets/images/mythologies/greek/history/minoan.png");
+  --history-card-2-image: url("../../../assets/images/mythologies/greek/history/mycenaean.png");
+  --history-card-3-image: url("../../../assets/images/mythologies/greek/history/archaic.png");
+  --history-card-4-image: url("../../../assets/images/mythologies/greek/history/classical.png");
+  --history-card-5-image: url("../../../assets/images/mythologies/greek/history/hellenistic.png");
+
+  --cosmology-left-image: url("../../../assets/images/mythologies/greek/cosmology/temple-left.png");
+  --cosmology-right-image: url("../../../assets/images/mythologies/greek/cosmology/temple-right.png");
+  --cosmology-card-1-image: url("../../../assets/images/mythologies/greek/cosmology/mount-olympus.png");
+  --cosmology-card-2-image: url("../../../assets/images/mythologies/greek/cosmology/mortal-world.png");
+  --cosmology-card-3-image: url("../../../assets/images/mythologies/greek/cosmology/oceans.png");
+  --cosmology-card-4-image: url("../../../assets/images/mythologies/greek/cosmology/underworld.png");
+  --cosmology-card-5-image: url("../../../assets/images/mythologies/greek/cosmology/tartarus.png");
+  --cosmology-card-6-image: url("../../../assets/images/mythologies/greek/cosmology/elysian-fields.png");
+
+  --genealogy-left-image: url("../../../assets/images/mythologies/greek/genealogy/gaia-left.png");
+  --genealogy-right-image: url("../../../assets/images/mythologies/greek/genealogy/zeus-right.png");
 }
 
 html {
@@ -1008,8 +1039,7 @@ cards de leitura vertical.
   left: -6%;
   background:
     linear-gradient(180deg, transparent, rgba(2, 8, 5, 0.46)),
-    url("../../../assets/images/mythologies/greek/overview/temple-left.png")
-      center bottom / contain no-repeat;
+    var(--overview-left-image) center bottom / contain no-repeat;
   mask-image: linear-gradient(
     90deg,
     #000 0%,
@@ -1022,8 +1052,7 @@ cards de leitura vertical.
   right: -5%;
   background:
     linear-gradient(180deg, transparent, rgba(2, 8, 5, 0.52)),
-    url("../../../assets/images/mythologies/greek/overview/athena-right.png")
-      center bottom / contain no-repeat;
+    var(--overview-right-image) center bottom / contain no-repeat;
   mask-image: linear-gradient(
     90deg,
     transparent 0%,
@@ -1133,37 +1162,37 @@ cards de leitura vertical.
 .myth-detail-fact:nth-child(1)::after {
   background-image:
     linear-gradient(180deg, rgba(2, 8, 5, 0.18), rgba(2, 8, 5, 0.84)),
-    url("../../../assets/images/mythologies/greek/overview/map-greece.png");
+    var(--overview-card-1-image);
 }
 
 .myth-detail-fact:nth-child(2)::after {
   background-image:
     linear-gradient(180deg, rgba(2, 8, 5, 0.22), rgba(2, 8, 5, 0.86)),
-    url("../../../assets/images/mythologies/greek/overview/greek-vase.png");
+    var(--overview-card-2-image);
 }
 
 .myth-detail-fact:nth-child(3)::after {
   background-image:
     linear-gradient(180deg, rgba(2, 8, 5, 0.2), rgba(2, 8, 5, 0.86)),
-    url("../../../assets/images/mythologies/greek/overview/greek-temple.png");
+    var(--overview-card-3-image);
 }
 
 .myth-detail-fact:nth-child(4)::after {
   background-image:
     linear-gradient(180deg, rgba(2, 8, 5, 0.2), rgba(2, 8, 5, 0.88)),
-    url("../../../assets/images/mythologies/greek/overview/greek-writing.png");
+    var(--overview-card-4-image);
 }
 
 .myth-detail-fact:nth-child(5)::after {
   background-image:
     linear-gradient(180deg, rgba(2, 8, 5, 0.2), rgba(2, 8, 5, 0.88)),
-    url("../../../assets/images/mythologies/greek/overview/greek-warrior.png");
+    var(--overview-card-5-image);
 }
 
 .myth-detail-fact:nth-child(6)::after {
   background-image:
     linear-gradient(180deg, rgba(2, 8, 5, 0.2), rgba(2, 8, 5, 0.88)),
-    url("../../../assets/images/mythologies/greek/overview/ancient-scrolls.png");
+    var(--overview-card-6-image);
 }
 
 .myth-detail-fact:hover {
@@ -1371,8 +1400,7 @@ central; - símbolo dourado à direita.
   left: -8%;
   background:
     linear-gradient(180deg, transparent, rgba(2, 8, 5, 0.72)),
-    url("../../../assets/images/mythologies/greek/history/temple-left.png")
-      center top / contain no-repeat;
+    var(--history-left-image) center top / contain no-repeat;
   mask-image: linear-gradient(
     90deg,
     #000,
@@ -1385,8 +1413,7 @@ central; - símbolo dourado à direita.
   right: -8%;
   background:
     linear-gradient(180deg, transparent, rgba(2, 8, 5, 0.72)),
-    url("../../../assets/images/mythologies/greek/history/temple-right.png")
-      center top / contain no-repeat;
+    var(--history-right-image) center top / contain no-repeat;
   mask-image: linear-gradient(
     90deg,
     transparent,
@@ -1529,7 +1556,7 @@ central; - símbolo dourado à direita.
 
 /* Imagens */
 .myth-detail-timeline-item:nth-child(1) {
-  --history-card-image: url("../../../assets/images/mythologies/greek/history/minoan.png");
+  --history-card-image: var(--history-card-1-image);
   background-position:
     center,
     left center,
@@ -1537,7 +1564,7 @@ central; - símbolo dourado à direita.
 }
 
 .myth-detail-timeline-item:nth-child(2) {
-  --history-card-image: url("../../../assets/images/mythologies/greek/history/mycenaean.png");
+  --history-card-image: var(--history-card-2-image);
   background-position:
     center,
     left center,
@@ -1545,7 +1572,7 @@ central; - símbolo dourado à direita.
 }
 
 .myth-detail-timeline-item:nth-child(3) {
-  --history-card-image: url("../../../assets/images/mythologies/greek/history/archaic.png");
+  --history-card-image: var(--history-card-3-image);
   background-position:
     center,
     left center,
@@ -1553,7 +1580,7 @@ central; - símbolo dourado à direita.
 }
 
 .myth-detail-timeline-item:nth-child(4) {
-  --history-card-image: url("../../../assets/images/mythologies/greek/history/classical.png");
+  --history-card-image: var(--history-card-4-image);
   background-position:
     center,
     left center,
@@ -1561,7 +1588,7 @@ central; - símbolo dourado à direita.
 }
 
 .myth-detail-timeline-item:nth-child(5) {
-  --history-card-image: url("../../../assets/images/mythologies/greek/history/hellenistic.png");
+  --history-card-image: var(--history-card-5-image);
   background-position:
     center,
     left center,
@@ -1793,8 +1820,7 @@ responsividade para desktop, tablet e mobile.
   left: -8%;
   background:
     linear-gradient(180deg, transparent, rgba(2, 8, 5, 0.76)),
-    url("../../../assets/images/mythologies/greek/cosmology/temple-left.png")
-      center top / contain no-repeat;
+    var(--cosmology-left-image) center top / contain no-repeat;
   mask-image: linear-gradient(
     90deg,
     #000,
@@ -1807,8 +1833,7 @@ responsividade para desktop, tablet e mobile.
   right: -8%;
   background:
     linear-gradient(180deg, transparent, rgba(2, 8, 5, 0.76)),
-    url("../../../assets/images/mythologies/greek/cosmology/temple-right.png")
-      center top / contain no-repeat;
+    var(--cosmology-right-image) center top / contain no-repeat;
   mask-image: linear-gradient(
     90deg,
     transparent,
@@ -1965,37 +1990,37 @@ responsividade para desktop, tablet e mobile.
 /* Imagens dos seis reinos */
 .myth-detail-cosmology-grid .myth-detail-info-card:nth-child(1) {
   background-image:
-    url("../../../assets/images/mythologies/greek/cosmology/mount-olympus.png"),
+    var(--cosmology-card-1-image),
     linear-gradient(180deg, rgba(5, 18, 11, 0.96), rgba(2, 11, 7, 0.99));
 }
 
 .myth-detail-cosmology-grid .myth-detail-info-card:nth-child(2) {
   background-image:
-    url("../../../assets/images/mythologies/greek/cosmology/mortal-world.png"),
+    var(--cosmology-card-2-image),
     linear-gradient(180deg, rgba(5, 18, 11, 0.96), rgba(2, 11, 7, 0.99));
 }
 
 .myth-detail-cosmology-grid .myth-detail-info-card:nth-child(3) {
   background-image:
-    url("../../../assets/images/mythologies/greek/cosmology/oceans.png"),
+    var(--cosmology-card-3-image),
     linear-gradient(180deg, rgba(5, 18, 11, 0.96), rgba(2, 11, 7, 0.99));
 }
 
 .myth-detail-cosmology-grid .myth-detail-info-card:nth-child(4) {
   background-image:
-    url("../../../assets/images/mythologies/greek/cosmology/underworld.png"),
+    var(--cosmology-card-4-image),
     linear-gradient(180deg, rgba(5, 18, 11, 0.96), rgba(2, 11, 7, 0.99));
 }
 
 .myth-detail-cosmology-grid .myth-detail-info-card:nth-child(5) {
   background-image:
-    url("../../../assets/images/mythologies/greek/cosmology/tartarus.png"),
+    var(--cosmology-card-5-image),
     linear-gradient(180deg, rgba(5, 18, 11, 0.96), rgba(2, 11, 7, 0.99));
 }
 
 .myth-detail-cosmology-grid .myth-detail-info-card:nth-child(6) {
   background-image:
-    url("../../../assets/images/mythologies/greek/cosmology/elysian-fields.png"),
+    var(--cosmology-card-6-image),
     linear-gradient(180deg, rgba(5, 18, 11, 0.96), rgba(2, 11, 7, 0.99));
 }
 
@@ -2555,16 +2580,14 @@ filtros e destaque interativo.
   left: -8%;
   background:
     linear-gradient(180deg, transparent, #010604 86%),
-    url("../../../assets/images/mythologies/greek/genealogy/gaia-left.png")
-      center top / contain no-repeat;
+    var(--genealogy-left-image) center top / contain no-repeat;
 }
 
 .myth-detail-genealogy-silhouette--right {
   right: -8%;
   background:
     linear-gradient(180deg, transparent, #010604 86%),
-    url("../../../assets/images/mythologies/greek/genealogy/zeus-right.png")
-      center top / contain no-repeat;
+    var(--genealogy-right-image) center top / contain no-repeat;
 }
 
 .myth-detail-genealogy-layout {
@@ -4725,4 +4748,47 @@ html[data-mythology] .myth-detail-genealogy {
     background-color 0.3s ease,
     border-color 0.3s ease,
     color 0.3s ease;
+}
+
+/* =====================================================
+   CORREÇÃO DEFINITIVA — IMAGENS DE FUNDO DOS CARDS
+   As imagens são inseridas pelo JavaScript com URL absoluta.
+===================================================== */
+
+.myth-detail-fact {
+  isolation: isolate;
+  background-color: rgba(2, 11, 7, 0.98);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.myth-detail-fact.has-custom-image {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* O fundo passa a ser aplicado diretamente no card. O pseudo-elemento
+   fica somente como acabamento e não pode mais esconder a imagem. */
+.myth-detail-fact.has-custom-image::after {
+  z-index: 1;
+  opacity: 1 !important;
+  background-image: linear-gradient(
+    180deg,
+    rgba(2, 8, 5, 0.02) 0%,
+    rgba(2, 8, 5, 0.16) 40%,
+    rgba(2, 8, 5, 0.72) 100%
+  ) !important;
+  pointer-events: none;
+}
+
+.myth-detail-fact.has-custom-image:hover::after {
+  opacity: 1 !important;
+}
+
+.myth-detail-fact::before,
+.myth-detail-fact dt,
+.myth-detail-fact dd {
+  z-index: 3;
 }
