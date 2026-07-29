@@ -299,7 +299,11 @@ function resolveAssetUrl(value) {
   try {
     return new URL(trimmedValue, document.baseURI).href;
   } catch (error) {
-    console.warn("Não foi possível resolver o caminho da imagem:", value, error);
+    console.warn(
+      "Não foi possível resolver o caminho da imagem:",
+      value,
+      error,
+    );
     return trimmedValue;
   }
 }
@@ -552,13 +556,24 @@ function createInfoCard(
   }
 
   if (typeof item.image === "string" && item.image.trim()) {
-    const imageUrl = item.image.trim();
+    const imageUrl = resolveAssetUrl(item.image.trim());
+    const imageValue = `url("${imageUrl}")`;
 
-    card.style.setProperty(
-      "--info-card-image",
-      `url("${resolveAssetUrl(imageUrl)}")`,
-    );
+    card.style.setProperty("--info-card-image", imageValue);
     card.classList.add("has-background-image");
+
+    /*
+     * Os cards da Cosmologia recebem a imagem diretamente no elemento.
+     * Isso evita que regras antigas com nth-child limitem a exibição
+     * aos seis primeiros mundos.
+     */
+    if (variant === "myth-detail-cosmology-card") {
+      card.style.backgroundImage = `${imageValue}, linear-gradient(
+        180deg,
+        rgba(5, 18, 11, 0.96),
+        rgba(2, 11, 7, 0.99)
+      )`;
+    }
   }
 
   const icon = createElement(
@@ -585,14 +600,28 @@ function createInfoCard(
 
 function renderInfoCards(items, selector) {
   const container = query(selector);
+
+  if (!container) {
+    return;
+  }
+
   container.replaceChildren();
 
   const cardVariant =
-    selector === SELECTORS.placesGrid ? "myth-detail-place-card" : "";
+    selector === SELECTORS.placesGrid
+      ? "myth-detail-place-card"
+      : selector === SELECTORS.cosmologyGrid
+        ? "myth-detail-cosmology-card"
+        : "";
 
-  items.forEach((item) => {
-    container.appendChild(createInfoCard(item, cardVariant));
+  const safeItems = Array.isArray(items) ? items : [];
+  const fragment = document.createDocumentFragment();
+
+  safeItems.forEach((item) => {
+    fragment.appendChild(createInfoCard(item, cardVariant));
   });
+
+  container.appendChild(fragment);
 }
 
 function createEntityCard(entity, itemType = "", mythologySlug = "greek") {

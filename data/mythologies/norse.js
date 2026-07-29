@@ -120,21 +120,28 @@ const NORSE_MYTHOLOGY = Object.freeze({
         'url("../assets/images/mythologies/norse/history/eddas.png")',
 
       "cosmology-left-image":
-        'url("../assets/images/mythologies/norse/cosmology/yggdrasil.png")',
+        'url("/assets/images/mythologies/norse/cosmology/yggdrasil.png")',
       "cosmology-right-image":
-        'url("../assets/images/mythologies/norse/cosmology/asgard.png")',
+        'url("/assets/images/mythologies/norse/cosmology/asgard.png")',
       "cosmology-card-1-image":
-        'url("../assets/images/mythologies/norse/cosmology/asgard.png")',
+        'url("/assets/images/mythologies/norse/cosmology/asgard.png")',
       "cosmology-card-2-image":
-        'url("../assets/images/mythologies/norse/cosmology/midgard.png")',
+        'url("/assets/images/mythologies/norse/cosmology/midgard.png")',
+
       "cosmology-card-3-image":
-        'url("../assets/images/mythologies/norse/cosmology/jotunheim.png")',
+        'url("/assets/images/mythologies/norse/cosmology/jotunheim.png")',
       "cosmology-card-4-image":
-        'url("../assets/images/mythologies/norse/cosmology/vanaheim.png")',
+        'url("/assets/images/mythologies/norse/cosmology/vanaheim.png")',
       "cosmology-card-5-image":
-        'url("../assets/images/mythologies/norse/cosmology/alfheim.png")',
+        'url("/assets/images/mythologies/norse/cosmology/alfheim.png")',
       "cosmology-card-6-image":
-        'url("../assets/images/mythologies/norse/cosmology/svartalfheim.png")',
+        'url("/assets/images/mythologies/norse/cosmology/svartalfheim.png")',
+      "cosmology-card-7-image":
+        'url("/assets/images/mythologies/norse/cosmology/niflheim.png")',
+      "cosmology-card-8-image":
+        'url("/assets/images/mythologies/norse/cosmology/muspelheim.png")',
+      "cosmology-card-9-image":
+        'url("/assets/images/mythologies/norse/cosmology/helheim.png")',
 
       "genealogy-left-image":
         'url("../assets/images/mythologies/norse/genealogy/characters/ymir.png")',
@@ -252,21 +259,21 @@ const NORSE_MYTHOLOGY = Object.freeze({
     realms: [
       {
         icon: "ᛉ",
-        image: "../assets/images/mythologies/norse/cosmology/asgard.png",
+        image: "/assets/images/mythologies/norse/cosmology/asgard.png",
         name: "Asgard",
         type: "Reino dos Aesir",
         description: "Morada de Odin, Thor, Frigg e outras divindades Aesir.",
       },
       {
         icon: "ᛗ",
-        image: "../assets/images/mythologies/norse/cosmology/midgard.png",
+        image: "/assets/images/mythologies/norse/cosmology/midgard.png",
         name: "Midgard",
         type: "Mundo dos humanos",
         description: "Reino cercado pelo oceano e protegido dos gigantes.",
       },
       {
         icon: "ᚦ",
-        image: "../assets/images/mythologies/norse/cosmology/jotunheim.png",
+        image: "/assets/images/mythologies/norse/cosmology/jotunheim.png",
         name: "Jotunheim",
         type: "Reino dos gigantes",
         description:
@@ -274,7 +281,7 @@ const NORSE_MYTHOLOGY = Object.freeze({
       },
       {
         icon: "ᚨ",
-        image: "../assets/images/mythologies/norse/cosmology/vanaheim.png",
+        image: "/assets/images/mythologies/norse/cosmology/vanaheim.png",
         name: "Vanaheim",
         type: "Reino dos Vanir",
         description:
@@ -282,7 +289,7 @@ const NORSE_MYTHOLOGY = Object.freeze({
       },
       {
         icon: "ᛞ",
-        image: "../assets/images/mythologies/norse/cosmology/alfheim.png",
+        image: "/assets/images/mythologies/norse/cosmology/alfheim.png",
         name: "Alfheim",
         type: "Reino dos elfos luminosos",
         description:
@@ -290,7 +297,7 @@ const NORSE_MYTHOLOGY = Object.freeze({
       },
       {
         icon: "ᛃ",
-        image: "../assets/images/mythologies/norse/cosmology/svartalfheim.png",
+        image: "/assets/images/mythologies/norse/cosmology/svartalfheim.png",
         name: "Svartalfheim",
         type: "Reino dos anões",
         description:
@@ -298,7 +305,7 @@ const NORSE_MYTHOLOGY = Object.freeze({
       },
       {
         icon: "❄",
-        image: "../assets/images/mythologies/norse/cosmology/niflheim.png",
+        image: "/assets/images/mythologies/norse/cosmology/niflheim.png",
         name: "Niflheim",
         type: "Reino de névoa e gelo",
         description:
@@ -306,7 +313,7 @@ const NORSE_MYTHOLOGY = Object.freeze({
       },
       {
         icon: "🔥",
-        image: "../assets/images/mythologies/norse/cosmology/muspelheim.png",
+        image: "/assets/images/mythologies/norse/cosmology/muspelheim.png",
         name: "Muspelheim",
         type: "Reino de fogo",
         description:
@@ -314,7 +321,7 @@ const NORSE_MYTHOLOGY = Object.freeze({
       },
       {
         icon: "☾",
-        image: "../assets/images/mythologies/norse/cosmology/helheim.png",
+        image: "/assets/images/mythologies/norse/cosmology/helheim.png",
         name: "Helheim",
         type: "Reino dos mortos",
         description:

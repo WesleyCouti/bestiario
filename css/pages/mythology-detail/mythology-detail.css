@@ -1987,41 +1987,31 @@ responsividade para desktop, tablet e mobile.
   line-height: 1.58;
 }
 
-/* Imagens dos seis reinos */
-.myth-detail-cosmology-grid .myth-detail-info-card:nth-child(1) {
+/* =====================================================
+   IMAGENS DINÂMICAS DOS MUNDOS DA COSMOLOGIA
+   A imagem vem de item.image e é aplicada por --info-card-image.
+   Funciona com 6, 9 ou qualquer outra quantidade de cards.
+===================================================== */
+
+.myth-detail-cosmology-grid .myth-detail-info-card,
+.myth-detail-cosmology-grid .myth-detail-cosmology-card {
+  --info-card-image: none;
+
   background-image:
-    var(--cosmology-card-1-image),
+    var(--info-card-image),
     linear-gradient(180deg, rgba(5, 18, 11, 0.96), rgba(2, 11, 7, 0.99));
+  background-repeat: no-repeat;
+  background-position:
+    center top,
+    center;
+  background-size:
+    100% 180px,
+    100% 100%;
 }
 
-.myth-detail-cosmology-grid .myth-detail-info-card:nth-child(2) {
-  background-image:
-    var(--cosmology-card-2-image),
-    linear-gradient(180deg, rgba(5, 18, 11, 0.96), rgba(2, 11, 7, 0.99));
-}
-
-.myth-detail-cosmology-grid .myth-detail-info-card:nth-child(3) {
-  background-image:
-    var(--cosmology-card-3-image),
-    linear-gradient(180deg, rgba(5, 18, 11, 0.96), rgba(2, 11, 7, 0.99));
-}
-
-.myth-detail-cosmology-grid .myth-detail-info-card:nth-child(4) {
-  background-image:
-    var(--cosmology-card-4-image),
-    linear-gradient(180deg, rgba(5, 18, 11, 0.96), rgba(2, 11, 7, 0.99));
-}
-
-.myth-detail-cosmology-grid .myth-detail-info-card:nth-child(5) {
-  background-image:
-    var(--cosmology-card-5-image),
-    linear-gradient(180deg, rgba(5, 18, 11, 0.96), rgba(2, 11, 7, 0.99));
-}
-
-.myth-detail-cosmology-grid .myth-detail-info-card:nth-child(6) {
-  background-image:
-    var(--cosmology-card-6-image),
-    linear-gradient(180deg, rgba(5, 18, 11, 0.96), rgba(2, 11, 7, 0.99));
+.myth-detail-cosmology-grid .myth-detail-info-card.has-background-image,
+.myth-detail-cosmology-grid .myth-detail-cosmology-card.has-background-image {
+  background-color: rgba(2, 11, 7, 0.98);
 }
 
 /* —————————————————-- RESPONSIVIDADE — COSMOLOGIA —————————————————-- */
